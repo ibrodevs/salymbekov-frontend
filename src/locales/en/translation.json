@@ -162,5 +162,71 @@
   },
   "languageSwitcher": {
     "selectLanguage": "Select Language"
+  },
+  "history": {
+    "title": "History of Salymbekov University",
+    "subtitle": "Journey of excellence in education and innovation since our foundation",
+    "aboutTitle": "About Our University",
+    "aboutText1": "Salymbekov University has been a beacon of knowledge and innovation, shaping future leaders through cutting-edge education and research.",
+    "aboutText2": "Our commitment to academic excellence and practical skills development has made us one of the leading educational institutions in the region.",
+    "campusAlt": "Salymbekov University Campus",
+    "feature1": {
+      "title": "Quality Education",
+      "desc": "World-class educational programs and experienced faculty"
+    },
+    "feature2": {
+      "title": "Modern Campus",
+      "desc": "State-of-the-art facilities and learning environments"
+    },
+    "feature3": {
+      "title": "Global Perspective",
+      "desc": "International partnerships and exchange programs"
+    },
+    "feature4": {
+      "title": "Research Excellence",
+      "desc": "Innovative research projects and scientific discoveries"
+    },
+    "timelineTitle": "Our Journey",
+    "timelineSubtitle": "Key milestones in our development and growth",
+    "milestone1": {
+      "title": "Foundation",
+      "desc": "University was established with a vision to transform education"
+    },
+    "milestone2": {
+      "title": "First Graduates",
+      "desc": "Celebrated our first batch of successful graduates"
+    },
+    "milestone3": {
+      "title": "International Recognition",
+      "desc": "Gained accreditation and partnerships with global institutions"
+    },
+    "milestone4": {
+      "title": "Campus Expansion",
+      "desc": "Opened new modern campus facilities and laboratories"
+    },
+    "milestone5": {
+      "title": "Research Center",
+      "desc": "Established advanced research and development center"
+    },
+    "milestone6": {
+      "title": "Digital Transformation",
+      "desc": "Implemented comprehensive digital learning ecosystem"
+    },
+    "milestone7": {
+      "title": "Global Rankings",
+      "desc": "Achieved recognition in international university rankings"
+    },
+    "founderTitle": "Our Visionary Founder",
+    "founderName": "Asan Salymbekov",
+    "founderPosition": "Founder and President",
+    "founderAlt": "Asan Salymbekov - University Founder",
+    "founderText1": "Our founder's vision and dedication have been the driving force behind the university's success and growth.",
+    "founderText2": "His commitment to education and innovation continues to inspire our community and shape our future direction.",
+    "founderQuote": "Education is the most powerful weapon which you can use to change the world. We are committed to creating leaders who will shape tomorrow.",
+    "galleryTitle": "University Memories",
+    "gallerySubtitle": "Capturing moments from our incredible journey",
+    "galleryImage1": "University Opening Ceremony",
+    "galleryImage2": "Student Research Exhibition",
+    "galleryImage3": "International Conference"
   }
 }

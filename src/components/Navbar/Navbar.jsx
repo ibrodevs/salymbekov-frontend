@@ -1,493 +1,1368 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
-import LanguageSwitcher from './LanguageSwitcher';
 import Logo1 from '../../assets/Logo.png';
-import Logo2 from '../../assets/Logo_white.png';
-const Navbar = () => {
-  const { t } = useTranslation();
-  const location = useLocation();
-  const [activeDropdown, setActiveDropdown] = useState(null);
-  const [activeSubDropdown, setActiveSubDropdown] = useState(null);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const dropdownTimeoutRef = useRef(null);
-  const subDropdownTimeoutRef = useRef(null);
 
-  // Track scroll for navbar background
+const Navbar = () => {
+  const location = useLocation();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [activeMenu, setActiveMenu] = useState(null);
+  const [lang, setLang] = useState('ru');
+  const [expanded, setExpanded] = useState({});
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const hideTimer = useRef(null);
+  const searchInputRef = useRef(null);
+
+  const changeLang = (code) => {
+    setLang(code);
+    // если используешь i18next, здесь нужно вызывать i18n.changeLanguage(code)
+    // i18n.changeLanguage(code);
+  };
+
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setIsScrolled(window.scrollY > 0);
+    onScroll();
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
-    setIsMobileMenuOpen(false);
-    setActiveDropdown(null);
-    setActiveSubDropdown(null);
+    setIsMobileOpen(false);
+    setActiveMenu(null);
+    setExpanded({});
+    setIsSearchOpen(false);
   }, [location]);
 
-  const handleDropdownEnter = (menu) => {
-    if (dropdownTimeoutRef.current) {
-      clearTimeout(dropdownTimeoutRef.current);
+  useEffect(() => {
+    if (isSearchOpen && searchInputRef.current) {
+      searchInputRef.current.focus();
     }
-    setActiveDropdown(menu);
-    setActiveSubDropdown(null);
+  }, [isSearchOpen]);
+
+  const handleEnter = (key) => {
+    if (hideTimer.current) clearTimeout(hideTimer.current);
+    setActiveMenu(key);
   };
 
-  const handleDropdownLeave = () => {
-    dropdownTimeoutRef.current = setTimeout(() => {
-      setActiveDropdown(null);
-      setActiveSubDropdown(null);
-    }, 300);
+  const handleLeave = () => {
+    hideTimer.current = setTimeout(() => setActiveMenu(null), 120);
   };
 
-  const handleSubDropdownEnter = (sub) => {
-    if (subDropdownTimeoutRef.current) {
-      clearTimeout(subDropdownTimeoutRef.current);
-    }
-    setActiveSubDropdown(sub);
+  const isActive = (path) => location.pathname.startsWith(path);
+
+  const toggleExpanded = (key) => {
+    setExpanded((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
   };
 
-  const handleSubDropdownLeave = () => {
-    subDropdownTimeoutRef.current = setTimeout(() => {
-      setActiveSubDropdown(null);
-    }, 200);
-  };
+  const topItems = [
+    { key: 'university', path: '/university', label: 'УНИВЕРСИТЕТ' },
+    { key: 'education', path: '/education', label: 'ОБРАЗОВАНИЕ' },
+    { key: 'clinical', path: '/clinical', label: 'КЛИНИЧЕСКАЯ БАЗА' },
+    { key: 'science', path: '/science', label: 'НАУКА' },
+    { key: 'student', path: '/student', label: 'СТУДЕНТУ' },
+    { key: 'applicant', path: '/applicants', label: 'АБИТУРИЕНТУ' }
+  ];
 
-  // Menu data structure
-  const menuData = {
-    university: {
-      items: [
-        { key: 'appeal', link: '/university/appeal' },
-        { key: 'history', link: '/university/history' },
-        { key: 'mission', link: '/university/mission' },
-        { key: 'videos', link: '/university/videos' },
-        { key: 'vacancies', link: '/university/vacancies' },
-        { key: 'contacts', link: '/university/contacts' },
-        {
-          key: 'structure',
-          link: '/university/structure',
-          subItems: [
-            { key: 'universityMain', link: '/university/structure/university-main' },
-            { key: 'internationalFaculty', link: '/university/structure/international-faculty' },
-            { key: 'itCollege', link: '/university/structure/it-college' },
-            { key: 'businessSchool', link: '/university/structure/business-school' }
-          ]
-        },
-        {
-          key: 'management',
-          link: '/university/management',
-          subItems: [
-            { key: 'founder', link: '/university/management/founder' },
-            { key: 'president', link: '/university/management/president' },
-            { key: 'rectorate', link: '/university/management/rectorate' },
-            { key: 'publicCouncils', link: '/university/management/public-councils' }
-          ]
-        },
-        {
-            key: "publicCouncils",
-            link: "/university/management/public-councils",
-            subItems: [
-              { key: "developmentCouncil", "link": "/university/management/public-councils/development-council" },
-              { key: "academicCouncil", "link": "/university/management/public-councils/academic-council" },
-              { key: "educationQualityCouncil", "link": "/university/management/public-councils/education-quality-council" },
-              { key: "educationalMethodologicalCouncil", "link": "/university/management/public-councils/educational-methodological-council" },
-              { key: "scientificTechnicalCouncil", "link": "/university/management/public-councils/scientific-technical-council" },
-              { key: "editorialBoard", "link": "/university/management/public-councils/editorial-board" },
-              { key: "admissionCommittee", "link": "/university/management/public-councils/admission-committee" },
-              { key: "socialSupportCommission", "link": "/university/management/public-councils/social-support-commission" },
-              { key: "bioethicalCommittee", "link": "/university/management/public-councils/bioethical-committee" },
-              { key: "councilOfYoungScientists", "link": "/university/management/public-councils/council-of-young-scientists" },
-              { key: "employersCouncil", "link": "/university/management/public-councils/employers-council" },
-              { key: "parentsAdvice", "link": "/university/management/public-councils/parents-advice" },
-              { key: "studentCouncil", "link": "/university/management/public-councils/student-council" }
+  // ========== НОВАЯ СТРУКТУРА МЕНЮ "УНИВЕРСИТЕТ" ==========
+  const menuTree = {
+    university: [
+      // Колонка 1
+      {
+        label: 'Обращение учредителя',
+        path: '/university/founder-message'
+      },
+      {
+        label: 'История',
+        path: '/university/history'
+      },
+      {
+        label: 'Миссия и цели',
+        path: '/university/mission'
+      },
+      {
+        label: 'Видеоролики',
+        path: '/university/videos'
+      },
+      {
+        label: 'Вакансии',
+        path: '/university/vacancies'
+      },
+      {
+        label: 'Контакты',
+        path: '/university/contacts'
+      },
+      {
+        label: 'Брэндбук',
+        path: '/university/brandbook'
+      },
+
+      // Колонка 2
+      {
+        label: '🏛️ Структура университета',
+        path: '/university/structure',
+        children: [
+          { label: 'Университет', path: '/university/structure' },
+          { label: 'Международный факультет медицины', path: '/university/structure' },
+          { label: 'Международный колледж IT и бизнеса', path: '/university/structure' }
+        ]
+      },
+      {
+        label: 'Учредительные документы',
+        path: '/university/founding-docs',
+        children: [
+          { label: 'Устав', path: '/university/founding-docs' },
+          { label: 'Лицензия', path: '/university/founding-docs' }
+        ]
+      },
+      {
+        label: 'Органы управления',
+        path: '/university/management',
+        children: [
+          { label: 'Совет по развитию', path: '/university/management' },
+          { label: 'Учёный совет', path: '/university/management' }
+        ]
+      },
+      {
+        label: 'Общественные советы',
+        path: '/university/management',
+        children: [
+          { label: 'Учебно-методический совет', path: '/university/management' },
+          { label: 'Научно-технический совет', path: '/university/management' }
+        ]
+      },
+      {
+        label: 'Структурные подразделения',
+        path: '/university/departments',
+        children: [
+          { label: 'Финансово-экономический отдел', path: '/university/departments' },
+          { label: 'Учебно-методический отдел', path: '/university/departments' }
+        ]
+      },
+
+      // Колонка 3
+      {
+        label: '✓ Аккредитация',
+        path: '/university/accreditation',
+        children: [
+          {
+            label: 'Национальная',
+            path: '/university/accreditation',
+            children: [
+              { label: 'На Дордое', path: '/university/accreditation' },
+              { label: 'На Юнусалиева', path: '/university/accreditation' }
             ]
           },
+          {
+            label: 'Международная',
+            path: '/university/accreditation',
+            children: [
+              { label: 'ASIIN', path: '/university/accreditation' },
+              { label: 'ACQUIN', path: '/university/accreditation' }
+            ]
+          }
+        ]
+      },
+      {
+        label: 'Стратегические документы',
+        path: '/university/normative-docs',
+        children: [
+          { label: 'План развития', path: '/university/normative-docs' },
+          { label: 'Стратегия', path: '/university/normative-docs' }
+        ]
+      },
+      {
+        label: 'Нормативные документы',
+        path: '/university/normative-docs',
+        children: [
+          { label: 'Положения', path: '/university/normative-docs' },
+          { label: 'Регламенты', path: '/university/normative-docs' }
+        ]
+      },
+      {
+        label: 'Система менеджмента качества',
+        path: '/university/appeal',
+        children: [
+          { label: 'Политика качества', path: '/university/appeal' },
+          { label: 'Процедуры', path: '/university/appeal' }
+        ]
+      },
+      {
+        label: 'Сотрудничество',
+        path: '/university/cooperation',
+        children: [
+          { label: 'Партнёры', path: '/university/cooperation' },
+          { label: 'Соглашения', path: '/university/cooperation' }
+        ]
+      }
+    ]
+  };
+
+  // ========== РЕНДЕРЕР ПУНКТОВ МЕНЮ (РЕКУРСИВНЫЙ, С КЛИКОМ) ==========
+  const renderMenuItems = (items, parentKey = '') => (
+    <ul style={{ listStyle: 'none', margin: 0, padding: 0, backgroundColor: '#ffffff' }}>
+      {items.map((item, index) => {
+        const key = `${parentKey}${index}-${item.label}`;
+        const hasChildren = !!(item.children && item.children.length > 0);
+        const isOpen = !!expanded[key];
+
+        return (
+          <li
+            key={key}
+            style={{
+              paddingBottom: '4px',
+              marginBottom: '6px',
+              backgroundColor: '#ffffff'
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              {item.path ? (
+                <Link
+                  to={item.path}
+                  style={{
+                    display: 'inline-block',
+                    padding: '2px 4px',
+                    color: '#111827',
+                    textDecoration: 'none',
+                    flex: '1 1 auto',
+                    fontSize: '13px',
+                    lineHeight: '1.4',
+                    backgroundColor: 'transparent'
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#f3f4f6'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; }}
+                  onClick={() => {
+                    setActiveMenu(null);
+                    setExpanded({});
+                  }}
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <button
+                  type="button"
+                  style={{
+                    padding: '2px 4px',
+                    color: '#111827',
+                    flex: '1 1 auto',
+                    fontSize: '13px',
+                    lineHeight: '1.4',
+                    background: 'transparent',
+                    border: 'none',
+                    cursor: 'pointer',
+                    textAlign: 'left'
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#f3f4f6'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; }}
+                  onClick={() => toggleExpanded(key)}
+                >
+                  {item.label}
+                </button>
+              )}
+
+              {hasChildren && (
+                <button
+                  type="button"
+                  onClick={() => toggleExpanded(key)}
+                  style={{
+                    padding: '0 4px',
+                    fontSize: '16px',
+                    transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                    transition: 'transform 120ms',
+                    background: 'transparent',
+                    border: 'none',
+                    cursor: 'pointer',
+                    color: '#111827'
+                  }}
+                >
+                  ▾
+                </button>
+              )}
+            </div>
+
+            {hasChildren && isOpen && (
+              <div style={{ marginTop: '4px', marginLeft: '12px', backgroundColor: '#ffffff' }}>
+                {renderMenuItems(item.children, key + '-')}
+              </div>
+            )}
+          </li>
+        );
+      })}
+    </ul>
+  );
+
+  // ========== РЕНДЕРЕР МЕГАМЕНЮ "УНИВЕРСИТЕТ" ==========
+  const renderUniversityMegaMenu = () => {
+    const items = menuTree.university;
+    const visible = activeMenu === 'university';
+
+    if (!visible) {
+      return null;
+    }
+
+    const col1 = items.slice(0, 7);
+    const col2 = items.slice(7, 12);
+    const col3 = items.slice(12);
+
+    return (
+      <div
+        style={{
+          position: 'fixed',
+          left: 0,
+          right: 0,
+          top: '100px',
+          zIndex: 100,
+          pointerEvents: 'auto'
+        }}
+        onMouseEnter={() => handleEnter('university')}
+        onMouseLeave={handleLeave}
+      >
+        <div style={{ 
+          width: '100%', 
+          display: 'flex', 
+          justifyContent: 'center'
+        }}>
+          <div
+            style={{
+              width: '1180px',
+              backgroundColor: '#ffffff',
+              padding: '24px 32px 28px',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+              borderRadius: '2px'
+            }}
+          >
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+                columnGap: '48px',
+                fontSize: '13px',
+                lineHeight: 1.5,
+                backgroundColor: '#ffffff'
+              }}
+            >
+              <div style={{ backgroundColor: '#ffffff' }}>
+                <h3
+                  style={{
+                    margin: 0,
+                    fontWeight: 700,
+                    fontSize: '13px',
+                    textTransform: 'uppercase',
+                    backgroundColor: '#ffffff',
+                    marginBottom: '12px'
+                  }}
+                >
+                  Университет
+                </h3>
+                <div
+                  style={{
+                    height: '0px',
+                    backgroundColor: 'transparent',
+                    marginTop: '4px',
+                    marginBottom: '10px',
+                  }}
+                />
+                {renderMenuItems(col1, 'col1-')}
+              </div>
+
+              <div style={{ backgroundColor: '#ffffff' }}>
+                <h3
+                  style={{
+                    margin: 0,
+                    fontWeight: 700,
+                    fontSize: '13px',
+                    textTransform: 'uppercase',
+                    backgroundColor: '#ffffff'
+                  }}
+                >
+                  Структура и управление
+                </h3>
+                <div
+                  style={{
+                    height: '1px',
+                    backgroundColor: '#111',
+                    marginTop: '4px',
+                    marginBottom: '10px',
+                  }}
+                />
+                {renderMenuItems(col2, 'col2-')}
+              </div>
+
+              <div style={{ backgroundColor: '#ffffff' }}>
+                <h3
+                  style={{
+                    margin: 0,
+                    fontWeight: 700,
+                    fontSize: '13px',
+                    textTransform: 'uppercase',
+                    backgroundColor: '#ffffff'
+                  }}
+                >
+                  Документы и сотрудничество
+                </h3>
+                <div
+                  style={{
+                    height: '1px',
+                    backgroundColor: '#111',
+                    marginTop: '4px',
+                    marginBottom: '10px',
+                  }}
+                />
+                {renderMenuItems(col3, 'col3-')}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  // ========== СТАРЫЕ МЕГАМЕНЮ (ОБРАЗОВАНИЕ, КЛИНИЧЕСКАЯ БАЗА и т.д.) ==========
+  const megaMenus = {
+    // ================== ОБРАЗОВАНИЕ ==================
+    education: {
+      cols: [
         {
-          key: 'departments',
-          link: '/university/departments',
-          subItems: [
-            { key: 'financialDept', link: '/university/departments/financial' },
-            { key: 'educationalDept', link: '/university/departments/educational' },
-            { key: 'managementDept', link: '/university/departments/management' },
-            { key: 'hrDept', link: '/university/departments/hr' },
-            { key: 'qualityDept', link: '/university/departments/quality' },
-            { key: 'scienceDept', link: '/university/departments/science' },
-            { key: 'internationalDept', link: '/university/departments/international' },
-            { key: 'studentDept', link: '/university/departments/student' },
-            { key: 'careerCenter', link: '/university/departments/career' }
+          type: 'multiGroup',
+          groups: [
+            {
+              icon: '🏛',
+              title: 'Американский институт технологий',
+              items: [
+                { label: 'Об Институте', path: '/education/ait/about' },
+                { label: 'Руководство Института', path: '/education/ait/management' },
+                { 
+                  label: 'Дисциплины Института', 
+                  path: '/education/ait/disciplines',
+                  children: [
+                    { label: 'Общеобразовательные', path: '/education/ait/disciplines/general' },
+                    { label: 'Специальные', path: '/education/ait/disciplines/special' },
+                    { label: 'Элективные', path: '/education/ait/disciplines/elective' }
+                  ]
+                },
+                { label: 'Преподаватели', path: '/education/ait/teachers' },
+                { label: 'Контакты', path: '/education/ait/contacts' }
+              ]
+            },
+            {
+              icon: '💻',
+              title: 'Международный колледж IT и бизнеса',
+              items: [
+                { label: 'О колледже', path: '/education/it-college/about' },
+                { label: 'Директор', path: '/education/it-college/director' },
+                { 
+                  label: 'Специальности', 
+                  path: '/education/it-college/specialties',
+                  children: [
+                    { label: 'Информационные технологии', path: '/education/it-college/specialties/it' },
+                    { label: 'Программирование', path: '/education/it-college/specialties/programming' },
+                    { label: 'Бизнес и менеджмент', path: '/education/it-college/specialties/business' },
+                    { label: 'Экономика', path: '/education/it-college/specialties/economics' }
+                  ]
+                },
+                {
+                  label: 'Программа двойного диплома',
+                  path: '/education/it-college/double',
+                  children: [
+                    { label: 'Lincoln University College', path: '/education/it-college/double/lincoln' },
+                    { label: 'Другие партнеры', path: '/education/it-college/double/partners' }
+                  ]
+                },
+                { 
+                  label: 'Отделения', 
+                  path: '/education/it-college/departments',
+                  children: [
+                    { label: 'IT отделение', path: '/education/it-college/departments/it' },
+                    { label: 'Бизнес отделение', path: '/education/it-college/departments/business' }
+                  ]
+                },
+                { label: 'Педагогический совет', path: '/education/it-college/council' },
+                { label: 'Контакты и реквизиты', path: '/education/it-college/contacts' }
+              ]
+            }
           ]
         },
         {
-          key: 'accreditation',
-          link: '/university/accreditation',
-          subItems: [
-            { key: 'national', link: '/university/accreditation/national' },
-            { key: 'institutional', link: '/university/accreditation/institutional' },
-            { key: 'program', link: '/university/accreditation/program' },
-            { key: 'international', link: '/university/accreditation/international' }
+          type: 'multiGroup',
+          groups: [
+            {
+              icon: '➕',
+              title: 'Международный факультет Медицины',
+              items: [
+                { label: 'О факультете', path: '/education/med-faculty/about' },
+                { label: 'Деканат', path: '/education/med-faculty/deanery' },
+                { 
+                  label: 'Программы', 
+                  path: '/education/med-faculty/programs',
+                  children: [
+                    { label: 'Лечебное дело', path: '/education/med-faculty/programs/general' },
+                    { label: 'Стоматология', path: '/education/med-faculty/programs/dentistry' },
+                    { label: 'Фармация', path: '/education/med-faculty/programs/pharmacy' }
+                  ]
+                },
+                { label: 'Контакты', path: '/education/med-faculty/contacts' }
+              ]
+            },
+            {
+              icon: '📊',
+              title: 'Бизнес школа Салымбекова',
+              items: [
+                { label: 'О бизнес школе', path: '/education/business-school/about' },
+                { label: 'Директор', path: '/education/business-school/director' },
+                { label: 'Менеджеры', path: '/education/business-school/managers' },
+                { 
+                  label: 'Программы и курсы', 
+                  path: '/education/business-school/programs',
+                  children: [
+                    { label: 'MBA программы', path: '/education/business-school/programs/mba' },
+                    { label: 'Бизнес-тренинги', path: '/education/business-school/programs/trainings' },
+                    { label: 'Краткосрочные курсы', path: '/education/business-school/programs/short' }
+                  ]
+                },
+                { label: 'Тренеры и коучи', path: '/education/business-school/trainers' },
+                { label: 'Контакты', path: '/education/business-school/contacts' }
+              ]
+            }
+          ]
+        },
+        {
+          type: 'multiGroup',
+          groups: [
+            {
+              icon: '➕',
+              title: 'Факультет последипломного образования',
+              items: [
+                { label: 'Интернатура', path: '/education/postgrad/internatura' },
+                { label: 'Ординатура', path: '/education/postgrad/ordinatura' },
+                { label: 'Аспирантура', path: '/education/postgrad/aspirantura' },
+                { label: 'PhD', path: '/education/postgrad/phd' },
+                {
+                  label: 'Курсы повышения квалификации',
+                  path: '/education/postgrad/courses'
+                }
+              ]
+            },
+            {
+              icon: '🏫',
+              title: 'Центр образования и инновации в г. Нарын',
+              items: [
+                { label: 'О центре', path: '/education/naryn/about' },
+                { label: 'Директор Центра', path: '/education/naryn/director' },
+                { label: 'Менеджеры', path: '/education/naryn/managers' },
+                { 
+                  label: 'Программы и курсы', 
+                  path: '/education/naryn/programs',
+                  children: [
+                    { label: 'Образовательные программы', path: '/education/naryn/programs/educational' },
+                    { label: 'Тренинги', path: '/education/naryn/programs/trainings' },
+                    { label: 'Семинары', path: '/education/naryn/programs/seminars' }
+                  ]
+                },
+                { label: 'Контакты Центра', path: '/education/naryn/contacts' }
+              ]
+            }
           ]
         }
       ]
     },
-    education: {
-      items: [
-        { key: 'ait', link: '/education/ait' },
-        { key: 'mfm', link: '/education/mfm' },
-        { key: 'itCollege', link: '/education/it-college' },
-        { key: 'businessSchool', link: '/education/business-school' },
-        { key: 'postgrad', link: '/education/postgrad' },
-        { key: 'center', link: '/education/center' }
-      ]
-    },
-    clinicalBase: {
-      items: [
-        { key: 'lazmed', link: '/clinical/lazmed' },
-        { key: 'dordoi', link: '/clinical/dordoi' },
-        { key: 'docClinic', link: '/clinical/doc-clinic' },
-        { key: 'docHospital', link: '/clinical/doc-hospital' },
-        { key: 'agreements', link: '/clinical/agreements' }
-      ]
-    },
-    science: {
-      items: [
+
+    // ================== КЛИНИЧЕСКАЯ БАЗА ==================
+    clinical: {
+      cols: [
         {
-          key: 'management',
-          link: '/science/management',
-          subItems: [
-            { key: 'scientificCouncil', link: '/science/management/scientific-council' },
-            { key: 'bioethics', link: '/science/management/bioethics' },
-            { key: 'youngScientists', link: '/science/management/young-scientists' }
+          type: 'multiGroup',
+          groups: [
+            {
+              icon: null,
+              title: 'Собственные клинические базы',
+              items: [
+                { label: 'Лазмед', path: '/clinical/lazmed' },
+                {
+                  label: 'Дордой офтальмик сервис',
+                  path: '/clinical/dordoi-ophthalmic'
+                },
+                { label: 'DOC university clinic', path: '/clinical/doc-clinic' },
+                { label: 'DOC university hospital', path: '/clinical/doc-hospital' }
+              ]
+            },
+            {
+              icon: null,
+              title: 'Соглашения с клиниками',
+              items: [
+                {
+                  label: 'Соглашения с клиниками',
+                  path: '/clinical/agreements'
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    // ================== НАУКА ==================
+    science: {
+      cols: [
+        {
+          type: 'multiGroup',
+          groups: [
+            {
+              icon: null,
+              title: 'Органы управления',
+              items: []
+            },
+            {
+              icon: null,
+              title: '',
+              items: [
+                { label: 'Публикации', path: '/science/publications' },
+                {
+                  label: 'Научный журнал',
+                  path: '/science/publications/journal'
+                },
+                {
+                  label: 'Периодические издания',
+                  path: '/science/publications/periodicals'
+                },
+                { label: 'Научная библиотека', path: '/science/library' },
+                { label: 'Лаборатории и центры', path: '/science/labs' }
+              ]
+            }
           ]
         },
-        { key: 'department', link: '/science/department' },
-        { key: 'professors', link: '/science/professors' },
-        { key: 'publications', link: '/science/publications' },
-        { key: 'events', link: '/science/events' },
-        { key: 'library', link: '/science/library' },
-        { key: 'studentScience', link: '/science/student-science' },
-        { key: 'labs', link: '/science/labs' },
-        { key: 'projects', link: '/science/projects' }
+
+        {
+          type: 'multiGroup',
+          groups: [
+            {
+              icon: null,
+              title: 'Почетные профессора и лекторы',
+              items: []
+            },
+            {
+              icon: null,
+              title: '',
+              items: [
+                { label: 'Мероприятия', path: '/science/events' },
+                { label: 'Конференции', path: '/science/events/conferences' },
+                { label: 'Мастер классы', path: '/science/events/master-classes' },
+                { label: 'Круглые столы', path: '/science/events/round-tables' }
+              ]
+            }
+          ]
+        },
+
+        {
+          type: 'multiGroup',
+          groups: [
+            {
+              icon: null,
+              title: 'Студенческая наука',
+              items: []
+            },
+            {
+              icon: null,
+              title: '',
+              items: [
+                { label: 'Научные проекты', path: '/science/projects' }
+              ]
+            }
+          ]
+        }
       ]
     },
+
+    // ================== СТУДЕНТУ ==================
     student: {
-      items: [
-        { key: 'communities', link: '/student/communities' },
-        { key: 'resources', link: '/student/resources' },
-        { key: 'schedules', link: '/student/schedules' },
-        { key: 'conditions', link: '/student/conditions' }
+      cols: [
+        {
+          type: 'multiGroup',
+          groups: [
+            {
+              icon: null,
+              title: 'Студенческие сообщества',
+              items: [
+                { label: 'Студенческий совет', path: '/student/community/council' },
+                {
+                  label: 'Студенческое научное объединение',
+                  path: '/student/community/science'
+                },
+                { label: 'Дебатный клуб', path: '/student/community/debate' },
+                { label: 'Тьюторское движение', path: '/student/community/tutor' },
+                {
+                  label: 'Творческие коллективы и кружки',
+                  path: '/student/community/clubs'
+                }
+              ]
+            },
+            {
+              icon: null,
+              title: 'Учебные графики',
+              items: [
+                {
+                  label: 'График учебного процесса',
+                  path: '/student/schedule/study'
+                },
+                {
+                  label: 'Графики модулей и экзаменов',
+                  path: '/student/schedule/modules'
+                },
+                {
+                  label: 'Графики производственной практики',
+                  path: '/student/schedule/practice'
+                },
+                { label: 'Расписание МФМ', path: '/student/schedule/mfm' },
+                { label: 'Расписание колледжа', path: '/student/schedule/college' }
+              ]
+            }
+          ]
+        },
+
+        {
+          type: 'multiGroup',
+          groups: [
+            {
+              icon: null,
+              title: 'Ресурсная база',
+              items: [
+                {
+                  label: 'Инструкция и положения',
+                  path: '/student/resources/instructions'
+                },
+                {
+                  label: 'Информационная система',
+                  path: '/student/resources/infosystem'
+                },
+                {
+                  label: 'Электронная библиотека',
+                  path: '/student/resources/elib'
+                },
+                {
+                  label: 'Образовательные ресурсы',
+                  path: '/student/resources/edu-resources'
+                }
+              ]
+            },
+            {
+              icon: null,
+              title: 'Условия и возможности',
+              items: [
+                {
+                  label: 'Медицинский центр',
+                  path: '/student/opportunities/medical'
+                },
+                { label: 'Общежитие', path: '/student/opportunities/dorm' },
+                {
+                  label: 'Социальная поддержка студентов',
+                  path: '/student/opportunities/social'
+                },
+                { label: 'Курсы по выбору', path: '/student/opportunities/courses' },
+                {
+                  label: 'Академическая мобильность',
+                  path: '/student/opportunities/mobility'
+                },
+                {
+                  label: 'Психологическая поддержка',
+                  path: '/student/opportunities/psychology'
+                },
+                {
+                  label: 'Центр обслуживания студентов',
+                  path: '/student/opportunities/service-center'
+                },
+                {
+                  label: 'Адаптационные программы',
+                  path: '/student/opportunities/adaptation'
+                }
+              ]
+            }
+          ]
+        }
       ]
     },
+
+    // ================== АБИТУРИЕНТУ ==================
     applicant: {
-      items: [
-        { key: 'commission', link: '/applicant/commission' },
-        { key: 'rules', link: '/applicant/rules' },
-        { key: 'directions', link: '/applicant/directions' },
-        { key: 'entrance', link: '/applicant/entrance' },
-        { key: 'cost', link: '/applicant/cost' },
-        { key: 'orientation', link: '/applicant/orientation' },
-        { key: 'documents', link: '/applicant/documents' },
-        { key: 'admissionReg', link: '/applicant/admission-reg' },
-        { key: 'schedule', link: '/applicant/schedule' },
-        { key: 'transfer', link: '/applicant/transfer' },
-        { key: 'scholarships', link: '/applicant/scholarships' }
+      cols: [
+        {
+          type: 'multiGroup',
+          groups: [
+            {
+              icon: null,
+              title: 'Приемная комиссия',
+              items: []
+            },
+            {
+              icon: null,
+              title: '',
+              items: [
+                {
+                  label: 'Направления подготовки',
+                  path: '/applicants/directions'
+                },
+                {
+                  label: 'Стоимость обучения',
+                  path: '/applicants/cost'
+                }
+              ]
+            },
+            {
+              icon: null,
+              title: 'Порядок приема',
+              items: [
+                {
+                  label: 'Необходимые документы',
+                  path: '/applicants/admission/documents'
+                },
+                {
+                  label: 'Положение приема',
+                  path: '/applicants/admission/rules'
+                },
+                {
+                  label: 'График отбора и зачисления',
+                  path: '/applicants/admission/schedule'
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          type: 'multiGroup',
+          groups: [
+            {
+              icon: null,
+              title: 'Правила и план приема',
+              items: [
+                {
+                  label: 'Прием по ОРТ',
+                  path: '/applicants/ort'
+                },
+                {
+                  label: 'Профориентация',
+                  path: '/applicants/career-guidance'
+                }
+              ]
+            },
+            {
+              icon: null,
+              title: 'Порядок перевода',
+              items: [
+                {
+                  label: 'Необходимые документы',
+                  path: '/applicants/transfer/documents'
+                },
+                {
+                  label: 'Положение перевода',
+                  path: '/applicants/transfer/rules'
+                },
+                {
+                  label: 'График перевода',
+                  path: '/applicants/transfer/schedule'
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          type: 'multiGroup',
+          groups: [
+            {
+              icon: null,
+              title: 'Стипендии и льготы',
+              items: [
+                { label: 'Стипендии студентам', path: '/applicants/scholarships' }
+              ]
+            },
+            {
+              icon: null,
+              title: 'Официальные дилеры',
+              items: [
+                { label: 'Официальные дилеры', path: '/applicants/dealers' }
+              ]
+            },
+            {
+              icon: null,
+              title: 'Адаптационная программа',
+              items: [
+                {
+                  label: 'Адаптационная программа',
+                  path: '/applicants/adaptation'
+                }
+              ]
+            },
+            {
+              icon: null,
+              title: 'Инфраструктура университета',
+              items: [
+                {
+                  label: 'Инфраструктура университета',
+                  path: '/applicants/infrastructure'
+                }
+              ]
+            }
+          ]
+        }
       ]
     },
+
+    // ================== ИНФРАСТРУКТУРА ==================
     infrastructure: {
-      items: [
-        { key: 'locations', link: '/infrastructure/locations' },
-        { key: 'partners', link: '/infrastructure/partners' }
+      cols: [
+        {
+          type: 'multiGroup',
+          groups: [
+            {
+              icon: null,
+              title: 'Инфраструктура',
+              items: [
+                { label: 'Локации', path: '/infrastructure/locations' },
+                { label: 'Общежития', path: '/infrastructure/dorms' },
+                { label: 'Спорт', path: '/infrastructure/sport' }
+              ]
+            }
+          ]
+        }
       ]
     }
   };
 
-  const renderFullscreenDropdown = (menuKey, items) => (
-    <div
-      className={`fixed top-20 left-0 right-0 bg-white/98 backdrop-blur-2xl shadow-2xl border-t border-blue-100 transition-all duration-500 overflow-hidden ${
-        activeDropdown === menuKey 
-          ? 'h-[calc(100vh-80px)] opacity-100 visible' 
-          : 'h-0 opacity-0 invisible'
-      }`}
-      onMouseEnter={() => handleDropdownEnter(menuKey)}
-      onMouseLeave={handleDropdownLeave}
-    >
-      <div className="container mx-auto px-6 py-8 h-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 h-full overflow-y-auto">
-          {items.map((item, index) => (
-            <div 
-              key={item.key} 
-              className="group relative"
-              style={{ animationDelay: `${index * 50}ms` }}
-            >
-              <div className={`p-6 rounded-2xl transition-all duration-500 ${
-                item.subItems 
-                  ? 'bg-blue-50 border-2 border-blue-100 hover:border-blue-300' 
-                  : 'bg-white border border-gray-100 hover:border-blue-200 hover:shadow-lg'
-              } ${activeDropdown === menuKey ? 'animate-fadeInUp' : ''}`}>
-                
-                {/* Main Item */}
-                <Link
-                  to={item.link}
-                  className={`block mb-3 transition-all duration-300 group-hover:translate-x-2 ${
-                    item.subItems ? 'text-blue-900' : 'text-gray-900'
-                  }`}
-                  onClick={() => setActiveDropdown(null)}
-                >
-                  <h3 className={`text-xl font-bold mb-2 ${
-                    item.subItems ? 'text-blue-800' : 'text-gray-800'
-                  }`}>
-                    {t(`${menuKey}Sub.${item.key}`)}
-                  </h3>
-                  {!item.subItems && (
-                    <p className="text-gray-600 text-sm">
-                      {t(`${menuKey}Sub.${item.key}Desc`, `${menuKey}Sub.${item.key}`)}
-                    </p>
-                  )}
-                </Link>
+  const renderMega = (menuKey) => {
+    // Для "university" используем новый рендерер
+    if (menuKey === 'university') {
+      return renderUniversityMegaMenu();
+    }
 
-                {/* Sub Items */}
-                {item.subItems && (
-                  <div className="space-y-2">
-                    {item.subItems.map((subItem, subIndex) => (
-                      <Link
-                        key={subItem.key}
-                        to={subItem.link}
-                        className="flex items-center py-2 px-3 text-gray-700 hover:text-blue-700 hover:bg-white rounded-xl transition-all duration-300 group/sub"
-                        onClick={() => setActiveDropdown(null)}
-                        style={{ animationDelay: `${(index * 50) + (subIndex * 20)}ms` }}
-                      >
-                        <div className={`w-2 h-2 bg-blue-400 rounded-full mr-3 transition-all duration-300 group-hover/sub:scale-150 ${
-                          activeDropdown === menuKey ? 'animate-pulse' : ''
-                        }`} />
-                        <span className="text-sm font-medium">
-                          {t(`${menuKey}Sub.${subItem.key}`)}
-                        </span>
-                        <svg 
-                          className="w-4 h-4 ml-auto opacity-0 group-hover/sub:opacity-100 transition-all duration-300 transform -translate-x-2 group-hover/sub:translate-x-0" 
-                          fill="none" 
-                          stroke="currentColor" 
-                          viewBox="0 0 24 24"
+    // Для остальных — старый код
+    const data = megaMenus[menuKey];
+    if (!data || !data.cols || data.cols.length === 0) return null;
+
+    const visible = activeMenu === menuKey;
+    
+    // Не рендерим вообще, если меню неактивно
+    if (!visible) return null;
+
+    return (
+      <div
+        style={{
+          position: 'fixed',
+          left: 0,
+          right: 0,
+          top: '100px',
+          zIndex: 100,
+          pointerEvents: 'auto'
+        }}
+        onMouseEnter={() => handleEnter(menuKey)}
+        onMouseLeave={handleLeave}
+      >
+        <div
+          style={{
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'center'
+          }}
+        >
+          <div
+            style={{
+              width: '1180px',
+              backgroundColor: '#ffffff',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+              padding: '24px 32px 28px',
+              borderRadius: '2px',
+              minHeight: '200px'
+            }}
+          >
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, 1fr)',
+                gap: '48px',
+                fontSize: '13px',
+                lineHeight: '1.5'
+              }}
+            >
+              {data.cols.map((col, idx) => {
+                // Колонка с несколькими блоками
+                if (col.type === 'multiGroup') {
+                  return (
+                    <div key={idx}>
+                      {col.groups.map((group, gIdx) => (
+                        <div
+                          key={group.title}
+                          style={{ marginBottom: gIdx === 0 ? '22px' : 0 }}
                         >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* Background Pattern */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-white/50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
-            </div>
-          ))}
-        </div>
-
-        {/* Quick Actions */}
-        <div className={`mt-8 pt-8 border-t border-gray-200 transition-all duration-700 ${
-          activeDropdown === menuKey ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-        }`}>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link
-              to={`/${menuKey}`}
-              className="px-6 py-3 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition-all duration-300 hover:scale-105"
-              onClick={() => setActiveDropdown(null)}
-            >
-              {t('navbar.viewAll', 'View All')}
-            </Link>
-            <button
-              onClick={() => setActiveDropdown(null)}
-              className="px-6 py-3 border border-gray-300 text-gray-700 rounded-xl font-semibold hover:bg-gray-50 transition-all duration-300"
-            >
-              {t('navbar.close', 'Close')}
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-
-  const renderMobileMenu = () => (
-    <div className={`lg:hidden absolute top-full left-0 right-0 bg-white shadow-2xl border-t border-blue-100 transition-all duration-500 ${
-      isMobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
-    }`}>
-      <div className="container mx-auto px-6 py-6">
-        {Object.entries(menuData).map(([menuKey, { items }]) => (
-          <div key={menuKey} className="mb-4">
-            <button
-              onClick={() => setActiveDropdown(activeDropdown === menuKey ? null : menuKey)}
-              className="flex items-center justify-between w-full py-4 text-lg font-semibold text-blue-900 hover:text-blue-700 transition-colors duration-200 bg-blue-50 rounded-xl px-4"
-            >
-              <span>{t(`navbar.${menuKey}`)}</span>
-              <svg
-                className={`w-5 h-5 transition-transform duration-300 ${
-                  activeDropdown === menuKey ? 'rotate-180' : ''
-                }`}
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            
-            <div className={`overflow-hidden transition-all duration-500 ${
-              activeDropdown === menuKey ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
-            }`}>
-              <div className="pl-4 space-y-3 py-3">
-                {items.map((item) => (
-                  <div key={item.key} className="bg-white rounded-lg p-3 border border-gray-100">
-                    <Link
-                      to={item.link}
-                      className="block py-2 text-gray-800 hover:text-blue-700 transition-colors duration-200 font-medium"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {t(`${menuKey}Sub.${item.key}`)}
-                    </Link>
-                    {item.subItems && activeDropdown === menuKey && (
-                      <div className="pl-3 space-y-2 mt-2 border-l-2 border-blue-200">
-                        {item.subItems.map((subItem) => (
-                          <Link
-                            key={subItem.key}
-                            to={subItem.link}
-                            className="block py-1 text-sm text-gray-600 hover:text-blue-700 transition-colors duration-200"
-                            onClick={() => setIsMobileMenuOpen(false)}
+                          {/* Заголовок с иконкой и линией */}
+                          <h3
+                            style={{
+                              margin: 0,
+                              fontWeight: 700,
+                              fontSize: '13px',
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '6px'
+                            }}
                           >
-                            • {t(`${menuKey}Sub.${subItem.key}`)}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
+                            {group.icon && (
+                              <span style={{ fontSize: '14px' }}>{group.icon}</span>
+                            )}
+                            <span>{group.title}</span>
+                          </h3>
+                          <div
+                            style={{
+                              height: '1px',
+                              backgroundColor: '#111',
+                              marginTop: '4px',
+                              marginBottom: '10px'
+                            }}
+                          />
+
+                          {/* Список ссылок */}
+                          <ul
+                            style={{
+                              listStyle: 'none',
+                              padding: 0,
+                              margin: 0
+                            }}
+                          >
+                            {group.items.map((item) => {
+                              const itemKey = `${group.title}-${item.label}`;
+                              const hasChildren = !!(item.children && item.children.length > 0);
+                              const isOpen = !!expanded[itemKey];
+
+                              return (
+                                <li
+                                  key={item.label}
+                                  style={{
+                                    borderBottom: '1px solid #e5e7eb',
+                                    paddingBottom: '5px',
+                                    marginBottom: '7px'
+                                  }}
+                                >
+                                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                                    <Link
+                                      to={item.path}
+                                      onClick={() => setActiveMenu(null)}
+                                      style={{
+                                        display: 'inline-block',
+                                        color: '#111',
+                                        textDecoration: 'none',
+                                        padding: '1px 2px',
+                                        backgroundColor: 'transparent',
+                                        transition: 'background-color 120ms, color 120ms',
+                                        flex: '1 1 auto'
+                                      }}
+                                      onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#f3f4f6'; }}
+                                      onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; }}
+                                    >
+                                      {item.label}
+                                    </Link>
+
+                                    {hasChildren && (
+                                      <button
+                                        type="button"
+                                        onClick={() => toggleExpanded(itemKey)}
+                                        style={{
+                                          padding: '0 4px',
+                                          fontSize: '16px',
+                                          transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                                          transition: 'transform 120ms',
+                                          background: 'transparent',
+                                          border: 'none',
+                                          cursor: 'pointer',
+                                          color: '#111827'
+                                        }}
+                                      >
+                                        ▾
+                                      </button>
+                                    )}
+                                  </div>
+
+                                  {/* Вложенные пункты */}
+                                  {hasChildren && isOpen && (
+                                    <ul
+                                      style={{
+                                        listStyle: 'none',
+                                        padding: 0,
+                                        margin: '4px 0 0 12px'
+                                      }}
+                                    >
+                                      {item.children.map((c) => (
+                                        <li
+                                          key={c.label}
+                                          style={{ marginBottom: '4px' }}
+                                        >
+                                          <Link
+                                            to={c.path}
+                                            onClick={() => setActiveMenu(null)}
+                                            style={{
+                                              display: 'inline-block',
+                                              color: '#333',
+                                              fontSize: '12px',
+                                              textDecoration: 'none',
+                                              padding: '1px 2px',
+                                              backgroundColor: 'transparent'
+                                            }}
+                                            onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#f3f4f6'; }}
+                                            onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; }}
+                                          >
+                                            {c.label}
+                                          </Link>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  )}
+                                </li>
+                              );
+                            })}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  );
+                }
+
+                return null;
+              })}
             </div>
           </div>
-        ))}
-        
-        <div className="pt-6 border-t border-gray-200">
-          <LanguageSwitcher variant="solid" />
         </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled 
-          ? 'bg-white/95 backdrop-blur-xl shadow-2xl border-b border-blue-100' 
-          : 'bg-gradient-to-r from-blue-900 to-blue-800'
-      }`}>
-        <div className="">
-          <div className="flex items-center justify-between h-20">
-            {/* Logo */}
-            <div className="flex-shrink-0">
-              <Link to="/" className="flex items-center group">
-                <div
-                  className="h-14 px-3 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-105"
-                >
-                  <img
-                    src={isScrolled ? Logo1 : Logo2}
-                    alt="Logo"
-                    className="h-10 w-auto object-contain transition-opacity duration-300"
-                  />
-                </div>
-              </Link>
-            </div>
+      <nav
+        style={{
+          width: '100%',
+          backgroundColor: '#ffffff',
+          borderBottom: '1px solid #e5e7eb',
+          position: 'sticky',
+          top: 0,
+          zIndex: 50,
+          transition: 'box-shadow 0.3s',
+          boxShadow: isScrolled ? '0 4px 6px rgba(0,0,0,0.1)' : 'none'
+        }}
+      >
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '70px' }}>
+            <Link to="/" style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}>
+              <img src={Logo1} alt="Salymbekov University" style={{ height: '3rem', width: 'auto' }} />
+            </Link>
 
-            {/* Desktop Menu */}
-            <div className="hidden lg:flex items-center space-x-1">
-              {Object.entries(menuData).map(([menuKey, { items }]) => (
-                <div
-                  key={menuKey}
-                  className="relative"
-                  onMouseEnter={() => handleDropdownEnter(menuKey)}
-                  onMouseLeave={handleDropdownLeave}
-                >
-                  <button
-                    className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 relative overflow-hidden group ${
-                      isScrolled
-                        ? 'text-blue-900 hover:text-blue-700'
-                        : 'text-white hover:text-blue-100'
-                    } ${activeDropdown === menuKey ? (isScrolled ? 'text-blue-700' : 'text-white') : ''}`}
+            <div style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
+              <ul style={{
+                listStyle: 'none',
+                margin: 0,
+                padding: 0,
+                alignItems: 'center',
+                gap: '0.5rem',
+                fontSize: '13px',
+                fontWeight: 600,
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em',
+                backgroundColor: '#ffffff'
+              }} className="hidden lg:flex">
+                {topItems.map((item) => (
+                  <li
+                    key={item.key}
+                    style={{ position: 'relative', backgroundColor: '#ffffff' }}
+                    onMouseEnter={() => handleEnter(item.key)}
+                    onMouseLeave={handleLeave}
                   >
-                    <span className="relative z-10">{t(`navbar.${menuKey}`)}</span>
-                    <div className={`absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl transition-all duration-300 ${
-                      activeDropdown === menuKey 
-                        ? 'opacity-20 scale-100' 
-                        : 'opacity-0 scale-95 group-hover:opacity-10 group-hover:scale-100'
-                    }`} />
-                  </button>
-                  {renderFullscreenDropdown(menuKey, items)}
-                </div>
-              ))}
+                    <Link
+                      to={item.path}
+                      style={{
+                        display: 'block',
+                        padding: '0.5rem 0.75rem',
+                        transition: 'color 0.3s',
+                        color: isActive(item.path) ? '#000000' : '#333333',
+                        borderBottom: isActive(item.path) ? '2px solid #000000' : 'none',
+                        textDecoration: 'none',
+                        backgroundColor: '#ffffff'
+                      }}
+                      onMouseEnter={(e) => {
+                        if (!isActive(item.path)) {
+                          e.currentTarget.style.color = '#2563eb';
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        if (!isActive(item.path)) {
+                          e.currentTarget.style.color = '#333333';
+                        }
+                      }}
+                    >
+                      {item.label}
+                    </Link>
+                    {renderMega(item.key)}
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            {/* Right Section */}
-            <div className="flex items-center space-x-4">
-              <div className="hidden lg:block">
-                <LanguageSwitcher variant={isScrolled ? "outline" : "default"} />
+            <div style={{ alignItems: 'center', gap: '1rem', backgroundColor: '#ffffff' }} className="hidden lg:flex">
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', fontSize: '13px', fontWeight: 600, textTransform: 'uppercase', backgroundColor: '#ffffff' }}>
+                {['ru', 'en', 'kg'].map((code, idx) => (
+                  <React.Fragment key={code}>
+                    <button
+                      type="button"
+                      onClick={() => changeLang(code)}
+                      style={{
+                        color: code === lang ? '#000000' : '#4b5563',
+                        textDecoration: code === lang ? 'underline' : 'none',
+                        border: 'none',
+                        background: 'transparent',
+                        cursor: 'pointer',
+                        padding: 0,
+                        fontSize: 'inherit',
+                        fontWeight: 'inherit'
+                      }}
+                      onMouseEnter={(e) => {
+                        if (code !== lang) {
+                          e.currentTarget.style.color = '#2563eb';
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        if (code !== lang) {
+                          e.currentTarget.style.color = '#4b5563';
+                        }
+                      }}
+                    >
+                      {code.toUpperCase()}
+                    </button>
+                    {idx < 2 && <span style={{ color: '#9ca3af' }}>/</span>}
+                  </React.Fragment>
+                ))}
               </div>
-              
-              {/* Mobile Menu Button */}
-              <button
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className={`lg:hidden p-3 rounded-xl transition-all duration-300 relative overflow-hidden ${
-                  isScrolled
-                    ? 'text-blue-900 hover:bg-blue-50'
-                    : 'text-white hover:bg-white/10'
-                }`}
-              >
-                <div className="w-6 h-6 relative">
-                  <span className={`absolute block w-6 h-0.5 transition-all duration-300 ${
-                    isScrolled ? 'bg-blue-900' : 'bg-white'
-                  } ${isMobileMenuOpen ? 'rotate-45 top-3' : 'top-1'}`} />
-                  <span className={`absolute block w-6 h-0.5 transition-all duration-300 ${
-                    isScrolled ? 'bg-blue-900' : 'bg-white'
-                  } ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100 top-3'}`} />
-                  <span className={`absolute block w-6 h-0.5 transition-all duration-300 ${
-                    isScrolled ? 'bg-blue-900' : 'bg-white'
-                  } ${isMobileMenuOpen ? '-rotate-45 top-3' : 'top-5'}`} />
+              {isSearchOpen ? (
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  backgroundColor: '#f8f9fa',
+                  borderRadius: '4px',
+                  padding: '0.4rem 0.75rem',
+                  border: '1px solid #e0e0e0'
+                }}>
+                  <svg width="16" height="16" fill="none" stroke="#666" strokeWidth="2" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="m21 21-4.35-4.35"/>
+                  </svg>
+                  <input
+                    ref={searchInputRef}
+                    type="text"
+                    placeholder="Поиск..."
+                    style={{
+                      border: 'none',
+                      background: 'transparent',
+                      outline: 'none',
+                      fontSize: '14px',
+                      width: '200px',
+                      color: '#333'
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Escape') {
+                        setIsSearchOpen(false);
+                      }
+                    }}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setIsSearchOpen(false)}
+                    style={{
+                      background: 'transparent',
+                      border: 'none',
+                      cursor: 'pointer',
+                      padding: '0',
+                      display: 'flex',
+                      alignItems: 'center',
+                      color: '#666'
+                    }}
+                    aria-label="Close search"
+                  >
+                    <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path d="M18 6L6 18M6 6l12 12"/>
+                    </svg>
+                  </button>
                 </div>
-              </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setIsSearchOpen(true)}
+                  style={{
+                    width: '1.25rem',
+                    height: '1.25rem',
+                    border: '2px solid #000000',
+                    borderRadius: '50%',
+                    position: 'relative',
+                    transition: 'border-color 0.3s',
+                    background: 'transparent',
+                    cursor: 'pointer',
+                    padding: 0
+                  }}
+                  aria-label="Поиск"
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = '#2563eb';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = '#000000';
+                  }}
+                >
+                  <span style={{
+                    display: 'block',
+                    width: '10px',
+                    height: '2px',
+                    backgroundColor: '#000000',
+                    position: 'absolute',
+                    right: '-8px',
+                    bottom: 0,
+                    transform: 'rotate(45deg)'
+                  }} />
+                </button>
+              )}
             </div>
+
+            <button
+              type="button"
+              style={{
+                padding: '0.5rem',
+                border: 'none',
+                background: 'transparent',
+                cursor: 'pointer'
+              }}
+              className="lg:hidden"
+              aria-label="Меню"
+              onClick={() => setIsMobileOpen(v => !v)}
+            >
+              <div style={{ width: '1.5rem', height: '1.25rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                <span style={{
+                  display: 'block',
+                  height: '2px',
+                  backgroundColor: '#000000',
+                  transition: 'transform 0.3s',
+                  transform: isMobileOpen ? 'rotate(45deg) translateY(8px)' : 'none'
+                }} />
+                <span style={{
+                  display: 'block',
+                  height: '2px',
+                  backgroundColor: '#000000',
+                  transition: 'opacity 0.3s',
+                  opacity: isMobileOpen ? 0 : 1
+                }} />
+                <span style={{
+                  display: 'block',
+                  height: '2px',
+                  backgroundColor: '#000000',
+                  transition: 'transform 0.3s',
+                  transform: isMobileOpen ? 'rotate(-45deg) translateY(-8px)' : 'none'
+                }} />
+              </div>
+            </button>
           </div>
         </div>
-
-        {/* Mobile Menu */}
-        {renderMobileMenu()}
       </nav>
-
-      {/* Spacer for fixed navbar */}
-      <div className="h-20" />
-
-      {/* Overlay for fullscreen dropdown */}
-      {activeDropdown && (
-        <div 
-          className="fixed inset-0 bg-black/10 backdrop-blur-sm z-40 top-20"
-          onClick={() => setActiveDropdown(null)}
-        />
-      )}
-
-      <style jsx>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fadeInUp {
-          animation: fadeInUp 0.5s ease-out forwards;
-        }
-      `}</style>
     </>
   );
 };

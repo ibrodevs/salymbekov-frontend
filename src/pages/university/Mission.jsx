@@ -2,303 +2,360 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 
-
 const Mission = () => {
-  const { t } = useTranslation();
-  const [activeTab, setActiveTab] = useState('mission');
-  const [activeValue, setActiveValue] = useState(0);
-  const [counter, setCounter] = useState({ students: 0, programs: 0, partners: 0, graduates: 0 });
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const tabs = [
-    { id: 'mission', key: 'missionTab' },
-    { id: 'vision', key: 'visionTab' },
-    { id: 'values', key: 'valuesTab' },
-    { id: 'goals', key: 'goalsTab' }
-  ];
+  // URL для изображений - замените на реальные с оригинала
+  const images = {
+    missionHero: "https://salymbekov.com/wp-content/uploads/2022/04/bc0b3788.jpg",
+    mlkCarousel: [
+      "https://salymbekov.com/wp-content/uploads/2022/05/bc0b3814.jpg",
+      "https://salymbekov.com/wp-content/uploads/2022/05/bc0b3797.jpg",
+      "https://salymbekov.com/wp-content/uploads/2022/05/bc0b3848.jpg",
+      "https://salymbekov.com/wp-content/uploads/2022/05/bc0b3862.jpg",
+      "https://salymbekov.com/wp-content/uploads/2022/05/bc0b3796.jpg",
+      "https://salymbekov.com/wp-content/uploads/2022/05/bc0b3860.jpg",
+      "https://salymbekov.com/wp-content/uploads/2022/05/bc0b3890.jpg",
+      "https://salymbekov.com/wp-content/uploads/2022/05/bc0b3802.jpg",
+      "https://salymbekov.com/wp-content/uploads/2022/05/bc0b3899.jpg",
+      "https://salymbekov.com/wp-content/uploads/2022/05/bc0b3927.jpg",
+      "https://salymbekov.com/wp-content/uploads/2022/05/bc0b3932.jpg",
+      "https://salymbekov.com/wp-content/uploads/2022/05/bc0b3965.jpg",
+      "https://salymbekov.com/wp-content/uploads/2022/05/bc0b3940.jpg",
+      "https://salymbekov.com/wp-content/uploads/2022/05/bc0b3928.jpg",
+      "https://salymbekov.com/wp-content/uploads/2022/05/bc0b3951.jpg",
+      "https://salymbekov.com/wp-content/uploads/2022/05/bc0b3944.jpg"
+    ],
+    valuesImage: "URL_ИЗОБРАЖЕНИЕ_ЦЕННОСТЕЙ",
+    goalsImage: "URL_ИЗОБРАЖЕНИЕ_ЦЕЛЕЙ",
+    teamImage: "URL_ИЗОБРАЖЕНИЕ_КОМАНДЫ",
+    businessSchool: "URL_БИЗНЕС_ШКОЛА",
+    students: "URL_СТУДЕНТЫ"
+  };
 
-  const values = [
-    { icon: '🎯', key: 'value1' },
-    { icon: '🌟', key: 'value2' },
-    { icon: '🤝', key: 'value3' },
-    { icon: '💡', key: 'value4' },
-    { icon: '🌱', key: 'value5' },
-    { icon: '🏆', key: 'value6' }
-  ];
+  const nextImage = () => {
+    setCurrentImageIndex((prevIndex) => 
+      prevIndex === images.mlkCarousel.length - 1 ? 0 : prevIndex + 1
+    );
+  };
 
-  const goals = [
-    { category: 'academic', key: 'academicGoals' },
-    { category: 'research', key: 'researchGoals' },
-    { category: 'international', key: 'internationalGoals' },
-    { category: 'community', key: 'communityGoals' }
-  ];
-
-  const stats = [
-    { key: 'students', target: 5000, suffix: '+' },
-    { key: 'programs', target: 50, suffix: '+' },
-    { key: 'partners', target: 100, suffix: '+' },
-    { key: 'graduates', target: 10000, suffix: '+' }
-  ];
-
-  // Анимация счетчиков
-  useEffect(() => {
-    const duration = 3000;
-    const steps = 60;
-    const interval = duration / steps;
-
-    stats.forEach((stat, index) => {
-      let step = 0;
-      const timer = setInterval(() => {
-        step++;
-        const progress = step / steps;
-        const current = Math.floor(stat.target * progress);
-        
-        setCounter(prev => ({
-          ...prev,
-          [stat.key]: current
-        }));
-
-        if (step === steps) {
-          clearInterval(timer);
-        }
-      }, interval);
-    });
-  }, []);
-
-  // Автопереключение ценностей
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveValue(prev => (prev + 1) % values.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const tabContent = {
-    
+  const prevImage = () => {
+    setCurrentImageIndex((prevIndex) => 
+      prevIndex === 0 ? images.mlkCarousel.length - 1 : prevIndex - 1
+    );
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50/30 py-12">
-      {/* Hero Section */}
-      <section className="container mx-auto px-6 mb-16">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-12"
-        >
-          <h1 className="text-5xl md:text-6xl font-bold text-blue-900 mb-6">
-            {t('mission.title')}
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            {t('mission.subtitle')}
-          </p>
-        </motion.div>
+    <div className="min-h-screen bg-white">
+      {/* Hero Section с исправленным фоном */}
+      <div 
+        className="relative bg-cover bg-center bg-no-repeat py-20 lg:py-32"
+        style={{backgroundImage: `url(${images.missionHero})`}}
+      >
+        {/* Уменьшаем opacity оверлея или убираем его */}
+        <div className="absolute inset-0 bg-black opacity-30"></div>
+        <div className="relative container mx-auto px-6 text-center text-white">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Миссия </h1>
+          
+        </div>
+      </div>
 
-        {/* Stats Counter */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
-        >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={stat.key}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-              className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 text-center shadow-lg border border-blue-100/50"
-            >
-              <motion.div
-                className="text-4xl font-bold text-blue-600 mb-2"
-                key={counter[stat.key]}
-                initial={{ scale: 1.2 }}
-                animate={{ scale: 1 }}
-              >
-                {counter[stat.key]}{stat.suffix}
-              </motion.div>
-              <p className="text-gray-600 font-medium">
-                {t(`mission.stats.${stat.key}`)}
+      {/* Остальной код без изменений */}
+      <div className="container mx-auto px-6 py-12">
+        
+        {/* Миссия университета */}
+        <div className="max-w-6xl mx-auto mb-16">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Миссия университета</h2>
+            <div className="w-20 h-1 bg-blue-600 mx-auto"></div>
+          </div>
+
+          <div className="prose prose-lg max-w-none">
+            <div className="bg-blue-50 rounded-lg p-6 mb-8 border-l-4 border-blue-600">
+              <p className="text-blue-800 text-xl font-semibold italic text-center">
+                "Подготовка современных кадров, способных реализовывать творческие инициативы и инновационные идеи на благо общества."
               </p>
-            </motion.div>
-          ))}
-        </motion.div>
-      </section>
+            </div>
 
-      {/* Mission & Vision Tabs */}
-      <section className="container mx-auto px-6 mb-16">
-        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-2">
-            {/* Content Side */}
-            <div className="p-8 lg:p-12">
-              {/* Tabs Navigation */}
-              <div className="flex flex-wrap gap-2 mb-8">
-                {tabs.map((tab) => (
+            <p className="text-gray-700 text-lg leading-relaxed mb-6">
+              Основанный в 2019 году Учреждение «Салымбеков Университет» является прямым продолжением ранее запущенных образовательных проектов основанного в 2012 году Общественного фонда «Фонд Аскара Салымбекова», который выделил наиболее важные направления для стимулирования развития человеческих ресурсов, образования, науки и формирования нового поколения просвещенной молодежи. Фондом были реализованы многие крупные проекты, связанные с обучением школьников и студентов, с изданием книг, с проведением семинаров, круглых столов, форумов и других площадок для различных компаний, организаций и учебных заведений, а также мероприятий с участием международных лекторов. Все эти проекты позволили обучить и просветить более 25 тысяч человек.
+            </p>
+          </div>
+        </div>
+
+        {/* Карусель с выпускниками МЛК */}
+        <div className="max-w-6xl mx-auto mb-16">
+          <div className="bg-white rounded-lg shadow-lg p-6">
+            
+
+            {/* Карусель */}
+            <div className="relative max-w-4xl mx-auto">
+              <div className="relative h-80 md:h-96 bg-gray-200 rounded-lg overflow-hidden">
+                <img 
+                  src={images.mlkCarousel[currentImageIndex]}
+                  alt={`Аскар Салымбеков с выпускниками МЛК ${currentImageIndex + 1}`}
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.target.src = "https://via.placeholder.com/800x400/6B7280/FFFFFF?text=Аскар+Салымбеков+с+выпускниками+МЛК";
+                  }}
+                />
+                
+                <button 
+                  onClick={prevImage}
+                  className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-70 transition-all"
+                >
+                  ‹
+                </button>
+                <button 
+                  onClick={nextImage}
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-70 transition-all"
+                >
+                  ›
+                </button>
+                
+                <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-50 text-white px-3 py-1 rounded-full text-sm">
+                  {currentImageIndex + 1} / {images.mlkCarousel.length}
+                </div>
+              </div>
+
+              <div className="flex overflow-x-auto space-x-2 mt-4 pb-2">
+                {images.mlkCarousel.map((image, index) => (
                   <button
-                    key={tab.id}
-                    onClick={() => setActiveTab(tab.id)}
-                    className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
-                      activeTab === tab.id
-                        ? 'bg-blue-600 text-white shadow-lg'
-                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                    key={index}
+                    onClick={() => setCurrentImageIndex(index)}
+                    className={`flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 ${
+                      index === currentImageIndex ? 'border-blue-500' : 'border-gray-300'
                     }`}
                   >
-                    {t(`mission.tabs.${tab.key}`)}
+                    <img 
+                      src={image}
+                      alt={`Миниатюра ${index + 1}`}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        e.target.src = "https://via.placeholder.com/100x100/6B7280/FFFFFF?text=IMG";
+                      }}
+                    />
                   </button>
                 ))}
               </div>
-
-              {/* Tab Content */}
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeTab}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  transition={{ duration: 0.3 }}
-                  className="space-y-6"
-                >
-                  {/* <h2 className="text-3xl font-bold text-gray-800">
-                    {t(`mission.${tabContent[activeTab].content}.title`)}
-                  </h2>
-                  <p className="text-lg text-gray-600 leading-relaxed">
-                    {t(`mission.${tabContent[activeTab].content}.text1`)}
-                  </p>
-                  <p className="text-lg text-gray-600 leading-relaxed">
-                    {t(`mission.${tabContent[activeTab].content}.text2`)}
-                  </p> */}
-
-                  {/* Special content for values tab */}
-                  {activeTab === 'values' && (
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-6">
-                      {values.map((value, index) => (
-                        <motion.div
-                          key={value.key}
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ duration: 0.5, delay: index * 0.1 }}
-                          className={`p-4 rounded-xl text-center transition-all duration-300 cursor-pointer ${
-                            activeValue === index
-                              ? 'bg-blue-600 text-white shadow-lg scale-105'
-                              : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
-                          }`}
-                          onClick={() => setActiveValue(index)}
-                        >
-                          <div className="text-2xl mb-2">{value.icon}</div>
-                          <h3 className="font-semibold text-sm">
-                            {t(`mission.values.${value.key}.title`)}
-                          </h3>
-                        </motion.div>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* Special content for goals tab */}
-                  {activeTab === 'goals' && (
-                    <div className="space-y-4 mt-6">
-                      {goals.map((goal, index) => (
-                        <motion.div
-                          key={goal.key}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.5, delay: index * 0.1 }}
-                          className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl border-l-4 border-blue-500"
-                        >
-                          <h3 className="font-bold text-lg text-gray-800 mb-2">
-                            {t(`mission.goals.${goal.key}.title`)}
-                          </h3>
-                          <ul className="text-gray-600 space-y-1">
-                            {[1, 2, 3].map((item) => (
-                              <li key={item} className="flex items-center">
-                                <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                                {t(`mission.goals.${goal.key}.item${item}`)}
-                              </li>
-                            ))}
-                          </ul>
-                        </motion.div>
-                      ))}
-                    </div>
-                  )}
-                </motion.div>
-              </AnimatePresence>
             </div>
 
-            {/* Image Side */}
-            <div className="relative min-h-[500px] bg-gradient-to-br from-blue-600 to-indigo-700">
-              {/* <img
-                src={tabContent[activeTab].image}
-                alt={t(`mission.${tabContent[activeTab].content}.alt`)}
-                className="w-full h-full object-cover"
-              /> */}
-              <div className="absolute inset-0 bg-blue-900/20"></div>
-              
-              {/* Active Value Display */}
-              {activeTab === 'values' && (
-                <motion.div
-                  key={activeValue}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="absolute bottom-8 left-8 right-8 bg-white/95 backdrop-blur-sm rounded-2xl p-6 shadow-2xl"
-                >
-                  <div className="text-4xl mb-4">{values[activeValue].icon}</div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-2">
-                    {t(`mission.values.${values[activeValue].key}.title`)}
-                  </h3>
-                  <p className="text-gray-600">
-                    {t(`mission.values.${values[activeValue].key}.description`)}
-                  </p>
-                </motion.div>
-              )}
+            <div className="mt-6 prose prose-lg max-w-none">
+              <p className="text-gray-700 text-lg leading-relaxed">
+                Так в 2014 году Фондом был запущен успешный образовательный проект для молодежи – Общественная школа «Молодые лидеры Кыргызстана», которая оказала огромный положительный эффект на новое поколение. Ее уникальные, не имеющие аналогов, комплексные курсы тренингов и мотивационных занятий дали студентам и молодежи возможность освоить так называемые «Soft skills», новые знания и навыки для личностного роста и формирования лидерских качеств. Несмотря на то, что данная школа задумывалась как площадка для обучения только 100 человек, ее работа на этом не прекратилась. Многочисленные положительные отзывы и просьбы стали поводом для продолжения данной инициативы, начали проводиться последующие наборы в эту школу. На сегодняшний день выпускниками 11 потоков общественной школы «Молодые лидеры Кыргызстана» стали около 1100 студентов и представителей молодежи Кыргызстана.
+              </p>
             </div>
           </div>
         </div>
-      </section>
 
-      {/* Strategic Goals */}
-      <section className="container mx-auto px-6 mb-16">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-4xl font-bold text-blue-900 mb-4">
-            {t('mission.strategicGoals.title')}
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            {t('mission.strategicGoals.subtitle')}
-          </p>
-        </motion.div>
+        {/* Развитие образовательных проектов */}
+        <div className="max-w-6xl mx-auto mb-16">
+          <div className="prose prose-lg max-w-none">
+            <p className="text-gray-700 text-lg leading-relaxed mb-6">
+              Успешный опыт с общественной школой для студентов и молодежи, а также отзывы и обращения со стороны населения стали толчком к запуску аналогичных образовательных проектов для других возрастных групп. Так, в 2016 году для учащихся старших классов среднеобразовательных школ была запущена адаптированная для них Общественная школа «Юные лидеры Кыргызстана», обучение в которой завершили около 800 учеников старших классов. С 2017 года был запущен образовательный проект под названием Общественная школа «Будущие лидеры Кыргызстана» для учащихся средних и младших классов, общее количество выпускников данной школы составляет порядка 450 человек. Без внимания не остались и дети, специально для них в 2018 году был запущен образовательный проект для детей дошкольного возраста «Смартик».
+            </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[1, 2, 3, 4, 5, 6].map((item) => (
-            <motion.div
-              key={item}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: item * 0.1 }}
-              whileHover={{ scale: 1.05, y: -5 }}
-              className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group"
-            >
-              <div className="text-blue-600 text-3xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                {t(`mission.strategicGoals.goal${item}.icon`)}
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-3">
-                {t(`mission.strategicGoals.goal${item}.title`)}
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                {t(`mission.strategicGoals.goal${item}.description`)}
+            <p className="text-gray-700 text-lg leading-relaxed mb-6">
+              Важной ступенью нашего развития был 2017 год, когда все выше указанные проекты были объедены в один проект, а именно в Бизнес школу «Salymbekov Business School», деятельность которой была ориентирована по таким 5 направлениям как «Школа лидерства» (охватывающая образовательные проекты для всех возрастных групп), «Школа бизнеса и управления», «STEM школа», «Языковая школа» и «Школы интенсивного развития». При этом было уделено особое внимание на пропаганду и популяризацию английского языка в Кыргызской Республике, где посредством реализации ключевых проектов и инициатив был запущен процесс развития мультиязычной системы образования.
+            </p>
+
+            <div className="bg-yellow-50 rounded-lg p-6 mb-6 border-l-4 border-yellow-500">
+              <p className="text-gray-700">
+                Положительные отзывы и слова благодарности столичных школьников и студентов, разовые образовательные мероприятия в областных центрах вызвали волну просьб со стороны жителей регионов страны, которые просили открыть у них аналогичные школы. На основе этого был запущен процесс Масштабирования Бизнес школы Салымбекова на принципах социального предпринимательства, т.е., был реализован образовательный проект с социально-экономической ориентацией. Были открыты филиалы Бизнес школы в городах Джалал-Абад, Ош, Баткен, Каракол, Талас Нарын, Балыкчы и в селах Ат-Башы и Ново-Покровка. Данные филиалы, как и головная школа в Бишкеке, ориентированы на воспитание и формирование нового поколения образованной, самостоятельной и ответственной молодежи и будущих лидеров. В рамках этих общественных школ предоставляется дополнительное современное образование, которое не входит в программу обучения общеобразовательных и высших учебных заведений страны.
               </p>
-              <div className="mt-4 pt-4 border-t border-gray-200">
-                <div className="flex justify-between items-center text-sm text-gray-500">
-                  <span>{t('mission.strategicGoals.timeline')}</span>
-                  <span>{t(`mission.strategicGoals.goal${item}.timeline`)}</span>
+            </div>
+
+            <p className="text-gray-700 text-lg leading-relaxed">
+              Благодаря успешному опыту и практике в реализации образовательных программ и проектов, а также из-за острой необходимости во внедрении современных методов и программ по подготовке высококвалифицированных и востребованных кадров было принято решение основать новое учебное заведение  «Салымбеков Университет».
+            </p>
+          </div>
+        </div>
+
+        {/* Стратегические цели */}
+        <div className="max-w-6xl mx-auto mb-16">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Стратегические цели, исходя из миссии:</h2>
+            <div className="w-20 h-1 bg-green-600 mx-auto"></div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+              <div className="text-center mb-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto">
+                  <span className="text-blue-600 font-bold">1</span>
                 </div>
               </div>
-            </motion.div>
-          ))}
+              <h3 className="text-xl font-bold text-gray-900 mb-3 text-center">Качественное образование</h3>
+              <p className="text-gray-700 text-center">
+                Предоставление образование и подготовка высококвалифицированных кадров по востребованным направлениям рынка труда и в соответствии с международными стандартами качества образования.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+              <div className="text-center mb-4">
+                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto">
+                  <span className="text-green-600 font-bold">2</span>
+                </div>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3 text-center">Развитие человеческих ресурсов</h3>
+              <p className="text-gray-700 text-center">
+                Развитие человеческих ресурсов, системы образования и здравоохранения страны путем открытия современных и инновационных образовательных и медицинских учреждений.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+              <div className="text-center mb-4">
+                <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto">
+                  <span className="text-purple-600 font-bold">3</span>
+                </div>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3 text-center">Инновационный университет</h3>
+              <p className="text-gray-700 text-center">
+                Превращение Университета в один из первоклассных, инновационных и современных образовательных организаций страны с сильной материальной-технической базой, качественным кадровым составом и высокой репутацией.
+              </p>
+            </div>
+          </div>
         </div>
-      </section>
+
+        {/* Приоритетные цели университета */}
+        <div className="max-w-6xl mx-auto mb-16">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Приоритетные цели нашего Университета</h2>
+            <div className="w-20 h-1 bg-red-600 mx-auto"></div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="bg-red-50 rounded-lg p-6 text-center">
+              <h3 className="text-xl font-bold text-red-900 mb-3">IT-сфера</h3>
+              <p className="text-red-800">Подготовка специалистов в области информационных технологий</p>
+            </div>
+
+            <div className="bg-red-50 rounded-lg p-6 text-center">
+              <h3 className="text-xl font-bold text-red-900 mb-3">Бизнес управление</h3>
+              <p className="text-red-800">Образование в сфере менеджмента и предпринимательства</p>
+            </div>
+
+            <div className="bg-red-50 rounded-lg p-6 text-center">
+              <h3 className="text-xl font-bold text-red-900 mb-3">Сельское хозяйство</h3>
+              <p className="text-red-800">Развитие аграрного сектора через образование</p>
+            </div>
+
+            <div className="bg-red-50 rounded-lg p-6 text-center">
+              <h3 className="text-xl font-bold text-red-900 mb-3">Профессиональное техническое образование</h3>
+              <p className="text-red-800">Подготовка технических специалистов</p>
+            </div>
+
+            <div className="bg-red-50 rounded-lg p-6 text-center">
+              <h3 className="text-xl font-bold text-red-900 mb-3">Медицинское образование</h3>
+              <p className="text-red-800">Подготовка медицинских кадров по международным стандартам</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Медицинский факультет */}
+        <div className="max-w-6xl mx-auto mb-16 bg-blue-50 rounded-lg p-8">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Медицинский факультет</h2>
+            <div className="w-20 h-1 bg-blue-600 mx-auto"></div>
+          </div>
+
+          <div className="prose prose-lg max-w-none">
+            <p className="text-gray-700 text-lg leading-relaxed mb-6">
+              Одним из таких первых направлений нашего Университета является Медицинский факультет, где подготовка востребованных в нашей стране и за рубежом высококвалифицированных медицинских кадров будет осуществляться по международным стандартам. Применение эффективных методик обучения и современных образовательных программ обеспечивает высокую конкурентную способность наших выпускников как на внутреннем, так и на внешнем рынке труда, а также позволяет им успешно осуществлять свою трудовую деятельность на международной арене. Наш Университет готовит медицинские кадры по международным стандартам с ведением процесса обучения на английском языке.
+            </p>
+
+            <div className="bg-white rounded-lg p-6 mb-6">
+              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">Наша стратегия рассматривает подготовку по медицинскому направлению граждан:</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                <div className="bg-blue-100 rounded-lg p-4">
+                  <h4 className="font-bold text-blue-900 mb-2">КЫРГЫЗСТАНА</h4>
+                  <p className="text-blue-800">Для отечественного здравоохранения</p>
+                </div>
+                <div className="bg-green-100 rounded-lg p-4">
+                  <h4 className="font-bold text-green-900 mb-2">СТРАН БЛИЖНЕГО ЗАРУБЕЖЬЯ</h4>
+                  <p className="text-green-800">Для регионального сотрудничества</p>
+                </div>
+                <div className="bg-purple-100 rounded-lg p-4">
+                  <h4 className="font-bold text-purple-900 mb-2">СТРАН ДАЛЬНЕГО ЗАРУБЕЖЬЯ</h4>
+                  <p className="text-purple-800">Для международного признания</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Ожидаемые результаты обучения */}
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Ожидаемые результаты обучения</h2>
+            <div className="w-20 h-1 bg-indigo-600 mx-auto"></div>
+          </div>
+
+          <div className="prose prose-lg max-w-none">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="space-y-4">
+                <div className="bg-white p-4 rounded-lg border border-gray-200">
+                  <h4 className="font-bold text-gray-900 mb-2">Применение знаний</h4>
+                  <p className="text-gray-700 text-sm">
+                    Умение применять знания базовых естественных, гуманитарных, социальных, фундаментальных и клинических дисциплин в практической деятельности работника здравоохранения;
+                  </p>
+                </div>
+
+                <div className="bg-white p-4 rounded-lg border border-gray-200">
+                  <h4 className="font-bold text-gray-900 mb-2">Коммуникативные навыки</h4>
+                  <p className="text-gray-700 text-sm">
+                    Умение четко излагать свои мысли, полемизировать в рамках освоенных компетенций на государственном, официальном и английском языках с использованием медицинской терминологии на латинском языке;
+                  </p>
+                </div>
+
+                <div className="bg-white p-4 rounded-lg border border-gray-200">
+                  <h4 className="font-bold text-gray-900 mb-2">Работа в команде</h4>
+                  <p className="text-gray-700 text-sm">
+                    Получение навыка работы в интернациональной команде, принимать решения и нести ответственность как лидера и члена команды с использованием коммуникативных и базовых психологических навыков, умение делегировать полномочия в команде;
+                  </p>
+                </div>
+
+                <div className="bg-white p-4 rounded-lg border border-gray-200">
+                  <h4 className="font-bold text-gray-900 mb-2">Профилактика заболеваний</h4>
+                  <p className="text-gray-700 text-sm">
+                    Знание основных форм и методов профилактики заболеваний, санитарно-просветительской работы с населением, знание противоэпидемических мероприятий на уровне врача общей практики;
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <div className="bg-white p-4 rounded-lg border border-gray-200">
+                  <h4 className="font-bold text-gray-900 mb-2">Информационные технологии</h4>
+                  <p className="text-gray-700 text-sm">
+                    Умение использовать современные информационные технологии для поиска, анализа, обработки и предоставлению общественности информации согласно получаемой компетенции, во врачебной, научной и педагогической деятельности;
+                  </p>
+                </div>
+
+                <div className="bg-white p-4 rounded-lg border border-gray-200">
+                  <h4 className="font-bold text-gray-900 mb-2">Самосовершенствование</h4>
+                  <p className="text-gray-700 text-sm">
+                    Владение навыками нравственного, культурного и профессионального самосовершенствования путем самостоятельного обзора учебников, научных статей, монографий и прочей литературы в рамках, формируемых компетенции;
+                  </p>
+                </div>
+
+                <div className="bg-white p-4 rounded-lg border border-gray-200">
+                  <h4 className="font-bold text-gray-900 mb-2">Научно-практические исследования</h4>
+                  <p className="text-gray-700 text-sm">
+                    Знать, уметь применять и представлять общественности приобретенные общенаучные, профессиональные знания и инструментальные навыки для проведения научно-практических исследований в области медицины на международном уровне;
+                  </p>
+                </div>
+
+                <div className="bg-white p-4 rounded-lg border border-gray-200">
+                  <h4 className="font-bold text-gray-900 mb-2">Профессиональные компетенции</h4>
+                  <p className="text-gray-700 text-sm">
+                    Демонстрация профессиональных компетенций во врачебной, научной и педагогической деятельности в организациях — потенциальных работодателей.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

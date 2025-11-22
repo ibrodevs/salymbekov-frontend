@@ -460,5 +460,269 @@
       "contactHR": "Contact HR",
       "sendCV": "Send Your CV"
     }
+  },
+
+  "contacts": {
+    "hero": {
+      "title": "Contacts",
+      "subtitle": "Contact us for more information"
+    },
+    "info": {
+      "phone": {
+        "title": "Phone",
+        "description": "Admissions office and general inquiries"
+      },
+      "email": {
+        "title": "Email",
+        "description": "Send us an email with your questions"
+      },
+      "address": {
+        "title": "Address", 
+        "description": "Main university campus"
+      },
+      "hours": {
+        "title": "Working Hours",
+        "description": "Saturday and Sunday: closed"
+      }
+    },
+    "map": {
+      "title": "How to Find Us",
+      "description": "The university is located in the center of Bishkek",
+      "locationTitle": "Location"
+    }
+  },
+  "university": {
+    "structure": {
+      "universityMain": {
+        "title": "University Structure",
+        "downloadButton": "Download University Structure (PDF)"
+      }
+    }
+  },
+  "medicalFaculty": {
+    "hero": {
+      "title": "Higher School of Medicine"
+    },
+    "higherSchoolButton": "Higher School of Medicine",
+    "about": {
+      "title": "About the Faculty",
+      "description1": "Salymbekov University is a higher education institution with modern clinical bases equipped with innovative medical equipment, modern material and technical base and highly competitive staff, including those with higher medical education, work experience and fluent English. The university is an international educational institution providing education for local and foreign students.",
+      "description2": "Medical education is provided by the Higher School of Medicine. Classes include practice as well as theoretical and humanitarian disciplines. Practical classes and lectures are held in classrooms equipped with modern educational and medical equipment."
+    },
+    "staff": {
+      "title": "Staff and Teachers",
+      "description1": "The main task of the university is to satisfy the market of educational services, ensure the export of knowledge and implement the program of successful introduction of multilingual education in the Kyrgyz Republic. The best teachers and leading specialists of our country are involved in the educational process. Training is conducted by highly qualified teachers, including more than 20 doctors and candidates of sciences. The main educational programs are created in accordance with the requirements of state educational standards.",
+      "description2": "The duration of study is 6 years for citizens of the Kyrgyz Republic, 5 years for foreign students. After graduation, the graduate is awarded the qualification 'Doctor'."
+    },
+    "facilities": {
+      "title": "Educational Base",
+      "description1": "The Higher School of Medicine has created and provided all conditions for educational and practical activities, as well as sports. Practical classrooms are equipped with visual aids, models of body parts and organs, mannequins and dummies.",
+      "description2": "Laboratories and classrooms are equipped with multimedia equipment to expand learning opportunities:",
+      "list": {
+        "item1": "Simulation and dummy center",
+        "item2": "Anatomy class",
+        "item3": "Chemistry, physics, biology, biochemistry laboratories",
+        "item4": "2 diagnostic laboratories",
+        "item5": "Modern and spacious classrooms",
+        "item6": "Library",
+        "item7": "Medical center",
+        "item8": "Computer classes, etc."
+      },
+      "description3": "The database of educational programs and the library fund are replenished with printed and electronic publications of each student through access. Industrial practices are the most important part of personnel training in the healthcare system and an integral part of the educational process. The main goal of the practice is to acquire and improve practical knowledge and skills in patient care, diagnosis and medical care for future doctors, to familiarize themselves with the organization and working conditions of doctors in hospitals and medical centers."
+    },
+    "values": {
+      "title": "Our Values",
+      "description": "The main value and guarantors of stable development for the university are the teaching staff, employees and students. Teachers are the most important link in personnel training, since the teacher's qualifications, his pedagogical competence, working and living conditions, human and moral qualities play a key role in the training of highly qualified medical specialists."
+    },
+    "policy": {
+      "title": "University Policy",
+      "description1": "The university adheres to the policy of providing quality education, all efforts are aimed at creating a leading educational institution that will be recognized as a leader among higher educational institutions of the Kyrgyz Republic.",
+      "description2": "We firmly believe that the set goals and objectives will be implemented through the implementation of the educational program and the active development of international relations. The faculty, as an open educational structure of the university, develops comprehensive international partnerships with other universities, government agencies and the public. The process of integration of the faculty, as well as the university itself, into the world educational space is developing through participation in various international scientific and educational programs."
+    }
+  },
+  "itBusinessCollege": {
+    "hero": {
+      "title": "International College of IT and Business"
+    },
+    "invitationText": "«Salymbekov University» and «Lincoln University» of Malaysia invite applicants to the International College of IT and Business to gain knowledge in programming.",
+    "mainImageAlt": "International College of IT and Business",
+    "description1": "International College of IT and Business offers modern education in the field of information technology and business.",
+    "description2": "We train specialists in demand in the modern labor market, with relevant knowledge and practical skills.",
+    "description3": "Our educational programs are developed taking into account the requirements of modern IT companies and business structures.",
+    "admissionText": "We accept applicants on the basis of 9th and 11th grades.",
+    "phoneNumbers": {
+      "title": "Numbers for information:",
+      "whatsapp": "0505 658518 W/A write on WhatsApp",
+      "number1": "0776 658518",
+      "number2": "0558 658518",
+      "number3": ""
+    }
+  },
+  "businessSchool": {
+    "hero": {
+      "title": "Salymbekov Business School"
+    },
+    "schoolName": "Salymbekov Business School",
+    "fullScreenImageAlt": "Salymbekov Business School",
+    "description1": "Founder of the Business School - Askars Maatkabylovich Salymbekov with graduates of 'Young Leaders of Kyrgyzstan'",
+    "description2": "Salymbekov Business School is a unique educational center providing modern additional education to all segments of the population through its own public schools and special courses conducted according to a specially developed curriculum with a unique methodology of comprehensive trainings and motivational classes.",
+    "description3": "Our unique educational projects, which have no analogues in the Kyrgyz Republic, were specially developed to cultivate a new generation of the country educated according to modern standards, where everyone could perfectly master three or more languages.",
+    "mission": {
+      "title": "Mission",
+      "description1": "The mission of the school is to provide quality services in five main areas that cover preschool education, elementary school students, middle and high school students, students and youth, as well as those who strive to learn foreign languages in a short period of time.",
+      "description2": "We can proudly say that our educational projects have stood the test of time and have helped thousands of our citizens to receive education in demand in the modern world. Our pupils and graduates have achieved great success in entrepreneurship, production, creativity, science, show business, etc."
+    }
+  },
+  "founder": {
+    "hero": {
+      "title": "Founder"
+    },
+    "founderTitle": "Founder",
+    "founderImageAlt": "Askars Maatkabylovich Salymbekov",
+    "description1": "Askars Maatkabylovich Salymbekov – founder, public figure and philanthropist, honorary president of the Dordoi Association, founder of the Public Foundation 'Askar Salymbekov Foundation' for the implementation of educational, scientific, charitable, patriotic and environmental projects that have a great positive impact on the younger generation and youth.",
+    "description2": "In 2019, on his initiative, the Salymbekov University Institution was established, the main goal of which is to provide quality education using international technologies and standards for both citizens of the Kyrgyz Republic and foreign citizens. An important factor in the creation of the University was the need to create a common platform to unite all projects and created events into a single center for more effective management and control, as well as for the possibility of introducing quality affordable education for all categories of citizens.",
+    "description3": "Askar Salymbekov constantly provides financial assistance and support to socially vulnerable segments of the population, medical and social institutions, athletes, students, cultural and art figures, including by allocating funds to socially vulnerable segments of the population, contributing to the creation of feature and documentary films, publishing books and monographs, organizing archaeological excavations, training gifted students, reconstructing and restoring important historical buildings and structures in the country.",
+    "biography": {
+      "title": "Biography",
+      "birthDate": "Date of birth:",
+      "birthDateValue": "February 9, 1955",
+      "birthPlace": "Place of birth:",
+      "birthPlaceValue": "At-Bashi village, At-Bashi district, Naryn region, Kirghiz SSR.",
+      "education": "Education:",
+      "educationValue": "Kyrgyz State University",
+      "educationDetails1": "in 1977 graduated from the Faculty of History,",
+      "educationDetails2": "in 1990 – Faculty of Economics – 'Accounting, Audit and Control'",
+      "specialty": "Specialty – historian, economist.",
+      "awards": {
+        "title": "State and other awards:",
+        "item1": "Awarded medals 'Labor Valor', 'Dank';",
+        "item2": "Order of the Russian Federation 'Honorary Citizen of Russia';",
+        "item3": "Order of the International Assembly of Capitals and Major Cities 'For Contribution to Sustainable Development of CIS Cities';",
+        "item4": "Order of Rio Branco (Brazil);",
+        "item5": "Gold medal of Russian economist V. Leontiev;",
+        "item6": "Honorary Diploma of the President of the Republic of Kazakhstan;",
+        "item7": "Honored Worker of Local Self-Government of the Kyrgyz Republic;",
+        "item8": "Laureate of the International Prize 'Rukhaniyat'.",
+        "item9": ""
+      },
+      "workExperience": {
+        "title": "Work experience:",
+        "item1": "1977-79 - Secretary of the Komsomol Committee of the Kyrgyz State Institute of Physical Culture.",
+        "item2": "1979-81 - Secretary of the Komsomol Committee of the Kyrgyz State Medical Institute.",
+        "item3": "1981-86 - Head of the Department of the Central Committee of the Komsomol of Kyrgyzstan.",
+        "item4": "1986-91 - Chairman of the Frunze City Sports Committee.",
+        "item5": "1991-93 - Head of the Market Department of the Frunze City Executive Committee.",
+        "item6": "1993-99 - President of the Dordoi Association.",
+        "item7": "1999-2005 - Head of the State Administration of Naryn Region of the Kyrgyz Republic - Governor.",
+        "item8": "2005 - Acting Mayor of Bishkek.",
+        "item9": "2005-2010 - Deputy of the Jogorku Kenesh of the III and IV convocations.",
+        "item10": "2010 - present - President of the Dordoi Association.",
+        "item11": "2019 - present - Founder of Salymbekov University."
+      },
+      "publicActivity": {
+        "title": "Public activity:",
+        "item1": "Honorary Consul of Brazil in the Kyrgyz Republic,",
+        "item2": "Honorary President of the Kok-Boru Federation of Kyrgyzstan,",
+        "item3": "Vice-President of the Football Federation of the Kyrgyz Republic,",
+        "item4": "Co-Chairman of the International Charitable Foundation 'Aykoldyk'."
+      }
+    }
+  },
+  "president": {
+    "hero": {
+      "title": "President"
+    },
+    "greeting": "Dear applicants, students, colleagues!",
+    "presidentImageAlt": "Zhumadilov Amangeldi Zhumadilovich",
+    "description1": "Since its opening, the Salymbekov University Institution has strictly followed the principles of education quality, accessibility and maintaining education standards in accordance with international standards. The university is a multipurpose educational complex that includes innovative buildings in Bishkek and business schools in all regions of Kyrgyzstan.",
+    "description2": "The main areas of the University's activity are the development of medical education, IT direction and the development of tourism and economics. As part of the policy being implemented, the International Faculty of Medicine was founded in 2019, which includes 2 departments.",
+    "description3": "The university has modern infrastructure for quality student education. All classrooms of the academic building are equipped with multimedia auditoriums, medical laboratories with the latest equipment, convenient points for independent work and meals.",
+    "description4": "All conditions have been created for quality education and comfortable living of students. The developed clinical base of the University is a special pride, since the practical approach in medicine is the foundation of educational activities.",
+    "description5": "The university pays serious attention to the development of international activities. Joint educational programs with foreign partner universities are being implemented, and projects for students and teachers are regularly organized.",
+    "description6": "The university is open to everyone! Our doors are open for applicants, students and future colleagues!",
+    "signature": {
+      "respectfully": "Respectfully,",
+      "position": "President",
+      "name": "Zhumadilov Amangeldi Zhumadilovich"
+    }
+  },
+  "rector": {
+    "hero": {
+      "title": "Rector"
+    },
+    "address": {
+      "title": "Rector's Address",
+      "greeting": "Dear friends!"
+    },
+    "rectorImageAlt": "Zhumadilov Esengeldi Zhumadilovich",
+    "description1": "I am glad to welcome you to Salymbekov University, one of the most innovative and promising projects of the Askar Salymbekov Foundation, aimed at further development and improvement of the education system in the Kyrgyz Republic.",
+    "description2": "Salymbekov University is an accredited innovative educational institution providing quality education in the field of IT, medicine, business, personal growth and leadership development. Founded in 2019 as a continuation of the educational activities of the Askar Salymbekov Foundation, Salymbekov University has all the material, technical and human resources to train qualified specialists in the field of IT, business and medicine.",
+    "description3": "Salymbekov University is an internationally recognized educational institution included in the list of the World Health Organization (WDOMS), FAIMER Association, having Sponsor Notes from the international organization ECFMG and international accreditation based on the standards of the World Federation of Medical Education. The university is a member of the Association of Higher Educational Institutions and the Association of Creative Industries of Kyrgyzstan, as well as the International Modern Medical Academy of Sciences. The university is included in the limited list of universities that have access to Research for Life, SAGE and DeGruyter databases with access to electronic resources with more than 198,000 books and journals on medical and related topics.",
+    "description4": "Since its foundation, the university's international cooperation with leading universities and clinics in Germany, Turkey, Japan, South Korea, Malaysia, India, Pakistan, Russia, Ukraine, Uzbekistan, and Kazakhstan has been actively developing. Together with foreign partners, international scientific and practical conferences, master classes, lectures, seminars, academic mobility and professional development programs are organized annually with the involvement of the best foreign and domestic specialists.",
+    "description5": "Today, the International Faculty of Medicine, the International College of IT and Business, and the Salymbekov Business School with regional branches throughout the republic are successfully operating at the University.",
+    "description6": "",
+    "signature": {
+      "respectfully": "Respectfully,",
+      "position": "Rector",
+      "name": "Zhumadilov Esengeldi Zhumadilovich"
+    },
+    "downloadButton": "Brief Information",
+    "viceRectors": {
+      "externalRelations": {
+        "title": "Vice-Rector for External Relations and Development",
+        "imageAlt": "Kazakov Avaz Asanovich",
+        "description": "Kazakov Avaz Asanovich – Vice-Rector for External Relations and Development."
+      },
+      "educationalWork": {
+        "title": "Vice-Rector for Educational Work",
+        "imageAlt": "Tulekeev T.M.",
+        "description": "Tulekeev T.M., Doctor of Medical Sciences. Vice-Rector for Educational and Scientific Work."
+      },
+      "clinicalWork": {
+        "title": "Vice-Rector for Clinical Work",
+        "imageAlt": "Monolov Nurbek Kytaybekovich",
+        "description": "Monolov Nurbek Kytaybekovich, Candidate of Medical Sciences – Vice-Rector for Clinical Work."
+      },
+      "stateLanguage": {
+        "title": "Vice-Rector for State Language and Science",
+        "imageAlt": "Mazekova Nazgul Zholochievna",
+        "description": "Mazekova Nazgul Zholochievna – Candidate of Philological Sciences, Associate Professor, Vice-Rector for State Language and Science."
+      }
+    }
+  },
+  "accreditation": {
+    "hero": {
+      "title": "Accreditation"
+    },
+    "mainText": "Salymbekov University is an accredited higher education institution providing quality higher education in accordance with international standards.",
+    "description": "In 2021, Salymbekov University was recognized as an accredited higher education institution based on the results of accreditation in the independent Agency for Accreditation of Educational Programs and Associations (AAOPA).",
+    "certificateButton": "Certificate",
+    "certificateAlt": "Salymbekov University Accreditation Certificate"
+  },
+  "internationalAccreditation": {
+    "hero": {
+      "title": "International Institutional Accreditation"
+    },
+    "description": "Salymbekov University is a higher education institution providing quality education in the fields of medicine, IT, and business in accordance with international standards. The university is an internationally accredited educational institution recognized by international organizations (WFME, FAIMER, ECFMG).",
+    "certificateButton": "certificate",
+    "certificateAlt": "Salymbekov University International Institutional Accreditation Certificate"
+  },
+  "programAccreditation": {
+    "hero": {
+      "title": "International Program Accreditation"
+    },
+    "description": "Salymbekov University is a higher education institution providing quality education in the fields of medicine, IT, and business in accordance with international standards. The university is an internationally accredited educational institution recognized by international organizations (WFME, FAIMER, ECFMG).",
+    "certificateButton": "certificate",
+    "certificateAlt": "Salymbekov University International Program Accreditation Certificate"
   }
+
+
+
+
+
+
+
+
+
+
 }

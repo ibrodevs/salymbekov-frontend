@@ -33,7 +33,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gradient-to-r from-[#0066FF] to-[#0033FF] text-white">
+    <footer className="bg-gradient-to-r from-[#0B4C8C] to-[#093A6B] text-white">
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <motion.div
@@ -47,11 +47,11 @@ const Footer = () => {
             </h3>
             <div className="space-y-3 text-blue-100">
               <p className="flex items-start">
-                <FaMapMarkerAlt className="mr-3 mt-1 flex-shrink-0 text-[#66B3FF]" />
+                <FaMapMarkerAlt className="mr-3 mt-1 flex-shrink-0 text-[#7ABDFF]" />
                 {t('footer.address')}
               </p>
               <p className="flex items-center">
-                <FaGlobeAmericas className="mr-3 flex-shrink-0 text-[#66B3FF]" />
+                <FaGlobeAmericas className="mr-3 flex-shrink-0 text-[#7ABDFF]" />
                 <a 
                   href={t('footer.website')} 
                   className="hover:text-white transition-colors duration-300"
@@ -62,7 +62,7 @@ const Footer = () => {
                 </a>
               </p>
               <p className="flex items-center">
-                <FaEnvelope className="mr-3 flex-shrink-0 text-[#66B3FF]" />
+                <FaEnvelope className="mr-3 flex-shrink-0 text-[#7ABDFF]" />
                 <a 
                   href={`mailto:${t('footer.email')}`}
                   className="hover:text-white transition-colors duration-300"
@@ -77,7 +77,7 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h4 className="text-lg font-semibold mb-6 text-white border-b border-[#3366FF] pb-2">
+            <h4 className="text-lg font-semibold mb-6 text-white border-b border-[#0B4C8C] pb-2">
               {t('footer.usefulLinks')}
             </h4>
             <ul className="space-y-3">
@@ -87,7 +87,7 @@ const Footer = () => {
                     href={link.href}
                     className="text-blue-100 hover:text-white transition-colors duration-300 flex items-center group"
                   >
-                    <span className="w-2 h-2 bg-[#66B3FF] rounded-full mr-3 group-hover:bg-white transition-colors duration-300"></span>
+                    <span className="w-2 h-2 bg-[#7ABDFF] rounded-full mr-3 group-hover:bg-white transition-colors duration-300"></span>
                     {t(`footer.links.${link.key}`)}
                   </a>
                 </li>
@@ -99,7 +99,7 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h4 className="text-lg font-semibold mb-6 text-white border-b border-[#3366FF] pb-2">
+            <h4 className="text-lg font-semibold mb-6 text-white border-b border-[#0B4C8C] pb-2">
               {t('footer.contacts')}
             </h4>
             <ul className="space-y-3">
@@ -121,7 +121,7 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <h4 className="text-lg font-semibold mb-6 text-white border-b border-[#3366FF] pb-2">
+            <h4 className="text-lg font-semibold mb-6 text-white border-b border-[#0B4C8C] pb-2">
               {t('footer.ourClinics')}
             </h4>
             <ul className="space-y-3">
@@ -144,7 +144,7 @@ const Footer = () => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.4 }}
-        className="border-t border-[#3366FF]"
+        className="border-t border-[#0B4C8C]"
       >
         <div className="container mx-auto px-6 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">

@@ -610,63 +610,61 @@ const Navbar = () => {
           groups: [
             {
               icon: null,
-              title: 'Органы управления',
-              items: []
-            },
-            {
-              icon: null,
               title: '',
               items: [
-                { label: 'Публикации', path: '/science/publications' },
-                {
-                  label: 'Научный журнал',
-                  path: '/science/publications/journal'
+                { 
+                  label: 'Органы управления', 
+                  path: '/science/management',
+                  children: [
+                    { label: 'Научно-технический совет', path: '/science/management/scientific-technical-council' },
+                    { label: 'Биоэтический комитет', path: '/science/management/bioethics' },
+                    { label: 'Совет молодых ученых', path: '/science/management/young-scientists' },
+                    { label: 'Департамент науки и перспективных исследований', path: '/science/management/department' }
+                  ]
                 },
-                {
-                  label: 'Периодические издания',
-                  path: '/science/publications/periodicals'
-                },
+                { label: 'Научный журнал', path: '/science/publications/journal' },
+                { label: 'Периодические издания', path: '/science/publications/periodicals' },
                 { label: 'Научная библиотека', path: '/science/library' },
                 { label: 'Лаборатории и центры', path: '/science/labs' }
               ]
             }
           ]
         },
-
         {
           type: 'multiGroup',
           groups: [
             {
               icon: null,
-              title: 'Почетные профессора и лекторы',
-              items: []
-            },
-            {
-              icon: null,
               title: '',
               items: [
-                { label: 'Мероприятия', path: '/science/events' },
-                { label: 'Конференции', path: '/science/events/conferences' },
-                { label: 'Мастер классы', path: '/science/events/master-classes' },
-                { label: 'Круглые столы', path: '/science/events/round-tables' }
-              ]
-            }
-          ]
-        },
-
-        {
-          type: 'multiGroup',
-          groups: [
-            {
-              icon: null,
-              title: 'Студенческая наука',
-              items: []
-            },
-            {
-              icon: null,
-              title: '',
-              items: [
-                { label: 'Научные проекты', path: '/science/projects' }
+                { label: 'Почетные профессора и лекторы', path: '/science/professors' },
+                { 
+                  label: 'Мероприятия', 
+                  path: '/science/events',
+                  children: [
+                    { label: 'Конференции', path: '/science/events/conferences' },
+                    { label: 'Мастер классы', path: '/science/events/master-classes' },
+                    { label: 'Круглые столы', path: '/science/events/round-tables' }
+                  ]
+                },
+                { 
+                  label: 'Студенческая наука', 
+                  path: '/science/student-science',
+                  children: [
+                    { label: 'Студенческое научное объединение', path: '/science/student-science/association' },
+                    { label: 'Научные кружки', path: '/science/student-science/clubs' },
+                    { label: 'Студенческие конференции', path: '/science/student-science/conferences' }
+                  ]
+                },
+                { 
+                  label: 'Научные проекты', 
+                  path: '/science/projects',
+                  children: [
+                    { label: 'Текущие проекты', path: '/science/projects/current' },
+                    { label: 'Гранты', path: '/science/projects/grants' },
+                    { label: 'Международное сотрудничество', path: '/science/projects/international' }
+                  ]
+                }
               ]
             }
           ]
@@ -1185,7 +1183,7 @@ const Navbar = () => {
                       }}
                       onMouseEnter={(e) => {
                         if (!isActive(item.path)) {
-                          e.currentTarget.style.color = '#2563eb';
+                          e.currentTarget.style.color = '#0B4C8C';
                         }
                       }}
                       onMouseLeave={(e) => {
@@ -1221,7 +1219,7 @@ const Navbar = () => {
                       }}
                       onMouseEnter={(e) => {
                         if (code !== lang) {
-                          e.currentTarget.style.color = '#2563eb';
+                          e.currentTarget.style.color = '#0B4C8C';
                         }
                       }}
                       onMouseLeave={(e) => {
@@ -1304,7 +1302,7 @@ const Navbar = () => {
                   }}
                   aria-label="Поиск"
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = '#2563eb';
+                    e.currentTarget.style.borderColor = '#0B4C8C';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.borderColor = '#000000';

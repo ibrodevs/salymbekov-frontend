@@ -1,3 +1,5 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaArrowLeft, FaUserGraduate, FaGraduationCap, FaAward, FaBook, FaGlobeAmericas } from 'react-icons/fa';
 import madaminovPhoto from '../../../assets/science/professors/gapyr-madaminov-300x257.png';

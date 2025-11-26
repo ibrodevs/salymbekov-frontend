@@ -94,6 +94,7 @@ const DocHospital = lazy(() => import('./pages/clinical/DocHospital'))
 const Agreements = lazy(() => import('./pages/clinical/Agreements'))
 
 // Science lazy imports
+const ScienceMain = lazy(() => import('./pages/science/ScienceMain'))
 const ScientificCouncil = lazy(() => import('./pages/science/management/ScientificCouncil'))
 const ScientificTechnicalCouncil = lazy(() => import('./pages/science/management/ScientificTechnicalCouncil'))
 const Bioethics = lazy(() => import('./pages/science/management/Bioethics'))
@@ -127,6 +128,7 @@ const StudentConferences = lazy(() => import('./pages/science/student/StudentCon
 const CurrentProjects = lazy(() => import('./pages/science/projects/CurrentProjects'))
 const Grants = lazy(() => import('./pages/science/projects/Grants'))
 const International = lazy(() => import('./pages/science/projects/International'))
+const SeanPark = lazy(() => import('./pages/science/professors/SeanPark'))
 const Pendharkar = lazy(() => import('./pages/science/professors/Pendharkar'))
 const Potapova = lazy(() => import('./pages/science/professors/Potapova'))
 const Osmonov = lazy(() => import('./pages/science/professors/Osmonov'))
@@ -240,6 +242,7 @@ const App = () => {
           <Route path="/clinical/doc-hospital" element={<DocHospital />} />
           <Route path="/clinical/agreements" element={<Agreements />} />
           {/* Lazy Science */}
+          <Route path="/science" element={<ScienceMain />} />
           <Route path="/science/management" element={<ManagementScience />} />
           <Route path="/science/management/scientific-council" element={<ScientificCouncil />} />
           <Route path="/science/management/scientific-technical-council" element={<ScientificTechnicalCouncil />} />
@@ -250,6 +253,7 @@ const App = () => {
           <Route path="/science/events/conferences" element={<Conferences />} />
           <Route path="/science/conferences/:id" element={<ConferenceDetail />} />
           <Route path="/science/professors" element={<Professors />} />
+          <Route path="/science/professors/sean-park" element={<SeanPark />} />
           <Route path="/science/professors/pendharkar" element={<Pendharkar />} />
           <Route path="/science/professors/potapova" element={<Potapova />} />
           <Route path="/science/professors/osmonov" element={<Osmonov />} />

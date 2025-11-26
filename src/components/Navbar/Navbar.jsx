@@ -658,11 +658,11 @@ const Navbar = () => {
                 },
                 { 
                   label: 'Научные проекты', 
-                  path: '/science/projects',
                   children: [
-                    { label: 'Текущие проекты', path: '/science/projects/current' },
-                    { label: 'Гранты', path: '/science/projects/grants' },
-                    { label: 'Международное сотрудничество', path: '/science/projects/international' }
+                    { label: 'Урология' },
+                    { label: 'Гинекология' },
+                    { label: 'Офтальмология' },
+                    { label: 'Онкология' }
                   ]
                 }
               ]

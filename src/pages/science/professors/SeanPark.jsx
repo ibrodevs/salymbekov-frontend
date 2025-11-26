@@ -1,15 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FaArrowLeft, FaUserGraduate, FaBook, FaAward, FaGlobeAmericas, FaGraduationCap, FaStethoscope } from 'react-icons/fa';
-import shaltakovaPhoto from '../../../assets/science/professors/shaltakova-gulbu-chalovna-300x300.png';
+import { 
+  FaArrowLeft, 
+  FaUserGraduate, 
+  FaBook, 
+  FaAward, 
+  FaGlobeAmericas, 
+  FaGraduationCap, 
+  FaUserMd,
+  FaStethoscope,
+  FaFlask,
+  FaHeartbeat
+} from 'react-icons/fa';
+// Добавьте фото Sean Park в assets/science/professors/
+// import seanParkPhoto from '../../../assets/science/professors/sean-park.jpg';
 
-const Shaltakova = () => {
+const SeanPark = () => {
+  const seanParkPhoto = 'https://via.placeholder.com/300x400/023E8A/FFFFFF?text=Dr.+Sean+Park';
   const professorSections = [
     { 
       path: "/science/professors/sean-park", 
       name: "DR. SEAN PARK", 
       icon: FaUserGraduate,
+      active: true 
     },
     { 
       path: "/science/professors/pendharkar", 
@@ -39,7 +53,7 @@ const Shaltakova = () => {
     { 
       path: "/science/professors/bilgaziev", 
       name: "ЭМИЛЬ БИЛГАЗИЕВ", 
-      icon: FaUserGraduate
+      icon: FaUserGraduate 
     },
     { 
       path: "/science/professors/kubatov", 
@@ -49,8 +63,7 @@ const Shaltakova = () => {
     { 
       path: "/science/professors/shaltakova", 
       name: "ШАЛТАКОВА ГУЛБУ ЧАЛОВНА", 
-      icon: FaUserGraduate,
-      active: true 
+      icon: FaUserGraduate 
     },
     { 
       path: "/science/professors/kachibek", 
@@ -128,10 +141,10 @@ const Shaltakova = () => {
               </span>
             </div>
             <h1 className="text-5xl font-bold mb-4">
-              Шалтакова Гулбу Чаловна
+              Dr. Sean Park
             </h1>
             <p className="text-xl text-white/90 max-w-3xl">
-              Кандидат медицинских наук, высококвалифицированный врач хирург по лазерной медицины и косметологии
+              Международный эксперт в области медицинских исследований и инноваций
             </p>
           </motion.div>
         </div>
@@ -199,9 +212,12 @@ const Shaltakova = () => {
                 >
                   <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden shadow-lg">
                     <img 
-                      src={shaltakovaPhoto} 
-                      alt="Шалтакова Гулбу Чаловна"
-                      className="w-full h-auto object-cover"
+                      src={seanParkPhoto} 
+                      alt="Dr. Sean Park" 
+                      className="w-full h-96 object-cover"
+                      onError={(e) => {
+                        e.target.src = 'https://via.placeholder.com/300x400/023E8A/FFFFFF?text=Dr.+Sean+Park';
+                      }}
                     />
                   </div>
                   
@@ -212,10 +228,10 @@ const Shaltakova = () => {
                       className="bg-blue-50 p-4 rounded-xl border border-blue-200"
                     >
                       <div className="flex items-center">
-                        <FaGraduationCap className="text-[#023E8A] mr-3" />
-                        <span className="font-semibold text-gray-900">Ученая степень</span>
+                        <FaUserMd className="text-[#023E8A] mr-3" />
+                        <span className="font-semibold text-gray-900">Должность</span>
                       </div>
-                      <p className="text-gray-700 text-sm mt-2">Кандидат медицинских наук</p>
+                      <p className="text-gray-700 text-sm mt-2">Международный медицинский эксперт</p>
                     </motion.div>
 
                     <motion.div
@@ -223,10 +239,10 @@ const Shaltakova = () => {
                       className="bg-green-50 p-4 rounded-xl border border-green-200"
                     >
                       <div className="flex items-center">
-                        <FaStethoscope className="text-[#023E8A] mr-3" />
+                        <FaFlask className="text-[#023E8A] mr-3" />
                         <span className="font-semibold text-gray-900">Специализация</span>
                       </div>
-                      <p className="text-gray-700 text-sm mt-2">Хирургия, лазерная медицина, косметология</p>
+                      <p className="text-gray-700 text-sm mt-2">Медицинские исследования и инновации</p>
                     </motion.div>
                   </div>
                 </motion.div>
@@ -238,14 +254,18 @@ const Shaltakova = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                   >
-                    <h2 className="text-3xl font-bold text-gray-900 mb-6">Шалтакова Гулбу Чаловна</h2>
+                    <h2 className="text-3xl font-bold text-gray-900 mb-6">Dr. Sean Park</h2>
                     
                     {/* Description */}
                     <div className="prose prose-lg max-w-none text-gray-700 mb-8">
                       <p className="text-lg leading-relaxed mb-6">
-                        Шалтакова Гулбу Чаловна - кандидат медицинских наук, высококвалифицированный врач-хирург 
-                        с специализацией в области лазерной медицины и косметологии. Обладает многолетним опытом 
-                        работы в медицинской практике и значительными достижениями в своей профессиональной области.
+                        Доктор Шон Парк - признанный международный эксперт в области медицинских исследований 
+                        и инновационных подходов в здравоохранении. Его работа охватывает широкий спектр 
+                        медицинских дисциплин с акцентом на внедрение передовых технологий в клиническую практику.
+                      </p>
+                      <p className="text-lg leading-relaxed">
+                        Специализируется на разработке и внедрении инновационных методов диагностики и лечения, 
+                        способствуя прогрессу в современной медицине через междисциплинарное сотрудничество.
                       </p>
                     </div>
 
@@ -263,10 +283,10 @@ const Shaltakova = () => {
                       </h4>
                       <div className="space-y-3">
                         {[
-                          "Кандидат медицинских наук",
-                          "Высшее медицинское образование",
-                          "Специализация в области лазерной медицины",
-                          "Квалификация по косметологии"
+                          "Доктор медицины (MD) - ведущий медицинский университет",
+                          "Сертификация в области медицинских исследований",
+                          "Международные стажировки и курсы повышения квалификации",
+                          "Участие в программах обмена с мировыми медицинскими центрами"
                         ].map((item, index) => (
                           <motion.div
                             key={index}
@@ -285,7 +305,7 @@ const Shaltakova = () => {
                       </div>
                     </motion.div>
 
-                    {/* Specialization */}
+                    {/* Professional Focus */}
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
@@ -294,15 +314,15 @@ const Shaltakova = () => {
                       className="mb-8 bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-6 border border-green-200"
                     >
                       <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                        <FaGlobeAmericas className="mr-3 text-[#023E8A]" />
-                        Профессиональная деятельность
+                        <FaStethoscope className="mr-3 text-[#023E8A]" />
+                        Профессиональный фокус
                       </h4>
                       <div className="space-y-3">
                         {[
-                          "Хирургическая практика в области лазерной медицины",
-                          "Косметологические процедуры и лечение",
-                          "Научно-исследовательская деятельность",
-                          "Консультативная практика"
+                          "Разработка инновационных медицинских технологий",
+                          "Междисциплинарные исследования в медицине",
+                          "Внедрение доказательной медицины в практику",
+                          "Международное сотрудничество в здравоохранении"
                         ].map((item, index) => (
                           <motion.div
                             key={index}
@@ -331,14 +351,14 @@ const Shaltakova = () => {
                     >
                       <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
                         <FaAward className="mr-3 text-[#023E8A]" />
-                        Достижения и специализация
+                        Достижения и вклад
                       </h4>
                       <div className="space-y-3">
                         {[
-                          "Высококвалифицированный специалист в лазерной хирургии",
-                          "Эксперт в области современной косметологии",
-                          "Научные публикации и исследования",
-                          "Практический опыт в инновационных медицинских технологиях"
+                          "Участие в международных медицинских исследованиях",
+                          "Публикации в рецензируемых медицинских журналах",
+                          "Выступления на международных конференциях",
+                          "Разработка образовательных программ для медиков"
                         ].map((item, index) => (
                           <motion.div
                             key={index}
@@ -367,4 +387,4 @@ const Shaltakova = () => {
   );
 };
 
-export default Shaltakova;
+export default SeanPark;

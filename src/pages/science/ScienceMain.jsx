@@ -9,7 +9,20 @@ import {
   FaGraduationCap,
   FaLightbulb,
   FaCalendarAlt,
-  FaTrophy
+  FaTrophy,
+  FaUniversity,
+  FaChalkboardTeacher,
+  FaNewspaper,
+  FaMicrophone,
+  FaComments,
+  FaLayerGroup,
+  FaUserFriends,
+  FaMedal,
+  FaVial,
+  FaHospitalAlt,
+  FaBaby,
+  FaEye,
+  FaRibbon
 } from "react-icons/fa";
 
 const ScienceMain = () => {
@@ -25,14 +38,25 @@ const ScienceMain = () => {
 
   // Быстрые ссылки
   const quickLinks = [
-    { to: "/science/management", icon: "🏛️", title: t('science.main.links.management'), desc: t('science.main.links.managementDesc') },
-    { to: "/science/publications", icon: "📚", title: t('science.main.links.publications'), desc: t('science.main.links.publicationsDesc') },
-    { to: "/science/library", icon: "📖", title: t('science.main.links.library'), desc: t('science.main.links.libraryDesc') },
-    { to: "/science/labs", icon: "🔬", title: t('science.main.links.labs'), desc: t('science.main.links.labsDesc') },
-    { to: "/science/professors", icon: "👨‍🏫", title: t('science.main.links.professors'), desc: t('science.main.links.professorsDesc') },
-    { to: "/science/events", icon: "🎓", title: t('science.main.links.events'), desc: t('science.main.links.eventsDesc') },
-    { to: "/science/student-science", icon: "🎯", title: t('science.main.links.studentScience'), desc: t('science.main.links.studentScienceDesc') },
-    { to: "/science/projects", icon: "💡", title: t('science.main.links.projects'), desc: t('science.main.links.projectsDesc') }
+    { to: "/science/management", icon: <FaUniversity className="text-[#023E8A]" />, title: "Органы управления", desc: "Научно-технический совет", category: "management" },
+    { to: "/science/professors", icon: <FaChalkboardTeacher className="text-[#023E8A]" />, title: "Профессорско-преподавательский состав", desc: "Наши ведущие профессора и преподаватели", category: "professors" },
+    { to: "/science/publications/journal", icon: <FaBook className="text-[#023E8A]" />, title: "Научный журнал", desc: "Публикации наших исследователей", category: "publications" },
+    { to: "/science/publications/periodicals", icon: <FaNewspaper className="text-[#023E8A]" />, title: "Периодические издания", desc: "Регулярные научные издания", category: "publications" },
+    { to: "/science/events/conferences", icon: <FaMicrophone className="text-[#023E8A]" />, title: "Конференции", desc: "Научные конференции и симпозиумы", category: "events" },
+    { to: "/science/events/master-classes", icon: <FaGraduationCap className="text-[#023E8A]" />, title: "Мастер-классы", desc: "Образовательные мастер-классы", category: "events" },
+    { to: "/science/events/round-tables", icon: <FaComments className="text-[#023E8A]" />, title: "Круглые столы", desc: "Дискуссии и обсуждения", category: "events" },
+    { to: "/science/library", icon: <FaLayerGroup className="text-[#023E8A]" />, title: "Библиотека", desc: "Электронная библиотека университета", category: "library" },
+    { to: "/science/student-science/clubs", icon: <FaUserFriends className="text-[#023E8A]" />, title: "Научные кружки", desc: "Студенческие научные объединения", category: "students" },
+    { to: "/science/student-science/conferences", icon: <FaMedal className="text-[#023E8A]" />, title: "Студенческие конференции", desc: "Научные мероприятия для студентов", category: "students" },
+    { to: "/science/labs", icon: <FaVial className="text-[#023E8A]" />, title: "Лаборатории", desc: "Современные научные лаборатории", category: "labs" }
+  ];
+
+  // Научные проекты (некликабельные)
+  const scientificProjects = [
+    { title: "Урология", icon: <FaHospitalAlt className="text-[#023E8A]" /> },
+    { title: "Гинекология", icon: <FaBaby className="text-[#023E8A]" /> },
+    { title: "Офтальмология", icon: <FaEye className="text-[#023E8A]" /> },
+    { title: "Онкология", icon: <FaRibbon className="text-[#023E8A]" /> }
   ];
 
   return (
@@ -185,7 +209,7 @@ const ScienceMain = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 whileHover={{ scale: 1.05, y: -5 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
               >
                 <Link
                   to={link.to}
@@ -201,6 +225,44 @@ const ScienceMain = () => {
                     {link.desc}
                   </p>
                 </Link>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Научные проекты (некликабельные) */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.7 }}
+          className="mt-16"
+        >
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">
+              Научные проекты
+            </h2>
+            <p className="text-xl text-gray-600">
+              Основные направления наших исследований
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {scientificProjects.map((project, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.05, y: -5 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 shadow-lg border border-gray-200 text-center"
+              >
+                <div className="text-5xl mb-4">
+                  {project.icon}
+                </div>
+                <h3 className="text-2xl font-bold text-gray-800">
+                  {project.title}
+                </h3>
               </motion.div>
             ))}
           </div>

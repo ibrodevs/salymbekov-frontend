@@ -5,75 +5,86 @@ import pendharkarPhoto from '../../../assets/science/professors/dinesh-pendharka
 const Pendharkar = () => {
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <div className="bg-gray-600 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold">Dr Dinesh Pendharkar</h1>
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        {[...Array(8)].map((_, i) => (
+          <motion.div key={i} className="absolute rounded-full opacity-5" style={{ width: Math.random()*80+40, height: Math.random()*80+40, left: `${Math.random()*100}%`, top: `${Math.random()*100}%`, background: 'linear-gradient(135deg, #023E8A, #0077B6)' }} animate={{ y:[0,-30,0], x:[0,15,0], scale:[1,1.1,1] }} transition={{ duration:5+Math.random()*3, repeat:Infinity, ease:'easeInOut' }} />
+        ))}
+      </div>
+      <div className="relative bg-gradient-to-br from-[#023E8A] via-[#0077B6] to-[#023E8A] text-white py-24 overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.div className="absolute inset-0" animate={{ backgroundPosition:['0% 0%','100% 100%'] }} transition={{ duration:20, repeat:Infinity, repeatType:'reverse' }} style={{ backgroundImage:'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 0%, transparent 50%)', backgroundSize:'200% 200%' }} />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Link to="/science" className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors group">
+            <FaArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" /> Назад к науке
+          </Link>
+          <motion.div initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6 }}>
+            <div className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-4"><span className="text-white/90 text-sm font-medium">Профессорско-преподавательский состав</span></div>
+            <h1 className="text-5xl font-bold mb-4">Dr Dinesh Pendharkar</h1>
+            <p className="text-xl text-white/90 max-w-3xl">Онколог с 35-летним международным опытом</p>
+          </motion.div>
         </div>
       </div>
-
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="flex flex-col md:flex-row gap-8">
-          {/* Left Sidebar - Menu */}
-          <aside className="md:w-64 flex-shrink-0">
-            <div className="bg-white rounded-lg shadow-md overflow-hidden sticky top-4">
-              <nav>
-                <Link to="/science/professors" className="block px-4 py-3 border-b border-gray-200 hover:bg-gray-50 text-gray-700">
-                  DR. SEAN PARK
-                </Link>
-                <Link to="/science/professors/pendharkar" className="block px-4 py-3 border-b border-gray-200 bg-blue-50 text-blue-600 font-semibold">
-                  DR DINESH PENDHARKAR
-                </Link>
-                <Link to="/science/professors/potapova" className="block px-4 py-3 border-b border-gray-200 hover:bg-gray-50 text-gray-700">
-                  ОЛЬГА ПОТАПОВА
-                </Link>
-                <Link to="/science/professors/osmonov" className="block px-4 py-3 border-b border-gray-200 hover:bg-gray-50 text-gray-700">
-                  ДАНИЯР ОСМОНОВ
-                </Link>
-                <Link to="/science/professors/erkebaev" className="block px-4 py-3 border-b border-gray-200 hover:bg-gray-50 text-gray-700">
-                  ЭРКЕБАЕВ АБДЫГАНЫ ЭРКЕБАЕВИЧ
-                </Link>
-                <Link to="/science/professors/madaminov" className="block px-4 py-3 border-b border-gray-200 hover:bg-gray-50 text-gray-700">
-                  ГАПЫР МАДАМИНОВ
-                </Link>
-                <Link to="/science/professors/bilgaziev" className="block px-4 py-3 border-b border-gray-200 hover:bg-gray-50 text-gray-700">
-                  ЭМИЛЬ БИЛГАЗИЕВ
-                </Link>
-                <Link to="/science/professors/kubatov" className="block px-4 py-3 border-b border-gray-200 hover:bg-gray-50 text-gray-700">
-                  ЭДУАРД КУБАТОВ
-                </Link>
-                <Link to="/science/professors/shaltakova" className="block px-4 py-3 hover:bg-gray-50 text-gray-700">
-                  ШАЛТАКОВА ГУЛБУ ЧАЛОВНА
-                </Link>
-                <Link to="/science/professors/kachibek" className="block px-4 py-3 hover:bg-gray-50 text-gray-700">
-                  ПРОФЕССОР КАЧИБЕК
-                </Link>
-              </nav>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="flex flex-col lg:flex-row gap-8">
+          <motion.aside initial={{ opacity:0, x:-20 }} animate={{ opacity:1, x:0 }} transition={{ duration:0.6 }} className="lg:w-64 flex-shrink-0">
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden sticky top-4 border border-gray-100">
+              <div className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-4"><div className="flex items-center"><FaUserGraduate className="mr-3 text-xl" /><h3 className="font-bold text-lg">ПРОФЕССОРА</h3></div></div>
+              <nav className="p-2">{professorSections.map(s => { const Icon = s.icon; return (
+                <motion.div key={s.path} whileHover={{ scale:1.02 }} whileTap={{ scale:0.98 }}>
+                  <Link to={s.path} className={`flex items-center w-full text-left px-4 py-3 rounded-lg mb-1 transition-all ${s.active ? 'bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white shadow-md':'text-gray-700 hover:bg-gray-50'}`}>
+                    <Icon className="mr-3 text-lg" /><span className="font-medium text-sm">{s.name}</span>
+                  </Link>
+                </motion.div> ); })}</nav>
             </div>
-          </aside>
-
-          {/* Right Content Area */}
+          </motion.aside>
           <main className="flex-1">
-            <div className="bg-white rounded-lg shadow-md p-8">
-              <div className="flex flex-col md:flex-row gap-6 items-start">
-                <div className="md:w-64 flex-shrink-0">
-                  <div className="bg-gray-200 rounded-lg overflow-hidden">
-                    <img 
-                      src={pendharkarPhoto} 
-                      alt="Dr. Dinesh Pendharkar" 
-                      style={{ width: '100%', height: 'auto', display: 'block' }}
-                    />
+            <motion.div initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6 }} className="bg-white rounded-2xl shadow-lg p-8 mb-8 border border-gray-100 hover:shadow-xl transition-shadow">
+              <div className="flex flex-col lg:flex-row gap-8 items-start">
+                <motion.div initial={{ opacity:0, x:-20 }} animate={{ opacity:1, x:0 }} transition={{ duration:0.6 }} className="lg:w-80 flex-shrink-0">
+                  <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden shadow-lg">
+                    <img src={pendharkarPhoto} alt="Dr Dinesh Pendharkar" className="w-full h-auto object-cover" />
                   </div>
-                </div>
+                  <div className="mt-6 space-y-4">
+                    <motion.div whileHover={{ scale:1.02 }} className="bg-blue-50 p-4 rounded-xl border border-blue-200"><div className="flex items-center"><FaGraduationCap className="text-[#023E8A] mr-3" /><span className="font-semibold text-gray-900">Должность</span></div><p className="text-gray-700 text-sm mt-2">Ведущий онколог, профессор</p></motion.div>
+                    <motion.div whileHover={{ scale:1.02 }} className="bg-green-50 p-4 rounded-xl border border-green-200"><div className="flex items-center"><FaGlobeAmericas className="text-[#023E8A] mr-3" /><span className="font-semibold text-gray-900">Международная деятельность</span></div><p className="text-gray-700 text-sm mt-2">Конференции, клинические исследования</p></motion.div>
+                  </div>
+                </motion.div>
                 <div className="flex-1">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-4">Dr Dinesh Pendharkar</h2>
-                  <p className="text-gray-700 leading-relaxed">
-                    Доктор Пендхаркар - опытный онколог из Индии. Он имеет 35-летний опыт работы в области онкологии. Его области знаний включают общую онкологию, лейкемии, гематологические злокачественные новообразования, рак груди, лечение синдрома кисти и стопы. Он защитил докторскую диссертацию. Кандидат онкологии Академии медицинских наук, Москве. В настоящее время он является директором Сарводайского онкологического института, Фаридабад. Он также является приглашенным профессором Медицинского колледжа РД Герди в Удджайне.
-                  </p>
+                  <motion.div initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6, delay:0.2 }}>
+                    <h2 className="text-3xl font-bold text-gray-900 mb-6">Dr Dinesh Pendharkar</h2>
+                    <div className="prose prose-lg max-w-none text-gray-700 mb-8"><p className="text-lg leading-relaxed mb-6">Опытный онколог с фокусом на таргетную терапию, лейкемии и инновационные методы лечения рака. Активно участвует в образовательных и клинических программах.</p></div>
+                    <motion.div initial={{ opacity:0, y:20 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} transition={{ duration:0.6 }} className="mb-8 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-200">
+                      <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center"><FaBook className="mr-3 text-[#023E8A]" /> Образование</h4>
+                      <div className="space-y-3">{['Медицинский факультет (онкология)','Докторская диссертация','Специализированные международные курсы'].map((item,i)=>(
+                        <motion.div key={i} initial={{ opacity:0, x:-20 }} whileInView={{ opacity:1, x:0 }} viewport={{ once:true }} transition={{ duration:0.4, delay:i*0.1 }} className="flex items-center p-3 bg-white/70 rounded-lg">
+                          <div className="w-8 h-8 bg-gradient-to-br from-[#023E8A] to-[#0077B6] rounded-full flex items-center justify-center mr-3"><span className="text-white text-sm font-bold">{i+1}</span></div>
+                          <span className="text-gray-700">{item}</span>
+                        </motion.div>))}
+                      </div>
+                    </motion.div>
+                    <motion.div initial={{ opacity:0, y:20 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} transition={{ duration:0.6, delay:0.1 }} className="mb-8 bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-6 border border-green-200">
+                      <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center"><FaGlobeAmericas className="mr-3 text-[#023E8A]" /> Опыт работы</h4>
+                      <div className="space-y-3">{['Клиническая онкология','Лейкемии и гематология','Таргетная терапия рака'].map((item,i)=>(
+                        <motion.div key={i} initial={{ opacity:0, x:-20 }} whileInView={{ opacity:1, x:0 }} viewport={{ once:true }} transition={{ duration:0.4, delay:i*0.1 }} className="flex items-center p-3 bg-white/70 rounded-lg">
+                          <div className="w-8 h-8 bg-gradient-to-br from-[#023E8A] to-[#0077B6] rounded-full flex items-center justify-center mr-3"><span className="text-white text-sm font-bold">{i+1}</span></div>
+                          <span className="text-gray-700">{item}</span>
+                        </motion.div>))}
+                      </div>
+                    </motion.div>
+                    <motion.div initial={{ opacity:0, y:20 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} transition={{ duration:0.6, delay:0.2 }} className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-6 border border-purple-200">
+                      <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center"><FaAward className="mr-3 text-[#023E8A]" /> Достижения</h4>
+                      <div className="space-y-3">{['35+ лет практики','Международные конференции','Развитие таргетной терапии'].map((item,i)=>(
+                        <motion.div key={i} initial={{ opacity:0, x:-20 }} whileInView={{ opacity:1, x:0 }} viewport={{ once:true }} transition={{ duration:0.4, delay:i*0.1 }} className="flex items-center p-3 bg-white/70 rounded-lg">
+                          <div className="w-8 h-8 bg-gradient-to-br from-[#023E8A] to-[#0077B6] rounded-full flex items-center justify-center mr-3"><span className="text-white text-sm font-bold">{i+1}</span></div>
+                          <span className="text-gray-700">{item}</span>
+                        </motion.div>))}
+                      </div>
+                    </motion.div>
+                  </motion.div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </main>
         </div>
       </div>

@@ -1,93 +1,428 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import seanParkPhoto from '../../assets/science/professors/qip-shot-screen-150-240x300 (1).png';
+import { motion } from 'framer-motion';
+import { FaArrowLeft, FaUserGraduate, FaBook, FaAward, FaGlobeAmericas, FaGraduationCap } from 'react-icons/fa';
 
 const Professors = () => {
+  const [activeProfessor, setActiveProfessor] = useState('erkebaev');
+
+  const professorSections = [
+    { 
+      id: 'sean-park',
+      name: "DR. SEAN PARK", 
+      icon: FaUserGraduate,
+    },
+    { 
+      id: 'pendharkar',
+      name: "DR DINESH PENDHARKAR", 
+      icon: FaUserGraduate 
+    },
+    { 
+      id: 'potapova',
+      name: "ОЛЬГА ПОТАПОВА", 
+      icon: FaUserGraduate 
+    },
+    { 
+      id: 'osmonov',
+      name: "ДАНИЯР ОСМОНОВ", 
+      icon: FaUserGraduate 
+    },
+    { 
+      id: 'erkebaev',
+      name: "ЭРКЕБАЕВ АБДЫГАНЫ ЭРКЕБАЕВИЧ", 
+      icon: FaUserGraduate 
+    },
+    { 
+      id: 'madaminov',
+      name: "ГАПЫР МАДАМИНОВ", 
+      icon: FaUserGraduate 
+    },
+    { 
+      id: 'bilgaziev',
+      name: "ЭМИЛЬ БИЛГАЗИЕВ", 
+      icon: FaUserGraduate 
+    },
+    { 
+      id: 'kubatov',
+      name: "ЭДУАРД КУБАТОВ", 
+      icon: FaUserGraduate 
+    },
+    { 
+      id: 'shaltakova',
+      name: "ШАЛТАКОВА ГУЛБУ ЧАЛОВНА", 
+      icon: FaUserGraduate 
+    },
+    { 
+      id: 'kachibek',
+      name: "ПРОФЕССОР КАЧИБЕК", 
+      icon: FaUserGraduate 
+    }
+  ];
+
+  const professorData = {
+    'bilgaziev': {
+      name: "Эмиль Билгазиев",
+      photo: "../../../assets/science/professors/photo_2023-06-09_17-07-45-225x300.webp",
+      position: "Основатель Американского института технологий, технический директор",
+      description: "Эмиль Билгазиев, PhD – Основатель Американского института технологий, разработчик, технический директор одного из подразделений Facebook, выпускник КТУ 'Манас' и получивший образование в США (PhD in Computer Science, 2013, Master in Computer Science, 2009, University of Houston). Эмиль Билгазиев также известных компаниях, как Shell, LinkedIn, Logichub, Uber, Snapchet",
+      education: [
+        "PhD in Computer Science, 2013, University of Houston",
+        "Master in Computer Science, 2009, University of Houston",
+        "КТУ 'Манас'"
+      ],
+      experience: [
+        "Технический директор подразделения Facebook",
+        "Основатель Американского института технологий",
+        "Работа в компаниях: Shell, LinkedIn, Logichub, Uber, Snapchat"
+      ],
+      achievements: [
+        "Разработчик передовых технологических решений",
+        "Эксперт в области компьютерных наук",
+        "Международный опыт в IT-индустрии"
+      ]
+    },
+    'erkebaev': {
+      name: "Эркебаев Абдыганы Эркебаевич",
+      photo: "../../../assets/science/professors/qip-shot-screen-151-300x293.png",
+      position: "Государственный и общественный деятель, писатель, академик",
+      description: "Абдыганы Эркебаев (1953) — киргизский государственный и общественный деятель, критик, писатель. Доктор филологических наук (1992 г.), академик Национальной академии наук Кыргызской Республики (1993 г.). Работал президентом Национального ИА Кыргызстана (с 11 апреля 2012 года по апрель 2017 года). В настоящее время (с 3 мая 2019 года) работает председателем Совета Ассамблеи народа Кыргызстана.",
+      education: [
+        "Доктор филологических наук (1992 г.)",
+        "Академик Национальной академии наук Кыргызской Республики (1993 г.)"
+      ],
+      experience: [
+        "Президент Национального ИА Кыргызстана (2012-2017)",
+        "Председатель Совета Ассамблеи народа Кыргызстана (с 2019)",
+        "Государственный и общественный деятель"
+      ],
+      achievements: [
+        "Известный писатель и критик",
+        "Вклад в развитие науки и культуры Кыргызстана",
+        "Общественная деятельность и руководство"
+      ]
+    },
+    'kachibek': {
+      name: "Д.м.н., профессор Узакбаев Камчибек Аскарбекович",
+      photo: "https://salymbekov.com/wp-content/uploads/2025/10/560461145_18089210416843726_5595910347630151498_n-300x300.jpg",
+      position: "Доктор медицинских наук, профессор",
+      description: "Выдающийся ученый-медик с многолетним опытом преподавания и научной деятельности. Активный участник международных форумов, выступающий с докладами о развитии традиционной китайской медицины (ТКМ) в Кыргызстане и Центральной Азии, способствует расширению международного сотрудничества и внедрению инновационных подходов в здравоохранении.",
+      education: [
+        "Доктор медицинских наук",
+        "Профессор",
+        "Международные научные стажировки и участие в форумах"
+      ],
+      experience: [
+        "Участие в Международном Евразийском форуме (Сиань, КНР)",
+        "Доклад о развитии традиционной китайской медицины в Центральной Азии",
+        "Сотрудничество с Комитетом по делам здравоохранения города Сиань",
+        "Научно-исследовательская и преподавательская деятельность"
+      ],
+      achievements: [
+        "Расширение международного медицинского сотрудничества",
+        "Вклад в развитие ТКМ в регионе",
+        "Организация обмена исследованиями и подготовкой кадров",
+        "Популяризация инновационных методов лечения"
+      ]
+    }
+    // Добавьте данные для остальных профессоров по аналогии
+  };
+
+  const currentProfessor = professorData[activeProfessor] || professorData['erkebaev'];
+
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Animated Background */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full opacity-5"
+            style={{
+              width: Math.random() * 80 + 40,
+              height: Math.random() * 80 + 40,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              background: 'linear-gradient(135deg, #023E8A, #0077B6)'
+            }}
+            animate={{
+              y: [0, -30, 0],
+              x: [0, 15, 0],
+              scale: [1, 1.1, 1]
+            }}
+            transition={{
+              duration: 5 + Math.random() * 3,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+        ))}
+      </div>
+
       {/* Hero Section */}
-      <div className="bg-gray-600 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold">Dr. Sean Park</h1>
+      <div className="relative bg-gradient-to-br from-[#023E8A] via-[#0077B6] to-[#023E8A] text-white py-24 overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.div
+            className="absolute inset-0"
+            animate={{
+              backgroundPosition: ['0% 0%', '100% 100%'],
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              repeatType: "reverse"
+            }}
+            style={{
+              backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 0%, transparent 50%)',
+              backgroundSize: '200% 200%'
+            }}
+          />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Link 
+            to="/science"
+            className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors group"
+          >
+            <FaArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" />
+            Назад к науке
+          </Link>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-4">
+              <span className="text-white/90 text-sm font-medium">
+                Профессорско-преподавательский состав
+              </span>
+            </div>
+            <h1 className="text-5xl font-bold mb-4">
+              {currentProfessor.name}
+            </h1>
+            <p className="text-xl text-white/90 max-w-3xl">
+              {currentProfessor.position}
+            </p>
+          </motion.div>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="flex flex-col md:flex-row gap-8">
-          {/* Left Sidebar - Menu */}
-          <aside className="md:w-64 flex-shrink-0">
-            <div className="bg-white rounded-lg shadow-md overflow-hidden sticky top-4">
-              <nav>
-                <Link to="/science/professors" className="block px-4 py-3 border-b border-gray-200 bg-blue-50 text-blue-600 font-semibold">
-                  DR. SEAN PARK
-                </Link>
-                <Link to="/science/professors/pendharkar" className="block px-4 py-3 border-b border-gray-200 hover:bg-gray-50 text-gray-700">
-                  DR DINESH PENDHARKAR
-                </Link>
-                <Link to="/science/professors/potapova" className="block px-4 py-3 border-b border-gray-200 hover:bg-gray-50 text-gray-700">
-                  ОЛЬГА ПОТАПОВА
-                </Link>
-                <Link to="/science/professors/osmonov" className="block px-4 py-3 border-b border-gray-200 hover:bg-gray-50 text-gray-700">
-                  ДАНИЯР ОСМОНОВ
-                </Link>
-                <Link to="/science/professors/erkebaev" className="block px-4 py-3 border-b border-gray-200 hover:bg-gray-50 text-gray-700">
-                  ЭРКЕБАЕВ АБДЫГАНЫ ЭРКЕБАЕВИЧ
-                </Link>
-                <Link to="/science/professors/madaminov" className="block px-4 py-3 border-b border-gray-200 hover:bg-gray-50 text-gray-700">
-                  ГАПЫР МАДАМИНОВ
-                </Link>
-                <Link to="/science/professors/bilgaziev" className="block px-4 py-3 border-b border-gray-200 hover:bg-gray-50 text-gray-700">
-                  ЭМИЛЬ БИЛГАЗИЕВ
-                </Link>
-                <Link to="/science/professors/kubatov" className="block px-4 py-3 border-b border-gray-200 hover:bg-gray-50 text-gray-700">
-                  ЭДУАРД КУБАТОВ
-                </Link>
-                <Link to="/science/professors/shaltakova" className="block px-4 py-3 hover:bg-gray-50 text-gray-700">
-                  ШАЛТАКОВА ГУЛБУ ЧАЛОВНА
-                </Link>
-                <Link to="/science/professors/kachibek" className="block px-4 py-3 hover:bg-gray-50 text-gray-700">
-                  ПРОФЕССОР КАЧИБЕК
-                </Link>
-              </nav>
-            </div>
-          </aside>
-
-          {/* Right Content Area */}
-          <main className="flex-1">
-            <div className="bg-white rounded-lg shadow-md p-8">
-              <div className="flex flex-col md:flex-row gap-6 items-start">
-                <div className="md:w-64 flex-shrink-0">
-                  <div className="bg-gray-200 rounded-lg overflow-hidden">
-                    <img 
-                      src={seanParkPhoto} 
-                      alt="Dr. Sean Park" 
-                      style={{ width: '100%', height: 'auto', display: 'block' }}
-                    />
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-4">Dr. Sean, Sung Hun, Park</h2>
-                  <p className="text-gray-700 leading-relaxed mb-4">
-                    Доктор Шон Сунг Хун Пак — корейский сеолкогущированный уролог, специализирующийся на хирургии имплантации полового члена.
-                  </p>
-                  <p className="text-gray-700 leading-relaxed mb-4">
-                    В 2012 году доктор Пак поехал в США, чтобы пройти обучение в области ортопедической урологии, особенно в области хирургии имплантации полового члена. Изучая там он, к счастью, встретил доктора Стивена К. Уилсона, доктора медицинских наук. FACS, FRCS, врача, которого считают крестным отцом протезной урологии.
-                  </p>
-                  <div className="mt-6">
-                    <p className="text-gray-900 font-semibold mb-2">Дополнительная информация:</p>
-                    <ol className="list-decimal list-inside space-y-1 text-blue-600">
-                      <li>
-                        <a href="#" className="hover:underline">SUPS Invites Dr. Park as Body Lan Trainer for Penile Implants</a>
-                      </li>
-                      <li>
-                        <a href="#" className="hover:underline">Dr. Park as a Course Director, ED Surgery</a>
-                      </li>
-                    </ol>
-                  </div>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* Sidebar - Menu */}
+          <motion.aside
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="lg:w-64 flex-shrink-0"
+          >
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden sticky top-4 border border-gray-100">
+              <div className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-4">
+                <div className="flex items-center">
+                  <FaUserGraduate className="mr-3 text-xl" />
+                  <h3 className="font-bold text-lg">ПРОФЕССОРА</h3>
                 </div>
               </div>
+              <nav className="p-2">
+                {professorSections.map((section) => {
+                  const SectionIcon = section.icon;
+                  const hasOwnPage = section.id === 'bilgaziev' || section.id === 'kubatov';
+                  
+                  if (hasOwnPage) {
+                    return (
+                      <motion.div
+                        key={section.id}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        <Link
+                          to={`/science/professors/${section.id}`}
+                          className="flex items-center w-full text-left px-4 py-3 rounded-lg mb-1 transition-all text-gray-700 hover:bg-gray-50"
+                        >
+                          <SectionIcon className="mr-3 text-lg" />
+                          <span className="font-medium text-sm">{section.name}</span>
+                        </Link>
+                      </motion.div>
+                    );
+                  }
+                  
+                  return (
+                    <motion.div
+                      key={section.id}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <button
+                        onClick={() => setActiveProfessor(section.id)}
+                        className={`flex items-center w-full text-left px-4 py-3 rounded-lg mb-1 transition-all ${
+                          activeProfessor === section.id
+                            ? 'bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white shadow-md'
+                            : 'text-gray-700 hover:bg-gray-50'
+                        }`}
+                      >
+                        <SectionIcon className="mr-3 text-lg" />
+                        <span className="font-medium text-sm">{section.name}</span>
+                      </button>
+                    </motion.div>
+                  );
+                })}
+              </nav>
             </div>
+          </motion.aside>
+
+          {/* Main Content Area */}
+          <main className="flex-1">
+            <motion.div
+              key={activeProfessor}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="bg-white rounded-2xl shadow-lg p-8 mb-8 border border-gray-100 hover:shadow-xl transition-shadow"
+            >
+              <div className="flex flex-col lg:flex-row gap-8 items-start">
+                {/* Photo Section */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="lg:w-80 flex-shrink-0"
+                >
+                  <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden shadow-lg">
+                    <img 
+                      src={currentProfessor.photo} 
+                      alt={currentProfessor.name}
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
+                  
+                  {/* Quick Info */}
+                  <div className="mt-6 space-y-4">
+                    <motion.div
+                      whileHover={{ scale: 1.02 }}
+                      className="bg-blue-50 p-4 rounded-xl border border-blue-200"
+                    >
+                      <div className="flex items-center">
+                        <FaGraduationCap className="text-[#023E8A] mr-3" />
+                        <span className="font-semibold text-gray-900">Должность</span>
+                      </div>
+                      <p className="text-gray-700 text-sm mt-2">{currentProfessor.position}</p>
+                    </motion.div>
+                  </div>
+                </motion.div>
+
+                {/* Content Section */}
+                <div className="flex-1">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                  >
+                    <h2 className="text-3xl font-bold text-gray-900 mb-6">{currentProfessor.name}</h2>
+                    
+                    {/* Description */}
+                    <div className="prose prose-lg max-w-none text-gray-700 mb-8">
+                      <p className="text-lg leading-relaxed mb-6">
+                        {currentProfessor.description}
+                      </p>
+                    </div>
+
+                    {/* Education */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6 }}
+                      className="mb-8 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-200"
+                    >
+                      <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                        <FaBook className="mr-3 text-[#023E8A]" />
+                        Образование
+                      </h4>
+                      <div className="space-y-3">
+                        {currentProfessor.education.map((item, index) => (
+                          <motion.div
+                            key={index}
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.4, delay: index * 0.1 }}
+                            className="flex items-center p-3 bg-white/70 rounded-lg"
+                          >
+                            <div className="w-8 h-8 bg-gradient-to-br from-[#023E8A] to-[#0077B6] rounded-full flex items-center justify-center mr-3">
+                              <span className="text-white text-sm font-bold">{index + 1}</span>
+                            </div>
+                            <span className="text-gray-700">{item}</span>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </motion.div>
+
+                    {/* Experience */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: 0.1 }}
+                      className="mb-8 bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-6 border border-green-200"
+                    >
+                      <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                        <FaGlobeAmericas className="mr-3 text-[#023E8A]" />
+                        Опыт работы
+                      </h4>
+                      <div className="space-y-3">
+                        {currentProfessor.experience.map((item, index) => (
+                          <motion.div
+                            key={index}
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.4, delay: index * 0.1 }}
+                            className="flex items-center p-3 bg-white/70 rounded-lg"
+                          >
+                            <div className="w-8 h-8 bg-gradient-to-br from-[#023E8A] to-[#0077B6] rounded-full flex items-center justify-center mr-3">
+                              <span className="text-white text-sm font-bold">{index + 1}</span>
+                            </div>
+                            <span className="text-gray-700">{item}</span>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </motion.div>
+
+                    {/* Achievements */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: 0.2 }}
+                      className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-6 border border-purple-200"
+                    >
+                      <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                        <FaAward className="mr-3 text-[#023E8A]" />
+                        Достижения и награды
+                      </h4>
+                      <div className="space-y-3">
+                        {currentProfessor.achievements.map((item, index) => (
+                          <motion.div
+                            key={index}
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.4, delay: index * 0.1 }}
+                            className="flex items-center p-3 bg-white/70 rounded-lg"
+                          >
+                            <div className="w-8 h-8 bg-gradient-to-br from-[#023E8A] to-[#0077B6] rounded-full flex items-center justify-center mr-3">
+                              <span className="text-white text-sm font-bold">{index + 1}</span>
+                            </div>
+                            <span className="text-gray-700">{item}</span>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                </div>
+              </div>
+            </motion.div>
           </main>
         </div>
       </div>

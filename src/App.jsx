@@ -165,17 +165,47 @@ const Agreements = lazy(() => import('./pages/clinical/Agreements'))
 
 // Science lazy imports
 const ScientificCouncil = lazy(() => import('./pages/science/management/ScientificCouncil'))
+const ScientificTechnicalCouncil = lazy(() => import('./pages/science/management/ScientificTechnicalCouncil'))
 const Bioethics = lazy(() => import('./pages/science/management/Bioethics'))
 const YoungScientists = lazy(() => import('./pages/science/management/YoungScientists'))
+const ScienceDepartmentMng = lazy(() => import('./pages/science/management/Department'))
 const ScienceDepartment = lazy(() => import('./pages/science/Department'))
 const Professors = lazy(() => import('./pages/science/Professors'))
 const Publications = lazy(() => import('./pages/science/Publications'))
+const ScientificJournal = lazy(() => import('./pages/science/ScientificJournal'))
+const Periodicals = lazy(() => import('./pages/science/Periodicals'))
 const ScienceEvents = lazy(() => import('./pages/science/Events'))
 const Library = lazy(() => import('./pages/science/Library'))
 const StudentScience = lazy(() => import('./pages/science/StudentScience'))
+const StudentSociety = lazy(() => import('./pages/science/StudentSociety'))
 const Labs = lazy(() => import('./pages/science/Labs'))
+const Anatomy = lazy(() => import('./pages/science/labs/Anatomy'))
+const Biochemistry = lazy(() => import('./pages/science/labs/Biochemistry'))
+const Chemistry = lazy(() => import('./pages/science/labs/Chemistry'))
+const Biology = lazy(() => import('./pages/science/labs/Biology'))
+const Interactive = lazy(() => import('./pages/science/labs/Interactive'))
+const Computer = lazy(() => import('./pages/science/labs/Computer'))
+const Study = lazy(() => import('./pages/science/labs/Study'))
 const Projects = lazy(() => import('./pages/science/Projects'))
 const ManagementScience = lazy(() => import('./pages/science/Management'))
+const Conferences = lazy(() => import('./pages/science/Conferences'))
+const ConferenceDetail = lazy(() => import('./pages/science/ConferenceDetail'))
+const MasterClasses = lazy(() => import('./pages/science/events/MasterClasses'))
+const RoundTables = lazy(() => import('./pages/science/events/RoundTables'))
+const Clubs = lazy(() => import('./pages/science/student/Clubs'))
+const StudentConferences = lazy(() => import('./pages/science/student/StudentConferences'))
+const CurrentProjects = lazy(() => import('./pages/science/projects/CurrentProjects'))
+const Grants = lazy(() => import('./pages/science/projects/Grants'))
+const International = lazy(() => import('./pages/science/projects/International'))
+const Pendharkar = lazy(() => import('./pages/science/professors/Pendharkar'))
+const Potapova = lazy(() => import('./pages/science/professors/Potapova'))
+const Osmonov = lazy(() => import('./pages/science/professors/Osmonov'))
+const Erkebaev = lazy(() => import('./pages/science/professors/Erkebaev'))
+const Madaminov = lazy(() => import('./pages/science/professors/Madaminov'))
+const Bilgaziev = lazy(() => import('./pages/science/professors/Bilgaziev'))
+const Kubatov = lazy(() => import('./pages/science/professors/Kubatov'))
+const Shaltakova = lazy(() => import('./pages/science/professors/Shaltakova'))
+const Kachibek = lazy(() => import('./pages/science/professors/Kachibek'))
 
 // Student lazy imports
 const StudentCommunities = lazy(() => import('./pages/student/communities/StudentCommunities'))
@@ -348,16 +378,46 @@ const App = () => {
 
           {}
           <Route path="/science/management/scientific-council" element={<ScientificCouncil />} />
+          <Route path="/science/management/scientific-technical-council" element={<ScientificTechnicalCouncil />} />
           <Route path="/science/management/bioethics" element={<Bioethics />} />
           <Route path="/science/management/young-scientists" element={<YoungScientists />} />
+          <Route path="/science/management/department" element={<ScienceDepartmentMng />} />
           <Route path="/science/department" element={<ScienceDepartment />} />
+          <Route path="/science/events/conferences" element={<Conferences />} />
+          <Route path="/science/conferences/:id" element={<ConferenceDetail />} />
           <Route path="/science/professors" element={<Professors />} />
+          <Route path="/science/professors/pendharkar" element={<Pendharkar />} />
+          <Route path="/science/professors/potapova" element={<Potapova />} />
+          <Route path="/science/professors/osmonov" element={<Osmonov />} />
+          <Route path="/science/professors/erkebaev" element={<Erkebaev />} />
+          <Route path="/science/professors/madaminov" element={<Madaminov />} />
+          <Route path="/science/professors/bilgaziev" element={<Bilgaziev />} />
+          <Route path="/science/professors/kubatov" element={<Kubatov />} />
+          <Route path="/science/professors/shaltakova" element={<Shaltakova />} />
+          <Route path="/science/professors/kachibek" element={<Kachibek />} />
           <Route path="/science/publications" element={<Publications />} />
+          <Route path="/science/publications/journal" element={<ScientificJournal />} />
+          <Route path="/science/publications/periodicals" element={<Periodicals />} />
           <Route path="/science/events" element={<ScienceEvents />} />
           <Route path="/science/library" element={<Library />} />
           <Route path="/science/student-science" element={<StudentScience />} />
+          <Route path="/science/student-society" element={<StudentSociety />} />
+          <Route path="/science/student-science/clubs" element={<Clubs />} />
+          <Route path="/science/student-science/conferences" element={<StudentConferences />} />
+          <Route path="/science/events/master-classes" element={<MasterClasses />} />
+          <Route path="/science/events/round-tables" element={<RoundTables />} />
+          <Route path="/science/projects/current" element={<CurrentProjects />} />
+          <Route path="/science/projects/grants" element={<Grants />} />
+          <Route path="/science/projects/international" element={<International />} />
           <Route path="/science/labs" element={<Labs />} />
-          <Route path="/science/management" element={<ManagementScience />} />
+          <Route path="/science/labs/anatomy" element={<Anatomy />} />
+          <Route path="/science/labs/biochemistry" element={<Biochemistry />} />
+          <Route path="/science/labs/chemistry" element={<Chemistry />} />
+          <Route path="/science/labs/biology" element={<Biology />} />
+          <Route path="/science/labs/interactive" element={<Interactive />} />
+          <Route path="/science/labs/computer" element={<Computer />} />
+          <Route path="/science/labs/study" element={<Study />} />
+          <Route path="/science/projects" element={<Projects />} />
           {}
           <Route path="/student/communities" element={<StudentCommunities />} />
           <Route path="/student/resources" element={<Resources />} />

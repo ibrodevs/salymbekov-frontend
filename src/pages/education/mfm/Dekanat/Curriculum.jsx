@@ -1,14 +1,36 @@
-import { useTranslation } from 'react-i18next';
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { 
+  FaBook,
+  FaCalendarAlt,
+  FaDownload,
+  FaGraduationCap,
+  FaClock,
+  FaUserGraduate,
+  FaChartLine,
+  FaStethoscope,
+  FaArrowRight,
+  FaChevronDown
+} from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 const CurriculumPage = () => {
   const { t } = useTranslation();
+  const [expandedYears, setExpandedYears] = useState({});
+
+  const toggleYear = (year) => {
+    setExpandedYears(prev => ({
+      ...prev,
+      [year]: !prev[year]
+    }));
+  };
 
   const formatTextWithBold = (text) => {
     return text.split('\n').map((line, index) => {
       if (line.includes('<strong>')) {
         return (
           <p key={index} className="mb-4 leading-relaxed">
-            <strong className="text-xl">{line.replace(/<strong>|<\/strong>/g, '')}</strong>
+            <strong className="text-xl text-[#023E8A]">{line.replace(/<strong>|<\/strong>/g, '')}</strong>
           </p>
         );
       }
@@ -20,113 +42,293 @@ const CurriculumPage = () => {
     });
   };
 
+  // Статистика учебной программы
+  const stats = [
+    { number: "5-6", label: t('curriculum.stats.years'), icon: <FaClock className="text-[#023E8A]" /> },
+    { number: "300+", label: t('curriculum.stats.credits'), icon: <FaBook className="text-[#023E8A]" /> },
+    { number: "50+", label: t('curriculum.stats.courses'), icon: <FaGraduationCap className="text-[#023E8A]" /> },
+    { number: "100%", label: t('curriculum.stats.practical'), icon: <FaStethoscope className="text-[#023E8A]" /> }
+  ];
+
+  // Годы обучения
+  const years = [1, 2, 3, 4, 5];
+
+  // Кнопки учебных планов
+  const curriculumButtons = [
+    {
+      href: "https://salymbekov.com/wp-content/uploads/2023/10/uchebnyj-plan-5-let-jeksperimentalnyj.pdf",
+      label: t('curriculum.buttons.experimental5Year'),
+      icon: <FaDownload />
+    },
+    {
+      href: "https://salymbekov.com/wp-content/uploads/2023/10/uchebnyj-plan-5-let-na-2021-2022-uch.god.pdf",
+      label: t('curriculum.buttons.fiveYear2021'),
+      icon: <FaDownload />
+    },
+    {
+      href: "https://salymbekov.com/wp-content/uploads/2023/10/uchebnyj-plan-5-let-na-2023-2024-uch.god.pdf",
+      label: t('curriculum.buttons.fiveYear2023'),
+      icon: <FaDownload />
+    },
+    {
+      href: "https://salymbekov.com/wp-content/uploads/2023/10/uchebnyj-plan-6-let-na-2021-2022-uch.god.pdf",
+      label: t('curriculum.buttons.sixYear'),
+      icon: <FaDownload />
+    }
+  ];
+
   return (
-    <div className="min-h-screen">
-      {/* Header Section */}
-      <section 
-        className="relative py-20 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url('https://coolbackgrounds.imgix.net/1ImfDgm1Ze4X2YS2CRiQxN/a426817af36443afa06274e55836b3e3/pure-blue-background-0000ff.jpg?w=3840&q=60&auto=format,compress')` }}
-      >
-        <div className="absolute inset-0 bg-black/30"></div>
-        <div className="relative container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-white text-center">
+    <div className="min-h-screen bg-gray-50 relative overflow-hidden">
+      {/* Анимированный фон */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(15)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full opacity-5"
+            style={{
+              width: Math.random() * 100 + 50,
+              height: Math.random() * 100 + 50,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              background: `linear-gradient(135deg, #023E8A, #0077B6)`
+            }}
+            animate={{
+              y: [0, -40, 0],
+              opacity: [0.03, 0.1, 0.03],
+              scale: [1, 1.2, 1]
+            }}
+            transition={{
+              duration: 8 + Math.random() * 8,
+              repeat: Infinity,
+              delay: Math.random() * 5
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 py-20">
+        {/* Герой секция */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <motion.div
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="inline-flex items-center gap-3 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-3 rounded-full mb-6"
+          >
+            <FaBook className="text-xl" />
+            <span className="font-semibold">{t('curriculum.badge')}</span>
+          </motion.div>
+
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
             {t('curriculum.title')}
           </h1>
-        </div>
-      </section>
+          <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            {t('curriculum.subtitle')}
+          </p>
+        </motion.div>
 
-      {/* Content Section */}
-      <section className="py-12 bg-white">
-        <div className="container mx-auto px-4 max-w-4xl">
-          {/* 1st Year Section */}
-          <div className="mb-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-8">
-              {t('curriculum.year1.title')}
+        {/* Статистика */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
+        >
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.5 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              whileHover={{ scale: 1.05, y: -5 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group"
+            >
+              <div className="flex justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                {stat.icon}
+              </div>
+              <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent mb-2">
+                {stat.number}
+              </div>
+              <div className="text-gray-600 font-medium">{stat.label}</div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Учебные годы с аккордеоном */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="mb-16"
+        >
+          <div className="grid gap-6">
+            {years.map((year, index) => (
+              <motion.div
+                key={year}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="bg-white rounded-3xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300"
+              >
+                <div className="p-8">
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-2xl flex items-center justify-center text-white font-bold text-lg">
+                        {year}
+                      </div>
+                      <h2 className="text-3xl font-bold text-gray-800">
+                        {t(`curriculum.year${year}.title`)}
+                      </h2>
+                    </div>
+                    <motion.button
+                      onClick={() => toggleYear(year)}
+                      className="flex items-center gap-2 text-[#023E8A] font-semibold hover:bg-blue-50 px-4 py-2 rounded-xl transition-colors duration-300"
+                    >
+                      {expandedYears[year] ? t('curriculum.showLess') : t('curriculum.showMore')}
+                      <motion.div
+                        animate={{ rotate: expandedYears[year] ? 180 : 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <FaChevronDown className="text-sm" />
+                      </motion.div>
+                    </motion.button>
+                  </div>
+                  
+                  <div className="text-gray-600">
+                    {expandedYears[year] ? (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        className="mt-4"
+                      >
+                        {formatTextWithBold(t(`curriculum.year${year}.description`))}
+                      </motion.div>
+                    ) : (
+                      <p className="text-lg text-gray-600 leading-relaxed">
+                        {t(`curriculum.year${year}.description`).split('\n')[0]}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Дополнительная информация для развернутого состояния */}
+                  {expandedYears[year] && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.2 }}
+                      className="mt-6 pt-6 border-t border-gray-200"
+                    >
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div className="flex items-center gap-3 text-gray-600">
+                          <FaClock className="text-[#023E8A]" />
+                          <span>{t('curriculum.details.credits')}: 60 ECTS</span>
+                        </div>
+                        <div className="flex items-center gap-3 text-gray-600">
+                          <FaBook className="text-[#023E8A]" />
+                          <span>{t('curriculum.details.courses')}: 10-12</span>
+                        </div>
+                        <div className="flex items-center gap-3 text-gray-600">
+                          <FaStethoscope className="text-[#023E8A]" />
+                          <span>{t('curriculum.details.practice')}: {year >= 3 ? 'Да' : 'Нет'}</span>
+                        </div>
+                        <div className="flex items-center gap-3 text-gray-600">
+                          <FaUserGraduate className="text-[#023E8A]" />
+                          <span>{t('curriculum.details.level')}: {year <= 2 ? 'Бакалавр' : 'Магистр'}</span>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Кнопки учебных планов */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.7 }}
+          className="mb-20"
+        >
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">
+              {t('curriculum.downloads.title')}
             </h2>
-            <div className="text-gray-700">
-              {formatTextWithBold(t('curriculum.year1.description'))}
-            </div>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              {t('curriculum.downloads.description')}
+            </p>
           </div>
 
-          {/* 2nd Year Section */}
-          <div className="mb-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-8">
-              {t('curriculum.year2.title')}
-            </h2>
-            <div className="text-gray-700">
-              {formatTextWithBold(t('curriculum.year2.description'))}
-            </div>
-          </div>
-
-          {/* 3rd Year Section */}
-          <div className="mb-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-8">
-              {t('curriculum.year3.title')}
-            </h2>
-            <div className="text-gray-700">
-              {formatTextWithBold(t('curriculum.year3.description'))}
-            </div>
-          </div>
-
-          {/* 4th Year Section */}
-          <div className="mb-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-8">
-              {t('curriculum.year4.title')}
-            </h2>
-            <div className="text-gray-700">
-              {formatTextWithBold(t('curriculum.year4.description'))}
-            </div>
-          </div>
-
-          {/* 5th Year Section */}
-          <div className="mb-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-8">
-              {t('curriculum.year5.title')}
-            </h2>
-            <div className="text-gray-700">
-              {formatTextWithBold(t('curriculum.year5.description'))}
-            </div>
-          </div>
-
-          {/* Buttons Section */}
-          <div className="mt-12">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <a 
-                href="https://salymbekov.com/wp-content/uploads/2023/10/uchebnyj-plan-5-let-jeksperimentalnyj.pdf" 
-                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded text-center transition duration-300"
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {curriculumButtons.map((button, index) => (
+              <motion.a
+                key={index}
+                href={button.href}
                 target="_blank"
                 rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.05, y: -5 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 group text-center"
               >
-                {t('curriculum.buttons.experimental5Year')}
-              </a>
-              <a 
-                href="https://salymbekov.com/wp-content/uploads/2023/10/uchebnyj-plan-5-let-na-2021-2022-uch.god.pdf" 
-                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded text-center transition duration-300"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {t('curriculum.buttons.fiveYear2021')}
-              </a>
-              <a 
-                href="https://salymbekov.com/wp-content/uploads/2023/10/uchebnyj-plan-5-let-na-2023-2024-uch.god.pdf" 
-                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded text-center transition duration-300"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {t('curriculum.buttons.fiveYear2023')}
-              </a>
-              <a 
-                href="https://salymbekov.com/wp-content/uploads/2023/10/uchebnyj-plan-6-let-na-2021-2022-uch.god.pdf" 
-                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded text-center transition duration-300"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {t('curriculum.buttons.sixYear')}
-              </a>
-            </div>
+                <div className="flex items-center justify-center gap-3 text-[#023E8A] mb-3">
+                  {button.icon}
+                  <h3 className="text-xl font-bold">{button.label}</h3>
+                </div>
+                <div className="text-gray-600 text-sm">
+                  {t('curriculum.downloads.format')} • {t('curriculum.downloads.size')}
+                </div>
+              </motion.a>
+            ))}
           </div>
-        </div>
-      </section>
+        </motion.div>
+
+        {/* Призыв к действию */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.9 }}
+          className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-3xl p-12 text-center text-white"
+        >
+          <h2 className="text-4xl font-bold mb-4">
+            {t('curriculum.cta.title')}
+          </h2>
+          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+            {t('curriculum.cta.description')}
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <motion.a
+              href="#downloads"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-white text-[#023E8A] px-8 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3"
+            >
+              {t('curriculum.cta.downloadAll')}
+              <FaDownload />
+            </motion.a>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="border-2 border-white text-white px-8 py-4 rounded-2xl font-semibold hover:bg-white/10 transition-all duration-300"
+            >
+              {t('curriculum.cta.contactAdvisor')}
+            </motion.button>
+          </div>
+        </motion.div>
+      </div>
     </div>
   );
 };

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { FaArrowLeft, FaCalendarAlt, FaVideo, FaMapMarkerAlt } from 'react-icons/fa';
 import { conferences as source } from '../../data/conferences';
 
 const Conferences = () => {
@@ -15,61 +17,168 @@ const Conferences = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Animated Background */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full opacity-5"
+            style={{
+              width: Math.random() * 80 + 40,
+              height: Math.random() * 80 + 40,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              background: 'linear-gradient(135deg, #023E8A, #0077B6)'
+            }}
+            animate={{
+              y: [0, -30, 0],
+              x: [0, 15, 0],
+              scale: [1, 1.1, 1]
+            }}
+            transition={{
+              duration: 5 + Math.random() * 3,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+        ))}
+      </div>
+
       {/* Hero Section */}
-      <div
-        className="relative text-white py-20"
-        style={{
-          backgroundImage: 'url(https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1920&q=80)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center'
-        }}
-      >
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Научные конференции</h1>
-          <p className="text-lg text-gray-200">Международные и национальные конференции, симпозиумы и научные мероприятия университета</p>
+      <div className="relative bg-gradient-to-br from-[#023E8A] via-[#0077B6] to-[#023E8A] text-white py-24 overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.div
+            className="absolute inset-0"
+            animate={{
+              backgroundPosition: ['0% 0%', '100% 100%'],
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              repeatType: "reverse"
+            }}
+            style={{
+              backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 0%, transparent 50%)',
+              backgroundSize: '200% 200%'
+            }}
+          />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Link 
+            to="/science"
+            className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors group"
+          >
+            <FaArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" />
+            Назад к науке
+          </Link>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <div className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-4">
+              <span className="text-white/90 text-sm font-medium">
+                Научные мероприятия
+              </span>
+            </div>
+            <h1 className="text-5xl font-bold mb-4">
+              Научные конференции
+            </h1>
+            <p className="text-xl text-white/90 max-w-3xl mx-auto">
+              Международные и национальные конференции, симпозиумы и научные мероприятия университета
+            </p>
+          </motion.div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {conferences.map(conference => (
-            <Link key={conference.id} to={`/science/conferences/${conference.id}`} className="group">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                <div className="relative w-full h-56 bg-gray-50">
-                  <div className="absolute inset-0 overflow-hidden">
-                    <img
+      {/* Main Content */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          {conferences.map((conference, index) => (
+            <motion.div
+              key={conference.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              whileHover={{ y: -5, scale: 1.02 }}
+            >
+              <Link to={`/science/conferences/${conference.id}`} className="group block">
+                <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-100">
+                  {/* Image Section */}
+                  <div className="relative w-full h-56 bg-gray-100 overflow-hidden">
+                    <motion.img
                       src={conference.image}
                       alt={conference.title}
-                      className="w-full h-full object-cover object-top scale-[1.02]"
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
                       loading="lazy"
+                      whileHover={{ scale: 1.05 }}
                     />
+                    <div className="absolute top-4 left-4">
+                      <span className="inline-block px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-semibold text-[#023E8A]">
+                        {conference.category}
+                      </span>
+                    </div>
                     {conference.videoUrl && (
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="bg-black/50 rounded-full p-3 backdrop-blur-sm">
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" className="w-8 h-8">
-                            <path d="M8 5v14l11-7z" />
-                          </svg>
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="bg-white/20 backdrop-blur-sm rounded-full p-4">
+                          <FaVideo className="w-6 h-6 text-white" />
                         </div>
                       </div>
                     )}
                   </div>
+
+                  {/* Content Section */}
+                  <div className="p-6">
+                    <div className="flex items-center text-sm text-gray-500 mb-3">
+                      <FaCalendarAlt className="mr-2 text-[#023E8A]" />
+                      <span>{conference.date || 'Дата уточняется'}</span>
+                    </div>
+                    
+                    <h3 className="text-lg font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-[#023E8A] transition-colors">
+                      {conference.title}
+                    </h3>
+                    
+                    <p className="text-gray-600 text-sm leading-relaxed line-clamp-3 mb-4">
+                      {conference.summary}
+                    </p>
+
+                    <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                      <span className="inline-flex items-center text-xs text-gray-500">
+                        <FaMapMarkerAlt className="mr-1" />
+                        {conference.location || 'Онлайн/Офлайн'}
+                      </span>
+                      <span className="text-xs font-semibold text-[#023E8A] group-hover:underline">
+                        Подробнее →
+                      </span>
+                    </div>
+                  </div>
                 </div>
-                <div className="p-5">
-                  <p className="text-[10px] tracking-wide text-gray-500 uppercase mb-2">{conference.category}</p>
-                  <h3 className="text-sm font-semibold text-gray-900 mb-2 line-clamp-3 group-hover:text-indigo-600 transition-colors">{conference.title}</h3>
-                  {conference.date && (
-                    <p className="text-xs font-medium text-gray-600">{conference.date}</p>
-                  )}
-                  <p className="mt-3 text-xs text-gray-600 line-clamp-4 min-h-[4.5rem]">{conference.summary}</p>
-                </div>
-              </div>
-            </Link>
+              </Link>
+            </motion.div>
           ))}
-        </div>
-        <div className="mt-12 text-xs text-gray-400">
-          <p>Примечание: названия и даты выровнены по материалам оригинального сайта. Пустые даты будут обновлены после публикации.</p>
-        </div>
+        </motion.div>
+
+        {/* Footer Note */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="mt-12 text-center"
+        >
+          <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+            <p className="text-sm text-gray-500">
+              Примечание: названия и даты выровнены по материалам оригинального сайта. Пустые даты будут обновлены после публикации.
+            </p>
+          </div>
+        </motion.div>
       </div>
     </div>
   );

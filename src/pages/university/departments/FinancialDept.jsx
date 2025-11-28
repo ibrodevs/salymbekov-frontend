@@ -441,11 +441,11 @@ const FinancialDept = () => {
                         <div className="space-y-3 mb-4">
                           <div className="flex justify-between items-center">
                             <span className="text-gray-600">{t('financial.tuition.perYear')}</span>
-                            <span className="text-lg font-bold text-[#023E8A]">{program.perYear} ₸</span>
+                            <span className="text-lg font-bold text-[#023E8A]">{program.perYear} </span>
                           </div>
                           <div className="flex justify-between items-center">
                             <span className="text-gray-600">{t('financial.tuition.perSemester')}</span>
-                            <span className="text-lg font-bold text-[#023E8A]">{program.perSemester} ₸</span>
+                            <span className="text-lg font-bold text-[#023E8A]">{program.perSemester} </span>
                           </div>
                         </div>
 

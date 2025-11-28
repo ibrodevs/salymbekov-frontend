@@ -155,7 +155,6 @@ const Navbar = () => {
           { label: t('universitySUB.managementDept'), path: '/university/departments/management' },
           { label: t('universitySUB.hrDept'), path: '/university/departments/hr' },
           { label: t('universitySUB.qualityDept'), path: '/university/departments/quality' },
-          { label: t('universitySUB.researchDept'), path: '/university/departments' },
           { label: t('universitySUB.internationalDept'), path: '/university/departments/international' },
           { label: t('universitySUB.studentDept'), path: '/university/departments/student' },
           { label: t('universitySUB.careerCenter'), path: '/university/departments/career' }
@@ -395,7 +394,7 @@ const Navbar = () => {
                     backgroundColor: '#ffffff'
                   }}
                 >
-                  {t('university.structureAndManagement')}
+                  {t('universitySUB.structureAndManagement')}
                 </h3>
                 <div
                   style={{
@@ -446,30 +445,31 @@ const Navbar = () => {
             {
               icon: '🏛',
               title: t('educationSUB.ait'),
+              path: '',
               items: [
-                { label: `${t('commonSUB.about')} ${t('education.ait')}`, path: '/educationSUB/ait/about' },
-                { label: t('educationSUB.aitLeadership'), path: '/educationSUB/ait/leadership' },
+                { label: `${t('commonSUB.about')} ${t('educationSUB.ait')}`, path: '/education/ait/about' },
+                { label: t('educationSUB.aitLeadership'), path: '/education/ait/leadership' },
                 { 
                   label: t('educationSUB.aitDisciplines'), 
-                  path: '/educationSUB/ait/disciplines'
+                  path: '/education/ait/disciplines'
                 },
-                { label: t('commonSUB.teachers'), path: '/educationSUB/ait/teachers' },
-                { label: t('universitySUB.contacts'), path: '/educationSUB/ait/contacts' }
+                { label: t('commonSUB.teachers'), path: '/education/ait/teachers' },
+                { label: t('universitySUB.contacts'), path: '/education/ait/contacts' }
               ]
             },
             {
               icon: '💻',
               title: t('educationSUB.itCollege'),
               items: [
-                { label: `${t('commonSUB.about')} ${t('educationSUB.itCollege')}`, path: '/universitySUB/structure/it-college' },
-                { label: t('commonSUB.director'), path: '/educationSUB/itCollege/director' },
+                { label: `${t('commonSUB.about')} ${t('educationSUB.itCollege')}`, path: '/university/structure/it-college' },
+                { label: t('commonSUB.director'), path: '/education/itCollege/director' },
                 { 
                   label: t('commonSUB.specialties'), 
-                  path: '',
+                  
                   children: [
-                    { label: t('educationSUB.computerScience'), path: '/educationSUB/itCollege/specialties/diplom-computer-science' },
-                    { label: t('educationSUB.multimediaApps'), path: '/educationSUB/itCollege/specialties/diplom-multi-applications' },
-                    { label: t('educationSUB.mobileComputing'), path: '/educationSUB/itCollege/specialties/diplom-mobile-computing' }
+                    { label: t('educationSUB.computerScience'), path: '/education/itCollege/specialties/diplom-computer-science' },
+                    { label: t('educationSUB.multimediaApps'), path: '/education/itCollege/specialties/diplom-multi-applications' },
+                    { label: t('educationSUB.mobileComputing'), path: '/education/itCollege/specialties/diplom-mobile-computing' }
                   ]
                 },
                 {
@@ -478,14 +478,14 @@ const Navbar = () => {
                 },
                 { 
                   label: t('commonSUB.departments'), 
-                  path: '',
+                
                   children: [
-                    { label: t('educationSUB.generalDisciplines'), path: '/educationSUB/itCollege/departments/general' },
-                    { label: t('educationSUB.itDepartment'), path: '/educationSUB/itCollege/departments/information' }
+                    { label: t('educationSUB.generalDisciplines'), path: '/education/itCollege/departments/general' },
+                    { label: t('educationSUB.itDepartment'), path: '/education/itCollege/departments/information' }
                   ]
                 },
-                { label: t('educationSUB.pedagogicalCouncil'), path: '/educationSUB/itCollege/pedagogical-council' },
-                { label: t('educationSUB.contactsAndRequisites'), path: '/universitySUB/contacts' }
+                { label: t('educationSUB.pedagogicalCouncil'), path: '/education/itCollege/pedagogical-council' },
+                { label: t('educationSUB.contactsAndRequisites'), path: '/university/contacts' }
               ]
             }
           ]
@@ -496,6 +496,7 @@ const Navbar = () => {
             {
               icon: '➕',
               title: t('educationSUB.mfm'),
+              
               items: [
                 { label: `${t('commonSUB.about')} ${t('educationSUB.mfm')}`, path: '/education/mfm/about' },
                 { label: t('educationSUB.deanOffice'), path: '',
@@ -507,7 +508,7 @@ const Navbar = () => {
                 },
                 { 
                   label: t('commonSUB.programs'), 
-                  path: '',
+                  
                   children: [
                     { label: t('educationSUB.medicine5Years'), path: '/education/mfm/programs/five-years' },
                     { label: t('educationSUB.medicine6Years'), path: '/education/mfm/programs/six-years' }
@@ -521,10 +522,10 @@ const Navbar = () => {
               title: t('educationSUB.businessSchool'),
               items: [
                 { label: `${t('commonSUB.about')} ${t('educationSUB.businessSchool')}`, path: '/education/business-school/about' },
-                { label: t('commonSUB.director'), path: '/education/business-school/director' },
+             
                 { 
                   label: t('educationSUB.programsAndCourses'), 
-                  path: '',
+               
                   children: [
                     { label: t('educationSUB.smartik'), path: '/education/business-school/programs/smartik' },
                     { label: t('educationSUB.futureLeaders'), path: '/education/business-school/programs/future-leaders' },

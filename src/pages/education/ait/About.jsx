@@ -58,10 +58,10 @@ const AboutInstitutePage = () => {
   ];
 
   const stats = [
-    { number: "15+", label: t('about.stats.years'), icon: <FaAward className="text-[#023E8A]" /> },
+    { number: "15+", label: t('about.stats.ages'), icon: <FaAward className="text-[#023E8A]" /> },
     { number: "5000+", label: t('about.stats.students'), icon: <FaUsers className="text-[#023E8A]" /> },
     { number: "50+", label: t('about.stats.programs'), icon: <FaGraduationCap className="text-[#023E8A]" /> },
-    { number: "95%", label: t('about.stats.employment'), icon: <FaRocket className="text-[#023E8A]" /> }
+    { number: "95%", label: t('about.stats.focus'), icon: <FaRocket className="text-[#023E8A]" /> }
   ];
 
   const values = [

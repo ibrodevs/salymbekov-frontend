@@ -56,41 +56,35 @@ const MultimediaDevelopmentPage = () => {
     {
       icon: <FaAndroid className="text-3xl" />,
       name: "Android",
-      level: t('mobileComputing.platforms.advanced'),
       color: "from-green-500 to-emerald-500",
       description: t('mobileComputing.platforms.androidDesc')
     },
     {
       icon: <FaApple className="text-3xl" />,
       name: "iOS",
-      level: t('mobileComputing.platforms.advanced'),
       color: "from-gray-600 to-gray-800",
       description: t('mobileComputing.platforms.iosDesc')
     },
     {
       icon: <FaReact className="text-3xl" />,
       name: "React Native",
-      level: t('mobileComputing.platforms.expert'),
       color: "from-cyan-500 to-blue-500",
       description: t('mobileComputing.platforms.reactDesc')
     },
     {
       name: "Flutter",
-      level: t('mobileComputing.platforms.advanced'),
       color: "from-blue-500 to-indigo-500",
       description: t('mobileComputing.platforms.flutterDesc')
     },
     {
       icon: <FaServer className="text-3xl" />,
       name: "Backend",
-      level: t('mobileComputing.platforms.intermediate'),
       color: "from-purple-500 to-pink-500",
       description: t('mobileComputing.platforms.backendDesc')
     },
     {
       icon: <FaCloud className="text-3xl" />,
       name: "Cloud",
-      level: t('mobileComputing.platforms.intermediate'),
       color: "from-orange-500 to-red-500",
       description: t('mobileComputing.platforms.cloudDesc')
     }

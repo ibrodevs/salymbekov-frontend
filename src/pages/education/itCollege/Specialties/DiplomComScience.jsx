@@ -56,37 +56,31 @@ const SoftwareDevelopmentPage = () => {
     {
       icon: <FaPython className="text-3xl" />,
       name: "Python",
-      level: t('softwareDevelopment.technologies.advanced'),
       color: "from-blue-500 to-cyan-500"
     },
     {
       icon: <FaJava className="text-3xl" />,
       name: "Java",
-      level: t('softwareDevelopment.technologies.advanced'),
       color: "from-red-500 to-orange-500"
     },
     {
       icon: <FaJs className="text-3xl" />,
       name: "JavaScript",
-      level: t('softwareDevelopment.technologies.expert'),
       color: "from-yellow-400 to-yellow-600"
     },
     {
       icon: <FaDatabase className="text-3xl" />,
       name: "SQL/NoSQL",
-      level: t('softwareDevelopment.technologies.advanced'),
       color: "from-green-500 to-emerald-500"
     },
     {
       icon: <FaCloud className="text-3xl" />,
       name: "Cloud",
-      level: t('softwareDevelopment.technologies.intermediate'),
       color: "from-purple-500 to-pink-500"
     },
     {
       icon: <FaMobile className="text-3xl" />,
       name: "Mobile Dev",
-      level: t('softwareDevelopment.technologies.intermediate'),
       color: "from-indigo-500 to-blue-500"
     }
   ];

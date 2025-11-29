@@ -155,6 +155,7 @@ const Navbar = () => {
           { label: t('universitySUB.managementDept'), path: '/university/departments/management' },
           { label: t('universitySUB.hrDept'), path: '/university/departments/hr' },
           { label: t('universitySUB.qualityDept'), path: '/university/departments/quality' },
+          { label: t('universitySUB.researchDept'), path: '/university/departments' },
           { label: t('universitySUB.internationalDept'), path: '/university/departments/international' },
           { label: t('universitySUB.studentDept'), path: '/university/departments/student' },
           { label: t('universitySUB.careerCenter'), path: '/university/departments/career' }
@@ -371,7 +372,7 @@ const Navbar = () => {
                     marginBottom: '12px'
                   }}
                 >
-                  {t('navbar.university')}
+                  {t('navbarSUB.university')}
                 </h3>
                 <div
                   style={{
@@ -417,7 +418,7 @@ const Navbar = () => {
                     backgroundColor: '#ffffff'
                   }}
                 >
-                  {t('university.docsAndCooperation')}
+                  {t('universitySUB.docsAndCooperation')}
                 </h3>
                 <div
                   style={{
@@ -508,7 +509,7 @@ const Navbar = () => {
                 },
                 { 
                   label: t('commonSUB.programs'), 
-                  
+              
                   children: [
                     { label: t('educationSUB.medicine5Years'), path: '/education/mfm/programs/five-years' },
                     { label: t('educationSUB.medicine6Years'), path: '/education/mfm/programs/six-years' }
@@ -522,10 +523,10 @@ const Navbar = () => {
               title: t('educationSUB.businessSchool'),
               items: [
                 { label: `${t('commonSUB.about')} ${t('educationSUB.businessSchool')}`, path: '/education/business-school/about' },
-             
+                { label: t('commonSUB.director'), path: '/education/business-school/director' },
                 { 
                   label: t('educationSUB.programsAndCourses'), 
-               
+                  path: '',
                   children: [
                     { label: t('educationSUB.smartik'), path: '/education/business-school/programs/smartik' },
                     { label: t('educationSUB.futureLeaders'), path: '/education/business-school/programs/future-leaders' },

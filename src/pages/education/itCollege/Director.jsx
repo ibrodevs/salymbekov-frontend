@@ -25,35 +25,35 @@ const CollegeDirectorPage = () => {
   const [activeTab, setActiveTab] = useState("about");
 
   const stats = [
-    { number: "15+", label: t('director.stats.experience'), icon: <FaAward className="text-[#023E8A]" /> },
-    { number: "5000+", label: t('director.stats.students'), icon: <FaGraduationCap className="text-[#023E8A]" /> },
-    { number: "50+", label: t('director.stats.programs'), icon: <FaBook className="text-[#023E8A]" /> },
-    { number: "100+", label: t('director.stats.projects'), icon: <FaRocket className="text-[#023E8A]" /> }
+    { number: "15+", label: t('directorItCollage.stats.experience'), icon: <FaAward className="text-[#023E8A]" /> },
+    { number: "5000+", label: t('directorItCollage.stats.students'), icon: <FaGraduationCap className="text-[#023E8A]" /> },
+    { number: "50+", label: t('directorItCollage.stats.programs'), icon: <FaBook className="text-[#023E8A]" /> },
+    { number: "100+", label: t('directorItCollage.stats.projects'), icon: <FaRocket className="text-[#023E8A]" /> }
   ];
 
   const achievements = [
     {
       icon: <FaAward className="text-white" size={24} />,
-      title: t('director.achievements.excellence.title'),
-      description: t('director.achievements.excellence.description'),
+      title: t('directorItCollage.achievements.excellence.title'),
+      description: t('directorItCollage.achievements.excellence.description'),
       color: "bg-[#023E8A]"
     },
     {
       icon: <FaUsers className="text-white" size={24} />,
-      title: t('director.achievements.leadership.title'),
-      description: t('director.achievements.leadership.description'),
+      title: t('directorItCollage.achievements.leadership.title'),
+      description: t('directorItCollage.achievements.leadership.description'),
       color: "bg-[#0077B6]"
     },
     {
       icon: <FaLightbulb className="text-white" size={24} />,
-      title: t('director.achievements.innovation.title'),
-      description: t('director.achievements.innovation.description'),
+      title: t('directorItCollage.achievements.innovation.title'),
+      description: t('directorItCollage.achievements.innovation.description'),
       color: "bg-[#0096C7]"
     },
     {
       icon: <FaHeart className="text-white" size={24} />,
-      title: t('director.achievements.community.title'),
-      description: t('director.achievements.community.description'),
+      title: t('directorItCollage.achievements.community.title'),
+      description: t('directorItCollage.achievements.community.description'),
       color: "bg-[#00B4D8]"
     }
   ];
@@ -61,26 +61,26 @@ const CollegeDirectorPage = () => {
   const contactInfo = [
     {
       icon: <FaEnvelope className="text-[#023E8A]" />,
-      label: t('director.contact.email'),
+      label: t('directorItCollage.contact.email'),
       value: "director@salymbekov.com",
       link: "mailto:director@salymbekov.com"
     },
     {
       icon: <FaPhone className="text-[#023E8A]" />,
-      label: t('director.contact.phone'),
+      label: t('directorItCollage.contact.phone'),
       value: "+996 (312) 54-19-15",
       link: "tel:+996312541915"
     },
     {
       icon: <FaMapMarkerAlt className="text-[#023E8A]" />,
-      label: t('director.contact.address'),
-      value: t('director.contact.addressValue'),
+      label: t('directorItCollage.contact.address'),
+      value: t('directorItCollage.contact.addressValue'),
       link: "#"
     },
     {
       icon: <FaLinkedin className="text-[#023E8A]" />,
       label: "LinkedIn",
-      value: t('director.contact.linkedin'),
+      value: t('directorItCollage.contact.linkedin'),
       link: "#"
     }
   ];
@@ -157,14 +157,14 @@ const CollegeDirectorPage = () => {
               className="inline-flex items-center gap-3 bg-white/20 text-white px-6 py-3 rounded-full mb-6 backdrop-blur-sm"
             >
               <FaUserTie className="text-xl" />
-              <span className="font-semibold">{t('director.badge')}</span>
+              <span className="font-semibold">{t('directorItCollage.badge')}</span>
             </motion.div>
 
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-              {t('director.title')}
+              {t('directorItCollage.title')}
             </h1>
             <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed">
-              {t('director.subtitle')}
+              {t('directorItCollage.subtitle')}
             </p>
           </motion.div>
         </section>
@@ -214,13 +214,13 @@ const CollegeDirectorPage = () => {
             >
               <div className="inline-flex items-center gap-3 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-3 rounded-full mb-6">
                 <FaQuoteLeft className="text-lg" />
-                <span className="font-semibold">{t('director.greeting.badge')}</span>
+                <span className="font-semibold">{t('directorItCollage.greeting.badge')}</span>
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
-                {t('director.greeting.title')}
+                {t('directorItCollage.greeting.title')}
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                {t('director.greeting.subtitle')}
+                {t('directorItCollage.greeting.subtitle')}
               </p>
             </motion.div>
 
@@ -238,7 +238,7 @@ const CollegeDirectorPage = () => {
                   <div className="relative">
                     <img 
                       src="https://salymbekov.com/wp-content/uploads/2023/02/zhunushalieva-nurzat-manasovna-e1676031324273-975x1024.jpg" 
-                      alt={t('director.image.alt')}
+                      alt={t('directorItCollage.image.alt')}
                       className="w-full h-80 object-cover object-top"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
@@ -250,7 +250,7 @@ const CollegeDirectorPage = () => {
 
                   {/* Контактная информация */}
                   <div className="p-6">
-                    <h4 className="text-lg font-semibold text-gray-800 mb-4">{t('director.contact.title')}</h4>
+                    <h4 className="text-lg font-semibold text-gray-800 mb-4">{t('directorItCollage.contact.title')}</h4>
                     <div className="space-y-3">
                       {contactInfo.map((contact, index) => (
                         <motion.a
@@ -296,7 +296,7 @@ const CollegeDirectorPage = () => {
                             : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                         }`}
                       >
-                        {t(`director.tabs.${tab}`)}
+                        {t(`directorItCollage.tabs.${tab}`)}
                       </motion.button>
                     ))}
                   </div>
@@ -310,7 +310,7 @@ const CollegeDirectorPage = () => {
                         transition={{ duration: 0.5 }}
                       >
                         <div className="prose max-w-none text-gray-700 text-lg leading-relaxed">
-                          {formatTextWithBold(t('director.about.content'))}
+                          {formatTextWithBold(t('directorItCollage.about.content'))}
                         </div>
                       </motion.div>
                     )}
@@ -322,7 +322,7 @@ const CollegeDirectorPage = () => {
                         transition={{ duration: 0.5 }}
                       >
                         <div className="prose max-w-none text-gray-700 text-lg leading-relaxed">
-                          {formatTextWithBold(t('director.vision.content'))}
+                          {formatTextWithBold(t('directorItCollage.vision.content'))}
                         </div>
                       </motion.div>
                     )}
@@ -336,7 +336,7 @@ const CollegeDirectorPage = () => {
                         <div className="relative">
                           <FaQuoteLeft className="text-4xl text-[#023E8A] opacity-20 mb-4" />
                           <div className="prose max-w-none text-gray-700 text-lg leading-relaxed">
-                            {formatTextWithBold(t('director.message.content'))}
+                            {formatTextWithBold(t('directorItCollage.message.content'))}
                           </div>
                           <FaQuoteRight className="text-4xl text-[#023E8A] opacity-20 mt-4 ml-auto" />
                         </div>
@@ -355,10 +355,10 @@ const CollegeDirectorPage = () => {
                 >
                   <FaQuoteLeft className="text-3xl opacity-50 mb-4 mx-auto" />
                   <blockquote className="text-xl md:text-2xl font-light italic mb-4">
-                    {t('director.quote.text')}
+                    {t('directorItCollage.quote.text')}
                   </blockquote>
                   <div className="text-white/80 font-semibold">
-                    — {t('director.quote.author')}
+                    — {t('directorItCollage.quote.author')}
                   </div>
                 </motion.div>
               </motion.div>
@@ -373,7 +373,7 @@ const CollegeDirectorPage = () => {
               className="mb-16"
             >
               <h3 className="text-3xl font-bold text-center text-gray-800 mb-12">
-                {t('director.achievements.title')}
+                {t('directorItCollage.achievements.title')}
               </h3>
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {achievements.map((achievement, index) => (
@@ -408,10 +408,10 @@ const CollegeDirectorPage = () => {
               className="text-center"
             >
               <h2 className="text-4xl font-bold text-gray-800 mb-6">
-                {t('director.cta.title')}
+                {t('directorItCollage.cta.title')}
               </h2>
               <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-                {t('director.cta.description')}
+                {t('directorItCollage.cta.description')}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <motion.button
@@ -419,14 +419,14 @@ const CollegeDirectorPage = () => {
                   whileTap={{ scale: 0.95 }}
                   className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-8 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
                 >
-                  {t('director.cta.contact')}
+                  {t('directorItCollage.cta.contact')}
                 </motion.button>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="border-2 border-[#023E8A] text-[#023E8A] px-8 py-4 rounded-2xl font-semibold hover:bg-[#023E8A] hover:text-white transition-all duration-300"
                 >
-                  {t('director.cta.learnMore')}
+                  {t('directorItCollage.cta.learnMore')}
                 </motion.button>
               </div>
             </motion.div>

@@ -22,46 +22,46 @@ const Departments = () => {
   const tasks = [
     {
       icon: <FaUniversity className="text-white" size={24} />,
-      title: t('departments.tasks.organization.title'),
-      description: t('departments.tasks.organization.description'),
+      title: t('departmentsUniversity.tasks.organization.title'),
+      description: t('departmentsUniversity.tasks.organization.description'),
       color: "bg-[#023E8A]"
     },
     {
       icon: <FaGlobe className="text-white" size={24} />,
-      title: t('departments.tasks.international.title'),
-      description: t('departments.tasks.international.description'),
+      title: t('departmentsUniversity.tasks.international.title'),
+      description: t('departmentsUniversity.tasks.international.description'),
       color: "bg-[#0077B6]"
     },
     {
       icon: <FaUsers className="text-white" size={24} />,
-      title: t('departments.tasks.cooperation.title'),
-      description: t('departments.tasks.cooperation.description'),
+      title: t('departmentsUniversity.tasks.cooperation.title'),
+      description: t('departmentsUniversity.tasks.cooperation.description'),
       color: "bg-[#0096C7]"
     },
     {
       icon: <FaAward className="text-white" size={24} />,
-      title: t('departments.tasks.grants.title'),
-      description: t('departments.tasks.grants.description'),
+      title: t('departmentsUniversity.tasks.grants.title'),
+      description: t('departmentsUniversity.tasks.grants.description'),
       color: "bg-[#00B4D8]"
     }
   ];
 
   const programs = [
-    t('departments.programs.program1'),
-    t('departments.programs.program2'),
-    t('departments.programs.program3'),
-    t('departments.programs.program4'),
-    t('departments.programs.program5'),
-    t('departments.programs.program6')
+    t('departmentsUniversity.programs.program1'),
+    t('departmentsUniversity.programs.program2'),
+    t('departmentsUniversity.programs.program3'),
+    t('departmentsUniversity.programs.program4'),
+    t('departmentsUniversity.programs.program5'),
+    t('departmentsUniversity.programs.program6')
   ];
 
   const directorInfo = [
-    { label: t('departments.director.specialization'), value: t('departments.director.specializationValue') },
-    { label: t('departments.director.degree'), value: t('departments.director.degreeValue') },
-    { label: t('departments.director.professor'), value: t('departments.director.professorValue') },
-    { label: t('departments.director.education'), value: t('departments.director.educationValue') },
-    { label: t('departments.director.experience'), value: t('departments.director.experienceValue') },
-    { label: t('departments.director.publications'), value: t('departments.director.publicationsValue') }
+    { label: t('departmentsUniversity.director.specialization'), value: t('departmentsUniversity.director.specializationValue') },
+    { label: t('departmentsUniversity.director.degree'), value: t('departmentsUniversity.director.degreeValue') },
+    { label: t('departmentsUniversity.director.professor'), value: t('departmentsUniversity.director.professorValue') },
+    { label: t('departmentsUniversity.director.education'), value: t('departmentsUniversity.director.educationValue') },
+    { label: t('departmentsUniversity.director.experience'), value: t('departmentsUniversity.director.experienceValue') },
+    { label: t('departmentsUniversity.director.publications'), value: t('departmentsUniversity.director.publicationsValue') }
   ];
 
   return (
@@ -110,14 +110,14 @@ const Departments = () => {
             className="inline-flex items-center gap-3 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-3 rounded-full mb-6"
           >
             <FaMicroscope className="text-xl" />
-            <span className="font-semibold">{t('departments.badge')}</span>
+            <span className="font-semibold">{t('departmentsUniversity.badge')}</span>
           </motion.div>
 
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
-            {t('departments.title')}
+            {t('departmentsUniversity.title')}
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            {t('departments.subtitle')}
+            {t('departmentsUniversity.subtitle')}
           </p>
         </motion.div>
 
@@ -132,7 +132,7 @@ const Departments = () => {
           <div className="bg-white rounded-3xl shadow-2xl border border-gray-200 p-12">
             <div className="prose max-w-none text-lg text-gray-700 leading-relaxed">
               <p className="text-xl mb-6">
-                {t('departments.description')}
+                {t('departmentsUniversity.description')}
               </p>
             </div>
           </div>
@@ -155,10 +155,10 @@ const Departments = () => {
               </div>
               <div className="flex-1">
                 <h2 className="text-3xl font-bold mb-4">
-                  {t('departments.director.title')}
+                  {t('departmentsUniversity.director.title')}
                 </h2>
                 <h3 className="text-2xl font-semibold mb-6">
-                  {t('departments.director.name')}
+                  {t('departmentsUniversity.director.name')}
                 </h3>
                 <div className="grid md:grid-cols-2 gap-4">
                   {directorInfo.map((info, index) => (
@@ -188,26 +188,26 @@ const Departments = () => {
           <div className="bg-white rounded-3xl shadow-2xl border border-gray-200 p-12">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold text-gray-800 mb-4">
-                {t('departments.goalsTitle')}
+                {t('departmentsUniversity.goalsTitle')}
               </h2>
             </div>
             
             <div className="grid md:grid-cols-2 gap-8">
               <div className="bg-blue-50 rounded-2xl p-6">
                 <h3 className="text-2xl font-bold text-[#023E8A] mb-4">
-                  {t('departments.goal1.title')}
+                  {t('departmentsUniversity.goal1.title')}
                 </h3>
                 <p className="text-gray-700 text-lg leading-relaxed">
-                  {t('departments.goal1.description')}
+                  {t('departmentsUniversity.goal1.description')}
                 </p>
               </div>
               
               <div className="bg-cyan-50 rounded-2xl p-6">
                 <h3 className="text-2xl font-bold text-[#0077B6] mb-4">
-                  {t('departments.goal2.title')}
+                  {t('departmentsUniversity.goal2.title')}
                 </h3>
                 <p className="text-gray-700 text-lg leading-relaxed">
-                  {t('departments.goal2.description')}
+                  {t('departmentsUniversity.goal2.description')}
                 </p>
                 <div className="mt-4 space-y-2">
                   {programs.map((program, index) => (
@@ -232,10 +232,10 @@ const Departments = () => {
         >
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-800 mb-4">
-              {t('departments.tasksTitle')}
+              {t('departmentsUniversity.tasksTitle')}
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              {t('departments.tasksSubtitle')}
+              {t('departmentsUniversity.tasksSubtitle')}
             </p>
           </div>
 

@@ -3441,7 +3441,7 @@
       "consultation": "Request consultation"
     }
   },
-  "departments": {
+  "departmentsUniversity": {
     "badge": "Department",
     "title": "Department of Science and Advanced Research",
     "subtitle": "Strategic development of the university's scientific potential and international cooperation",
@@ -5670,7 +5670,7 @@
       "sendEmail": "Send Email"
     }
   },
-  "director": {
+  "directorItCollage": {
     "badge": "Leadership",
     "title": "College Director",
     "subtitle": "Leader in modern education and innovation",
@@ -6879,6 +6879,110 @@
       "title": "Ready to Start Your Educational Journey?",
       "description": "Join our community and get a quality education for your successful future",
       "apply": "Apply Now",
+      "learnMore": "Learn More"
+    }
+  },
+  "director": {
+    "badge": "SBS Director",
+    "title": "Beknazarov Zhakshylyk Beknazarovich",
+    "subtitle": "Director of Salymbekov Business School Educational Center",
+    "name": "Beknazarov Zhakshylyk Beknazarovich",
+    "position": "SBS Director",
+    "education": "J. Balasagyn Kyrgyz National University, Faculty of International Law",
+    "location": "Bishkek, Kyrgyzstan",
+    "educationTitle": "Education",
+    "educationDetails": "J. Balasagyn Kyrgyz National University, Faculty of International Law. Specialist in international law with experience in educational and social spheres.",
+    "certificatesTitle": "Certificates and Additional Education",
+    "careerTitle": "Career Path",
+    "careerSubtitle": "Professional experience and achievements in educational and social spheres",
+    "achievementsTitle": "Achievements and Awards",
+    "achievementsSubtitle": "Recognition of professional merits at national and international levels",
+    "career": {
+      "legalAssistant": {
+        "position": "Personal Assistant to Director",
+        "company": "Law Firm «Ergeshbaeva and Partners»"
+      },
+      "projectManager": {
+        "position": "Chief Project Manager",
+        "company": "Public Foundation «Abirov»"
+      },
+      "founder": {
+        "position": "Founder",
+        "company": "LLC «Keremet Holding»"
+      },
+      "socialWorker": {
+        "position": "Social Worker",
+        "company": "Public Association «Child Protection Center»"
+      },
+      "businessSchoolDirector": {
+        "position": "Chief Director",
+        "company": "Salymbekov Business School, Karakol"
+      },
+      "nationalDirector": {
+        "position": "Director of Main Republican Branch",
+        "company": "Salymbekov Business School"
+      }
+    },
+    "achievements": {
+      "studentAward": {
+        "title": "Laureate of International Youth Award «Best Student of CIS»",
+        "organization": "International Youth Award"
+      },
+      "ministryAward": {
+        "title": "Letter of Gratitude from Ministry of Education and Science",
+        "organization": "Ministry of Education and Science of KR"
+      },
+      "languageAward": {
+        "title": "Honorary Certificate of National Commission on State Language",
+        "organization": "National Commission on State Language under President of KR"
+      },
+      "cultureAward": {
+        "title": "Honorary Certificate of Ministry of Culture, Information and Tourism",
+        "organization": "Ministry of Culture, Information and Tourism of KR"
+      },
+      "youngLeaders": {
+        "title": "Gratitude Page of Third Forum of Young Leaders",
+        "organization": "Turkish Council"
+      },
+      "parliamentAward": {
+        "title": "Honorary Certificate of Jogorku Kenesh",
+        "organization": "Jogorku Kenesh of Kyrgyz Republic"
+      }
+    },
+    "certificates": {
+      "coaching": {
+        "title": "Fundamentals of Coaching Skills",
+        "organization": "PA «Child Protection Center»"
+      },
+      "youngLeaders": {
+        "title": "Young Leaders of Kyrgyzstan",
+        "organization": "PF «Fund for Progressive Initiatives»"
+      },
+      "breakthrough": {
+        "title": "State Leaders School «Breakthrough»",
+        "organization": "PF «Abirov»"
+      },
+      "rhetoric": {
+        "title": "Eloquence",
+        "organization": "PF «Askar Salymbekov Foundation»"
+      },
+      "entrepreneurship": {
+        "title": "Youth Entrepreneurship Training in Central Asia",
+        "organization": "International Program"
+      },
+      "youngEntrepreneur": {
+        "title": "Young Entrepreneur «PIK Kyrgyzstan»",
+        "organization": "Acceleration Program"
+      },
+      "civicEducation": {
+        "title": "Civic Education",
+        "organization": "Civic Education Academy"
+      }
+    },
+    "cta": {
+      "title": "Contact the Director",
+      "description": "Get consultation on educational programs and cooperation opportunities",
+      "contact": "Contact",
       "learnMore": "Learn More"
     }
   },

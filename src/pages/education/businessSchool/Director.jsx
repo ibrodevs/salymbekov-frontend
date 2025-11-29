@@ -226,20 +226,7 @@ const Director = () => {
             </div>
 
             <div className="flex gap-4 justify-center mt-6">
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="w-12 h-12 bg-[#0077B6] text-white rounded-xl flex items-center justify-center hover:bg-[#023E8A] transition-colors duration-300"
-              >
-                <FaLinkedin />
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="w-12 h-12 bg-[#0077B6] text-white rounded-xl flex items-center justify-center hover:bg-[#023E8A] transition-colors duration-300"
-              >
-                <FaEnvelope />
-              </motion.button>
+           
             </div>
           </motion.div>
 

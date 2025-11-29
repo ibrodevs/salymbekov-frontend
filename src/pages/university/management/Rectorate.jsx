@@ -16,13 +16,7 @@ import {
 const Rector = () => {
   const { t } = useTranslation();
 
-  // Статистика университета
-  const stats = [
-    { number: "5000+", label: t('rector.stats.students'), icon: <FaUserGraduate className="text-[#023E8A]" /> },
-    { number: "200+", label: t('rector.stats.teachers'), icon: <FaChalkboardTeacher className="text-[#023E8A]" /> },
-    { number: "50+", label: t('rector.stats.programs'), icon: <FaBook className="text-[#023E8A]" /> },
-    { number: "20+", label: t('rector.stats.years'), icon: <FaAward className="text-[#023E8A]" /> }
-  ];
+  // Статистика у
 
   // Данные проректоров
   const viceRectors = [
@@ -94,19 +88,17 @@ const Rector = () => {
       </div>
 
       <div className="relative z-10">
-        {/* Герой секция с белым фоном */}
-        <section className="relative py-20 bg-white">
+        {/* Герой секция - теперь с тем же фоном что и вся страница */}
+        <section className="relative py-20">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="container mx-auto px-6 text-center"
           >
             <motion.div
               initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true }}
+              animate={{ scale: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               className="inline-flex items-center gap-3 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-3 rounded-full mb-6"
             >
@@ -123,39 +115,13 @@ const Rector = () => {
 
         {/* Основной контент */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-20">
-          {/* Статистика */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
-          >
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                whileHover={{ scale: 1.05, y: -5 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group"
-              >
-                <div className="flex justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
-                  {stat.icon}
-                </div>
-                <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-gray-600 font-medium">{stat.label}</div>
-              </motion.div>
-            ))}
-          </motion.div>
+        
+        
 
           {/* Обращение ректора */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mb-16"
           >
@@ -173,7 +139,7 @@ const Rector = () => {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
                 <motion.div
                   initial={{ opacity: 0, x: -50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
                   className="flex items-center justify-center"
                 >
@@ -191,7 +157,7 @@ const Rector = () => {
                 
                 <motion.div
                   initial={{ opacity: 0, x: 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
                   className="flex items-center"
                 >
@@ -214,7 +180,7 @@ const Rector = () => {
               {/* Дополнительный текст ректора */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
                 className="space-y-6 mb-8"
               >
@@ -222,7 +188,7 @@ const Rector = () => {
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
                     className="p-4 bg-blue-50 rounded-xl border-l-4 border-[#023E8A]"
                   >
@@ -237,7 +203,7 @@ const Rector = () => {
               <div className="flex flex-col lg:flex-row justify-between items-center gap-6 pt-8 border-t border-gray-200">
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.8 }}
                   className="space-y-3"
                 >
@@ -270,8 +236,7 @@ const Rector = () => {
           {/* Проректоры */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
             className="mb-16"
           >
@@ -289,8 +254,8 @@ const Rector = () => {
                 <motion.div
                   key={viceRector.id}
                   initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.7 + index * 0.1 }}
                   className="bg-white rounded-3xl shadow-2xl border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300"
                 >
                   <div className="p-8">

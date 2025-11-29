@@ -46,10 +46,6 @@ const SoftwareDevelopmentPage = () => {
   ];
 
   const stats = [
-    { number: "2.5", label: t('softwareDevelopment.stats.duration'), icon: <FaCalendarAlt className="text-[#023E8A]" /> },
-    { number: "95%", label: t('softwareDevelopment.stats.employment'), icon: <FaBriefcase className="text-[#023E8A]" /> },
-    { number: "500+", label: t('softwareDevelopment.stats.graduates'), icon: <FaGraduationCap className="text-[#023E8A]" /> },
-    { number: "4.8", label: t('softwareDevelopment.stats.rating'), icon: <FaStar className="text-[#023E8A]" /> }
   ];
 
   const technologies = [
@@ -235,40 +231,10 @@ const SoftwareDevelopmentPage = () => {
           </motion.div>
         </section>
 
-        {/* Статистика */}
-        <section className="py-16 relative">
-          <div className="container mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
-            >
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group"
-                >
-                  <div className="flex justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
-                    {stat.icon}
-                  </div>
-                  <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent mb-2">
-                    {stat.number}
-                  </div>
-                  <div className="text-gray-600 font-medium">{stat.label}</div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </section>
+    
 
         {/* Основной контент */}
-        <section className="py-16 bg-white relative">
+        <section className="py-16  relative">
           <div className="container mx-auto px-4 max-w-6xl">
             {/* Вкладки */}
             <motion.div

@@ -50,26 +50,6 @@ const FutureLeaders = () => {
   ];
 
   const programStats = [
-    {
-      number: "9-13",
-      label: t('futureLeaders.stats.age'),
-      icon: <FaUsers className="text-[#023E8A]" />
-    },
-    {
-      number: "2",
-      label: t('futureLeaders.stats.months'),
-      icon: <FaCalendarAlt className="text-[#023E8A]" />
-    },
-    {
-      number: "6",
-      label: t('futureLeaders.stats.daysWeek'),
-      icon: <FaClock className="text-[#023E8A]" />
-    },
-    {
-      number: "4",
-      label: t('futureLeaders.stats.directions'),
-      icon: <FaRocket className="text-[#023E8A]" />
-    }
   ];
 
   const advantages = [

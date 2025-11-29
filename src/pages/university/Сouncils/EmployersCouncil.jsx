@@ -34,10 +34,6 @@ const EmployersCouncilPage = () => {
 
   // Статистика совета
   const stats = [
-    { number: "50+", label: t('employersCouncil.stats.partners'), icon: <FaHandshake className="text-[#023E8A]" /> },
-    { number: "1000+", label: t('employersCouncil.stats.students'), icon: <FaGraduationCap className="text-[#023E8A]" /> },
-    { number: "85%", label: t('employersCouncil.stats.employment'), icon: <FaBriefcase className="text-[#023E8A]" /> },
-    { number: "25+", label: t('employersCouncil.stats.programs'), icon: <FaChartLine className="text-[#023E8A]" /> }
   ];
 
   // Основные направления деятельности
@@ -98,8 +94,8 @@ const EmployersCouncilPage = () => {
       </div>
 
       <div className="relative z-10">
-        {/* Header с белым фоном и синим текстом */}
-        <section className="relative py-20 bg-white">
+        {/* Header  */}
+        <section className="relative py-20 ">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 50 }}

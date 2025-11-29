@@ -106,10 +106,6 @@ const QualityMonitoringPage = () => {
 
   // Статистика
   const stats = [
-    { number: "99.8%", label: t('qualityMonitoring.stats.quality'), icon: <FaAward className="text-[#023E8A]" /> },
-    { number: "50+", label: t('qualityMonitoring.stats.monitoring'), icon: <FaChartLine className="text-[#023E8A]" /> },
-    { number: "24/7", label: t('qualityMonitoring.stats.realTime'), icon: <FaEye className="text-[#023E8A]" /> },
-    { number: "ISO 9001", label: t('qualityMonitoring.stats.certified'), icon: <FaCheckCircle className="text-[#023E8A]" /> }
   ];
 
   const filteredMetrics = qualityMetrics.filter(metric => {

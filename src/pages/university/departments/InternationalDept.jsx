@@ -28,10 +28,7 @@ const InternationalDept = () => {
 
   // Статистика международного отдела
   const internationalStats = [
-    { number: "30+", label: t('international.stats.countries'), icon: <FaGlobeAmericas className="text-[#023E8A]" /> },
-    { number: "50+", label: t('international.stats.partners'), icon: <FaHandshake className="text-[#023E8A]" /> },
-    { number: "15K+", label: t('international.stats.students'), icon: <FaUsers className="text-[#023E8A]" /> },
-    { number: "95%", label: t('international.stats.satisfaction'), icon: <FaAward className="text-[#023E8A]" /> }
+    
   ];
 
   // Международные программы

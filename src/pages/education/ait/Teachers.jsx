@@ -160,10 +160,6 @@ const TeachersPage = () => {
   ];
 
   const stats = [
-    { number: "50+", label: t('teachers.stats.experts'), icon: <FaGraduationCap className="text-[#023E8A]" /> },
-    { number: "15+", label: t('teachers.stats.countries'), icon: <FaGlobe className="text-[#023E8A]" /> },
-    { number: "1000+", label: t('teachers.stats.projects'), icon: <FaRocket className="text-[#023E8A]" /> },
-    { number: "20+", label: t('teachers.stats.courses'), icon: <FaBook className="text-[#023E8A]" /> }
   ];
 
   const benefits = [
@@ -382,12 +378,7 @@ const TeachersPage = () => {
                           alt={teacher.name}
                           className="w-full h-auto rounded-2xl shadow-md group-hover:shadow-lg transition-all duration-300"
                         />
-                        {teacher.featured && (
-                          <span className="absolute top-4 left-4 inline-flex items-center gap-1 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-3 py-1 rounded-full text-sm font-semibold">
-                            <FaAward className="text-xs" />
-                            {t('teachers.featured')}
-                          </span>
-                        )}
+                       
                       </motion.div>
 
                       <div className="text-center mt-6">
@@ -401,30 +392,7 @@ const TeachersPage = () => {
                           {teacher.experience}
                         </p>
 
-                        {/* Социальные сети */}
-                        <div className="flex justify-center gap-4">
-                          <motion.a
-                            whileHover={{ scale: 1.2, y: -2 }}
-                            href={teacher.social.linkedin}
-                            className="bg-gray-100 text-[#023E8A] p-3 rounded-xl hover:bg-[#023E8A] hover:text-white transition-all duration-300"
-                          >
-                            <FaLinkedin />
-                          </motion.a>
-                          <motion.a
-                            whileHover={{ scale: 1.2, y: -2 }}
-                            href={teacher.social.twitter}
-                            className="bg-gray-100 text-[#023E8A] p-3 rounded-xl hover:bg-[#023E8A] hover:text-white transition-all duration-300"
-                          >
-                            <FaTwitter />
-                          </motion.a>
-                          <motion.a
-                            whileHover={{ scale: 1.2, y: -2 }}
-                            href={`mailto:${teacher.social.email}`}
-                            className="bg-gray-100 text-[#023E8A] p-3 rounded-xl hover:bg-[#023E8A] hover:text-white transition-all duration-300"
-                          >
-                            <FaEnvelope />
-                          </motion.a>
-                        </div>
+                       
                       </div>
                     </div>
 
@@ -437,16 +405,7 @@ const TeachersPage = () => {
                         </div>
                       </div>
 
-                      {/* Преподаваемые предметы */}
-                      <div className="bg-gray-50 rounded-2xl p-6">
-                        <h4 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-                          <FaBook className="text-[#023E8A]" />
-                          {t('teachers.subjects')}
-                        </h4>
-                        <div className="grid md:grid-cols-2 gap-3">
-                          
-                        </div>
-                      </div>
+                     
                     </div>
                   </div>
                 </div>

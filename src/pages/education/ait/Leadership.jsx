@@ -66,10 +66,6 @@ const InstituteLeadershipPage = () => {
   ];
 
   const stats = [
-    { number: "20+", label: t('instituteLeadership.stats.yearsExperience'), icon: <FaBriefcase className="text-[#023E8A]" /> },
-    { number: "50+", label: t('instituteLeadership.stats.projects'), icon: <FaRocket className="text-[#023E8A]" /> },
-    { number: "1000+", label: t('instituteLeadership.stats.students'), icon: <FaGraduationCap className="text-[#023E8A]" /> },
-    { number: "15+", label: t('instituteLeadership.stats.awards'), icon: <FaAward className="text-[#023E8A]" /> }
   ];
 
   return (
@@ -197,30 +193,7 @@ const InstituteLeadershipPage = () => {
                         {leader.position}
                       </p>
 
-                      {/* Социальные сети */}
-                      <div className="flex justify-center gap-4 mb-6">
-                        <motion.a
-                          whileHover={{ scale: 1.2, y: -2 }}
-                          href={leader.social.linkedin}
-                          className="bg-gray-100 text-[#023E8A] p-3 rounded-xl hover:bg-[#023E8A] hover:text-white transition-all duration-300"
-                        >
-                          <FaLinkedin />
-                        </motion.a>
-                        <motion.a
-                          whileHover={{ scale: 1.2, y: -2 }}
-                          href={leader.social.twitter}
-                          className="bg-gray-100 text-[#023E8A] p-3 rounded-xl hover:bg-[#023E8A] hover:text-white transition-all duration-300"
-                        >
-                          <FaTwitter />
-                        </motion.a>
-                        <motion.a
-                          whileHover={{ scale: 1.2, y: -2 }}
-                          href={`mailto:${leader.social.email}`}
-                          className="bg-gray-100 text-[#023E8A] p-3 rounded-xl hover:bg-[#023E8A] hover:text-white transition-all duration-300"
-                        >
-                          <FaEnvelope />
-                        </motion.a>
-                      </div>
+                    
                     </div>
                   </div>
 
@@ -233,16 +206,9 @@ const InstituteLeadershipPage = () => {
                       </p>
                     </div>
 
-                    {/* Достижения */}
-                    <div className="bg-gray-50 rounded-2xl p-6">
-                      <h4 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-                        <FaAward className="text-[#023E8A]" />
-                        {t('instituteLeadership.achievements')}
-                      </h4>
-                      <div className="grid md:grid-cols-2 gap-3">
                       
-                      </div>
-                    </div>
+                      
+                 
                   </div>
                 </div>
               </div>

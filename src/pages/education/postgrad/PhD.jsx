@@ -47,26 +47,6 @@ const PhD = () => {
   ];
 
   const programStats = [
-    {
-      number: "3",
-      label: t('phd.stats.years'),
-      icon: <FaCalendarAlt className="text-[#023E8A]" />
-    },
-    {
-      number: "100%",
-      label: t('phd.stats.research'),
-      icon: <FaSearch className="text-[#023E8A]" />
-    },
-    {
-      number: "PhD",
-      label: t('phd.stats.degree'),
-      icon: <FaGraduationCap className="text-[#023E8A]" />
-    },
-    {
-      number: "Международ",
-      label: t('phd.stats.publications'),
-      icon: <FaChartLine className="text-[#023E8A]" />
-    }
   ];
 
   const researchAreas = [

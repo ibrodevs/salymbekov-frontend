@@ -75,10 +75,6 @@ const UniversityNationalPage = () => {
   ];
 
   const stats = [
-    { number: "50+", label: t('universityRegulations.stats.documents'), icon: <FaFileAlt className="text-[#023E8A]" /> },
-    { number: "100%", label: t('universityRegulations.stats.compliance'), icon: <FaCheckCircle className="text-[#023E8A]" /> },
-    { number: "24/7", label: t('universityRegulations.stats.access'), icon: <FaShieldAlt className="text-[#023E8A]" /> },
-    { number: "2024", label: t('universityRegulations.stats.updated'), icon: <FaAward className="text-[#023E8A]" /> }
   ];
 
   const features = [

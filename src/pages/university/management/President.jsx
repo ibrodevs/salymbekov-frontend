@@ -16,10 +16,6 @@ const President = () => {
 
   // Статистика достижений
   const stats = [
-    { number: "20+", label: t('president.stats.yearsExperience'), icon: <FaAward className="text-[#023E8A]" /> },
-    { number: "100+", label: t('president.stats.projectsCompleted'), icon: <FaRocket className="text-[#023E8A]" /> },
-    { number: "50+", label: t('president.stats.teamMembers'), icon: <FaUsers className="text-[#023E8A]" /> },
-    { number: "1000+", label: t('president.stats.satisfiedClients'), icon: <FaHeart className="text-[#023E8A]" /> }
   ];
 
   return (
@@ -52,19 +48,17 @@ const President = () => {
       </div>
 
       <div className="relative z-10">
-        {/* Герой секция с белым фоном */}
-        <section className="relative py-20 bg-white">
+        {/* Герой секция - теперь с тем же фоном что и вся страница */}
+        <section className="relative py-20">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="container mx-auto px-6 text-center"
           >
             <motion.div
               initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true }}
+              animate={{ scale: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               className="inline-flex items-center gap-3 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-3 rounded-full mb-6"
             >
@@ -82,17 +76,15 @@ const President = () => {
         {/* Отдельный блок с изображением */}
         <motion.section
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="relative py-16 bg-white"
+          className="relative py-16"
         >
           <div className="container mx-auto px-6">
             <div className="max-w-6xl mx-auto">
               <motion.div
                 initial={{ scale: 0.9, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                viewport={{ once: true }}
+                animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="relative"
               >
@@ -112,8 +104,7 @@ const President = () => {
           {/* Статистика */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
           >
@@ -121,9 +112,9 @@ const President = () => {
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                animate={{ opacity: 1, scale: 1 }}
                 whileHover={{ scale: 1.05, y: -5 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
                 className="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group"
               >
                 <div className="flex justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
@@ -140,8 +131,7 @@ const President = () => {
           {/* Приветственный текст */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="max-w-4xl mx-auto mb-16 text-center"
           >
@@ -163,14 +153,13 @@ const President = () => {
           {/* Текст с изображением президента */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
             className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16"
           >
             <motion.div
               initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               className="flex items-center justify-center"
             >
@@ -188,15 +177,15 @@ const President = () => {
             
             <motion.div
               initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               className="flex items-center"
             >
               <div className="space-y-6">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.6 }}
                   className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100"
                 >
                   <p className="text-gray-700 text-lg leading-relaxed">
@@ -206,8 +195,8 @@ const President = () => {
                 
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.7 }}
                   className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100"
                 >
                   <p className="text-gray-700 text-lg leading-relaxed">
@@ -217,8 +206,8 @@ const President = () => {
                 
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.8 }}
                   className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100"
                 >
                   <p className="text-gray-700 text-lg leading-relaxed">
@@ -232,8 +221,7 @@ const President = () => {
           {/* Дополнительный текст */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
             className="max-w-4xl mx-auto mb-16"
           >
@@ -241,8 +229,8 @@ const President = () => {
               <div className="space-y-6">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.9 }}
                   className="p-4 bg-blue-50 rounded-xl border-l-4 border-[#023E8A]"
                 >
                   <p className="text-gray-700 text-lg leading-relaxed">
@@ -252,8 +240,8 @@ const President = () => {
                 
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 1.0 }}
                   className="p-4 bg-blue-50 rounded-xl border-l-4 border-[#0077B6]"
                 >
                   <p className="text-gray-700 text-lg leading-relaxed">
@@ -263,8 +251,8 @@ const President = () => {
                 
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 1.1 }}
                   className="p-4 bg-blue-50 rounded-xl border-l-4 border-[#0096C7]"
                 >
                   <p className="text-gray-700 text-lg leading-relaxed">
@@ -278,8 +266,7 @@ const President = () => {
           {/* Подпись */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
             className="max-w-4xl mx-auto"
           >
@@ -287,8 +274,8 @@ const President = () => {
               <div className="space-y-4">
                 <motion.p
                   initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.6, delay: 0.8 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 1.2 }}
                   className="text-xl italic"
                 >
                   {t('president.signature.respectfully')}
@@ -296,8 +283,8 @@ const President = () => {
                 
                 <motion.p
                   initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.6, delay: 0.9 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 1.3 }}
                   className="text-2xl font-bold"
                 >
                   {t('president.signature.position')}
@@ -305,8 +292,8 @@ const President = () => {
                 
                 <motion.p
                   initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.6, delay: 1.0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 1.4 }}
                   className="text-xl"
                 >
                   {t('president.signature.name')}

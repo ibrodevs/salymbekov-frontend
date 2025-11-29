@@ -146,10 +146,6 @@ const ClinicCooperationPage = () => {
 
   // Статистика
   const stats = [
-    { number: stateClinics.length.toString(), label: t('clinicCooperation.stats.stateClinics'), icon: <FaHospital className="text-[#023E8A]" /> },
-    { number: privateClinics.length.toString(), label: t('clinicCooperation.stats.privateClinics'), icon: <FaStethoscope className="text-[#023E8A]" /> },
-    { number: "100%", label: t('clinicCooperation.stats.quality'), icon: <FaShieldAlt className="text-[#023E8A]" /> },
-    { number: "24/7", label: t('clinicCooperation.stats.support'), icon: <FaHeartbeat className="text-[#023E8A]" /> }
   ];
 
   // Преимущества сотрудничества

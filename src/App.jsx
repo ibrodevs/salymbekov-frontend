@@ -56,7 +56,6 @@ const CareerCenter = lazy(() => import('./pages/university/departments/CareerCen
 const NationalAcc = lazy(() => import('./pages/university/accreditation/National'))
 const InstitutionalAcc = lazy(() => import('./pages/university/accreditation/Institutional'))
 const ProgramAcc = lazy(() => import('./pages/university/accreditation/Program'))
-const InternationalAcc = lazy(() => import('./pages/university/accreditation/International'))
 
 // FoundingDocs sub
 const Charter = lazy(() => import('./pages/university/foundingDocs/Charter'))
@@ -67,7 +66,6 @@ const StrategicDocs = lazy(() => import('./pages/university/foundingDocs/Strateg
 // NormativeDocs sub
 const KRActs = lazy(() => import('./pages/university/normativeDocs/KRActs'))
 const InternalActs = lazy(() => import('./pages/university/normativeDocs/InternalActs'))
-const QualitySystem = lazy(() => import('./pages/university/normativeDocs/QualitySystem'))
 
 
 // Cooperation sub
@@ -92,11 +90,9 @@ const TechnicalCouncil = lazy(() => import('./pages/university/Сouncils/Technic
 
 // Srategic Docs imports
 const StrategicDevelopPlans = lazy(() => import('./pages/university/StrategicDocs/StrategicDevelopPlans'))
-const ComprehensivePlans = lazy(() => import('./pages/university/StrategicDocs/ComprehensivePlans'))
 const AccountingPolicy = lazy(() => import('./pages/university/StrategicDocs/AccountingPolicy'))
 const HRPolicy = lazy(() => import('./pages/university/StrategicDocs/HR-Policy'))
 const StrategicVision = lazy(() => import('./pages/university/StrategicDocs/StrategicVision'))
-const Posision = lazy(() => import('./pages/university/StrategicDocs/position'))
 
 // Quality Management System imports
 const QualityPolity = lazy(() => import('./pages/university/QualityManagSystem/QualityPolity'))
@@ -141,7 +137,6 @@ const ContactsBusinessSchool = lazy(() => import('./pages/education/businessScho
 const Managers = lazy(() => import('./pages/education/businessSchool/Managers'))
 const Trainers = lazy(() => import('./pages/education/businessSchool/Trainers'))
 const DirectorBusinessSchool = lazy(() => import('./pages/education/businessSchool/Director'))
-const CoursesPostgrad = lazy(() => import('./pages/education/postgrad/Courses'))
 const InternshipPostgrad = lazy(() => import('./pages/education/postgrad/Internship'))
 const PhD = lazy(() => import('./pages/education/postgrad/PhD'))
 const Postgraduate = lazy(() => import('./pages/education/postgrad/Postgraduate'))
@@ -314,7 +309,6 @@ const App = () => {
           <Route path="/university/accreditation/national" element={<NationalAcc />} />
           <Route path="/university/accreditation/institutional" element={<InstitutionalAcc />} />
           <Route path="/university/accreditation/program" element={<ProgramAcc />} />
-          <Route path="/university/accreditation/international" element={<InternationalAcc />} />
           <Route path="/university/founding-docs" element={<FoundingDocs />} />
           <Route path="/university/founding-docs/charter" element={<Charter />} />
           <Route path="/university/founding-docs/licenses" element={<Licenses />} />
@@ -323,7 +317,6 @@ const App = () => {
           <Route path="/university/normative-docs" element={<NormativeDocs />} />
           <Route path="/university/normative-docs/kr-acts" element={<KRActs />} />
           <Route path="/university/normative-docs/internal-acts" element={<InternalActs />} />
-          <Route path="/university/normative-docs/quality-system" element={<QualitySystem />} />
           <Route path="/university/cooperation" element={<Cooperation />} />
           <Route path="/university/cooperation/universities" element={<UniversitiesCoop />} />
           <Route path="/university/cooperation/clinics" element={<ClinicsCoop />} />
@@ -342,11 +335,9 @@ const App = () => {
           <Route path="/university/Councils/council-scients" element={<CouncilScients />} />
           <Route path="/university/Councils/technical-council" element={<TechnicalCouncil />} />
           <Route path="/university/StrategicDocs/StrategicDevelopPlans" element={<StrategicDevelopPlans />} />
-          <Route path="/university/StrategicDocs/ComprehensivePlans" element={<ComprehensivePlans />} />
           <Route path="/university/StrategicDocs/AccountingPolicy" element={<AccountingPolicy />} />
           <Route path="/university/StrategicDocs/HR-Policy" element={<HRPolicy />} />
           <Route path="/university/StrategicDocs/StrategicVision" element={<StrategicVision />} />
-          <Route path="/university/StrategicDocs/position" element={<Posision />} />
           <Route path="/university/QualityManagSystem/QualityPolity" element={<QualityPolity />} />
           <Route path="/university/QualityManagSystem/QualityMonitoring" element={<QualityMonitoring />} />
 
@@ -389,7 +380,6 @@ const App = () => {
           <Route path="/education/business-school/managers" element={<Managers />} />
           <Route path="/education/business-school/trainers" element={<Trainers />} />
           <Route path="/education/business-school/director" element={<DirectorBusinessSchool />} />
-          <Route path="/education/postgrad/courses" element={<CoursesPostgrad />} />
           <Route path="/education/postgrad/internship" element={<InternshipPostgrad />} />
           <Route path="/education/postgrad/phd" element={<PhD />} />
           <Route path="/education/postgrad/postgraduate" element={<Postgraduate />} />

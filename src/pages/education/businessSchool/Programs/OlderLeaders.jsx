@@ -51,26 +51,6 @@ const OlderLeaders = () => {
   ];
 
   const programStats = [
-    {
-      number: "4",
-      label: t('olderLeaders.stats.years'),
-      icon: <FaCalendarAlt className="text-[#023E8A]" />
-    },
-    {
-      number: "900+",
-      label: t('olderLeaders.stats.graduates'),
-      icon: <FaUsers className="text-[#023E8A]" />
-    },
-    {
-      number: "3",
-      label: t('olderLeaders.stats.months'),
-      icon: <FaClock className="text-[#023E8A]" />
-    },
-    {
-      number: "17",
-      label: t('olderLeaders.stats.directions'),
-      icon: <FaRocket className="text-[#023E8A]" />
-    }
   ];
 
   const advantages = [

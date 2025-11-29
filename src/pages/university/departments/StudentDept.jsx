@@ -37,30 +37,6 @@ const StudentDept = () => {
   const gradientTo = "to-[#0077B6]";
 
   const studentStats = [
-    { 
-      number: "5K+", 
-      label: t('student.stats.students') || "Студентов", 
-      icon: <FaUserGraduate className="text-[#023E8A]" />,
-      description: t('student.stats.studentsDesc') || "Активных студентов в университете"
-    },
-    { 
-      number: "50+", 
-      label: t('student.stats.clubs') || "Клубов", 
-      icon: <FaUsers className="text-[#023E8A]" />,
-      description: t('student.stats.clubsDesc') || "Студенческих клубов и организаций"
-    },
-    { 
-      number: "100%", 
-      label: t('student.stats.support') || "Поддержка", 
-      icon: <FaHeart className="text-[#023E8A]" />,
-      description: t('student.stats.supportDesc') || "Гарантия поддержки для каждого студента"
-    },
-    { 
-      number: "24/7", 
-      label: t('student.stats.assistance') || "Помощь", 
-      icon: <FaShieldAlt className="text-[#023E8A]" />,
-      description: t('student.stats.assistanceDesc') || "Круглосуточная помощь и консультации"
-    }
   ];
 
   const studentServices = [

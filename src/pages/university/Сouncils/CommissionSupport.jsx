@@ -19,10 +19,6 @@ const StudentSupportCommissionPage = () => {
 
   // Статистика поддержки
   const stats = [
-    { number: "1000+", label: t('studentSupportCommission.stats.students'), icon: <FaUsers className="text-[#023E8A]" /> },
-    { number: "24/7", label: t('studentSupportCommission.stats.support'), icon: <FaShieldAlt className="text-[#023E8A]" /> },
-    { number: "50+", label: t('studentSupportCommission.stats.programs'), icon: <FaGraduationCap className="text-[#023E8A]" /> },
-    { number: "100%", label: t('studentSupportCommission.stats.confidentiality'), icon: <FaHeart className="text-[#023E8A]" /> }
   ];
 
   // Основные положения
@@ -92,7 +88,7 @@ const StudentSupportCommissionPage = () => {
 
       <div className="relative z-10">
         {/* Герой секция с белым фоном */}
-        <section className="relative py-20 bg-white">
+        <section className="relative py-20">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}

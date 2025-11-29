@@ -51,10 +51,6 @@ const LicensesPage = () => {
 
   // Статистика
   const stats = [
-    { number: "15+", label: t('licenses.stats.yearsExperience'), icon: <FaCertificate className="text-[#023E8A]" /> },
-    { number: "50+", label: t('licenses.stats.projectsCompleted'), icon: <FaBalanceScale className="text-[#023E8A]" /> },
-    { number: "100%", label: t('licenses.stats.legalCompliance'), icon: <FaRegBuilding className="text-[#023E8A]" /> },
-    { number: "24/7", label: t('licenses.stats.support'), icon: <FaFileAlt className="text-[#023E8A]" /> }
   ];
 
   return (

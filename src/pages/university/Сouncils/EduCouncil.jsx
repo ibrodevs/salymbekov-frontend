@@ -19,10 +19,6 @@ const QualityCouncilPage = () => {
 
   // Статистика совета
   const stats = [
-    { number: "100%", label: t('qualityCouncil.stats.quality'), icon: <FaAward className="text-[#023E8A]" /> },
-    { number: "50+", label: t('qualityCouncil.stats.standards'), icon: <FaCheckCircle className="text-[#023E8A]" /> },
-    { number: "15", label: t('qualityCouncil.stats.experts'), icon: <FaUsers className="text-[#023E8A]" /> },
-    { number: "24/7", label: t('qualityCouncil.stats.monitoring'), icon: <FaChartLine className="text-[#023E8A]" /> }
   ];
 
   // Задачи совета
@@ -153,7 +149,7 @@ const QualityCouncilPage = () => {
         {/* Герой секция */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
@@ -208,7 +204,7 @@ const QualityCouncilPage = () => {
         {/* Секции с информацией */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
           className="space-y-6 mb-12"
@@ -217,7 +213,7 @@ const QualityCouncilPage = () => {
             <motion.div
               key={section.id}
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               whileHover={{ scale: 1.02 }}
               className="bg-white rounded-3xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300"

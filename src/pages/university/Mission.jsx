@@ -141,20 +141,18 @@ const Mission = () => {
       </div>
 
       <div className="relative z-10">
-        {/* Header с белым фоном и синим текстом */}
-        <section className="relative py-20 bg-white">
+        {/* Header - теперь с тем же фоном что и вся страница */}
+        <section className="relative py-20">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               className="text-center"
             >
               <motion.div
                 initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                viewport={{ once: true }}
+                animate={{ scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="inline-flex items-center gap-3 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-3 rounded-full mb-6"
               >
@@ -165,7 +163,7 @@ const Mission = () => {
               <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
                 {t('mission.title')}
               </h1>
-              <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              <p className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
                 {t('mission.subtitle')}
               </p>
             </motion.div>
@@ -178,8 +176,7 @@ const Mission = () => {
             {/* Основная миссия */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
               className="bg-white rounded-3xl shadow-2xl border border-gray-200 p-8 mb-16"
             >
@@ -203,8 +200,7 @@ const Mission = () => {
             {/* Карусель с выпускниками МЛК */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               className="bg-white rounded-3xl shadow-2xl border border-gray-200 p-8 mb-16"
             >
@@ -287,8 +283,7 @@ const Mission = () => {
             {/* Стратегические цели */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
               className="mb-16"
             >
@@ -304,9 +299,9 @@ const Mission = () => {
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    animate={{ opacity: 1, y: 0 }}
                     whileHover={{ scale: 1.05, y: -5 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
                     className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group text-center"
                   >
                     <div className={`w-16 h-16 ${goal.color} rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300`}>
@@ -326,8 +321,7 @@ const Mission = () => {
             {/* Приоритетные цели */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
               className="mb-16"
             >
@@ -341,9 +335,9 @@ const Mission = () => {
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, scale: 0.5 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    animate={{ opacity: 1, scale: 1 }}
                     whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
                     className="bg-gradient-to-br from-red-50 to-red-100 rounded-2xl p-6 text-center shadow-lg border border-red-200 hover:shadow-xl transition-all duration-300"
                   >
                     <div className="w-12 h-12 bg-red-500 rounded-xl flex items-center justify-center mb-4 mx-auto text-white">
@@ -363,8 +357,7 @@ const Mission = () => {
             {/* Медицинский факультет */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
               className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-3xl p-8 mb-16 text-white"
             >
@@ -407,8 +400,7 @@ const Mission = () => {
             {/* Ожидаемые результаты обучения */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
               className="bg-white rounded-3xl shadow-2xl border border-gray-200 p-8"
             >
@@ -422,8 +414,8 @@ const Mission = () => {
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
                     className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors duration-300"
                   >
                     <div className="w-6 h-6 bg-[#023E8A] rounded-full flex items-center justify-center flex-shrink-0 mt-1">

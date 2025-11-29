@@ -35,30 +35,6 @@ const EducationalDept = () => {
   const gradientTo = "to-[#0077B6]";
 
   const educationStats = [
-    { 
-      number: "50+", 
-      label: t('education.stats.programs'), 
-      icon: <FaBook className="text-[#023E8A]" />,
-      description: t('education.stats.programsDesc')
-    },
-    { 
-      number: "200+", 
-      label: t('education.stats.teachers'), 
-      icon: <FaChalkboardTeacher className="text-[#023E8A]" />,
-      description: t('education.stats.teachersDesc')
-    },
-    { 
-      number: "5K+", 
-      label: t('education.stats.students'), 
-      icon: <FaUserGraduate className="text-[#023E8A]" />,
-      description: t('education.stats.studentsDesc')
-    },
-    { 
-      number: "95%", 
-      label: t('education.stats.employment'), 
-      icon: <FaAward className="text-[#023E8A]" />,
-      description: t('education.stats.employmentDesc')
-    }
   ];
 
   const features = [

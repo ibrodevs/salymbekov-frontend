@@ -31,10 +31,6 @@ const MedicalFaculty = () => {
 
   // Статистика факультета
   const stats = [
-    { number: "500+", label: t('medicalFaculty.stats.students'), icon: <FaUsers className="text-[#023E8A]" /> },
-    { number: "50+", label: t('medicalFaculty.stats.professors'), icon: <FaUserMd className="text-[#023E8A]" /> },
-    { number: "8", label: t('medicalFaculty.stats.laboratories'), icon: <FaFlask className="text-[#023E8A]" /> },
-    { number: "95%", label: t('medicalFaculty.stats.graduation'), icon: <FaAward className="text-[#023E8A]" /> }
   ];
 
   // Преимущества обучения
@@ -125,33 +121,6 @@ const MedicalFaculty = () => {
           </p>
         </motion.div>
 
-        {/* Статистика */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
-        >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              whileHover={{ scale: 1.05, y: -5 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group"
-            >
-              <div className="flex justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
-                {stat.icon}
-              </div>
-              <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent mb-2">
-                {stat.number}
-              </div>
-              <div className="text-gray-600 font-medium">{stat.label}</div>
-            </motion.div>
-          ))}
-        </motion.div>
 
         {/* Кнопка Высшая школа медицины */}
         <motion.div

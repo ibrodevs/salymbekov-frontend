@@ -67,10 +67,6 @@ const Videos = () => {
 
   // Статистика
   const stats = [
-    { number: "150+", label: t('videos.stats.videos'), icon: <FaPlay className="text-[#023E8A]" /> },
-    { number: "2.5M", label: t('videos.stats.views'), icon: <FaEye className="text-[#023E8A]" /> },
-    { number: "50+", label: t('videos.stats.projects'), icon: <FaYoutube className="text-[#023E8A]" /> },
-    { number: "15", label: t('videos.stats.categories'), icon: <FaFilter className="text-[#023E8A]" /> }
   ];
 
   const filteredVideos = videos.filter(video => {
@@ -301,10 +297,7 @@ const Videos = () => {
                           <FaCalendarAlt className="text-[#023E8A]" />
                           <span>{video.date}</span>
                         </div>
-                        <div className="flex items-center gap-2">
-                          <FaEye className="text-[#023E8A]" />
-                          <span>{video.views} {t('videos.views')}</span>
-                        </div>
+                        
                       </div>
 
                       {/* Кнопка просмотра */}

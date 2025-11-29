@@ -56,10 +56,6 @@ const StrategicPlanPage = () => {
   ];
 
   const stats = [
-    { number: "2024", label: t('strategicPlan.stats.year'), icon: <FaGlobeAmericas className="text-[#023E8A]" /> },
-    { number: "5", label: t('strategicPlan.stats.pillars'), icon: <FaChartLine className="text-[#023E8A]" /> },
-    { number: "100+", label: t('strategicPlan.stats.initiatives'), icon: <FaRocket className="text-[#023E8A]" /> },
-    { number: "Global", label: t('strategicPlan.stats.reach'), icon: <FaUsers className="text-[#023E8A]" /> }
   ];
 
   return (

@@ -23,10 +23,6 @@ const PedagogicalCouncilPage = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const stats = [
-    { number: "25+", label: t('pedagogicalCouncil.stats.members'), icon: <FaUsers className="text-[#023E8A]" /> },
-    { number: "12", label: t('pedagogicalCouncil.stats.meetings'), icon: <FaCalendarAlt className="text-[#023E8A]" /> },
-    { number: "50+", label: t('pedagogicalCouncil.stats.decisions'), icon: <FaFileAlt className="text-[#023E8A]" /> },
-    { number: "100%", label: t('pedagogicalCouncil.stats.quality'), icon: <FaChartLine className="text-[#023E8A]" /> }
   ];
 
   const features = [

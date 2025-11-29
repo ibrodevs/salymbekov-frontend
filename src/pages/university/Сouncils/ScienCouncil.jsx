@@ -42,10 +42,6 @@ const ScientificTechnicalCouncilPage = () => {
 
   // Статистика совета
   const stats = [
-    { number: "19", label: t('scientificTechnicalCouncil.stats.members'), icon: <FaUsers className="text-[#023E8A]" /> },
-    { number: "3", label: t('scientificTechnicalCouncil.stats.leadership'), icon: <FaUserTie className="text-[#023E8A]" /> },
-    { number: "16", label: t('scientificTechnicalCouncil.stats.experts'), icon: <FaUserFriends className="text-[#023E8A]" /> },
-    { number: "10+", label: t('scientificTechnicalCouncil.stats.projects'), icon: <FaRocket className="text-[#023E8A]" /> }
   ];
 
   // Основные функции совета
@@ -106,8 +102,8 @@ const ScientificTechnicalCouncilPage = () => {
       </div>
 
       <div className="relative z-10">
-        {/* Header с белым фоном и синим текстом */}
-        <section className="relative py-20 bg-white">
+        {/* Header  */}
+        <section className="relative py-20 ">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 50 }}

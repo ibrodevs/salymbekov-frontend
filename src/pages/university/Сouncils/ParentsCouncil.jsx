@@ -20,10 +20,6 @@ const ParentsCouncilPage = () => {
   const tasksList = t('parentsCouncil.tasksList', { returnObjects: true });
 
   const stats = [
-    { number: "500+", label: t('parentsCouncil.stats.families'), icon: <FaUsers className="text-[#023E8A]" /> },
-    { number: "50+", label: t('parentsCouncil.stats.meetings'), icon: <FaComments className="text-[#023E8A]" /> },
-    { number: "100%", label: t('parentsCouncil.stats.support'), icon: <FaHeart className="text-[#023E8A]" /> },
-    { number: "24/7", label: t('parentsCouncil.stats.availability'), icon: <FaUserFriends className="text-[#023E8A]" /> }
   ];
 
   const benefits = [

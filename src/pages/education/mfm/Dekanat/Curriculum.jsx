@@ -27,16 +27,22 @@ const CurriculumPage = () => {
 
   const formatTextWithBold = (text) => {
     return text.split('\n').map((line, index) => {
-      if (line.includes('<strong>')) {
+      // Убираем все теги <strong> и просто возвращаем текст
+      const cleanLine = line.replace(/<strong>|<\/strong>/g, '');
+      
+      // Проверяем, была ли строка выделена жирным шрифтом
+      const wasBold = line.includes('<strong>');
+      
+      if (wasBold) {
         return (
           <p key={index} className="mb-4 leading-relaxed">
-            <strong className="text-xl text-[#023E8A]">{line.replace(/<strong>|<\/strong>/g, '')}</strong>
+            <span className="text-xl text-[#023E8A] font-semibold">{cleanLine}</span>
           </p>
         );
       }
       return (
         <p key={index} className="mb-4 leading-relaxed text-lg text-gray-700">
-          {line}
+          {cleanLine}
         </p>
       );
     });
@@ -44,10 +50,6 @@ const CurriculumPage = () => {
 
   // Статистика учебной программы
   const stats = [
-    { number: "5-6", label: t('curriculum.stats.years'), icon: <FaClock className="text-[#023E8A]" /> },
-    { number: "300+", label: t('curriculum.stats.credits'), icon: <FaBook className="text-[#023E8A]" /> },
-    { number: "50+", label: t('curriculum.stats.courses'), icon: <FaGraduationCap className="text-[#023E8A]" /> },
-    { number: "100%", label: t('curriculum.stats.practical'), icon: <FaStethoscope className="text-[#023E8A]" /> }
   ];
 
   // Годы обучения
@@ -110,15 +112,13 @@ const CurriculumPage = () => {
         {/* Герой секция */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
           <motion.div
             initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            viewport={{ once: true }}
+            animate={{ scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className="inline-flex items-center gap-3 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-3 rounded-full mb-6"
           >
@@ -129,44 +129,15 @@ const CurriculumPage = () => {
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
             {t('curriculum.title')}
           </h1>
-          <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
             {t('curriculum.subtitle')}
           </p>
-        </motion.div>
-
-        {/* Статистика */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
-        >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              whileHover={{ scale: 1.05, y: -5 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group"
-            >
-              <div className="flex justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
-                {stat.icon}
-              </div>
-              <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent mb-2">
-                {stat.number}
-              </div>
-              <div className="text-gray-600 font-medium">{stat.label}</div>
-            </motion.div>
-          ))}
         </motion.div>
 
         {/* Учебные годы с аккордеоном */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
           className="mb-16"
         >
@@ -175,8 +146,8 @@ const CurriculumPage = () => {
               <motion.div
                 key={year}
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
                 className="bg-white rounded-3xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300"
               >
                 <div className="p-8">
@@ -214,7 +185,7 @@ const CurriculumPage = () => {
                       </motion.div>
                     ) : (
                       <p className="text-lg text-gray-600 leading-relaxed">
-                        {t(`curriculum.year${year}.description`).split('\n')[0]}
+                        {t(`curriculum.year${year}.description`).split('\n')[0].replace(/<strong>|<\/strong>/g, '')}
                       </p>
                     )}
                   </div>
@@ -256,8 +227,7 @@ const CurriculumPage = () => {
         {/* Кнопки учебных планов */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7 }}
           className="mb-20"
         >
@@ -278,9 +248,9 @@ const CurriculumPage = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                animate={{ opacity: 1, y: 0 }}
                 whileHover={{ scale: 1.05, y: -5 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
                 className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 group text-center"
               >
                 <div className="flex items-center justify-center gap-3 text-[#023E8A] mb-3">
@@ -298,8 +268,7 @@ const CurriculumPage = () => {
         {/* Призыв к действию */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.9 }}
           className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-3xl p-12 text-center text-white"
         >

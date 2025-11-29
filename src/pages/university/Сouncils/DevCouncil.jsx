@@ -17,10 +17,6 @@ const DevelopmentCouncilPage = () => {
 
   // Статистика совета
   const stats = [
-    { number: "15+", label: t('developmentCouncil.stats.experts'), icon: <FaUsers className="text-[#023E8A]" /> },
-    { number: "10", label: t('developmentCouncil.stats.countries'), icon: <FaGlobe className="text-[#023E8A]" /> },
-    { number: "50+", label: t('developmentCouncil.stats.projects'), icon: <FaLightbulb className="text-[#023E8A]" /> },
-    { number: "100%", label: t('developmentCouncil.stats.commitment'), icon: <FaHandshake className="text-[#023E8A]" /> }
   ];
 
   const councilMembers = [
@@ -350,21 +346,11 @@ const DevelopmentCouncilPage = () => {
                         <h4 className="text-2xl font-bold text-gray-800">
                           {member.name}
                         </h4>
-                        <motion.button
-                          onClick={() => toggleMemberExpansion(member.id)}
-                          className="flex items-center gap-2 text-[#023E8A] font-semibold hover:text-[#0077B6] transition-colors duration-300"
-                        >
-                          {expandedMember === member.id ? t('developmentCouncil.showLess') : t('developmentCouncil.showMore')}
-                          <motion.div
-                            animate={{ rotate: expandedMember === member.id ? 180 : 0 }}
-                            transition={{ duration: 0.3 }}
-                          >
-                            <FaChevronDown className="text-sm" />
-                          </motion.div>
-                        </motion.button>
+                        
+                         
                       </div>
 
-                      {expandedMember === member.id && (
+                     
                         <motion.div
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: "auto" }}
@@ -372,7 +358,7 @@ const DevelopmentCouncilPage = () => {
                         >
                           {member.text}
                         </motion.div>
-                      )}
+                      
                     </div>
                   </div>
                 </div>

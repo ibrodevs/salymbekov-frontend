@@ -250,10 +250,6 @@ const UniversityCooperationPage = () => {
   ];
 
   const stats = [
-    { number: "18", label: t('universityCooperation.stats.partners'), icon: <FaUniversity className="text-[#023E8A]" /> },
-    { number: "8", label: t('universityCooperation.stats.countries'), icon: <FaGlobeAmericas className="text-[#023E8A]" /> },
-    { number: "2023", label: t('universityCooperation.stats.active'), icon: <FaCalendarAlt className="text-[#023E8A]" /> },
-    { number: "1500+", label: t('universityCooperation.stats.students'), icon: <FaUsers className="text-[#023E8A]" /> }
   ];
 
   const benefits = [

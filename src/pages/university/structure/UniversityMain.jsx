@@ -79,19 +79,17 @@ const UniversityMain = () => {
       </div>
 
       <div className="relative z-10">
-        {/* Герой секция с белым фоном и синим текстом */}
+        {/* Герой секция - теперь с тем же фоном что и вся страница */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="relative bg-white py-24"
+          className="relative py-24"
         >
           <div className="max-w-6xl mx-auto px-4 text-center">
             <motion.div
               initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true }}
+              animate={{ scale: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               className="inline-flex items-center gap-3 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-3 rounded-full mb-6"
             >
@@ -102,7 +100,7 @@ const UniversityMain = () => {
             <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
               {t('university.structure.universityMain.title')}
             </h1>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
               {t('university.structure.subtitle')}
             </p>
           </div>
@@ -111,8 +109,7 @@ const UniversityMain = () => {
         {/* Отдельный блок с фоновым изображением */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           className="max-w-6xl mx-auto px-4 -mt-8 relative z-20"
         >
@@ -133,8 +130,7 @@ const UniversityMain = () => {
           {/* Особенности структуры */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mb-16"
           >
@@ -143,9 +139,9 @@ const UniversityMain = () => {
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  animate={{ opacity: 1, y: 0 }}
                   whileHover={{ scale: 1.05, y: -5 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
                   className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group text-center"
                 >
                   <div className={`w-16 h-16 ${feature.color} rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300`}>
@@ -165,8 +161,7 @@ const UniversityMain = () => {
           {/* Структурные изображения */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
             className="space-y-12 mb-16"
           >
@@ -174,8 +169,8 @@ const UniversityMain = () => {
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.6 + index * 0.2 }}
                 className="bg-white rounded-3xl shadow-2xl border border-gray-200 overflow-hidden"
               >
                 <div className="p-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white">
@@ -200,8 +195,7 @@ const UniversityMain = () => {
           {/* Кнопка загрузки PDF */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-center"
           >
@@ -227,8 +221,7 @@ const UniversityMain = () => {
         {/* Призыв к действию */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7 }}
           className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-3xl mx-4 mb-8 p-12 text-center text-white"
         >

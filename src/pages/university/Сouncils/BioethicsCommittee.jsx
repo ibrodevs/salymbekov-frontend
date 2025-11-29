@@ -43,10 +43,6 @@ const BioethicsCommitteePage = () => {
   const mainFunctions = t('bioethicsCommittee.mainFunctions', { returnObjects: true });
 
   const stats = [
-    { number: "15+", label: t('bioethicsCommittee.stats.years'), icon: <FaUsers className="text-[#023E8A]" /> },
-    { number: "200+", label: t('bioethicsCommittee.stats.projects'), icon: <FaFileMedical className="text-[#023E8A]" /> },
-    { number: "100%", label: t('bioethicsCommittee.stats.compliance'), icon: <FaShieldAlt className="text-[#023E8A]" /> },
-    { number: "50+", label: t('bioethicsCommittee.stats.publications'), icon: <FaBook className="text-[#023E8A]" /> }
   ];
 
   const values = [

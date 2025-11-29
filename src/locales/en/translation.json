@@ -8180,7 +8180,134 @@
       "apply": "Apply Now",
       "visit": "Visit College"
     }
+  },
+  "aboutAIT": {
+    "badge": "About Institute",
+    "title": "About Institute",
+    "subtitle": "American Institute of Technology - Your Gateway to World-Class IT Education",
+    "content": "The American Institute of Technology (American Institute of Technology) is a unique educational center offering a bachelor's program developed in collaboration with experts from Silicon Valley in San Francisco.\n\nThe American Institute of Technology provides students in Kyrgyzstan with a unique opportunity to receive education that meets international quality standards. While studying at AIT, students will have access to advanced technologies, modern laboratories, and infrastructure that supports their academic and professional growth.\n\nThe curriculum fully complies with the latest trends and requirements of IT. It combines advanced knowledge and best practices necessary for a successful career in IT. The educational programs offered by AIT focus on the practical application of knowledge and skills in real projects, so that students can apply their skills immediately after completing their studies.\n\nThe Head of the Institute, Munara Tolubaeva, a graduate of the PhD program at the University of Houston and an employee of the international corporation 'Intel', is confident that the curriculum is developed taking into account the educational programs of leading American universities and with the participation of 14 leading specialists from American technology corporations such as Google, Apple, Amazon, etc.",
+    "welcome": {
+      "badge": "Welcome",
+      "title": "Welcome to American Institute of Technology!",
+      "subtitle": "Join our innovative educational community and start your journey to success in IT"
+    },
+    "values": {
+      "title": "Our Values",
+      "innovation": {
+        "title": "Innovation",
+        "description": "Implementing cutting-edge technologies and teaching methods"
+      },
+      "community": {
+        "title": "Community",
+        "description": "Building strong connections between students, teachers and industry"
+      },
+      "excellence": {
+        "title": "Excellence",
+        "description": "Striving for the highest standards in education and research"
+      },
+      "future": {
+        "title": "Future Focus",
+        "description": "Preparing students for the technologies of tomorrow"
+      }
+    },
+    "license": {
+      "title": "State License",
+      "description": "Official state license for educational activities",
+      "button": "View License"
+    },
+    "certificate": {
+      "title": "Quality Certificate",
+      "description": "International quality certification of educational programs",
+      "button": "View Certificate"
+    },
+    "carousel": {
+      "alt": "Institute photo"
+    }
+  },
+  "aboutCenter": {
+    "badge": "About Center",
+    "title": "Education and Innovation Center in Naryn",
+    "subtitle": "Modern space for quality education and student development in science, technology, engineering and mathematics",
+    "description": {
+      "title": "About the Center",
+      "content1": "The Education and Innovation Center in Naryn specializes in quality education and development of students in the field of science, technology, engineering and mathematics. The center has modern equipment and a stimulating learning atmosphere that supports students' interest in scientific disciplines and technical skills.",
+      "content2": "The center provides various educational programs and opportunities for students of different age groups - from children to teenagers and adults. The center has modern classrooms and laboratories, electronic resources connected to the EBSCO and SAGE systems, and includes the following elements:"
+    },
+    "stem": {
+      "title": "STEM Directions",
+      "science": "Science",
+      "technology": "Technology", 
+      "engineering": "Engineering",
+      "math": "Mathematics"
+    },
+    "programs": {
+      "title": "Educational Programs",
+      "subtitle": "Comprehensive educational opportunities for all age groups",
+      "courses": {
+        "title": "Courses and Classes",
+        "description": "The center offers educational courses and classes focused on different levels of students",
+        "features": [
+          "Educational courses for different levels",
+          "Classes for various age groups",
+          "Individual learning paths",
+          "Practical skill development"
+        ]
+      },
+      "methods": {
+        "title": "Diverse Learning Methods", 
+        "description": "Using interactive teaching methods, practical classes, laboratory work to stimulate students' interest in experimentation and creativity in STEM fields",
+        "features": [
+          "Interactive teaching methods",
+          "Practical classes and workshops",
+          "Laboratory work",
+          "Stimulation of experimentation"
+        ]
+      },
+      "events": {
+        "title": "Events and Competitions",
+        "description": "Participation in science fairs, olympiads, competitions and projects that allow students to demonstrate their knowledge and skills in a competitive environment",
+        "features": [
+          "Science exhibitions and fairs",
+          "Olympiads and competitions",
+          "Educational projects",
+          "Competitive environment"
+        ]
+      },
+      "resources": {
+        "title": "Materials and Resources",
+        "description": "Providing access to modern equipment and electronic resources necessary for studying STEM and other disciplines",
+        "features": [
+          "Modern equipment access",
+          "Electronic resources (EBSCO, SAGE)",
+          "STEM study materials",
+          "Educational technologies"
+        ]
+      }
+    },
+    "resources": {
+      "title": "Electronic Resources",
+      "description": "Access to international educational systems and digital platforms",
+      "ebsco": "EBSCO information system",
+      "sage": "SAGE academic platform", 
+      "labs": "Modern laboratories",
+      "library": "Digital resources collection"
+    },
+    "mission": {
+      "title": "Our Mission",
+      "description": "The Education and Innovation Center in Naryn plays an important role in preparing students in the field of science, technology, engineering and mathematics, as well as in encouraging innovation and creative thinking for all categories of the population",
+      "forAll": "For all age groups",
+      "innovation": "Innovation development", 
+      "preparation": "Quality preparation"
+    },
+    "cta": {
+      "title": "Join Our Center",
+      "description": "Become part of our educational community and discover opportunities for growth in STEM fields",
+      "visit": "Visit Center",
+      "learnMore": "Learn More"
+    }
   }
+
+
 
 
 

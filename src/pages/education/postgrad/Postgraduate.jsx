@@ -23,10 +23,6 @@ const Postgraduate = () => {
 
   // Статистика аспирантуры
   const stats = [
-    { number: "3", label: t('postgraduate.stats.years'), icon: <FaCalendarAlt className="text-[#023E8A]" /> },
-    { number: "3", label: t('postgraduate.stats.exams'), icon: <FaBook className="text-[#023E8A]" /> },
-    { number: "2", label: t('postgraduate.stats.basis'), icon: <FaUniversity className="text-[#023E8A]" /> },
-    { number: "100%", label: t('postgraduate.stats.quality'), icon: <FaAward className="text-[#023E8A]" /> }
   ];
 
   // Вступительные испытания

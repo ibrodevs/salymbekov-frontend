@@ -35,10 +35,6 @@ const About = () => {
 
   // Статистика бизнес-школы
   const stats = [
-    { number: "1000+", label: t('about.stats.graduates'), icon: <FaUserGraduate className="text-[#023E8A]" /> },
-    { number: "5", label: t('about.stats.programs'), icon: <FaBook className="text-[#023E8A]" /> },
-    { number: "3+", label: t('about.stats.languages'), icon: <FaLanguage className="text-[#023E8A]" /> },
-    { number: "10+", label: t('about.stats.years'), icon: <FaAward className="text-[#023E8A]" /> }
   ];
 
   // Направления обучения

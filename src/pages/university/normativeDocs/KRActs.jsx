@@ -198,10 +198,7 @@ const KRActs = () => {
   );
 
   const stats = [
-    { number: "16", label: t('lawsRegulations.stats.documents'), icon: <FaFileAlt className="text-[#023E8A]" /> },
-    { number: "3", label: t('lawsRegulations.stats.laws'), icon: <FaGavel className="text-[#023E8A]" /> },
-    { number: "13", label: t('lawsRegulations.stats.regulations'), icon: <FaBalanceScale className="text-[#023E8A]" /> },
-    { number: "2023", label: t('lawsRegulations.stats.updated'), icon: <FaBook className="text-[#023E8A]" /> }
+
   ];
 
   return (

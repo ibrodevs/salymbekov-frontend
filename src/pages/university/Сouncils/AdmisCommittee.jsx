@@ -19,10 +19,6 @@ const AdmissionCommitteePage = () => {
 
   // Статистика приемной комиссии
   const stats = [
-    { number: "1000+", label: t('admissionCommittee.stats.students'), icon: <FaUserGraduate className="text-[#023E8A]" /> },
-    { number: "50+", label: t('admissionCommittee.stats.programs'), icon: <FaGraduationCap className="text-[#023E8A]" /> },
-    { number: "95%", label: t('admissionCommittee.stats.satisfaction'), icon: <FaHeart className="text-[#023E8A]" /> },
-    { number: "24/7", label: t('admissionCommittee.stats.support'), icon: <FaUsers className="text-[#023E8A]" /> }
   ];
 
   // Направления IT колледжа
@@ -116,8 +112,8 @@ const AdmissionCommitteePage = () => {
       </div>
 
       <div className="relative z-10">
-        {/* Герой секция с белым фоном */}
-        <section className="relative py-20 bg-white">
+        {/* Герой секция */}
+        <section className="relative py-20">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -149,7 +145,7 @@ const AdmissionCommitteePage = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="relative py-16 bg-white"
+          className="relative py-16 "
         >
           <div className="container mx-auto px-6">
             <div className="max-w-6xl mx-auto">

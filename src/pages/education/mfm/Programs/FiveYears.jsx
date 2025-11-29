@@ -70,10 +70,6 @@ const GeneralMedicinePage = () => {
 
   // Статистика программы
   const stats = [
-    { number: "5", label: t('generalMedicine.stats.years'), icon: <FaCalendarAlt className="text-[#023E8A]" /> },
-    { number: "300+", label: t('generalMedicine.stats.credits'), icon: <FaGraduationCap className="text-[#023E8A]" /> },
-    { number: "85%", label: t('generalMedicine.stats.practice'), icon: <FaUserMd className="text-[#023E8A]" /> },
-    { number: "100%", label: t('generalMedicine.stats.employment'), icon: <FaAward className="text-[#023E8A]" /> }
   ];
 
   // Особенности программы

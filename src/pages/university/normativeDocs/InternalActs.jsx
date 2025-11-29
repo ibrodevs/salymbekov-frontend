@@ -97,10 +97,6 @@ const LegalDocumentsPage = () => {
   ];
 
   const stats = [
-    { number: "20+", label: t('legalDocuments.stats.documents'), icon: <FaFileAlt className="text-[#023E8A]" /> },
-    { number: "6", label: t('legalDocuments.stats.categories'), icon: <FaFolderOpen className="text-[#023E8A]" /> },
-    { number: "100%", label: t('legalDocuments.stats.compliance'), icon: <FaBalanceScale className="text-[#023E8A]" /> },
-    { number: "24/7", label: t('legalDocuments.stats.access'), icon: <FaDownload className="text-[#023E8A]" /> }
   ];
 
   return (

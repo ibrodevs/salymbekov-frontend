@@ -40,10 +40,6 @@ const AcademicCouncilPage = () => {
 
   // Статистика совета
   const stats = [
-    { number: "20", label: t('academicCouncil.stats.members'), icon: <FaUsers className="text-[#023E8A]" /> },
-    { number: "15+", label: t('academicCouncil.stats.professors'), icon: <FaUserTie className="text-[#023E8A]" /> },
-    { number: "5", label: t('academicCouncil.stats.departments'), icon: <FaUniversity className="text-[#023E8A]" /> },
-    { number: "100%", label: t('academicCouncil.stats.quality'), icon: <FaAward className="text-[#023E8A]" /> }
   ];
 
   return (
@@ -76,8 +72,8 @@ const AcademicCouncilPage = () => {
       </div>
 
       <div className="relative z-10">
-        {/* Герой секция с белым фоном */}
-        <section className="relative py-20 bg-white">
+        {/* Герой секция  */}
+        <section className="relative py-20 ">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -109,7 +105,7 @@ const AcademicCouncilPage = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="relative py-16 bg-white"
+          className="relative py-16 "
         >
           <div className="container mx-auto px-6">
             <div className="max-w-6xl mx-auto">

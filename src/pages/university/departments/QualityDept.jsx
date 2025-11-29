@@ -38,30 +38,6 @@ const QualityDept = () => {
   const gradientTo = "to-[#0077B6]";
 
   const qualityStats = [
-    { 
-      number: "ISO 9001", 
-      label: t('quality.stats.certification'), 
-      icon: <FaAward className="text-[#023E8A]" />,
-      description: t('quality.stats.certificationDesc') || "Международная сертификация качества"
-    },
-    { 
-      number: "98%", 
-      label: t('quality.stats.satisfaction'), 
-      icon: <FaStar className="text-[#023E8A]" />,
-      description: t('quality.stats.satisfactionDesc') || "Удовлетворенность студентов"
-    },
-    { 
-      number: "15+", 
-      label: t('quality.stats.audits'), 
-      icon: <FaClipboardCheck className="text-[#023E8A]" />,
-      description: t('quality.stats.auditsDesc') || "Ежегодных аудитов"
-    },
-    { 
-      number: "100%", 
-      label: t('quality.stats.compliance'), 
-      icon: <FaCheckCircle className="text-[#023E8A]" />,
-      description: t('quality.stats.complianceDesc') || "Соответствие стандартам"
-    }
   ];
 
   const qualityPrinciples = [

@@ -65,26 +65,6 @@ const SixYears = () => {
   ];
 
   const stats = [
-    { 
-      number: "6", 
-      label: t('education.mfm.programs.6age.stats.years'), 
-      icon: <FaCalendarAlt className="text-[#023E8A]" /> 
-    },
-    { 
-      number: "95%", 
-      label: t('education.mfm.programs.6age.stats.success'), 
-      icon: <FaChartLine className="text-[#023E8A]" /> 
-    },
-    { 
-      number: "50+", 
-      label: t('education.mfm.programs.6age.stats.activities'), 
-      icon: <FaRocket className="text-[#023E8A]" /> 
-    },
-    { 
-      number: "24/7", 
-      label: t('education.mfm.programs.6age.stats.support'), 
-      icon: <FaHandsHelping className="text-[#023E8A]" /> 
-    }
   ];
 
   const admissionSteps = [

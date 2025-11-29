@@ -34,30 +34,6 @@ const FinancialDept = () => {
   const gradientTo = "to-[#0077B6]";
 
   const financialStats = [
-    { 
-      number: "15+", 
-      label: t('financial.stats.years'), 
-      icon: <FaChartLine className="text-[#023E8A]" />,
-      description: t('financial.stats.yearsDesc')
-    },
-    { 
-      number: "5K+", 
-      label: t('financial.stats.students'), 
-      icon: <FaUserTie className="text-[#023E8A]" />,
-      description: t('financial.stats.studentsDesc')
-    },
-    { 
-      number: "98%", 
-      label: t('financial.stats.satisfaction'), 
-      icon: <FaCheckCircle className="text-[#023E8A]" />,
-      description: t('financial.stats.satisfactionDesc')
-    },
-    { 
-      number: "24/7", 
-      label: t('financial.stats.support'), 
-      icon: <FaShieldAlt className="text-[#023E8A]" />,
-      description: t('financial.stats.supportDesc')
-    }
   ];
 
   const services = [

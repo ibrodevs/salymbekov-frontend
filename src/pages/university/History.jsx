@@ -70,12 +70,8 @@ const History = () => {
       icon: <FaUniversity className="text-white" size={24} />,
       color: "from-[#023E8A] to-[#0077B6]",
       achievements: t('history.milestones.2019.achievements', { returnObjects: true }),
-      category: "early",
-      stats: {
-        students: "500+",
-        programs: "15+",
-        partners: "20+"
-      }
+      category: "early"
+      
     },
     {
       year: "2020",
@@ -123,10 +119,6 @@ const History = () => {
 
   // Статистика университета
   const stats = [
-    { number: "1500+", label: t('history.stats.students'), icon: <FaGraduationCap className="text-[#023E8A]" /> },
-    { number: "45+", label: t('history.stats.programs'), icon: <FaBook className="text-[#023E8A]" /> },
-    { number: "70+", label: t('history.stats.partners'), icon: <FaHandshake className="text-[#023E8A]" /> },
-    { number: "100+", label: t('history.stats.teachers'), icon: <FaChalkboardTeacher className="text-[#023E8A]" /> }
   ];
 
   // Клиническая база
@@ -408,33 +400,6 @@ const History = () => {
                         {milestone.description}
                       </p>
 
-                      {/* Статистика */}
-                      <div className="grid grid-cols-3 gap-4 mb-6">
-                        <div className="text-center p-4 bg-blue-50 rounded-2xl">
-                          <div className="text-2xl font-bold text-[#023E8A] mb-1">
-                            {milestone.stats.students}
-                          </div>
-                          <div className="text-sm text-gray-600">
-                            {t('history.stats.students')}
-                          </div>
-                        </div>
-                        <div className="text-center p-4 bg-green-50 rounded-2xl">
-                          <div className="text-2xl font-bold text-[#0077B6] mb-1">
-                            {milestone.stats.programs}
-                          </div>
-                          <div className="text-sm text-gray-600">
-                            {t('history.stats.programs')}
-                          </div>
-                        </div>
-                        <div className="text-center p-4 bg-purple-50 rounded-2xl">
-                          <div className="text-2xl font-bold text-[#0096C7] mb-1">
-                            {milestone.stats.partners}
-                          </div>
-                          <div className="text-sm text-gray-600">
-                            {t('history.stats.partners')}
-                          </div>
-                        </div>
-                      </div>
 
                       {/* Расширенная информация */}
                       {expandedMilestone === milestone.year && (
@@ -529,27 +494,7 @@ const History = () => {
                     {clinic.description}
                   </p>
 
-                  {/* Статистика клиники */}
-                  <div className="grid grid-cols-3 gap-2 text-center">
-                    <div>
-                      <div className="text-lg font-bold text-[#023E8A]">
-                        {clinic.stats.patients}
-                      </div>
-                      <div className="text-xs text-gray-500">{t('history.clinics.stats.patients')}</div>
-                    </div>
-                    <div>
-                      <div className="text-lg font-bold text-[#0077B6]">
-                        {clinic.stats.doctors}
-                      </div>
-                      <div className="text-xs text-gray-500">{t('history.clinics.stats.doctors')}</div>
-                    </div>
-                    <div>
-                      <div className="text-lg font-bold text-[#0096C7]">
-                        {clinic.stats.specialties}
-                      </div>
-                      <div className="text-xs text-gray-500">{t('history.clinics.stats.specialties')}</div>
-                    </div>
-                  </div>
+                  
                 </div>
               </motion.div>
             ))}

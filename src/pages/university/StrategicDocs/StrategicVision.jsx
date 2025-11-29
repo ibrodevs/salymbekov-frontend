@@ -59,10 +59,6 @@ const StrategicVision = () => {
   ];
 
   const stats = [
-    { number: "2030", label: t('strategicVision.stats.visionYear') || "Целевой год"},
-    { number: "5", label: t('strategicVision.stats.pillars') || "Столпов стратегии", icon: <FaChartLine className="text-[#023E8A]" /> },
-    { number: "Global", label: t('strategicVision.stats.reach') || "Глобальный охват", icon: <FaGlobeAmericas className="text-[#023E8A]" /> },
-    { number: "100+", label: t('strategicVision.stats.initiatives') || "Инициатив", icon: <FaRocket className="text-[#023E8A]" /> }
   ];
 
   const values = [

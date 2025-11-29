@@ -28,10 +28,7 @@ const Institutional = () => {
   };
 
   const stats = [
-    { number: "5+", label: t('institutional.stats.countries'), icon: <FaGlobe className="text-[#023E8A]" /> },
-    { number: "1000+", label: t('institutional.stats.students'), icon: <FaGraduationCap className="text-[#023E8A]" /> },
-    { number: "50+", label: t('institutional.stats.programs'), icon: <FaUniversity className="text-[#023E8A]" /> },
-    { number: "10+", label: t('institutional.stats.years'), icon: <FaAward className="text-[#023E8A]" /> }
+   
   ];
 
   const benefits = [
@@ -106,7 +103,7 @@ const Institutional = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="bg-white rounded-3xl shadow-2xl border border-gray-200 p-12 mb-16 text-center"
+          className=" rounded-3xl shadow-2xl border border-gray-200 p-12 mb-16 text-center"
         >
           <motion.div
             initial={{ scale: 0 }}

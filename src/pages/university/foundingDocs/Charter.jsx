@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { 
   FaBook,
   FaGraduationCap,
@@ -13,6 +13,11 @@ import { useTranslation } from "react-i18next";
 const CharterPage = () => {
   const { t } = useTranslation();
   const [openSections, setOpenSections] = useState({});
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const toggleSection = (sectionId) => {
     setOpenSections(prev => ({
@@ -56,11 +61,18 @@ const CharterPage = () => {
 
   // Статистика устава
   const stats = [
-    { number: "50+", label: t('charter.stats.articles'), icon: <FaBook className="text-[#023E8A]" /> },
-    { number: "10", label: t('charter.stats.chapters'), icon: <FaBalanceScale className="text-[#023E8A]" /> },
-    { number: "5", label: t('charter.stats.principles'), icon: <FaFlag className="text-[#023E8A]" /> },
-    { number: "100%", label: t('charter.stats.compliance'), icon: <FaUsers className="text-[#023E8A]" /> }
   ];
+
+  if (!isMounted) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-[#023E8A] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-[#023E8A] font-semibold">Загрузка...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 relative overflow-hidden">
@@ -92,23 +104,21 @@ const CharterPage = () => {
       </div>
 
       <div className="relative z-10">
-        {/* Герой секция */}
+        {/* Герой секция  */}
         <motion.section
           initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="relative py-20 bg-white"
+          className="relative py-20"
         >
           <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-gray-50 to-blue-50" />
+            <div className="absolute inset-0 to-blue-50" />
           </div>
           
           <div className="relative container mx-auto px-4 text-center">
             <motion.div
               initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true }}
+              animate={{ scale: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               className="inline-flex items-center gap-3 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-3 rounded-full mb-6"
             >
@@ -116,30 +126,40 @@ const CharterPage = () => {
               <span className="font-semibold">{t('charter.badge')}</span>
             </motion.div>
 
-            <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent mb-6">
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent mb-6"
+            >
               {t('charter.title')}
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            </motion.h1>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
+            >
               {t('charter.subtitle')}
-            </p>
+            </motion.p>
           </div>
         </motion.section>
 
         {/* Статистика - исправлены отступы */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
           className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16 px-4 mt-8"
         >
           {stats.map((stat, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              animate={{ opacity: 1, scale: 1 }}
               whileHover={{ scale: 1.05, y: -5 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
               className="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group"
             >
               <div className="flex justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
@@ -156,27 +176,31 @@ const CharterPage = () => {
         {/* Содержание устава */}
         <motion.section
           initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.7 }}
           className="max-w-6xl mx-auto px-4 pb-20"
         >
-          <div className="text-center mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="text-center mb-12"
+          >
             <h2 className="text-4xl font-bold text-gray-800 mb-4">
               {t('charter.sectionsTitle')}
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               {t('charter.sectionsDescription')}
             </p>
-          </div>
+          </motion.div>
 
           <div className="space-y-6">
             {sections.map((section, index) => (
               <motion.div
                 key={section.id}
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.9 + index * 0.1 }}
                 whileHover={{ scale: 1.02 }}
                 className="bg-white rounded-3xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300"
               >

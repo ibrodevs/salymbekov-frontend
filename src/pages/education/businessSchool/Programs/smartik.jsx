@@ -24,10 +24,6 @@ const Smartik = () => {
 
   // Статистика программы
   const stats = [
-    { number: "5-7", label: t('smartik.stats.age'), icon: <FaChild className="text-[#023E8A]" /> },
-    { number: "3", label: t('smartik.stats.months'), icon: <FaClock className="text-[#023E8A]" /> },
-    { number: "5", label: t('smartik.stats.directions'), icon: <FaBook className="text-[#023E8A]" /> },
-    { number: "4000", label: t('smartik.stats.price'), icon: <FaMoneyBillWave className="text-[#023E8A]" /> }
   ];
 
   // Направления "Пять в одном"

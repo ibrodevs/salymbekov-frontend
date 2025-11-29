@@ -24,10 +24,6 @@ const ActsPage = () => {
 
   // Статистика
   const stats = [
-    { number: "6+", label: t('acts.stats.documents'), icon: <FaFileContract className="text-[#023E8A]" /> },
-    { number: "100%", label: t('acts.stats.compliance'), icon: <FaClipboardList className="text-[#023E8A]" /> },
-    { number: "2021", label: t('acts.stats.currentYear'), icon: <FaRegFileAlt className="text-[#023E8A]" /> },
-    { number: "PDF", label: t('acts.stats.format'), icon: <FaFilePdf className="text-[#023E8A]" /> }
   ];
 
   return (

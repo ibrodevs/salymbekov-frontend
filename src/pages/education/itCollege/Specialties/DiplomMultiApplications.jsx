@@ -38,10 +38,6 @@ const MobileDevelopmentPage = () => {
   ];
 
   const stats = [
-    { number: "2", label: t('mobileDevelopment.stats.years'), icon: <FaCalendarAlt className="text-[#023E8A]" /> },
-    { number: "85%", label: t('mobileDevelopment.stats.employment'), icon: <FaBriefcase className="text-[#023E8A]" /> },
-    { number: "50+", label: t('mobileDevelopment.stats.projects'), icon: <FaRocket className="text-[#023E8A]" /> },
-    { number: "1000+", label: t('mobileDevelopment.stats.students'), icon: <FaUsers className="text-[#023E8A]" /> }
   ];
 
   const features = [

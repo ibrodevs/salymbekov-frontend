@@ -29,10 +29,6 @@ const ProgramAccreditation = () => {
   };
 
   const stats = [
-    { number: "15+", label: t('programAccreditation.stats.programs'), icon: <FaBook className="text-[#023E8A]" /> },
-    { number: "5000+", label: t('programAccreditation.stats.graduates'), icon: <FaUserGraduate className="text-[#023E8A]" /> },
-    { number: "10+", label: t('programAccreditation.stats.years'), icon: <FaAward className="text-[#023E8A]" /> },
-    { number: "20+", label: t('programAccreditation.stats.countries'), icon: <FaGlobeAmericas className="text-[#023E8A]" /> }
   ];
 
   const benefits = [
@@ -107,7 +103,7 @@ const ProgramAccreditation = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="bg-white rounded-3xl shadow-2xl border border-gray-200 p-12 mb-16 text-center"
+          className=" rounded-3xl shadow-2xl border border-gray-200 p-12 mb-16 text-center"
         >
           <motion.div
             initial={{ scale: 0 }}

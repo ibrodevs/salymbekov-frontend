@@ -129,10 +129,6 @@ const InstituteDisciplinesPage = () => {
   ];
 
   const stats = [
-    { number: "50+", label: t('disciplines.stats.disciplines'), icon: <FaBook className="text-[#023E8A]" /> },
-    { number: "2000+", label: t('disciplines.stats.students'), icon: <FaUsers className="text-[#023E8A]" /> },
-    { number: "4.8", label: t('disciplines.stats.rating'), icon: <FaStar className="text-[#023E8A]" /> },
-    { number: "15", label: t('disciplines.stats.teachers'), icon: <FaGraduationCap className="text-[#023E8A]" /> }
   ];
 
   const features = [

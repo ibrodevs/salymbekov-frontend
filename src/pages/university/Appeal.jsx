@@ -112,19 +112,17 @@ const Appeal = () => {
       </div>
 
       <div className="relative z-10">
-        {/* Hero секция - белый фон, синий текст */}
+        {/* Hero секция - теперь с тем же фоном что и вся страница */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="relative bg-white py-24"
+          className="relative py-24"
         >
           <div className="relative max-w-6xl mx-auto px-4 text-center">
             <motion.div
               initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true }}
+              animate={{ scale: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               className="inline-flex items-center gap-3 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-3 rounded-full mb-6"
             >
@@ -135,7 +133,7 @@ const Appeal = () => {
             <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
               {t('appeal.title')}
             </h1>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
               {t('appeal.subtitle')}
             </p>
           </div>
@@ -144,8 +142,7 @@ const Appeal = () => {
         {/* Отдельный блок для изображения под header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           className="max-w-6xl mx-auto px-4 -mt-8 relative z-20"
         >
@@ -166,8 +163,7 @@ const Appeal = () => {
           {/* Введение */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="bg-white rounded-3xl shadow-2xl border border-gray-200 p-8 mb-12"
           >
@@ -189,8 +185,7 @@ const Appeal = () => {
           {/* Список направлений */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-16"
           >
@@ -208,9 +203,9 @@ const Appeal = () => {
                 <motion.div
                   key={area.id}
                   initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  animate={{ opacity: 1, y: 0 }}
                   whileHover={{ scale: 1.02, y: -5 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
                   className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300"
                 >
                   <div className="flex items-start gap-4">
@@ -234,8 +229,7 @@ const Appeal = () => {
           {/* Блок о практических результатах */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-3xl p-8 mb-12 text-white"
           >
@@ -253,8 +247,7 @@ const Appeal = () => {
           {/* Баннер SBS */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             className="mb-12"
           >
@@ -273,8 +266,7 @@ const Appeal = () => {
           {/* Блок о Бизнес-школе */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
             className="bg-white rounded-3xl shadow-2xl border border-gray-200 p-8 mb-12"
           >
@@ -294,8 +286,7 @@ const Appeal = () => {
           {/* Преимущества университета */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
             className="mb-16"
           >
@@ -313,9 +304,9 @@ const Appeal = () => {
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  animate={{ opacity: 1, y: 0 }}
                   whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
                   className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 text-center"
                 >
                   <div className="flex justify-center mb-4">
@@ -335,8 +326,7 @@ const Appeal = () => {
           {/* Блок с подписью и фотографией */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
             className="bg-white rounded-3xl shadow-2xl border border-gray-200 p-8"
           >
@@ -344,7 +334,7 @@ const Appeal = () => {
               <div className="text-center lg:text-left">
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.8 }}
                 >
                   <p className="text-gray-600 text-lg mb-2">
@@ -362,7 +352,7 @@ const Appeal = () => {
               
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.9 }}
                 className="flex-shrink-0"
               >

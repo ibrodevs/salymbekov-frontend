@@ -29,10 +29,6 @@ const CareerCenter = () => {
 
   // Статистика карьерного центра
   const careerStats = [
-    { number: "95%", label: t('career.stats.placement'), icon: <FaBriefcase className="text-[#023E8A]" /> },
-    { number: "500+", label: t('career.stats.companies'), icon: <FaIndustry className="text-[#023E8A]" /> },
-    { number: "2K+", label: t('career.stats.students'), icon: <FaUsers className="text-[#023E8A]" /> },
-    { number: "85%", label: t('career.stats.satisfaction'), icon: <FaAward className="text-[#023E8A]" /> }
   ];
 
   // Услуги карьерного центра

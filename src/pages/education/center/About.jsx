@@ -32,58 +32,50 @@ const About = () => {
 
   // Статистика центра
   const stats = [
-    { number: "STEM", label: t('about.stats.focus'), icon: <FaMicroscope className="text-[#023E8A]" /> },
-    { number: "EBSCO", label: t('about.stats.resources'), icon: <FaBook className="text-[#023E8A]" /> },
-    { number: "All", label: t('about.stats.ages'), icon: <FaUsers className="text-[#023E8A]" /> },
-    { number: "15+", label: t('about.stats.programs'), icon: <FaGraduationCap className="text-[#023E8A]" /> }
   ];
 
   // Направления деятельности
   const programs = [
     {
       icon: <FaChalkboardTeacher className="text-white" size={24} />,
-      title: t('about.programs.courses.title'),
-      description: t('about.programs.courses.description'),
+      title: t('aboutCenter.programs.courses.title'),
+      description: t('aboutCenter.programs.courses.description'),
       color: "bg-[#023E8A]",
-      features: t('about.programs.courses.features', { returnObjects: true })
+      features: t('aboutCenter.programs.courses.features', { returnObjects: true })
     },
     {
       icon: <FaFlask className="text-white" size={24} />,
-      title: t('about.programs.methods.title'),
-      description: t('about.programs.methods.description'),
+      title: t('aboutCenter.programs.methods.title'),
+      description: t('aboutCenter.programs.methods.description'),
       color: "bg-[#0077B6]",
-      features: t('about.programs.methods.features', { returnObjects: true })
+      features: t('aboutCenter.programs.methods.features', { returnObjects: true })
     },
     {
       icon: <FaTrophy className="text-white" size={24} />,
-      title: t('about.programs.events.title'),
-      description: t('about.programs.events.description'),
+      title: t('aboutCenter.programs.events.title'),
+      description: t('aboutCenter.programs.events.description'),
       color: "bg-[#0096C7]",
-      features: t('about.programs.events.features', { returnObjects: true })
+      features: t('aboutCenter.programs.events.features', { returnObjects: true })
     },
     {
       icon: <FaLaptopCode className="text-white" size={24} />,
-      title: t('about.programs.resources.title'),
-      description: t('about.programs.resources.description'),
+      title: t('aboutCenter.programs.resources.title'),
+      description: t('aboutCenter.programs.resources.description'),
       color: "bg-[#00B4D8]",
-      features: t('about.programs.resources.features', { returnObjects: true })
+      features: t('aboutCenter.programs.resources.features', { returnObjects: true })
     }
   ];
 
   // STEM направления
   const stemAreas = [
-    { name: t('about.stem.science'), icon: <FaFlask className="text-[#023E8A]" /> },
-    { name: t('about.stem.technology'), icon: <FaLaptopCode className="text-[#023E8A]" /> },
-    { name: t('about.stem.engineering'), icon: <FaRobot className="text-[#023E8A]" /> },
-    { name: t('about.stem.math'), icon: <FaCalculator className="text-[#023E8A]" /> }
+    { name: t('aboutCenter.stem.science'), icon: <FaFlask className="text-[#023E8A]" /> },
+    { name: t('aboutCenter.stem.technology'), icon: <FaLaptopCode className="text-[#023E8A]" /> },
+    { name: t('aboutCenter.stem.engineering'), icon: <FaRobot className="text-[#023E8A]" /> },
+    { name: t('aboutCenter.stem.math'), icon: <FaCalculator className="text-[#023E8A]" /> }
   ];
 
   // Электронные ресурсы
   const digitalResources = [
-    { name: "EBSCO", description: t('about.resources.ebsco') },
-    { name: "SAGE", description: t('about.resources.sage') },
-    { name: "STEM Labs", description: t('about.resources.labs') },
-    { name: "Digital Library", description: t('about.resources.library') }
   ];
 
   const nextImage = () => {
@@ -140,14 +132,14 @@ const About = () => {
             className="inline-flex items-center gap-3 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-3 rounded-full mb-6"
           >
             <FaMapMarkerAlt className="text-xl" />
-            <span className="font-semibold">{t('about.badge')}</span>
+            <span className="font-semibold">{t('aboutCenter.badge')}</span>
           </motion.div>
 
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
-            {t('about.title')}
+            {t('aboutCenter.title')}
           </h1>
           <p className="text-lg md:text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            {t('about.subtitle')}
+            {t('aboutCenter.subtitle')}
           </p>
         </motion.div>
 
@@ -197,13 +189,13 @@ const About = () => {
             >
               <div className="bg-white rounded-3xl p-6 md:p-8 shadow-lg border border-gray-200">
                 <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
-                  {t('about.description.title')}
+                  {t('aboutCenter.description.title')}
                 </h2>
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  {t('about.description.content1')}
+                  {t('aboutCenter.description.content1')}
                 </p>
                 <p className="text-gray-600 leading-relaxed">
-                  {t('about.description.content2')}
+                  {t('aboutCenter.description.content2')}
                 </p>
               </div>
 
@@ -216,7 +208,7 @@ const About = () => {
               >
                 <div className="flex items-center gap-3 mb-4">
                   <FaLightbulb className="text-xl" />
-                  <h3 className="text-xl md:text-2xl font-bold">{t('about.stem.title')}</h3>
+                  <h3 className="text-xl md:text-2xl font-bold">{t('aboutCenter.stem.title')}</h3>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   {stemAreas.map((area, index) => (
@@ -312,10 +304,10 @@ const About = () => {
         >
           <div className="text-center mb-8 md:mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-              {t('about.programs.title')}
+              {t('aboutCenter.programs.title')}
             </h2>
             <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
-              {t('about.programs.subtitle')}
+              {t('aboutCenter.programs.subtitle')}
             </p>
           </div>
 
@@ -357,10 +349,10 @@ const About = () => {
           <div className="bg-white rounded-3xl p-6 md:p-8 shadow-lg border border-gray-200">
             <div className="text-center mb-6 md:mb-8">
               <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-3">
-                {t('about.resources.title')}
+                {t('aboutCenter.resources.title')}
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                {t('about.resources.description')}
+                {t('aboutCenter.resources.description')}
               </p>
             </div>
 
@@ -394,23 +386,23 @@ const About = () => {
           <div className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-3xl p-8 md:p-12 text-center text-white">
             <FaAward className="text-4xl md:text-5xl mx-auto mb-6 text-yellow-300" />
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
-              {t('about.mission.title')}
+              {t('aboutCenter.mission.title')}
             </h2>
             <p className="text-lg md:text-xl mb-6 md:mb-8 opacity-90 max-w-4xl mx-auto leading-relaxed">
-              {t('about.mission.description')}
+              {t('aboutCenter.mission.description')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <div className="flex items-center gap-2">
                 <FaUsers className="text-yellow-300" />
-                <span>{t('about.mission.forAll')}</span>
+                <span>{t('aboutCenter.mission.forAll')}</span>
               </div>
               <div className="flex items-center gap-2">
                 <FaLightbulb className="text-yellow-300" />
-                <span>{t('about.mission.innovation')}</span>
+                <span>{t('aboutCenter.mission.innovation')}</span>
               </div>
               <div className="flex items-center gap-2">
                 <FaGraduationCap className="text-yellow-300" />
-                <span>{t('about.mission.preparation')}</span>
+                <span>{t('aboutCenter.mission.preparation')}</span>
               </div>
             </div>
           </div>
@@ -425,10 +417,10 @@ const About = () => {
           className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-3xl p-8 md:p-12 text-center text-white"
         >
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
-            {t('about.cta.title')}
+            {t('aboutCenter.cta.title')}
           </h2>
           <p className="text-lg md:text-xl mb-6 md:mb-8 opacity-90 max-w-2xl mx-auto">
-            {t('about.cta.description')}
+            {t('aboutCenter.cta.description')}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
             <motion.button
@@ -436,7 +428,7 @@ const About = () => {
               whileTap={{ scale: 0.95 }}
               className="bg-white text-[#023E8A] px-6 md:px-8 py-3 md:py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3"
             >
-              {t('about.cta.visit')}
+              {t('aboutCenter.cta.visit')}
               <FaArrowRight />
             </motion.button>
             <motion.button
@@ -444,7 +436,7 @@ const About = () => {
               whileTap={{ scale: 0.95 }}
               className="border-2 border-white text-white px-6 md:px-8 py-3 md:py-4 rounded-2xl font-semibold hover:bg-white/10 transition-all duration-300"
             >
-              {t('about.cta.learnMore')}
+              {t('aboutCenter.cta.learnMore')}
             </motion.button>
           </div>
         </motion.div>

@@ -59,10 +59,6 @@ const AccountingPolicyPage = () => {
   ];
 
   const stats = [
-    { number: "IFRS", label: t('accountingPolicy.stats.standards'), icon: <FaGlobe className="text-[#023E8A]" /> },
-    { number: "100%", label: t('accountingPolicy.stats.compliance'), icon: <FaShieldAlt className="text-[#023E8A]" /> },
-    { number: "24/7", label: t('accountingPolicy.stats.audit'), icon: <FaRegClock className="text-[#023E8A]" /> },
-    { number: "50+", label: t('accountingPolicy.stats.experts'), icon: <FaUserTie className="text-[#023E8A]" /> }
   ];
 
   const principles = [

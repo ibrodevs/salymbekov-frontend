@@ -168,10 +168,6 @@ const QualityPolicyPage = () => {
   ];
 
   const stats = [
-    { number: "12", label: t('qualityPolicy.stats.documents'), icon: <FaFileAlt className="text-[#023E8A]" /> },
-    { number: "8", label: t('qualityPolicy.stats.regulations'), icon: <FaCog className="text-[#023E8A]" /> },
-    { number: "2", label: t('qualityPolicy.stats.manuals'), icon: <FaBook className="text-[#023E8A]" /> },
-    { number: "2022", label: t('qualityPolicy.stats.updated'), icon: <FaCalendarAlt className="text-[#023E8A]" /> }
   ];
 
   const principles = [
@@ -316,7 +312,7 @@ const QualityPolicyPage = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="bg-white rounded-3xl shadow-2xl border border-gray-200 p-12 mb-16"
+          className=" rounded-3xl shadow-2xl border border-gray-200 p-12 mb-16"
         >
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-800 mb-6">

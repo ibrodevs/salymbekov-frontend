@@ -23,10 +23,6 @@ const Internship = () => {
 
   // Статистика интернатуры
   const stats = [
-    { number: "3", label: t('internship.stats.years'), icon: <FaCalendarAlt className="text-[#023E8A]" /> },
-    { number: "2", label: t('internship.stats.specialties'), icon: <FaUserMd className="text-[#023E8A]" /> },
-    { number: "3", label: t('internship.stats.clinics'), icon: <FaHospital className="text-[#023E8A]" /> },
-    { number: "100%", label: t('internship.stats.practical'), icon: <FaStethoscope className="text-[#023E8A]" /> }
   ];
 
   // Клиники университета
@@ -157,33 +153,7 @@ const Internship = () => {
           </p>
         </motion.div>
 
-        {/* Статистика */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-16"
-        >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              whileHover={{ scale: 1.05, y: -5 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-2xl p-4 md:p-6 text-center shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group"
-            >
-              <div className="flex justify-center mb-2 md:mb-3 group-hover:scale-110 transition-transform duration-300">
-                {stat.icon}
-              </div>
-              <div className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent mb-1 md:mb-2">
-                {stat.number}
-              </div>
-              <div className="text-sm md:text-base text-gray-600 font-medium">{stat.label}</div>
-            </motion.div>
-          ))}
-        </motion.div>
+
 
         {/* Основной контент */}
         <motion.div
@@ -246,7 +216,7 @@ const Internship = () => {
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="bg-white rounded-3xl p-6 md:p-8 shadow-lg border border-gray-200"
+              className=" rounded-3xl p-6 md:p-8 shadow-lg border border-gray-200"
             >
               <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6">
                 {t('internship.clinics.title')}
@@ -325,7 +295,7 @@ const Internship = () => {
                   </p>
                   
                   <div className="space-y-2">
-                    <h4 className="font-bold text-gray-800">{t('internship.specialties.areas')}:</h4>
+                   
                    
                   </div>
                 </div>
@@ -348,30 +318,8 @@ const Internship = () => {
           </div>
         </motion.div>
 
-        {/* Области медицинской практики */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-          className="mb-16"
-        >
-          <div className="bg-white rounded-3xl p-6 md:p-8 shadow-lg border border-gray-200">
-            <div className="text-center mb-6 md:mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-3">
-                {t('internship.practiceAreas.title')}
-              </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                {t('internship.practiceAreas.description')}
-              </p>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
-           
-            </div>
-          </div>
-        </motion.div>
-
+     
+      
         {/* Преимущества интернатуры */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}

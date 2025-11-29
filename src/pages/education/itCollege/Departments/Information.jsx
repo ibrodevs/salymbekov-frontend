@@ -27,10 +27,6 @@ const ITDepartmentPage = () => {
   ];
 
   const stats = [
-    { number: "50+", label: t('itDepartment.stats.courses'), icon: <FaBook className="text-[#023E8A]" /> },
-    { number: "15", label: t('itDepartment.stats.labs'), icon: <FaLaptop className="text-[#023E8A]" /> },
-    { number: "1000+", label: t('itDepartment.stats.students'), icon: <FaUsers className="text-[#023E8A]" /> },
-    { number: "95%", label: t('itDepartment.stats.employment'), icon: <FaChartLine className="text-[#023E8A]" /> }
   ];
 
   const features = [
@@ -413,23 +409,7 @@ const ITDepartmentPage = () => {
                           {teacher.experience}
                         </p>
 
-                        {/* Социальные сети */}
-                        <div className="flex justify-center gap-4">
-                          <motion.a
-                            whileHover={{ scale: 1.2, y: -2 }}
-                            href={teacher.social.linkedin}
-                            className="bg-gray-100 text-[#023E8A] p-3 rounded-xl hover:bg-[#023E8A] hover:text-white transition-all duration-300"
-                          >
-                            <FaLinkedin />
-                          </motion.a>
-                          <motion.a
-                            whileHover={{ scale: 1.2, y: -2 }}
-                            href={`mailto:${teacher.social.email}`}
-                            className="bg-gray-100 text-[#023E8A] p-3 rounded-xl hover:bg-[#023E8A] hover:text-white transition-all duration-300"
-                          >
-                            <FaEnvelope />
-                          </motion.a>
-                        </div>
+                       
                       </div>
                     </div>
 
@@ -439,16 +419,8 @@ const ITDepartmentPage = () => {
                         {formatTextWithBold(teacher.text)}
                       </div>
 
-                      {/* Преподаваемые предметы */}
-                      <div className="bg-gray-50 rounded-2xl p-6">
-                        <h4 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-                          <FaBook className="text-[#023E8A]" />
-                          {t('itDepartment.subjects')}
-                        </h4>
-                        <div className="grid md:grid-cols-2 gap-3">
-                          
-                        </div>
-                      </div>
+                     
+                     
                     </div>
                   </div>
                 </div>

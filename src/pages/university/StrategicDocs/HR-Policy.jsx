@@ -75,10 +75,6 @@ const HRPolicyPage = () => {
   ];
 
   const stats = [
-    { number: "100+", label: t('hrPolicy.stats.employees'), icon: <FaUsers className="text-[#023E8A]" /> },
-    { number: "95%", label: t('hrPolicy.stats.satisfaction'), icon: <FaHeart className="text-[#023E8A]" /> },
-    { number: "30+", label: t('hrPolicy.stats.training'), icon: <FaGraduationCap className="text-[#023E8A]" /> },
-    { number: "5+", label: t('hrPolicy.stats.benefits'), icon: <FaAward className="text-[#023E8A]" /> }
   ];
 
   const benefits = [

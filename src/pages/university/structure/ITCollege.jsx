@@ -1,5 +1,5 @@
 // ITCollege.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { 
@@ -16,6 +16,11 @@ import {
 const ITBusinessCollege = () => {
   const { t } = useTranslation();
   const [selectedImage, setSelectedImage] = useState(null);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Массив URL для картинок галереи
   const galleryImages = [
@@ -102,8 +107,19 @@ const ITBusinessCollege = () => {
     );
   };
 
+  if (!isMounted) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-[#023E8A] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-[#023E8A] font-semibold">Загрузка...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-gray-50 relative overflow-hidden">
+    <div className="min-h-screen  relative overflow-hidden">
       {/* Анимированный фон */}
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(15)].map((_, i) => (
@@ -132,19 +148,17 @@ const ITBusinessCollege = () => {
       </div>
 
       <div className="relative z-10">
-        {/* Герой секция с белым фоном и синим текстом */}
+        {/* Герой секция с общим фоном */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="relative bg-white py-24"
+          className="relative py-24"
         >
           <div className="max-w-6xl mx-auto px-4 text-center">
             <motion.div
               initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true }}
+              animate={{ scale: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               className="inline-flex items-center gap-3 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-3 rounded-full mb-6"
             >
@@ -152,21 +166,31 @@ const ITBusinessCollege = () => {
               <span className="font-semibold">{t('itBusinessCollege.badge')}</span>
             </motion.div>
 
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent"
+            >
               {t('itBusinessCollege.hero.title')}
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            </motion.h1>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed"
+            >
               {t('itBusinessCollege.subtitle')}
-            </p>
+            </motion.p>
           </div>
         </motion.div>
 
         {/* Отдельный блок с фоновым изображением */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
           className="max-w-6xl mx-auto px-4 -mt-8 relative z-20"
         >
           <div className="rounded-3xl overflow-hidden shadow-2xl">
@@ -183,10 +207,9 @@ const ITBusinessCollege = () => {
           {/* Пригласительный текст */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="bg-white rounded-3xl shadow-2xl border border-gray-200 p-8 mb-12 text-center"
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl border border-white/50 p-8 mb-12 text-center"
           >
             <p className="text-gray-700 text-lg leading-relaxed max-w-4xl mx-auto">
               {t('itBusinessCollege.invitationText')}
@@ -196,9 +219,8 @@ const ITBusinessCollege = () => {
           {/* Особенности колледжа */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
             className="mb-16"
           >
             <div className="grid md:grid-cols-3 gap-6">
@@ -206,10 +228,10 @@ const ITBusinessCollege = () => {
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  animate={{ opacity: 1, y: 0 }}
                   whileHover={{ scale: 1.05, y: -5 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group text-center"
+                  transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+                  className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/50 hover:shadow-xl transition-all duration-300 group text-center"
                 >
                   <div className={`w-16 h-16 ${feature.color} rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300`}>
                     {feature.icon}
@@ -228,14 +250,13 @@ const ITBusinessCollege = () => {
           {/* Основной контент с изображением */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
             className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16"
           >
             <motion.div
               whileHover={{ scale: 1.02 }}
-              className="bg-white rounded-3xl shadow-2xl border border-gray-200 overflow-hidden"
+              className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl border border-white/50 overflow-hidden"
             >
               <img 
                 src="https://salymbekov.com/wp-content/uploads/2021/01/%D0%96%D1%83%D0%BC%D0%B0%D0%B4%D0%B8%D0%BB%D0%BE%D0%B2-%D0%AD%D1%81%D0%B5%D0%BD%D0%B3%D0%B5%D0%BB%D0%B4%D0%B8-%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80-%D0%A1%D0%B0%D0%BB%D1%8B%D0%BC%D0%B1%D0%B5%D0%BA%D0%BE%D0%B2-%D1%83%D0%BD%D0%B8%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%82%D0%B5%D1%82-1024x683.jpg"
@@ -245,7 +266,7 @@ const ITBusinessCollege = () => {
             </motion.div>
             
             <div className="flex items-center">
-              <div className="bg-white rounded-3xl shadow-2xl border border-gray-200 p-8">
+              <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl border border-white/50 p-8">
                 <div className="prose prose-lg max-w-none">
                   <p className="text-gray-700 leading-relaxed mb-6">
                     {t('itBusinessCollege.description1')}
@@ -264,10 +285,9 @@ const ITBusinessCollege = () => {
           {/* Контактная информация */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            className="bg-white rounded-3xl shadow-2xl border border-gray-200 p-8 mb-16"
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.0 }}
+            className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl border border-white/50 p-8 mb-16"
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-2xl flex items-center justify-center">
@@ -286,10 +306,10 @@ const ITBusinessCollege = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  animate={{ opacity: 1, x: 0 }}
                   whileHover={{ scale: 1.02, x: 5 }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="flex items-center gap-4 p-4 bg-gray-50 rounded-2xl hover:bg-blue-50 transition-colors duration-300 cursor-pointer"
+                  transition={{ duration: 0.4, delay: 1.1 + index * 0.1 }}
+                  className="flex items-center gap-4 p-4 bg-white/60 backdrop-blur-sm rounded-2xl hover:bg-blue-50/80 transition-colors duration-300 cursor-pointer border border-white/50"
                 >
                   <div className="w-10 h-10 flex items-center justify-center">
                     {phone.icon}
@@ -310,16 +330,15 @@ const ITBusinessCollege = () => {
           {/* Галерея */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.2 }}
             className="mb-16"
           >
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold text-gray-800 mb-4">
                 {t('itBusinessCollege.gallery.title')}
               </h2>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              <p className="text-xl text-gray-700 max-w-2xl mx-auto">
                 {t('itBusinessCollege.gallery.subtitle')}
               </p>
             </div>
@@ -329,10 +348,10 @@ const ITBusinessCollege = () => {
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+                  animate={{ opacity: 1, scale: 1 }}
                   whileHover={{ scale: 1.05, y: -5 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="cursor-pointer bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300"
+                  transition={{ duration: 0.5, delay: 1.3 + index * 0.1 }}
+                  className="cursor-pointer bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50 overflow-hidden hover:shadow-xl transition-all duration-300"
                   onClick={() => openImageModal(index)}
                 >
                   <img 
@@ -348,9 +367,8 @@ const ITBusinessCollege = () => {
           {/* Призыв к действию */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.9 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.4 }}
             className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-3xl p-12 text-center text-white"
           >
             <h2 className="text-4xl font-bold mb-4">
@@ -369,7 +387,6 @@ const ITBusinessCollege = () => {
                 <FaPhone />
                 {t('itBusinessCollege.cta.callNow')}
               </motion.a>
-             
             </div>
           </motion.div>
         </div>

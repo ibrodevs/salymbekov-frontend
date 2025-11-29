@@ -17,10 +17,6 @@ const Founder = () => {
 
   // Статистика основателя
   const stats = [
-    { number: "40+", label: t('founder.stats.experience'), icon: <FaBriefcase className="text-[#023E8A]" /> },
-    { number: "50+", label: t('founder.stats.awards'), icon: <FaAward className="text-[#023E8A]" /> },
-    { number: "100+", label: t('founder.stats.projects'), icon: <FaUsers className="text-[#023E8A]" /> },
-    { number: "25+", label: t('founder.stats.publications'), icon: <FaGraduationCap className="text-[#023E8A]" /> }
   ];
 
   // Основные достижения

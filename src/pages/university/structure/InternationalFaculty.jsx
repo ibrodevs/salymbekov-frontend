@@ -24,10 +24,6 @@ const InternationalFaculty = () => {
 
   // Статистика факультета
   const stats = [
-    { number: "50+", label: t('internationalFaculty.stats.professors'), icon: <FaUserMd className="text-[#023E8A]" /> },
-    { number: "1000+", label: t('internationalFaculty.stats.students'), icon: <FaGraduationCap className="text-[#023E8A]" /> },
-    { number: "15", label: t('internationalFaculty.stats.labs'), icon: <FaFlask className="text-[#023E8A]" /> },
-    { number: "10", label: t('internationalFaculty.stats.hospitals'), icon: <FaHospital className="text-[#023E8A]" /> }
   ];
 
   // Преимущества факультета

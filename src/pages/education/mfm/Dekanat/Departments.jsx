@@ -83,10 +83,6 @@ const DepartmentsPage = () => {
   ];
 
   const stats = [
-    { number: "50+", label: t('departments.stats.years'), icon: <FaHistory className="text-[#023E8A]" /> },
-    { number: "1000+", label: t('departments.stats.students'), icon: <FaUsers className="text-[#023E8A]" /> },
-    { number: "50+", label: t('departments.stats.professors'), icon: <FaGraduationCap className="text-[#023E8A]" /> },
-    { number: "20+", label: t('departments.stats.programs'), icon: <FaLightbulb className="text-[#023E8A]" /> }
   ];
 
   const features = [

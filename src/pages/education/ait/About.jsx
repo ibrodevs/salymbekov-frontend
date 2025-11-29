@@ -39,54 +39,50 @@ const AboutInstitutePage = () => {
   const documents = [
     {
       id: 'license',
-      title: t('about.license.title'),
-      description: t('about.license.description'),
+      title: t('aboutAIT.license.title'),
+      description: t('aboutAIT.license.description'),
       image: 'https://salymbekov.com/wp-content/uploads/2023/07/licenzija-ait_00001-300x211.webp',
       icon: <FaFileAlt className="text-4xl" />,
       color: "from-[#023E8A] to-[#0077B6]",
-      buttonText: t('about.license.button')
+      buttonText: t('aboutAIT.license.button')
     },
     {
       id: 'certificate',
-      title: t('about.certificate.title'),
-      description: t('about.certificate.description'),
+      title: t('aboutAIT.certificate.title'),
+      description: t('aboutAIT.certificate.description'),
       image: 'https://salymbekov.com/wp-content/uploads/2023/07/qip-shot-screen-137-300x210.png',
       icon: <FaCertificate className="text-4xl" />,
       color: "from-[#0096C7] to-[#00B4D8]",
-      buttonText: t('about.certificate.button')
+      buttonText: t('aboutAIT.certificate.button')
     }
   ];
 
   const stats = [
-    { number: "15+", label: t('about.stats.ages'), icon: <FaAward className="text-[#023E8A]" /> },
-    { number: "5000+", label: t('about.stats.students'), icon: <FaUsers className="text-[#023E8A]" /> },
-    { number: "50+", label: t('about.stats.programs'), icon: <FaGraduationCap className="text-[#023E8A]" /> },
-    { number: "95%", label: t('about.stats.focus'), icon: <FaRocket className="text-[#023E8A]" /> }
   ];
 
   const values = [
     {
       icon: <FaGraduationCap className="text-white" size={24} />,
-      title: t('about.values.innovation.title'),
-      description: t('about.values.innovation.description'),
+      title: t('aboutAIT.values.innovation.title'),
+      description: t('aboutAIT.values.innovation.description'),
       color: "bg-[#023E8A]"
     },
     {
       icon: <FaUsers className="text-white" size={24} />,
-      title: t('about.values.community.title'),
-      description: t('about.values.community.description'),
+      title: t('aboutAIT.values.community.title'),
+      description: t('aboutAIT.values.community.description'),
       color: "bg-[#0077B6]"
     },
     {
       icon: <FaGlobe className="text-white" size={24} />,
-      title: t('about.values.excellence.title'),
-      description: t('about.values.excellence.description'),
+      title: t('aboutAIT.values.excellence.title'),
+      description: t('aboutAIT.values.excellence.description'),
       color: "bg-[#0096C7]"
     },
     {
       icon: <FaRocket className="text-white" size={24} />,
-      title: t('about.values.future.title'),
-      description: t('about.values.future.description'),
+      title: t('aboutAIT.values.future.title'),
+      description: t('aboutAIT.values.future.description'),
       color: "bg-[#00B4D8]"
     }
   ];
@@ -193,10 +189,10 @@ const AboutInstitutePage = () => {
             </motion.div>
 
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-              {t('about.title')}
+              {t('aboutAIT.title')}
             </h1>
             <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed">
-              {t('about.subtitle')}
+              {t('aboutAIT.subtitle')}
             </p>
           </motion.div>
         </section>
@@ -244,7 +240,7 @@ const AboutInstitutePage = () => {
               className="mb-16"
             >
               <div className="prose max-w-none text-gray-700 text-lg leading-relaxed">
-                {formatTextWithBold(t('about.content'))}
+                {formatTextWithBold(t('aboutAIT.content'))}
               </div>
             </motion.div>
 
@@ -292,13 +288,13 @@ const AboutInstitutePage = () => {
             >
               <div className="inline-flex items-center gap-3 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-3 rounded-full mb-6">
                 <FaQuoteLeft className="text-lg" />
-                <span className="font-semibold">{t('about.welcome.badge')}</span>
+                <span className="font-semibold">{t('aboutAIT.welcome.badge')}</span>
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
-                {t('about.welcome.title')}
+                {t('aboutAIT.welcome.title')}
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                {t('about.welcome.subtitle')}
+                {t('aboutAIT.welcome.subtitle')}
               </p>
             </motion.div>
 
@@ -311,7 +307,7 @@ const AboutInstitutePage = () => {
               className="mb-16"
             >
               <h3 className="text-3xl font-bold text-center text-gray-800 mb-12">
-                {t('about.values.title')}
+                {t('aboutAIT.values.title')}
               </h3>
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {values.map((value, index) => (
@@ -352,7 +348,7 @@ const AboutInstitutePage = () => {
               }`}>
                 <motion.img 
                   src={carouselImages[currentImage]} 
-                  alt={`${t('about.carousel.alt')} ${currentImage + 1}`}
+                  alt={`${t('aboutAIT.carousel.alt')} ${currentImage + 1}`}
                   className="w-full h-96 md:h-[500px] object-cover transition-all duration-500 ease-in-out"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}

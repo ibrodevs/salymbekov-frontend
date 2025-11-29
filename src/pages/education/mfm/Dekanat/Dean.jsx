@@ -22,10 +22,6 @@ const MedicalFacultyDeaneryPage = () => {
   const [activeTab, setActiveTab] = useState("about");
 
   const stats = [
-    { number: "500+", label: t('medicalFacultyDeanery.stats.students'), icon: <FaUsers className="text-[#023E8A]" /> },
-    { number: "50+", label: t('medicalFacultyDeanery.stats.teachers'), icon: <FaUserMd className="text-[#023E8A]" /> },
-    { number: "10+", label: t('medicalFacultyDeanery.stats.programs'), icon: <FaGraduationCap className="text-[#023E8A]" /> },
-    { number: "95%", label: t('medicalFacultyDeanery.stats.employment'), icon: <FaAward className="text-[#023E8A]" /> }
   ];
 
   const features = [
@@ -197,33 +193,7 @@ const MedicalFacultyDeaneryPage = () => {
           </p>
         </motion.div>
 
-        {/* Статистика */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
-        >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              whileHover={{ scale: 1.05, y: -5 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group"
-            >
-              <div className="flex justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
-                {stat.icon}
-              </div>
-              <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent mb-2">
-                {stat.number}
-              </div>
-              <div className="text-gray-600 font-medium">{stat.label}</div>
-            </motion.div>
-          ))}
-        </motion.div>
+       
 
         {/* Табы навигации */}
         <motion.div
@@ -231,7 +201,7 @@ const MedicalFacultyDeaneryPage = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="bg-white rounded-3xl shadow-2xl border border-gray-200 p-2 mb-12"
+          className=" rounded-3xl shadow-2xl border border-gray-200 p-2 "
         >
           <div className="flex flex-wrap gap-2 justify-center">
             {tabs.map((tab) => (
@@ -263,7 +233,7 @@ const MedicalFacultyDeaneryPage = () => {
               transition={{ duration: 0.6 }}
               className="space-y-12"
             >
-              <div className="bg-white rounded-3xl shadow-lg border border-gray-200 p-8">
+              <div className=" rounded-3xl shadow-lg border border-gray-200 p-8">
                 <h2 className="text-4xl font-bold text-gray-800 mb-8">
                   {t('medicalFacultyDeanery.about.title')}
                 </h2>
@@ -317,7 +287,7 @@ const MedicalFacultyDeaneryPage = () => {
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.2 }}
-                  className="bg-white rounded-3xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300"
+                  className=" rounded-3xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300"
                 >
                   <div className="p-8">
                     <div className="flex flex-col lg:flex-row gap-8 items-start">
@@ -413,7 +383,7 @@ const MedicalFacultyDeaneryPage = () => {
               transition={{ duration: 0.6 }}
               className="space-y-8"
             >
-              <div className="bg-white rounded-3xl shadow-lg border border-gray-200 p-8">
+              <div className=" rounded-3xl shadow-lg border border-gray-200 p-8">
                 <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
                   {t('medicalFacultyDeanery.contactInfo.title')}
                 </h2>

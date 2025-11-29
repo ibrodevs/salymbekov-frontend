@@ -18,10 +18,6 @@ const EditorialCouncilPage = () => {
 
   // Статистика
   const stats = [
-    { number: "20+", label: t('editorialCouncil.stats.publications'), icon: <FaNewspaper className="text-[#023E8A]" /> },
-    { number: "100%", label: t('editorialCouncil.stats.quality'), icon: <FaAward className="text-[#023E8A]" /> },
-    { number: "15+", label: t('editorialCouncil.stats.experts'), icon: <FaUsers className="text-[#023E8A]" /> },
-    { number: "5", label: t('editorialCouncil.stats.years'), icon: <FaBook className="text-[#023E8A]" /> }
   ];
 
   // Основные функции совета
@@ -78,8 +74,8 @@ const EditorialCouncilPage = () => {
       </div>
 
       <div className="relative z-10">
-        {/* Герой секция с белым фоном */}
-        <section className="relative py-20 bg-white">
+        {/* Герой секция */}
+        <section className="relative py-20 ">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}

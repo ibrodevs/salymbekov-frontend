@@ -26,10 +26,6 @@ const YoungLeaders = () => {
 
   // Статистика программы
   const stats = [
-    { number: "7-11", label: t('youngLeaders.stats.grades'), icon: <FaGraduationCap className="text-[#023E8A]" /> },
-    { number: "3", label: t('youngLeaders.stats.months'), icon: <FaClock className="text-[#023E8A]" /> },
-    { number: "3", label: t('youngLeaders.stats.directions'), icon: <FaBook className="text-[#023E8A]" /> },
-    { number: "7+", label: t('youngLeaders.stats.generations'), icon: <FaUsers className="text-[#023E8A]" /> }
   ];
 
   // Направления "Три в одном"

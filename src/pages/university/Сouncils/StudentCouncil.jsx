@@ -62,10 +62,6 @@ const StudentCouncilPage = () => {
 
   // Статистика студсовета
   const stats = [
-    { number: "1000+", label: t('studentCouncil.stats.students'), icon: <FaUsers className="text-[#023E8A]" /> },
-    { number: "50+", label: t('studentCouncil.stats.events'), icon: <FaCalendarAlt className="text-[#023E8A]" /> },
-    { number: "25+", label: t('studentCouncil.stats.projects'), icon: <FaRocket className="text-[#023E8A]" /> },
-    { number: "15+", label: t('studentCouncil.stats.initiatives'), icon: <FaLightbulb className="text-[#023E8A]" /> }
   ];
 
   // Основные направления деятельности
@@ -127,7 +123,7 @@ const StudentCouncilPage = () => {
 
       <div className="relative z-10">
         {/* Header с белым фоном и синим текстом */}
-        <section className="relative py-20 bg-white">
+        <section className="relative py-20 ">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 50 }}

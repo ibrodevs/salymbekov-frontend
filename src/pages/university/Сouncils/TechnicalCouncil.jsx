@@ -18,10 +18,6 @@ const MethodologicalCouncilPage = () => {
 
   // Статистика
   const stats = [
-    { number: "16", label: t('methodologicalCouncil.stats.tasks'), icon: <FaTasks className="text-[#023E8A]" /> },
-    { number: "100%", label: t('methodologicalCouncil.stats.quality'), icon: <FaChartLine className="text-[#023E8A]" /> },
-    { number: "50+", label: t('methodologicalCouncil.stats.programs'), icon: <FaFileAlt className="text-[#023E8A]" /> },
-    { number: "24/7", label: t('methodologicalCouncil.stats.support'), icon: <FaUsers className="text-[#023E8A]" /> }
   ];
 
   // Задачи совета
@@ -74,8 +70,8 @@ const MethodologicalCouncilPage = () => {
       </div>
 
       <div className="relative z-10">
-        {/* Герой секция с белым фоном */}
-        <section className="relative py-20 bg-white">
+        {/* Герой секция  */}
+        <section className="relative py-20 ">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}

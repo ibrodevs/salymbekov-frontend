@@ -113,6 +113,7 @@ const Scholarships = () => {
       }
    ];
 
+   // Имена и фамилии остаются без перевода
    const commissionMembers = [
       { name: 'Уметалиева М.Н.', position: t('scholarships.commission.chairman', 'декан, председатель комиссии') },
       { name: 'Арзиева Н.Н.', position: t('scholarships.commission.viceChairman', 'заместитель декана, член комиссии') },
@@ -210,11 +211,8 @@ const Scholarships = () => {
          </div>
 
          {/* Hero Section */}
-         <motion.div
+         <div
             className="relative h-[60vh] flex items-center justify-center overflow-hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
          >
             {/* Additional white bubbles in hero section for contrast */}
             {[...Array(8)].map((_, i) => (
@@ -254,32 +252,23 @@ const Scholarships = () => {
             </div>
 
             <div className="relative z-10 container mx-auto px-4 text-center text-white">
-               <motion.div
+               <div
                   className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm mb-6"
-                  initial={{ scale: 0, rotate: -180 }}
-                  animate={{ scale: 1, rotate: 0 }}
-                  transition={{ delay: 0.2, duration: 0.8 }}
                >
                   <FiAward className="w-10 h-10" />
-               </motion.div>
-               <motion.h1
+               </div>
+               <h1
                   className="text-6xl md:text-7xl font-bold mb-6"
-                  initial={{ y: 30, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.3, duration: 0.8 }}
                >
                   {t('scholarships.hero.title', 'Стипендии и льготы')}
-               </motion.h1>
-               <motion.p
+               </h1>
+               <p
                   className="text-2xl md:text-3xl font-semibold text-white/90"
-                  initial={{ y: 30, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.5, duration: 0.8 }}
                >
                   {t('scholarships.hero.subtitle', 'Scholarships and Benefits')}
-               </motion.p>
+               </p>
             </div>
-         </motion.div>
+         </div>
 
          {/* Main Content with Navigation */}
          <div className="relative z-10 container mx-auto px-4 -mt-20">
@@ -296,11 +285,8 @@ const Scholarships = () => {
                            const Icon = item.icon;
 
                            return (
-                              <motion.div
+                              <div
                                  key={item.path}
-                                 initial={{ x: -20, opacity: 0 }}
-                                 animate={{ x: 0, opacity: 1 }}
-                                 transition={{ delay: index * 0.05 }}
                               >
                                  <Link
                                     to={item.path}
@@ -323,15 +309,12 @@ const Scholarships = () => {
                                     </div>
                                     <span className="font-medium">{item.label}</span>
                                  </Link>
-                              </motion.div>
+                              </div>
                            );
                         })}
 
                         {/* Как к нам поступить - Section with subitems */}
-                        <motion.div
-                           initial={{ x: -20, opacity: 0 }}
-                           animate={{ x: 0, opacity: 1 }}
-                           transition={{ delay: navigationItems.length * 0.05 }}
+                        <div
                            className="pt-2"
                         >
                            <button
@@ -359,11 +342,8 @@ const Scholarships = () => {
                                     const SubIcon = subItem.icon;
 
                                     return (
-                                       <motion.div
+                                       <div
                                           key={subItem.path}
-                                          initial={{ x: -10, opacity: 0 }}
-                                          animate={{ x: 0, opacity: 1 }}
-                                          transition={{ delay: index * 0.05 }}
                                        >
                                           <Link
                                              to={subItem.path}
@@ -386,12 +366,12 @@ const Scholarships = () => {
                                              </div>
                                              <span className="font-medium">{subItem.label}</span>
                                           </Link>
-                                       </motion.div>
+                                       </div>
                                     );
                                  })}
                               </div>
                            )}
-                        </motion.div>
+                        </div>
                      </nav>
                   </div>
                </div>
@@ -399,12 +379,8 @@ const Scholarships = () => {
                {/* Right Content */}
                <div className="flex-1 space-y-8">
                   {/* Introduction */}
-                  <motion.div
+                  <div
                      className="bg-white rounded-3xl shadow-2xl p-8 md:p-12"
-                     initial={{ y: 50, opacity: 0 }}
-                     whileInView={{ y: 0, opacity: 1 }}
-                     viewport={{ once: true }}
-                     transition={{ duration: 0.6 }}
                   >
                      <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
                         {t('scholarships.policy.title', 'Льготная политика')}
@@ -425,29 +401,20 @@ const Scholarships = () => {
                            {t('scholarships.policy.description3', 'Право на получение льготы имеют студенты Университета очной формы обучения, имеющие по результатам предыдущего учебного года только отличные оценки по всем дисциплинам, а также не имеющие академической задолженности.')}
                         </p>
                      </div>
-                  </motion.div>
+                  </div>
 
                   {/* Categories Section */}
-                  <motion.div
+                  <div
                      className="bg-white rounded-3xl shadow-2xl p-8 md:p-12"
-                     initial={{ y: 50, opacity: 0 }}
-                     whileInView={{ y: 0, opacity: 1 }}
-                     viewport={{ once: true }}
-                     transition={{ duration: 0.6 }}
                   >
                      <h2 className="text-4xl font-bold mb-8 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
                         {t('scholarships.categories.title', 'Категории студентов для получения льгот')}
                      </h2>
                      <div className="space-y-6">
                         {categories.map((category, idx) => (
-                           <motion.div
+                           <div
                               key={idx}
                               className="flex gap-4 p-6 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl hover:shadow-lg transition-all duration-300"
-                              initial={{ opacity: 0, x: -20 }}
-                              whileInView={{ opacity: 1, x: 0 }}
-                              viewport={{ once: true }}
-                              transition={{ delay: idx * 0.1 }}
-                              whileHover={{ scale: 1.02 }}
                            >
                               <div className="w-16 h-16 rounded-full bg-gradient-to-r from-[#023E8A] to-[#0077B6] flex items-center justify-center shrink-0">
                                  <span className="text-white text-2xl font-bold">{idx + 1}</span>
@@ -456,18 +423,14 @@ const Scholarships = () => {
                                  <h3 className="text-2xl font-bold text-[#023E8A] mb-3">{category.title}</h3>
                                  <p className="text-gray-700 leading-relaxed">{category.description}</p>
                               </div>
-                           </motion.div>
+                           </div>
                         ))}
                      </div>
-                  </motion.div>
+                  </div>
 
                   {/* Commission Section */}
-                  <motion.div
+                  <div
                      className="bg-white rounded-3xl shadow-2xl p-8 md:p-12"
-                     initial={{ y: 50, opacity: 0 }}
-                     whileInView={{ y: 0, opacity: 1 }}
-                     viewport={{ once: true }}
-                     transition={{ duration: 0.6 }}
                   >
                      <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
                         {t('scholarships.commission.title', 'Состав комиссии по социальной поддержке студентов')}
@@ -477,22 +440,20 @@ const Scholarships = () => {
                      </p>
                      <div className="space-y-4">
                         {commissionMembers.map((member, idx) => (
-                           <motion.div
+                           <div
                               key={idx}
                               className="flex items-start gap-4 p-4 bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl hover:shadow-md transition-all duration-300"
-                              initial={{ opacity: 0, y: 20 }}
-                              whileInView={{ opacity: 1, y: 0 }}
-                              viewport={{ once: true }}
-                              transition={{ delay: idx * 0.05 }}
                            >
                               <div className="w-10 h-10 rounded-full bg-gradient-to-r from-[#023E8A] to-[#0077B6] flex items-center justify-center shrink-0">
                                  <FiUsers className="w-5 h-5 text-white" />
                               </div>
                               <div className="flex-1">
+                                 {/* Имена остаются без перевода */}
                                  <p className="font-bold text-[#023E8A] text-lg">{member.name}</p>
+                                 {/* Должности переводятся */}
                                  <p className="text-gray-600">{member.position}</p>
                               </div>
-                           </motion.div>
+                           </div>
                         ))}
                      </div>
                      <div className="mt-8 p-4 bg-gradient-to-r from-blue-100 to-cyan-100 rounded-xl">
@@ -500,7 +461,7 @@ const Scholarships = () => {
                            <strong>{t('scholarships.commission.basis', 'Основание:')}</strong> {t('scholarships.commission.basisText', 'решение ученого совета от 30 августа 2022 года.')}
                         </p>
                      </div>
-                  </motion.div>
+                  </div>
                </div>
             </div>
          </div>

@@ -2,8 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FiArrowLeft, FiCalendar } from 'react-icons/fi';
+import { useTranslation } from 'react-i18next';
 
 const MedicalMission = () => {
+  const { t } = useTranslation();
+
   const photos = [
     '510859500_18079375405843726_8866767482677414866_n.jpg',
     '510918081_18079375528843726_5332527353816471044_n.jpg',
@@ -42,10 +45,10 @@ const MedicalMission = () => {
               <span className="text-xl">27.06.2025</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Международная медицинская миссия
+              {t('medicalMission.hero.title', 'Международная медицинская миссия')}
             </h1>
             <p className="text-xl md:text-2xl text-white/90">
-              Asan Medical Center & DOC University Hospital
+              {t('medicalMission.hero.subtitle', 'Asan Medical Center & DOC University Hospital')}
             </p>
           </motion.div>
         </div>
@@ -55,7 +58,7 @@ const MedicalMission = () => {
           className="absolute top-8 left-8 z-20 flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-white/20 transition-all duration-300"
         >
           <FiArrowLeft className="w-5 h-5" />
-          <span>Назад</span>
+          <span>{t('medicalMission.hero.backButton', 'Назад')}</span>
         </Link>
       </div>
 
@@ -70,25 +73,25 @@ const MedicalMission = () => {
           >
             <div className="bg-white rounded-2xl shadow-xl p-8 sticky top-8">
               <h3 className="text-2xl font-bold text-gray-800 mb-6">
-                Международная медицинская миссия
+                {t('medicalMission.description.title', 'Международная медицинская миссия')}
               </h3>
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>
-                  С 15 по 18 июня 2025 года на базе DOC University Hospital Салымбеков Университета прошла международная медицинская миссия в сотрудничестве с Asan Medical Center (г. Сеул, Республика Корея) — одной из ведущих клиник мира.
+                  {t('medicalMission.description.paragraph1', 'С 15 по 18 июня 2025 года на базе DOC University Hospital Салымбеков Университета прошла международная медицинская миссия в сотрудничестве с Asan Medical Center (г. Сеул, Республика Корея) — одной из ведущих клиник мира.')}
                 </p>
                 <p>
-                  В рамках гуманитарной инициативы была оказана безвозмездная медицинская помощь жителям Кыргызстана. Команда южнокорейских врачей провела:
+                  {t('medicalMission.description.paragraph2', 'В рамках гуманитарной инициативы была оказана безвозмездная медицинская помощь жителям Кыргызстана. Команда южнокорейских врачей провела:')}
                 </p>
                 <ul className="list-disc pl-5 space-y-2">
-                  <li><strong>937</strong> бесплатных консультаций и диагностических обследований</li>
-                  <li><strong>49</strong> операций, включая 40 по катаракте, 5 по птеригиуму, 4 при птозе век</li>
-                  <li>бесплатную выдачу лекарств по показаниям</li>
+                  <li>{t('medicalMission.description.listItem1', '937 бесплатных консультаций и диагностических обследований')}</li>
+                  <li>{t('medicalMission.description.listItem2', '49 операций, включая 40 по катаракте, 5 по птеригиуму, 4 при птозе век')}</li>
+                  <li>{t('medicalMission.description.listItem3', 'бесплатную выдачу лекарств по показаниям')}</li>
                 </ul>
                 <p>
-                  Приём вели специалисты по педиатрии, кардиологии, офтальмологии, гастроэнтерологии, семейной медицине и другим направлениям. Основное внимание уделялось социально уязвимым категориям граждан.
+                  {t('medicalMission.description.paragraph3', 'Приём вели специалисты по педиатрии, кардиологии, офтальмологии, гастроэнтерологии, семейной медицине и другим направлениям. Основное внимание уделялось социально уязвимым категориям граждан.')}
                 </p>
                 <p className="font-semibold">
-                  Миссия стала важным вкладом Салымбеков Университета в развитие здравоохранения и международного гуманитарного сотрудничества.
+                  {t('medicalMission.description.paragraph4', 'Миссия стала важным вкладом Салымбеков Университета в развитие здравоохранения и международного гуманитарного сотрудничества.')}
                 </p>
               </div>
             </div>
@@ -113,10 +116,10 @@ const MedicalMission = () => {
                 >
                   <img
                     src={`/src/assets/applicant/orientatioin/events/fourth_scroll/${photo}`}
-                    alt={`Медицинская миссия фото ${index + 1}`}
+                    alt={t('medicalMission.photoAlt', 'Медицинская миссия фото') + ` ${index + 1}`}
                     className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
                     onError={(e) => {
-                      e.target.src = 'https://via.placeholder.com/1200x800/0077B6/FFFFFF?text=Медицинская+миссия';
+                      e.target.src = 'https://via.placeholder.com/1200x800/0077B6/FFFFFF?text=' + t('medicalMission.photoAlt', 'Медицинская+миссия');
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

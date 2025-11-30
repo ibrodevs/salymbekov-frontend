@@ -3,8 +3,11 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FiArrowLeft, FiCalendar, FiGlobe, FiUsers } from 'react-icons/fi';
 import { FaFacebook, FaTwitter, FaWhatsapp, FaVk, FaTelegram } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 const Meeting = () => {
+  const { t } = useTranslation();
+
   const socialLinks = [
     {
       name: 'Facebook',
@@ -57,10 +60,10 @@ const Meeting = () => {
         <div className="absolute inset-0">
           <img
             src="/src/assets/applicant/orientatioin/4.jpg"
-            alt="Встречи с студентами из Пакистана"
+            alt={t('pakistanMeeting.hero.imageAlt', 'Встречи с студентами из Пакистана')}
             className="w-full h-full object-cover"
             onError={(e) => {
-              e.target.src = 'https://via.placeholder.com/1920x1080/0077B6/FFFFFF?text=Встречи+с+студентами';
+              e.target.src = 'https://via.placeholder.com/1920x1080/0077B6/FFFFFF?text=Meetings+with+Pakistani+Students';
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#023E8A]/90 to-[#0077B6]/90" />
@@ -72,19 +75,19 @@ const Meeting = () => {
           className="relative z-10 text-center px-4 max-w-5xl mx-auto"
         >
           <span className="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white text-sm font-semibold mb-6 shadow-lg">
-            Новости
+            {t('pakistanMeeting.hero.badge', 'Новости')}
           </span>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Состоялись встречи представителей Университета со студентами из Пакистана
+            {t('pakistanMeeting.hero.title', 'Состоялись встречи представителей Университета со студентами из Пакистана')}
           </h1>
           <div className="flex items-center justify-center gap-8 text-blue-100 text-lg">
             <div className="flex items-center gap-2">
               <FiCalendar className="w-6 h-6" />
-              <span>Октябрь 2019</span>
+              <span>{t('pakistanMeeting.hero.date', 'Октябрь 2019')}</span>
             </div>
             <div className="flex items-center gap-2">
               <FiGlobe className="w-6 h-6" />
-              <span>Международное сотрудничество</span>
+              <span>{t('pakistanMeeting.hero.category', 'Международное сотрудничество')}</span>
             </div>
           </div>
         </motion.div>
@@ -110,7 +113,7 @@ const Meeting = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
                     className={`p-3 bg-white rounded-full shadow-lg ${social.color} text-gray-600 hover:text-white transition-all duration-300 hover:scale-110`}
-                    title={`Поделиться в ${social.name}`}
+                    title={t('pakistanMeeting.social.share', 'Поделиться в') + ` ${social.name}`}
                   >
                     <social.icon className="w-6 h-6" />
                   </motion.a>
@@ -130,7 +133,7 @@ const Meeting = () => {
                   className="inline-flex items-center gap-2 text-[#0077B6] hover:text-[#023E8A] transition-colors font-semibold text-lg"
                 >
                   <FiArrowLeft className="w-5 h-5" />
-                  Вернуться к мероприятиям
+                  {t('pakistanMeeting.navigation.back', 'Вернуться к мероприятиям')}
                 </Link>
               </motion.div>
 
@@ -141,14 +144,14 @@ const Meeting = () => {
                 className="bg-white rounded-3xl shadow-2xl p-10 mb-12"
               >
                 <h2 className="text-4xl font-bold bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent mb-8">
-                  Состоялись встречи представителей Салымбеков Университета со студентами из Республики Пакистана
+                  {t('pakistanMeeting.content.title', 'Состоялись встречи представителей Салымбеков Университета со студентами из Республики Пакистана')}
                 </h2>
                 <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
                   <p>
-                    В октябре 2019 года были успешно проведены встречи представителей Салымбеков Университет – <strong className="text-[#0077B6]">вице-президента Университета Эсенгелди Жумадилова</strong> и <strong className="text-[#0077B6]">руководителя Департамента развития Аваза Казакова</strong> с представителями медицинских ВУЗов Республики Пакистан и будущими абитуриентами Университета.
+                    {t('pakistanMeeting.content.paragraph1', 'В октябре 2019 года были успешно проведены встречи представителей Салымбеков Университет – вице-президента Университета Эсенгелди Жумадилова и руководителя Департамента развития Аваза Казакова с представителями медицинских ВУЗов Республики Пакистан и будущими абитуриентами Университета.')}
                   </p>
                   <p>
-                    Представители Университета провели <strong className="text-[#0077B6]">презентацию Университета</strong> и консультировали по вопросам поступления и учебной программы.
+                    {t('pakistanMeeting.content.paragraph2', 'Представители Университета провели презентацию Университета и консультировали по вопросам поступления и учебной программы.')}
                   </p>
                 </div>
               </motion.div>

@@ -13,8 +13,8 @@ const RequiredDoc = () => {
          size: Math.random() * 120 + 60,
          left: `${Math.random() * 100}%`,
          top: `${Math.random() * 100}%`,
-         duration: 5 + Math.random() * 3,
-         delay: Math.random() * 2
+         duration: 2 + Math.random() * 2, // Уменьшена длительность
+         delay: Math.random() * 0.5 // Уменьшена задержка
       }));
    }, []);
 
@@ -24,8 +24,8 @@ const RequiredDoc = () => {
          size: Math.random() * 80 + 40,
          left: `${Math.random() * 100}%`,
          top: `${Math.random() * 100}%`,
-         duration: 6 + Math.random() * 4,
-         delay: Math.random() * 3
+         duration: 3 + Math.random() * 2, // Уменьшена длительность
+         delay: Math.random() * 1.5 // Уменьшена задержка
       }));
    }, []);
 
@@ -35,8 +35,8 @@ const RequiredDoc = () => {
          size: Math.random() * 25 + 15,
          left: `${Math.random() * 100}%`,
          top: `${Math.random() * 100}%`,
-         duration: 3 + Math.random() * 2,
-         delay: Math.random() * 1
+         duration: 1.5 + Math.random() * 1, // Уменьшена длительность
+         delay: Math.random() * 0.5 // Уменьшена задержка
       }));
    }, []);
 
@@ -150,7 +150,7 @@ const RequiredDoc = () => {
          <motion.div
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.4 }} // Уменьшена длительность
             className="relative z-10 text-center py-20 px-4"
          >
             {/* Additional white bubbles in hero section for contrast */}
@@ -171,8 +171,8 @@ const RequiredDoc = () => {
                      scale: [1, 1.2, 1]
                   }}
                   transition={{
-                     duration: 6 + Math.random() * 3,
-                     delay: Math.random() * 2,
+                     duration: 3 + Math.random() * 2, // Уменьшена длительность
+                     delay: Math.random() * 1, // Уменьшена задержка
                      repeat: Infinity,
                      ease: "easeInOut"
                   }}
@@ -182,7 +182,7 @@ const RequiredDoc = () => {
             <motion.div
                initial={{ scale: 0 }}
                animate={{ scale: 1 }}
-               transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+               transition={{ type: "spring", stiffness: 300, delay: 0.1 }} // Увеличена жесткость и уменьшена задержка
                className="inline-block mb-6"
             >
                <div className="w-24 h-24 mx-auto bg-gradient-to-br from-[#023E8A] to-[#0077B6] rounded-2xl flex items-center justify-center transform rotate-3 shadow-2xl">
@@ -207,14 +207,14 @@ const RequiredDoc = () => {
                <motion.div
                   initial={{ opacity: 0, x: 50 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
+                  transition={{ duration: 0.4, delay: 0.1 }} // Уменьшена длительность и задержка
                   className="flex-1"
                >
                   {/* Important Notice */}
                   <motion.div
                      initial={{ opacity: 0, y: 20 }}
                      whileInView={{ opacity: 1, y: 0 }}
-                     transition={{ duration: 0.6 }}
+                     transition={{ duration: 0.3 }} // Уменьшена длительность
                      viewport={{ once: true }}
                      className="bg-gradient-to-r from-blue-50 to-cyan-50 border-l-4 border-[#023E8A] rounded-3xl shadow-2xl p-8 md:p-12 mb-8"
                   >
@@ -240,7 +240,7 @@ const RequiredDoc = () => {
                   <motion.div
                      initial={{ opacity: 0, y: 20 }}
                      whileInView={{ opacity: 1, y: 0 }}
-                     transition={{ duration: 0.6 }}
+                     transition={{ duration: 0.3 }} // Уменьшена длительность
                      viewport={{ once: true }}
                      className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 mb-8 border border-gray-100"
                   >
@@ -263,7 +263,7 @@ const RequiredDoc = () => {
                               initial={{ opacity: 0, x: -20 }}
                               whileInView={{ opacity: 1, x: 0 }}
                               viewport={{ once: true }}
-                              transition={{ delay: index * 0.1 }}
+                              transition={{ delay: index * 0.05, duration: 0.3 }} // Уменьшена задержка и длительность
                               whileHover={{ scale: 1.02 }}
                            >
                               <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white font-bold shrink-0">
@@ -281,7 +281,7 @@ const RequiredDoc = () => {
                   <motion.div
                      initial={{ opacity: 0, y: 20 }}
                      whileInView={{ opacity: 1, y: 0 }}
-                     transition={{ duration: 0.6 }}
+                     transition={{ duration: 0.3 }} // Уменьшена длительность
                      viewport={{ once: true }}
                      className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 mb-8 border border-gray-100"
                   >
@@ -304,7 +304,7 @@ const RequiredDoc = () => {
                               initial={{ opacity: 0, x: -20 }}
                               whileInView={{ opacity: 1, x: 0 }}
                               viewport={{ once: true }}
-                              transition={{ delay: index * 0.1 }}
+                              transition={{ delay: index * 0.05, duration: 0.3 }} // Уменьшена задержка и длительность
                               whileHover={{ scale: 1.02 }}
                            >
                               <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-[#0077B6] to-[#00B4D8] text-white font-bold shrink-0">

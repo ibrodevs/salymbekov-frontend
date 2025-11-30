@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
 import { FiCalendar, FiMapPin, FiGlobe } from 'react-icons/fi';
+import { useTranslation } from 'react-i18next';
 
 const PaiChaiVisit = () => {
+  const { t } = useTranslation();
+
   const photos = [
     '568652878_18091498048843726_9076041554619489985_n.jpg',
     '568733386_18091498084843726_3987061983470437992_n.jpg',
@@ -19,15 +22,15 @@ const PaiChaiVisit = () => {
         animate={{ opacity: 1 }}
         className="relative h-[70vh] overflow-hidden"
       >
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ 
+          style={{
             backgroundImage: `url('/src/assets/applicant/orientatioin/news/3.jpg')`,
             filter: 'brightness(0.7)'
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        
+
         <div className="relative h-full flex items-end">
           <div className="max-w-7xl mx-auto px-8 pb-16 text-white">
             <motion.div
@@ -38,19 +41,19 @@ const PaiChaiVisit = () => {
               <div className="flex items-center gap-4 mb-6">
                 <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
                   <FiCalendar className="w-5 h-5" />
-                  <span className="font-semibold">23 октября 2025</span>
+                  <span className="font-semibold">{t('paiChaiVisit.date', '23 октября 2025')}</span>
                 </div>
                 <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
                   <FiGlobe className="w-5 h-5" />
-                  <span className="font-semibold">🇰🇷 Южная Корея</span>
+                  <span className="font-semibold">{t('paiChaiVisit.country', 'Южная Корея')}</span>
                 </div>
               </div>
-              
+
               <h1 className="text-5xl md:text-6xl font-bold mb-4 leading-tight">
-                Визит партнёров из Pai Chai University
+                {t('paiChaiVisit.title', 'Визит партнёров из Pai Chai University')}
               </h1>
               <p className="text-2xl text-blue-100 font-medium">
-                Укрепление международного сотрудничества и академической мобильности
+                {t('paiChaiVisit.subtitle', 'Укрепление международного сотрудничества и академической мобильности')}
               </p>
             </motion.div>
           </div>
@@ -72,17 +75,19 @@ const PaiChaiVisit = () => {
                 {/* Key Info */}
                 <div>
                   <h2 className="text-2xl font-bold bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent mb-6">
-                    О визите
+                    {t('paiChaiVisit.aboutTitle', 'О визите')}
                   </h2>
-                  
+
                   <div className="space-y-6">
                     <div className="flex items-start gap-4">
                       <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center flex-shrink-0">
                         <FiGlobe className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <h3 className="font-bold text-gray-900 mb-1">Университет-партнёр</h3>
-                        <p className="text-gray-600">Pai Chai University 🇰🇷</p>
+                        <h3 className="font-bold text-gray-900 mb-1">
+                          {t('paiChaiVisit.partnerUniversity', 'Университет-партнёр')}
+                        </h3>
+                        <p className="text-gray-600">Pai Chai University</p>
                       </div>
                     </div>
 
@@ -91,8 +96,12 @@ const PaiChaiVisit = () => {
                         <FiMapPin className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <h3 className="font-bold text-gray-900 mb-1">Студенты на обучении</h3>
-                        <p className="text-gray-600">2 студента по программе академической мобильности</p>
+                        <h3 className="font-bold text-gray-900 mb-1">
+                          {t('paiChaiVisit.studentsAbroad', 'Студенты на обучении')}
+                        </h3>
+                        <p className="text-gray-600">
+                          {t('paiChaiVisit.studentsCount', '2 студента по программе академической мобильности')}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -100,38 +109,40 @@ const PaiChaiVisit = () => {
 
                 {/* Description */}
                 <div className="border-t pt-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">Описание</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">
+                    {t('paiChaiVisit.descriptionTitle', 'Описание')}
+                  </h3>
                   <div className="space-y-4 text-gray-700 leading-relaxed">
                     <div className="bg-gradient-to-r from-blue-50 to-cyan-50 p-4 rounded-xl border-l-4 border-blue-500">
                       <p className="text-gray-800 font-semibold">
-                        Встреча с партнерами из Южной Кореи! 🇰🇷
+                        {t('paiChaiVisit.highlight1', 'Встреча с партнерами из Южной Кореи!')}
                       </p>
                     </div>
 
                     <p>
-                      С радостью сообщаем, что сегодня мы имели удовольствие принять наших партнёров из университета Пай Чай (Pai Chai University). Этот визит стал познавательным опытом, который не только укрепил наше сотрудничество, но и открыл новые возможности для будущих проектов.
+                      {t('paiChaiVisit.description1', 'С радостью сообщаем, что сегодня мы имели удовольствие принять наших партнёров из университета Пай Чай (Pai Chai University). Этот визит стал познавательным опытом, который не только укрепил наше сотрудничество, но и открыл новые возможности для будущих проектов.')}
                     </p>
 
                     <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-4 rounded-xl border-l-4 border-purple-500">
                       <p className="text-gray-800">
-                        <strong>Академическая мобильность:</strong> На данный момент два наших студента обучаются в университете Пай Чай по программе академической мобильности. Их опыт за границей способствует как профессиональному, так и личностному развитию.
+                        <strong>{t('paiChaiVisit.academicMobility', 'Академическая мобильность:')}</strong> {t('paiChaiVisit.academicMobilityText', 'На данный момент два наших студента обучаются в университете Пай Чай по программе академической мобильности. Их опыт за границей способствует как профессиональному, так и личностному развитию.')}
                       </p>
                     </div>
 
                     <p className="font-semibold text-gray-900">
-                      Результаты встречи:
+                      {t('paiChaiVisit.meetingResults', 'Результаты встречи:')}
                     </p>
                     <ul className="list-disc list-inside space-y-2 text-gray-600">
-                      <li>Укрепление международного сотрудничества</li>
-                      <li>Обсуждение новых возможностей для студентов</li>
-                      <li>Планирование будущих проектов</li>
-                      <li>Развитие программы академической мобильности</li>
-                      <li>Обмен опытом в сфере образования</li>
+                      <li>{t('paiChaiVisit.result1', 'Укрепление международного сотрудничества')}</li>
+                      <li>{t('paiChaiVisit.result2', 'Обсуждение новых возможностей для студентов')}</li>
+                      <li>{t('paiChaiVisit.result3', 'Планирование будущих проектов')}</li>
+                      <li>{t('paiChaiVisit.result4', 'Развитие программы академической мобильности')}</li>
+                      <li>{t('paiChaiVisit.result5', 'Обмен опытом в сфере образования')}</li>
                     </ul>
 
                     <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-4 rounded-xl border-l-4 border-green-500 mt-6">
                       <p className="text-gray-800">
-                        🎓 Мы с нетерпением ждём продолжения партнёрства и новых возможностей для студентов получить международный опыт!
+                        {t('paiChaiVisit.conclusion', 'Мы с нетерпением ждём продолжения партнёрства и новых возможностей для студентов получить международный опыт!')}
                       </p>
                     </div>
                   </div>
@@ -147,9 +158,9 @@ const PaiChaiVisit = () => {
               className="lg:col-span-2"
             >
               <h2 className="text-3xl font-bold bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent mb-8">
-                Фотогалерея
+                {t('paiChaiVisit.galleryTitle', 'Фотогалерея')}
               </h2>
-              
+
               <div className="space-y-6">
                 {photos.map((photo, index) => (
                   <motion.div
@@ -162,7 +173,7 @@ const PaiChaiVisit = () => {
                   >
                     <img
                       src={`/src/assets/applicant/orientatioin/news/third_scroll/${photo}`}
-                      alt={`Визит Pai Chai University ${index + 1}`}
+                      alt={`${t('paiChaiVisit.photoAlt', 'Визит Pai Chai University')} ${index + 1}`}
                       className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
                       onError={(e) => {
                         e.target.src = 'https://via.placeholder.com/1200x800/0077B6/FFFFFF?text=Pai+Chai+University+Visit';

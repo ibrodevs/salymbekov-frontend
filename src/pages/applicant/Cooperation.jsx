@@ -3,8 +3,11 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FiArrowLeft, FiCalendar, FiFileText, FiCheckCircle } from 'react-icons/fi';
 import { FaFacebook, FaTwitter, FaWhatsapp, FaVk, FaTelegram } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 const Cooperation = () => {
+  const { t } = useTranslation();
+
   const imageNames = [
     '330436291_687459536399845_7798914401833942415_n.jpg',
     '334796562_377589124835592_5592494686203681321_n.jpg'
@@ -29,7 +32,7 @@ const Cooperation = () => {
   }, []);
 
   const shareUrl = encodeURIComponent('https://salymbekov.com/ru/memorandum-o-sotrudnichestve-so-shkoloj-gimnaziej-68-im-a-osmonova/');
-  const shareTitle = encodeURIComponent('Меморандум о сотрудничестве со школой-гимназией 68 им А. Осмонова');
+  const shareTitle = encodeURIComponent(t('cooperation.hero.title', 'Меморандум о сотрудничестве со школой-гимназией 68 им А. Осмонова'));
 
   const socialLinks = [
     {
@@ -64,6 +67,33 @@ const Cooperation = () => {
     }
   ];
 
+  const cooperationPoints = [
+    {
+      title: t('cooperation.points.professionalOrientation.title', 'Профориентация'),
+      desc: t('cooperation.points.professionalOrientation.desc', 'Организация профориентационных мероприятий, дней открытых дверей и карьерных консультаций для учащихся')
+    },
+    {
+      title: t('cooperation.points.educationalPrograms.title', 'Образовательные программы'),
+      desc: t('cooperation.points.educationalPrograms.desc', 'Проведение подготовительных курсов, олимпиад и интеллектуальных конкурсов для школьников')
+    },
+    {
+      title: t('cooperation.points.masterClasses.title', 'Мастер-классы'),
+      desc: t('cooperation.points.masterClasses.desc', 'Регулярные мастер-классы от преподавателей университета по IT-технологиям, медицине и бизнесу')
+    },
+    {
+      title: t('cooperation.points.benefitsForGraduates.title', 'Льготы для выпускников'),
+      desc: t('cooperation.points.benefitsForGraduates.desc', 'Специальные условия поступления и скидки на обучение для выпускников школы-гимназии №68')
+    },
+    {
+      title: t('cooperation.points.experienceExchange.title', 'Обмен опытом'),
+      desc: t('cooperation.points.experienceExchange.desc', 'Совместные научно-методические семинары и обмен передовым педагогическим опытом')
+    },
+    {
+      title: t('cooperation.points.studentPractice.title', 'Практика студентов'),
+      desc: t('cooperation.points.studentPractice.desc', 'Организация педагогической практики студентов университета на базе школы-гимназии')
+    }
+  ];
+
   return (
     <div className="min-h-screen relative overflow-hidden">
       <div className="fixed inset-0 -z-10">
@@ -83,10 +113,10 @@ const Cooperation = () => {
         <div className="absolute inset-0">
           <img
             src="/src/assets/applicant/orientatioin/3.jpg"
-            alt="Меморандум о сотрудничестве"
+            alt={t('cooperation.hero.alt', 'Меморандум о сотрудничестве')}
             className="w-full h-full object-cover"
             onError={(e) => {
-              e.target.src = 'https://via.placeholder.com/1920x1080/0077B6/FFFFFF?text=Меморандум+о+сотрудничестве';
+              e.target.src = 'https://via.placeholder.com/1920x1080/0077B6/FFFFFF?text=' + encodeURIComponent(t('cooperation.hero.alt', 'Меморандум о сотрудничестве'));
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#023E8A]/90 to-[#0077B6]/90" />
@@ -98,19 +128,19 @@ const Cooperation = () => {
           className="relative z-10 text-center px-4 max-w-5xl mx-auto"
         >
           <span className="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white text-sm font-semibold mb-6 shadow-lg">
-            Новости
+            {t('cooperation.hero.category', 'Новости')}
           </span>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Меморандум о сотрудничестве со школой-гимназией 68 им А. Осмонова
+            {t('cooperation.hero.title', 'Меморандум о сотрудничестве со школой-гимназией 68 им А. Осмонова')}
           </h1>
           <div className="flex items-center justify-center gap-8 text-blue-100 text-lg">
             <div className="flex items-center gap-2">
               <FiCalendar className="w-6 h-6" />
-              <span>14.03.2023</span>
+              <span>{t('cooperation.hero.date', '14.03.2023')}</span>
             </div>
             <div className="flex items-center gap-2">
               <FiFileText className="w-6 h-6" />
-              <span>Партнерство</span>
+              <span>{t('cooperation.hero.partnership', 'Партнерство')}</span>
             </div>
           </div>
         </motion.div>
@@ -136,7 +166,7 @@ const Cooperation = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
                     className={`p-3 bg-white rounded-full shadow-lg ${social.color} text-gray-600 hover:text-white transition-all duration-300 hover:scale-110`}
-                    title={`Поделиться в ${social.name}`}
+                    title={t('cooperation.social.share', 'Поделиться в') + ` ${social.name}`}
                   >
                     <social.icon className="w-6 h-6" />
                   </motion.a>
@@ -156,7 +186,7 @@ const Cooperation = () => {
                   className="inline-flex items-center gap-2 text-[#0077B6] hover:text-[#023E8A] transition-colors font-semibold text-lg"
                 >
                   <FiArrowLeft className="w-5 h-5" />
-                  Вернуться к мероприятиям
+                  {t('cooperation.backButton', 'Вернуться к мероприятиям')}
                 </Link>
               </motion.div>
 
@@ -167,14 +197,14 @@ const Cooperation = () => {
                 className="bg-white rounded-3xl shadow-2xl p-10 mb-12"
               >
                 <h2 className="text-4xl font-bold bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent mb-8">
-                  Меморандум о сотрудничестве со школой-гимназией 68 им А. Осмонова
+                  {t('cooperation.content.title', 'Меморандум о сотрудничестве со школой-гимназией 68 им А. Осмонова')}
                 </h2>
                 <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
                   <p>
-                    Салымбеков Университет подписал меморандум о сотрудничестве со школой-гимназией 68 им А. Осмонова.
+                    {t('cooperation.content.paragraph1', 'Салымбеков Университет подписал меморандум о сотрудничестве со школой-гимназией 68 им А. Осмонова.')}
                   </p>
                   <p>
-                    В рамках сотрудничества будем проводить <strong className="text-[#0077B6]">совместные мероприятия и профориентационные встречи</strong>, которые помогут школьникам реализовывать свой потенциал и достигать успеха в жизни.
+                    {t('cooperation.content.paragraph2', 'В рамках сотрудничества будем проводить')} <strong className="text-[#0077B6]">{t('cooperation.content.highlight', 'совместные мероприятия и профориентационные встречи')}</strong>, {t('cooperation.content.paragraph2Cont', 'которые помогут школьникам реализовывать свой потенциал и достигать успеха в жизни.')}
                   </p>
                 </div>
               </motion.div>
@@ -187,35 +217,10 @@ const Cooperation = () => {
               >
                 <h3 className="text-3xl font-bold text-[#023E8A] mb-8 flex items-center gap-3">
                   <FiCheckCircle className="w-8 h-8" />
-                  Ключевые направления сотрудничества
+                  {t('cooperation.cooperationDirections.title', 'Ключевые направления сотрудничества')}
                 </h3>
                 <div className="space-y-5">
-                  {[
-                    {
-                      title: 'Профориентация',
-                      desc: 'Организация профориентационных мероприятий, дней открытых дверей и карьерных консультаций для учащихся'
-                    },
-                    {
-                      title: 'Образовательные программы',
-                      desc: 'Проведение подготовительных курсов, олимпиад и интеллектуальных конкурсов для школьников'
-                    },
-                    {
-                      title: 'Мастер-классы',
-                      desc: 'Регулярные мастер-классы от преподавателей университета по IT-технологиям, медицине и бизнесу'
-                    },
-                    {
-                      title: 'Льготы для выпускников',
-                      desc: 'Специальные условия поступления и скидки на обучение для выпускников школы-гимназии №68'
-                    },
-                    {
-                      title: 'Обмен опытом',
-                      desc: 'Совместные научно-методические семинары и обмен передовым педагогическим опытом'
-                    },
-                    {
-                      title: 'Практика студентов',
-                      desc: 'Организация педагогической практики студентов университета на базе школы-гимназии'
-                    }
-                  ].map((point, index) => (
+                  {cooperationPoints.map((point, index) => (
                     <motion.div
                       key={index}
                       initial={{ opacity: 0, x: -20 }}
@@ -239,7 +244,7 @@ const Cooperation = () => {
                   className="mb-12"
                 >
                   <h2 className="text-4xl font-bold bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent mb-8">
-                    Фотогалерея
+                    {t('cooperation.gallery.title', 'Фотогалерея')}
                   </h2>
                   <div className="grid grid-cols-1 gap-6">
                     {images.map((img, index) => (
@@ -253,7 +258,7 @@ const Cooperation = () => {
                       >
                         <img
                           src={img}
-                          alt={`Меморандум о сотрудничестве ${index + 1}`}
+                          alt={`${t('cooperation.gallery.photoAlt', 'Меморандум о сотрудничестве')} ${index + 1}`}
                           className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />

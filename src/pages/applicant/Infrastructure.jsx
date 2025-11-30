@@ -331,11 +331,8 @@ const Infrastructure = () => {
       ))}
 
       {/* Language Switcher */}
-      <motion.div
+      <div
         className="fixed top-6 right-6 z-50 flex gap-2 bg-white/80 backdrop-blur-sm rounded-full p-2 shadow-lg"
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.5 }}
       >
         <button
           onClick={() => i18n.changeLanguage('ru')}
@@ -364,15 +361,12 @@ const Infrastructure = () => {
         >
           EN
         </button>
-      </motion.div>
+      </div>
 
       <div className="container mx-auto px-4 py-12 relative z-10">
         {/* Header */}
-        <motion.div
+        <div
           className="text-center mb-16"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
         >
           <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
             {t('infrastructure.title', 'Инфраструктура университета')}
@@ -380,18 +374,14 @@ const Infrastructure = () => {
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             {t('infrastructure.subtitle', 'Современный кампус с развитой инфраструктурой для комфортного обучения и студенческой жизни')}
           </p>
-        </motion.div>
+        </div>
 
         {/* Infrastructure Sections with Photo Galleries */}
         <div className="space-y-16">
           {sections.map((section, index) => (
-            <motion.div
+            <div
               key={section.id}
               className="bg-white rounded-2xl shadow-xl overflow-hidden"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 * index, duration: 0.6 }}
             >
               {/* Section Header */}
               <div className="bg-gradient-to-r from-blue-600 to-cyan-600 p-8 text-white">
@@ -456,7 +446,7 @@ const Infrastructure = () => {
                   <p>{t('infrastructure.noImages', 'Фотографии скоро будут добавлены')}</p>
                 </div>
               )}
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
@@ -464,4 +454,4 @@ const Infrastructure = () => {
   );
 };
 
-export default Infrastructure;  
+export default Infrastructure;

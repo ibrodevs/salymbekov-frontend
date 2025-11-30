@@ -7,28 +7,26 @@ import { FiUsers, FiCheckCircle } from 'react-icons/fi';
 const Orientation = () => {
   const { t } = useTranslation();
 
-  // Анимированные пузырьки как в других компонентах
+  // Точные пузырьки как в компоненте Cost
   const animatedBalls = useMemo(() => {
-    return [...Array(15)].map((_, i) => ({
+    return [...Array(25)].map((_, i) => ({
       id: i,
       size: Math.random() * 120 + 60,
       left: `${Math.random() * 100}%`,
       top: `${Math.random() * 100}%`,
-      duration: 8 + Math.random() * 4,
-      delay: Math.random() * 3,
-      opacity: Math.random() * 0.15 + 0.1
+      duration: 5 + Math.random() * 3,
+      delay: Math.random() * 2
     }));
   }, []);
 
   const floatingBubbles = useMemo(() => {
-    return [...Array(20)].map((_, i) => ({
+    return [...Array(15)].map((_, i) => ({
       id: i,
       size: Math.random() * 80 + 40,
       left: `${Math.random() * 100}%`,
       top: `${Math.random() * 100}%`,
-      duration: 10 + Math.random() * 6,
-      delay: Math.random() * 4,
-      opacity: Math.random() * 0.12 + 0.08
+      duration: 6 + Math.random() * 4,
+      delay: Math.random() * 3
     }));
   }, []);
 
@@ -38,15 +36,14 @@ const Orientation = () => {
       size: Math.random() * 25 + 15,
       left: `${Math.random() * 100}%`,
       top: `${Math.random() * 100}%`,
-      duration: 4 + Math.random() * 3,
-      delay: Math.random() * 2,
-      opacity: Math.random() * 0.2 + 0.1
+      duration: 3 + Math.random() * 2,
+      delay: Math.random() * 1
     }));
   }, []);
 
   const activities = [
     {
-      event: t('orientation.activities.event1', 'Знакомство в университетом'),
+      event: t('orientation.activities.event1', 'Знакомство с университетом'),
       actions: [
         t('orientation.activities.event1.action1', 'Предоставление общей информации для новых студентов в виде видеопрезентаций и буклетов'),
         t('orientation.activities.event1.action2', 'Знакомство с администрацией (онлайн беседа администрации со студентами нового потока)'),
@@ -135,28 +132,26 @@ const Orientation = () => {
     },
   ];
 
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50/80 to-cyan-50/80 relative overflow-hidden">
-      {/* Основной слой больших пузырей */}
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
+      {/* Animated gradient balls - основной слой */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
         {animatedBalls.map((ball) => (
           <motion.div
-            key={`ball-${ball.id}`}
-            className="absolute rounded-full"
+            key={ball.id}
+            className="absolute rounded-full opacity-10"
             style={{
               width: ball.size,
               height: ball.size,
               left: ball.left,
               top: ball.top,
-              background: 'linear-gradient(135deg, #3b82f6, #60a5fa, #93c5fd)',
-              opacity: ball.opacity,
-              filter: 'blur(15px)'
+              background: 'linear-gradient(135deg, #023E8A, #0077B6)'
             }}
             animate={{
-              y: [0, -40, -20, 0],
-              x: [0, 20, -10, 0],
-              scale: [1, 1.15, 0.95, 1],
-              rotate: [0, 5, -3, 0]
+              y: [0, -30, 0],
+              x: [0, 15, 0],
+              scale: [1, 1.1, 1]
             }}
             transition={{
               duration: ball.duration,
@@ -168,26 +163,23 @@ const Orientation = () => {
         ))}
       </div>
 
-      {/* Плавающие средние пузыри */}
+      {/* Medium Floating Bubbles */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
         {floatingBubbles.map((bubble) => (
           <motion.div
             key={`floating-${bubble.id}`}
-            className="absolute rounded-full"
+            className="absolute rounded-full opacity-8"
             style={{
               width: bubble.size,
               height: bubble.size,
               left: bubble.left,
               top: bubble.top,
-              background: 'linear-gradient(135deg, #60a5fa, #38bdf8, #7dd3fc)',
-              opacity: bubble.opacity,
-              filter: 'blur(12px)'
+              background: 'linear-gradient(135deg, #023E8A, #0077B6)'
             }}
             animate={{
-              y: [0, -60, -30, 0],
-              x: [0, 30, -15, 0],
-              scale: [1, 1.25, 0.9, 1],
-              rotate: [0, 8, -5, 0]
+              y: [0, -40, 0],
+              x: [0, 20, 0],
+              scale: [1, 1.2, 1]
             }}
             transition={{
               duration: bubble.duration,
@@ -199,25 +191,23 @@ const Orientation = () => {
         ))}
       </div>
 
-      {/* Мелкие пузырьки для текстуры */}
+      {/* Small Bubbles */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
         {smallBubbles.map((bubble) => (
           <motion.div
             key={`small-${bubble.id}`}
-            className="absolute rounded-full"
+            className="absolute rounded-full opacity-12"
             style={{
               width: bubble.size,
               height: bubble.size,
               left: bubble.left,
               top: bubble.top,
-              background: 'linear-gradient(135deg, #7dd3fc, #bae6fd, #e0f2fe)',
-              opacity: bubble.opacity,
-              filter: 'blur(6px)'
+              background: 'linear-gradient(135deg, #023E8A, #0077B6)'
             }}
             animate={{
-              y: [0, -25, 0],
-              x: [0, 15, 0],
-              scale: [1, 1.1, 1],
+              y: [0, -20, 0],
+              x: [0, 10, 0],
+              scale: [1, 1.05, 1]
             }}
             transition={{
               duration: bubble.duration,
@@ -231,104 +221,102 @@ const Orientation = () => {
 
       {/* Hero Section */}
       <motion.div
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
+        className="relative h-[60vh] flex items-center justify-center overflow-hidden"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="relative z-10 text-center py-20 px-4"
       >
-        {/* Контрастные белые пузыри в герое */}
+        {/* Additional white bubbles in hero section for contrast */}
         {[...Array(8)].map((_, i) => (
           <motion.div
             key={`hero-bubble-${i}`}
-            className="absolute rounded-full"
+            className="absolute rounded-full opacity-10"
             style={{
               width: Math.random() * 100 + 50,
               height: Math.random() * 100 + 50,
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              background: 'linear-gradient(135deg, #ffffff, #f0f9ff, #e0f2fe)',
-              opacity: 0.3,
-              filter: 'blur(12px)'
+              background: 'linear-gradient(135deg, #ffffff, #e0f2fe)'
             }}
             animate={{
-              y: [0, -35, 0],
-              x: [0, 20, 0],
-              scale: [1, 1.25, 1],
-              opacity: [0.3, 0.15, 0.3]
+              y: [0, -25, 0],
+              x: [0, 15, 0],
+              scale: [1, 1.2, 1]
             }}
             transition={{
-              duration: 7 + Math.random() * 4,
-              delay: Math.random() * 3,
+              duration: 6 + Math.random() * 3,
+              delay: Math.random() * 2,
               repeat: Infinity,
               ease: "easeInOut"
             }}
           />
         ))}
 
-        <motion.div
-          initial={{ scale: 0, rotate: -180 }}
-          animate={{ scale: 1, rotate: 0 }}
-          transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.2 }}
-          className="inline-block mb-6"
-        >
-          <div className="w-24 h-24 mx-auto bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center transform rotate-3 shadow-2xl shadow-blue-500/30">
-            <FiUsers className="w-12 h-12 text-white" />
-          </div>
-        </motion.div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#023E8A]/95 via-[#0077B6]/95 to-[#0096C7]/95 z-0">
+          <div
+            className="absolute inset-0 opacity-30"
+            style={{
+              backgroundImage: 'url(https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1920)',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center'
+            }}
+          />
+        </div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 bg-clip-text text-transparent mb-4"
-        >
-          {t('orientation.hero.title', 'Адаптационная программа')}
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-xl text-gray-600 max-w-3xl mx-auto"
-        >
-          {t('orientation.hero.subtitle', 'Программа адаптации для студентов-первокурсников')}
-        </motion.p>
+        <div className="relative z-10 container mx-auto px-4 text-center text-white">
+          <motion.div
+            className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm mb-6"
+            initial={{ scale: 0, rotate: -180 }}
+            animate={{ scale: 1, rotate: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+          >
+            <FiUsers className="w-10 h-10" />
+          </motion.div>
+          <motion.h1
+            className="text-6xl md:text-7xl font-bold mb-6"
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+          >
+            {t('orientation.hero.title', 'Адаптационная программа')}
+          </motion.h1>
+          <motion.p
+            className="text-2xl md:text-3xl font-semibold text-white/90"
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+          >
+            {t('orientation.hero.subtitle', 'Программа адаптации для студентов-первокурсников')}
+          </motion.p>
+        </div>
       </motion.div>
 
-      {/* Main Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 pb-20">
+      {/* Main Content with Navigation */}
+      <div className="relative z-10 container mx-auto px-4 -mt-20">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Left Navigation */}
-          <ExtraNavigation />
+          <div className="lg:w-80 shrink-0">
+            <ExtraNavigation />
+          </div>
 
           {/* Right Content */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex-1"
-          >
+          <div className="flex-1">
             {/* Introduction */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 mb-8"
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="bg-white/95 backdrop-blur-lg rounded-2xl shadow-xl p-8 mb-8 border border-blue-100/50 relative overflow-hidden"
             >
-              {/* Фоновые элементы для карточки */}
-              <div className="absolute -top-20 -right-20 w-40 h-40 bg-blue-200/40 rounded-full blur-xl"></div>
-              <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-cyan-200/40 rounded-full blur-xl"></div>
-
-              <div className="flex items-start gap-4 relative z-10">
-                <div className="p-3 bg-gradient-to-br from-blue-600 to-blue-500 rounded-xl shadow-lg">
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-gradient-to-br from-[#023E8A] to-[#0077B6] rounded-xl shadow-lg">
                   <FiUsers className="w-8 h-8 text-white" />
                 </div>
                 <div className="flex-1">
-                  <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent mb-4">
+                  <h2 className="text-2xl font-bold bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent mb-4">
                     {t('orientation.about.title', 'О программе')}
                   </h2>
-                  <p className="text-gray-700 leading-relaxed">
+                  <p className="text-lg text-gray-700 leading-relaxed">
                     {t('orientation.about.description', 'Салымбеков университет предоставляет все условия для студентов-первокурсников к скорейшей адаптации к условиям обучения, проживания, быта и комфортного пребывания на территории учебного заведения. Функционирует план мероприятий по успешной реализации адаптационной программы.')}
                   </p>
                 </div>
@@ -337,50 +325,37 @@ const Orientation = () => {
 
             {/* Activities Section */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 mb-8"
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="bg-white/95 backdrop-blur-lg rounded-2xl shadow-xl p-8 border border-blue-100/50 relative overflow-hidden"
             >
-              {/* Фоновые элементы для карточки */}
-              <div className="absolute -top-20 -right-20 w-40 h-40 bg-blue-200/30 rounded-full blur-xl"></div>
-              <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-cyan-200/30 rounded-full blur-xl"></div>
-
-              <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent mb-8 relative z-10">
+              <h2 className="text-4xl font-bold mb-8 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
                 {t('orientation.activities.title', 'План мероприятий')}
               </h2>
 
-              <div className="space-y-6 relative z-10">
+              <div className="space-y-6">
                 {activities.map((activity, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.05 }}
-                    viewport={{ once: true }}
-                    className="group relative bg-gradient-to-br from-white to-blue-50 rounded-xl p-6 border-l-4 border-blue-500 shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+                    className="group relative bg-gradient-to-br from-white to-blue-50 rounded-xl p-6 border-l-4 border-[#0077B6] shadow-md hover:shadow-xl transition-all duration-300"
                   >
                     <h3 className="text-lg font-bold text-gray-800 mb-3 flex items-center gap-3">
-                      <div className="p-2 bg-gradient-to-br from-blue-600 to-blue-500 rounded-lg shadow-md group-hover:scale-110 transition-transform duration-300">
+                      <div className="p-2 bg-gradient-to-br from-[#023E8A] to-[#0077B6] rounded-lg shadow-md group-hover:scale-110 transition-transform">
                         <FiCheckCircle className="w-5 h-5 text-white" />
                       </div>
-                      <span className="group-hover:text-blue-600 transition-colors duration-300">{activity.event}</span>
+                      <span className="group-hover:text-[#0077B6] transition-colors">{activity.event}</span>
                     </h3>
                     {activity.actions.length > 0 && (
                       <ul className="space-y-2 ml-14">
                         {activity.actions.map((action, idx) => (
-                          <motion.li
-                            key={idx}
-                            className="text-gray-700 flex items-start gap-3 group-hover:text-gray-900 transition-colors duration-200 hover:bg-white/60 rounded-lg p-2 -mx-2"
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            transition={{ delay: idx * 0.1 }}
-                            viewport={{ once: true }}
-                          >
-                            <span className="text-blue-500 mt-1.5 text-lg group-hover:scale-125 transition-transform duration-200">•</span>
+                          <li key={idx} className="text-gray-700 flex items-start gap-3 group-hover:text-gray-900 transition-colors">
+                            <span className="text-[#0077B6] mt-1.5 text-lg">•</span>
                             <span className="flex-1">{action}</span>
-                          </motion.li>
+                          </li>
                         ))}
                       </ul>
                     )}
@@ -388,7 +363,7 @@ const Orientation = () => {
                 ))}
               </div>
             </motion.div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>

@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 import { FiArrowLeft, FiCalendar, FiMapPin, FiUsers } from 'react-icons/fi';
 import { FaFacebook, FaTwitter, FaWhatsapp, FaVk, FaTelegram } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const KnowledgeKarakol = () => {
+  const { t } = useTranslation();
+
   const imageNames = [
     '490535458_18073487431843726_191185903802627713_n.jpg',
     '490746712_18073487428843726_6636239492879015718_n.jpg',
@@ -88,10 +91,10 @@ const KnowledgeKarakol = () => {
         <div className="absolute inset-0">
           <img
             src="/src/assets/applicant/orientatioin/1.jpg"
-            alt="Караван знаний в Караколе"
+            alt={t('knowledgeKarakol.hero.imageAlt', 'Караван знаний в Караколе')}
             className="w-full h-full object-cover"
             onError={(e) => {
-              e.target.src = 'https://via.placeholder.com/1920x1080/0077B6/FFFFFF?text=Караван+знаний+в+Караколе';
+              e.target.src = 'https://via.placeholder.com/1920x1080/0077B6/FFFFFF?text=Knowledge+Caravan+in+Karakol';
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#023E8A]/90 to-[#0077B6]/90" />
@@ -103,19 +106,19 @@ const KnowledgeKarakol = () => {
           className="relative z-10 text-center px-4 max-w-5xl mx-auto"
         >
           <span className="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white text-sm font-semibold mb-6 shadow-lg">
-            Профориентация
+            {t('knowledgeKarakol.hero.badge', 'Профориентация')}
           </span>
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-            Караван знаний в Караколе
+            {t('knowledgeKarakol.hero.title', 'Караван знаний в Караколе')}
           </h1>
           <div className="flex items-center justify-center gap-8 text-blue-100 text-lg">
             <div className="flex items-center gap-2">
               <FiCalendar className="w-6 h-6" />
-              <span>30.05.2025</span>
+              <span>{t('knowledgeKarakol.hero.date', '30.05.2025')}</span>
             </div>
             <div className="flex items-center gap-2">
               <FiMapPin className="w-6 h-6" />
-              <span>Каракол</span>
+              <span>{t('knowledgeKarakol.hero.location', 'Каракол')}</span>
             </div>
           </div>
         </motion.div>
@@ -141,7 +144,7 @@ const KnowledgeKarakol = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
                     className={`p-3 bg-white rounded-full shadow-lg ${social.color} text-gray-600 hover:text-white transition-all duration-300 hover:scale-110`}
-                    title={`Поделиться в ${social.name}`}
+                    title={t('knowledgeKarakol.social.share', 'Поделиться в') + ` ${social.name}`}
                   >
                     <social.icon className="w-6 h-6" />
                   </motion.a>
@@ -161,7 +164,7 @@ const KnowledgeKarakol = () => {
                   className="inline-flex items-center gap-2 text-[#0077B6] hover:text-[#023E8A] transition-colors font-semibold text-lg"
                 >
                   <FiArrowLeft className="w-5 h-5" />
-                  Вернуться к мероприятиям
+                  {t('knowledgeKarakol.navigation.back', 'Вернуться к мероприятиям')}
                 </Link>
               </motion.div>
 
@@ -175,7 +178,7 @@ const KnowledgeKarakol = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className={`p-3 bg-white rounded-full shadow-lg ${social.color} text-gray-600 hover:text-white transition-all duration-300`}
-                      title={`Поделиться в ${social.name}`}
+                      title={t('knowledgeKarakol.social.share', 'Поделиться в') + ` ${social.name}`}
                     >
                       <social.icon className="w-5 h-5" />
                     </a>
@@ -190,28 +193,20 @@ const KnowledgeKarakol = () => {
                 className="bg-white rounded-3xl shadow-2xl p-10 mb-12"
               >
                 <h2 className="text-4xl font-bold bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent mb-8">
-                  Караван знаний в Караколе!
+                  {t('knowledgeKarakol.content.title', 'Караван знаний в Караколе!')}
                 </h2>
                 <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
                   <p>
-                    По инициативе Министерства образования и науки Кыргызской Республики и при поддержке Аппарата
-                    Полномочного представителя Президента КР в Иссык-Кульской области в городе Каракол прошла
-                    масштабная акция <strong className="text-[#0077B6]">«Караван знаний»</strong> для учеников
-                    9-х и 11-х классов.
+                    {t('knowledgeKarakol.content.paragraph1', 'По инициативе Министерства образования и науки Кыргызской Республики и при поддержке Аппарата Полномочного представителя Президента КР в Иссык-Кульской области в городе Каракол прошла масштабная акция «Караван знаний» для учеников 9-х и 11-х классов.')}
                   </p>
                   <p>
-                    В мероприятии приняли участие специалисты, получившие образование за рубежом и имеющие опыт
-                    работы в международных компаниях.
+                    {t('knowledgeKarakol.content.paragraph2', 'В мероприятии приняли участие специалисты, получившие образование за рубежом и имеющие опыт работы в международных компаниях.')}
                   </p>
                   <p>
-                    Они провели мотивационные встречи, мастер-классы и поделились важной информацией о будущих
-                    профессиях, трансформации образования в Кыргызстане, глобальных возможностях для молодежи и
-                    вопросах социального развития.
+                    {t('knowledgeKarakol.content.paragraph3', 'Они провели мотивационные встречи, мастер-классы и поделились важной информацией о будущих профессиях, трансформации образования в Кыргызстане, глобальных возможностях для молодежи и вопросах социального развития.')}
                   </p>
                   <p>
-                    <strong className="text-[#0077B6]">Цель акции</strong> — вдохновить школьников, расширить их
-                    кругозор, помочь определиться с будущей профессией и открыть путь к качественному образованию
-                    и социально активной жизни в обществе.
+                    {t('knowledgeKarakol.content.paragraph4', 'Цель акции — вдохновить школьников, расширить их кругозор, помочь определиться с будущей профессией и открыть путь к качественному образованию и социально активной жизни в обществе.')}
                   </p>
                 </div>
               </motion.div>
@@ -224,7 +219,9 @@ const KnowledgeKarakol = () => {
                   viewport={{ once: true }}
                   className="mb-12"
                 >
-                  <h3 className="text-3xl font-bold text-[#023E8A] mb-6">Фотогалерея</h3>
+                  <h3 className="text-3xl font-bold text-[#023E8A] mb-6">
+                    {t('knowledgeKarakol.gallery.title', 'Фотогалерея')}
+                  </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {images.map((img, index) => (
                       <motion.div
@@ -237,7 +234,7 @@ const KnowledgeKarakol = () => {
                       >
                         <img
                           src={img}
-                          alt={`Караван знаний ${index + 1}`}
+                          alt={t('knowledgeKarakol.gallery.photoAlt', 'Караван знаний') + ` ${index + 1}`}
                           className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />

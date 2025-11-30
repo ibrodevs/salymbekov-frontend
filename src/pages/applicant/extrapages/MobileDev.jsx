@@ -1,36 +1,11 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import SoftwareNavigation from './SoftwareNavigation';
 
 const MobileDev = () => {
    const { t } = useTranslation();
-   // Animated background balls - увеличенное количество как в Software
-   const backgroundBalls = useMemo(() => {
-      return Array.from({ length: 20 }, (_, i) => ({
-         id: i,
-         size: Math.random() * 100 + 60,
-         left: `${Math.random() * 100}%`,
-         top: `${Math.random() * 100}%`,
-         duration: 5 + Math.random() * 4,
-         delay: Math.random() * 3,
-         color: ['from-blue-400/20 to-purple-400/20', 'from-green-400/20 to-blue-400/20', 'from-purple-400/20 to-pink-400/20'][i % 3]
-      }));
-   }, []);
 
-   // Additional floating bubbles как в Software
-   const floatingBubbles = useMemo(() => {
-      return Array.from({ length: 15 }, (_, i) => ({
-         id: i,
-         size: Math.random() * 80 + 40,
-         left: `${Math.random() * 100}%`,
-         top: `${Math.random() * 100}%`,
-         duration: 6 + Math.random() * 5,
-         delay: Math.random() * 4
-      }));
-   }, []);
-
-   // Import all scrolling images
    const scrollingImages = [
       'bc0b2476.jpg',
       'bc0b2481.jpg',
@@ -55,95 +30,45 @@ const MobileDev = () => {
       'photo_2022-07-18_15-21-07.jpg'
    ];
 
+   const containerVariants = {
+      hidden: { opacity: 0 },
+      visible: {
+         opacity: 1,
+         transition: {
+            duration: 0.3,
+            staggerChildren: 0.1
+         }
+      }
+   };
+
+   const itemVariants = {
+      hidden: { y: 15, opacity: 0 },
+      visible: {
+         y: 0,
+         opacity: 1,
+         transition: {
+            duration: 0.3,
+            ease: "easeOut"
+         }
+      }
+   };
+
+   const cardVariants = {
+      hidden: { y: 20, opacity: 0 },
+      visible: {
+         y: 0,
+         opacity: 1,
+         transition: {
+            duration: 0.4,
+            ease: "easeOut"
+         }
+      }
+   };
+
    return (
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
-         {/* Animated Background Balls - обновленная анимация */}
-         {backgroundBalls.map((ball) => (
-            <motion.div
-               key={ball.id}
-               className={`absolute rounded-full bg-gradient-to-br ${ball.color} blur-3xl`}
-               style={{
-                  width: ball.size,
-                  height: ball.size,
-                  left: ball.left,
-                  top: ball.top,
-               }}
-               animate={{
-                  y: [0, -40, 0],
-                  x: [0, 20, 0],
-                  scale: [1, 1.2, 1],
-                  rotate: [0, 180, 360]
-               }}
-               transition={{
-                  duration: ball.duration,
-                  delay: ball.delay,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-               }}
-            />
-         ))}
-
-         {/* Additional Floating Bubbles - новые пузырьки */}
-         <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-            {floatingBubbles.map((bubble) => (
-               <motion.div
-                  key={`floating-${bubble.id}`}
-                  className="absolute rounded-full opacity-5"
-                  style={{
-                     width: bubble.size,
-                     height: bubble.size,
-                     left: bubble.left,
-                     top: bubble.top,
-                     background: 'linear-gradient(135deg, #023E8A, #0077B6)'
-                  }}
-                  animate={{
-                     y: [0, -40, 0],
-                     x: [0, 20, 0],
-                     scale: [1, 1.2, 1],
-                     rotate: [0, 180, 360]
-                  }}
-                  transition={{
-                     duration: bubble.duration,
-                     delay: bubble.delay,
-                     repeat: Infinity,
-                     ease: "easeInOut"
-                  }}
-               />
-            ))}
-         </div>
-
          {/* Hero Section */}
-         <motion.div
-            className="relative h-[60vh] flex items-center justify-center overflow-hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-         >
-            {/* Additional balls in hero section - как в Software */}
-            {backgroundBalls.slice(0, 8).map((ball) => (
-               <motion.div
-                  key={`hero-ball-${ball.id}`}
-                  className="absolute rounded-full opacity-10"
-                  style={{
-                     width: ball.size * 1.5,
-                     height: ball.size * 1.5,
-                     left: ball.left,
-                     top: ball.top,
-                     background: 'linear-gradient(135deg, #ffffff, #e0f2fe)'
-                  }}
-                  animate={{
-                     y: [0, -20, 0],
-                     x: [0, 10, 0],
-                     scale: [1, 1.2, 1]
-                  }}
-                  transition={{
-                     duration: ball.duration * 0.8,
-                     repeat: Infinity,
-                     ease: "easeInOut"
-                  }}
-               />
-            ))}
-
+         <div className="relative h-[60vh] flex items-center justify-center overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-[#023E8A]/95 via-[#0077B6]/95 to-[#0096C7]/95 z-0">
                <div
                   className="absolute inset-0 opacity-30"
@@ -158,22 +83,22 @@ const MobileDev = () => {
             <div className="relative z-10 container mx-auto px-4 text-center text-white">
                <motion.h1
                   className="text-6xl md:text-7xl font-bold mb-6"
-                  initial={{ y: 30, opacity: 0 }}
+                  initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.2, duration: 0.8 }}
+                  transition={{ duration: 0.4 }}
                >
-                  {t('mobileDev.title', 'Разработка мобильных приложений')}
+                  {t('mobileDev.title')}
                </motion.h1>
                <motion.p
                   className="text-2xl md:text-3xl font-semibold text-white/90 mb-4"
-                  initial={{ y: 30, opacity: 0 }}
+                  initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.4, duration: 0.8 }}
+                  transition={{ duration: 0.4, delay: 0.1 }}
                >
-                  {t('mobileDev.subtitle', 'Mobile Application Development')}
+                  {t('mobileDev.subtitle')}
                </motion.p>
             </div>
-         </motion.div>
+         </div>
 
          {/* Main Content with Navigation */}
          <div className="relative z-10 container mx-auto px-4 -mt-20">
@@ -184,46 +109,43 @@ const MobileDev = () => {
                </div>
 
                {/* Right Content */}
-               <div className="flex-1">
+               <motion.div
+                  className="flex-1"
+                  variants={containerVariants}
+                  initial="hidden"
+                  animate="visible"
+               >
                   {/* Overview Section */}
                   <motion.div
                      className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 mb-8"
-                     initial={{ y: 50, opacity: 0 }}
-                     whileInView={{ y: 0, opacity: 1 }}
-                     viewport={{ once: true }}
-                     transition={{ duration: 0.6 }}
+                     variants={itemVariants}
                   >
                      <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
-                        {t('mobileDev.overview.title', 'Обзор специальности')}
+                        {t('mobileDev.overview.title')}
                      </h2>
                      <p className="text-lg text-gray-700 leading-relaxed">
-                        {t('mobileDev.overview.content', 'Программа "Разработка мобильных приложений", предлагаемая Международным колледжем IT и Бизнеса "Салымбеков университет", направлена на то, чтобы обучить студентов как традиционным, так и передовым навыкам в области мобильных вычислений и коммуникаций, чтобы они могли быть инновационными и разрабатывать мобильные приложения, понимать технические проблемы, связанные с современными мобильными устройствами и беспроводной связью, а также оценивать и выбирать соответствующие решения в соответствии с требованиями пользователя. Выпускников этой программы учат становиться как новаторами, так и предпринимателями.')}
+                        {t('mobileDev.overview.content')}
                      </p>
                   </motion.div>
 
                   {/* Scrolling Images Gallery */}
                   <motion.div
                      className="mb-8"
-                     initial={{ y: 50, opacity: 0 }}
-                     whileInView={{ y: 0, opacity: 1 }}
-                     viewport={{ once: true }}
-                     transition={{ duration: 0.6 }}
+                     variants={itemVariants}
                   >
                      <div className="bg-white rounded-3xl shadow-2xl p-6 overflow-hidden">
                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                            {scrollingImages.map((image, index) => (
                               <motion.div
                                  key={image}
-                                 className="relative aspect-square rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
-                                 initial={{ opacity: 0, scale: 0.9 }}
-                                 whileInView={{ opacity: 1, scale: 1 }}
-                                 viewport={{ once: true }}
-                                 transition={{ delay: index * 0.05, duration: 0.4 }}
-                                 whileHover={{ scale: 1.05 }}
+                                 className="relative aspect-square rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-200"
+                                 variants={itemVariants}
+                                 whileHover={{ scale: 1.03 }}
+                                 transition={{ duration: 0.2 }}
                               >
                                  <img
                                     src={`/src/assets/applicant/mobiledev/scrolling/${image}`}
-                                    alt={`Gallery ${index + 1}`}
+                                    alt={t('mobileDev.galleryAlt', 'Gallery image') + ` ${index + 1}`}
                                     className="w-full h-full object-cover"
                                     onError={(e) => {
                                        e.target.style.display = 'none';
@@ -238,83 +160,59 @@ const MobileDev = () => {
                   {/* Program Goals Section */}
                   <motion.div
                      className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 mb-8"
-                     initial={{ y: 50, opacity: 0 }}
-                     whileInView={{ y: 0, opacity: 1 }}
-                     viewport={{ once: true }}
-                     transition={{ duration: 0.6 }}
+                     variants={itemVariants}
                   >
                      <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
-                        {t('mobileDev.goals.title', 'Цель программы')}
+                        {t('mobileDev.goals.title')}
                      </h2>
                      <p className="text-lg text-gray-700 leading-relaxed mb-4">
-                        {t('mobileDev.goals.intro', 'В рамках этой программы студенты будут:')}
+                        {t('mobileDev.goals.intro')}
                      </p>
                      <ul className="space-y-3 text-lg text-gray-700">
-                        <li className="flex items-start">
-                           <span className="inline-block w-2 h-2 bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-full mt-2 mr-3"></span>
-                           <span>{t('mobileDev.goals.point1', 'Приобретите навыки и знания, ведущие к гибкому карьерному росту в качестве специалиста по мобильным вычислениям и коммуникациям;')}</span>
-                        </li>
-                        <li className="flex items-start">
-                           <span className="inline-block w-2 h-2 bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-full mt-2 mr-3"></span>
-                           <span>{t('mobileDev.goals.point2', 'Получите глубокие знания и понимание широкого спектра современных тенденций в этой области с широким спектром навыков, начиная от мобильных устройств и заканчивая сетевыми структурами;')}</span>
-                        </li>
-                        <li className="flex items-start">
-                           <span className="inline-block w-2 h-2 bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-full mt-2 mr-3"></span>
-                           <span>{t('mobileDev.goals.point3', 'Понимать технические проблемы, связанные с современными мобильными устройствами и беспроводной связью, а также оценивать и выбирать подходящие решения в соответствии с требованиями пользователей;')}</span>
-                        </li>
-                        <li className="flex items-start">
-                           <span className="inline-block w-2 h-2 bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-full mt-2 mr-3"></span>
-                           <span>{t('mobileDev.goals.point4', 'Грамотно оценивать и выбирать программные средства и API-интерфейсы для мобильных приложений и, следовательно, знать об их объеме и ограничениях;')}</span>
-                        </li>
-                        <li className="flex items-start">
-                           <span className="inline-block w-2 h-2 bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-full mt-2 mr-3"></span>
-                           <span>{t('mobileDev.goals.point5', 'Разработка приложений для мобильных устройств;')}</span>
-                        </li>
-                        <li className="flex items-start">
-                           <span className="inline-block w-2 h-2 bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-full mt-2 mr-3"></span>
-                           <span>{t('mobileDev.goals.point6', 'Понимание движущих сил адаптации мобильных технологий;')}</span>
-                        </li>
-                        <li className="flex items-start">
-                           <span className="inline-block w-2 h-2 bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-full mt-2 mr-3"></span>
-                           <span>{t('mobileDev.goals.point7', 'Получите глубокие знания и понимание широкого спектра современных тенденций в этой области с широким спектром навыков, начиная от мобильных устройств и заканчивая сетевыми структурами.')}</span>
-                        </li>
+                        {[1, 2, 3, 4, 5, 6, 7].map((point) => (
+                           <motion.li
+                              key={point}
+                              className="flex items-start"
+                              initial={{ opacity: 0, x: -10 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 0.3, delay: point * 0.05 }}
+                           >
+                              <span className="inline-block w-2 h-2 bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-full mt-2 mr-3"></span>
+                              <span>{t(`mobileDev.goals.point${point}`)}</span>
+                           </motion.li>
+                        ))}
                      </ul>
                   </motion.div>
 
                   {/* Career Opportunities Section */}
                   <motion.div
                      className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 mb-8"
-                     initial={{ y: 50, opacity: 0 }}
-                     whileInView={{ y: 0, opacity: 1 }}
-                     viewport={{ once: true }}
-                     transition={{ duration: 0.6 }}
+                     variants={itemVariants}
                   >
                      <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
-                        {t('mobileDev.career.title', 'Возможности карьерного роста')}
+                        {t('mobileDev.career.title')}
                      </h2>
                      <p className="text-lg text-gray-700 leading-relaxed mb-4">
-                        {t('mobileDev.career.intro', 'Перспективные карьеры для выпускников мобильных вычислений включают в себя:')}
+                        {t('mobileDev.career.intro')}
                      </p>
                      <ul className="space-y-3 text-lg text-gray-700">
-                        <li className="flex items-start">
-                           <span className="inline-block w-2 h-2 bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-full mt-2 mr-3"></span>
-                           <span>{t('mobileDev.career.option1', 'Разработчик мобильных приложений;')}</span>
-                        </li>
-                        <li className="flex items-start">
-                           <span className="inline-block w-2 h-2 bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-full mt-2 mr-3"></span>
-                           <span>{t('mobileDev.career.option2', 'Инженер по телекоммуникациям;')}</span>
-                        </li>
-                        <li className="flex items-start">
-                           <span className="inline-block w-2 h-2 bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-full mt-2 mr-3"></span>
-                           <span>{t('mobileDev.career.option3', 'Информационная безопасность;')}</span>
-                        </li>
-                        <li className="flex items-start">
-                           <span className="inline-block w-2 h-2 bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-full mt-2 mr-3"></span>
-                           <span>{t('mobileDev.career.option4', 'Дизайнер продуктов.')}</span>
-                        </li>
+                        {[1, 2, 3, 4].map((option) => (
+                           <motion.li
+                              key={option}
+                              className="flex items-start"
+                              initial={{ opacity: 0, x: -10 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 0.3, delay: option * 0.05 }}
+                           >
+                              <span className="inline-block w-2 h-2 bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-full mt-2 mr-3"></span>
+                              <span>{t(`mobileDev.career.option${option}`)}</span>
+                           </motion.li>
+                        ))}
                      </ul>
                   </motion.div>
-               </div>
+               </motion.div>
             </div>
          </div>
       </div>

@@ -858,6 +858,9 @@
     "menu": "Menu"
   },
   "universitySUB": {
+    "universityMain": "University (Main Division)",
+    "internationalFaculty": "International Faculty of Medicine",
+    "itCollege": "International IT and Business College",
     "founderAppeal": "Founder's Address",
     "history": "History",
     "mission": "Mission and Goals",
@@ -928,7 +931,7 @@
     "itCollege": "International College of IT and Business",
     "mfm": "International Faculty of Medicine",
     "businessSchool": "Salymbekov Business School",
-    "postgraduate": "Postgraduate Education Faculty",
+    "postgraduatetitle": "Postgraduate Education Faculty",
     "narynCenter": "Education and Innovation Center in Naryn",
     "deanOffice": "Dean's Office",
     "mfmCurriculum": "MFM Curriculum",
@@ -946,7 +949,19 @@
     "multimediaApps": "Diploma in Multimedia Applications",
     "mobileComputing": "Diploma in Mobile Computing",
     "generalDisciplines": "General Education Disciplines",
-    "itDepartment": "Information Technology"
+    "itDepartment": "Information Technology",
+    "aboutait": "About Institute",
+    "aitTeachers": "Teachers",
+    "contacts": "Contacts",
+    "aboutmfm": "About the Faculty",
+    "director": "Director",
+    "aboutIt": "About college",
+    "aboutBusinessSchool" : "About Business School",
+    "internship": "Internship",
+    "residency": "Residency",
+    "postgraduate": "Postgraduate",
+    "phd": "PhD",
+    "aboutCenter" : "About Center"
   },
   "commonSUB": {
     "about": "About",
@@ -8557,7 +8572,39 @@
       "visit": "Visit Center",
       "learnMore": "Learn More"
     }
+  },
+  "footer": {
+    "description": "Leading educational institution providing quality education in medicine, IT, and business fields.",
+    "address": "Bishkek, Kyrgyzstan",
+    "phone": "+996 (312) 00-00-00",
+    "email": "info@salymbekov.edu.kg",
+    "website": "www.salymbekov.edu.kg",
+    "quickLinks": "Quick Links",
+    "academicPrograms": "Academic Programs",
+    "connectWithUs": "Connect With Us",
+    "followUs": "Follow us on social media",
+    "newsletter": "Subscribe to our newsletter",
+    "emailPlaceholder": "Your email address",
+    "subscribe": "Subscribe",
+    "rights": "All rights reserved",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "sitemap": "Sitemap",
+    "links": {
+      "about": "About University",
+      "education": "Education",
+      "admission": "Admission",
+      "science": "Science & Research",
+      "contacts": "Contacts"
+    },
+    "programs": {
+      "ait": "AIT Programs",
+      "mfm": "International Medical Faculty",
+      "itCollege": "IT College",
+      "businessSchool": "Business School"
+    }
   }
+
 
 
 

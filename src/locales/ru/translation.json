@@ -2088,35 +2088,7 @@
     "viewAll": "Смотреть все",
     "viewProject": "Смотреть проект"
   },
-  "footer": {
-    "address": "ул. Эрунда, 5, Бишкек",
-    "website": "www.salymbekov-university.kg",
-    "email": "info@salymbekov-university.kg",
-    "usefulLinks": "ПОЛЕЗНЫЕ ССЫЛКИ",
-    "contacts": "КОНТАКТЫ",
-    "ourClinics": "НАШИ КЛИНИКИ",
-    "links": {
-      "associationDordoi": "Ассоциация Дордой",
-      "dordoiPlaza": "Дордой Плаза",
-      "cementora": "Цементора",
-      "mohaf09": "Мохаф 09",
-      "msSp": "MS SP"
-    },
-    "contactsList": {
-      "internationalMedical": "Международный факультет Медицины",
-      "itBusinessCompetition": "Международный конкурс IT и бизнеса",
-      "businessSchool": "Бизнес школа Салымбекова"
-    },
-    "clinics": {
-      "docUniversityClinic": "DOC университетская клиника",
-      "docUniversityHospital": "DOC университетская больница",
-      "dordoiOphthalmology": "Дордой офтальмологическая клиника"
-    },
-    "rights": "Все права защищены",
-    "privacy": "Политика конфиденциальности",
-    "terms": "Условия использования",
-    "sitemap": "Карта сайта"
-  },
+
   "businessSchool": {
     "hero": {
       "title": "Бизнес школа Салымбекова"
@@ -7290,6 +7262,9 @@
     "menu": "Меню"
   },
   "universitySUB": {
+    "universityMain": "Университет (главное подразделение)",
+    "internationalFaculty": "Международный факультет медицины",
+    "itCollege": "Международный колледж IT и бизнеса",
     "founderAppeal": "Обращение учредителя",
     "history": "История",
     "mission": "Миссия и цели",
@@ -7352,6 +7327,8 @@
     "cooperation": "Сотрудничество",
     "universitiesCoop": "Сотрудничество с университетами",
     "clinicsCoop": "Сотрудничество с клиниками"
+
+
   },
   "educationSUB": {
     "ait": "Американский институт технологий",
@@ -7360,7 +7337,7 @@
     "itCollege": "Международный колледж IT и бизнеса",
     "mfm": "Международный факультет Медицины",
     "businessSchool": "Бизнес школа Салымбекова",
-    "postgraduate": "Факультет последипломного образования",
+    "postgraduatetitle": "Факультет последипломного образования",
     "narynCenter": "Центр образования и инноваций в г. Нарын",
     "deanOffice": "Деканат",
     "mfmCurriculum": "Учебный план МФМ",
@@ -7378,7 +7355,20 @@
     "multimediaApps": "Диплом в мультимедийных приложениях",
     "mobileComputing": "Диплом в области мобильных вычислений",
     "generalDisciplines": "Общеобразовательных дисциплин",
-    "itDepartment": "Информационных технологий"
+    "itDepartment": "Информационных технологий",
+    "aboutait": "Об Институте",
+    "aitTeachers": "Преподаватели",
+    "contacts": "Контакты",
+    "aboutmfm": "О Факультете",
+    "director": "Директор",
+    "aboutIt": "О Колледже",
+    "aboutBusinessSchool" : "О Бизнес Школе",
+    "lincolnUniversity" : "LincolnUniversity",
+    "internship": "Интернатура",
+    "residency": "Ординатура",
+    "postgraduate": "Аспирантура",
+    "phd": "PhD",
+    "aboutCenter" : "О Центре"
   },
   "commonSUB": {
     "about": "О",
@@ -8065,5 +8055,37 @@
       "visit": "Посетить Центр",
       "learnMore": "Узнать Больше"
     }
+  },
+  "footer": {
+    "description": "Ведущее образовательное учреждение, предоставляющее качественное образование в области медицины, IT и бизнеса.",
+    "address": "Бишкек, Кыргызстан",
+    "phone": "+996 (312) 00-00-00",
+    "email": "info@salymbekov.edu.kg",
+    "website": "www.salymbekov.edu.kg",
+    "quickLinks": "Быстрые ссылки",
+    "academicPrograms": "Академические программы",
+    "connectWithUs": "Свяжитесь с нами",
+    "followUs": "Подпишитесь на нас в соцсетях",
+    "newsletter": "Подпишитесь на рассылку",
+    "emailPlaceholder": "Ваш email адрес",
+    "subscribe": "Подписаться",
+    "rights": "Все права защищены",
+    "privacy": "Политика конфиденциальности",
+    "terms": "Условия использования",
+    "sitemap": "Карта сайта",
+    "links": {
+      "about": "Об университете",
+      "education": "Образование",
+      "admission": "Поступление",
+      "science": "Наука и исследования",
+      "contacts": "Контакты"
+    },
+    "programs": {
+      "ait": "Программы AIT",
+      "mfm": "Международный медицинский факультет",
+      "itCollege": "IT Колледж",
+      "businessSchool": "Бизнес школа"
+    }
   }
+
 }

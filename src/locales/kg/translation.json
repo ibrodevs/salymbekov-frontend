@@ -489,6 +489,9 @@
     "menu": "Меню"
   },
   "universitySUB": {
+    "universityMain": "Университет (башкы бөлүм)",
+    "internationalFaculty": "Эл аралык медицина факультети",
+    "itCollege": "Эл аралык IT жана бизнес колледжи",
     "founderAppeal": "Негиздөөчүнүн жолдомосу",
     "history": "Тарых",
     "mission": "Миссия жана максаттар",
@@ -559,7 +562,7 @@
     "itCollege": "IT жана бизнес эл аралык коллежи",
     "mfm": "Эл аралык медицина факультети",
     "businessSchool": "Салымбеков бизнес мектеби",
-    "postgraduate": "Дипломдон кийинки билим берүү факультети",
+    "postgraduatetitle": "Дипломдон кийинки билим берүү факультети",
     "narynCenter": "Нарын шаарындагы билим берүү жана инновация борбору",
     "deanOffice": "Деканат",
     "mfmCurriculum": "ЭМФнин окуу планы",
@@ -577,7 +580,19 @@
     "multimediaApps": "Мультимедия колдонмолору боюнча диплом",
     "mobileComputing": "Мобилдик эсептөө боюнча диплом",
     "generalDisciplines": "Жалпы билим дисциплиналары",
-    "itDepartment": "Маалыматтык технологиялар"
+    "itDepartment": "Маалыматтык технологиялар",
+    "aboutait": "Институт жөнүндө",
+    "aitTeachers": "Мугалимдер",
+    "contacts": "Байланыштар",
+    "aboutmfm": "Факультет жөнүндө",
+    "director": "Директор",
+    "aboutIt": "Колледж жөнүндө",
+    "aboutBusinessSchool" : "Бизнес мектеби жөнүндө",
+    "internship": "Internship",
+    "residency": "Residency",
+    "postgraduate": "Postgraduate",
+    "phd": "PhD",
+    "aboutCenter" : "Борбор жөнүндө"
   },
   "commonSUB": {
     "about": "Жөнүндө",
@@ -7827,5 +7842,37 @@
       "visit": "Борборго Баруу",
       "learnMore": "Кененирээк Билуу"
     }
+  },
+  "footer": {
+    "description": "Медицина, IT жана бизнес тармактарында сапаттуу билим берүүчү жетекчи окуу жай.",
+    "address": "Бишкек, Кыргызстан",
+    "phone": "+996 (312) 00-00-00",
+    "email": "info@salymbekov.edu.kg",
+    "website": "www.salymbekov.edu.kg",
+    "quickLinks": "Тез шилтемелер",
+    "academicPrograms": "Академиялык программалар",
+    "connectWithUs": "Биз менен байланыш",
+    "followUs": "Социалдык тармактарда бизди ээрчиңиз",
+    "newsletter": "Жаңылыктарга жазылыңыз",
+    "emailPlaceholder": "Сиздин электрондук дарегиңиз",
+    "subscribe": "Жазылуу",
+    "rights": "Бардык укуктар корголгон",
+    "privacy": "Купуялык саясаты",
+    "terms": "Колдонуу шарттары",
+    "sitemap": "Сайттын картасы",
+    "links": {
+      "about": "Университет жөнүндө",
+      "education": "Билим берүү",
+      "admission": "Кабыл алуу",
+      "science": "Илим жана изилдөө",
+      "contacts": "Байланыш"
+    },
+    "programs": {
+      "ait": "AIT программалары",
+      "mfm": "Эл аралык медицина факультети",
+      "itCollege": "IT колледж",
+      "businessSchool": "Бизнес мектеби"
+    }
   }
+
 }

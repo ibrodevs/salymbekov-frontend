@@ -1,6 +1,6 @@
 import React, { lazy } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Navbar from './components/Navbar/Navbar'
+import Navbar from './components/Navbar/Navbar1'
 import Home from './pages/Home'
 import About from './pages/About'
 import Services from './pages/Services'
@@ -8,6 +8,7 @@ import Contact from './pages/Contact'
 import FounderMessage from './pages/FounderMessage'
 import MaterialBaseGallery from './pages/MaterialBaseGallery'
 import Footer from './pages/Footer'
+import ToTop from './components/ToTop'
 
 // Lazy imports for university
 
@@ -117,7 +118,7 @@ const DiplomComScience = lazy(() => import('./pages/education/itCollege/Specialt
 const DiplomMobComputing = lazy(() => import('./pages/education/itCollege/Specialties/DiplomMobComputing'))
 const DiplomMultiApplications = lazy(() => import('./pages/education/itCollege/Specialties/DiplomMultiApplications'))
 const AboutITCollege = lazy(() => import('./pages/education/itCollege/About'))
-const ContactsITCollage = lazy(() => import('./pages/education/itCollege/contacts'))
+const ContactsITCollage = lazy(() => import('./pages/education/itCollege/Contacts'))
 const DoubleDiploma = lazy(() => import('./pages/education/itCollege/DoubleDiploma'))
 const Lincoln = lazy(() => import('./pages/education/itCollege/Lincoln'))
 const PedagogicalCouncil = lazy(() => import('./pages/education/itCollege/PedagogicalCouncil'))
@@ -271,6 +272,7 @@ const App = () => {
   return (
     <Router>
       <div className="min-h-screen bg-gray-100">
+        <ToTop />
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />

@@ -500,8 +500,8 @@ const App = () => {
           <Route path="/applicants/career-guidance/news/it-security-meeting" element={<ITSecurityMeeting />} />
           <Route path="/applicants/career-guidance/news/pai-chai-visit" element={<PaiChaiVisit />} />
 
-          <Route path="/applicants/admission/documents" element={<Documents />} />
-          <Route path="/applicants/admission/rules" element={<AdmissionReg />} />
+          <Route path="/applicants/admission/documents" element={<RequiredDoc />} />
+          <Route path="/applicants/admission/rules" element={<AdmissionCom />} />
           <Route path="/applicants/admission/schedule" element={<ScheduleApp />} />
           <Route path="/applicants/transfer" element={<TransferBase />} />
           <Route path="/applicants/transfer/documents" element={<Documents />} />

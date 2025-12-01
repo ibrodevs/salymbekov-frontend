@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiChevronDown, FiChevronUp, FiFileText } from 'react-icons/fi';
+import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import { useTranslation } from 'react-i18next';
 
 const AdmissionCom = () => {
@@ -171,34 +171,36 @@ const AdmissionCom = () => {
             ))}
          </div>
 
-      {/* Hero Section */}
-      <motion.div
-         className="relative h-[50vh] flex items-center justify-center overflow-hidden"
-         initial={{ opacity: 0 }}
-         animate={{ opacity: 1 }}
-         transition={{ duration: 0.8 }}
-      >
-         <div className="absolute inset-0 bg-gradient-to-br from-[#023E8A]/95 via-[#0077B6]/95 to-[#0096C7]/95 z-0"></div>
+         {/* Hero Section */}
+         <motion.div
+            className="relative h-[50vh] flex items-center justify-center overflow-hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+         >
+            <div className="absolute inset-0 bg-gradient-to-br from-[#023E8A]/95 via-[#0077B6]/95 to-[#0096C7]/95 z-0"></div>
 
-         <div className="relative z-10 container mx-auto px-4 text-center text-white">
-            <motion.h1
-               className="text-5xl md:text-6xl font-bold mb-4"
-               initial={{ y: 30, opacity: 0 }}
-               animate={{ y: 0, opacity: 1 }}
-               transition={{ delay: 0.3, duration: 0.8 }}
-            >
-               Положение приема
-            </motion.h1>
-            <motion.p
-               className="text-xl md:text-2xl text-blue-100"
-               initial={{ y: 20, opacity: 0 }}
-               animate={{ y: 0, opacity: 1 }}
-               transition={{ delay: 0.5, duration: 0.8 }}
-            >
-               Правила и порядок приема в университет
-            </motion.p>
-         </div>
-      </motion.div>         {/* Content Section */}
+            <div className="relative z-10 container mx-auto px-4 text-center text-white">
+               <motion.h1
+                  className="text-5xl md:text-6xl font-bold mb-4"
+                  initial={{ y: 30, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.3, duration: 0.8 }}
+               >
+                  {t('admissionCom.heroTitle')}
+               </motion.h1>
+               <motion.p
+                  className="text-xl md:text-2xl text-blue-100"
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.5, duration: 0.8 }}
+               >
+                  {t('admissionCom.heroDescription')}
+               </motion.p>
+            </div>
+         </motion.div>
+
+         {/* Content Section */}
          <div className="relative z-10 container mx-auto px-4 -mt-20 pb-20">
             <div className="space-y-6">
                {sections.map((section, sectionIndex) => (
@@ -215,7 +217,7 @@ const AdmissionCom = () => {
                         className="w-full p-8 flex items-center justify-between hover:bg-gray-50 transition-colors"
                      >
                         <h2 className="text-2xl md:text-3xl font-bold text-gray-900 text-left">
-                           {t(`admission.sections.${section.key}.title`) || `Section ${sectionIndex + 1}`}
+                           {t(`admissionCom.sections.${section.key}.title`)}
                         </h2>
                         <div className="text-[#0077B6] flex-shrink-0 ml-4">
                            {expandedSections[sectionIndex] ? (
@@ -250,12 +252,12 @@ const AdmissionCom = () => {
                                           </div>
                                           <div className="flex-1">
                                              <p className="text-gray-800 text-lg leading-relaxed">
-                                                {t(`admission.sections.${section.key}.items.${item.key}`) || 'No translation available'}
+                                                {t(`admissionCom.sections.${section.key}.items.${item.key}`)}
                                              </p>
 
                                              {item.subItems && (
                                                 <ul className="mt-4 space-y-2 ml-4">
-                                                   {t(`admission.sections.${section.key}.items.${item.key}.subItems`, { returnObjects: true })?.map((subItem, subIndex) => (
+                                                   {t(`admissionCom.sections.${section.key}.items.${item.key}.subItems`, { returnObjects: true })?.map((subItem, subIndex) => (
                                                       <li key={subIndex} className="flex items-start gap-3 text-gray-700">
                                                          <span className="text-blue-500 mt-1.5 flex-shrink-0">•</span>
                                                          <span>{subItem}</span>

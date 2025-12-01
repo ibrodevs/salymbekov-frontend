@@ -1050,6 +1050,15 @@
     "directorText2": "Under her leadership, the clinic has developed specialized areas: laser surgery, gynecological and urological services, dermatocosmetic care, diagnostic and laboratory research.",
     "servicesTitle": "Procedures and services",
     "servicesDesc": "All procedures are performed in compliance with safety and quality standards",
+    "equipment": {
+      "item1": "Gynecological units and equipment",
+      "item2": "Colposcopes (video colposcopy)",
+      "item3": "Vacuum roller massage apparatus",
+      "item4": "Laparoscopic apparatus for surgical access",
+      "item5": "Laser units (removal of warts, papillomas, condylomas)",
+      "item6": "Artificial lung ventilation (ALV) devices",
+      "item7": "Defibrillators and cardiac monitors"
+    },
     "services": {
       "laserSurgery": {
         "title": "Laser Surgery",
@@ -1217,6 +1226,7 @@
   },
   "applicantSUB": {
     "admissionCommittee": "Admission Committee",
+    "commission": "Admission Committee",
     "directions": "Study Programs",
     "tuitionCost": "Tuition Cost",
     "admissionProcedure": "Admission Procedure",
@@ -8524,7 +8534,7 @@
     "contacts": {
       "title": "ADMISSION COMMITTEE CONTACTS",
       "address": "Address",
-      "phones": "Phones",
+      "phonesTitle": "Phones",
       "email": "Email",
       "addresses": {
         "college": "Maldybaeva St., 24b / Akhunbaeva, 125 (International College of IT and Business)",
@@ -10447,6 +10457,168 @@
       "mfm": "International Medical Faculty",
       "itCollege": "IT College",
       "businessSchool": "Business School"
+    }
+  },
+  "admission-procedure": {
+    "heroTitle": "Admission Procedure",
+    "heroDescription": "Information about the admission process",
+    "linkText": "Learn More",
+    "cards": {
+      "1": {
+        "title": "Required Documents",
+        "description": "List of required documents for admission"
+      },
+      "2": {
+        "title": "Admission Regulations",
+        "description": "Rules and conditions for university admission"
+      },
+      "3": {
+        "title": "Selection and Enrollment Schedule",
+        "description": "Admission campaign timeline"
+      }
+    }
+  },
+  "admissionCom": {
+    "heroTitle": "Admission Regulations",
+    "heroDescription": "Rules and procedure for admission to the university",
+    "sections": {
+      "section1": {
+        "title": "Organization of admission to the university",
+        "items": {
+          "2.1": "For the organization of student admission to all forms of education under contracts with tuition fee payment, an admission committee is established by order of the University President, with the rector of the University serving as its chairman.",
+          "2.2": "The composition, powers, and procedures of the admission committee are approved by the University rector. The term of office of the admission committee is one year.",
+          "2.3": "Specialists not employed at this educational institution may be included in the admission committee.",
+          "2.4": "During admission to Salymbekov University, the chairman of the admission committee ensures compliance with citizens' rights in the field of education established by the legislation of the Kyrgyz Republic, transparency and openness of the admission committee's work, objective assessment of applicants' abilities and aptitudes, and accessibility of the admission committee's leadership at all stages of the admission process.",
+          "2.5": "The admission committee is obliged to monitor the accuracy of information about the applicant's participation in the ORT and has the right to verify other educational documents submitted by the applicant."
+        }
+      },
+      "section2": {
+        "title": "Information for applicants",
+        "items": {
+          "9.1": "Before the start of document acceptance, the admission committee of Salymbekov University announces the following:",
+          "9.1.subItems": [
+            "annual admission rules of the University;",
+            "list of training directions and specialties for which the University announces admission in accordance with the license for educational activities;",
+            "list of entrance examinations in general education subjects for each training direction and specialty, rules for their conduct;",
+            "list and forms of entrance examinations for persons with higher professional education;",
+            "approval of the list and forms of entrance examinations for master's degree programs and certification examinations for the second and subsequent years;",
+            "determination of the total number of places for admission to the first year for each training direction and specialty;",
+            "approval of rules for filing and considering appeals based on the results of entrance and certification examinations;",
+            "approval of the enrollment procedure at the University;",
+            "collection of information about the availability of dormitory(ies) and the number of places in dormitories for non-resident applicants;",
+            "development and approval of a sample contract for applicants to places under contracts with tuition fee payment;",
+            "establishment of deadlines for conducting entrance examinations for master's degree programs and certification examinations for the second and subsequent years;",
+            "approval of tuition fee payment deadlines."
+          ]
+        }
+      },
+      "section3": {
+        "title": "Document acceptance",
+        "items": {
+          "10.1": "Acceptance of documents for places under contracts with tuition fee payment begins on June 20. Acceptance of documents for master's degree programs begins on June 20 and ends on October 1;",
+          "10.2": "Admission to the University is conducted based on personal applications from citizens.",
+          "10.3": "The main documents for admission of citizens of the Kyrgyz Republic are:",
+          "10.3.subItems": [
+            "personal application of the applicant, indicating the submission deadline;",
+            "document identifying the person and citizenship;",
+            "state-standard document on secondary general or secondary professional education;",
+            "original certificate of the results of the nationwide testing (ORT);",
+            "6 photographs sized 3x4;",
+            "for conscripts: military registration certificate or military ID;",
+            "other documents of the applicant if claiming benefits established by the admission procedure (parents' death certificates, medical-social expert opinion, documents confirming sports titles, military ID with a note on completion of compulsory military service, etc.)."
+          ],
+          "10.4": "The main documents for admission of foreign citizens to the Kyrgyz Republic are:",
+          "10.4.subItems": [
+            "personal application of the applicant, indicating the submission deadline;",
+            "document identifying the person and citizenship;",
+            "educational document equivalent to the state document on secondary general education, secondary or higher professional education of the Kyrgyz Republic. Examination of foreign citizens' documents is carried out by the Ministry of Education and Science of the Kyrgyz Republic. Enrollment of foreign citizens is not allowed without providing a certificate of compliance with the educational level issued by the Ministry of Education and Science of the Kyrgyz Republic;",
+            "6 photographs sized 3x4;",
+            "electronic photo 3x4;",
+            "medical certificate 086-U;"
+          ],
+          "10.5": "When submitting an application for admission to the University, the applicant may submit either the original or a certified photocopy of documents at their discretion.",
+          "10.6": "Photocopy certification of documents of citizens of the Kyrgyz Republic based on the original is permitted by the University.",
+          "10.7": "A personal file is created for each applicant, containing all submitted documents and entrance examination materials. Applicants' personal files are stored at the higher education institution for six months from the start of document acceptance.",
+          "10.8": "Upon submission of documents, the applicant is issued a receipt confirming document acceptance.",
+          "10.9": "Applicants who submit knowingly forged documents to the University's admission committee bear responsibility as provided by the legislation of the Kyrgyz Republic."
+        }
+      },
+      "section4": {
+        "title": "Nationwide testing",
+        "items": {
+          "11.1": "Competition for enrollment of applicants to all forms of education under contracts with tuition fee payment is conducted only based on the results of the current year's ORT. If an applicant has ORT scores above the threshold score, the admission committee has no right to refuse acceptance of the certificate for participation in the competition. ORT results obtained by an applicant before completing compulsory military service are valid for 3 years.",
+          "11.2": "The registration journal records the following information about applicants:",
+          "11.2.subItems": [
+            "applicant's identification number;",
+            "number of points scored on the main test and, if necessary, subject tests;",
+            "specialty and faculty where the applicant wishes to study;",
+            "registration date;",
+            "applicant's signature."
+          ],
+          "11.3": "Applicants claiming benefits for enrollment at the University must submit supporting documents during registration (parents' death certificates, medical-social expert opinion, etc.).",
+          "11.4": "After registration, the applicant must drop the tear-off coupon of the certificate into the sealed box of the faculty where they wish to study. The specialty is indicated on the tear-off coupon. Applicants who have completed compulsory military service, when using a certificate issued before service, regardless of the enrollment round, drop the certificate into the sealed box of the faculty.",
+          "11.5": "When submitting the tear-off coupon, presentation of the original certificate is mandatory.",
+          "11.6": "Collection of certificate tear-off coupons lasts 2.5 days.",
+          "11.7": "Collection of certificate tear-off coupons from applicants ends at 14:00 on the third day of applicant registration.",
+          "11.8": "Sealed boxes are opened in the presence of all members of the University's admission committee. Applicants with the highest scores are recommended for enrollment.",
+          "11.9": "Only applicants who have received scores on the main and subject tests equal to or above the threshold score determined by the Ministry of Education and Science of the Kyrgyz Republic are allowed to compete for admission to medical specialties at the University.",
+          "11.10": "Deadlines for conducting competition and enrollment for part-time (evening), correspondence forms of education, including those using distance learning technologies, are established by the University independently.",
+          "11.11": "Applicants who have not taken the required additional subject tests (except for medical specialties) but have scores on the main test equal to or above the threshold are also allowed to compete for places under contracts with tuition fee payment for specialties and directions requiring additional subject tests. For enrollment in these specialties, priority is given to applicants with subject test results; for remaining places, applicants are recommended based on main test results."
+        }
+      },
+      "section5": {
+        "title": "Entrance examinations",
+        "items": {
+          "12.1": "Salymbekov University conducts entrance examinations exclusively:",
+          "12.1.subItems": [
+            "for applicants applying for training directions and specialties that do not require ORT results;",
+            "for foreign citizen applicants in 2 streams for the fall semester and spring semester."
+          ],
+          "12.2": "Entrance examinations may be conducted simultaneously with the selection rounds of applicants based on ORT results.",
+          "12.3": "Entrance examinations are conducted according to programs corresponding to secondary general education curricula.",
+          "12.4": "Entrance exams for foreign citizens may be organized and conducted outside the Kyrgyz Republic in the applicants' country of residence.",
+          "12.5": "Deadlines for conducting entrance examinations for citizens of the Kyrgyz Republic and foreign citizens at the University are coordinated annually with the Ministry of Education and Science of the Kyrgyz Republic. In case of delay of a foreign citizen applicant for the entrance exam for valid reasons (family circumstances, health problems, technical document delays, etc.), examination deadlines may be extended by decision of the admission committee.",
+          "12.6": "In case of successful completion of entrance examinations by a foreign applicant at the examination site, but delay in arrival at the University for valid reasons (family circumstances, visa delay, documentation problems, emergencies, etc.), the University has the right to enroll such applicant as a student and submit a report to the Ministry of Education and Science of the Kyrgyz Republic later than the established deadlines.",
+          "12.7": "Persons who withdraw their documents after the completion of document acceptance are excluded from the competition.",
+          "12.8": "Applicants who are citizens of the Kyrgyz Republic and fail to appear for the entrance examination for valid reasons (illness or other circumstances confirmed by documents) are admitted to them in parallel groups, at the next stage of entrance examinations, or individually until their complete completion.",
+          "12.9": "Competition for admission to the second and subsequent years is conducted based on certification examinations conducted independently by Salymbekov University."
+        }
+      },
+      "section6": {
+        "title": "Examination paper checking",
+        "items": {
+          "14.1": "The responsible secretary together with members of the admission committee encrypt written works or answer sheets, putting a conditional code on the examination sheet and answer sheet.",
+          "14.2": "Examination sheets remain with the responsible secretary and are stored in a sealed safe, while answer sheets are transferred to members of the examination committee for checking, with checking permitted only at Salymbekov University. Persons not related to this entrance examination are not allowed to check.",
+          "14.3": "Checking of examination papers is conducted on the same day, immediately after encryption completion.",
+          "14.4": "When checking examination papers, the following rules must be observed:",
+          "14.4.subItems": [
+            "answers filled with pencil are not counted;",
+            "if an applicant fills two answer options, the answer to that question is not counted;",
+            "on answer sheets, next to the scores given, the signature and surname of the checker must be placed;",
+            "if a signature is found on answer sheets or any inscriptions unrelated to the work, test tasks are checked by two examiners."
+          ],
+          "14.5": "The minimum threshold score giving the applicant the right to participate in the competition is established by the University in advance and cannot be less than 40 percent of the maximum possible number of points.",
+          "14.6": "The list of applicants recommended for enrollment to places under contracts with tuition fee payment is posted the day after the examination.",
+          "14.7": "Written works of persons enrolled in the University are filed in their personal files. Written works of non-admitted applicants are stored for six months, after which they are destroyed."
+        }
+      },
+      "section7": {
+        "title": "Enrollment",
+        "items": {
+          "15.1": "Enrollment of applicants as students of Salymbekov University is carried out upon availability of the original educational document or its duplicate.",
+          "15.2": "Enrollment of applicants as students based on ORT results is carried out upon availability of the original certificate of testing results.",
+          "15.3": "Enrollment of applicants as students of the full-time department of the University to places under contracts with tuition fee payment is carried out until August 25, for other forms of education - until August 31. Extension of the enrollment deadline for foreign applicants is carried out according to the annual admission rules of the University, coordinated with the Ministry of Education and Science of the Kyrgyz Republic.",
+          "15.4": "Persons who fail to appear for entrance examinations without valid reasons, as well as those who receive an unsatisfactory grade, do not participate in the competition and are not enrolled in the University.",
+          "15.5": "The order(s) of enrollment based on competition results indicating the number of points scored on entrance examinations or ORT are published on the information board of the admission committee."
+        }
+      },
+      "section8": {
+        "title": "Information submission and control",
+        "items": {
+          "16.1": "The University submits final admission data to the Ministry of Education and Science of the Kyrgyz Republic within the established deadlines;",
+          "16.2": "Control over the work of the admission committee of Salymbekov University is carried out by the Ministry of Education and Science of the Kyrgyz Republic."
+        }
+      }
     }
   }
 }

@@ -271,13 +271,13 @@ const Lazmed = () => {
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              t('clinical.lazmed.equipmentDesc.item1',),
-              t('clinical.lazmed.equipmentDesc.item2',),
-              t('clinical.lazmed.equipmentDesc.item3',),
-              t('clinical.lazmed.equipmentDesc.item4',),
-              t('clinical.lazmed.equipmentDesc.item5',),
-              t('clinical.lazmed.equipmentDesc.item6',),
-              t('clinical.lazmed.equipmentDesc.item7',)
+              t('lazmed.equipment.item1',),
+              t('lazmed.equipment.item2',),
+              t('lazmed.equipment.item3',),
+              t('lazmed.equipment.item4',),
+              t('lazmed.equipment.item5',),
+              t('lazmed.equipment.item6',),
+              t('lazmed.equipment.item7',)
             ].map((item, i) => (
               <div key={i} className="bg-white/80 backdrop-blur-sm rounded-2xl p-5 shadow-sm border border-slate-200 hover:shadow-md transition">
                 <h4 className="font-semibold text-slate-800">{item}</h4>

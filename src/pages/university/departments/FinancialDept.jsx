@@ -34,30 +34,6 @@ const FinancialDept = () => {
   const gradientTo = "to-[#0077B6]";
 
   const financialStats = [
-    { 
-      number: "15+", 
-      label: t('financial.stats.years'), 
-      icon: <FaChartLine className="text-[#023E8A]" />,
-      description: t('financial.stats.yearsDesc')
-    },
-    { 
-      number: "5K+", 
-      label: t('financial.stats.students'), 
-      icon: <FaUserTie className="text-[#023E8A]" />,
-      description: t('financial.stats.studentsDesc')
-    },
-    { 
-      number: "98%", 
-      label: t('financial.stats.satisfaction'), 
-      icon: <FaCheckCircle className="text-[#023E8A]" />,
-      description: t('financial.stats.satisfactionDesc')
-    },
-    { 
-      number: "24/7", 
-      label: t('financial.stats.support'), 
-      icon: <FaShieldAlt className="text-[#023E8A]" />,
-      description: t('financial.stats.supportDesc')
-    }
   ];
 
   const services = [
@@ -441,11 +417,11 @@ const FinancialDept = () => {
                         <div className="space-y-3 mb-4">
                           <div className="flex justify-between items-center">
                             <span className="text-gray-600">{t('financial.tuition.perYear')}</span>
-                            <span className="text-lg font-bold text-[#023E8A]">{program.perYear} ₸</span>
+                            <span className="text-lg font-bold text-[#023E8A]">{program.perYear} </span>
                           </div>
                           <div className="flex justify-between items-center">
                             <span className="text-gray-600">{t('financial.tuition.perSemester')}</span>
-                            <span className="text-lg font-bold text-[#023E8A]">{program.perSemester} ₸</span>
+                            <span className="text-lg font-bold text-[#023E8A]">{program.perSemester} </span>
                           </div>
                         </div>
 

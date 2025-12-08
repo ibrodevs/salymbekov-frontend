@@ -26,10 +26,7 @@ const ManagementDept = () => {
 
   // Статистика отдела
   const departmentStats = [
-    { number: "25+", label: t('management.stats.managers'), icon: <FaUsers className="text-[#023E8A]" /> },
-    { number: "15", label: t('management.stats.projects'), icon: <FaChartLine className="text-[#023E8A]" /> },
-    { number: "98%", label: t('management.stats.success'), icon: <FaAward className="text-[#023E8A]" /> },
-    { number: "50+", label: t('management.stats.partners'), icon: <FaHandshake className="text-[#023E8A]" /> }
+    
   ];
 
   // Команда руководства

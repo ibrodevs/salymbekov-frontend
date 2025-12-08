@@ -1,264 +1,588 @@
-import React, { useState, useEffect } from 'react';
+// History.jsx
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import HistoryImage1 from '../../assets/history/history1.jpg';
-import HistoryImage2 from '../../assets/history/history2.jpg';
-import HistoryImage3 from '../../assets/history/history3.jpg';
-import UniversityCampus from '../../assets/history/campus.jpg';
-import FounderPhoto from '../../assets/history/founder.jpg';
+import { 
+  FaCalendarAlt,
+  FaUniversity,
+  FaHospital,
+  FaGlobe,
+  FaGraduationCap,
+  FaAward,
+  FaBook,
+  FaUsers,
+  FaMicroscope,
+  FaHeartbeat,
+  FaLaptop,
+  FaChalkboardTeacher,
+  FaHandshake,
+  FaArrowRight
+} from 'react-icons/fa';
+
 const History = () => {
   const { t } = useTranslation();
-  const [activeYear, setActiveYear] = useState(2020);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [expandedMilestone, setExpandedMilestone] = useState(null);
+  const [activeFilter, setActiveFilter] = useState("all");
+
+  // URL для изображений
+  const images = {
+    background: "https://cdn-1.aki.kg/st_runews/.storage/limon3/images/December2023/e1e6c764252995247d75716b41142967.png",
+    founder: "https://salymbekov.com/wp-content/uploads/2021/04/askar-salymbekov-v-vypusknikami-mlk-s-1024x679.jpg",
+    docClinic: "https://salymbekov.com/wp-content/uploads/2023/03/4.jpg",
+    lazmed: "https://salymbekov.com/wp-content/uploads/2020/12/%D0%9B%D0%B0%D0%B7%D0%BC%D0%B5%D0%B4-%D1%84%D0%B0%D1%81%D0%B0%D0%B4.jpg",
+    universityHospital: "https://salymbekov.ewings.co.in/wp-content/uploads/2025/08/IMG-20250801-WA0038.jpg",
+    
+    ophthalmologyCarousel: [
+      "https://salymbekov.com/wp-content/uploads/2021/02/c0b7153.jpg",
+      "https://salymbekov.com/wp-content/uploads/2021/02/c0b7154.jpg",
+      "https://salymbekov.com/wp-content/uploads/2021/02/c0b7150.jpg",
+      "https://salymbekov.com/wp-content/uploads/2021/02/c0b7155.jpg",
+      "https://salymbekov.com/wp-content/uploads/2021/02/c0b7146.jpg"
+    ]
+  };
+
+  // Фильтры периодов
+  const filters = [
+    { id: "all", label: t('history.filters.all'), count: 4 },
+    { id: "early", label: t('history.filters.early'), count: 2 },
+    { id: "recent", label: t('history.filters.recent'), count: 2 }
+  ];
+
+  const nextImage = () => {
+    setCurrentImageIndex((prevIndex) => 
+      prevIndex === images.ophthalmologyCarousel.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prevIndex) => 
+      prevIndex === 0 ? images.ophthalmologyCarousel.length - 1 : prevIndex - 1
+    );
+  };
+
+  // Основные вехи истории
   const milestones = [
-    { year: 2018, key: 'milestone1' },
-    { year: 2019, key: 'milestone2' },
-    { year: 2020, key: 'milestone3' },
-    { year: 2021, key: 'milestone4' },
-    { year: 2022, key: 'milestone5' },
-    { year: 2023, key: 'milestone6' },
-    { year: 2024, key: 'milestone7' }
+    {
+      year: "2019",
+      title: t('history.milestones.2019.title'),
+      description: t('history.milestones.2019.description'),
+      icon: <FaUniversity className="text-white" size={24} />,
+      color: "from-[#023E8A] to-[#0077B6]",
+      achievements: t('history.milestones.2019.achievements', { returnObjects: true }),
+      category: "early"
+      
+    },
+    {
+      year: "2020",
+      title: t('history.milestones.2020.title'),
+      description: t('history.milestones.2020.description'),
+      icon: <FaLaptop className="text-white" size={24} />,
+      color: "from-[#0077B6] to-[#0096C7]",
+      achievements: t('history.milestones.2020.achievements', { returnObjects: true }),
+      category: "early",
+      stats: {
+        students: "800+",
+        programs: "25+",
+        partners: "35+"
+      }
+    },
+    {
+      year: "2021",
+      title: t('history.milestones.2021.title'),
+      description: t('history.milestones.2021.description'),
+      icon: <FaAward className="text-white" size={24} />,
+      color: "from-[#0096C7] to-[#00B4D8]",
+      achievements: t('history.milestones.2021.achievements', { returnObjects: true }),
+      category: "recent",
+      stats: {
+        students: "1200+",
+        programs: "35+",
+        partners: "50+"
+      }
+    },
+    {
+      year: "2022",
+      title: t('history.milestones.2022.title'),
+      description: t('history.milestones.2022.description'),
+      icon: <FaGlobe className="text-white" size={24} />,
+      color: "from-[#00B4D8] to-[#48CAE4]",
+      achievements: t('history.milestones.2022.achievements', { returnObjects: true }),
+      category: "recent",
+      stats: {
+        students: "1500+",
+        programs: "45+",
+        partners: "70+"
+      }
+    }
   ];
-  const features = [
-    { icon: '🎓', key: 'feature1' },
-    { icon: '🏫', key: 'feature2' },
-    { icon: '🌍', key: 'feature3' },
-    { icon: '🔬', key: 'feature4' }
+
+  // Статистика университета
+  const stats = [
   ];
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveYear(prev => {
-        const currentIndex = milestones.findIndex(m => m.year === prev);
-        return milestones[(currentIndex + 1) % milestones.length].year;
-      });
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
+
+  // Клиническая база
+  const clinics = [
+    {
+      name: t('history.clinics.docClinic.name'),
+      description: t('history.clinics.docClinic.description'),
+      image: images.docClinic,
+      icon: <FaHospital className="text-white" size={24} />,
+      color: "bg-[#023E8A]",
+      stats: {
+        patients: "10,000+",
+        doctors: "50+",
+        specialties: "15+"
+      }
+    },
+    {
+      name: t('history.clinics.lazmed.name'),
+      description: t('history.clinics.lazmed.description'),
+      image: images.lazmed,
+      icon: <FaHeartbeat className="text-white" size={24} />,
+      color: "bg-[#0077B6]",
+      stats: {
+        patients: "5,000+",
+        doctors: "30+",
+        specialties: "8+"
+      }
+    },
+    {
+      name: t('history.clinics.universityHospital.name'),
+      description: t('history.clinics.universityHospital.description'),
+      image: images.universityHospital,
+      icon: <FaMicroscope className="text-white" size={24} />,
+      color: "bg-[#0096C7]",
+      stats: {
+        patients: "8,000+",
+        doctors: "40+",
+        specialties: "12+"
+      }
+    }
+  ];
+
+  const filteredMilestones = milestones.filter(milestone => 
+    activeFilter === "all" || milestone.category === activeFilter
+  );
+
+  const toggleMilestoneExpansion = (milestoneYear) => {
+    setExpandedMilestone(expandedMilestone === milestoneYear ? null : milestoneYear);
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white py-12">
-      {/* Hero Section */}
-      <section className="container mx-auto px-6 mb-16">
+    <div className="min-h-screen bg-gray-50 relative overflow-hidden">
+      {/* Анимированный фон */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(15)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full opacity-5"
+            style={{
+              width: Math.random() * 100 + 50,
+              height: Math.random() * 100 + 50,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              background: `linear-gradient(135deg, #023E8A, #0077B6)`
+            }}
+            animate={{
+              y: [0, -40, 0],
+              opacity: [0.03, 0.1, 0.03],
+              scale: [1, 1.2, 1]
+            }}
+            transition={{
+              duration: 8 + Math.random() * 8,
+              repeat: Infinity,
+              delay: Math.random() * 5
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 py-20">
+        {/* Герой секция */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
-          <h1 className="text-5xl md:text-6xl font-bold text-blue-900 mb-6">
+          <motion.div
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="inline-flex items-center gap-3 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-3 rounded-full mb-6"
+          >
+            <FaCalendarAlt className="text-xl" />
+            <span className="font-semibold">{t('history.badge')}</span>
+          </motion.div>
+
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
             {t('history.title')}
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
             {t('history.subtitle')}
           </p>
         </motion.div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <img
-              src={UniversityCampus}
-              alt={t('history.campusAlt')}
-              className="rounded-2xl shadow-2xl w-full h-auto object-cover"
-            />
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="space-y-6"
-          >
-            <h2 className="text-4xl font-bold text-gray-800">
-              {t('history.aboutTitle')}
-            </h2>
-            <p className="text-lg text-gray-600 leading-relaxed">
-              {t('history.aboutText1')}
-            </p>
-            <p className="text-lg text-gray-600 leading-relaxed">
-              {t('history.aboutText2')}
-            </p>
-            <div className="grid grid-cols-2 gap-4 mt-8">
-              {features.map((feature, index) => (
-                <motion.div
-                  key={feature.key}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
-                  className="bg-white p-6 rounded-xl shadow-lg border border-blue-100 text-center hover:shadow-xl transition-all duration-300"
-                >
-                  <div className="text-3xl mb-3">{feature.icon}</div>
-                  <h3 className="font-semibold text-gray-800 mb-2">
-                    {t(`history.${feature.key}.title`)}
-                  </h3>
-                  <p className="text-sm text-gray-600">
-                    {t(`history.${feature.key}.desc`)}
-                  </p>
-                </motion.div>
-              ))}
+
+        {/* Статистика */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
+        >
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.5 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              whileHover={{ scale: 1.05, y: -5 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group"
+            >
+              <div className="flex justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                {stat.icon}
+              </div>
+              <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent mb-2">
+                {stat.number}
+              </div>
+              <div className="text-gray-600 font-medium">{stat.label}</div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Основное изображение */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="bg-white rounded-3xl shadow-2xl border border-gray-200 overflow-hidden mb-12"
+        >
+          <img 
+            src={images.background}
+            alt={t('history.images.backgroundAlt')}
+            className="w-full h-64 md:h-96 object-cover"
+            onError={(e) => {
+              e.target.src = "https://via.placeholder.com/1920x600/6B7280/FFFFFF?text=История+университета";
+            }}
+          />
+        </motion.div>
+
+        {/* Введение */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="bg-white rounded-3xl shadow-2xl border border-gray-200 p-8 mb-12"
+        >
+          <div className="flex flex-col lg:flex-row items-center gap-8">
+            <div className="lg:w-1/3">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+                className="relative"
+              >
+                <img 
+                  src={images.founder}
+                  alt={t('history.founder.imageAlt')}
+                  className="w-full h-auto rounded-2xl shadow-lg"
+                  onError={(e) => {
+                    e.target.src = "https://via.placeholder.com/400x300/6B7280/FFFFFF?text=Основатель+с+выпускниками";
+                  }}
+                />
+                <div className="absolute bottom-4 left-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm backdrop-blur-sm">
+                  {t('history.founder.caption')}
+                </div>
+              </motion.div>
             </div>
-          </motion.div>
-        </div>
-      </section>
-      {/* Timeline Section */}
-      <section className="bg-white py-16 mb-16">
-        <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-4xl font-bold text-blue-900 mb-4">
-              {t('history.timelineTitle')}
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              {t('history.timelineSubtitle')}
-            </p>
-          </motion.div>
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-blue-200 h-full top-0"></div>
-            <div className="space-y-12">
-              {milestones.map((milestone, index) => (
-                <motion.div
-                  key={milestone.year}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                  className={`relative flex items-center ${
-                    index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
+            <div className="lg:w-2/3">
+              <div className="prose prose-lg max-w-none">
+                <p className="text-gray-700 text-lg leading-relaxed mb-4">
+                  {t('history.introduction.paragraph1')}
+                </p>
+                <p className="text-gray-700 text-lg leading-relaxed">
+                  {t('history.introduction.paragraph2')}
+                </p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Фильтры вех */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="bg-white rounded-3xl shadow-2xl border border-gray-200 p-8 mb-8"
+        >
+          <div className="flex flex-col lg:flex-row gap-6 items-center justify-between">
+            <div>
+              <h2 className="text-3xl font-bold text-gray-800 mb-2">
+                {t('history.milestones.title')}
+              </h2>
+              <p className="text-gray-600">
+                {t('history.milestones.subtitle')}
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-3">
+              {filters.map((filter) => (
+                <motion.button
+                  key={filter.id}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setActiveFilter(filter.id)}
+                  className={`px-6 py-3 rounded-2xl font-semibold transition-all duration-300 flex items-center gap-2 ${
+                    activeFilter === filter.id
+                      ? 'bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white shadow-lg'
+                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                   }`}
                 >
-                  {/* Content */}
-                  <div className={`w-1/2 ${index % 2 === 0 ? 'pr-12' : 'pl-12'}`}>
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      className={`bg-gradient-to-br ${
-                        activeYear === milestone.year
-                          ? 'from-blue-600 to-blue-800 text-white'
-                          : 'from-white to-blue-50 text-gray-800'
-                      } p-8 rounded-2xl shadow-lg border border-blue-100 cursor-pointer transition-all duration-300`}
-                      onClick={() => setActiveYear(milestone.year)}
-                    >
-                      <div className="flex items-center mb-4">
-                        <div className={`w-4 h-4 rounded-full ${
-                          activeYear === milestone.year ? 'bg-white' : 'bg-blue-600'
-                        } mr-3`}></div>
-                        <h3 className="text-2xl font-bold">
-                          {t(`history.${milestone.key}.title`)}
-                        </h3>
-                      </div>
-                      <p className={`leading-relaxed ${
-                        activeYear === milestone.year ? 'text-blue-100' : 'text-gray-600'
-                      }`}>
-                        {t(`history.${milestone.key}.desc`)}
-                      </p>
-                    </motion.div>
-                  </div>
-                  {/* Year marker */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
-                    <motion.div
-                      animate={{ 
-                        scale: activeYear === milestone.year ? 1.2 : 1,
-                        backgroundColor: activeYear === milestone.year ? '#2563eb' : '#ffffff'
-                      }}
-                      className={`w-16 h-16 rounded-full border-4 border-blue-500 flex items-center justify-center shadow-lg font-bold ${
-                        activeYear === milestone.year ? 'text-white' : 'text-blue-600'
-                      }`}
-                    >
-                      {milestone.year}
-                    </motion.div>
-                  </div>
-                  {/* Spacer */}
-                  <div className="w-1/2"></div>
-                </motion.div>
+                  {filter.label}
+                  <span className="bg-white/20 px-2 py-1 rounded-full text-xs">
+                    {filter.count}
+                  </span>
+                </motion.button>
               ))}
             </div>
           </div>
-        </div>
-      </section>
-      {/* Founder Section */}
-      <section className="container mx-auto px-6 mb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="relative"
-          >
-            <img
-              src={FounderPhoto}
-              alt={t('history.founderAlt')}
-              className="rounded-2xl shadow-2xl w-full h-auto object-cover"
-            />
-            <div className="absolute -bottom-6 -right-6 bg-blue-600 text-white p-6 rounded-2xl shadow-xl">
-              <h3 className="text-xl font-bold">{t('history.founderName')}</h3>
-              <p className="text-blue-100">{t('history.founderPosition')}</p>
-            </div>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-6"
-          >
-            <h2 className="text-4xl font-bold text-gray-800">
-              {t('history.founderTitle')}
+        </motion.div>
+
+        {/* Основные вехи истории */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.7 }}
+          className="mb-20"
+        >
+          <div className="grid gap-6">
+            {filteredMilestones.map((milestone, index) => (
+              <motion.div
+                key={milestone.year}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ scale: 1.02 }}
+                className="bg-white rounded-3xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300"
+              >
+                <div className={`bg-gradient-to-r ${milestone.color} p-8 text-white`}>
+                  <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
+                    <div className="flex items-center gap-4">
+                      <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center">
+                        {milestone.icon}
+                      </div>
+                      <div>
+                        <div className="text-4xl font-bold mb-2">{milestone.year}</div>
+                        <div className="text-2xl font-semibold">{milestone.title}</div>
+                      </div>
+                    </div>
+                    
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <span className="inline-flex items-center gap-1 bg-white/20 px-3 py-1 rounded-full text-sm font-semibold backdrop-blur-sm">
+                        {t('history.milestones.year')} {milestone.year}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-8">
+                  <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-8">
+                    {/* Основная информация */}
+                    <div className="flex-1">
+                      <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                        {milestone.description}
+                      </p>
+
+
+                      {/* Расширенная информация */}
+                      {expandedMilestone === milestone.year && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          className="space-y-6"
+                        >
+                          <div className="grid md:grid-cols-2 gap-4">
+                            {milestone.achievements.map((achievement, idx) => (
+                              <motion.div
+                                key={idx}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.4, delay: idx * 0.1 }}
+                                className="flex items-start gap-3 bg-blue-50 rounded-xl p-4"
+                              >
+                                <div className="w-6 h-6 bg-[#023E8A] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                  <div className="w-2 h-2 bg-white rounded-full" />
+                                </div>
+                                <span className="text-gray-700">{achievement}</span>
+                              </motion.div>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </div>
+
+                    {/* Боковая панель с действиями */}
+                    <div className="flex flex-col gap-4 lg:w-48">
+                      
+
+                      <motion.button
+                        onClick={() => toggleMilestoneExpansion(milestone.year)}
+                        className="flex items-center justify-center gap-2 text-[#023E8A] font-semibold py-2 hover:bg-blue-50 rounded-xl transition-colors duration-300"
+                      >
+                        {expandedMilestone === milestone.year ? t('history.showLess') : t('history.showMore')}
+                      </motion.button>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Клиническая база */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="mb-20"
+        >
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">
+              {t('history.clinics.title')}
             </h2>
-            <p className="text-lg text-gray-600 leading-relaxed">
-              {t('history.founderText1')}
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              {t('history.clinics.subtitle')}
             </p>
-            <p className="text-lg text-gray-600 leading-relaxed">
-              {t('history.founderText2')}
-            </p>
-            <div className="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-600">
-              <p className="text-blue-800 italic text-lg">
-                "{t('history.founderQuote')}"
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
+            {clinics.map((clinic, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.05, y: -5 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 overflow-hidden group"
+              >
+                <div className="h-48 overflow-hidden relative">
+                  <img 
+                    src={clinic.image}
+                    alt={clinic.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    onError={(e) => {
+                      e.target.src = "https://via.placeholder.com/400x200/6B7280/FFFFFF?text=Клиника";
+                    }}
+                  />
+                  <div className={`absolute top-4 left-4 ${clinic.color} w-12 h-12 rounded-2xl flex items-center justify-center`}>
+                    {clinic.icon}
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-800 mb-3">
+                    {clinic.name}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed mb-4">
+                    {clinic.description}
+                  </p>
+
+                  
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Карусель для Центра микрохирургии глаза */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="bg-white rounded-3xl shadow-2xl border border-gray-200 p-8"
+          >
+            <div className="text-center mb-8">
+              <FaMicroscope className="text-4xl text-[#023E8A] mx-auto mb-4" />
+              <h3 className="text-3xl font-bold text-gray-800 mb-4">
+                {t('history.ophthalmologyCenter.title')}
+              </h3>
+              <p className="text-gray-600 text-lg max-w-4xl mx-auto">
+                {t('history.ophthalmologyCenter.description')}
+              </p>
+            </div>
+
+            {/* Карусель */}
+            <div className="relative max-w-4xl mx-auto">
+              <div className="relative h-80 md:h-96 bg-gray-100 rounded-2xl overflow-hidden">
+                <img 
+                  src={images.ophthalmologyCarousel[currentImageIndex]}
+                  alt={`${t('history.ophthalmologyCenter.title')} ${currentImageIndex + 1}`}
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.target.src = "https://via.placeholder.com/800x400/6B7280/FFFFFF?text=Офтальмологический+центр";
+                  }}
+                />
+                
+                <button 
+                  onClick={prevImage}
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition-all backdrop-blur-sm"
+                >
+                  ‹
+                </button>
+                <button 
+                  onClick={nextImage}
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition-all backdrop-blur-sm"
+                >
+                  ›
+                </button>
+                
+                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded-full text-sm backdrop-blur-sm">
+                  {currentImageIndex + 1} / {images.ophthalmologyCarousel.length}
+                </div>
+              </div>
+
+              <div className="flex overflow-x-auto space-x-3 mt-6 pb-2">
+                {images.ophthalmologyCarousel.map((image, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentImageIndex(index)}
+                    className={`flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden border-2 transition-all ${
+                      index === currentImageIndex ? 'border-[#023E8A] scale-110' : 'border-gray-300'
+                    }`}
+                  >
+                    <img 
+                      src={image}
+                      alt={`${t('history.ophthalmologyCenter.thumbnail')} ${index + 1}`}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        e.target.src = "https://via.placeholder.com/100x100/6B7280/FFFFFF?text=IMG";
+                      }}
+                    />
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="text-center mt-6">
+              <p className="text-gray-600">
+                {t('history.ophthalmologyCenter.address')}
               </p>
             </div>
           </motion.div>
-        </div>
-      </section>
-      {/* Gallery Section */}
-      <section className="container mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-4xl font-bold text-blue-900 mb-4">
-            {t('history.galleryTitle')}
-          </h2>
-          <p className="text-lg text-gray-600">
-            {t('history.gallerySubtitle')}
-          </p>
         </motion.div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[HistoryImage1, HistoryImage2, HistoryImage3].map((image, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              whileHover={{ scale: 1.05 }}
-              className="relative overflow-hidden rounded-2xl shadow-lg group cursor-pointer"
-            >
-              <img
-                src={image}
-                alt={t(`history.galleryImage${index + 1}`)}
-                className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <p className="text-white font-semibold text-lg">
-                  {t(`history.galleryImage${index + 1}`)}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+
+        
+       
+      </div>
     </div>
   );
 };
+
 export default History;

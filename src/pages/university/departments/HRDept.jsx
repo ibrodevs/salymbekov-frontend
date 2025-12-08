@@ -29,10 +29,7 @@ const HRDept = () => {
 
   // Статистика HR отдела
   const hrStats = [
-    { number: "95%", label: t('hr.stats.satisfaction'), icon: <FaSmile className="text-[#023E8A]" /> },
-    { number: "150+", label: t('hr.stats.employees'), icon: <FaUsers className="text-[#023E8A]" /> },
-    { number: "40%", label: t('hr.stats.retention'), icon: <FaHeart className="text-[#023E8A]" /> },
-    { number: "25+", label: t('hr.stats.programs'), icon: <FaGraduationCap className="text-[#023E8A]" /> }
+  
   ];
 
   // Программы HR

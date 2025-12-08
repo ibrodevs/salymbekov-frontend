@@ -20,6 +20,7 @@ import {
   FaDownload,
   FaSearch,
   FaStar,
+  FaCheckCircle,
   FaUniversity
 } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
@@ -35,30 +36,6 @@ const ScienceDept = () => {
   const gradientTo = "to-[#0077B6]";
 
   const scienceStats = [
-    { 
-      number: "50+", 
-      label: t('science.stats.projects'), 
-      icon: <FaFlask className="text-[#023E8A]" />,
-      description: t('science.stats.projectsDesc')
-    },
-    { 
-      number: "200+", 
-      label: t('science.stats.publications'), 
-      icon: <FaBook className="text-[#023E8A]" />,
-      description: t('science.stats.publicationsDesc')
-    },
-    { 
-      number: "15", 
-      label: t('science.stats.labs'), 
-      icon: <FaMicroscope className="text-[#023E8A]" />,
-      description: t('science.stats.labsDesc')
-    },
-    { 
-      number: "5M+", 
-      label: t('science.stats.grants'), 
-      icon: <FaAward className="text-[#023E8A]" />,
-      description: t('science.stats.grantsDesc')
-    }
   ];
 
   const researchFields = [

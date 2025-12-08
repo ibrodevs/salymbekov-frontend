@@ -1,304 +1,436 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
-
+import { 
+  FaRocket,
+  FaUsers,
+  FaGraduationCap,
+  FaHeart,
+  FaArrowRight,
+  FaChevronLeft,
+  FaChevronRight,
+  FaBriefcase,
+  FaStar,
+  FaGlobe,
+  FaShieldAlt,
+  FaBook,
+  FaStethoscope,
+  FaLaptopCode,
+  FaSeedling,
+  FaCogs,
+  FaUserMd
+} from "react-icons/fa";
 
 const Mission = () => {
   const { t } = useTranslation();
-  const [activeTab, setActiveTab] = useState('mission');
-  const [activeValue, setActiveValue] = useState(0);
-  const [counter, setCounter] = useState({ students: 0, programs: 0, partners: 0, graduates: 0 });
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const tabs = [
-    { id: 'mission', key: 'missionTab' },
-    { id: 'vision', key: 'visionTab' },
-    { id: 'values', key: 'valuesTab' },
-    { id: 'goals', key: 'goalsTab' }
-  ];
-
-  const values = [
-    { icon: '🎯', key: 'value1' },
-    { icon: '🌟', key: 'value2' },
-    { icon: '🤝', key: 'value3' },
-    { icon: '💡', key: 'value4' },
-    { icon: '🌱', key: 'value5' },
-    { icon: '🏆', key: 'value6' }
-  ];
-
-  const goals = [
-    { category: 'academic', key: 'academicGoals' },
-    { category: 'research', key: 'researchGoals' },
-    { category: 'international', key: 'internationalGoals' },
-    { category: 'community', key: 'communityGoals' }
-  ];
-
-  const stats = [
-    { key: 'students', target: 5000, suffix: '+' },
-    { key: 'programs', target: 50, suffix: '+' },
-    { key: 'partners', target: 100, suffix: '+' },
-    { key: 'graduates', target: 10000, suffix: '+' }
-  ];
-
-  // Анимация счетчиков
-  useEffect(() => {
-    const duration = 3000;
-    const steps = 60;
-    const interval = duration / steps;
-
-    stats.forEach((stat, index) => {
-      let step = 0;
-      const timer = setInterval(() => {
-        step++;
-        const progress = step / steps;
-        const current = Math.floor(stat.target * progress);
-        
-        setCounter(prev => ({
-          ...prev,
-          [stat.key]: current
-        }));
-
-        if (step === steps) {
-          clearInterval(timer);
-        }
-      }, interval);
-    });
-  }, []);
-
-  // Автопереключение ценностей
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveValue(prev => (prev + 1) % values.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const tabContent = {
-    
+  // URL для изображений
+  const images = {
+    missionHero: "https://salymbekov.com/wp-content/uploads/2022/04/bc0b3788.jpg",
+    mlkCarousel: [
+      "https://salymbekov.com/wp-content/uploads/2022/05/bc0b3814.jpg",
+      "https://salymbekov.com/wp-content/uploads/2022/05/bc0b3797.jpg",
+      "https://salymbekov.com/wp-content/uploads/2022/05/bc0b3848.jpg",
+      "https://salymbekov.com/wp-content/uploads/2022/05/bc0b3862.jpg",
+      "https://salymbekov.com/wp-content/uploads/2022/05/bc0b3796.jpg",
+      "https://salymbekov.com/wp-content/uploads/2022/05/bc0b3860.jpg",
+      "https://salymbekov.com/wp-content/uploads/2022/05/bc0b3890.jpg",
+      "https://salymbekov.com/wp-content/uploads/2022/05/bc0b3802.jpg",
+      "https://salymbekov.com/wp-content/uploads/2022/05/bc0b3899.jpg",
+      "https://salymbekov.com/wp-content/uploads/2022/05/bc0b3927.jpg",
+      "https://salymbekov.com/wp-content/uploads/2022/05/bc0b3932.jpg",
+      "https://salymbekov.com/wp-content/uploads/2022/05/bc0b3965.jpg",
+      "https://salymbekov.com/wp-content/uploads/2022/05/bc0b3940.jpg",
+      "https://salymbekov.com/wp-content/uploads/2022/05/bc0b3928.jpg",
+      "https://salymbekov.com/wp-content/uploads/2022/05/bc0b3951.jpg",
+      "https://salymbekov.com/wp-content/uploads/2022/05/bc0b3944.jpg"
+    ]
   };
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50/30 py-12">
-      {/* Hero Section */}
-      <section className="container mx-auto px-6 mb-16">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-12"
-        >
-          <h1 className="text-5xl md:text-6xl font-bold text-blue-900 mb-6">
-            {t('mission.title')}
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            {t('mission.subtitle')}
-          </p>
-        </motion.div>
+  const nextImage = () => {
+    setCurrentImageIndex((prevIndex) => 
+      prevIndex === images.mlkCarousel.length - 1 ? 0 : prevIndex + 1
+    );
+  };
 
-        {/* Stats Counter */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
-        >
-          {stats.map((stat, index) => (
+  const prevImage = () => {
+    setCurrentImageIndex((prevIndex) => 
+      prevIndex === 0 ? images.mlkCarousel.length - 1 : prevIndex - 1
+    );
+  };
+
+  // Автопрокрутка карусели
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextImage();
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [currentImageIndex]);
+
+  // Стратегические цели
+  const strategicGoals = [
+    {
+      icon: <FaGraduationCap className="text-white" size={20} />,
+      title: t('mission.strategicGoals.education.title'),
+      description: t('mission.strategicGoals.education.description'),
+      color: "bg-[#023E8A]"
+    },
+    {
+      icon: <FaUsers className="text-white" size={20} />,
+      title: t('mission.strategicGoals.humanResources.title'),
+      description: t('mission.strategicGoals.humanResources.description'),
+      color: "bg-[#0077B6]"
+    },
+    {
+      icon: <FaRocket className="text-white" size={20} />,
+      title: t('mission.strategicGoals.innovation.title'),
+      description: t('mission.strategicGoals.innovation.description'),
+      color: "bg-[#0096C7]"
+    }
+  ];
+
+  // Приоритетные цели
+  const priorityGoals = [
+    { icon: <FaLaptopCode />, title: t('mission.priorityGoals.it.title'), description: t('mission.priorityGoals.it.description') },
+    { icon: <FaBriefcase />, title: t('mission.priorityGoals.business.title'), description: t('mission.priorityGoals.business.description') },
+    { icon: <FaSeedling />, title: t('mission.priorityGoals.agriculture.title'), description: t('mission.priorityGoals.agriculture.description') },
+    { icon: <FaCogs />, title: t('mission.priorityGoals.technical.title'), description: t('mission.priorityGoals.technical.description') },
+    { icon: <FaUserMd />, title: t('mission.priorityGoals.medical.title'), description: t('mission.priorityGoals.medical.description') }
+  ];
+
+  // Ожидаемые результаты
+  const expectedResults = [
+    t('mission.expectedResults.result1'),
+    t('mission.expectedResults.result2'),
+    t('mission.expectedResults.result3'),
+    t('mission.expectedResults.result4'),
+    t('mission.expectedResults.result5'),
+    t('mission.expectedResults.result6'),
+    t('mission.expectedResults.result7'),
+    t('mission.expectedResults.result8')
+  ];
+
+  return (
+    <div className="min-h-screen bg-gray-50 relative overflow-hidden">
+      {/* Анимированный фон */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full opacity-5"
+            style={{
+              width: Math.random() * 100 + 50,
+              height: Math.random() * 100 + 50,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              background: `linear-gradient(135deg, #023E8A, #0077B6)`
+            }}
+            animate={{
+              y: [0, -40, 0],
+              opacity: [0.03, 0.1, 0.03],
+              scale: [1, 1.2, 1]
+            }}
+            transition={{
+              duration: 8 + Math.random() * 8,
+              repeat: Infinity,
+              delay: Math.random() * 5
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="relative z-10">
+        {/* Header - теперь с тем же фоном что и вся страница */}
+        <section className="relative py-20">
+          <div className="container mx-auto px-4">
             <motion.div
-              key={stat.key}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-              className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 text-center shadow-lg border border-blue-100/50"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center"
             >
               <motion.div
-                className="text-4xl font-bold text-blue-600 mb-2"
-                key={counter[stat.key]}
-                initial={{ scale: 1.2 }}
+                initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="inline-flex items-center gap-3 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-3 rounded-full mb-6"
               >
-                {counter[stat.key]}{stat.suffix}
+                <FaRocket className="text-xl" />
+                <span className="font-semibold">{t('mission.badge')}</span>
               </motion.div>
-              <p className="text-gray-600 font-medium">
-                {t(`mission.stats.${stat.key}`)}
+
+              <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
+                {t('mission.title')}
+              </h1>
+              <p className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
+                {t('mission.subtitle')}
               </p>
             </motion.div>
-          ))}
-        </motion.div>
-      </section>
-
-      {/* Mission & Vision Tabs */}
-      <section className="container mx-auto px-6 mb-16">
-        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-2">
-            {/* Content Side */}
-            <div className="p-8 lg:p-12">
-              {/* Tabs Navigation */}
-              <div className="flex flex-wrap gap-2 mb-8">
-                {tabs.map((tab) => (
-                  <button
-                    key={tab.id}
-                    onClick={() => setActiveTab(tab.id)}
-                    className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
-                      activeTab === tab.id
-                        ? 'bg-blue-600 text-white shadow-lg'
-                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                    }`}
-                  >
-                    {t(`mission.tabs.${tab.key}`)}
-                  </button>
-                ))}
-              </div>
-
-              {/* Tab Content */}
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeTab}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  transition={{ duration: 0.3 }}
-                  className="space-y-6"
-                >
-                  {/* <h2 className="text-3xl font-bold text-gray-800">
-                    {t(`mission.${tabContent[activeTab].content}.title`)}
-                  </h2>
-                  <p className="text-lg text-gray-600 leading-relaxed">
-                    {t(`mission.${tabContent[activeTab].content}.text1`)}
-                  </p>
-                  <p className="text-lg text-gray-600 leading-relaxed">
-                    {t(`mission.${tabContent[activeTab].content}.text2`)}
-                  </p> */}
-
-                  {/* Special content for values tab */}
-                  {activeTab === 'values' && (
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-6">
-                      {values.map((value, index) => (
-                        <motion.div
-                          key={value.key}
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ duration: 0.5, delay: index * 0.1 }}
-                          className={`p-4 rounded-xl text-center transition-all duration-300 cursor-pointer ${
-                            activeValue === index
-                              ? 'bg-blue-600 text-white shadow-lg scale-105'
-                              : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
-                          }`}
-                          onClick={() => setActiveValue(index)}
-                        >
-                          <div className="text-2xl mb-2">{value.icon}</div>
-                          <h3 className="font-semibold text-sm">
-                            {t(`mission.values.${value.key}.title`)}
-                          </h3>
-                        </motion.div>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* Special content for goals tab */}
-                  {activeTab === 'goals' && (
-                    <div className="space-y-4 mt-6">
-                      {goals.map((goal, index) => (
-                        <motion.div
-                          key={goal.key}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.5, delay: index * 0.1 }}
-                          className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl border-l-4 border-blue-500"
-                        >
-                          <h3 className="font-bold text-lg text-gray-800 mb-2">
-                            {t(`mission.goals.${goal.key}.title`)}
-                          </h3>
-                          <ul className="text-gray-600 space-y-1">
-                            {[1, 2, 3].map((item) => (
-                              <li key={item} className="flex items-center">
-                                <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                                {t(`mission.goals.${goal.key}.item${item}`)}
-                              </li>
-                            ))}
-                          </ul>
-                        </motion.div>
-                      ))}
-                    </div>
-                  )}
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-            {/* Image Side */}
-            <div className="relative min-h-[500px] bg-gradient-to-br from-blue-600 to-indigo-700">
-              {/* <img
-                src={tabContent[activeTab].image}
-                alt={t(`mission.${tabContent[activeTab].content}.alt`)}
-                className="w-full h-full object-cover"
-              /> */}
-              <div className="absolute inset-0 bg-blue-900/20"></div>
-              
-              {/* Active Value Display */}
-              {activeTab === 'values' && (
-                <motion.div
-                  key={activeValue}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="absolute bottom-8 left-8 right-8 bg-white/95 backdrop-blur-sm rounded-2xl p-6 shadow-2xl"
-                >
-                  <div className="text-4xl mb-4">{values[activeValue].icon}</div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-2">
-                    {t(`mission.values.${values[activeValue].key}.title`)}
-                  </h3>
-                  <p className="text-gray-600">
-                    {t(`mission.values.${values[activeValue].key}.description`)}
-                  </p>
-                </motion.div>
-              )}
-            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Strategic Goals */}
-      <section className="container mx-auto px-6 mb-16">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-4xl font-bold text-blue-900 mb-4">
-            {t('mission.strategicGoals.title')}
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            {t('mission.strategicGoals.subtitle')}
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[1, 2, 3, 4, 5, 6].map((item) => (
+        {/* Основной контент */}
+        <section className="py-20">
+          <div className="container mx-auto px-4 max-w-7xl">
+            {/* Основная миссия */}
             <motion.div
-              key={item}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: item * 0.1 }}
-              whileHover={{ scale: 1.05, y: -5 }}
-              className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group"
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="bg-white rounded-3xl shadow-2xl border border-gray-200 p-8 mb-16"
             >
-              <div className="text-blue-600 text-3xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                {t(`mission.strategicGoals.goal${item}.icon`)}
+              <div className="text-center mb-8">
+                <h2 className="text-4xl font-bold text-gray-800 mb-4">{t('mission.missionTitle')}</h2>
+                <div className="w-24 h-1 bg-gradient-to-r from-[#023E8A] to-[#0077B6] mx-auto rounded-full"></div>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-3">
-                {t(`mission.strategicGoals.goal${item}.title`)}
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                {t(`mission.strategicGoals.goal${item}.description`)}
-              </p>
-              <div className="mt-4 pt-4 border-t border-gray-200">
-                <div className="flex justify-between items-center text-sm text-gray-500">
-                  <span>{t('mission.strategicGoals.timeline')}</span>
-                  <span>{t(`mission.strategicGoals.goal${item}.timeline`)}</span>
+
+              <div className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-2xl p-8 mb-8 text-center text-white">
+                <p className="text-2xl font-semibold italic leading-relaxed">
+                  {t('mission.missionQuote')}
+                </p>
+              </div>
+
+              <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-6">
+                <p>{t('mission.missionText1')}</p>
+                <p>{t('mission.missionText2')}</p>
+              </div>
+            </motion.div>
+
+            {/* Карусель с выпускниками МЛК */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="bg-white rounded-3xl shadow-2xl border border-gray-200 p-8 mb-16"
+            >
+              <div className="text-center mb-8">
+                <h2 className="text-4xl font-bold text-gray-800 mb-4">{t('mission.mlkTitle')}</h2>
+                <div className="w-24 h-1 bg-gradient-to-r from-[#023E8A] to-[#0077B6] mx-auto rounded-full"></div>
+              </div>
+
+              {/* Карусель */}
+              <div className="relative max-w-4xl mx-auto mb-8">
+                <div className="relative h-80 md:h-96 bg-gray-200 rounded-2xl overflow-hidden shadow-lg">
+                  <AnimatePresence mode="wait">
+                    <motion.img
+                      key={currentImageIndex}
+                      src={images.mlkCarousel[currentImageIndex]}
+                      alt={t('mission.mlkImageAlt', { number: currentImageIndex + 1 })}
+                      className="w-full h-full object-cover"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.5 }}
+                      onError={(e) => {
+                        e.target.src = "https://via.placeholder.com/800x400/6B7280/FFFFFF?text=Аскар+Салымбеков+с+выпускниками+МЛК";
+                      }}
+                    />
+                  </AnimatePresence>
+                  
+                  <motion.button 
+                    onClick={prevImage}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition-all duration-300"
+                  >
+                    <FaChevronLeft />
+                  </motion.button>
+                  <motion.button 
+                    onClick={nextImage}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition-all duration-300"
+                  >
+                    <FaChevronRight />
+                  </motion.button>
+                  
+                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded-full text-sm">
+                    {currentImageIndex + 1} / {images.mlkCarousel.length}
+                  </div>
+                </div>
+
+                {/* Миниатюры */}
+                <div className="flex overflow-x-auto space-x-3 mt-6 pb-4 scrollbar-hide">
+                  {images.mlkCarousel.map((image, index) => (
+                    <motion.button
+                      key={index}
+                      onClick={() => setCurrentImageIndex(index)}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className={`flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden border-2 transition-all duration-300 ${
+                        index === currentImageIndex ? 'border-[#023E8A] shadow-lg' : 'border-gray-300'
+                      }`}
+                    >
+                      <img 
+                        src={image}
+                        alt={t('mission.mlkThumbnailAlt', { number: index + 1 })}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          e.target.src = "https://via.placeholder.com/100x100/6B7280/FFFFFF?text=IMG";
+                        }}
+                      />
+                    </motion.button>
+                  ))}
                 </div>
               </div>
+
+              <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+                <p>{t('mission.mlkDescription')}</p>
+              </div>
             </motion.div>
-          ))}
-        </div>
-      </section>
+
+            {/* Стратегические цели */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="mb-16"
+            >
+              <div className="text-center mb-12">
+                <h2 className="text-4xl font-bold text-gray-800 mb-4">{t('mission.strategicGoalsTitle')}</h2>
+                <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                  {t('mission.strategicGoalsSubtitle')}
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-6">
+                {strategicGoals.map((goal, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    whileHover={{ scale: 1.05, y: -5 }}
+                    transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+                    className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group text-center"
+                  >
+                    <div className={`w-16 h-16 ${goal.color} rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300`}>
+                      {goal.icon}
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-800 mb-3">
+                      {goal.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      {goal.description}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Приоритетные цели */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="mb-16"
+            >
+              <div className="text-center mb-12">
+                <h2 className="text-4xl font-bold text-gray-800 mb-4">{t('mission.priorityGoalsTitle')}</h2>
+                <div className="w-24 h-1 bg-gradient-to-r from-[#023E8A] to-[#0077B6] mx-auto rounded-full"></div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {priorityGoals.map((goal, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
+                    className="bg-gradient-to-br from-red-50 to-red-100 rounded-2xl p-6 text-center shadow-lg border border-red-200 hover:shadow-xl transition-all duration-300"
+                  >
+                    <div className="w-12 h-12 bg-red-500 rounded-xl flex items-center justify-center mb-4 mx-auto text-white">
+                      {goal.icon}
+                    </div>
+                    <h3 className="text-lg font-bold text-red-900 mb-2">
+                      {goal.title}
+                    </h3>
+                    <p className="text-red-800 text-sm">
+                      {goal.description}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Медицинский факультет */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+              className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-3xl p-8 mb-16 text-white"
+            >
+              <div className="text-center mb-8">
+                <h2 className="text-4xl font-bold mb-4">{t('mission.medicalFaculty.title')}</h2>
+                <div className="w-24 h-1 bg-white mx-auto rounded-full"></div>
+              </div>
+
+              <div className="max-w-4xl mx-auto text-center mb-8">
+                <p className="text-xl opacity-90 leading-relaxed">
+                  {t('mission.medicalFaculty.description')}
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-6">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="bg-white/10 rounded-2xl p-6 text-center backdrop-blur-sm"
+                >
+                  <h3 className="text-xl font-bold mb-3">{t('mission.medicalFaculty.kyrgyzstan.title')}</h3>
+                  <p className="opacity-90">{t('mission.medicalFaculty.kyrgyzstan.description')}</p>
+                </motion.div>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="bg-white/10 rounded-2xl p-6 text-center backdrop-blur-sm"
+                >
+                  <h3 className="text-xl font-bold mb-3">{t('mission.medicalFaculty.nearAbroad.title')}</h3>
+                  <p className="opacity-90">{t('mission.medicalFaculty.nearAbroad.description')}</p>
+                </motion.div>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="bg-white/10 rounded-2xl p-6 text-center backdrop-blur-sm"
+                >
+                  <h3 className="text-xl font-bold mb-3">{t('mission.medicalFaculty.farAbroad.title')}</h3>
+                  <p className="opacity-90">{t('mission.medicalFaculty.farAbroad.description')}</p>
+                </motion.div>
+              </div>
+            </motion.div>
+
+            {/* Ожидаемые результаты обучения */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="bg-white rounded-3xl shadow-2xl border border-gray-200 p-8"
+            >
+              <div className="text-center mb-8">
+                <h2 className="text-4xl font-bold text-gray-800 mb-4">{t('mission.expectedResultsTitle')}</h2>
+                <div className="w-24 h-1 bg-gradient-to-r from-[#023E8A] to-[#0077B6] mx-auto rounded-full"></div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                {expectedResults.map((result, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
+                    className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors duration-300"
+                  >
+                    <div className="w-6 h-6 bg-[#023E8A] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <FaStar className="text-white text-xs" />
+                    </div>
+                    <p className="text-gray-700 leading-relaxed">
+                      {result}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      </div>
     </div>
   );
 };

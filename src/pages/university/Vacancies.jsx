@@ -106,10 +106,6 @@ const Vacancies = () => {
 
   // Статистика
   const stats = [
-    { number: "50+", label: t('vacancies.stats.openPositions'), icon: <FaBriefcase className="text-[#023E8A]" /> },
-    { number: "15", label: t('vacancies.stats.departments'), icon: <FaIndustry className="text-[#023E8A]" /> },
-    { number: "95%", label: t('vacancies.stats.happiness'), icon: <FaHeart className="text-[#023E8A]" /> },
-    { number: "30+", label: t('vacancies.stats.countries'), icon: <FaUsers className="text-[#023E8A]" /> }
   ];
 
   // Преимущества работы

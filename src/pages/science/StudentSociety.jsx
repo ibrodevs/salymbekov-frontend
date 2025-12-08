@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { FaArrowLeft, FaDownload, FaUsers, FaBook, FaGraduationCap, FaUserFriends } from 'react-icons/fa';
@@ -6,28 +7,48 @@ import { FaArrowLeft, FaDownload, FaUsers, FaBook, FaGraduationCap, FaUserFriend
 const StudentSociety = () => {
   const { t } = useTranslation();
 
-  const members = [
-    { name: 'Hamza Muhammad', group: 'GM-1-19' },
-    { name: 'Mahnoor', group: 'GM-1-19' },
-    { name: 'Ali Muhammad', group: 'GM-2-19' },
-    { name: 'Iqbal Muhammad Ahmad', group: 'GM-2-19' },
-    { name: 'Hamza Muhammad', group: 'GM-4-19' },
-    { name: 'Haider Muhammad Safeer', group: 'GM-4-19' },
-    { name: 'Khan Saqibullah', group: 'GM-5-19' },
-    { name: 'Umer Muhammad', group: 'GM-7-19' },
-    { name: 'But Sohira Naz', group: 'GM-7-19' },
-    { name: 'Hussain Naveed', group: 'GM-8-19' },
-    { name: 'Muhammad Ilyas', group: 'GM-9-19' },
-    { name: 'Wajeeh-ul-Hassan', group: 'GM-10-19' },
-    { name: 'Khan Ibragim', group: 'GM-11-19' },
-    { name: 'Durraiz Md', group: 'GM-1-20' },
-    { name: 'Arif Md Abdullah', group: 'GM-2-20' },
-    { name: 'Shehzad Md Hussnain', group: 'GM-3-20' },
-    { name: 'Waqar Alam', group: 'GM-5-20' },
-    { name: 'Faisal Khan', group: 'GM-6-20' },
-    { name: 'Sheraz Ali', group: 'GM-7-20' },
-    { name: 'Muhammad Waqar', group: 'GM-8-20' },
+  // Define members array with translation keys
+  const memberKeys = [
+    { key: 'hamza1', group: 'GM-1-19' },
+    { key: 'mahnoor', group: 'GM-1-19' },
+    { key: 'ali', group: 'GM-2-19' },
+    { key: 'iqbal', group: 'GM-2-19' },
+    { key: 'hamza2', group: 'GM-4-19' },
+    { key: 'haider', group: 'GM-4-19' },
+    { key: 'saqibullah', group: 'GM-5-19' },
+    { key: 'umer', group: 'GM-7-19' },
+    { key: 'sohira', group: 'GM-7-19' },
+    { key: 'naveed', group: 'GM-8-19' },
+    { key: 'ilyas', group: 'GM-9-19' },
+    { key: 'wajeeh', group: 'GM-10-19' },
+    { key: 'ibragim', group: 'GM-11-19' },
+    { key: 'durraiz', group: 'GM-1-20' },
+    { key: 'arif', group: 'GM-2-20' },
+    { key: 'hussnain', group: 'GM-3-20' },
+    { key: 'waqarAlam', group: 'GM-5-20' },
+    { key: 'faisal', group: 'GM-6-20' },
+    { key: 'sheraz', group: 'GM-7-20' },
+    { key: 'waqar', group: 'GM-8-20' },
   ];
+
+  // Get translation arrays safely
+  const abbreviations = t('studentSociety.sections.generalProvisions.abbreviations', { returnObjects: true });
+  const items = t('studentSociety.sections.generalProvisions.items', { returnObjects: true });
+  
+  const abbreviationsArray = Array.isArray(abbreviations) ? abbreviations : [];
+  const itemsArray = Array.isArray(items) ? items : [];
+
+  // Debug logging
+  console.log('StudentSociety Debug:', {
+    abbreviations,
+    abbreviationsIsArray: Array.isArray(abbreviations),
+    abbreviationsLength: abbreviationsArray.length,
+    items,
+    itemsIsArray: Array.isArray(items),
+    itemsLength: itemsArray.length,
+    sampleTitle: t('studentSociety.page.title'),
+    sampleCategory: t('studentSociety.page.category')
+  });
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -79,6 +100,14 @@ const StudentSociety = () => {
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Link 
+            to="/science"
+            className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors group"
+          >
+            <FaArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" />
+            {t('backButton')}
+          </Link>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -86,14 +115,14 @@ const StudentSociety = () => {
           >
             <div className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-4">
               <span className="text-white/90 text-sm font-medium">
-                Научная деятельность
+                {t('studentSociety.page.category')}
               </span>
             </div>
             <h1 className="text-5xl font-bold mb-4">
-              Студенческое научное общество
+              {t('studentSociety.page.title')}
             </h1>
             <p className="text-xl text-white/90 max-w-3xl">
-              Общественная организация для студентов, проявляющих интерес к научно-исследовательской работе
+              {t('studentSociety.page.subtitle')}
             </p>
           </motion.div>
         </div>
@@ -115,7 +144,7 @@ const StudentSociety = () => {
               transition={{ duration: 0.6 }}
               className="text-3xl font-bold text-gray-800 mb-6 pb-4 border-b-2 border-[#023E8A]"
             >
-              ПОЛОЖЕНИЕ О СТУДЕНЧЕСКОМ НАУЧНОМ ОБЩЕСТВЕ
+              {t('studentSociety.document.title')}
             </motion.h2>
 
             {/* Общие положения */}
@@ -128,7 +157,7 @@ const StudentSociety = () => {
             >
               <h3 className="text-2xl font-semibold text-[#023E8A] mb-6 flex items-center">
                 <FaBook className="mr-3" />
-                Общие положения
+                {t('studentSociety.sections.generalProvisions.title')}
               </h3>
               
               {/* Abbreviations */}
@@ -141,14 +170,10 @@ const StudentSociety = () => {
               >
                 <h4 className="font-semibold text-gray-700 mb-4 flex items-center">
                   <FaGraduationCap className="mr-2 text-[#023E8A]" />
-                  Сокращения:
+                  {t('studentSociety.sections.generalProvisions.abbreviationsTitle')}
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  {[
-                    { abbr: 'СНО', full: 'Студенческое научное общество' },
-                    { abbr: 'СМУ', full: 'Совет молодых ученых' },
-                    { abbr: 'НИРС', full: 'Научно-исследовательская работа Студентов' }
-                  ].map((item, index) => (
+                  {abbreviationsArray.map((item, index) => (
                     <motion.div
                       key={index}
                       initial={{ opacity: 0, scale: 0.9 }}
@@ -166,32 +191,7 @@ const StudentSociety = () => {
 
               {/* Main Content */}
               <div className="space-y-8">
-                {[
-                  {
-                    number: "1.1",
-                    text: "Студенческое научное общество Учреждения «Салымбеков Университет» (далее – СНО) – общественная организация, объединяющая на добровольных началах студентов Университета, проявляющих склонность к научно-организационной и исследовательской работе, активно участвующих в научно-организационной и исследовательской работе, членов студенческих научных кружков кафедр."
-                  },
-                  {
-                    number: "1.2",
-                    text: "Членом СНО имеет право быть любой студент Университета, занимающийся научно-исследовательской работой в составе научного кружка (семинара, рабочей группы и т.п.) или индивидуально участвующий в подготовке докладов, рефератов, сообщений, проведении научных исследований."
-                  },
-                  {
-                    number: "1.3",
-                    text: "Деятельность СНО курируется Советом молодых ученых (СМУ) Университета и строит свою работу во взаимодействии с Советом по НИРС Университета, заместителями деканов факультетов по науке и кафедрами и другими структурными подразделениями Университета."
-                  },
-                  {
-                    number: "1.4",
-                    text: "СНО осуществляет свою деятельность в соответствии с законодательством Кыргызской Республики, Уставом Университета, приказами ректора, проректоров, распоряжениями СМУ, настоящим Положением и принятым в соответствии с ним документами."
-                  },
-                  {
-                    number: "1.5",
-                    text: "СНО осуществляет свою деятельность на принципах самоуправления, открытого характера деятельности, добровольности, равноправия, законности духа взаимного уважения и культуры научного общения студентов."
-                  },
-                  {
-                    number: "1.6",
-                    text: "СНО в соответствии с настоящим Положением может вступать в международные общественные объединения, приобретать права и нести обязанности, соответствующие статусу этих международных общественных объединений, поддерживать международные контакты и связи, заключать соглашения с иностранными некоммерческими неправительственными образовательными и научными объединениями, зарубежными учебными заведениями и научными учреждениями."
-                  }
-                ].map((item, index) => (
+                {itemsArray.map((item, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
@@ -219,11 +219,11 @@ const StudentSociety = () => {
             >
               <h3 className="text-2xl font-semibold text-[#023E8A] mb-6 flex items-center">
                 <FaUsers className="mr-3" />
-                Состав Студенческого научного общества
+                {t('studentSociety.sections.members.title')}
               </h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {members.map((member, index) => (
+                {memberKeys.map((member, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, scale: 0.9 }}
@@ -239,7 +239,7 @@ const StudentSociety = () => {
                       </div>
                       <div>
                         <p className="font-semibold text-gray-800 group-hover:text-[#023E8A] transition-colors">
-                          {member.name}
+                          {t(`studentSociety.members.${member.key}`)}
                         </p>
                         <p className="text-sm text-[#0077B6] font-medium">{member.group}</p>
                       </div>
@@ -261,20 +261,21 @@ const StudentSociety = () => {
                 <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                   <div>
                     <h4 className="text-lg font-semibold text-gray-800 mb-2">
-                      Скачать полное положение
+                      {t('studentSociety.download.title')}
                     </h4>
                     <p className="text-gray-600 text-sm">
-                      Официальный документ о студенческом научном обществе
+                      {t('studentSociety.download.description')}
                     </p>
                   </div>
                   <motion.a
-                    href="#"
+                    href={t('studentSociety.download.fileUrl')}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white font-semibold rounded-xl hover:shadow-lg transition-all"
+                    download
                   >
                     <FaDownload className="mr-3" />
-                    Положение о студенческом научном обществе
+                    {t('studentSociety.download.buttonText')}
                   </motion.a>
                 </div>
               </div>

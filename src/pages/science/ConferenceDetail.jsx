@@ -2,24 +2,29 @@ import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaArrowLeft, FaCalendarAlt, FaMapMarkerAlt, FaImages, FaVideo, FaShare } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 import { getConferenceById } from '../../data/conferences';
 
 const ConferenceDetail = () => {
   const { id } = useParams();
-  const conf = getConferenceById(id);
+  const { t, i18n } = useTranslation();
+
+  const conference = getConferenceById(Number(id));
+
+
   const [selectedImage, setSelectedImage] = useState(null);
 
-  if (!conf) {
+  if (!conference) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
         <div className="text-center bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-          <p className="text-gray-500 mb-4">Конференция не найдена.</p>
+          <p className="text-gray-500 mb-4">{t('conferences.detail.notFound')}</p>
           <Link 
             to="/science/events/conferences" 
             className="inline-flex items-center text-[#023E8A] hover:text-[#0077B6] font-semibold transition-colors"
           >
             <FaArrowLeft className="mr-2" />
-            Вернуться к списку конференций
+            {t('conferences.detail.backToList')}
           </Link>
         </div>
       </div>
@@ -81,7 +86,7 @@ const ConferenceDetail = () => {
             className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors group"
           >
             <FaArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" />
-            Все конференции
+            {t('conferences.detail.allConferences')}
           </Link>
 
           <motion.div
@@ -91,26 +96,24 @@ const ConferenceDetail = () => {
           >
             <div className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-4">
               <span className="text-white/90 text-sm font-medium">
-                {conf.category}
+                {t(conference.category)}
               </span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6 max-w-4xl leading-tight">
-              {conf.title}
+              {t(conference.title)}
             </h1>
             
             <div className="flex flex-wrap gap-6 text-white/90">
               <div className="flex items-center">
                 <FaCalendarAlt className="mr-3 text-xl" />
                 <span className="font-semibold">
-                  {conf.date || 'Дата уточняется'}
+                  {conference.date || t('conferences.page.dateToBeAnnounced')}
                 </span>
               </div>
-              {conf.location && (
-                <div className="flex items-center">
-                  <FaMapMarkerAlt className="mr-3 text-xl" />
-                  <span className="font-semibold">{conf.location}</span>
-                </div>
-              )}
+              <div className="flex items-center">
+                <FaMapMarkerAlt className="mr-3 text-xl" />
+                <span className="font-semibold">{t('conferences.page.location')}</span>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -128,20 +131,15 @@ const ConferenceDetail = () => {
           >
             <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow">
               {/* Conference Content */}
-              <div className="prose prose-lg max-w-none mb-8">
-                {conf.content ? (
-                  <div dangerouslySetInnerHTML={{ __html: conf.content }} />
-                ) : (
-                  <div className="text-center py-8">
-                    <p className="text-gray-500 text-lg">
-                      Информация о конференции готовится к публикации.
-                    </p>
-                  </div>
-                )}
-              </div>
-
+              {/* Conference Content */}
+                 <div className="prose prose-lg max-w-none mb-8">
+                        <div 
+                        className="conference-content"
+                   dangerouslySetInnerHTML={{ __html: t(conference.content) }} 
+                            />
+                 </div>
               {/* Summary Card */}
-              {conf.summary && (
+              {conference.summary && (
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -150,9 +148,9 @@ const ConferenceDetail = () => {
                 >
                   <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center">
                     <FaVideo className="mr-3 text-[#023E8A]" />
-                    Краткое описание
+                    {t('conferences.detail.summary')}
                   </h3>
-                  <p className="text-gray-700 leading-relaxed">{conf.summary}</p>
+                  <p className="text-gray-700 leading-relaxed">{t(conference.summary)}</p>
                 </motion.div>
               )}
 
@@ -166,7 +164,7 @@ const ConferenceDetail = () => {
                   className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white rounded-xl font-semibold hover:shadow-lg transition-all"
                 >
                   <FaArrowLeft className="mr-3" />
-                  Все конференции
+                  {t('conferences.detail.allConferences')}
                 </Link>
               </motion.div>
             </div>
@@ -184,21 +182,21 @@ const ConferenceDetail = () => {
               <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
                 <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center">
                   <FaImages className="mr-3 text-[#023E8A]" />
-                  Галерея
+                  {t('conferences.detail.gallery')}
                 </h3>
-                {conf.gallery && conf.gallery.length > 0 ? (
+                {conference.gallery && conference.gallery.length > 0 ? (
                   <div className="grid grid-cols-2 gap-3">
-                    {conf.gallery.map((g, i) => (
+                    {conference.gallery.map((image, index) => (
                       <motion.div
-                        key={i}
+                        key={index}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         className="relative aspect-square rounded-xl overflow-hidden cursor-pointer bg-gray-100"
-                        onClick={() => setSelectedImage(g)}
+                        onClick={() => setSelectedImage(image)}
                       >
                         <img 
-                          src={g} 
-                          alt={`Фото ${i+1}`} 
+                          src={image} 
+                          alt={`${t(conference.title)} - ${t('conferences.detail.photo')} ${index + 1}`} 
                           className="w-full h-full object-cover hover:opacity-80 transition-opacity" 
                         />
                       </motion.div>
@@ -207,32 +205,56 @@ const ConferenceDetail = () => {
                 ) : (
                   <div className="text-center py-6">
                     <FaImages className="w-12 h-12 text-gray-300 mx-auto mb-3" />
-                    <p className="text-sm text-gray-500">Фотографии будут добавлены позже</p>
+                    <p className="text-sm text-gray-500">{t('conferences.detail.photosComingSoon')}</p>
                   </div>
                 )}
               </div>
 
               {/* Info Card */}
               <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-6 border border-green-200">
-                <h3 className="text-lg font-bold text-gray-900 mb-4">Информация</h3>
+                <h3 className="text-lg font-bold text-gray-900 mb-4">{t('conferences.detail.information')}</h3>
                 <div className="space-y-3">
                   <div className="flex items-center p-3 bg-white/70 rounded-lg">
                     <FaCalendarAlt className="text-[#023E8A] mr-3" />
                     <div>
-                      <p className="text-sm font-semibold text-gray-900">Дата проведения</p>
-                      <p className="text-sm text-gray-700">{conf.date || 'Уточняется'}</p>
+                      <p className="text-sm font-semibold text-gray-900">{t('conferences.detail.eventDate')}</p>
+                      <p className="text-sm text-gray-700">{conference.date || t('conferences.page.dateToBeAnnounced')}</p>
                     </div>
                   </div>
-                  {conf.location && (
-                    <div className="flex items-center p-3 bg-white/70 rounded-lg">
-                      <FaMapMarkerAlt className="text-[#023E8A] mr-3" />
-                      <div>
-                        <p className="text-sm font-semibold text-gray-900">Место проведения</p>
-                        <p className="text-sm text-gray-700">{conf.location}</p>
-                      </div>
+                  <div className="flex items-center p-3 bg-white/70 rounded-lg">
+                    <FaMapMarkerAlt className="text-[#023E8A] mr-3" />
+                    <div>
+                      <p className="text-sm font-semibold text-gray-900">{t('conferences.detail.eventLocation')}</p>
+                      <p className="text-sm text-gray-700">{t('conferences.page.location')}</p>
                     </div>
-                  )}
+                  </div>
                 </div>
+              </div>
+
+              {/* Share Card */}
+              <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-6 border border-purple-200">
+                <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center">
+                  <FaShare className="mr-3 text-[#023E8A]" />
+                  {t('conferences.detail.share')}
+                </h3>
+                <button
+                  onClick={() => {
+                    if (navigator.share) {
+                      navigator.share({
+                        title: t(conference.title),
+                        text: t(conference.summary),
+                        url: window.location.href,
+                      });
+                    } else {
+                      navigator.clipboard.writeText(window.location.href);
+                      alert(t('conferences.detail.linkCopied'));
+                    }
+                  }}
+                  className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl font-semibold text-gray-700 hover:bg-gray-50 transition-colors flex items-center justify-center"
+                >
+                  <FaShare className="mr-2" />
+                  {t('conferences.detail.shareButton')}
+                </button>
               </div>
             </div>
           </motion.aside>
@@ -264,7 +286,7 @@ const ConferenceDetail = () => {
               </button>
               <img
                 src={selectedImage}
-                alt="Увеличенное фото"
+                alt={t('conferences.detail.enlargedPhoto')}
                 className="max-w-full max-h-[80vh] object-contain rounded-lg"
               />
             </motion.div>

@@ -6,6 +6,7 @@ import {
   FaBrain, FaAtom, FaDna, FaHeart, FaBone, FaVial, FaChartLine,
   FaFire, FaTint, FaSeedling, FaDesktop, FaChalkboardTeacher, FaBook
 } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 import photo1 from '../../assets/science/management/bc0b1100-300x200.jpg';
 import photo2 from '../../assets/science/management/bc0b1136-300x200.jpg';
 import photo3 from '../../assets/science/management/bc0b1248-300x200.jpg';
@@ -15,46 +16,47 @@ import photo6 from '../../assets/science/management/bc0b2371-300x200.jpg';
 
 const Labs = () => {
   const [activeLab, setActiveLab] = useState('simulation');
+  const { t } = useTranslation();
 
   const labSections = [
     { 
       id: 'simulation',
-      name: "СИМУЛЯЦИОННЫЙ ЦЕНТР", 
+      name: t('labs.sections.simulation'), 
       icon: FaUserMd,
     },
     { 
       id: 'anatomy',
-      name: "АНАТОМИЧЕСКИЙ ЗАЛ", 
+      name: t('labs.sections.anatomy'), 
       icon: FaBone 
     },
     { 
       id: 'biochemistry',
-      name: "ЛАБОРАТОРИЯ БИОХИМИИ", 
+      name: t('labs.sections.biochemistry'), 
       icon: FaFlask 
     },
     { 
       id: 'chemistry',
-      name: "ЛАБОРАТОРИЯ ХИМИИ", 
+      name: t('labs.sections.chemistry'), 
       icon: FaAtom 
     },
     { 
       id: 'biology',
-      name: "ЛАБОРАТОРИЯ БИОЛОГИИ", 
+      name: t('labs.sections.biology'), 
       icon: FaDna 
     },
     { 
       id: 'interactive',
-      name: "ИНТЕРАКТИВНЫЙ КЛАСС", 
+      name: t('labs.sections.interactive'), 
       icon: FaMicroscope 
     },
     { 
       id: 'computer',
-      name: "КОМПЬЮТЕРНЫЕ КЛАССЫ", 
+      name: t('labs.sections.computer'), 
       icon: FaLaptop 
     },
     { 
       id: 'study',
-      name: "УЧЕБНЫЕ КЛАССЫ", 
+      name: t('labs.sections.study'), 
       icon: FaBook 
     }
   ];
@@ -63,353 +65,353 @@ const Labs = () => {
 
   const labData = {
     simulation: {
-      title: "Симуляционный центр",
-      description: "Современное оборудование для практической подготовки будущих медиков",
+      title: t('labs.simulation.title'),
+      description: t('labs.simulation.description'),
       icon: FaUserMd,
       content: {
         description: [
-          "Классы для практических занятий оснащены наглядными пособиями, макетами частей и органов тела, плакатами для проведения наглядных практических занятий. С помощью симуляционных материалов и препаратов осваиваются коммуникативные навыки, диагностические приемы, алгоритмы действий в непредвиденных ситуациях.",
-          "В центре отрабатываются базовые и углубленные навыки и умения в хирургии, акушерстве, гинекологии, урологии и многих других медицинских специальностях, имеющих практическую составляющую, проводится тренинги командного взаимодействия."
+          t('labs.simulation.content.description.0'),
+          t('labs.simulation.content.description.1')
         ],
         features: [
           {
-            title: "Практические навыки",
-            description: "Отработка медицинских манипуляций на современных тренажерах",
+            title: t('labs.simulation.features.0.title'),
+            description: t('labs.simulation.features.0.description'),
             icon: FaUserMd
           },
           {
-            title: "Современное оборудование",
-            description: "Цифровые микроскопы и диагностические системы",
+            title: t('labs.simulation.features.1.title'),
+            description: t('labs.simulation.features.1.description'),
             icon: FaMicroscope
           },
           {
-            title: "Командная работа",
-            description: "Тренинги взаимодействия в экстренных ситуациях",
+            title: t('labs.simulation.features.2.title'),
+            description: t('labs.simulation.features.2.description'),
             icon: FaBrain
           }
         ],
         equipment: [
-          "Фантомы и манекены для отработки навыков",
-          "Симуляторы хирургических вмешательств",
-          "Тренажеры сердечно-легочной реанимации",
-          "Цифровые системы мониторинга",
-          "Интерактивные анатомические столы",
-          "Видеосистемы для записи и анализа"
+          t('labs.simulation.equipment.0'),
+          t('labs.simulation.equipment.1'),
+          t('labs.simulation.equipment.2'),
+          t('labs.simulation.equipment.3'),
+          t('labs.simulation.equipment.4'),
+          t('labs.simulation.equipment.5')
         ],
         hasGallery: true
       }
     },
     anatomy: {
-      title: "Анатомический зал",
-      description: "Изучение строения человеческого тела на современных анатомических препаратах",
+      title: t('labs.anatomy.title'),
+      description: t('labs.anatomy.description'),
       icon: FaBone,
       content: {
         description: [
-          "Анатомический зал оснащен современными учебными препаратами, скелетами, муляжами и наглядными пособиями для детального изучения строения человеческого тела. Здесь студенты получают фундаментальные знания по анатомии, необходимые для дальнейшего изучения клинических дисциплин.",
-          "В зале представлены препараты всех систем организма: опорно-двигательной, сердечно-сосудистой, нервной, пищеварительной и других. Особое внимание уделяется топографической анатомии и взаимному расположению органов."
+          t('labs.anatomy.content.description.0'),
+          t('labs.anatomy.content.description.1')
         ],
         features: [
           {
-            title: "Анатомические препараты",
-            description: "Натуральные и пластинированные препараты органов и систем",
+            title: t('labs.anatomy.features.0.title'),
+            description: t('labs.anatomy.features.0.description'),
             icon: FaBone
           },
           {
-            title: "Интерактивные модели",
-            description: "3D-модели и интерактивные анатомические столы",
+            title: t('labs.anatomy.features.1.title'),
+            description: t('labs.anatomy.features.1.description'),
             icon: FaHeart
           },
           {
-            title: "Микроскопия",
-            description: "Изучение гистологического строения тканей",
+            title: t('labs.anatomy.features.2.title'),
+            description: t('labs.anatomy.features.2.description'),
             icon: FaMicroscope
           }
         ],
         equipment: [
-          "Полные анатомические скелеты",
-          "Препараты отдельных органов и систем",
-          "Пластинированные препараты",
-          "Интерактивные анатомические столы",
-          "3D-модели органов",
-          "Микроскопы для гистологии"
+          t('labs.anatomy.equipment.0'),
+          t('labs.anatomy.equipment.1'),
+          t('labs.anatomy.equipment.2'),
+          t('labs.anatomy.equipment.3'),
+          t('labs.anatomy.equipment.4'),
+          t('labs.anatomy.equipment.5')
         ],
         hasGallery: false
       }
     },
     biochemistry: {
-      title: "Лаборатория биохимии",
-      description: "Современное оборудование для изучения химических процессов в живых организмах",
+      title: t('labs.biochemistry.title'),
+      description: t('labs.biochemistry.description'),
       icon: FaFlask,
       content: {
         description: [
-          "Современная биохимическая лаборатория оснащена оборудованием для проведения сложных анализов и исследований. Здесь студенты изучают метаболические процессы, структуру и функции биомолекул, а также осваивают методы клинической биохимии.",
-          "Лаборатория позволяет проводить исследования в области энзимологии, метаболизма, молекулярной биологии и диагностики заболеваний."
+          t('labs.biochemistry.content.description.0'),
+          t('labs.biochemistry.content.description.1')
         ],
         features: [
           {
-            title: "Аналитические системы",
-            description: "Современные анализаторы для точных измерений",
+            title: t('labs.biochemistry.features.0.title'),
+            description: t('labs.biochemistry.features.0.description'),
             icon: FaVial
           },
           {
-            title: "Исследования",
-            description: "Фундаментальные и прикладные научные работы",
+            title: t('labs.biochemistry.features.1.title'),
+            description: t('labs.biochemistry.features.1.description'),
             icon: FaChartLine
           },
           {
-            title: "Диагностика",
-            description: "Методы клинико-биохимической диагностики",
+            title: t('labs.biochemistry.features.2.title'),
+            description: t('labs.biochemistry.features.2.description'),
             icon: FaMicroscope
           }
         ],
         equipment: [
-          "Спектрофотометры для анализа белков и нуклеиновых кислот",
-          "Центрифуги для разделения биологических образцов",
-          "pH-метры и иономеры для измерения кислотности",
-          "Электрофорезные системы для разделения белков и ДНК",
-          "Термостаты и инкубаторы для культивирования",
-          "Хроматографы для анализа метаболитов"
+          t('labs.biochemistry.equipment.0'),
+          t('labs.biochemistry.equipment.1'),
+          t('labs.biochemistry.equipment.2'),
+          t('labs.biochemistry.equipment.3'),
+          t('labs.biochemistry.equipment.4'),
+          t('labs.biochemistry.equipment.5')
         ],
         researchAreas: [
-          "Изучение ферментативной активности",
-          "Анализ белкового состава тканей",
-          "Исследование метаболических путей",
-          "Диагностика биохимических показателей крови",
-          "Изучение окислительного стресса",
-          "Анализ гормонального статуса"
+          t('labs.biochemistry.researchAreas.0'),
+          t('labs.biochemistry.researchAreas.1'),
+          t('labs.biochemistry.researchAreas.2'),
+          t('labs.biochemistry.researchAreas.3'),
+          t('labs.biochemistry.researchAreas.4'),
+          t('labs.biochemistry.researchAreas.5')
         ],
         hasGallery: false
       }
     },
     chemistry: {
-      title: "Лаборатория химии",
-      description: "Оснащение для изучения фундаментальных химических процессов и свойств веществ",
+      title: t('labs.chemistry.title'),
+      description: t('labs.chemistry.description'),
       icon: FaAtom,
       content: {
         description: [
-          "Современная химическая лаборатория оборудована для проведения экспериментов по неорганической, органической и аналитической химии. Студенты осваивают методы синтеза, анализа и исследования свойств химических соединений.",
-          "Лаборатория оснащена системами безопасности, соответствующими международным стандартам, что обеспечивает безопасную работу с химическими реагентами."
+          t('labs.chemistry.content.description.0'),
+          t('labs.chemistry.content.description.1')
         ],
         features: [
           {
-            title: "Синтез и анализ",
-            description: "Методы получения и исследования веществ",
+            title: t('labs.chemistry.features.0.title'),
+            description: t('labs.chemistry.features.0.description'),
             icon: FaFlask
           },
           {
-            title: "Растворы и реактивы",
-            description: "Широкий спектр химических веществ",
+            title: t('labs.chemistry.features.1.title'),
+            description: t('labs.chemistry.features.1.description'),
             icon: FaTint
           },
           {
-            title: "Безопасность",
-            description: "Современные системы защиты",
+            title: t('labs.chemistry.features.2.title'),
+            description: t('labs.chemistry.features.2.description'),
             icon: FaFire
           }
         ],
         equipment: [
-          "Аналитические весы высокой точности",
-          "Спектрофотометры UV-Vis",
-          "pH-метры и кондуктометры",
-          "Хроматографические системы",
-          "Титровальные установки",
-          "Системы для синтеза органических соединений"
+          t('labs.chemistry.equipment.0'),
+          t('labs.chemistry.equipment.1'),
+          t('labs.chemistry.equipment.2'),
+          t('labs.chemistry.equipment.3'),
+          t('labs.chemistry.equipment.4'),
+          t('labs.chemistry.equipment.5')
         ],
         experiments: [
-          "Синтез органических соединений",
-          "Анализ качественного состава веществ",
-          "Титрование и количественный анализ",
-          "Хроматографические методы разделения",
-          "Спектрофотометрические исследования",
-          "Изучение кинетики химических реакций"
+          t('labs.chemistry.experiments.0'),
+          t('labs.chemistry.experiments.1'),
+          t('labs.chemistry.experiments.2'),
+          t('labs.chemistry.experiments.3'),
+          t('labs.chemistry.experiments.4'),
+          t('labs.chemistry.experiments.5')
         ],
         safetyFeatures: [
-          "Вытяжные шкафы для работы с летучими веществами",
-          "Система приточно-вытяжной вентиляции",
-          "Средства индивидуальной защиты",
-          "Аварийные души и глазные фонтанчики",
-          "Пожарная сигнализация и огнетушители",
-          "Система утилизации химических отходов"
+          t('labs.chemistry.safetyFeatures.0'),
+          t('labs.chemistry.safetyFeatures.1'),
+          t('labs.chemistry.safetyFeatures.2'),
+          t('labs.chemistry.safetyFeatures.3'),
+          t('labs.chemistry.safetyFeatures.4'),
+          t('labs.chemistry.safetyFeatures.5')
         ],
         hasGallery: false
       }
     },
     biology: {
-      title: "Лаборатория биологии",
-      description: "Исследование живых организмов и биологических процессов",
+      title: t('labs.biology.title'),
+      description: t('labs.biology.description'),
       icon: FaDna,
       content: {
         description: [
-          "Биологическая лаборатория оснащена современным оборудованием для изучения клеточных и молекулярных процессов. Студенты проводят эксперименты в области генетики, микробиологии, цитологии и физиологии.",
-          "Лаборатория позволяет изучать разнообразие живых организмов, их строение, функции и взаимодействие с окружающей средой."
+          t('labs.biology.content.description.0'),
+          t('labs.biology.content.description.1')
         ],
         features: [
           {
-            title: "Микробиология",
-            description: "Изучение микроорганизмов и их свойств",
+            title: t('labs.biology.features.0.title'),
+            description: t('labs.biology.features.0.description'),
             icon: FaMicroscope
           },
           {
-            title: "Генетика",
-            description: "Исследование наследственности и изменчивости",
+            title: t('labs.biology.features.1.title'),
+            description: t('labs.biology.features.1.description'),
             icon: FaDna
           },
           {
-            title: "Экология",
-            description: "Изучение взаимодействия организмов и среды",
+            title: t('labs.biology.features.2.title'),
+            description: t('labs.biology.features.2.description'),
             icon: FaSeedling
           }
         ],
         equipment: [
-          "Современные микроскопы с цифровой камерой",
-          "Ламинарные боксы для стерильной работы",
-          "Термостаты и CO2-инкубаторы",
-          "Центрифуги для разделения клеток",
-          "Электрофорезные камеры для ДНК/РНК",
-          "ПЦР-амплификаторы"
+          t('labs.biology.equipment.0'),
+          t('labs.biology.equipment.1'),
+          t('labs.biology.equipment.2'),
+          t('labs.biology.equipment.3'),
+          t('labs.biology.equipment.4'),
+          t('labs.biology.equipment.5')
         ],
         researchAreas: [
-          "Клеточная биология и цитология",
-          "Молекулярная генетика",
-          "Микробиология и иммунология",
-          "Физиология растений и животных",
-          "Экология и охрана природы",
-          "Биотехнология и биоинженерия"
+          t('labs.biology.researchAreas.0'),
+          t('labs.biology.researchAreas.1'),
+          t('labs.biology.researchAreas.2'),
+          t('labs.biology.researchAreas.3'),
+          t('labs.biology.researchAreas.4'),
+          t('labs.biology.researchAreas.5')
         ],
         hasGallery: false
       }
     },
     interactive: {
-      title: "Интерактивный класс",
-      description: "Современные технологии для интерактивного обучения и визуализации",
+      title: t('labs.interactive.title'),
+      description: t('labs.interactive.description'),
       icon: FaMicroscope,
       content: {
         description: [
-          "Интерактивный класс оснащен передовыми технологиями для визуализации сложных биологических и медицинских процессов. Студенты могут изучать анатомию, физиологию и патологические процессы в 3D-формате.",
-          "Класс оборудован сенсорными панелями, проекционными системами и специализированным программным обеспечением для создания immersive-среды обучения."
+          t('labs.interactive.content.description.0'),
+          t('labs.interactive.content.description.1')
         ],
         features: [
           {
-            title: "3D-визуализация",
-            description: "Интерактивные 3D-модели органов и систем",
+            title: t('labs.interactive.features.0.title'),
+            description: t('labs.interactive.features.0.description'),
             icon: FaDesktop
           },
           {
-            title: "Виртуальная реальность",
-            description: "Иммерсивное обучение в VR-среде",
+            title: t('labs.interactive.features.1.title'),
+            description: t('labs.interactive.features.1.description'),
             icon: FaBrain
           },
           {
-            title: "Интерактивные доски",
-            description: "Совместная работа над проектами",
+            title: t('labs.interactive.features.2.title'),
+            description: t('labs.interactive.features.2.description'),
             icon: FaChalkboardTeacher
           }
         ],
         equipment: [
-          "Интерактивные сенсорные панели 85\"",
-          "VR-шлемы и контроллеры",
-          "3D-проекционные системы",
-          "Специализированное ПО для анатомии",
-          "Системы видеоконференцсвязи",
-          "Документ-камеры высокого разрешения"
+          t('labs.interactive.equipment.0'),
+          t('labs.interactive.equipment.1'),
+          t('labs.interactive.equipment.2'),
+          t('labs.interactive.equipment.3'),
+          t('labs.interactive.equipment.4'),
+          t('labs.interactive.equipment.5')
         ],
         capabilities: [
-          "Виртуальные анатомические вскрытия",
-          "3D-визуализация физиологических процессов",
-          "Интерактивные медицинские сценарии",
-          "Удаленные лекции и семинары",
-          "Коллаборативная работа над проектами",
-          "Тестирование и оценка знаний в реальном времени"
+          t('labs.interactive.capabilities.0'),
+          t('labs.interactive.capabilities.1'),
+          t('labs.interactive.capabilities.2'),
+          t('labs.interactive.capabilities.3'),
+          t('labs.interactive.capabilities.4'),
+          t('labs.interactive.capabilities.5')
         ],
         hasGallery: false
       }
     },
     computer: {
-      title: "Компьютерные классы",
-      description: "Современные компьютерные системы для научных исследований и анализа данных",
+      title: t('labs.computer.title'),
+      description: t('labs.computer.description'),
       icon: FaLaptop,
       content: {
         description: [
-          "Компьютерные классы оснащены современными рабочими станциями для проведения статистического анализа, биоинформатических исследований и моделирования биологических процессов.",
-          "Студенты осваивают специализированное программное обеспечение для обработки экспериментальных данных, молекулярного моделирования и научной визуализации."
+          t('labs.computer.content.description.0'),
+          t('labs.computer.content.description.1')
         ],
         features: [
           {
-            title: "Научные вычисления",
-            description: "Обработка и анализ экспериментальных данных",
+            title: t('labs.computer.features.0.title'),
+            description: t('labs.computer.features.0.description'),
             icon: FaChartLine
           },
           {
-            title: "Биоинформатика",
-            description: "Анализ геномных и протеомных данных",
+            title: t('labs.computer.features.1.title'),
+            description: t('labs.computer.features.1.description'),
             icon: FaDna
           },
           {
-            title: "Моделирование",
-            description: "Компьютерное моделирование биологических процессов",
+            title: t('labs.computer.features.2.title'),
+            description: t('labs.computer.features.2.description'),
             icon: FaAtom
           }
         ],
         equipment: [
-          "Мощные рабочие станции с многоядерными процессорами",
-          "Высокопроизводительные видеокарты для расчетов",
-          "Большие мониторы 4K для работы с данными",
-          "Системы хранения данных с RAID-массивами",
-          "Серверы для распределенных вычислений",
-          "Резервные системы питания"
+          t('labs.computer.equipment.0'),
+          t('labs.computer.equipment.1'),
+          t('labs.computer.equipment.2'),
+          t('labs.computer.equipment.3'),
+          t('labs.computer.equipment.4'),
+          t('labs.computer.equipment.5')
         ],
         software: [
-          "Пакеты статистического анализа (R, SPSS, GraphPad)",
-          "Биоинформатические платформы (Galaxy, CLC Genomics)",
-          "Программы для молекулярного моделирования",
-          "Системы управления базами данных",
-          "Среды для научного программирования",
-          "Программы для научной визуализации"
+          t('labs.computer.software.0'),
+          t('labs.computer.software.1'),
+          t('labs.computer.software.2'),
+          t('labs.computer.software.3'),
+          t('labs.computer.software.4'),
+          t('labs.computer.software.5')
         ],
         hasGallery: false
       }
     },
     study: {
-      title: "Учебные классы",
-      description: "Комфортные условия для теоретического обучения и самостоятельной работы",
+      title: t('labs.study.title'),
+      description: t('labs.study.description'),
       icon: FaBook,
       content: {
         description: [
-          "Учебные классы оборудованы современной мебелью и техническими средствами для эффективного теоретического обучения. Пространство организовано с учетом эргономических требований и создания комфортной образовательной среды.",
-          "Классы предназначены для лекций, семинаров, групповых обсуждений и самостоятельной работы студентов."
+          t('labs.study.content.description.0'),
+          t('labs.study.content.description.1')
         ],
         features: [
           {
-            title: "Эргономика",
-            description: "Комфортная мебель и оптимальное освещение",
+            title: t('labs.study.features.0.title'),
+            description: t('labs.study.features.0.description'),
             icon: FaUserMd
           },
           {
-            title: "Технологии",
-            description: "Современные средства презентации и связи",
+            title: t('labs.study.features.1.title'),
+            description: t('labs.study.features.1.description'),
             icon: FaDesktop
           },
           {
-            title: "Гибкость",
-            description: "Модульная организация пространства",
+            title: t('labs.study.features.2.title'),
+            description: t('labs.study.features.2.description'),
             icon: FaChalkboardTeacher
           }
         ],
         equipment: [
-          "Эргономичные студенческие парты и стулья",
-          "Мультимедийные проекторы и экраны",
-          "Интерактивные доски и флипчарты",
-          "Системы озвучивания и микрофоны",
-          "Системы видеоконференцсвязи",
-          "Зоны для самостоятельной работы"
+          t('labs.study.equipment.0'),
+          t('labs.study.equipment.1'),
+          t('labs.study.equipment.2'),
+          t('labs.study.equipment.3'),
+          t('labs.study.equipment.4'),
+          t('labs.study.equipment.5')
         ],
         amenities: [
-          "Оптимальное естественное и искусственное освещение",
-          "Системы климат-контроля и вентиляции",
-          "Доступ к Wi-Fi и электронным ресурсам",
-          "Зарядные станции для устройств",
-          "Организованные системы хранения",
-          "Доступная среда для маломобильных студентов"
+          t('labs.study.amenities.0'),
+          t('labs.study.amenities.1'),
+          t('labs.study.amenities.2'),
+          t('labs.study.amenities.3'),
+          t('labs.study.amenities.4'),
+          t('labs.study.amenities.5')
         ],
         hasGallery: false
       }
@@ -474,7 +476,7 @@ const Labs = () => {
             className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors group"
           >
             <FaArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" />
-            Назад к науке
+            {t('labs.backToScience')}
           </Link>
 
           <motion.div
@@ -484,7 +486,7 @@ const Labs = () => {
           >
             <div className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-4">
               <span className="text-white/90 text-sm font-medium">
-                Лаборатории и центры
+                {t('labs.category')}
               </span>
             </div>
             <h1 className="text-5xl font-bold mb-4">
@@ -511,7 +513,7 @@ const Labs = () => {
               <div className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-4">
                 <div className="flex items-center">
                   <FaFlask className="mr-3 text-xl" />
-                  <h3 className="font-bold text-lg">ЛАБОРАТОРИИ</h3>
+                  <h3 className="font-bold text-lg">{t('labs.sidebarTitle')}</h3>
                 </div>
               </div>
               <nav className="p-2">
@@ -597,7 +599,7 @@ const Labs = () => {
                 >
                   <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
                     <FaFlask className="mr-3 text-[#023E8A]" />
-                    Основное оборудование
+                    {t('labs.sections.equipment')}
                   </h4>
                   <div className="grid md:grid-cols-2 gap-4 text-gray-700">
                     <ul className="space-y-3">
@@ -645,7 +647,7 @@ const Labs = () => {
                 >
                   <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
                     <FaChartLine className="mr-3 text-[#023E8A]" />
-                    Направления исследований
+                    {t('labs.sections.researchAreas')}
                   </h4>
                   <div className="grid md:grid-cols-2 gap-4 text-gray-700">
                     {currentLab.content.researchAreas.map((area, index) => (
@@ -678,7 +680,7 @@ const Labs = () => {
                 >
                   <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
                     <FaFlask className="mr-3 text-[#023E8A]" />
-                    Основные эксперименты
+                    {t('labs.sections.experiments')}
                   </h4>
                   <div className="grid md:grid-cols-2 gap-4">
                     {currentLab.content.experiments.map((experiment, index) => (
@@ -711,7 +713,7 @@ const Labs = () => {
                 >
                   <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
                     <FaFire className="mr-3 text-[#023E8A]" />
-                    Системы безопасности
+                    {t('labs.sections.safetyFeatures')}
                   </h4>
                   <div className="grid md:grid-cols-2 gap-4 text-gray-700">
                     {currentLab.content.safetyFeatures.map((feature, index) => (
@@ -742,7 +744,7 @@ const Labs = () => {
                 >
                   <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
                     <FaDesktop className="mr-3 text-[#023E8A]" />
-                    Возможности класса
+                    {t('labs.sections.capabilities')}
                   </h4>
                   <div className="grid md:grid-cols-2 gap-4 text-gray-700">
                     {currentLab.content.capabilities.map((capability, index) => (
@@ -775,7 +777,7 @@ const Labs = () => {
                 >
                   <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
                     <FaLaptop className="mr-3 text-[#023E8A]" />
-                    Программное обеспечение
+                    {t('labs.sections.software')}
                   </h4>
                   <div className="grid md:grid-cols-2 gap-4 text-gray-700">
                     {currentLab.content.software.map((software, index) => (
@@ -806,7 +808,7 @@ const Labs = () => {
                 >
                   <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
                     <FaUserMd className="mr-3 text-[#023E8A]" />
-                    Условия и оснащение
+                    {t('labs.sections.amenities')}
                   </h4>
                   <div className="grid md:grid-cols-2 gap-4 text-gray-700">
                     {currentLab.content.amenities.map((amenity, index) => (
@@ -831,7 +833,7 @@ const Labs = () => {
                 <div className="mt-8">
                   <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
                     <FaFlask className="mr-3 text-[#023E8A]" />
-                    Фотогалерея центра
+                    {t('labs.sections.gallery')}
                   </h3>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                     {photos.map((photo, index) => (

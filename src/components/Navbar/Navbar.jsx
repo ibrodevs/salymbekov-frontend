@@ -1,23 +1,33 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import Logo1 from '../../assets/Logo.png';
 
 const Navbar = () => {
   const location = useLocation();
+  const { i18n } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState(null);
-  const [lang, setLang] = useState('ru');
+  const [lang, setLang] = useState(i18n.language?.split('-')[0] || 'ru');
   const [expanded, setExpanded] = useState({});
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const hideTimer = useRef(null);
   const searchInputRef = useRef(null);
 
   const changeLang = (code) => {
-    setLang(code);
-    // если используешь i18next, здесь нужно вызывать i18n.changeLanguage(code)
-    // i18n.changeLanguage(code);
+    i18n.changeLanguage(code);
   };
+  useEffect(() => {
+    const handleLanguageChange = (lng) => {
+      setLang(lng?.split('-')[0] || 'ru');
+    };
+
+    i18n.on('languageChanged', handleLanguageChange);
+    return () => {
+      i18n.off('languageChanged', handleLanguageChange);
+    };
+  }, [i18n]);
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 0);
@@ -57,13 +67,14 @@ const Navbar = () => {
     }));
   };
 
+  const { t } = useTranslation();
   const topItems = [
-    { key: 'university', path: '/university', label: 'УНИВЕРСИТЕТ' },
-    { key: 'education', path: '/education', label: 'ОБРАЗОВАНИЕ' },
-    { key: 'clinical', path: '/clinical', label: 'КЛИНИЧЕСКАЯ БАЗА' },
-    { key: 'science', path: '/science', label: 'НАУКА' },
-    { key: 'student', path: '/student', label: 'СТУДЕНТУ' },
-    { key: 'applicant', path: '/applicants', label: 'АБИТУРИЕНТУ' }
+    { key: 'university', path: '/university', label: t('navbar.university') },
+    { key: 'education', path: '/education', label: t('navbar.education') },
+    { key: 'clinical', path: '/clinical', label: t('navbar.clinicalBase') },
+    { key: 'science', path: '/science', label: t('navbar.science') },
+    { key: 'student', path: '/student', label: t('navbar.student') },
+    { key: 'applicant', path: '/applicants', label: t('navbar.applicant') }
   ];
 
   // ========== НОВАЯ СТРУКТУРА МЕНЮ "УНИВЕРСИТЕТ" ==========

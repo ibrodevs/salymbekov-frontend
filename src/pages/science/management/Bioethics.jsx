@@ -14,40 +14,25 @@ import batyralievPhoto from '../../../assets/science/management/batyraliev-235x3
 const Bioethics = () => {
   const { t } = useTranslation();
 
-  const tasks = [
-    "Защита прав, достоинства, интересов, безопасности и здоровья участников клинических исследований, а также контроль над соблюдением прав пациентов при получении медицинской помощи в клиниках университета",
-    "Решение морально-этических проблем, связанных с публикациями результатов научных исследований, в т.ч. проблем плагиата, недостоверности результатов научных исследований, соблюдения авторских прав",
-    "Регулирование этических вопросов научно-исследовательских работ, клинических испытаний лекарственных средств на основе принятых нормативно-правовых документов",
-    "Соблюдение международных и национальных стандартов апробации и внедрения в практику клинических подразделений университета новых технологий диагностики, лечения и профилактики, новых лекарственных препаратов",
-    "Достижение независимой и объективной оценке безопасности и неприкосновенности прав человека по отношению к испытуемым, как на стадии планирования, так и на стадии проведения исследования",
-    "Обеспечение быстрого и четкого информирования соответствующих организаций о возникновении любых нежелательных реакций при проведении исследования",
-    "Выявление случаев нарушения принципов медицинской этики и деонтологии медицинскими, научными и иными работниками университета"
-  ];
+  // Добавляем безопасное получение данных с проверкой типа
+  const tasks = Array.isArray(t('science.management.bioethics.tasks', { returnObjects: true })) 
+    ? t('science.management.bioethics.tasks', { returnObjects: true }) 
+    : [];
 
-  const functions = [
-    "Проведение этической экспертизы проектов научных исследований, планируемых к проведению на площадках университета",
-    "Проведение качественной этической экспертизы материалов планируемых клинических исследований лекарственных средств или изделий медицинского назначения",
-    "Экспертиза научно-исследовательских проектов и исследований, в которых привлекаются как больные, так и здоровые люди, животные",
-    "Анализ этической обоснованности клинических и биомедицинских исследований и предполагаемой эффективности и безопасности изучаемых лекарственных средств",
-    "Подготовка заключений о целесообразности проведения клинических и биомедицинских исследований",
-    "Осуществление контроля над соблюдением этико-правовых норм в ходе клинического исследования",
-    "Осуществление контроля за соблюдением принципов медицинской этики и деонтологии",
-    "Изучение и применение международного опыта правового и этического регулирования при проведении исследований",
-    "Организация и проведение научно-теоретических и практических мероприятий по биоэтической проблематике",
-    "Участие в этико-правовом просвещении медицинских работников и граждан",
-    "Участие в экспертной оценке рекламы медицинской и фармацевтической деятельности",
-    "Разработка и внедрение различных методов этического воспитания сотрудников университета"
-  ];
+  const functions = Array.isArray(t('science.management.bioethics.functions', { returnObjects: true })) 
+    ? t('science.management.bioethics.functions', { returnObjects: true }) 
+    : [];
 
-  const committee = [
-    { name: "Батыралиев Т.А.", role: "Зам.председателя: Тулекеев Т.М., д.м.н., проф." },
-    { name: "Ответственный секретарь", role: "Князев И.А." }
-  ];
+  const leadership = Array.isArray(t('science.management.bioethics.leadership', { returnObjects: true })) 
+    ? t('science.management.bioethics.leadership', { returnObjects: true }) 
+    : [];
 
-  const members = [
-    "Кулданбаев Н.К. – д.м.н.",
-    "Монолов Н.К. – к.м.н."
-  ];
+  const members = Array.isArray(t('science.management.bioethics.members', { returnObjects: true })) 
+    ? t('science.management.bioethics.members', { returnObjects: true }) 
+    : [];
+
+  // Если leadership не массив, создаем fallback данные
+  const safeLeadership = Array.isArray(leadership) ? leadership : [];
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -104,7 +89,7 @@ const Bioethics = () => {
             className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors group"
           >
             <FaArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" />
-            Назад к органам управления
+            {t('science.management.bioethics.back')}
           </Link>
 
           <motion.div
@@ -191,28 +176,34 @@ const Bioethics = () => {
           </div>
 
           <div className="bg-gradient-to-r from-gray-50 to-white p-6 rounded-xl border border-gray-200">
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-white p-4 rounded-lg border border-gray-100">
-                <p className="text-gray-700 text-lg">
-                  <span className="font-semibold text-[#023E8A]">Зам.председателя:</span> Тулекеев Т.М., д.м.н., проф.
-                </p>
-              </div>
-              <div className="bg-white p-4 rounded-lg border border-gray-100">
-                <p className="text-gray-700 text-lg">
-                  <span className="font-semibold text-[#023E8A]">Ответственный секретарь:</span> Князев И.А.
-                </p>
-              </div>
-            </div>
-            <div className="mt-4">
-              <p className="text-lg font-semibold text-gray-900 mb-3">Члены:</p>
-              <div className="space-y-2">
-                {members.map((member, index) => (
-                  <div key={index} className="bg-white p-3 rounded-lg border border-gray-100">
-                    <p className="text-gray-700">{member}</p>
+            {/* Безопасный рендеринг leadership */}
+            {safeLeadership.length > 0 && (
+              <div className="grid md:grid-cols-2 gap-4 mb-6">
+                {safeLeadership.map((item, index) => (
+                  <div key={index} className="bg-white p-4 rounded-lg border border-gray-100">
+                    <p className="text-gray-700 text-lg">
+                      <span className="font-semibold text-[#023E8A]">{item.label}:</span> {item.value}
+                    </p>
                   </div>
                 ))}
               </div>
-            </div>
+            )}
+
+            {/* Безопасный рендеринг members */}
+            {members.length > 0 && (
+              <div>
+                <p className="text-lg font-semibold text-gray-900 mb-3">
+                  {t('science.management.bioethics.membersTitle')}
+                </p>
+                <div className="space-y-2">
+                  {members.map((member, index) => (
+                    <div key={index} className="bg-white p-3 rounded-lg border border-gray-100">
+                      <p className="text-gray-700">{member}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </motion.div>
 

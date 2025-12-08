@@ -1,3 +1,4 @@
+
 import React, { lazy } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar'
@@ -140,10 +141,33 @@ const Shaltakova = lazy(() => import('./pages/science/professors/Shaltakova'))
 const Kachibek = lazy(() => import('./pages/science/professors/Kachibek'))
 
 // Student lazy imports
+const StudentMain = lazy(() => import('./pages/student/StudentMain'));
+const StudentCouncil = lazy(() => import('./pages/student/community/council'))
+const StudentScienceCommunity = lazy(() => import('./pages/student/community/science'))
 const StudentCommunities = lazy(() => import('./pages/student/communities/StudentCommunities'))
-const Resources = lazy(() => import('./pages/student/resources/Resources'))
+const DebateClub = lazy(() => import('./pages/student/communities/DebateClub'))
+const Tutoring = lazy(() => import('./pages/student/communities/Tutoring'))
+const CreativeGroups = lazy(() => import('./pages/student/communities/CreativeGroups'))
+
+const Instructions = lazy(() => import('./pages/student/resources/Instructions'))
+const InfoSystem = lazy(() => import('./pages/student/resources/InfoSystem'))
+const ELibrary = lazy(() => import('./pages/student/resources/ELibrary'))
+const EducationalResources = lazy(() => import('./pages/student/resources/EducationalResources'))
 const Schedules = lazy(() => import('./pages/student/schedules/Schedules'))
+const StudySchedule = lazy(() => import('./pages/student/schedules/StudySchedule'))
+const ModuleSchedule = lazy(() => import('./pages/student/schedules/ModuleSchedule'))
+const PracticeSchedule = lazy(() => import('./pages/student/schedules/PracticeSchedule'))
+const MFMSchedule = lazy(() => import('./pages/student/schedules/MFMSchedule'))
+const CollegeSchedule = lazy(() => import('./pages/student/schedules/CollegeSchedule'))
 const Conditions = lazy(() => import('./pages/student/conditions/Conditions'))
+const MedicalCenter = lazy(() => import('./pages/student/opportunities/MedicalCenter'))
+const Dormitory = lazy(() => import('./pages/student/opportunities/Dormitory'))
+const SocialSupport = lazy(() => import('./pages/student/opportunities/SocialSupport'))
+const ElectiveCourses = lazy(() => import('./pages/student/opportunities/ElectiveCourses'))
+const Mobility = lazy(() => import('./pages/student/opportunities/Mobility'))
+const PsychologicalSupport = lazy(() => import('./pages/student/opportunities/PsychologicalSupport'))
+const StudentService = lazy(() => import('./pages/student/opportunities/StudentService'))
+const AdaptationPrograms = lazy(() => import('./pages/student/opportunities/AdaptationPrograms'))
 
 // Applicant lazy imports
 const Commission = lazy(() => import('./pages/applicant/Commission'))
@@ -251,7 +275,7 @@ const App = () => {
           <Route path="/science/management/department" element={<ScienceDepartmentMng />} />
           <Route path="/science/department" element={<ScienceDepartment />} />
           <Route path="/science/events/conferences" element={<Conferences />} />
-          <Route path="/science/conferences/:id" element={<ConferenceDetail />} />
+          <Route path="/science/events/conferences/:id" element={<ConferenceDetail />} />
           <Route path="/science/professors" element={<Professors />} />
           <Route path="/science/professors/sean-park" element={<SeanPark />} />
           <Route path="/science/professors/pendharkar" element={<Pendharkar />} />
@@ -287,10 +311,32 @@ const App = () => {
           <Route path="/science/labs/study" element={<Study />} />
           <Route path="/science/projects" element={<Projects />} />
           {}
+          <Route path="/student" element={<StudentMain />} />
+          <Route path="/student/community/council" element={<StudentCouncil />} />
+          <Route path="/student/community/science" element={<StudentScienceCommunity />} />
+          <Route path="/student/community/debate" element={<DebateClub />} />
+          <Route path="/student/community/tutor" element={<Tutoring />} />
+          <Route path="/student/community/clubs" element={<CreativeGroups />} />
           <Route path="/student/communities" element={<StudentCommunities />} />
-          <Route path="/student/resources" element={<Resources />} />
+          <Route path="/student/resources/instructions" element={<Instructions />} />
+          <Route path="/student/resources/infosystem" element={<InfoSystem />} />
+          <Route path="/student/resources/elib" element={<ELibrary />} />
+          <Route path="/student/resources/edu-resources" element={<EducationalResources />} />
           <Route path="/student/schedules" element={<Schedules />} />
+          <Route path="/student/schedule/study" element={<StudySchedule />} />
+          <Route path="/student/schedule/modules" element={<ModuleSchedule />} />
+          <Route path="/student/schedule/practice" element={<PracticeSchedule />} />
+          <Route path="/student/schedule/mfm" element={<MFMSchedule />} />
+          <Route path="/student/schedule/college" element={<CollegeSchedule />} />
           <Route path="/student/conditions" element={<Conditions />} />
+          <Route path="/student/opportunities/medical" element={<MedicalCenter />} />
+          <Route path="/student/opportunities/dorm" element={<Dormitory />} />
+          <Route path="/student/opportunities/social" element={<SocialSupport />} />
+          <Route path="/student/opportunities/courses" element={<ElectiveCourses />} />
+          <Route path="/student/opportunities/mobility" element={<Mobility />} />
+          <Route path="/student/opportunities/psychology" element={<PsychologicalSupport />} />
+          <Route path="/student/opportunities/service-center" element={<StudentService />} />
+          <Route path="/student/opportunities/adaptation" element={<AdaptationPrograms />} />
           {}
           <Route path="/applicant/commission" element={<Commission />} />
           <Route path="/applicant/rules" element={<Rules />} />

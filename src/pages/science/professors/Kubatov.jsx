@@ -1,63 +1,77 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { FaArrowLeft, FaUserGraduate, FaBook, FaAward, FaGlobeAmericas, FaGraduationCap, FaMountain, FaFlag, FaHandshake, FaTrophy } from 'react-icons/fa';
 import kubatovPhoto from '../../../assets/science/professors/jeduard-kubatov-221x300.png';
+import "../../../i18n";
 
 const Kubatov = () => {
+  const { t, i18n } = useTranslation();
+
   const professorSections = [
     { 
-      path: "/science/professors", 
-      name: "DR. SEAN PARK", 
+      path: "/science/professors/sean-park", 
+      nameKey: "science.seanPark.name",
       icon: FaUserGraduate,
     },
     { 
       path: "/science/professors/pendharkar", 
-      name: "DR DINESH PENDHARKAR", 
+      nameKey: "science.pendharkar.name",
       icon: FaUserGraduate 
     },
     { 
       path: "/science/professors/potapova", 
-      name: "ОЛЬГА ПОТАПОВА", 
+      nameKey: "science.potapova.name",
       icon: FaUserGraduate 
     },
     { 
       path: "/science/professors/osmonov", 
-      name: "ДАНИЯР ОСМОНОВ", 
+      nameKey: "science.osmonov.name",
       icon: FaUserGraduate 
     },
     { 
       path: "/science/professors/erkebaev", 
-      name: "ЭРКЕБАЕВ АБДЫГАНЫ ЭРКЕБАЕВИЧ", 
+      nameKey: "science.erkebaev.name",
       icon: FaUserGraduate 
     },
     { 
       path: "/science/professors/madaminov", 
-      name: "ГАПЫР МАДАМИНОВ", 
+      nameKey: "science.madaminov.name",
       icon: FaUserGraduate 
     },
     { 
       path: "/science/professors/bilgaziev", 
-      name: "ЭМИЛЬ БИЛГАЗИЕВ", 
+      nameKey: "science.bilgaziev.name",
       icon: FaUserGraduate 
     },
     { 
       path: "/science/professors/kubatov", 
-      name: "ЭДУАРД КУБАТОВ", 
+      nameKey: "science.kubatov.name",
       icon: FaUserGraduate,
       active: true 
     },
     { 
       path: "/science/professors/shaltakova", 
-      name: "ШАЛТАКОВА ГУЛБУ ЧАЛОВНА", 
+      nameKey: "science.shaltakova.name",
       icon: FaUserGraduate 
     },
     { 
       path: "/science/professors/kachibek", 
-      name: "ПРОФЕССОР КАЧИБЕК", 
+      nameKey: "science.kachibek.name",
       icon: FaUserGraduate 
     }
   ];
+
+  // Helper function to get arrays from translations
+  const getArray = (key) => {
+    const value = t(key, { returnObjects: true });
+    return Array.isArray(value) ? value : [];
+  };
+
+  const sportsActivities = getArray("science.kubatov.sportsActivities");
+  const diplomaticActivities = getArray("science.kubatov.diplomaticActivities");
+  const achievements = getArray("science.kubatov.achievements");
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -114,7 +128,7 @@ const Kubatov = () => {
             className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors group"
           >
             <FaArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" />
-            Назад к науке
+            {t('translation.backButton')}
           </Link>
 
           <motion.div
@@ -124,14 +138,14 @@ const Kubatov = () => {
           >
             <div className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-4">
               <span className="text-white/90 text-sm font-medium">
-                Профессорско-преподавательский состав
+                {t('science.pageTitle')}
               </span>
             </div>
             <h1 className="text-5xl font-bold mb-4">
-              Эдуард Кубатов
+              {t('science.kubatov.name')}
             </h1>
             <p className="text-xl text-white/90 max-w-3xl">
-              Президент Федерации альпинизма и скалолазания КР, почетный консул Республики Индонезия в КР
+              {t('science.kubatov.title')}
             </p>
           </motion.div>
         </div>
@@ -151,7 +165,7 @@ const Kubatov = () => {
               <div className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-4">
                 <div className="flex items-center">
                   <FaUserGraduate className="mr-3 text-xl" />
-                  <h3 className="font-bold text-lg">ПРОФЕССОРА</h3>
+                  <h3 className="font-bold text-lg">{t('science.sidebarTitle')}</h3>
                 </div>
               </div>
               <nav className="p-2">
@@ -172,7 +186,7 @@ const Kubatov = () => {
                         }`}
                       >
                         <SectionIcon className="mr-3 text-lg" />
-                        <span className="font-medium text-sm">{section.name}</span>
+                        <span className="font-medium text-sm">{t(section.nameKey)}</span>
                       </Link>
                     </motion.div>
                   );
@@ -200,7 +214,7 @@ const Kubatov = () => {
                   <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden shadow-lg">
                     <img 
                       src={kubatovPhoto} 
-                      alt="Эдуард Кубатов" 
+                      alt={t('translation.kubatov.name')} 
                       className="w-full h-auto object-cover"
                     />
                   </div>
@@ -213,9 +227,9 @@ const Kubatov = () => {
                     >
                       <div className="flex items-center">
                         <FaMountain className="text-[#023E8A] mr-3" />
-                        <span className="font-semibold text-gray-900">Основная деятельность</span>
+                        <span className="font-semibold text-gray-900">{t('science.kubatov.mainActivity')}</span>
                       </div>
-                      <p className="text-gray-700 text-sm mt-2">Президент Федерации альпинизма и скалолазания КР</p>
+                      <p className="text-gray-700 text-sm mt-2">{t('science.kubatov.mainActivityValue')}</p>
                     </motion.div>
 
                     <motion.div
@@ -224,9 +238,9 @@ const Kubatov = () => {
                     >
                       <div className="flex items-center">
                         <FaFlag className="text-[#023E8A] mr-3" />
-                        <span className="font-semibold text-gray-900">Дипломатическая должность</span>
+                        <span className="font-semibold text-gray-900">{t('science.kubatov.diplomaticPosition')}</span>
                       </div>
-                      <p className="text-gray-700 text-sm mt-2">Почетный консул Республики Индонезия в КР</p>
+                      <p className="text-gray-700 text-sm mt-2">{t('science.kubatov.diplomaticPositionValue')}</p>
                     </motion.div>
 
                     <motion.div
@@ -235,9 +249,9 @@ const Kubatov = () => {
                     >
                       <div className="flex items-center">
                         <FaHandshake className="text-[#023E8A] mr-3" />
-                        <span className="font-semibold text-gray-900">Международная деятельность</span>
+                        <span className="font-semibold text-gray-900">{t('science.kubatov.internationalActivity')}</span>
                       </div>
-                      <p className="text-gray-700 text-sm mt-2">Развитие спортивных и дипломатических связей</p>
+                      <p className="text-gray-700 text-sm mt-2">{t('science.kubatov.internationalActivityValue')}</p>
                     </motion.div>
                   </div>
                 </motion.div>
@@ -249,13 +263,15 @@ const Kubatov = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                   >
-                    <h2 className="text-3xl font-bold text-gray-900 mb-6">Эдуард Кубатов</h2>
+                    <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('science.kubatov.name')}</h2>
                     
                     {/* Description */}
                     <div className="prose prose-lg max-w-none text-gray-700 mb-8">
                       <p className="text-lg leading-relaxed mb-6">
-                        Выдающийся спортивный деятель и дипломат, президент Федерации альпинизма и скалолазания Кыргызской Республики, 
-                        почетный консул Республики Индонезия в Кыргызстане. Активный promoter развития альпинизма и скалолазания в Центральной Азии.
+                        {t('science.kubatov.description1')}
+                      </p>
+                      <p className="text-lg leading-relaxed">
+                        {t('science.kubatov.description2')}
                       </p>
                     </div>
 
@@ -269,44 +285,33 @@ const Kubatov = () => {
                     >
                       <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
                         <FaMountain className="mr-3 text-[#023E8A]" />
-                        Спортивная деятельность
+                        {t('science.kubatov.sportsTitle')}
                       </h4>
                       <div className="space-y-4">
-                        {[
-                          {
-                            title: "Федерация альпинизма и скалолазания КР",
-                            description: "Руководство развитием альпинизма и скалолазания в Кыргызстане, организация соревнований и экспедиций"
-                          },
-                          {
-                            title: "Международное сотрудничество",
-                            description: "Установление партнерских отношений с альпинистскими федерациями других стран"
-                          },
-                          {
-                            title: "Развитие спорта",
-                            description: "Популяризация альпинизма и скалолазания среди молодежи, создание тренировочных программ"
-                          },
-                          {
-                            title: "Организация мероприятий",
-                            description: "Проведение национальных и международных соревнований по альпинизму и скалолазанию"
-                          }
-                        ].map((item, index) => (
-                          <motion.div
-                            key={index}
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.4, delay: index * 0.1 }}
-                            className="flex items-start p-4 bg-white/70 rounded-lg border border-gray-200"
-                          >
-                            <div className="w-8 h-8 bg-gradient-to-br from-[#023E8A] to-[#0077B6] rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
-                              <span className="text-white text-sm font-bold">{index + 1}</span>
-                            </div>
-                            <div>
-                              <h5 className="font-semibold text-gray-900 mb-1">{item.title}</h5>
-                              <p className="text-gray-700 text-sm">{item.description}</p>
-                            </div>
-                          </motion.div>
-                        ))}
+                        {sportsActivities.length > 0 ? (
+                          sportsActivities.map((item, index) => (
+                            <motion.div
+                              key={index}
+                              initial={{ opacity: 0, x: -20 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 0.4, delay: index * 0.1 }}
+                              className="flex items-start p-4 bg-white/70 rounded-lg border border-gray-200"
+                            >
+                              <div className="w-8 h-8 bg-gradient-to-br from-[#023E8A] to-[#0077B6] rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <span className="text-white text-sm font-bold">{index + 1}</span>
+                              </div>
+                              <div>
+                                <h5 className="font-semibold text-gray-900 mb-1">{item.title}</h5>
+                                <p className="text-gray-700 text-sm">{item.description}</p>
+                              </div>
+                            </motion.div>
+                          ))
+                        ) : (
+                          <div className="text-gray-500 text-center py-4">
+                            {t('science.kubatov.noSports')}
+                          </div>
+                        )}
                       </div>
                     </motion.div>
 
@@ -320,44 +325,33 @@ const Kubatov = () => {
                     >
                       <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
                         <FaFlag className="mr-3 text-[#023E8A]" />
-                        Дипломатическая деятельность
+                        {t('science.kubatov.diplomaticTitle')}
                       </h4>
                       <div className="space-y-4">
-                        {[
-                          {
-                            title: "Почетный консул Индонезии",
-                            description: "Представительство интересов Республики Индонезия в Кыргызстане"
-                          },
-                          {
-                            title: "Культурный обмен",
-                            description: "Содействие развитию культурных и экономических связей между Кыргызстаном и Индонезией"
-                          },
-                          {
-                            title: "Дипломатические инициативы",
-                            description: "Участие в международных форумах и дипломатических мероприятиях"
-                          },
-                          {
-                            title: "Поддержка граждан",
-                            description: "Оказание консульской помощи гражданам Индонезии в Кыргызстане"
-                          }
-                        ].map((item, index) => (
-                          <motion.div
-                            key={index}
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.4, delay: index * 0.1 }}
-                            className="flex items-start p-4 bg-white/70 rounded-lg border border-gray-200"
-                          >
-                            <div className="w-8 h-8 bg-gradient-to-br from-[#023E8A] to-[#0077B6] rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
-                              <span className="text-white text-sm font-bold">{index + 1}</span>
-                            </div>
-                            <div>
-                              <h5 className="font-semibold text-gray-900 mb-1">{item.title}</h5>
-                              <p className="text-gray-700 text-sm">{item.description}</p>
-                            </div>
-                          </motion.div>
-                        ))}
+                        {diplomaticActivities.length > 0 ? (
+                          diplomaticActivities.map((item, index) => (
+                            <motion.div
+                              key={index}
+                              initial={{ opacity: 0, x: -20 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 0.4, delay: index * 0.1 }}
+                              className="flex items-start p-4 bg-white/70 rounded-lg border border-gray-200"
+                            >
+                              <div className="w-8 h-8 bg-gradient-to-br from-[#023E8A] to-[#0077B6] rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <span className="text-white text-sm font-bold">{index + 1}</span>
+                              </div>
+                              <div>
+                                <h5 className="font-semibold text-gray-900 mb-1">{item.title}</h5>
+                                <p className="text-gray-700 text-sm">{item.description}</p>
+                              </div>
+                            </motion.div>
+                          ))
+                        ) : (
+                          <div className="text-gray-500 text-center py-4">
+                            {t('science.kubatov.noDiplomatic')}
+                          </div>
+                        )}
                       </div>
                     </motion.div>
 
@@ -371,31 +365,30 @@ const Kubatov = () => {
                     >
                       <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
                         <FaTrophy className="mr-3 text-[#023E8A]" />
-                        Достижения и вклад
+                        {t('science.kubatov.achievementsTitle')}
                       </h4>
                       <div className="grid md:grid-cols-2 gap-4">
-                        {[
-                          "Развитие альпинизма как вида спорта в Кыргызстане",
-                          "Укрепление международных спортивных связей",
-                          "Содействие дипломатическим отношениям с Индонезией",
-                          "Организация международных альпинистских экспедиций",
-                          "Популяризация активного образа жизни",
-                          "Поддержка молодых спортсменов и тренеров"
-                        ].map((achievement, index) => (
-                          <motion.div
-                            key={index}
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.4, delay: index * 0.1 }}
-                            className="flex items-center p-3 bg-white/50 rounded-lg"
-                          >
-                            <div className="w-6 h-6 bg-gradient-to-br from-[#023E8A] to-[#0077B6] rounded-full flex items-center justify-center mr-3">
-                              <FaAward className="text-white text-xs" />
-                            </div>
-                            <span className="text-gray-700 text-sm">{achievement}</span>
-                          </motion.div>
-                        ))}
+                        {achievements.length > 0 ? (
+                          achievements.map((achievement, index) => (
+                            <motion.div
+                              key={index}
+                              initial={{ opacity: 0, scale: 0.9 }}
+                              whileInView={{ opacity: 1, scale: 1 }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 0.4, delay: index * 0.1 }}
+                              className="flex items-center p-3 bg-white/50 rounded-lg"
+                            >
+                              <div className="w-6 h-6 bg-gradient-to-br from-[#023E8A] to-[#0077B6] rounded-full flex items-center justify-center mr-3">
+                                <FaAward className="text-white text-xs" />
+                              </div>
+                              <span className="text-gray-700 text-sm">{achievement}</span>
+                            </motion.div>
+                          ))
+                        ) : (
+                          <div className="col-span-2 text-gray-500 text-center py-4">
+                            {t('science.kubatov.noAchievements')}
+                          </div>
+                        )}
                       </div>
                     </motion.div>
 
@@ -409,16 +402,14 @@ const Kubatov = () => {
                     >
                       <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
                         <FaGlobeAmericas className="mr-3 text-[#023E8A]" />
-                        Международное признание
+                        {t('science.kubatov.recognitionTitle')}
                       </h4>
                       <div className="prose prose-lg max-w-none text-gray-700">
                         <p className="leading-relaxed mb-4">
-                          Эдуард Кубатов признан на международной арене как активный promoter развития альпинизма и укрепления 
-                          международных отношений. Его деятельность способствует позитивному имиджу Кыргызстана в мировом сообществе.
+                          {t('science.kubatov.recognition1')}
                         </p>
                         <p className="leading-relaxed">
-                          Под его руководством Федерация альпинизма и скалолазания КР стала одной из наиболее активных спортивных 
-                          организаций в Центральной Азии, организующей международные соревнования и экспедиции.
+                          {t('science.kubatov.recognition2')}
                         </p>
                       </div>
                     </motion.div>

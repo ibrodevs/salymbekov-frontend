@@ -13,14 +13,33 @@ import {
 const YoungScientists = () => {
   const { t } = useTranslation();
 
-  const members = [
-    "Уметалиева М.Н. – аспирант",
-    "Князев И.А. – аспирант",
-    "Сырдыбаев А.Ж. – соискатель",
-    "Сыдыкова С.Б. – соискатель",
-    "Жолболдиева М. – соискатель",
-    "Бопушева А. – соискатель"
-  ];
+  // Безопасное получение массива members
+  const getMembers = () => {
+    try {
+      const members = t('science.management.youngScientists.members', { returnObjects: true });
+      
+      // Проверяем, является ли members массивом
+      if (Array.isArray(members)) {
+        return members;
+      }
+      
+      // Если members - строка, пытаемся преобразовать в массив
+      if (typeof members === 'string') {
+        // Попробуем разбить по запятым или другим разделителям
+        return members.split(',').map(item => item.trim()).filter(item => item);
+      }
+      
+      // Если ничего не работает, возвращаем пустой массив
+      return [];
+    } catch (error) {
+      console.error('Error parsing members:', error);
+      return [];
+    }
+  };
+
+  const members = getMembers();
+  // если нет членов — создаём плейсхолдеры (4 шт.) чтобы "открыть всех"
+  const displayMembers = members.length > 0 ? members : Array.from({ length: 4 }, () => '');
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -77,7 +96,7 @@ const YoungScientists = () => {
             className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors group"
           >
             <FaArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" />
-            Назад к органам управления
+            {t('science.management.youngScientists.back', 'Назад к управлению')}
           </Link>
 
           <motion.div
@@ -87,14 +106,14 @@ const YoungScientists = () => {
           >
             <div className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-4">
               <span className="text-white/90 text-sm font-medium">
-                {t('science.management.youngScientists.badge')}
+                {t('science.management.youngScientists.badge', 'Совет молодых ученых')}
               </span>
             </div>
             <h1 className="text-5xl font-bold mb-4">
-              {t('science.management.youngScientists.title')}
+              {t('science.management.youngScientists.title', 'Совет молодых ученых')}
             </h1>
             <p className="text-xl text-white/90 max-w-3xl">
-              {t('science.management.youngScientists.subtitle')}
+              {t('science.management.youngScientists.subtitle', 'Развитие научного потенциала молодых исследователей')}
             </p>
           </motion.div>
         </div>
@@ -115,11 +134,11 @@ const YoungScientists = () => {
               <FaUserGraduate className="text-white text-xl" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">
-              {t('science.management.youngScientists.generalTitle')}
+              {t('science.management.youngScientists.generalTitle', 'Общие положения')}
             </h2>
           </div>
           <p className="text-gray-700 text-lg leading-relaxed">
-            {t('science.management.youngScientists.generalText')}
+            {t('science.management.youngScientists.generalText', 'Информация об общих положениях совета молодых ученых...')}
           </p>
         </motion.div>
 
@@ -136,11 +155,11 @@ const YoungScientists = () => {
               <FaLightbulb className="text-white text-xl" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">
-              {t('science.management.youngScientists.goalsTitle')}
+              {t('science.management.youngScientists.goalsTitle', 'Цели и задачи')}
             </h2>
           </div>
           <p className="text-gray-700 text-lg leading-relaxed">
-            {t('science.management.youngScientists.goalsText')}
+            {t('science.management.youngScientists.goalsText', 'Основные цели и задачи совета молодых ученых...')}
           </p>
         </motion.div>
 
@@ -157,30 +176,33 @@ const YoungScientists = () => {
               <FaUsers className="text-white text-xl" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">
-              {t('science.management.youngScientists.compositionTitle')}
+              {t('science.management.youngScientists.compositionTitle', 'Состав совета')}
             </h2>
           </div>
           
           <div className="grid md:grid-cols-2 gap-6">
-            {members.map((member, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="bg-gradient-to-br from-gray-50 to-white p-6 rounded-xl border border-gray-200 hover:shadow-md transition-all hover:border-[#0077B6]/30 group"
-              >
-                <div className="flex items-center">
-                  <div className="w-10 h-10 bg-gradient-to-br from-[#023E8A]/10 to-[#0077B6]/10 rounded-full flex items-center justify-center mr-4 group-hover:from-[#023E8A]/20 group-hover:to-[#0077B6]/20 transition-colors">
-                    <FaUserGraduate className="text-[#023E8A] text-lg" />
+            {displayMembers.map((member, index) => {
+              const isPlaceholder = member === '' || member == null;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  className="bg-gradient-to-br from-gray-50 to-white p-6 rounded-xl border border-gray-200 hover:shadow-md transition-all hover:border-[#0077B6]/30 group"
+                >
+                  <div className="flex items-center">
+                    <div className="w-10 h-10 bg-gradient-to-br from-[#023E8A]/10 to-[#0077B6]/10 rounded-full flex items-center justify-center mr-4 group-hover:from-[#023E8A]/20 group-hover:to-[#0077B6]/20 transition-colors">
+                      <FaUserGraduate className="text-[#023E8A] text-lg" />
+                    </div>
+                    <p className={`text-gray-900 text-lg font-medium ${isPlaceholder ? 'text-gray-400 italic' : ''}`}>
+                      {isPlaceholder ? t('science.management.youngScientists.noMembers', 'Информация о составе совета временно недоступна') : member}
+                    </p>
                   </div>
-                  <p className="text-gray-900 text-lg font-medium">
-                    {member}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
           </div>
         </motion.div>
 
@@ -197,11 +219,11 @@ const YoungScientists = () => {
               <div className="flex items-center mb-3">
                 <FaDownload className="text-2xl mr-3" />
                 <h3 className="text-2xl font-bold">
-                  {t('science.management.youngScientists.downloadTitle')}
+                  {t('science.management.youngScientists.downloadTitle', 'Документы')}
                 </h3>
               </div>
               <p className="text-white/90 text-lg">
-                {t('science.management.youngScientists.downloadDesc')}
+                {t('science.management.youngScientists.downloadDesc', 'Скачайте документы совета молодых ученых')}
               </p>
             </div>
             <motion.a
@@ -211,7 +233,7 @@ const YoungScientists = () => {
               className="bg-white text-[#023E8A] px-8 py-4 rounded-xl font-bold text-lg hover:shadow-xl transition-all flex items-center gap-2 whitespace-nowrap"
             >
               <FaDownload />
-              {t('science.management.youngScientists.downloadBtn')}
+              {t('science.management.youngScientists.downloadBtn', 'Скачать документы')}
             </motion.a>
           </div>
         </motion.div>

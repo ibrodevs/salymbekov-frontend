@@ -7,10 +7,22 @@ import { FiCalendar, FiCheckCircle, FiClock } from 'react-icons/fi';
 const Schedule = () => {
    const { t } = useTranslation();
 
+   // Уменьшенные фоновые элементы
    const animatedBalls = useMemo(() => {
-      return [...Array(25)].map((_, i) => ({
+      return [...Array(8)].map((_, i) => ({
          id: i,
-         size: Math.random() * 120 + 60,
+         size: Math.random() * 60 + 30,
+         left: `${Math.random() * 100}%`,
+         top: `${Math.random() * 100}%`,
+         duration: 4 + Math.random() * 2,
+         delay: Math.random() * 1
+      }));
+   }, []);
+
+   const floatingBubbles = useMemo(() => {
+      return [...Array(6)].map((_, i) => ({
+         id: i,
+         size: Math.random() * 40 + 20,
          left: `${Math.random() * 100}%`,
          top: `${Math.random() * 100}%`,
          duration: 5 + Math.random() * 3,
@@ -18,27 +30,40 @@ const Schedule = () => {
       }));
    }, []);
 
-   const floatingBubbles = useMemo(() => {
-      return [...Array(15)].map((_, i) => ({
+   const smallBubbles = useMemo(() => {
+      return [...Array(12)].map((_, i) => ({
          id: i,
-         size: Math.random() * 80 + 40,
+         size: Math.random() * 15 + 10,
          left: `${Math.random() * 100}%`,
          top: `${Math.random() * 100}%`,
-         duration: 6 + Math.random() * 4,
-         delay: Math.random() * 3
+         duration: 2 + Math.random() * 2,
+         delay: Math.random() * 0.5
       }));
    }, []);
 
-   const smallBubbles = useMemo(() => {
-      return [...Array(30)].map((_, i) => ({
-         id: i,
-         size: Math.random() * 25 + 15,
-         left: `${Math.random() * 100}%`,
-         top: `${Math.random() * 100}%`,
-         duration: 3 + Math.random() * 2,
-         delay: Math.random() * 1
-      }));
-   }, []);
+   // Быстрые анимации для появления при скролле
+   const scrollContainerVariants = {
+      hidden: { opacity: 0 },
+      visible: {
+         opacity: 1,
+         transition: {
+            duration: 0.2,
+            staggerChildren: 0.05
+         }
+      }
+   };
+
+   const scrollItemVariants = {
+      hidden: { y: 10, opacity: 0 },
+      visible: {
+         y: 0,
+         opacity: 1,
+         transition: {
+            duration: 0.2,
+            ease: "easeOut"
+         }
+      }
+   };
 
    const tours = [
       {
@@ -160,7 +185,7 @@ const Schedule = () => {
             {animatedBalls.map((ball) => (
                <motion.div
                   key={ball.id}
-                  className="absolute rounded-full opacity-10"
+                  className="absolute rounded-full opacity-8"
                   style={{
                      width: ball.size,
                      height: ball.size,
@@ -169,9 +194,9 @@ const Schedule = () => {
                      background: 'linear-gradient(135deg, #023E8A, #0077B6)'
                   }}
                   animate={{
-                     y: [0, -30, 0],
-                     x: [0, 15, 0],
-                     scale: [1, 1.1, 1]
+                     y: [0, -20, 0],
+                     x: [0, 10, 0],
+                     scale: [1, 1.05, 1]
                   }}
                   transition={{
                      duration: ball.duration,
@@ -188,7 +213,7 @@ const Schedule = () => {
             {floatingBubbles.map((bubble) => (
                <motion.div
                   key={`floating-${bubble.id}`}
-                  className="absolute rounded-full opacity-8"
+                  className="absolute rounded-full opacity-6"
                   style={{
                      width: bubble.size,
                      height: bubble.size,
@@ -197,9 +222,9 @@ const Schedule = () => {
                      background: 'linear-gradient(135deg, #023E8A, #0077B6)'
                   }}
                   animate={{
-                     y: [0, -40, 0],
-                     x: [0, 20, 0],
-                     scale: [1, 1.2, 1]
+                     y: [0, -25, 0],
+                     x: [0, 15, 0],
+                     scale: [1, 1.1, 1]
                   }}
                   transition={{
                      duration: bubble.duration,
@@ -216,7 +241,7 @@ const Schedule = () => {
             {smallBubbles.map((bubble) => (
                <motion.div
                   key={`small-${bubble.id}`}
-                  className="absolute rounded-full opacity-12"
+                  className="absolute rounded-full opacity-10"
                   style={{
                      width: bubble.size,
                      height: bubble.size,
@@ -225,9 +250,9 @@ const Schedule = () => {
                      background: 'linear-gradient(135deg, #023E8A, #0077B6)'
                   }}
                   animate={{
-                     y: [0, -20, 0],
-                     x: [0, 10, 0],
-                     scale: [1, 1.05, 1]
+                     y: [0, -15, 0],
+                     x: [0, 8, 0],
+                     scale: [1, 1.03, 1]
                   }}
                   transition={{
                      duration: bubble.duration,
@@ -244,28 +269,28 @@ const Schedule = () => {
             className="relative h-[60vh] flex items-center justify-center overflow-hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.3 }}
          >
             {/* Additional white bubbles in hero section for contrast */}
-            {[...Array(8)].map((_, i) => (
+            {[...Array(4)].map((_, i) => (
                <motion.div
                   key={`hero-bubble-${i}`}
-                  className="absolute rounded-full opacity-10"
+                  className="absolute rounded-full opacity-8"
                   style={{
-                     width: Math.random() * 100 + 50,
-                     height: Math.random() * 100 + 50,
+                     width: Math.random() * 60 + 30,
+                     height: Math.random() * 60 + 30,
                      left: `${Math.random() * 100}%`,
                      top: `${Math.random() * 100}%`,
                      background: 'linear-gradient(135deg, #ffffff, #e0f2fe)'
                   }}
                   animate={{
-                     y: [0, -25, 0],
-                     x: [0, 15, 0],
-                     scale: [1, 1.2, 1]
+                     y: [0, -20, 0],
+                     x: [0, 10, 0],
+                     scale: [1, 1.1, 1]
                   }}
                   transition={{
-                     duration: 6 + Math.random() * 3,
-                     delay: Math.random() * 2,
+                     duration: 4 + Math.random() * 2,
+                     delay: Math.random() * 1,
                      repeat: Infinity,
                      ease: "easeInOut"
                   }}
@@ -288,23 +313,23 @@ const Schedule = () => {
                   className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm mb-6"
                   initial={{ scale: 0, rotate: -180 }}
                   animate={{ scale: 1, rotate: 0 }}
-                  transition={{ delay: 0.2, duration: 0.8 }}
+                  transition={{ delay: 0.1, duration: 0.3 }}
                >
                   <FiCalendar className="w-10 h-10" />
                </motion.div>
                <motion.h1
                   className="text-6xl md:text-7xl font-bold mb-6"
-                  initial={{ y: 30, opacity: 0 }}
+                  initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.3, duration: 0.8 }}
+                  transition={{ delay: 0.15, duration: 0.3 }}
                >
                   {t('schedule.hero.title', 'График отбора и зачисления')}
                </motion.h1>
                <motion.p
                   className="text-2xl md:text-3xl font-semibold text-white/90"
-                  initial={{ y: 30, opacity: 0 }}
+                  initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.5, duration: 0.8 }}
+                  transition={{ delay: 0.2, duration: 0.3 }}
                >
                   {t('schedule.hero.subtitle', 'Selection and Enrollment Schedule')}
                </motion.p>
@@ -315,19 +340,28 @@ const Schedule = () => {
          <div className="relative z-10 container mx-auto px-4 -mt-20">
             <div className="flex flex-col lg:flex-row gap-8">
                {/* Left Navigation */}
-               <div className="lg:w-80 shrink-0">
+               <motion.div
+                  className="lg:w-80 shrink-0"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.2 }}
+               >
                   <ExtraNavigation />
-               </div>
+               </motion.div>
 
                {/* Right Content */}
-               <div className="flex-1 space-y-8">
+               <motion.div
+                  className="flex-1 space-y-8"
+                  variants={scrollContainerVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-50px" }}
+               >
                   {/* Introduction */}
                   <motion.div
                      className="bg-white rounded-3xl shadow-2xl p-8 md:p-12"
-                     initial={{ y: 50, opacity: 0 }}
-                     whileInView={{ y: 0, opacity: 1 }}
-                     viewport={{ once: true }}
-                     transition={{ duration: 0.6 }}
+                     variants={scrollItemVariants}
                   >
                      <h2 className="text-4xl font-bold mb-8 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
                         {t('schedule.policy.title', 'Политика отбора и зачисления')}
@@ -340,10 +374,7 @@ const Schedule = () => {
                   {/* Main Title */}
                   <motion.div
                      className="bg-white rounded-3xl shadow-2xl p-8 md:p-12"
-                     initial={{ y: 50, opacity: 0 }}
-                     whileInView={{ y: 0, opacity: 1 }}
-                     viewport={{ once: true }}
-                     transition={{ duration: 0.6 }}
+                     variants={scrollItemVariants}
                   >
                      <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent text-center">
                         {t('schedule.mainTitle.title', 'График проведения туров отбора и зачисления абитуриентов')}
@@ -361,10 +392,7 @@ const Schedule = () => {
                      <motion.div
                         key={tourIdx}
                         className="bg-white rounded-3xl shadow-2xl p-8 md:p-12"
-                        initial={{ y: 50, opacity: 0 }}
-                        whileInView={{ y: 0, opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: tourIdx * 0.1 }}
+                        variants={scrollItemVariants}
                      >
                         <div className="flex items-center gap-4 mb-8">
                            <div className="w-16 h-16 rounded-full bg-gradient-to-r from-[#023E8A] to-[#0077B6] flex items-center justify-center">
@@ -383,11 +411,8 @@ const Schedule = () => {
                               <motion.div
                                  key={stageIdx}
                                  className="flex gap-4 p-4 rounded-xl bg-gradient-to-r from-blue-50 to-cyan-50 hover:shadow-lg transition-all duration-300"
-                                 initial={{ opacity: 0, x: -20 }}
-                                 whileInView={{ opacity: 1, x: 0 }}
-                                 viewport={{ once: true }}
-                                 transition={{ delay: stageIdx * 0.1 }}
-                                 whileHover={{ scale: 1.02 }}
+                                 variants={scrollItemVariants}
+                                 whileHover={{ scale: 1.01, y: -2 }}
                               >
                                  <div className="shrink-0">
                                     <div className="w-10 h-10 rounded-full bg-gradient-to-r from-[#023E8A] to-[#0077B6] flex items-center justify-center">
@@ -411,10 +436,7 @@ const Schedule = () => {
                   {/* Footer Note */}
                   <motion.div
                      className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-3xl shadow-2xl p-8 md:p-12"
-                     initial={{ y: 50, opacity: 0 }}
-                     whileInView={{ y: 0, opacity: 1 }}
-                     viewport={{ once: true }}
-                     transition={{ duration: 0.6 }}
+                     variants={scrollItemVariants}
                   >
                      <div className="flex items-start gap-4 text-white">
                         <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center shrink-0 mt-1">
@@ -425,7 +447,7 @@ const Schedule = () => {
                         </p>
                      </div>
                   </motion.div>
-               </div>
+               </motion.div>
             </div>
          </div>
       </div>

@@ -271,17 +271,17 @@ const Lazmed = () => {
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              'Гинекологические установки и оборудование',
-              'Кольпоскопы (видеокольпоскопия)',
-              'Вакуумный роликовый массажный аппарат',
-              'Лапароскопический аппарат для оперативного доступа',
-              'Лазерные установки (удаление бородавок, папиллом, кондилом)',
-              'Аппараты искусственной вентиляции лёгких (ИВЛ)',
-              'Дефибрилляторы и кардиомониторы'
+              t('lazmed.equipment.item1',),
+              t('lazmed.equipment.item2',),
+              t('lazmed.equipment.item3',),
+              t('lazmed.equipment.item4',),
+              t('lazmed.equipment.item5',),
+              t('lazmed.equipment.item6',),
+              t('lazmed.equipment.item7',)
             ].map((item, i) => (
               <div key={i} className="bg-white/80 backdrop-blur-sm rounded-2xl p-5 shadow-sm border border-slate-200 hover:shadow-md transition">
                 <h4 className="font-semibold text-slate-800">{item}</h4>
-                <p className="text-sm text-slate-600 mt-2">{t('lazmed.equipmentDesc', 'Высокоточное оборудование от мировых производителей, соответствующее международным стандартам.')}</p>
+
               </div>
             ))}
           </div>

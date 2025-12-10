@@ -38,7 +38,7 @@ const SoftwareNavigation = () => {
    return (
       <div className="bg-white rounded-2xl shadow-lg p-6 sticky top-24 h-fit">
          <h3 className="text-xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
-            {t('extraNav.collegePrograms', 'Программы колледжа')}
+            {t('extraNav.title', 'Программы колледжа')}
          </h3>
          <nav className="space-y-2">
             {navigationItems.map((item, index) => {

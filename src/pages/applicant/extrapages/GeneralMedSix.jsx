@@ -317,8 +317,7 @@ const GeneralMedSix = () => {
                   <motion.div
                      className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 mb-8"
                      initial={{ y: 50, opacity: 0 }}
-                     whileInView={{ y: 0, opacity: 1 }}
-                     viewport={{ once: true }}
+                     animate={{ y: 0, opacity: 1 }}
                      transition={{ duration: 0.6 }}
                   >
                      <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
@@ -336,8 +335,7 @@ const GeneralMedSix = () => {
                   <motion.div
                      className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 mb-8"
                      initial={{ y: 50, opacity: 0 }}
-                     whileInView={{ y: 0, opacity: 1 }}
-                     viewport={{ once: true }}
+                     animate={{ y: 0, opacity: 1 }}
                      transition={{ duration: 0.6 }}
                   >
                      <h3 className="text-3xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
@@ -387,8 +385,7 @@ const GeneralMedSix = () => {
                   <motion.div
                      className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 mb-8"
                      initial={{ y: 50, opacity: 0 }}
-                     whileInView={{ y: 0, opacity: 1 }}
-                     viewport={{ once: true }}
+                     animate={{ y: 0, opacity: 1 }}
                      transition={{ duration: 0.6 }}
                   >
                      <h3 className="text-3xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
@@ -420,8 +417,7 @@ const GeneralMedSix = () => {
                   <motion.div
                      className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 mb-8"
                      initial={{ y: 50, opacity: 0 }}
-                     whileInView={{ y: 0, opacity: 1 }}
-                     viewport={{ once: true }}
+                     animate={{ y: 0, opacity: 1 }}
                      transition={{ duration: 0.6 }}
                   >
                      <h3 className="text-3xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
@@ -436,8 +432,7 @@ const GeneralMedSix = () => {
                   <motion.div
                      className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 mb-8"
                      initial={{ y: 50, opacity: 0 }}
-                     whileInView={{ y: 0, opacity: 1 }}
-                     viewport={{ once: true }}
+                     animate={{ y: 0, opacity: 1 }}
                      transition={{ duration: 0.6 }}
                   >
                      <h3 className="text-3xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
@@ -457,8 +452,7 @@ const GeneralMedSix = () => {
                               key={index}
                               className="flex items-center gap-3 p-4 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl"
                               initial={{ opacity: 0, x: -20 }}
-                              whileInView={{ opacity: 1, x: 0 }}
-                              viewport={{ once: true }}
+                              animate={{ opacity: 1, x: 0 }}
                               transition={{ delay: index * 0.1 }}
                            >
                               <div className="w-3 h-3 rounded-full bg-gradient-to-r from-[#023E8A] to-[#0077B6]"></div>
@@ -472,8 +466,7 @@ const GeneralMedSix = () => {
                   <motion.div
                      className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 mb-8"
                      initial={{ y: 50, opacity: 0 }}
-                     whileInView={{ y: 0, opacity: 1 }}
-                     viewport={{ once: true }}
+                     animate={{ y: 0, opacity: 1 }}
                      transition={{ duration: 0.6 }}
                   >
                      <h3 className="text-3xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">

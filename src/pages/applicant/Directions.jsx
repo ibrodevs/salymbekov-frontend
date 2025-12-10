@@ -5,19 +5,10 @@ import ExtraNavigation from './extrapages/ExtraNavigation';
 import { FiMapPin, FiPhone, FiMail } from 'react-icons/fi';
 
 const Directions = () => {
-   const { t } = useTranslation();
+   const { t, i18n } = useTranslation();
 
-   const backgroundBalls = useMemo(() => {
-      return Array.from({ length: 25 }, (_, i) => ({
-         id: i,
-         size: Math.random() * 400 + 150,
-         x: Math.random() * 100,
-         y: Math.random() * 100,
-         duration: Math.random() * 25 + 20,
-         delay: Math.random() * 8,
-         color: ['from-blue-400/20 to-purple-400/20', 'from-green-400/20 to-blue-400/20', 'from-purple-400/20 to-pink-400/20', 'from-cyan-400/20 to-blue-400/20', 'from-pink-400/20 to-rose-400/20'][i % 5]
-      }));
-   }, []);
+   // Для отладки - проверяем текущий язык
+   console.log('Current language:', i18n.language);
 
    const floatingBubbles = useMemo(() => {
       return Array.from({ length: 20 }, (_, i) => ({
@@ -61,7 +52,7 @@ const Directions = () => {
          ]
       },
       {
-         degree: 'SECONDARY VOCATIONAL EDUCATION',
+         degree: 'SECONDARY_VOCATIONAL_EDUCATION',
          programs: [
             { name: 'Computer Science', form: 'Full-time', duration: '3 y. 6 m.' },
             { name: 'Multimedia Application', form: 'Full-time', duration: '2 y. 6 m.' },
@@ -108,45 +99,26 @@ const Directions = () => {
 
    const contacts = {
       addresses: [
-         t('directions.addresses.college', 'ул. Малдыбаева, 24б / Ахунбаева, 125 (Международный колледж IT и бизнеса)'),
-         t('directions.addresses.medical', 'ул. Фучика, 3 (Высшая Школа Медицины)')
+         t('directions.contacts.addresses.college', 'г. Бишкек, ул. Токтогула, 215 (Колледж)'),
+         t('directions.contacts.addresses.medical', 'г. Бишкек, ул. Ахунбаева, 113 (Медицинский факультет)')
       ],
       phones: [
-         { number: '+996 778 99 88 89', label: t('directions.phones.college', 'Международный колледж IT и бизнеса') },
-         { number: '+996 706 99 88 89', label: t('directions.phones.college', 'Международный колледж IT и бизнеса') },
-         { number: '+996 774 83 88 83', label: t('directions.phones.medical', 'Высшая Школа Медицины') },
-         { number: '+996 501 83 88 83', label: t('directions.phones.medical', 'Высшая Школа Медицины') }
+         { number: '+996 778 99 88 89', label: t('directions.contacts.phones.college', 'Колледж') },
+         { number: '+996 706 99 88 89', label: t('directions.contacts.phones.college', 'Колледж') },
+         { number: '+996 774 83 88 83', label: t('directions.contacts.phones.medical', 'Медицинский') },
+         { number: '+996 501 83 88 83', label: t('directions.contacts.phones.medical', 'Медицинский') }
       ],
       email: 'info@salymbekov.com'
    };
 
+   // Функция для безопасного перевода с fallback
+   const getTranslation = (key, fallback) => {
+      const translation = t(key);
+      return translation === key ? fallback : translation;
+   };
+
    return (
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
-         {/* Large Animated Background Balls */}
-         {backgroundBalls.map((ball) => (
-            <motion.div
-               key={ball.id}
-               className={`absolute rounded-full bg-gradient-to-br ${ball.color} blur-3xl`}
-               style={{
-                  width: ball.size,
-                  height: ball.size,
-                  left: `${ball.x}%`,
-                  top: `${ball.y}%`,
-               }}
-               animate={{
-                  x: [0, 30, -30, 0],
-                  y: [0, -30, 30, 0],
-                  scale: [1, 1.1, 0.9, 1],
-               }}
-               transition={{
-                  duration: ball.duration,
-                  delay: ball.delay,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-               }}
-            />
-         ))}
-
          {/* Medium Floating Bubbles */}
          <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
             {floatingBubbles.map((bubble) => (
@@ -211,7 +183,7 @@ const Directions = () => {
             className="relative h-[60vh] flex items-center justify-center overflow-hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.4 }}
          >
             {/* Additional animated elements in hero section */}
             {[...Array(8)].map((_, i) => (
@@ -255,17 +227,17 @@ const Directions = () => {
                   className="text-6xl md:text-7xl font-bold mb-6"
                   initial={{ y: 30, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.2, duration: 0.8 }}
+                  transition={{ delay: 0.1, duration: 0.4 }}
                >
-                  {t('directions.hero.title', 'Направления подготовки')}
+                  {getTranslation('directions.hero.title')}
                </motion.h1>
                <motion.p
                   className="text-2xl md:text-3xl font-semibold text-white/90"
                   initial={{ y: 30, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.4, duration: 0.8 }}
+                  transition={{ delay: 0.2, duration: 0.4 }}
                >
-                  {t('directions.hero.subtitle', 'Educational Programs of Salymbekov University')}
+                  {getTranslation('directions.hero.subtitle', 'Выберите свою образовательную траекторию')}
                </motion.p>
             </div>
          </motion.div>
@@ -283,13 +255,13 @@ const Directions = () => {
                   {/* Contacts Section */}
                   <motion.div
                      className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 mb-8"
-                     initial={{ y: 50, opacity: 0 }}
+                     initial={{ y: 30, opacity: 0 }}
                      whileInView={{ y: 0, opacity: 1 }}
-                     viewport={{ once: true }}
-                     transition={{ duration: 0.6 }}
+                     viewport={{ once: true, margin: "-50px" }}
+                     transition={{ duration: 0.3 }}
                   >
                      <h2 className="text-4xl font-bold mb-8 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
-                        {t('directions.contacts.title', 'КОНТАКТЫ ПРИЕМНОЙ КОМИССИИ')}
+                        {getTranslation('directions.contacts.title', 'Контакты')}
                      </h2>
 
                      <div className="grid md:grid-cols-3 gap-6">
@@ -301,7 +273,7 @@ const Directions = () => {
                               </div>
                               <div>
                                  <h3 className="text-xl font-bold text-gray-800 mb-3">
-                                    {t('directions.contacts.address', 'Адрес')}
+                                    {getTranslation('directions.contacts.address', 'Адрес')}
                                  </h3>
                                  {contacts.addresses.map((addr, idx) => (
                                     <p key={idx} className="text-gray-700 leading-relaxed mb-2">
@@ -314,13 +286,13 @@ const Directions = () => {
 
                         {/* Phone */}
                         <div className="md:col-span-2">
-                           <div className="flex items-start gap-4 p-6 bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl h-full">
+                           <div className="flex items-start gap-4 p-6 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl h-full">
                               <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#0077B6] to-[#00B4D8] flex items-center justify-center shrink-0">
                                  <FiPhone className="w-6 h-6 text-white" />
                               </div>
                               <div>
                                  <h3 className="text-xl font-bold text-gray-800 mb-3">
-                                    {t('directions.contacts.phones', 'Телефоны')}
+                                    {getTranslation('directions.contacts.phonesTitle', 'Телефоны')}
                                  </h3>
                                  {contacts.phones.map((phone, idx) => (
                                     <div key={idx} className="mb-2">
@@ -336,13 +308,13 @@ const Directions = () => {
 
                         {/* Email */}
                         <div className="md:col-span-1">
-                           <div className="flex items-start gap-4 p-6 bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl h-full">
+                           <div className="flex items-start gap-4 p-6 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl h-full">
                               <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#00B4D8] to-[#48CAE4] flex items-center justify-center shrink-0">
                                  <FiMail className="w-6 h-6 text-white" />
                               </div>
                               <div>
                                  <h3 className="text-xl font-bold text-gray-800 mb-3">
-                                    {t('directions.contacts.email', 'Email')}
+                                    {getTranslation('directions.contacts.email', 'Электронная почта')}
                                  </h3>
                                  <a href={`mailto:${contacts.email}`} className="text-[#0077B6] font-semibold hover:underline break-all">
                                     {contacts.email}
@@ -356,26 +328,26 @@ const Directions = () => {
                   {/* Introduction */}
                   <motion.div
                      className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 mb-8"
-                     initial={{ y: 50, opacity: 0 }}
+                     initial={{ y: 30, opacity: 0 }}
                      whileInView={{ y: 0, opacity: 1 }}
-                     viewport={{ once: true }}
-                     transition={{ duration: 0.6 }}
+                     viewport={{ once: true, margin: "-50px" }}
+                     transition={{ duration: 0.3, delay: 0.1 }}
                   >
                      <p className="text-lg text-gray-700 leading-relaxed">
-                        {t('directions.introduction', 'На данный момент Салымбеков университет готовит квалифицированных специалистов в области IT и медицины по следующим направлениям:')}
+                        {getTranslation('directions.introduction', 'Университет Салымбекова предлагает широкий спектр образовательных программ для подготовки высококвалифицированных специалистов. Наша миссия — предоставить качественное образование, соответствующее международным стандартам, и создать условия для всестороннего развития студентов.')}
                      </p>
                   </motion.div>
 
                   {/* Programs Table */}
                   <motion.div
                      className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 mb-8"
-                     initial={{ y: 50, opacity: 0 }}
+                     initial={{ y: 30, opacity: 0 }}
                      whileInView={{ y: 0, opacity: 1 }}
-                     viewport={{ once: true }}
-                     transition={{ duration: 0.6 }}
+                     viewport={{ once: true, margin: "-50px" }}
+                     transition={{ duration: 0.3, delay: 0.2 }}
                   >
                      <h2 className="text-4xl font-bold mb-8 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
-                        {t('directions.programs.title', 'EDUCATIONAL PROGRAMS')}
+                        {getTranslation('directions.programs.title', 'Образовательные программы')}
                      </h2>
 
                      <div className="overflow-x-auto">
@@ -384,16 +356,16 @@ const Directions = () => {
                               <tr className="border-b-2 border-[#023E8A]">
                                  <th className="text-left py-4 px-4 font-bold text-gray-700">№</th>
                                  <th className="text-left py-4 px-4 font-bold text-gray-700">
-                                    {t('directions.programs.degree', 'DEGREE')}
+                                    {getTranslation('directions.programs.degree', 'Степень')}
                                  </th>
                                  <th className="text-left py-4 px-4 font-bold text-gray-700">
-                                    {t('directions.programs.educationalProgram', 'EDUCATIONAL PROGRAM')}
+                                    {getTranslation('directions.programs.educationalProgram', 'Образовательная программа')}
                                  </th>
                                  <th className="text-left py-4 px-4 font-bold text-gray-700">
-                                    {t('directions.programs.studyForm', 'STUDY FORM')}
+                                    {getTranslation('directions.programs.studyForm', 'Форма обучения')}
                                  </th>
                                  <th className="text-left py-4 px-4 font-bold text-gray-700">
-                                    {t('directions.programs.duration', 'DURATION')}
+                                    {getTranslation('directions.programs.duration', 'Продолжительность')}
                                  </th>
                               </tr>
                            </thead>
@@ -404,10 +376,10 @@ const Directions = () => {
                                        <motion.tr
                                           key={`${sectionIdx}-${progIdx}`}
                                           className="border-b border-gray-200 hover:bg-blue-50 transition-colors"
-                                          initial={{ opacity: 0, x: -20 }}
+                                          initial={{ opacity: 0, x: -10 }}
                                           whileInView={{ opacity: 1, x: 0 }}
                                           viewport={{ once: true }}
-                                          transition={{ delay: (sectionIdx * section.programs.length + progIdx) * 0.02 }}
+                                          transition={{ duration: 0.2, delay: (sectionIdx * 0.1) + (progIdx * 0.05) }}
                                        >
                                           {progIdx === 0 && (
                                              <>
@@ -415,15 +387,22 @@ const Directions = () => {
                                                    {sectionIdx + 1}.
                                                 </td>
                                                 <td className="py-4 px-4 text-gray-800 font-bold" rowSpan={section.programs.length}>
-                                                   {t(`directions.degrees.${section.degree}`, section.degree)}
+                                                   {getTranslation(`directions.degrees.${section.degree}`,
+                                                      section.degree === 'SPECIALTY' ? 'Специалитет' :
+                                                         section.degree === 'BACHELOR' ? 'Бакалавриат' :
+                                                            section.degree === 'SECONDARY_VOCATIONAL_EDUCATION' ? 'Среднее профессиональное образование' :
+                                                               section.degree === 'MASTER' ? 'Магистратура' :
+                                                                  section.degree === 'RESIDENCY' ? 'Ординатура' :
+                                                                     section.degree === 'POSTGRADUATE_STUDIES' ? 'Аспирантура' : section.degree
+                                                   )}
                                                 </td>
                                              </>
                                           )}
                                           <td className="py-4 px-4 text-gray-700">
-                                             {t(`directions.programNames.${program.name.replace(/\s+/g, '_')}`, program.name)}
+                                             {getTranslation(`directions.programNames.${program.name.replace(/\s+/g, '_')}`, program.name)}
                                           </td>
                                           <td className="py-4 px-4 text-gray-600">
-                                             {t(`directions.studyForms.${program.form.replace(/-/g, '_')}`, program.form)}
+                                             {getTranslation(`directions.studyForms.${program.form.replace(/-/g, '_')}`, program.form === 'Full-time' ? 'Очная' : program.form)}
                                           </td>
                                           <td className="py-4 px-4">
                                              <span className="inline-flex items-center px-3 py-1 rounded-full bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white font-semibold text-sm">

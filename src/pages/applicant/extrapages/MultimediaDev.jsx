@@ -118,7 +118,7 @@ const MultimediaDev = () => {
             className="relative h-[60vh] flex items-center justify-center overflow-hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.4 }}
          >
             {/* Additional balls in hero section - как в Software */}
             {backgroundBalls.slice(0, 8).map((ball) => (
@@ -161,7 +161,7 @@ const MultimediaDev = () => {
                   className="text-6xl md:text-7xl font-bold mb-6"
                   initial={{ y: 30, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.2, duration: 0.8 }}
+                  transition={{ delay: 0.1, duration: 0.4 }}
                >
                   {t('multimediaDev.title', 'Разработка мультимедийных программ')}
                </motion.h1>
@@ -169,7 +169,7 @@ const MultimediaDev = () => {
                   className="text-2xl md:text-3xl font-semibold text-white/90 mb-4"
                   initial={{ y: 30, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.4, duration: 0.8 }}
+                  transition={{ delay: 0.2, duration: 0.4 }}
                >
                   {t('multimediaDev.subtitle', 'Development of Multimedia Programs')}
                </motion.p>
@@ -189,10 +189,9 @@ const MultimediaDev = () => {
                   {/* Specialist Section */}
                   <motion.div
                      className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 mb-8"
-                     initial={{ y: 50, opacity: 0 }}
-                     whileInView={{ y: 0, opacity: 1 }}
-                     viewport={{ once: true }}
-                     transition={{ duration: 0.6 }}
+                     initial={{ y: 30, opacity: 0 }}
+                     animate={{ y: 0, opacity: 1 }}
+                     transition={{ duration: 0.3 }}
                   >
                      <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
                         {t('multimediaDev.specialist.title', 'Специалист в области мультимедийных программ')}
@@ -205,10 +204,9 @@ const MultimediaDev = () => {
                   {/* Scrolling Images Gallery */}
                   <motion.div
                      className="mb-8"
-                     initial={{ y: 50, opacity: 0 }}
-                     whileInView={{ y: 0, opacity: 1 }}
-                     viewport={{ once: true }}
-                     transition={{ duration: 0.6 }}
+                     initial={{ y: 30, opacity: 0 }}
+                     animate={{ y: 0, opacity: 1 }}
+                     transition={{ duration: 0.3, delay: 0.1 }}
                   >
                      <div className="bg-white rounded-3xl shadow-2xl p-6 overflow-hidden">
                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -217,9 +215,8 @@ const MultimediaDev = () => {
                                  key={image}
                                  className="relative aspect-square rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
                                  initial={{ opacity: 0, scale: 0.9 }}
-                                 whileInView={{ opacity: 1, scale: 1 }}
-                                 viewport={{ once: true }}
-                                 transition={{ delay: index * 0.05, duration: 0.4 }}
+                                 animate={{ opacity: 1, scale: 1 }}
+                                 transition={{ delay: index * 0.03, duration: 0.2 }}
                                  whileHover={{ scale: 1.05 }}
                               >
                                  <img
@@ -239,10 +236,9 @@ const MultimediaDev = () => {
                   {/* Overview Section */}
                   <motion.div
                      className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 mb-8"
-                     initial={{ y: 50, opacity: 0 }}
-                     whileInView={{ y: 0, opacity: 1 }}
-                     viewport={{ once: true }}
-                     transition={{ duration: 0.6 }}
+                     initial={{ y: 30, opacity: 0 }}
+                     animate={{ y: 0, opacity: 1 }}
+                     transition={{ duration: 0.3, delay: 0.2 }}
                   >
                      <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
                         {t('multimediaDev.overview.title', 'Обзор специальности')}
@@ -255,10 +251,9 @@ const MultimediaDev = () => {
                   {/* Program Goals Section */}
                   <motion.div
                      className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 mb-8"
-                     initial={{ y: 50, opacity: 0 }}
-                     whileInView={{ y: 0, opacity: 1 }}
-                     viewport={{ once: true }}
-                     transition={{ duration: 0.6 }}
+                     initial={{ y: 30, opacity: 0 }}
+                     animate={{ y: 0, opacity: 1 }}
+                     transition={{ duration: 0.3, delay: 0.3 }}
                   >
                      <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
                         {t('multimediaDev.goals.title', 'Цель программы')}
@@ -286,10 +281,9 @@ const MultimediaDev = () => {
                   {/* Career Opportunities Section */}
                   <motion.div
                      className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 mb-8"
-                     initial={{ y: 50, opacity: 0 }}
-                     whileInView={{ y: 0, opacity: 1 }}
-                     viewport={{ once: true }}
-                     transition={{ duration: 0.6 }}
+                     initial={{ y: 30, opacity: 0 }}
+                     animate={{ y: 0, opacity: 1 }}
+                     transition={{ duration: 0.3, delay: 0.4 }}
                   >
                      <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
                         {t('multimediaDev.career.title', 'Возможности карьерного роста')}

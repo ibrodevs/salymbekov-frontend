@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
 import { FiCalendar, FiMapPin, FiUsers } from 'react-icons/fi';
+import { useTranslation } from 'react-i18next';
 
 const EurasianCongress = () => {
+  const { t } = useTranslation();
+
   const photos = [
     '569463330_18091761859843726_8716094070503701710_n.jpg',
     '569862386_18091761841843726_5569057568147858840_n.jpg',
@@ -20,15 +23,15 @@ const EurasianCongress = () => {
         animate={{ opacity: 1 }}
         className="relative h-[70vh] overflow-hidden"
       >
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ 
+          style={{
             backgroundImage: `url('/src/assets/applicant/orientatioin/news/1.jpg')`,
             filter: 'brightness(0.7)'
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        
+
         <div className="relative h-full flex items-end">
           <div className="max-w-7xl mx-auto px-8 pb-16 text-white">
             <motion.div
@@ -39,19 +42,23 @@ const EurasianCongress = () => {
               <div className="flex items-center gap-4 mb-6">
                 <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
                   <FiCalendar className="w-5 h-5" />
-                  <span className="font-semibold">17-19 октября 2025</span>
+                  <span className="font-semibold">
+                    {t('eurasianCongress.hero.date', '17-19 октября 2025')}
+                  </span>
                 </div>
                 <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
                   <FiMapPin className="w-5 h-5" />
-                  <span className="font-semibold">Бухара, Узбекистан</span>
+                  <span className="font-semibold">
+                    {t('eurasianCongress.hero.location', 'Бухара, Узбекистан')}
+                  </span>
                 </div>
               </div>
-              
+
               <h1 className="text-5xl md:text-6xl font-bold mb-4 leading-tight">
-                XII Евразийский конгресс детских врачей
+                {t('eurasianCongress.hero.title', 'XII Евразийский конгресс детских врачей')}
               </h1>
               <p className="text-2xl text-blue-100 font-medium">
-                «Ребёнок и общество: проблемы здоровья, развития и питания»
+                {t('eurasianCongress.hero.subtitle', '«Ребёнок и общество: проблемы здоровья, развития и питания»')}
               </p>
             </motion.div>
           </div>
@@ -73,17 +80,21 @@ const EurasianCongress = () => {
                 {/* Key Info */}
                 <div>
                   <h2 className="text-2xl font-bold bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent mb-6">
-                    О конгрессе
+                    {t('eurasianCongress.about.title', 'О конгрессе')}
                   </h2>
-                  
+
                   <div className="space-y-6">
                     <div className="flex items-start gap-4">
                       <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center flex-shrink-0">
                         <FiUsers className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <h3 className="font-bold text-gray-900 mb-1">Участники</h3>
-                        <p className="text-gray-600">Более 280 специалистов из 12 стран</p>
+                        <h3 className="font-bold text-gray-900 mb-1">
+                          {t('eurasianCongress.about.participants.title', 'Участники')}
+                        </h3>
+                        <p className="text-gray-600">
+                          {t('eurasianCongress.about.participants.description', 'Более 280 специалистов из 12 стран')}
+                        </p>
                       </div>
                     </div>
 
@@ -92,8 +103,12 @@ const EurasianCongress = () => {
                         <FiMapPin className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <h3 className="font-bold text-gray-900 mb-1">Страны-участницы</h3>
-                        <p className="text-gray-600">США, Китай, Россия, Казахстан, Кыргызстан и др.</p>
+                        <h3 className="font-bold text-gray-900 mb-1">
+                          {t('eurasianCongress.about.countries.title', 'Страны-участницы')}
+                        </h3>
+                        <p className="text-gray-600">
+                          {t('eurasianCongress.about.countries.description', 'США, Китай, Россия, Казахстан, Кыргызстан и др.')}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -101,38 +116,40 @@ const EurasianCongress = () => {
 
                 {/* Description */}
                 <div className="border-t pt-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">Описание</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">
+                    {t('eurasianCongress.description.title', 'Описание')}
+                  </h3>
                   <div className="space-y-4 text-gray-700 leading-relaxed">
                     <p>
-                      С 17 по 19 октября 2025 года в древнем городе Бухара (Узбекистан) состоялся XII Евразийский конгресс детских врачей под названием «Ребёнок и общество: проблемы здоровья, развития и питания».
+                      {t('eurasianCongress.description.paragraph1', 'С 17 по 19 октября 2025 года в древнем городе Бухара (Узбекистан) состоялся XII Евразийский конгресс детских врачей под названием «Ребёнок и общество: проблемы здоровья, развития и питания».')}
                     </p>
-                    
+
                     <p className="font-semibold text-gray-900">
-                      Организаторы:
+                      {t('eurasianCongress.description.organizers', 'Организаторы:')}
                     </p>
                     <ul className="list-disc list-inside space-y-2 text-gray-600">
-                      <li>Министерство здравоохранения Республики Узбекистан</li>
-                      <li>Бухарский государственный медицинский институт имени Абу Али ибн Сино</li>
-                      <li>Евразийская федерация детских врачей</li>
+                      <li>{t('eurasianCongress.description.organizer1', 'Министерство здравоохранения Республики Узбекистан')}</li>
+                      <li>{t('eurasianCongress.description.organizer2', 'Бухарский государственный медицинский институт имени Абу Али ибн Сино')}</li>
+                      <li>{t('eurasianCongress.description.organizer3', 'Евразийская федерация детских врачей')}</li>
                     </ul>
 
                     <div className="bg-gradient-to-r from-blue-50 to-cyan-50 p-4 rounded-xl border-l-4 border-blue-500">
                       <p className="text-gray-800">
-                        👨‍⚕️ <strong>От имени Кыргызстана и Салымбеков Университета</strong> активное участие в работе конгресса принял профессор К.А. Узакбаев, президент Евразийской федерации детских врачей.
+                        {t('eurasianCongress.description.highlight1', 'От имени Кыргызстана и Салымбеков Университета активное участие в работе конгресса принял профессор К.А. Узакбаев, президент Евразийской федерации детских врачей.')}
                       </p>
                     </div>
 
                     <p>
-                      Он представил доклад о диагностике, лечении и реабилитации детей с расстройствами аутистического спектра (РАС), отметив важность международного сотрудничества и обмена опытом.
+                      {t('eurasianCongress.description.paragraph2', 'Он представил доклад о диагностике, лечении и реабилитации детей с расстройствами аутистического спектра (РАС), отметив важность международного сотрудничества и обмена опытом.')}
                     </p>
 
                     <p>
-                      🎯 Конгресс стал значимой площадкой для продвижения научных достижений, укрепления международных связей и поддержки молодых специалистов в сфере педиатрии.
+                      {t('eurasianCongress.description.paragraph3', 'Конгресс стал значимой площадкой для продвижения научных достижений, укрепления международных связей и поддержки молодых специалистов в сфере педиатрии.')}
                     </p>
 
                     <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-4 rounded-xl border-l-4 border-purple-500 mt-6">
                       <p className="text-gray-800 font-semibold">
-                        📅 Следующий, XIII Евразийский конгресс детских врачей, состоится 17–19 мая 2026 года в городе Сиань (Китай).
+                        {t('eurasianCongress.description.highlight2', 'Следующий, XIII Евразийский конгресс детских врачей, состоится 17–19 мая 2026 года в городе Сиань (Китай).')}
                       </p>
                     </div>
                   </div>
@@ -148,9 +165,9 @@ const EurasianCongress = () => {
               className="lg:col-span-2"
             >
               <h2 className="text-3xl font-bold bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent mb-8">
-                Фотогалерея
+                {t('eurasianCongress.gallery.title', 'Фотогалерея')}
               </h2>
-              
+
               <div className="space-y-6">
                 {photos.map((photo, index) => (
                   <motion.div
@@ -163,7 +180,7 @@ const EurasianCongress = () => {
                   >
                     <img
                       src={`/src/assets/applicant/orientatioin/news/first_scroll/${photo}`}
-                      alt={`Конгресс детских врачей ${index + 1}`}
+                      alt={t('eurasianCongress.gallery.photoAlt', 'Конгресс детских врачей') + ` ${index + 1}`}
                       className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
                       onError={(e) => {
                         e.target.src = 'https://via.placeholder.com/1200x800/0077B6/FFFFFF?text=XII+Eurasian+Congress';

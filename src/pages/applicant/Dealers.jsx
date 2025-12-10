@@ -1,47 +1,35 @@
-import React, { useMemo } from 'react';
-import { motion } from 'framer-motion';
+import React from 'react';
 import { FiMapPin, FiPhone, FiMail, FiUser } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import ExtraNavigation from './extrapages/ExtraNavigation';
+import { useTranslation } from 'react-i18next';
 
 const Dealers = () => {
   const navigate = useNavigate();
-
-  // Animated background balls
-  const backgroundBalls = useMemo(() => {
-    return Array.from({ length: 12 }, (_, i) => ({
-      id: i,
-      size: Math.random() * 300 + 100,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      duration: Math.random() * 20 + 15,
-      delay: Math.random() * 5,
-      color: ['from-blue-400/20 to-purple-400/20', 'from-green-400/20 to-blue-400/20', 'from-purple-400/20 to-pink-400/20'][i % 3]
-    }));
-  }, []);
+  const { t } = useTranslation();
 
   const countries = [
     {
       id: 1,
-      name: 'Индия',
+      name: t('dealers.countries.india.name', 'Индия'),
       flag: '🇮🇳',
-      description: 'Страна с богатой культурой и историей',
+      description: t('dealers.countries.india.description', 'Страна с богатой культурой и историей'),
       color: 'from-orange-500 to-pink-500',
       route: '/applicants/dealers/india'
     },
     {
       id: 2,
-      name: 'Пакистан',
+      name: t('dealers.countries.pakistan.name', 'Пакистан'),
       flag: '🇵🇰',
-      description: 'Исламская республика в Южной Азии',
+      description: t('dealers.countries.pakistan.description', 'Исламская республика в Южной Азии'),
       color: 'from-green-500 to-white',
       route: '/applicants/dealers/pakistan'
     },
     {
       id: 3,
-      name: 'Узбекистан',
+      name: t('dealers.countries.uzbekistan.name', 'Узбекистан'),
       flag: '🇺🇿',
-      description: 'Страна в Центральной Азии с древними городами',
+      description: t('dealers.countries.uzbekistan.description', 'Страна в Центральной Азии с древними городами'),
       color: 'from-blue-500 to-white',
       route: '/applicants/dealers/uzbekistan'
     }
@@ -49,38 +37,8 @@ const Dealers = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 relative overflow-hidden">
-      {/* Animated Background Balls */}
-      {backgroundBalls.map((ball) => (
-        <motion.div
-          key={ball.id}
-          className={`absolute rounded-full bg-gradient-to-br ${ball.color} blur-3xl`}
-          style={{
-            width: ball.size,
-            height: ball.size,
-            left: `${ball.x}%`,
-            top: `${ball.y}%`,
-          }}
-          animate={{
-            x: [0, 30, -30, 0],
-            y: [0, -30, 30, 0],
-            scale: [1, 1.1, 0.9, 1],
-          }}
-          transition={{
-            duration: ball.duration,
-            delay: ball.delay,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      ))}
-
       {/* Hero Section */}
-      <motion.div
-        className="relative h-[60vh] flex items-center justify-center overflow-hidden"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
+      <div className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#023E8A]/95 via-[#0077B6]/95 to-[#0096C7]/95 z-0">
           <div
             className="absolute inset-0 opacity-30"
@@ -93,24 +51,14 @@ const Dealers = () => {
         </div>
 
         <div className="relative z-10 container mx-auto px-4 text-center text-white">
-          <motion.h1
-            className="text-6xl md:text-7xl font-bold mb-6"
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-          >
-            Партнеры — Официальные дилеры
-          </motion.h1>
-          <motion.p
-            className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto"
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-          >
-            Выберите страну для получения подробной информации
-          </motion.p>
+          <h1 className="text-6xl md:text-7xl font-bold mb-6">
+            {t('dealers.hero.title', 'Партнеры — Официальные дилеры')}
+          </h1>
+          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
+            {t('dealers.hero.subtitle', 'Выберите страну для получения подробной информации')}
+          </p>
         </div>
-      </motion.div>
+      </div>
 
       {/* Main Content with Navigation */}
       <div className="relative z-10 container mx-auto px-4 -mt-20">
@@ -125,14 +73,9 @@ const Dealers = () => {
             {/* Countries Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
               {countries.map((country, index) => (
-                <motion.div
+                <div
                   key={country.id}
-                  className="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer group"
-                  initial={{ y: 50, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                  whileHover={{ y: -5 }}
+                  className="bg-white rounded-2xl shadow-xl overflow-hidden cursor-pointer group"
                   onClick={() => navigate(country.route)}
                 >
                   {/* Card Header with Gradient */}
@@ -155,14 +98,14 @@ const Dealers = () => {
 
                     <div className="flex items-center justify-between">
                       <span className="text-sm text-gray-500">
-                        Нажмите для подробностей
+                        {t('dealers.card.cta', 'Нажмите для подробностей')}
                       </span>
-                      <div className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-4 py-2 rounded-full text-sm font-semibold transform transition-transform group-hover:scale-110">
-                        Подробнее →
+                      <div className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-4 py-2 rounded-full text-sm font-semibold">
+                        {t('dealers.card.button', 'Подробнее')} →
                       </div>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>

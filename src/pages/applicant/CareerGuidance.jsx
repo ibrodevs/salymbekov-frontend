@@ -13,7 +13,7 @@ const CareerGuidance = () => {
   const events = [
     {
       id: 1,
-      title: 'Караван знаний в Караколе',
+      titleKey: 'careerGuidance.orientationEvents.knowledgeCaravanKarakol.title',
       date: '30.05.2025',
       category: 'Профориентация',
       image: '/src/assets/applicant/orientatioin/1.jpg',
@@ -21,7 +21,7 @@ const CareerGuidance = () => {
     },
     {
       id: 2,
-      title: 'Билим кербени Ош шаарында',
+      titleKey: 'careerGuidance.orientationEvents.knowledgeCaravanOsh.title',
       date: '23.05.2024',
       category: 'Мероприятие',
       image: '/src/assets/applicant/orientatioin/2.webp',
@@ -29,7 +29,7 @@ const CareerGuidance = () => {
     },
     {
       id: 3,
-      title: 'Меморандум о сотрудничестве со школой-гимназией 68',
+      titleKey: 'careerGuidance.orientationEvents.cooperationMemorandum.title',
       date: '14.03.2023',
       category: 'Новости',
       image: '/src/assets/applicant/orientatioin/3.jpg',
@@ -37,7 +37,7 @@ const CareerGuidance = () => {
     },
     {
       id: 4,
-      title: 'Встречи с студентами из Пакистана',
+      titleKey: 'careerGuidance.orientationEvents.meetingPakistaniStudents.title',
       date: '14.03.2023',
       category: 'Новости',
       image: '/src/assets/applicant/orientatioin/4.jpg',
@@ -48,49 +48,49 @@ const CareerGuidance = () => {
   const newsItems = [
     {
       id: 1,
-      title: t('careerGuidance.newsList.eurasianCongress.title'),
-      description: t('careerGuidance.newsList.eurasianCongress.description'),
-      date: t('careerGuidance.newsList.eurasianCongress.date'),
+      titleKey: 'careerGuidance.newsList.eurasianCongress.title',
+      descriptionKey: 'careerGuidance.newsList.eurasianCongress.description',
+      date: '15.11.2023',
       image: '/src/assets/applicant/orientatioin/news/1.jpg',
       link: '/applicants/career-guidance/news/eurasian-congress'
     },
     {
       id: 2,
-      title: t('careerGuidance.newsList.itSecurityMeeting.title'),
-      description: t('careerGuidance.newsList.itSecurityMeeting.description'),
-      date: t('careerGuidance.newsList.itSecurityMeeting.date'),
+      titleKey: 'careerGuidance.newsList.itSecurityMeeting.title',
+      descriptionKey: 'careerGuidance.newsList.itSecurityMeeting.description',
+      date: '10.11.2023',
       image: '/src/assets/applicant/orientatioin/news/2.jpg',
       link: '/applicants/career-guidance/news/it-security-meeting'
     },
     {
       id: 3,
-      title: t('careerGuidance.newsList.paiChaiVisit.title'),
-      description: t('careerGuidance.newsList.paiChaiVisit.description'),
-      date: t('careerGuidance.newsList.paiChaiVisit.date'),
+      titleKey: 'careerGuidance.newsList.paiChaiVisit.title',
+      descriptionKey: 'careerGuidance.newsList.paiChaiVisit.description',
+      date: '05.11.2023',
       image: '/src/assets/applicant/orientatioin/news/3.jpg',
       link: '/applicants/career-guidance/news/pai-chai-visit'
     },
     {
       id: 4,
-      title: t('careerGuidance.newsList.youthForum.title'),
-      description: t('careerGuidance.newsList.youthForum.description'),
-      date: t('careerGuidance.newsList.youthForum.date'),
+      titleKey: 'careerGuidance.newsList.youthForum.title',
+      descriptionKey: 'careerGuidance.newsList.youthForum.description',
+      date: '28.10.2023',
       image: '/src/assets/applicant/orientatioin/events/4.jpg',
       link: '/applicants/career-guidance/news/youth-forum'
     },
     {
       id: 5,
-      title: t('careerGuidance.newsList.chungAngVisit.title'),
-      description: t('careerGuidance.newsList.chungAngVisit.description'),
-      date: t('careerGuidance.newsList.chungAngVisit.date'),
+      titleKey: 'careerGuidance.newsList.chungAngVisit.title',
+      descriptionKey: 'careerGuidance.newsList.chungAngVisit.description',
+      date: '20.10.2023',
       image: '/src/assets/applicant/orientatioin/events/5.jpg',
       link: '/applicants/career-guidance/news/chung-ang-visit'
     },
     {
       id: 6,
-      title: t('careerGuidance.newsList.asiaCharityCenter.title'),
-      description: t('careerGuidance.newsList.asiaCharityCenter.description'),
-      date: t('careerGuidance.newsList.asiaCharityCenter.date'),
+      titleKey: 'careerGuidance.newsList.asiaCharityCenter.title',
+      descriptionKey: 'careerGuidance.newsList.asiaCharityCenter.description',
+      date: '15.10.2023',
       image: '/src/assets/applicant/orientatioin/events/6.jpg',
       link: '/applicants/career-guidance/news/asia-charity-center'
     }
@@ -200,7 +200,7 @@ const CareerGuidance = () => {
                         <div className="relative h-48 overflow-hidden">
                           <img
                             src="/src/assets/applicant/orientatioin/events/1.jpg"
-                            alt="День учителя"
+                            alt={t('careerGuidance.eventsList.teachersDay.title')}
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -237,7 +237,7 @@ const CareerGuidance = () => {
                         <div className="relative h-48 overflow-hidden">
                           <img
                             src="/src/assets/applicant/orientatioin/events/2.jpg"
-                            alt="День государственного языка"
+                            alt={t('careerGuidance.eventsList.stateLanguageDay.title')}
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -274,7 +274,7 @@ const CareerGuidance = () => {
                         <div className="relative h-48 overflow-hidden">
                           <img
                             src="/src/assets/applicant/orientatioin/events/3.jpg"
-                            alt="Визит Культурного центра Бэксан"
+                            alt={t('careerGuidance.eventsList.koreanCenter.title')}
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -311,7 +311,7 @@ const CareerGuidance = () => {
                         <div className="relative h-48 overflow-hidden">
                           <img
                             src="/src/assets/applicant/orientatioin/events/4.jpg"
-                            alt="Международная медицинская миссия"
+                            alt={t('careerGuidance.eventsList.medicalMission.title')}
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -348,7 +348,7 @@ const CareerGuidance = () => {
                         <div className="relative h-48 overflow-hidden">
                           <img
                             src="/src/assets/applicant/orientatioin/events/5.jpg"
-                            alt="Выпускной 2025"
+                            alt={t('careerGuidance.eventsList.graduation2025.title')}
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -385,7 +385,7 @@ const CareerGuidance = () => {
                         <div className="relative h-48 overflow-hidden">
                           <img
                             src="/src/assets/applicant/orientatioin/events/6.jpg"
-                            alt="Вручение дипломов"
+                            alt={t('careerGuidance.eventsList.diplomaAward.title')}
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -439,10 +439,10 @@ const CareerGuidance = () => {
                           <div className="relative h-48 overflow-hidden">
                             <img
                               src={news.image}
-                              alt={news.title}
+                              alt={t(news.titleKey)}
                               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                               onError={(e) => {
-                                e.target.src = 'https://via.placeholder.com/800x600/0077B6/FFFFFF?text=' + encodeURIComponent(news.title);
+                                e.target.src = 'https://via.placeholder.com/800x600/0077B6/FFFFFF?text=' + encodeURIComponent(t(news.titleKey));
                               }}
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -453,10 +453,10 @@ const CareerGuidance = () => {
                           </div>
                           <div className="p-5">
                             <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors duration-300">
-                              {news.title}
+                              {t(news.titleKey)}
                             </h3>
                             <p className="text-gray-600 text-sm mb-4 line-clamp-3">
-                              {news.description}
+                              {t(news.descriptionKey)}
                             </p>
                             <div className="flex items-center gap-2 text-blue-600 font-semibold group-hover:gap-3 transition-all duration-300">
                               <span>{t('careerGuidance.readMore')}</span>
@@ -500,10 +500,10 @@ const CareerGuidance = () => {
                           <div className="absolute inset-0">
                             <img
                               src={event.image}
-                              alt={event.title}
+                              alt={t(event.titleKey)}
                               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                               onError={(e) => {
-                                e.target.src = 'https://via.placeholder.com/800x600/0077B6/FFFFFF?text=' + encodeURIComponent(event.title);
+                                e.target.src = 'https://via.placeholder.com/800x600/0077B6/FFFFFF?text=' + encodeURIComponent(t(event.titleKey));
                               }}
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
@@ -512,7 +512,7 @@ const CareerGuidance = () => {
                           <div className="relative h-full flex flex-col justify-end p-8">
                             <div>
                               <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-blue-200 transition-colors">
-                                {event.title}
+                                {t(event.titleKey)}
                               </h3>
                               <div className="flex items-center text-gray-300">
                                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

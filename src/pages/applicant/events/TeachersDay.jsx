@@ -2,8 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FiArrowLeft, FiCalendar } from 'react-icons/fi';
+import { useTranslation } from 'react-i18next';
 
 const TeachersDay = () => {
+  const { t } = useTranslation();
+
   const photos = [
     '560196518_18089232502843726_1870381636086821075_n.jpg',
     '560553062_18089232550843726_1085349650060356682_n.jpg',
@@ -41,10 +44,10 @@ const TeachersDay = () => {
               <span className="text-xl">15.10.2025</span>
             </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              День учителя в Международном колледже IT и бизнеса
+              {t('teachersDay.hero.title')}
             </h1>
             <p className="text-xl md:text-2xl text-white/90">
-              Салымбеков Университет
+              {t('teachersDay.hero.subtitle')}
             </p>
           </motion.div>
         </div>
@@ -55,7 +58,7 @@ const TeachersDay = () => {
           className="absolute top-8 left-8 z-20 flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-white/20 transition-all duration-300"
         >
           <FiArrowLeft className="w-5 h-5" />
-          <span>Назад</span>
+          <span>{t('teachersDay.backButton')}</span>
         </Link>
       </div>
 
@@ -70,24 +73,24 @@ const TeachersDay = () => {
             className="lg:w-1/3"
           >
             <div className="bg-white rounded-2xl shadow-xl p-8 sticky top-8">
-              <h3 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
-                📚✨ День учителя
+              <h3 className="text-2xl font-bold text-gray-800 mb-6">
+                {t('teachersDay.leftSide.title')}
               </h3>
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p className="font-semibold text-lg">
-                  День учителя в Международном колледже IT и бизнеса Салымбеков Университета!
+                  {t('teachersDay.leftSide.paragraphs.p1')}
                 </p>
                 <p>
-                  Студенты нашего колледжа с благодарностью и теплом отметили День учителя! 🌸
+                  {t('teachersDay.leftSide.paragraphs.p2')}
                 </p>
                 <p>
-                  🎉 В этот праздничный день звучали слова признательности в адрес преподавателей, которые каждый день делятся своими знаниями и вдохновляют студентов на успех.
+                  {t('teachersDay.leftSide.paragraphs.p3')}
                 </p>
                 <p>
-                  Студенты подготовили музыкальные номера, поздравления и приятные сюрпризы, создав атмосферу радости и уважения.
+                  {t('teachersDay.leftSide.paragraphs.p4')}
                 </p>
                 <p className="font-semibold">
-                  👏 Мы гордимся нашими преподавателями — людьми, которые не просто учат, а вдохновляют и помогают каждому студенту раскрыть свой потенциал!
+                  {t('teachersDay.leftSide.paragraphs.p5')}
                 </p>
               </div>
             </div>
@@ -112,10 +115,10 @@ const TeachersDay = () => {
                 >
                   <img
                     src={`/src/assets/applicant/orientatioin/events/first_scroll/${photo}`}
-                    alt={`День учителя фото ${index + 1}`}
+                    alt={t('teachersDay.photoAlt', { number: index + 1 })}
                     className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
                     onError={(e) => {
-                      e.target.src = 'https://via.placeholder.com/1200x800/0077B6/FFFFFF?text=День+учителя';
+                      e.target.src = `https://via.placeholder.com/1200x800/0077B6/FFFFFF?text=${encodeURIComponent(t('teachersDay.hero.title'))}`;
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

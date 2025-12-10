@@ -2,8 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FiArrowLeft, FiCalendar } from 'react-icons/fi';
+import { useTranslation } from 'react-i18next';
 
 const KoreanCenter = () => {
+  const { t } = useTranslation();
+
   const photos = [
     '544888915_18086649625843726_32511543409878500_n.jpg',
     '545392404_18086649550843726_5901533624627670400_n.jpg',
@@ -42,10 +45,10 @@ const KoreanCenter = () => {
               <span className="text-xl">13.10.2025</span>
             </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              Визит Культурного центра Бэксан
+              {t('koreanCenter.hero.title', 'Визит Культурного центра Бэксан')}
             </h1>
             <p className="text-xl md:text-2xl text-white/90">
-              Республика Корея
+              {t('koreanCenter.hero.subtitle', 'Республика Корея')}
             </p>
           </motion.div>
         </div>
@@ -55,7 +58,7 @@ const KoreanCenter = () => {
           className="absolute top-8 left-8 z-20 flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-white/20 transition-all duration-300"
         >
           <FiArrowLeft className="w-5 h-5" />
-          <span>Назад</span>
+          <span>{t('koreanCenter.hero.backButton', 'Назад')}</span>
         </Link>
       </div>
 
@@ -70,23 +73,23 @@ const KoreanCenter = () => {
           >
             <div className="bg-white rounded-2xl shadow-xl p-8 sticky top-8">
               <h3 className="text-2xl font-bold text-gray-800 mb-6">
-                Baeksan Cultural Center Visit
+                {t('koreanCenter.description.title', 'Визит Культурного центра Бэксан')}
               </h3>
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>
-                  On September 12, Salymbekov University was honored to host the Baeksan Cultural Center (Republic of Korea).
+                  {t('koreanCenter.description.paragraph1', '12 сентября Салымбеков Университет был удостоен чести принять Культурный центр Бэксан (Республика Корея).')}
                 </p>
                 <p>
-                  A vibrant cultural program was presented for our students and faculty:
+                  {t('koreanCenter.description.paragraph2', 'Для наших студентов и преподавателей была представлена яркая культурная программа:')}
                 </p>
-                <ul className="space-y-2">
-                  <li>🎭 traditional Korean mask dance</li>
-                  <li>💃 modern Korean dance</li>
-                  <li>🎤 vocal performances</li>
-                  <li>🎻 electronic violin performance</li>
+                <ul className="space-y-2 list-disc list-inside">
+                  <li>{t('koreanCenter.description.listItem1', 'традиционный корейский танец в масках')}</li>
+                  <li>{t('koreanCenter.description.listItem2', 'современный корейский танец')}</li>
+                  <li>{t('koreanCenter.description.listItem3', 'вокальные выступления')}</li>
+                  <li>{t('koreanCenter.description.listItem4', 'выступление на электронной скрипке')}</li>
                 </ul>
                 <p className="font-semibold">
-                  A highlight of the event was the hands-on workshop on making a jewelry box from Korean paper Hanji (한지), giving participants a chance to experience the rich traditions and artistry of Korea. ✨✨
+                  {t('koreanCenter.description.paragraph3', 'Особенностью мероприятия стал мастер-класс по изготовлению шкатулки из корейской бумаги Ханди, который дал участникам возможность познакомиться с богатыми традициями и искусством Кореи.')}
                 </p>
               </div>
             </div>
@@ -111,10 +114,10 @@ const KoreanCenter = () => {
                 >
                   <img
                     src={`/src/assets/applicant/orientatioin/events/third_scroll/${photo}`}
-                    alt={`Baeksan Cultural Center photo ${index + 1}`}
+                    alt={t('koreanCenter.photoAlt', 'Культурный центр Бэксан фото') + ` ${index + 1}`}
                     className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
                     onError={(e) => {
-                      e.target.src = 'https://via.placeholder.com/1200x800/0077B6/FFFFFF?text=Korean+Cultural+Center';
+                      e.target.src = 'https://via.placeholder.com/1200x800/0077B6/FFFFFF?text=' + t('koreanCenter.photoAlt', 'Korean+Cultural+Center');
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

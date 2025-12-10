@@ -9,7 +9,7 @@ import backImage from '../../assets/clinical/dordoi-ophtmalmic/back.jpg';
 
 // Импорт всех изображений для галереи
 const scrollingImages = Object.values(
-  import.meta.glob('../../assets/clinical/dordoi-ophtmalmic/scrolling/*.{jpg,jpeg,png,webp}', { eager: true })
+   import.meta.glob('../../assets/clinical/dordoi-ophtmalmic/scrolling/*.{jpg,jpeg,png,webp}', { eager: true })
 ).map(m => m.default);
 
 const DordoiOphthalmic = () => {

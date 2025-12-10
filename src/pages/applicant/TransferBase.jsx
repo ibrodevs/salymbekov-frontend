@@ -2,9 +2,9 @@ import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FiUsers, FiBookOpen, FiDollarSign, FiClipboard, FiAward, FiStar, FiCalendar, FiCheckCircle, FiCompass, FiMapPin, FiRepeat, FiUserCheck } from 'react-icons/fi';
+import { FiFileText, FiBookOpen, FiCalendar } from 'react-icons/fi';
 
-const ApplicantBase = () => {
+const TransferBase = () => {
    const { t } = useTranslation();
 
    const animatedBalls = useMemo(() => {
@@ -21,97 +21,26 @@ const ApplicantBase = () => {
    const sections = [
       {
          id: 1,
-         title: t('applicant.applicantBase.commission.title', 'Приемная комиссия'),
-         description: t('applicant.applicantBase.commission.description', 'Информация о приемной комиссии университета'),
-         icon: FiUsers,
-         link: '/applicants/commission',
+         title: t('transferBase.sections.documents.title', 'Необходимые документы'),
+         description: t('transferBase.sections.documents.description', 'Список документов для перевода из других вузов'),
+         icon: FiFileText,
+         link: '/applicants/transfer/documents',
          color: 'from-blue-500 to-cyan-500'
       },
       {
          id: 2,
-         title: t('applicant.applicantBase.directions.title', 'Направления подготовки'),
-         description: t('applicant.applicantBase.directions.description', 'Все направления и специальности обучения'),
+         title: t('transferBase.sections.rules.title', 'Положение перевода'),
+         description: t('transferBase.sections.rules.description', 'Официальные правила и положения о переводе'),
          icon: FiBookOpen,
-         link: '/applicants/directions',
+         link: '/applicants/transfer/rules',
          color: 'from-blue-500 to-cyan-500'
       },
       {
          id: 3,
-         title: t('applicant.applicantBase.cost.title', 'Стоимость обучения'),
-         description: t('applicant.applicantBase.cost.description', 'Актуальные цены и условия оплаты'),
-         icon: FiDollarSign,
-         link: '/applicants/cost',
-         color: 'from-blue-500 to-cyan-500'
-      },
-      {
-         id: 5,
-         title: t('applicant.applicantBase.scholarships.title', 'Стипендии и льготы'),
-         description: t('applicant.applicantBase.scholarships.description', 'Информация о стипендиях для студентов'),
-         icon: FiAward,
-         link: '/applicants/scholarships',
-         color: 'from-blue-500 to-cyan-500'
-      },
-      {
-         id: 6,
-         title: t('applicant.applicantBase.adaptation.title', 'Адаптационная программа'),
-         description: t('applicant.applicantBase.adaptation.description', 'Программа адаптации для первокурсников'),
-         icon: FiStar,
-         link: '/applicants/adaptation',
-         color: 'from-blue-500 to-cyan-500'
-      },
-      {
-         id: 7,
-         title: t('applicant.applicantBase.admissionRules.title', 'Правила и план приема'),
-         description: t('applicant.applicantBase.admissionRules.description', 'Официальные правила и план приема'),
-         icon: FiCheckCircle,
-         link: '/applicants/admission-rules',
-         color: 'from-blue-500 to-cyan-500'
-      },
-      {
-         id: 8,
-         title: t('applicant.applicantBase.ort.title', 'Прием по ОРТ'),
-         description: t('applicant.applicantBase.ort.description', 'Информация о приеме по результатам ОРТ'),
+         title: t('transferBase.sections.schedule.title', 'График перевода'),
+         description: t('transferBase.sections.schedule.description', 'Сроки и график приема документов на перевод'),
          icon: FiCalendar,
-         link: '/applicants/ort',
-         color: 'from-blue-500 to-cyan-500'
-      },
-      {
-         id: 9,
-         title: t('applicant.applicantBase.careerGuidance.title', 'Профориентация'),
-         description: t('applicant.applicantBase.careerGuidance.description', 'Помощь в выборе профессии'),
-         icon: FiCompass,
-         link: '/applicants/career-guidance',
-         color: 'from-blue-500 to-cyan-500'
-      },
-      {
-         id: 10,
-         title: t('applicant.applicantBase.transfer.title', 'Порядок перевода'),
-         description: t('applicant.applicantBase.transfer.description', 'Перевод из других вузов'),
-         icon: FiRepeat,
-         link: '/applicants/transfer',
-         color: 'from-blue-500 to-cyan-500'
-      },
-      {
-         id: 11,
-         title: t('applicant.applicantBase.dealers.title', 'Официальные дилеры'),
-         description: t('applicant.applicantBase.dealers.description', 'Наши партнеры и представители'),
-         icon: FiUserCheck,
-         link: '/applicants/dealers',
-         color: 'from-blue-500 to-cyan-500'
-      },
-      {
-         id: 12,
-         title: t('applicant.applicantBase.infrastructure.title', 'Инфраструктура университета'),
-         description: t('applicant.applicantBase.infrastructure.description', 'Кампус, общежития и удобства'),
-         icon: FiMapPin,
-         link: '/applicants/infrastructure',
-         color: 'from-blue-500 to-cyan-500'
-      },
-      {
-         id: 13,
-         title: t('applicant.applicantBase.comisionOrder.title', 'Порядок приема'),
-         icon: FiCheckCircle,
-         link: '/applicants/admission-procedure',
+         link: '/applicants/transfer/schedule',
          color: 'from-blue-500 to-cyan-500'
       }
    ];
@@ -177,10 +106,10 @@ const ApplicantBase = () => {
                   className="text-center mb-16"
                >
                   <h1 className="text-5xl font-bold text-gray-900 mb-4">
-                     {t('applicant.applicantBase.title', 'Абитуриенту')}
+                     {t('transferBase.header.title', 'Порядок перевода')}
                   </h1>
                   <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                     {t('applicant.applicantBase.subtitle', 'Вся необходимая информация для поступления в Университет Салымбекова')}
+                     {t('transferBase.header.subtitle', 'Информация о переводе из других высших учебных заведений')}
                   </p>
                </motion.div>
 
@@ -189,7 +118,7 @@ const ApplicantBase = () => {
                   variants={containerVariants}
                   initial="hidden"
                   animate="visible"
-                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
+                  className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
                >
                   {sections.map((section) => {
                      const IconComponent = section.icon;
@@ -237,7 +166,7 @@ const ApplicantBase = () => {
                                     {/* Learn More Link */}
                                     <div className="flex items-center justify-between">
                                        <span className={`text-sm font-semibold bg-gradient-to-r ${section.color} bg-clip-text text-transparent`}>
-                                          {t('applicant.applicantBase.learnMore', 'Подробнее')}
+                                          {t('transferBase.learnMore', 'Подробнее')}
                                        </span>
                                        <motion.div
                                           animate={{ x: [0, 5, 0] }}
@@ -250,9 +179,6 @@ const ApplicantBase = () => {
                                        </motion.div>
                                     </div>
                                  </div>
-
-                                 {/* Decorative Corner Elements */}
-
                               </motion.div>
                            </Link>
                         </motion.div>
@@ -265,4 +191,4 @@ const ApplicantBase = () => {
    );
 };
 
-export default ApplicantBase;
+export default TransferBase;

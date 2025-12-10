@@ -57,7 +57,6 @@ const CareerCenter = lazy(() => import('./pages/university/departments/CareerCen
 const NationalAcc = lazy(() => import('./pages/university/accreditation/National'))
 const InstitutionalAcc = lazy(() => import('./pages/university/accreditation/Institutional'))
 const ProgramAcc = lazy(() => import('./pages/university/accreditation/Program'))
-const InternationalAcc = lazy(() => import('./pages/university/accreditation/International'))
 
 // FoundingDocs sub
 const Charter = lazy(() => import('./pages/university/foundingDocs/Charter'))
@@ -68,7 +67,6 @@ const StrategicDocs = lazy(() => import('./pages/university/foundingDocs/Strateg
 // NormativeDocs sub
 const KRActs = lazy(() => import('./pages/university/normativeDocs/KRActs'))
 const InternalActs = lazy(() => import('./pages/university/normativeDocs/InternalActs'))
-const QualitySystem = lazy(() => import('./pages/university/normativeDocs/QualitySystem'))
 
 // Cooperation sub
 const UniversitiesCoop = lazy(() => import('./pages/university/cooperation/Universities'))
@@ -89,7 +87,6 @@ const Center = lazy(() => import('./pages/education/Center'))
 
 // Clinical lazy imports
 const Lazmed = lazy(() => import('./pages/clinical/Lazmed'))
-const Dordoi = lazy(() => import('./pages/clinical/Dordoi'))
 const DocClinic = lazy(() => import('./pages/clinical/DocClinic'))
 const DocHospital = lazy(() => import('./pages/clinical/DocHospital'))
 const Agreements = lazy(() => import('./pages/clinical/Agreements'))
@@ -232,7 +229,6 @@ const App = () => {
           <Route path="/university/accreditation/national" element={<NationalAcc />} />
           <Route path="/university/accreditation/institutional" element={<InstitutionalAcc />} />
           <Route path="/university/accreditation/program" element={<ProgramAcc />} />
-          <Route path="/university/accreditation/international" element={<InternationalAcc />} />
           <Route path="/university/founding-docs" element={<FoundingDocs />} />
           <Route path="/university/founding-docs/charter" element={<Charter />} />
           <Route path="/university/founding-docs/licenses" element={<Licenses />} />
@@ -240,9 +236,7 @@ const App = () => {
           <Route path="/university/founding-docs/strategic" element={<StrategicDocs />} />
           <Route path="/university/normative-docs" element={<NormativeDocs />} />
           <Route path="/university/normative-docs/kr-acts" element={<KRActs />} />
-          <Route path="/university/normative-docs/internal-acts" element={<InternalActs />} />
-          <Route path="/university/normative-docs/quality-system" element={<QualitySystem />} />
-          <Route path="/university/cooperation" element={<Cooperation />} />
+          <Route path="/university/normative-docs/internal-acts" element={<InternalActs />} />          <Route path="/university/cooperation" element={<Cooperation />} />
           <Route path="/university/cooperation/universities" element={<UniversitiesCoop />} />
           <Route path="/university/cooperation/clinics" element={<ClinicsCoop />} />
           <Route path="/university/brandbook" element={<Brandbook />} />
@@ -260,9 +254,7 @@ const App = () => {
           <Route path="/education/center" element={<Center />} />
           {}
           {}
-          <Route path="/clinical/lazmed" element={<Lazmed />} />
-          <Route path="/clinical/dordoi" element={<Dordoi />} />
-          <Route path="/clinical/doc-clinic" element={<DocClinic />} />
+          <Route path="/clinical/lazmed" element={<Lazmed />} />          <Route path="/clinical/doc-clinic" element={<DocClinic />} />
           <Route path="/clinical/doc-hospital" element={<DocHospital />} />
           <Route path="/clinical/agreements" element={<Agreements />} />
           {/* Lazy Science */}

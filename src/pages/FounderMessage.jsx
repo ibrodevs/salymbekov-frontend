@@ -20,7 +20,7 @@ const FounderMessage = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-            {t('founderMessage.title')}
+            {t('founderMessageHero.title')}
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-[#023E8A] to-[#0077B6] mx-auto rounded-full"></div>
         </motion.div>
@@ -40,7 +40,7 @@ const FounderMessage = () => {
                 <div className="aspect-[9/16] w-full">
                   <img 
                     src="/askar.jpg" 
-                    alt={t('founderMessage.imageAlt')}
+                    alt={t('founderMessageHero.imageAlt')}
                     className="w-full h-full object-cover"
                     onError={(e) => {
                       // Fallback если изображение не загрузилось
@@ -53,8 +53,8 @@ const FounderMessage = () => {
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                           </svg>
                         </div>
-                        <p class="text-base font-medium">${t('founderMessage.founderName')}</p>
-                        <p class="text-xs text-gray-500 mt-1">${t('founderMessage.founderPosition')}</p>
+                        <p class="text-base font-medium">${t('founderMessageHero.founderName')}</p>
+                        <p class="text-xs text-gray-500 mt-1">${t('founderMessageHero.founderPosition')}</p>
                       `;
                       e.target.parentNode.appendChild(fallback);
                     }}
@@ -64,10 +64,10 @@ const FounderMessage = () => {
               
               <div className="mt-4 text-center">
                 <h3 className="text-lg font-bold text-gray-800">
-                  {t('founderMessage.founderName')}
+                  {t('founderMessageHero.founderName')}
                 </h3>
                 <p className="text-gray-600 text-sm mt-1">
-                  {t('founderMessage.founderPosition')}
+                  {t('founderMessageHero.founderPosition')}
                 </p>
               </div>
             </div>
@@ -86,18 +86,19 @@ const FounderMessage = () => {
             className="space-y-6"
           >
             <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
-              <p>{t('founderMessage.paragraph1')}</p>
-              <p>{t('founderMessage.paragraph2')}</p>
+              <p>{t('founderMessageHero.paragraph1')}</p>
+              <p>{t('founderMessageHero.paragraph2')}</p>
             </div>
 
             <motion.button
-              whileHover={{ scale: 1.05, x: 5 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-3 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-8 py-4 rounded-2xl font-semibold hover:shadow-xl transition-all duration-300 group"
-            >
-              <span>{t('founderMessage.readMore')}</span>
-              <FaArrowRight className="text-sm group-hover:translate-x-1 transition-transform" />
-            </motion.button>
+            whileHover={{ scale: 1.05, x: 5 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => window.location.href = '/university/Appeal'} // или другой путь
+             className="inline-flex items-center gap-3 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-8 py-4 rounded-2xl font-semibold hover:shadow-xl transition-all duration-300 group"
+>
+  <span>{t('founderMessageHero.readMore')}</span>
+  <FaArrowRight className="text-sm group-hover:translate-x-1 transition-transform" />
+</motion.button>
           </motion.div>
         </div>
       </div>

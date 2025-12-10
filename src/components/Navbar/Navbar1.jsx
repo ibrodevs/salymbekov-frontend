@@ -396,106 +396,135 @@ const Navbar = () => {
     }
   };
 
-  const renderFullscreenDropdown = (menuKey, items) => (
-    <div
-      className={`fixed top-20 left-0 right-0 bg-white/98 backdrop-blur-2xl shadow-2xl border-t border-blue-100 transition-all duration-500 overflow-hidden ${
-        activeDropdown === menuKey 
-          ? 'h-[calc(100vh-80px)] opacity-100 visible' 
-          : 'h-0 opacity-0 invisible'
-      }`}
-      onMouseEnter={() => handleDropdownEnter(menuKey)}
-      onMouseLeave={handleDropdownLeave}
-    >
-      <div className="container mx-auto px-6 py-8 h-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 h-full overflow-y-auto">
-          {items.map((item, index) => (
-            <div 
-              key={item.key} 
-              className="group relative"
-              style={{ animationDelay: `${index * 50}ms` }}
-            >
-              <div className={`p-6 rounded-2xl transition-all duration-500 ${
-                item.subItems 
-                  ? 'bg-blue-50 border-2 border-blue-100 hover:border-blue-300' 
-                  : 'bg-white border border-gray-100 hover:border-blue-200 hover:shadow-lg'
-              } ${activeDropdown === menuKey ? 'animate-fadeInUp' : ''}`}>
-                
-                {/* Main Item */}
-                <Link
-                  to={item.link}
-                  className={`block mb-3 transition-all duration-300 group-hover:translate-x-2 ${
-                    item.subItems ? 'text-blue-900' : 'text-gray-900'
-                  }`}
-                  onClick={() => setActiveDropdown(null)}
-                >
-                  <h3 className={`text-xl font-bold mb-2 ${
-                    item.subItems ? 'text-blue-800' : 'text-gray-800'
-                  }`}>
-                    {t(`${menuKey}SUB.${item.key}`)}
-                  </h3>
-                 
-                </Link>
+  const renderFullscreenDropdown = (menuKey, items) => {
+    // Разделяем элементы на те, у которых есть подпункты (синие) и те, у которых нет (белые)
+    const itemsWithSubItems = items.filter(item => item.subItems && item.subItems.length > 0);
+    const itemsWithoutSubItems = items.filter(item => !item.subItems || item.subItems.length === 0);
+    
+    return (
+      <div
+        className={`fixed top-20 left-0 right-0 bg-white/98 backdrop-blur-2xl shadow-2xl border-t border-blue-100 transition-all duration-500 overflow-hidden ${
+          activeDropdown === menuKey 
+            ? 'h-[calc(100vh-80px)] opacity-100 visible' 
+            : 'h-0 opacity-0 invisible'
+        }`}
+        onMouseEnter={() => handleDropdownEnter(menuKey)}
+        onMouseLeave={handleDropdownLeave}
+      >
+        <div className="container mx-auto px-6 py-6 h-full">
+          <div className="flex gap-6 h-full overflow-y-auto">
+            {/* Левая часть - элементы с подпунктами (синие карточки) */}
+            {itemsWithSubItems.length > 0 && (
+              <div className="flex-1">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {itemsWithSubItems.map((item, index) => (
+                    <div 
+                      key={item.key} 
+                      className="group"
+                      style={{ animationDelay: `${index * 50}ms` }}
+                    >
+                      <div className={`p-4 rounded-lg transition-all duration-300 bg-blue-50 border border-blue-100 hover:border-blue-300 hover:shadow-md ${
+                        activeDropdown === menuKey ? 'animate-fadeInUp' : ''
+                      }`}>
+                        
+                        {/* Main Item */}
+                        <Link
+                          to={item.link}
+                          className="block mb-2 transition-all duration-300 group-hover:translate-x-1 text-blue-900"
+                          onClick={() => setActiveDropdown(null)}
+                        >
+                          <h3 className="text-base font-bold mb-2 text-blue-800">
+                            {t(`${menuKey}SUB.${item.key}`)}
+                          </h3>
+                        </Link>
 
-                {/* Sub Items */}
-                {item.subItems && (
-                  <div className="space-y-2">
-                    {item.subItems.map((subItem, subIndex) => (
+                        {/* Sub Items */}
+                        {item.subItems && (
+                          <div className="space-y-1">
+                            {item.subItems.map((subItem, subIndex) => (
+                              <Link
+                                key={subItem.key}
+                                to={subItem.link}
+                                className="flex items-center py-1 px-2 text-gray-700 hover:text-blue-700 hover:bg-white rounded transition-all duration-200 group/sub"
+                                onClick={() => setActiveDropdown(null)}
+                                style={{ animationDelay: `${(index * 50) + (subIndex * 20)}ms` }}
+                              >
+                                <div className={`w-1.5 h-1.5 bg-blue-400 rounded-full mr-2 transition-all duration-200 group-hover/sub:scale-150 ${
+                                  activeDropdown === menuKey ? 'animate-pulse' : ''
+                                }`} />
+                                <span className="text-sm">
+                                  {t(`${menuKey}SUB.${subItem.key}`)}
+                                </span>
+                              </Link>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Правая часть - элементы без подпунктов (белый список) */}
+            {itemsWithoutSubItems.length > 0 && (
+              <div className="w-80 flex-shrink-0">
+                <div className="bg-white border border-gray-100 rounded-lg p-4">
+                  <h3 className="text-base font-bold mb-3 text-gray-800">
+                    {t('navbar.quickLinks', 'Quick Links')}
+                  </h3>
+                  <div className="space-y-1">
+                    {itemsWithoutSubItems.map((item, index) => (
                       <Link
-                        key={subItem.key}
-                        to={subItem.link}
-                        className="flex items-center py-2 px-3 text-gray-700 hover:text-blue-700 hover:bg-white rounded-xl transition-all duration-300 group/sub"
+                        key={item.key}
+                        to={item.link}
+                        className="flex items-center py-2 px-2 text-gray-700 hover:text-blue-700 hover:bg-blue-50 rounded transition-all duration-200 group/link"
                         onClick={() => setActiveDropdown(null)}
-                        style={{ animationDelay: `${(index * 50) + (subIndex * 20)}ms` }}
+                        style={{ animationDelay: `${index * 30}ms` }}
                       >
-                        <div className={`w-2 h-2 bg-blue-400 rounded-full mr-3 transition-all duration-300 group-hover/sub:scale-150 ${
-                          activeDropdown === menuKey ? 'animate-pulse' : ''
-                        }`} />
-                        <span className="text-sm font-medium">
-                          {t(`${menuKey}SUB.${subItem.key}`)}
-                        </span>
                         <svg 
-                          className="w-4 h-4 ml-auto opacity-0 group-hover/sub:opacity-100 transition-all duration-300 transform -translate-x-2 group-hover/sub:translate-x-0" 
+                          className="w-3.5 h-3.5 mr-2.5 text-blue-500 transition-all duration-200 group-hover/link:scale-110" 
                           fill="none" 
                           stroke="currentColor" 
                           viewBox="0 0 24 24"
                         >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                         </svg>
+                        <span className="text-sm">
+                          {t(`${menuKey}SUB.${item.key}`)}
+                        </span>
                       </Link>
                     ))}
                   </div>
-                )}
+                </div>
               </div>
+            )}
+          </div>
 
-              {/* Background Pattern */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-white/50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
+          {/* Quick Actions */}
+          <div className={`mt-6 pt-6 border-t border-gray-200 transition-all duration-700 ${
+            activeDropdown === menuKey ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }`}>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Link
+                to={`/${menuKey}`}
+                className="px-5 py-2.5 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300 hover:scale-105"
+                onClick={() => setActiveDropdown(null)}
+              >
+                {t('navbar.viewAll', 'View All')}
+              </Link>
+              <button
+                onClick={() => setActiveDropdown(null)}
+                className="px-5 py-2.5 border border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 transition-all duration-300"
+              >
+                {t('navbar.close', 'Close')}
+              </button>
             </div>
-          ))}
-        </div>
-
-        {/* Quick Actions */}
-        <div className={`mt-8 pt-8 border-t border-gray-200 transition-all duration-700 ${
-          activeDropdown === menuKey ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-        }`}>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link
-              to={`/${menuKey}`}
-              className="px-6 py-3 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition-all duration-300 hover:scale-105"
-              onClick={() => setActiveDropdown(null)}
-            >
-              {t('navbar.viewAll', 'View All')}
-            </Link>
-            <button
-              onClick={() => setActiveDropdown(null)}
-              className="px-6 py-3 border border-gray-300 text-gray-700 rounded-xl font-semibold hover:bg-gray-50 transition-all duration-300"
-            >
-              {t('navbar.close', 'Close')}
-            </button>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   const renderMobileMenu = () => (
     <div className={`lg:hidden absolute top-full left-0 right-0 bg-white shadow-2xl border-t border-blue-100 transition-all duration-500 ${

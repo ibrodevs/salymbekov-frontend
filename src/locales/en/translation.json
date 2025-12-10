@@ -8603,7 +8603,63 @@
       "itCollege": "IT College",
       "businessSchool": "Business School"
     }
+  },
+  "hero": {
+    "slide1": {
+      "title": "Welcome to Salymbekov University",
+      "description": "Leading medical education in Kyrgyzstan"
+    },
+    "slide2": {
+      "title": "Innovative Research",
+      "description": "Advancing medical science and technology"
+    },
+    "slide3": {
+      "title": "Quality Education",
+      "description": "Preparing future healthcare professionals"
+    }
+  },
+  "founderMessageHero": {
+    "title": "Message from the Founder",
+    "founderName": "Askar Salymbekov",
+    "founderPosition": "Founder of Salymbekov University",
+    "imageAlt": "Portrait of Askar Salymbekov",
+    "paragraph1": "Our university was founded with a vision to create a world-class educational institution that combines academic excellence with practical skills. We believe in nurturing not just professionals, but leaders who will shape the future of healthcare and technology.",
+    "paragraph2": "Through innovative teaching methods, state-of-the-art facilities, and strong industry partnerships, we are committed to providing our students with the knowledge and experience needed to excel in their chosen fields and make meaningful contributions to society.",
+    "readMore": "Read Full Message"
+  },
+  "newsHero": {
+    "title": "Latest News & Events",
+    "subtitle": "Stay updated with the latest developments and achievements at our university",
+    "readMore": "Read More",
+    "buttons": {
+      "allNews": "View All News"
+    },
+    "categories": {
+      "achievement": "Achievement",
+      "seminar": "Seminar",
+      "forum": "Forum"
+    },
+    "items": {
+      "professor": {
+        "title": "Professor Achieves International Recognition",
+        "description": "Our distinguished professor receives international award for groundbreaking research in medical science."
+      },
+      "seminar": {
+        "title": "International Medical Seminar",
+        "description": "Leading experts gather to discuss the latest advancements in healthcare and medical education."
+      },
+      "forum": {
+        "title": "Annual Research Forum 2025",
+        "description": "Students and faculty present innovative research projects at our annual academic forum."
+      }
+    }
+  },
+  "materialBaseHero": {
+    "title": "Material and Technical Base",
+    "description": "Modern infrastructure and advanced equipment to support quality education and research",
+    "cost": "Total investment in infrastructure: $15 million"
   }
+
 
 
 

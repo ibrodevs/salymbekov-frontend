@@ -6,14 +6,249 @@ import {
   FaArrowLeft,
   FaBook,
   FaDownload,
-  FaFileAlt
+  FaFileAlt,
+  FaExternalLinkAlt
 } from 'react-icons/fa';
+
+// Импорты PDF файлов
+import SravnitelnyAnaliz from '../../assets/science/publications/sravnitelnyj-analiz-predstavlenij-o-professii-bakalavra-sestrinskogo-dela-u-studentov-i-prepodavatelej.pdf';
+import Raimkulova from '../../assets/science/publications/raimkulova.pdf';
+import Raimkulova2 from '../../assets/science/publications/raimkulova2.pdf';
+import SakibaevOshgu from '../../assets/science/publications/sakibaev-oshgu.pdf';
+import SakibaevMuscle from '../../assets/science/publications/sakibaev-osobennosti-myshechnogo-komponenta.pdf';
+import Somaticheskie from '../../assets/science/publications/somaticheskie-osobennosti-detej-g.-osh.pdf';
+import Solovev from '../../assets/science/publications/solovev-sosudisto-tkanevye-otnoshenija.pdf';
+import Alekseeva from '../../assets/science/publications/alekseeva.pdf';
+import Parazity from '../../assets/science/publications/parazity-i-ih-vlijanie-na-organizm-cheloveka.pdf';
+import Fedorova from '../../assets/science/publications/fedorova-iksodovye-kleshhi.pdf';
+import Adamdyn from '../../assets/science/publications/adamdyn-fizikalyk-abaly.pdf';
+import Ajbalaev from '../../assets/science/publications/ajbalaev-psihologo-pedagogicheskie-problemy.pdf';
+import Dinamika from '../../assets/science/publications/dinamika-psihicheskih-kachestv.pdf';
+import Akylbekova from '../../assets/science/publications/akylbekova-ospurum-baldardyn.pdf';
+import Bijnazarova from '../../assets/science/publications/bijnazarova-teoreticheskoe-obosnovanie-problemy-1.pdf';
+import Bolotova from '../../assets/science/publications/bolotova-akyndar-pojezijasy.pdf';
+import Moldokmatova from '../../assets/science/publications/moldokmatova.pdf';
+import Osmonbaeva from '../../assets/science/publications/osmonbaeva-kriticheskoj-myshlenie.pdf';
+import Voprosy from '../../assets/science/publications/voprosy-kompleksnogo-prepodavanija-nacionalnyh-cennostej-dlja-studentov.pdf';
+import Tolobekov from '../../assets/science/publications/tolobekov-n.pdf';
+import Etnopedagogika from '../../assets/science/publications/jetnopedagogika-v-medicine.pdf';
+import Udk from '../../assets/science/publications/udk-378.pdf';
+import Vypusk from '../../assets/science/publications/vypusk-1i-vmio-2021g.pdf';
 
 const ScientificJournal = () => {
   const { t } = useTranslation();
   const [activeIssue, setActiveIssue] = useState(1);
 
+  // Возвращает название выпуска, если ключ journal.issues.{n} существует — используем его,
+  // иначе делаем fallback: "Выпуск №n" (или соответствующий перевод journal.issue)
+  const getIssueTitle = (issue) => {
+    const key = `journal.issues.${issue}`;
+    const translated = t(key);
+    // Если в текущей локали ключ отсутствует — i18next возвращает сам key
+    if (!translated || translated === key) {
+      return `${t('journal.issue')} №${issue}`;
+    }
+    return translated;
+  };
+
   const issues = Array.from({ length: 9 }, (_, i) => i + 1);
+
+  // Article data for Issue 1 с ПРЯМЫМИ ССЫЛКАМИ на импортированные файлы
+  const issue1Articles = {
+    sections: [
+      {
+        titleKey: "journal.sections.medical",
+        articles: [
+          {
+            title: t('journal.articles.comparativeAnalysis'),
+            authors: "Лапик С.В., Матвиенко В.В., Захарчук О.В.",
+            file: SravnitelnyAnaliz
+          },
+          {
+            title: t('journal.articles.kyrgyzParasites'),
+            authors: "Раимкулов К.М., Мамбет к. Гулина, АкылбековаА.А.",
+            file: Raimkulova
+          },
+          {
+            title: t('journal.articles.echinococcosisSituation'),
+            authors: "Раимкулов К.М., Тойгомбаева В.С., Куттубаев О.Т., Акылбекова А.А",
+            file: Raimkulova2
+          },
+          {
+            title: t('journal.articles.constitutionalFeatures'),
+            authors: "Сакибаев К.Ш.",
+            file: SakibaevOshgu
+          },
+          {
+            title: t('journal.articles.muscleComponent'),
+            authors: "Сакибаев К.Ш., Никитюк Д.Б.",
+            file: SakibaevMuscle
+          },
+          {
+            title: t('journal.articles.somatotypologicalCharacteristics'),
+            authors: "Саттаров А.Э., Тулекеев Т.М., Джолдошева Г.Т",
+            file: Somaticheskie
+          },
+          {
+            title: t('journal.articles.vascularTissueRelations'),
+            authors: "Соловьев Г.С., Матвиенко В.В., Соловьева О.Г., Шидин В.А., Шведский М.С., Захарчук О.В.",
+            file: Solovev
+          },
+          {
+            title: t('journal.articles.placentalIndicators'),
+            authors: "Н.М., Алексеева Н.Т., Тулекеев Т.М., Сакибаев К.Ш.",
+            file: Alekseeva
+          }
+        ]
+      },
+      {
+        titleKey: "journal.sections.biological",
+        articles: [
+          {
+            title: t('journal.articles.parasitesAndHealth'),
+            authors: "Сариева Н.А., Солпиева К.Т., Жалилова А.А. П",
+            file: Parazity
+          },
+          {
+            title: t('journal.articles.ixodidTicks'),
+            authors: "Федорова С.Ж., Жалилова А.А., Сариева Н.А., Солпиева К.Т.",
+            file: Fedorova
+          }
+        ]
+      },
+      {
+        titleKey: "journal.sections.pedagogical",
+        articles: [
+          {
+            title: t('journal.articles.physicalConditionGames'),
+            authors: "Абдырасулова Э.К., Акылбекова А.А.",
+            file: Adamdyn
+          },
+          {
+            title: t('journal.articles.volleyballProblems'),
+            authors: "Айбалаев А.Ж., Бейшекеев Э.М.",
+            file: Ajbalaev
+          },
+          {
+            title: t('journal.articles.mentalQualities'),
+            authors: "Айбалаев А.Ж., Байжигитов Б.Б.",
+            file: Dinamika
+          },
+          {
+            title: t('journal.articles.nationalGamesInfluence'),
+            authors: "Акылбекова А.А., Каримова С.Х.",
+            file: Akylbekova
+          },
+          {
+            title: t('journal.articles.communicationSkills'),
+            authors: "Бийназарова Н.С.",
+            file: Bijnazarova
+          },
+          {
+            title: t('journal.articles.poetryTeaching'),
+            authors: "Болотова А.Б.",
+            file: Bolotova
+          },
+          {
+            title: t('journal.articles.professionalCompetence'),
+            authors: "Молдокматова Н.Т.",
+            file: Moldokmatova
+          },
+          {
+            title: t('journal.articles.criticalThinking'),
+            authors: "Осмонбаева М.Т.",
+            file: Osmonbaeva
+          },
+          {
+            title: t('journal.articles.nationalValues'),
+            authors: "Токушева Т.С.",
+            file: Voprosy
+          },
+          {
+            title: t('journal.articles.morphologyResearch'),
+            authors: "Төлөбеков Н.Т.",
+            file: Tolobekov
+          },
+          {
+            title: t('journal.articles.ethnopedagogy'),
+            authors: "Шабданбаева Ж.",
+            file: Etnopedagogika
+          },
+          {
+            title: t('journal.articles.distanceLearning'),
+            authors: "Шайылдаева А.К.",
+            file: Udk
+          }
+        ]
+      },
+      {
+        titleKey: "journal.sections.reviews",
+        articles: [
+          {
+            title: t('journal.articles.liverDisease'),
+            authors: "Kniazev I.A.",
+            file: Vypusk
+          },
+          {
+            title: t('journal.articles.covidLungs'),
+            authors: "Мукашев М.Ш., Турганбаев А.Э., Турганбаев Ж.Т., Токтосун у. Б., Ибраимов А.Б.",
+            file: Vypusk
+          }
+        ]
+      }
+    ],
+    fullIssuePdf: Vypusk
+  };
+
+  // Безопасное открытие PDF
+  const openPdf = (pdfFile) => {
+    window.open(pdfFile, '_blank', 'noopener,noreferrer');
+  };
+
+  // Функция для скачивания полного выпуска
+  const downloadFullIssue = (pdfFile, fileName) => {
+    const link = document.createElement('a');
+    link.href = pdfFile;
+    link.download = fileName || `vestnik-issue-${activeIssue}.pdf`;
+    link.rel = 'noopener noreferrer';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const renderArticles = (section, sectionIndex) => {
+    return (
+      <div key={sectionIndex} className="mb-8">
+        <div className="flex items-center justify-between mb-4">
+          <h4 className="font-bold text-lg text-[#023E8A] uppercase border-b border-[#023E8A]/20 pb-2 flex-1">
+            {t(section.titleKey)}
+          </h4>
+        </div>
+        <div className="space-y-3">
+          {section.articles.map((article, articleIndex) => (
+            <motion.div
+              key={articleIndex}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: (sectionIndex * 0.1) + (articleIndex * 0.05) }}
+              className="bg-gray-50 p-4 rounded-lg border border-gray-200 hover:border-[#0077B6]/30 hover:shadow-md transition-all group"
+            >
+              <p className="text-gray-900 font-medium mb-2 leading-relaxed">{article.title}</p>
+              <p className="text-sm text-gray-600 mb-3">{article.authors}</p>
+              <button 
+                onClick={() => openPdf(article.file)}
+                className="text-[#0077B6] hover:text-[#023E8A] text-sm font-semibold flex items-center gap-2 group-hover:gap-3 transition-all"
+              >
+                <FaExternalLinkAlt className="text-xs" />
+                {t('journal.openPdf')}
+              </button>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -70,7 +305,7 @@ const ScientificJournal = () => {
             className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors group"
           >
             <FaArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" />
-            Назад к науке
+            {t('journal.backToScience')}
           </Link>
 
           <motion.div
@@ -80,14 +315,14 @@ const ScientificJournal = () => {
           >
             <div className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-4">
               <span className="text-white/90 text-sm font-medium">
-                {t('science.journal.badge')}
+                {t('journal.badge')}
               </span>
             </div>
             <h1 className="text-5xl font-bold mb-4">
-              {t('science.journal.title')}
+              {t('journal.title')}
             </h1>
             <p className="text-xl text-white/90 max-w-3xl">
-              {t('science.journal.subtitle')}
+              {t('journal.subtitle')}
             </p>
           </motion.div>
         </div>
@@ -107,7 +342,7 @@ const ScientificJournal = () => {
               <div className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-4">
                 <div className="flex items-center">
                   <FaBook className="mr-3 text-xl" />
-                  <h3 className="font-bold text-lg">{t('science.journal.issuesTitle')}</h3>
+                  <h3 className="font-bold text-lg">{t('journal.issuesTitle')}</h3>
                 </div>
               </div>
               <nav className="p-2">
@@ -123,7 +358,7 @@ const ScientificJournal = () => {
                         : 'text-gray-700 hover:bg-gray-50'
                     }`}
                   >
-                    {t('science.journal.issue')} №{issue}
+                    {getIssueTitle(issue)}
                   </motion.button>
                 ))}
               </nav>
@@ -143,14 +378,16 @@ const ScientificJournal = () => {
                 <div className="w-12 h-12 bg-gradient-to-br from-[#023E8A] to-[#0077B6] rounded-xl flex items-center justify-center mr-4">
                   <FaFileAlt className="text-white text-xl" />
                 </div>
-                <h2 className="text-3xl font-bold text-gray-900">О журнале</h2>
+                <h2 className="text-3xl font-bold text-gray-900">
+                  {t('journal.aboutJournal')}
+                </h2>
               </div>
               
               <p className="text-gray-700 text-lg leading-relaxed mb-4">
-                {t('science.journal.description')}
+                {t('journal.description')}
               </p>
               <p className="text-gray-700 text-lg leading-relaxed mb-6">
-                {t('science.journal.publishes')}
+                {t('journal.publishes')}
               </p>
               
               <div className="grid md:grid-cols-3 gap-4">
@@ -161,7 +398,9 @@ const ScientificJournal = () => {
                   <div className="w-10 h-10 bg-gradient-to-br from-[#023E8A] to-[#0077B6] rounded-lg flex items-center justify-center mb-3">
                     <span className="text-white font-bold">1</span>
                   </div>
-                  <p className="text-gray-900 font-semibold">{t('science.journal.directions.medical')}</p>
+                  <p className="text-gray-900 font-semibold">
+                    {t('journal.directions.medical')}
+                  </p>
                 </motion.div>
 
                 <motion.div
@@ -171,7 +410,9 @@ const ScientificJournal = () => {
                   <div className="w-10 h-10 bg-gradient-to-br from-[#023E8A] to-[#0077B6] rounded-lg flex items-center justify-center mb-3">
                     <span className="text-white font-bold">2</span>
                   </div>
-                  <p className="text-gray-900 font-semibold">{t('science.journal.directions.biological')}</p>
+                  <p className="text-gray-900 font-semibold">
+                    {t('journal.directions.biological')}
+                  </p>
                 </motion.div>
 
                 <motion.div
@@ -181,7 +422,9 @@ const ScientificJournal = () => {
                   <div className="w-10 h-10 bg-gradient-to-br from-[#023E8A] to-[#0077B6] rounded-lg flex items-center justify-center mb-3">
                     <span className="text-white font-bold">3</span>
                   </div>
-                  <p className="text-gray-900 font-semibold">{t('science.journal.directions.education')}</p>
+                  <p className="text-gray-900 font-semibold">
+                    {t('journal.directions.education')}
+                  </p>
                 </motion.div>
               </div>
             </motion.div>
@@ -194,80 +437,41 @@ const ScientificJournal = () => {
               transition={{ duration: 0.5 }}
               className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100"
             >
-              <div className="flex items-center justify-between mb-8">
-                <h2 className="text-3xl font-bold text-gray-900">
-                  {t('science.journal.issue')} №{activeIssue}
-                </h2>
-                <motion.a
-                  href="#"
+              <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-8 gap-4">
+                <div>
+                  <h2 className="text-3xl font-bold text-gray-900 mb-2">
+                    {getIssueTitle(activeIssue)}
+                  </h2>
+                  <p className="text-gray-600">
+                    {t('journal.title')}
+                  </p>
+                </div>
+                <motion.button
+                  onClick={() => downloadFullIssue(issue1Articles.fullIssuePdf, `vestnik-issue-${activeIssue}.pdf`)}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-3 rounded-xl font-semibold flex items-center gap-2 hover:shadow-lg transition-shadow"
+                  className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-3 rounded-xl font-semibold flex items-center gap-2 hover:shadow-lg transition-shadow whitespace-nowrap"
                 >
                   <FaDownload />
-                  {t('science.journal.downloadPdf')}
-                </motion.a>
+                  {t('journal.downloadPdf')}
+                </motion.button>
               </div>
 
               <h3 className="text-xl font-bold text-gray-900 mb-6 pb-3 border-b-2 border-gray-200">
-                {t('science.journal.articlesList')}
+                {t('journal.articlesList')}
               </h3>
 
-              {activeIssue === 1 && (
+              {activeIssue === 1 ? (
                 <div className="space-y-8">
-                  {/* Section I */}
-                  <div>
-                    <h4 className="font-bold text-lg text-[#023E8A] mb-4 uppercase">
-                      I. Вопросы фундаментальной и клинической медицины. Медицинское образование
-                    </h4>
-                    <div className="space-y-3">
-                      {[
-                        {
-                          title: "Сравнительный анализ представлений о профессии бакалавра сестринского дела у студентов и преподавателей.",
-                          authors: "Лапик С.В., Матвиенко В.В., Захарчук О.В."
-                        },
-                        {
-                          title: "Кыргыз Республикадагы мите курт ооруларынын жана бир нече мите курттарынын айкалышынын эпидемиологиялык абалы",
-                          authors: "Раимкулов К.М., Мамбет к. Гулина, АкылбековаА.А."
-                        },
-                        {
-                          title: "Современная эпидемиологическая ситуация по эхинококкозам в Кыргызской Республике на примере Ошской области",
-                          authors: "Раимкулов К.М., Тойгомбаева В.С., Куттубаев О.Т., Акылбекова А.А"
-                        }
-                      ].map((article, idx) => (
-                        <motion.div
-                          key={idx}
-                          initial={{ opacity: 0, x: -20 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 0.4, delay: idx * 0.05 }}
-                          className="bg-gray-50 p-4 rounded-lg border border-gray-200 hover:border-[#0077B6]/30 hover:shadow-md transition-all group"
-                        >
-                          <p className="text-gray-900 font-medium mb-2">{article.title}</p>
-                          <p className="text-sm text-gray-600 mb-3">{article.authors}</p>
-                          <a href="#" className="text-[#0077B6] hover:text-[#023E8A] text-sm font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
-                            <FaDownload className="text-xs" />
-                            PDF
-                          </a>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Placeholder for other sections */}
-                  <div className="text-center py-8 text-gray-500">
-                    <p>Остальные разделы и статьи...</p>
-                  </div>
+                  {issue1Articles.sections.map((section, index) => renderArticles(section, index))}
                 </div>
-              )}
-
-              {activeIssue !== 1 && (
+              ) : (
                 <div className="text-center py-12">
                   <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <FaBook className="text-4xl text-gray-400" />
                   </div>
                   <p className="text-gray-500 text-lg">
-                    Содержание выпуска №{activeIssue} скоро будет добавлено
+                    {t('journal.comingSoon', { issue: activeIssue })}
                   </p>
                 </div>
               )}

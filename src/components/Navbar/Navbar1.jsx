@@ -358,7 +358,12 @@ const Navbar = () => {
         }
       ]
     },
-    applicant: {
+
+
+
+    
+   applicant: {
+
       items: [
         { key: 'directions', link: '/applicants/directions' },
         { key: 'tuitionCost', link: '/applicants/cost' },
@@ -366,9 +371,9 @@ const Navbar = () => {
           key: 'admissionProcedure',
           link: '/applicants/admission',
           subItems: [
-            { key: 'requiredDocuments', link: '/applicants/admission/documents' },
-            { key: 'admissionRules', link: '/applicants/admission/rules' },
-            { key: 'admissionSchedule', link: '/applicants/admission/schedule' }
+            { key: 'requiredDocuments', link: '/applicant/documents' },
+            { key: 'admissionRules', link: '/applicant/rules' },
+            { key: 'admissionSchedule', link: '/applicant/schedule' }
           ]
         },
         {
@@ -388,6 +393,7 @@ const Navbar = () => {
             { key: 'transferSchedule', link: '/applicants/transfer/schedule' }
           ]
         },
+        { key: 'commission', link: '/applicants/commission' },
         { key: 'scholarships', link: '/applicants/scholarships' },
         { key: 'officialDealers', link: '/applicants/dealers' },
         { key: 'adaptationProgram', link: '/applicants/adaptation' },
@@ -395,7 +401,6 @@ const Navbar = () => {
       ]
     }
   };
-
   const renderFullscreenDropdown = (menuKey, items) => {
     // Разделяем элементы на те, у которых есть подпункты (синие) и те, у которых нет (белые)
     const itemsWithSubItems = items.filter(item => item.subItems && item.subItems.length > 0);

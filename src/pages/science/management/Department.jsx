@@ -1,263 +1,236 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
-import { 
-  FaArrowLeft, 
-  FaGlobe,
-  FaBullseye,
-  FaTasks,
-  FaUserTie
-} from 'react-icons/fa';
-import abdyldaevPhoto from '../../../assets/science/management/rysbek-aldagandaevich-250x300.jpg';
+import { FaUniversity, FaUserGraduate, FaBullseye, FaTasks, FaHandshake, FaGlobe, FaGraduationCap, FaExchangeAlt, FaUserFriends, FaChartLine, FaFileContract, FaBuilding, FaMoneyBillWave, FaProjectDiagram, FaUsers, FaInfoCircle, FaDatabase, FaChalkboardTeacher, FaMicroscope, FaUserTie, FaArrowLeft } from 'react-icons/fa';
+import DirectorPhoto from '../../../assets/science/management/rysbek-aldagandaevich-250x300.jpg';
 
-const Department = () => {
+const ScienceDepartment = () => {
+  const navigate = useNavigate();
   const { t } = useTranslation();
 
+  // Цели департамента
+  const goals = [
+    {
+      icon: <FaHandshake className="text-white text-xl" />,
+      titleKey: "scienceDepartment.goals.cooperation",
+      descriptionKey: "scienceDepartment.goals.cooperationDesc"
+    },
+    {
+      icon: <FaGlobe className="text-white text-xl" />,
+      titleKey: "scienceDepartment.goals.integration",
+      descriptionKey: "scienceDepartment.goals.integrationDesc"
+    }
+  ];
+
+  // Программы интеграции
+  const integrationPrograms = [
+    { nameKey: "scienceDepartment.integrationPrograms.academicExchange", icon: <FaExchangeAlt /> },
+    { nameKey: "scienceDepartment.integrationPrograms.staffExchange", icon: <FaUserFriends /> },
+    { nameKey: "scienceDepartment.integrationPrograms.training", icon: <FaGraduationCap /> },
+    { nameKey: "scienceDepartment.integrationPrograms.jointPrograms", icon: <FaFileContract /> },
+    { nameKey: "scienceDepartment.integrationPrograms.researchGrants", icon: <FaMicroscope /> },
+    { nameKey: "scienceDepartment.integrationPrograms.foreignStudents", icon: <FaUserTie /> }
+  ];
+
+  // Задачи департамента
   const tasks = [
-    "Организация на высоком профессиональном уровне международной деятельности факультетов и иных структурных подразделений Университета, координация их работы",
-    "Участие в формировании и реализации политики Университета в области международных и внешнеэкономических связей",
-    "Определение целесообразности заключения соглашений в области международных и внешнеэкономических связей Университета",
-    "Определение целесообразности открытия представительств и филиалов Университета в регионах и осуществление контроля за их деятельностью",
-    "Содействие в привлечении иностранных инвестиций",
-    "Формирование и реализация международных проектов и программ за рубежом и в Кыргызской Республике",
-    "Организация участия Университета в международных межвузовских ассоциациях и иных организациях",
-    "Осуществление информационно-представительской деятельности Университета",
-    "Развитие международных связей с учебными заведениями, фондами, и другими организациями зарубежных стран",
-    "Проведение аналитической работы по оценке состояния международной деятельности Университета",
-    "Ведение учета, анализа, информационное и организационное обеспечение деятельности Университета в сфере международных связей",
-    "Вовлечение профессорско-преподавательского состава в международное сотрудничество",
-    "Координация международного сотрудничества факультетов, кафедр и других структурных подразделений",
-    "Осуществление текущей консультационной и иной помощи подразделениям и сотрудникам Университета",
-    "Организация работы иностранных преподавателей в Университете",
-    "Организация обучения студентов, аспирантов, стажировок преподавателей и сотрудников за рубежом",
-    "Организация обучения иностранных студентов, аспирантов, докторантов и стажеров",
-    "Проведение маркетинговых исследований рынка международных образовательных услуг"
+    { nameKey: "scienceDepartment.tasks.organization", icon: <FaBuilding /> },
+    { nameKey: "scienceDepartment.tasks.policy", icon: <FaChartLine /> },
+    { nameKey: "scienceDepartment.tasks.agreements", icon: <FaFileContract /> },
+    { nameKey: "scienceDepartment.tasks.branches", icon: <FaBuilding /> },
+    { nameKey: "scienceDepartment.tasks.investments", icon: <FaMoneyBillWave /> },
+    { nameKey: "scienceDepartment.tasks.projects", icon: <FaProjectDiagram /> },
+    { nameKey: "scienceDepartment.tasks.associations", icon: <FaUsers /> },
+    { nameKey: "scienceDepartment.tasks.promotion", icon: <FaInfoCircle /> },
+    { nameKey: "scienceDepartment.tasks.connections", icon: <FaGlobe /> },
+    { nameKey: "scienceDepartment.tasks.analytics", icon: <FaChartLine /> },
+    { nameKey: "scienceDepartment.tasks.documentation", icon: <FaDatabase /> },
+    { nameKey: "scienceDepartment.tasks.staffInvolvement", icon: <FaChalkboardTeacher /> },
+    { nameKey: "scienceDepartment.tasks.coordination", icon: <FaUsers /> },
+    { nameKey: "scienceDepartment.tasks.consultation", icon: <FaHandshake /> },
+    { nameKey: "scienceDepartment.tasks.grants", icon: <FaMoneyBillWave /> },
+    { nameKey: "scienceDepartment.tasks.foreignTeachers", icon: <FaUserFriends /> },
+    { nameKey: "scienceDepartment.tasks.studentTraining", icon: <FaGraduationCap /> },
+    { nameKey: "scienceDepartment.tasks.foreignTraining", icon: <FaUserTie /> },
+    { nameKey: "scienceDepartment.tasks.marketing", icon: <FaChartLine /> }
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Animated Background */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        {[...Array(8)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full opacity-5"
-            style={{
-              width: Math.random() * 80 + 40,
-              height: Math.random() * 80 + 40,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              background: 'linear-gradient(135deg, #023E8A, #0077B6)'
-            }}
-            animate={{
-              y: [0, -30, 0],
-              x: [0, 15, 0],
-              scale: [1, 1.1, 1]
-            }}
-            transition={{
-              duration: 5 + Math.random() * 3,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Hero Section */}
-      <div className="relative bg-gradient-to-br from-[#023E8A] via-[#0077B6] to-[#023E8A] text-white py-24 overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden">
-          <motion.div
-            className="absolute inset-0"
-            animate={{
-              backgroundPosition: ['0% 0%', '100% 100%'],
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              repeatType: "reverse"
-            }}
-            style={{
-              backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 0%, transparent 50%)',
-              backgroundSize: '200% 200%'
-            }}
-          />
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link 
-            to="/science/management"
-            className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors group"
+    <div className="min-h-screen bg-gray-50 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Кнопка назад */}
+        <div className="mb-6">
+          <button 
+            onClick={() => navigate('/science')}
+            className="inline-flex items-center text-[#023E8A] hover:text-[#0077B6] transition-colors group"
           >
             <FaArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" />
-            Назад к органам управления
-          </Link>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-4">
-              <span className="text-white/90 text-sm font-medium">
-                {t('science.management.department.badge')}
-              </span>
-            </div>
-            <h1 className="text-5xl font-bold mb-4">
-              {t('science.management.department.title')}
-            </h1>
-            <p className="text-xl text-white/90 max-w-3xl">
-              {t('science.management.department.subtitle')}
-            </p>
-          </motion.div>
+            {t('scienceDepartment.backToScience')}
+          </button>
         </div>
-      </div>
 
-      {/* Main Content */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* Intro */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="bg-white rounded-2xl shadow-lg p-8 mb-8 border border-gray-100 hover:shadow-xl transition-shadow"
-        >
-          <div className="flex items-center mb-6">
-            <div className="w-12 h-12 bg-gradient-to-br from-[#023E8A] to-[#0077B6] rounded-xl flex items-center justify-center mr-4">
-              <FaGlobe className="text-white text-xl" />
-            </div>
-            <h2 className="text-3xl font-bold text-gray-900">О департаменте</h2>
+        {/* Hero Section */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-3 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-3 rounded-full mb-6">
+            <FaUniversity className="text-xl" />
+            <span className="font-semibold">{t('scienceDepartment.badge')}</span>
           </div>
-          <p className="text-gray-700 text-lg leading-relaxed">
-            {t('science.management.department.introText')}
+
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
+            {t('scienceDepartment.title')}
+          </h1>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            {t('scienceDepartment.subtitle')}
           </p>
-        </motion.div>
+        </div>
 
-        {/* Руководитель */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="bg-white rounded-2xl shadow-lg p-8 mb-8 border border-gray-100 hover:shadow-xl transition-shadow"
-        >
-          <div className="flex items-center mb-8">
-            <div className="w-12 h-12 bg-gradient-to-br from-[#023E8A] to-[#0077B6] rounded-xl flex items-center justify-center mr-4">
-              <FaUserTie className="text-white text-xl" />
-            </div>
-            <h2 className="text-3xl font-bold text-gray-900">
-              {t('science.management.department.headTitle')}
+        {/* Основная информация о департаменте */}
+        <div className="bg-white rounded-2xl shadow-lg p-8 mb-12 border border-gray-200">
+          <div className="mb-8">
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">
+              {t('scienceDepartment.about.title')}
             </h2>
+            <div className="space-y-4 text-gray-700 leading-relaxed">
+              <p>{t('scienceDepartment.about.description')}</p>
+            </div>
           </div>
-          
-          <div className="flex flex-col md:flex-row gap-8">
-            <motion.div 
-              className="flex-shrink-0"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
-            >
-              <img 
-                src={abdyldaevPhoto} 
-                alt="Абдылдаев Рыспек Алдагандаевич" 
-                className="w-64 h-auto rounded-2xl shadow-lg object-cover"
-              />
-            </motion.div>
+
+          {/* Руководитель С ФОТО */}
+          <div className="mb-12">
+            <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+              <FaUserGraduate className="mr-3 text-[#023E8A]" />
+              {t('scienceDepartment.director.title')}
+            </h2>
             
-            <div className="flex-1">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                {t('science.management.department.headName')}
+            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-200">
+              <div className="flex flex-col md:flex-row items-center gap-6">
+                {/* Фото руководителя */}
+                <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-white shadow-lg flex-shrink-0">
+                  {/* Если фото есть - используем его, если нет - заглушка */}
+                  {DirectorPhoto ? (
+                    <img 
+                      src={DirectorPhoto} 
+                      alt={t('scienceDepartment.director.name')}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.parentElement.innerHTML = '<div class="w-full h-full bg-gradient-to-br from-[#023E8A] to-[#0077B6] flex items-center justify-center"><FaUserGraduate className="text-white text-5xl" /></div>';
+                      }}
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-[#023E8A] to-[#0077B6] flex items-center justify-center">
+                      <FaUserGraduate className="text-white text-5xl" />
+                    </div>
+                  )}
+                </div>
+                
+                <div className="flex-1 text-center md:text-left">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                    {t('scienceDepartment.director.name')}
+                  </h3>
+                  <p className="text-lg text-[#0077B6] font-semibold mb-2">
+                    {t('scienceDepartment.director.position')}
+                  </p>
+                  <div className="text-gray-700 space-y-2">
+                    <p>{t('scienceDepartment.director.education')}</p>
+                    <p>{t('scienceDepartment.director.career')}</p>
+                    <p>{t('scienceDepartment.director.achievements')}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Цели */}
+          <div className="mb-12">
+            <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+              <FaBullseye className="mr-3 text-[#023E8A]" />
+              {t('scienceDepartment.goals.title')}
+            </h2>
+            
+            <div className="grid md:grid-cols-2 gap-6">
+              {goals.map((goal, index) => (
+                <div key={index} className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+                  <div className="flex items-start mb-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-[#023E8A] to-[#0077B6] rounded-full flex items-center justify-center mr-4">
+                      {goal.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-800 mb-2">
+                        {t(goal.titleKey)}
+                      </h3>
+                      <p className="text-gray-600 leading-relaxed">
+                        {t(goal.descriptionKey)}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Программы интеграции */}
+          <div className="mb-12">
+            <h3 className="text-xl font-semibold text-[#023E8A] mb-4">
+              {t('scienceDepartment.integration.title')}
+            </h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {integrationPrograms.map((program, index) => (
+                <div key={index} className="flex items-center p-3 bg-blue-50 rounded-lg">
+                  <div className="w-8 h-8 bg-gradient-to-br from-[#023E8A] to-[#0077B6] rounded-full flex items-center justify-center mr-3 text-white">
+                    {program.icon}
+                  </div>
+                  <span className="text-gray-700">{t(program.nameKey)}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Задачи */}
+          <div className="mb-8">
+            <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+              <FaTasks className="mr-3 text-[#023E8A]" />
+              {t('scienceDepartment.tasks.title')}
+            </h2>
+            
+            <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-6 border border-green-200">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {tasks.map((task, index) => (
+                  <div key={index} className="flex items-center p-3 bg-white/70 rounded-lg">
+                    <div className="w-8 h-8 bg-gradient-to-br from-[#023E8A] to-[#0077B6] rounded-full flex items-center justify-center mr-3">
+                      <span className="text-white text-sm font-bold">{index + 1}</span>
+                    </div>
+                    <div className="flex items-center">
+                      <span className="text-gray-700 mr-2">{t(task.nameKey)}</span>
+                      <div className="text-[#023E8A]">
+                        {task.icon}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Контактная информация */}
+          <div className="mt-12 pt-8 border-t border-gray-200">
+            <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-200">
+              <h3 className="text-xl font-bold text-gray-800 mb-4">
+                {t('scienceDepartment.contact.title')}
               </h3>
-              <p className="text-gray-700 text-lg leading-relaxed">
-                {t('science.management.department.headDesc')}
+              <p className="text-gray-600 mb-2">
+                {t('scienceDepartment.contact.description')}
+              </p>
+              <p className="text-gray-600">
+                <strong>{t('scienceDepartment.contact.email')}:</strong> science@salymbekov-university.edu.kg
               </p>
             </div>
           </div>
-        </motion.div>
-
-        {/* Цели */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="bg-white rounded-2xl shadow-lg p-8 mb-8 border border-gray-100 hover:shadow-xl transition-shadow"
-        >
-          <div className="flex items-center mb-6">
-            <div className="w-12 h-12 bg-gradient-to-br from-[#023E8A] to-[#0077B6] rounded-xl flex items-center justify-center mr-4">
-              <FaBullseye className="text-white text-xl" />
-            </div>
-            <h2 className="text-3xl font-bold text-gray-900">
-              {t('science.management.department.objectivesTitle')}
-            </h2>
-          </div>
-          
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">
-            {t('science.management.department.goalsTitle')}
-          </h3>
-          <div className="mb-8 space-y-4">
-            <p className="text-gray-700 text-lg leading-relaxed">
-              Организация и координация участия Университета в программах научного сотрудничества, способствующих повышению качества подготовки специалистов, реализации совместных научных исследований и, в целом, повышению престижа Университета на международном уровне.
-            </p>
-            <p className="text-gray-700 text-lg leading-relaxed">
-              Обеспечение интеграции Университета в международное университетское сообщество, получение дополнительных возможностей по ускоренному развитию в рамках:
-            </p>
-            <ul className="ml-6 space-y-2">
-              <li className="text-gray-700 text-lg flex items-start">
-                <span className="text-[#023E8A] mr-2">•</span>
-                программ академического обмена студентами
-              </li>
-              <li className="text-gray-700 text-lg flex items-start">
-                <span className="text-[#023E8A] mr-2">•</span>
-                программ обмена научно-педагогическими работниками
-              </li>
-              <li className="text-gray-700 text-lg flex items-start">
-                <span className="text-[#023E8A] mr-2">•</span>
-                программ повышения квалификации, стажировки
-              </li>
-              <li className="text-gray-700 text-lg flex items-start">
-                <span className="text-[#023E8A] mr-2">•</span>
-                создания совместных образовательных программ
-              </li>
-              <li className="text-gray-700 text-lg flex items-start">
-                <span className="text-[#023E8A] mr-2">•</span>
-                участия в совместных научно-исследовательских грантах
-              </li>
-              <li className="text-gray-700 text-lg flex items-start">
-                <span className="text-[#023E8A] mr-2">•</span>
-                приема и обучения иностранных граждан
-              </li>
-            </ul>
-          </div>
-
-          <h3 className="text-2xl font-bold text-gray-900 mb-6">
-            {t('science.management.department.tasksTitle')}
-          </h3>
-          <div className="grid md:grid-cols-2 gap-4">
-            {tasks.map((task, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.02 }}
-                className="bg-gradient-to-br from-gray-50 to-white p-5 rounded-xl border border-gray-200 hover:shadow-md transition-all hover:border-[#0077B6]/30 group"
-              >
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 w-7 h-7 bg-gradient-to-br from-[#023E8A] to-[#0077B6] rounded-lg flex items-center justify-center mr-3 mt-1">
-                    <span className="text-white text-xs font-bold">{index + 1}</span>
-                  </div>
-                  <p className="text-gray-700 leading-relaxed flex-1">
-                    {task}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );
 };
 
-export default Department;
+export default ScienceDepartment;

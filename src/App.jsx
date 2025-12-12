@@ -1,3 +1,4 @@
+
 import React, { lazy } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar1'
@@ -8,7 +9,6 @@ import Contact from './pages/Contact'
 import FounderMessage from './pages/FounderMessage'
 import MaterialBaseGallery from './pages/MaterialBaseGallery'
 import Footer from './pages/Footer'
-import ToTop from './components/ToTop'
 
 // Lazy imports for university
 
@@ -68,36 +68,9 @@ const StrategicDocs = lazy(() => import('./pages/university/foundingDocs/Strateg
 const KRActs = lazy(() => import('./pages/university/normativeDocs/KRActs'))
 const InternalActs = lazy(() => import('./pages/university/normativeDocs/InternalActs'))
 
-
 // Cooperation sub
 const UniversitiesCoop = lazy(() => import('./pages/university/cooperation/Universities'))
 const ClinicsCoop = lazy(() => import('./pages/university/cooperation/Clinics'))
-
-
-// Councils imports
-const DevCouncil = lazy(() => import('./pages/university/Сouncils/DevCouncil'))
-const AcadCouncil = lazy(() => import('./pages/university/Сouncils/AcadCouncil'))
-const CommissionSupport = lazy(() => import('./pages/university/Сouncils/CommissionSupport'))
-const BioethicsCommittee = lazy(() => import('./pages/university/Сouncils/BioethicsCommittee'))
-const EmployersCouncil = lazy(() => import('./pages/university/Сouncils/EmployersCouncil'))
-const ParentsCouncil = lazy(() => import('./pages/university/Сouncils/ParentsCouncil'))
-const StudentCouncil = lazy(() => import('./pages/university/Сouncils/StudentCouncil'))
-const EduCouncils = lazy(() => import('./pages/university/Сouncils/EduCouncil'))
-const ScienCouncil = lazy(() => import('./pages/university/Сouncils/ScienCouncil'))
-const EditBoard = lazy(() => import('./pages/university/Сouncils/EditBoard'))
-const AdmisCommittee = lazy(() => import('./pages/university/Сouncils/AdmisCommittee'))
-const CouncilScients = lazy(() => import('./pages/university/Сouncils/CouncilScients'))
-const TechnicalCouncil = lazy(() => import('./pages/university/Сouncils/TechnicalCouncil'))
-
-// Srategic Docs imports
-const StrategicDevelopPlans = lazy(() => import('./pages/university/StrategicDocs/StrategicDevelopPlans'))
-const AccountingPolicy = lazy(() => import('./pages/university/StrategicDocs/AccountingPolicy'))
-const HRPolicy = lazy(() => import('./pages/university/StrategicDocs/HR-Policy'))
-const StrategicVision = lazy(() => import('./pages/university/StrategicDocs/StrategicVision'))
-
-// Quality Management System imports
-const QualityPolity = lazy(() => import('./pages/university/QualityManagSystem/QualityPolity'))
-const QualityMonitoring = lazy(() => import('./pages/university/QualityManagSystem/QualityMonitoring'))
 
 // Education lazy imports
 const AboutAIT = lazy(() => import('./pages/education/ait/About'))
@@ -111,51 +84,9 @@ const ITCollegeEdu = lazy(() => import('./pages/education/ITCollege'))
 const BusinessSchoolEdu = lazy(() => import('./pages/education/BusinessSchool'))
 const Postgrad = lazy(() => import('./pages/education/Postgrad'))
 const Center = lazy(() => import('./pages/education/Center'))
-const Director = lazy(() => import('./pages/education/itCollege/Director'))
-const General = lazy(() => import('./pages/education/itCollege/Departments/General'))
-const Information = lazy(() => import('./pages/education/itCollege/Departments/Information'))
-const DiplomComScience = lazy(() => import('./pages/education/itCollege/Specialties/DiplomComScience'))
-const DiplomMobComputing = lazy(() => import('./pages/education/itCollege/Specialties/DiplomMobComputing'))
-const DiplomMultiApplications = lazy(() => import('./pages/education/itCollege/Specialties/DiplomMultiApplications'))
-const AboutITCollege = lazy(() => import('./pages/education/itCollege/About'))
-const ContactsITCollage = lazy(() => import('./pages/education/itCollege/Contacts'))
-const DoubleDiploma = lazy(() => import('./pages/education/itCollege/DoubleDiploma'))
-const Lincoln = lazy(() => import('./pages/education/itCollege/Lincoln'))
-const PedagogicalCouncil = lazy(() => import('./pages/education/itCollege/PedagogicalCouncil'))
-const Curriculum = lazy(() => import('./pages/education/mfm/Dekanat/Curriculum'))
-const Dean = lazy(() => import('./pages/education/mfm/Dekanat/Dean'))
-const DepartmentsMFM = lazy(() => import('./pages/education/mfm/Dekanat/Departments'))
-const FiveYears = lazy(() => import('./pages/education/mfm/Programs/FiveYears'))
-const SixYears = lazy(() => import('./pages/education/mfm/Programs/SixYears'))
-const AboutMFM = lazy(() => import('./pages/education/mfm/About'))
-const ContactsMFM = lazy(() => import('./pages/education/mfm/Contacts'))
-const FutureLeaders = lazy(() => import('./pages/education/businessSchool/Programs/FutureLeaders'))
-const OlderLeaders = lazy(() => import('./pages/education/businessSchool/Programs/OlderLeaders'))
-const SmartikLeaders = lazy(() => import('./pages/education/businessSchool/Programs/smartik'))
-const YoungLeaders = lazy(() => import('./pages/education/businessSchool/Programs/YoungLeaders'))
-const AboutBusinessSchool = lazy(() => import('./pages/education/businessSchool/About'))
-const ContactsBusinessSchool = lazy(() => import('./pages/education/businessSchool/Contacts'))
-const Managers = lazy(() => import('./pages/education/businessSchool/Managers'))
-const Trainers = lazy(() => import('./pages/education/businessSchool/Trainers'))
-const DirectorBusinessSchool = lazy(() => import('./pages/education/businessSchool/Director'))
-const InternshipPostgrad = lazy(() => import('./pages/education/postgrad/Internship'))
-const PhD = lazy(() => import('./pages/education/postgrad/PhD'))
-const Postgraduate = lazy(() => import('./pages/education/postgrad/Postgraduate'))
-const Residency = lazy(() => import('./pages/education/postgrad/Residency'))
-
-const AboutCenter = lazy(() => import('./pages/education/center/About'))
-const ContactsCenter = lazy(() => import('./pages/education/center/Contacts'))
-const ProgramsCenter = lazy(() => import('./pages/education/center/Programs'))
-const DirectorCenter = lazy(() => import('./pages/education/center/Director'))
-const ManagersCenter = lazy(() => import('./pages/education/center/Managers'))
-
-
-
 
 // Clinical lazy imports
-const ClinicalBase = lazy(() => import('./pages/clinical/ClinicalBase'))
 const Lazmed = lazy(() => import('./pages/clinical/Lazmed'))
-const DordoiOphthalmic = lazy(() => import('./pages/clinical/DordoiOphthalmic'))
 const DocClinic = lazy(() => import('./pages/clinical/DocClinic'))
 const DocHospital = lazy(() => import('./pages/clinical/DocHospital'))
 const Agreements = lazy(() => import('./pages/clinical/Agreements'))
@@ -207,10 +138,33 @@ const Shaltakova = lazy(() => import('./pages/science/professors/Shaltakova'))
 const Kachibek = lazy(() => import('./pages/science/professors/Kachibek'))
 
 // Student lazy imports
+const StudentMain = lazy(() => import('./pages/student/StudentMain'));
+const StudentCouncil = lazy(() => import('./pages/student/community/council'))
+const StudentScienceCommunity = lazy(() => import('./pages/student/community/science'))
 const StudentCommunities = lazy(() => import('./pages/student/communities/StudentCommunities'))
-const Resources = lazy(() => import('./pages/student/resources/Resources'))
+const DebateClub = lazy(() => import('./pages/student/communities/DebateClub'))
+const Tutoring = lazy(() => import('./pages/student/communities/Tutoring'))
+const CreativeGroups = lazy(() => import('./pages/student/communities/CreativeGroups'))
+
+const Instructions = lazy(() => import('./pages/student/resources/Instructions'))
+const InfoSystem = lazy(() => import('./pages/student/resources/InfoSystem'))
+const ELibrary = lazy(() => import('./pages/student/resources/ELibrary'))
+const EducationalResources = lazy(() => import('./pages/student/resources/EducationalResources'))
 const Schedules = lazy(() => import('./pages/student/schedules/Schedules'))
+const StudySchedule = lazy(() => import('./pages/student/schedules/StudySchedule'))
+const ModuleSchedule = lazy(() => import('./pages/student/schedules/ModuleSchedule'))
+const PracticeSchedule = lazy(() => import('./pages/student/schedules/PracticeSchedule'))
+const MFMSchedule = lazy(() => import('./pages/student/schedules/MFMSchedule'))
+const CollegeSchedule = lazy(() => import('./pages/student/schedules/CollegeSchedule'))
 const Conditions = lazy(() => import('./pages/student/conditions/Conditions'))
+const MedicalCenter = lazy(() => import('./pages/student/opportunities/MedicalCenter'))
+const Dormitory = lazy(() => import('./pages/student/opportunities/Dormitory'))
+const SocialSupport = lazy(() => import('./pages/student/opportunities/SocialSupport'))
+const ElectiveCourses = lazy(() => import('./pages/student/opportunities/ElectiveCourses'))
+const Mobility = lazy(() => import('./pages/student/opportunities/Mobility'))
+const PsychologicalSupport = lazy(() => import('./pages/student/opportunities/PsychologicalSupport'))
+const StudentService = lazy(() => import('./pages/student/opportunities/StudentService'))
+const AdaptationPrograms = lazy(() => import('./pages/student/opportunities/AdaptationPrograms'))
 
 // Applicant lazy imports
 const ApplicantBase = lazy(() => import('./pages/applicant/ApplicantBase'))
@@ -232,38 +186,6 @@ const CareerGuidance = lazy(() => import('./pages/applicant/CareerGuidance'))
 const AdmissionProcedure = lazy(() => import('./pages/applicant/AdmissionProcedure'))
 const AdmissionCom = lazy(() => import('./pages/applicant/AdmissionCom'))
 
-// Event pages lazy imports
-const TeachersDay = lazy(() => import('./pages/applicant/events/TeachersDay'))
-const StateLanguageDay = lazy(() => import('./pages/applicant/events/StateLanguageDay'))
-const KoreanCenter = lazy(() => import('./pages/applicant/events/KoreanCenter'))
-const MedicalMission = lazy(() => import('./pages/applicant/events/MedicalMission'))
-const Graduation2025 = lazy(() => import('./pages/applicant/events/Graduation2025'))
-const DiplomaAward = lazy(() => import('./pages/applicant/events/DiplomaAward'))
-
-// News pages lazy imports
-const EurasianCongress = lazy(() => import('./pages/applicant/news/EurasianCongress'))
-const ITSecurityMeeting = lazy(() => import('./pages/applicant/news/ITSecurityMeeting'))
-const PaiChaiVisit = lazy(() => import('./pages/applicant/news/PaiChaiVisit'))
-
-const KnowledgeKarakol = lazy(() => import('./pages/applicant/KnowledgeKarakol'))
-const KnowledgeOsh = lazy(() => import('./pages/applicant/KnowledgeOsh'))
-const ApplicantCooperation = lazy(() => import('./pages/applicant/Cooperation'))
-const Meeting = lazy(() => import('./pages/applicant/Meeting'))
-const Infrastructure = lazy(() => import('./pages/applicant/Infrastructure'))
-
-// Dealer countries lazy imports
-const India = lazy(() => import('./pages/applicant/countries/India'))
-const Pakistan = lazy(() => import('./pages/applicant/countries/Pakistan'))
-const UzbekistanCountry = lazy(() => import('./pages/applicant/countries/Uzbekistan'))
-const Software = lazy(() => import('./pages/applicant/extrapages/Software'))
-const MobileDev = lazy(() => import('./pages/applicant/extrapages/MobileDev'))
-const MultimediaDev = lazy(() => import('./pages/applicant/extrapages/MultimediaDev'))
-const Dicipline = lazy(() => import('./pages/applicant/extrapages/Dicipline'))
-const GeneralMedFive = lazy(() => import('./pages/applicant/extrapages/GeneralMedFive'))
-const GeneralMedSix = lazy(() => import('./pages/applicant/extrapages/GeneralMedSix'))
-const RequiredDoc = lazy(() => import('./pages/applicant/extrapages/RequiredDoc'))
-const OnlineReg = lazy(() => import('./pages/applicant/extrapages/OnlineReg'))
-
 // Infrastructure lazy imports
 const Locations = lazy(() => import('./pages/infrastructure/Locations'))
 const Partners = lazy(() => import('./pages/infrastructure/Partners'))
@@ -272,7 +194,6 @@ const App = () => {
   return (
     <Router>
       <div className="min-h-screen bg-gray-100">
-        <ToTop />
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -282,7 +203,7 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path='/founderMessege' element={<FounderMessage />} />
           <Route path='/MaterialBaseGallery' element={<MaterialBaseGallery />} />
-          { }
+          {} 
           <Route path='/news/NewsHome' element={<NewsHome />} />
           <Route path="/university/news/:id" element={<NewsDetail />} />
           <Route path="/university/appeal" element={<Appeal />} />
@@ -322,32 +243,11 @@ const App = () => {
           <Route path="/university/founding-docs/strategic" element={<StrategicDocs />} />
           <Route path="/university/normative-docs" element={<NormativeDocs />} />
           <Route path="/university/normative-docs/kr-acts" element={<KRActs />} />
-          <Route path="/university/normative-docs/internal-acts" element={<InternalActs />} />
-          <Route path="/university/cooperation" element={<Cooperation />} />
+          <Route path="/university/normative-docs/internal-acts" element={<InternalActs />} />          <Route path="/university/cooperation" element={<Cooperation />} />
           <Route path="/university/cooperation/universities" element={<UniversitiesCoop />} />
           <Route path="/university/cooperation/clinics" element={<ClinicsCoop />} />
           <Route path="/university/brandbook" element={<Brandbook />} />
-          <Route path="/university/Councils/dev-council" element={<DevCouncil />} />
-          <Route path="/university/Councils/acad-council" element={<AcadCouncil />} />
-          <Route path="/university/Councils/commission-support" element={<CommissionSupport />} />
-          <Route path="/university/Councils/bioethics-committee" element={<BioethicsCommittee />} />
-          <Route path="/university/Councils/employers-council" element={<EmployersCouncil />} />
-          <Route path="/university/Councils/parents-council" element={<ParentsCouncil />} />
-          <Route path="/university/Councils/student-council" element={<StudentCouncil />} />
-          <Route path="/university/Councils/edu-councils" element={<EduCouncils />} />
-          <Route path="/university/Councils/scien-council" element={<ScienCouncil />} />
-          <Route path="/university/Councils/edit-board" element={<EditBoard />} />
-          <Route path="/university/Councils/admis-committee" element={<AdmisCommittee />} />
-          <Route path="/university/Councils/council-scients" element={<CouncilScients />} />
-          <Route path="/university/Councils/technical-council" element={<TechnicalCouncil />} />
-          <Route path="/university/StrategicDocs/StrategicDevelopPlans" element={<StrategicDevelopPlans />} />
-          <Route path="/university/StrategicDocs/AccountingPolicy" element={<AccountingPolicy />} />
-          <Route path="/university/StrategicDocs/HR-Policy" element={<HRPolicy />} />
-          <Route path="/university/StrategicDocs/StrategicVision" element={<StrategicVision />} />
-          <Route path="/university/QualityManagSystem/QualityPolity" element={<QualityPolity />} />
-          <Route path="/university/QualityManagSystem/QualityMonitoring" element={<QualityMonitoring />} />
-
-          { }
+          {}
           <Route path="/education/ait" element={<AIT />} />
           <Route path="/education/ait/about" element={<AboutAIT />} />
           <Route path="/education/ait/leadership" element={<LeadershipAIT />} />
@@ -359,50 +259,9 @@ const App = () => {
           <Route path="/education/business-school" element={<BusinessSchoolEdu />} />
           <Route path="/education/postgrad" element={<Postgrad />} />
           <Route path="/education/center" element={<Center />} />
-          <Route path="/education/itCollege/director" element={<Director />} />
-          <Route path="/education/itCollege/departments/general" element={<General />} />
-          <Route path="/education/itCollege/departments/information" element={<Information />} />
-          <Route path="/education/itCollege/specialties/diplom-computer-science" element={<DiplomComScience />} />
-          <Route path="/education/itCollege/specialties/diplom-mobile-computing" element={<DiplomMobComputing />} />
-          <Route path="/education/itCollege/specialties/diplom-multi-applications" element={<DiplomMultiApplications />} />
-          <Route path="/education/itCollege/about" element={<AboutITCollege />} />
-          <Route path="/education/itCollege/contacts" element={<ContactsITCollage />} />
-          <Route path="/education/itCollege/double-diploma" element={<DoubleDiploma />} />
-          <Route path="/education/itCollege/lincoln" element={<Lincoln />} />
-          <Route path="/education/itCollege/pedagogical-council" element={<PedagogicalCouncil />} />
-          <Route path="/education/mfm/dekanat/curriculum" element={<Curriculum />} />
-          <Route path="/education/mfm/dekanat/dean" element={<Dean />} />
-          <Route path="/education/mfm/dekanat/departments" element={<DepartmentsMFM />} />
-          <Route path="/education/mfm/programs/five-years" element={<FiveYears />} />
-          <Route path="/education/mfm/programs/six-years" element={<SixYears />} />
-          <Route path="/education/mfm/about" element={<AboutMFM />} />
-          <Route path="/education/mfm/contacts" element={<ContactsMFM />} />
-          <Route path="/education/business-school/programs/future-leaders" element={<FutureLeaders />} />
-          <Route path="/education/business-school/programs/older-leaders" element={<OlderLeaders />} />
-          <Route path="/education/business-school/programs/smartik" element={<SmartikLeaders />} />
-          <Route path="/education/business-school/programs/young-leaders" element={<YoungLeaders />} />
-          <Route path="/education/business-school/about" element={<AboutBusinessSchool />} />
-          <Route path="/education/business-school/contacts" element={<ContactsBusinessSchool />} />
-          <Route path="/education/business-school/managers" element={<Managers />} />
-          <Route path="/education/business-school/trainers" element={<Trainers />} />
-          <Route path="/education/business-school/director" element={<DirectorBusinessSchool />} />
-          <Route path="/education/postgrad/internship" element={<InternshipPostgrad />} />
-          <Route path="/education/postgrad/phd" element={<PhD />} />
-          <Route path="/education/postgrad/postgraduate" element={<Postgraduate />} />
-          <Route path="/education/postgrad/residency" element={<Residency />} />
-
-          <Route path="/education/center/about" element={<AboutCenter />} />
-          <Route path="/education/center/contacts" element={<ContactsCenter />} />
-          <Route path="/education/center/programs" element={<ProgramsCenter />} />
-          <Route path="/education/center/director" element={<DirectorCenter />} />
-          <Route path="/education/center/managers" element={<ManagersCenter />} />
-
-          { }
-          { }
-          <Route path="/clinical" element={<ClinicalBase />} />
-          <Route path="/clinical/lazmed" element={<Lazmed />} />
-          <Route path="/clinical/dordoi-ophthalmic" element={<DordoiOphthalmic />} />
-          <Route path="/clinical/doc-clinic" element={<DocClinic />} />
+          {}
+          {}
+          <Route path="/clinical/lazmed" element={<Lazmed />} />          <Route path="/clinical/doc-clinic" element={<DocClinic />} />
           <Route path="/clinical/doc-hospital" element={<DocHospital />} />
           <Route path="/clinical/agreements" element={<Agreements />} />
           {/* Lazy Science */}
@@ -415,7 +274,7 @@ const App = () => {
           <Route path="/science/management/department" element={<ScienceDepartmentMng />} />
           <Route path="/science/department" element={<ScienceDepartment />} />
           <Route path="/science/events/conferences" element={<Conferences />} />
-          <Route path="/science/conferences/:id" element={<ConferenceDetail />} />
+          <Route path="/science/events/conferences/:id" element={<ConferenceDetail />} />
           <Route path="/science/professors" element={<Professors />} />
           <Route path="/science/professors/sean-park" element={<SeanPark />} />
           <Route path="/science/professors/pendharkar" element={<Pendharkar />} />
@@ -450,12 +309,34 @@ const App = () => {
           <Route path="/science/labs/computer" element={<Computer />} />
           <Route path="/science/labs/study" element={<Study />} />
           <Route path="/science/projects" element={<Projects />} />
-          { }
+          {}
+          <Route path="/student" element={<StudentMain />} />
+          <Route path="/student/community/council" element={<StudentCouncil />} />
+          <Route path="/student/community/science" element={<StudentScienceCommunity />} />
+          <Route path="/student/community/debate" element={<DebateClub />} />
+          <Route path="/student/community/tutor" element={<Tutoring />} />
+          <Route path="/student/community/clubs" element={<CreativeGroups />} />
           <Route path="/student/communities" element={<StudentCommunities />} />
-          <Route path="/student/resources" element={<Resources />} />
+          <Route path="/student/resources/instructions" element={<Instructions />} />
+          <Route path="/student/resources/infosystem" element={<InfoSystem />} />
+          <Route path="/student/resources/elib" element={<ELibrary />} />
+          <Route path="/student/resources/edu-resources" element={<EducationalResources />} />
           <Route path="/student/schedules" element={<Schedules />} />
+          <Route path="/student/schedule/study" element={<StudySchedule />} />
+          <Route path="/student/schedule/modules" element={<ModuleSchedule />} />
+          <Route path="/student/schedule/practice" element={<PracticeSchedule />} />
+          <Route path="/student/schedule/mfm" element={<MFMSchedule />} />
+          <Route path="/student/schedule/college" element={<CollegeSchedule />} />
           <Route path="/student/conditions" element={<Conditions />} />
-          { }
+          <Route path="/student/opportunities/medical" element={<MedicalCenter />} />
+          <Route path="/student/opportunities/dorm" element={<Dormitory />} />
+          <Route path="/student/opportunities/social" element={<SocialSupport />} />
+          <Route path="/student/opportunities/courses" element={<ElectiveCourses />} />
+          <Route path="/student/opportunities/mobility" element={<Mobility />} />
+          <Route path="/student/opportunities/psychology" element={<PsychologicalSupport />} />
+          <Route path="/student/opportunities/service-center" element={<StudentService />} />
+          <Route path="/student/opportunities/adaptation" element={<AdaptationPrograms />} />
+          {}
           <Route path="/applicants" element={<ApplicantBase />} />
           <Route path="/applicants/commission" element={<Commission />} />
           <Route path="/applicant/commission" element={<Commission />} />
@@ -477,55 +358,15 @@ const App = () => {
           <Route path="/applicants/ort" element={<Entrance />} />
           <Route path="/applicants/career-guidance" element={<CareerGuidance />} />
           <Route path="/applicants/admission-procedure" element={<AdmissionProcedure />} />
-          <Route path="/applicants/admission-documents" element={<RequiredDoc />} />
           <Route path="/applicants/admission-regulations" element={<AdmissionCom />} />
           <Route path="/applicants/admission-schedule" element={<ScheduleApp />} />
           <Route path="/applicants/career-guidance/events" element={<CareerGuidance />} />
           <Route path="/applicants/career-guidance/news" element={<CareerGuidance />} />
-          <Route path="/applicants/career-guidance/knowledge-karakol" element={<KnowledgeKarakol />} />
-          <Route path="/applicants/career-guidance/knowledge-osh" element={<KnowledgeOsh />} />
-          <Route path="/applicants/career-guidance/cooperation" element={<ApplicantCooperation />} />
-          <Route path="/applicants/career-guidance/meeting" element={<Meeting />} />
-
-          {/* Event pages routes */}
-          <Route path="/applicants/orientation/teachers-day" element={<TeachersDay />} />
-          <Route path="/applicants/orientation/state-language-day" element={<StateLanguageDay />} />
-          <Route path="/applicants/orientation/korean-center" element={<KoreanCenter />} />
-          <Route path="/applicants/orientation/medical-mission" element={<MedicalMission />} />
-          <Route path="/applicants/orientation/graduation-2025" element={<Graduation2025 />} />
-          <Route path="/applicants/orientation/diploma-award" element={<DiplomaAward />} />
-
-          {/* News pages routes */}
-          <Route path="/applicants/career-guidance/news/eurasian-congress" element={<EurasianCongress />} />
-          <Route path="/applicants/career-guidance/news/it-security-meeting" element={<ITSecurityMeeting />} />
-          <Route path="/applicants/career-guidance/news/pai-chai-visit" element={<PaiChaiVisit />} />
-
-          <Route path="/applicants/admission/documents" element={<RequiredDoc />} />
-          <Route path="/applicants/admission/rules" element={<AdmissionCom />} />
-          <Route path="/applicants/admission/schedule" element={<ScheduleApp />} />
-          <Route path="/applicants/transfer" element={<TransferBase />} />
-          <Route path="/applicants/transfer/documents" element={<Documents />} />
-          <Route path="/applicants/transfer/rules" element={<AdmissionReg />} />
-          <Route path="/applicants/transfer/schedule" element={<TransferSchedule />} />
-          <Route path="/applicants/software-development" element={<Software />} />
-          <Route path="/applicants/mobile-development" element={<MobileDev />} />
-          <Route path="/applicants/multimedia-development" element={<MultimediaDev />} />
-          <Route path="/applicants/discipline" element={<Dicipline />} />
-          <Route path="/applicants/general-medicine-5" element={<GeneralMedFive />} />
-          <Route path="/applicants/general-medicine-6" element={<GeneralMedSix />} />
-          <Route path="/applicants/required-documents" element={<RequiredDoc />} />
-          <Route path="/applicants/online-registration" element={<OnlineReg />} />
-          <Route path="/applicants/dealers" element={<Dealers />} />
-          <Route path="/applicants/dealers/india" element={<India />} />
-          <Route path="/applicants/dealers/pakistan" element={<Pakistan />} />
-          <Route path="/applicants/dealers/uzbekistan" element={<UzbekistanCountry />} />
-          <Route path="/applicants/infrastructure" element={<Infrastructure />} />
-          <Route path="/applicants/commission" element={<Commission />} />
-          { }
+      
+          {}
           <Route path="/infrastructure/locations" element={<Locations />} />
           <Route path="/infrastructure/partners" element={<Partners />} />
           <Route path="/infrastructure/*" element={<Home />} />
-
         </Routes>
         <Footer />
       </div>

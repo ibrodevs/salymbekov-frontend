@@ -80,40 +80,12 @@ const Navbar = () => {
           ]
         },
         {
-          key: 'foundingDocs',
-          link: '/university/founding-docs',
-          subItems: [
-            { key: 'charter', link: '/university/founding-docs/charter' },
-            { key: 'licenses', link: '/university/founding-docs/licenses' },
-            { key: 'acts', link: '/university/founding-docs/acts' }
-          ]
-        },
-        {
           key: 'management',
           link: '/university/management',
           subItems: [
             { key: 'founder', link: '/university/management/founder' },
             { key: 'president', link: '/university/management/president' },
             { key: 'rectorate', link: '/university/management/rectorate' }
-          ]
-        },
-        {
-          key: 'councils',
-          link: '/university/Councils',
-          subItems: [
-            { key: 'devCouncil', link: '/university/Councils/dev-council' },
-            { key: 'acadCouncil', link: '/university/Councils/acad-council' },
-            { key: 'eduCouncil', link: '/university/Councils/edu-councils' },
-            { key: 'techCouncil', link: '/university/Councils/technical-council' },
-            { key: 'scienCouncil', link: '/university/Councils/scien-council' },
-            { key: 'editBoard', link: '/university/Councils/edit-board' },
-            { key: 'admisCommittee', link: '/university/Councils/admis-committee' },
-            { key: 'supportCommission', link: '/university/Councils/commission-support' },
-            { key: 'bioethicsCommittee', link: '/university/Councils/bioethics-committee' },
-            { key: 'youngScientists', link: '/university/Councils/council-scients' },
-            { key: 'employersCouncil', link: '/university/Councils/employers-council' },
-            { key: 'parentsCouncil', link: '/university/Councils/parents-council' },
-            { key: 'studentCouncil', link: '/university/Councils/student-council' }
           ]
         },
         {
@@ -141,6 +113,15 @@ const Navbar = () => {
           ]
         },
         {
+          key: 'foundingDocs',
+          link: '/university/founding-docs',
+          subItems: [
+            { key: 'charter', link: '/university/founding-docs/charter' },
+            { key: 'licenses', link: '/university/founding-docs/licenses' },
+            { key: 'acts', link: '/university/founding-docs/acts' }
+          ]
+        },
+        {
           key: 'strategicDocs',
           link: '/university/StrategicDocs',
           subItems: [
@@ -149,6 +130,25 @@ const Navbar = () => {
             { key: 'comprehensivePlans', link: 'https://salymbekov.com/wp-content/uploads/2022/05/5.9.4.-kompleksnyj-plan-meroprijatij-za-2021-2022-gg.pdf' },
             { key: 'accountingPolicy', link: '/university/StrategicDocs/AccountingPolicy' },
             { key: 'hrPolicy', link: '/university/StrategicDocs/HR-Policy' }
+          ]
+        },
+        {
+          key: 'councils',
+          link: '/university/Councils',
+          subItems: [
+            { key: 'devCouncil', link: '/university/Councils/dev-council' },
+            { key: 'acadCouncil', link: '/university/Councils/acad-council' },
+            { key: 'eduCouncil', link: '/university/Councils/edu-councils' },
+            { key: 'techCouncil', link: '/university/Councils/technical-council' },
+            { key: 'scienCouncil', link: '/university/Councils/scien-council' },
+            { key: 'editBoard', link: '/university/Councils/edit-board' },
+            { key: 'admisCommittee', link: '/university/Councils/admis-committee' },
+            { key: 'supportCommission', link: '/university/Councils/commission-support' },
+            { key: 'bioethicsCommittee', link: '/university/Councils/bioethics-committee' },
+            { key: 'youngScientists', link: '/university/Councils/council-scients' },
+            { key: 'employersCouncil', link: '/university/Councils/employers-council' },
+            { key: 'parentsCouncil', link: '/university/Councils/parents-council' },
+            { key: 'studentCouncil', link: '/university/Councils/student-council' }
           ]
         },
         {
@@ -408,27 +408,33 @@ const Navbar = () => {
     
     return (
       <div
-        className={`fixed top-20 left-0 right-0 bg-white/98 backdrop-blur-2xl shadow-2xl border-t border-blue-100 transition-all duration-500 overflow-hidden ${
+        className={`fixed top-20 left-1/2 -translate-x-1/2 bg-white/98 backdrop-blur-2xl shadow-2xl border border-blue-100 rounded-xl transition-all duration-500 overflow-visible max-w-7xl min-h-fit ${
           activeDropdown === menuKey 
-            ? 'h-[calc(100vh-80px)] opacity-100 visible' 
-            : 'h-0 opacity-0 invisible'
+            ? 'opacity-100 visible' 
+            : 'opacity-0 invisible'
         }`}
         onMouseEnter={() => handleDropdownEnter(menuKey)}
         onMouseLeave={handleDropdownLeave}
       >
-        <div className="container mx-auto px-6 py-6 h-full">
-          <div className="flex gap-6 h-full overflow-y-auto">
-            {/* Левая часть - элементы с подпунктами (синие карточки) */}
+        <div className="px-8 py-6 flex justify-center">
+          <div className={`flex gap-6 auto-rows-max ${
+            menuKey === 'university' ? '' : ''
+          }`}>
+            {/* Левая часть - элементы с подпункты (синие карточки) */}
             {itemsWithSubItems.length > 0 && (
               <div className="flex-1">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className={`grid ${
+                  menuKey === 'university' 
+                    ? 'grid-cols-4 gap-x-1 gap-y-0 auto-rows-max' 
+                    : 'grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3'
+                }`}>
                   {itemsWithSubItems.map((item, index) => (
                     <div 
                       key={item.key} 
                       className="group"
                       style={{ animationDelay: `${index * 50}ms` }}
                     >
-                      <div className={`p-4 rounded-lg transition-all duration-300 bg-blue-50 border border-blue-100 hover:border-blue-300 hover:shadow-md ${
+                      <div className={`p-3 rounded-lg transition-all duration-300 bg-blue-50 border border-blue-100 hover:border-blue-300 hover:shadow-md ${
                         activeDropdown === menuKey ? 'animate-fadeInUp' : ''
                       }`}>
                         
@@ -438,7 +444,7 @@ const Navbar = () => {
                           className="block mb-2 transition-all duration-300 group-hover:translate-x-1 text-blue-900"
                           onClick={() => setActiveDropdown(null)}
                         >
-                          <h3 className="text-base font-bold mb-2 text-blue-800">
+                          <h3 className="text-sm font-bold mb-2 text-blue-800 line-clamp-2">
                             {t(`${menuKey}SUB.${item.key}`)}
                           </h3>
                         </Link>
@@ -450,7 +456,7 @@ const Navbar = () => {
                               <Link
                                 key={subItem.key}
                                 to={subItem.link}
-                                className="flex items-center py-1 px-2 text-gray-700 hover:text-blue-700 hover:bg-white rounded transition-all duration-200 group/sub"
+                                className="flex items-center py-1 px-2 text-gray-700 hover:text-blue-700 hover:bg-white rounded transition-all duration-200 group/sub text-sm"
                                 onClick={() => setActiveDropdown(null)}
                                 style={{ animationDelay: `${(index * 50) + (subIndex * 20)}ms` }}
                               >
@@ -504,27 +510,6 @@ const Navbar = () => {
                 </div>
               </div>
             )}
-          </div>
-
-          {/* Quick Actions */}
-          <div className={`mt-6 pt-6 border-t border-gray-200 transition-all duration-700 ${
-            activeDropdown === menuKey ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-          }`}>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                to={`/${menuKey}`}
-                className="px-5 py-2.5 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300 hover:scale-105"
-                onClick={() => setActiveDropdown(null)}
-              >
-                {t('navbar.viewAll', 'View All')}
-              </Link>
-              <button
-                onClick={() => setActiveDropdown(null)}
-                className="px-5 py-2.5 border border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 transition-all duration-300"
-              >
-                {t('navbar.close', 'Close')}
-              </button>
-            </div>
           </div>
         </div>
       </div>

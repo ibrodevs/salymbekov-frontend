@@ -1,6 +1,7 @@
+
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { 
+import {
   FaPlay,
   FaYoutube,
   FaClock,
@@ -72,7 +73,7 @@ const Videos = () => {
   const filteredVideos = videos.filter(video => {
     const matchesFilter = activeFilter === "all" || video.category === activeFilter;
     const matchesSearch = video.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         video.description.toLowerCase().includes(searchTerm.toLowerCase());
+      video.description.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesFilter && matchesSearch;
   });
 
@@ -200,11 +201,10 @@ const Videos = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setActiveFilter(filter.id)}
-                  className={`px-6 py-3 rounded-2xl font-semibold transition-all duration-300 flex items-center gap-2 ${
-                    activeFilter === filter.id
+                  className={`px-6 py-3 rounded-2xl font-semibold transition-all duration-300 flex items-center gap-2 ${activeFilter === filter.id
                       ? 'bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white shadow-lg'
                       : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                  }`}
+                    }`}
                 >
                   <FaFilter className="text-sm" />
                   {filter.label}
@@ -240,8 +240,8 @@ const Videos = () => {
                     {/* Видео превью */}
                     <div className="lg:w-2/5">
                       <div className="relative rounded-2xl overflow-hidden bg-gray-900 aspect-w-16 aspect-h-9">
-                        <img 
-                          src={video.thumbnail} 
+                        <img
+                          src={video.thumbnail}
                           alt={video.title}
                           className="w-full h-64 object-cover opacity-80"
                         />
@@ -297,7 +297,7 @@ const Videos = () => {
                           <FaCalendarAlt className="text-[#023E8A]" />
                           <span>{video.date}</span>
                         </div>
-                        
+
                       </div>
 
                       {/* Кнопка просмотра */}

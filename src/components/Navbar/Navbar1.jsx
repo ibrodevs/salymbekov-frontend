@@ -360,7 +360,6 @@ const Navbar = () => {
       ]
     },
     applicant: {
-
       items: [
         { key: 'directions', link: '/applicants/directions' },
         { key: 'tuitionCost', link: '/applicants/cost' },

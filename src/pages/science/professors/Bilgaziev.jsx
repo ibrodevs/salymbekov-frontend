@@ -1,60 +1,68 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { FaArrowLeft, FaUserGraduate, FaBook, FaAward, FaGlobeAmericas, FaGraduationCap, FaLaptopCode } from 'react-icons/fa';
 import bilgazievPhoto from '../../../assets/science/professors/photo_2023-06-09_17-07-45-225x300.webp';
 
 const Bilgaziev = () => {
+  const { t } = useTranslation();
+
+  // Get arrays from translations
+  const educationItems = t('science.bilgaziev.education', { returnObjects: true });
+  const experienceItems = t('science.bilgaziev.experience', { returnObjects: true });
+  const achievementItems = t('science.bilgaziev.achievements', { returnObjects: true });
+
   const professorSections = [
     { 
       path: "/science/professors/sean-park", 
-      name: "DR. SEAN PARK", 
+      nameKey: "science.seanPark.name",
       icon: FaUserGraduate,
     },
     { 
       path: "/science/professors/pendharkar", 
-      name: "DR DINESH PENDHARKAR", 
+      nameKey: "science.pendharkar.name",
       icon: FaUserGraduate 
     },
     { 
       path: "/science/professors/potapova", 
-      name: "ОЛЬГА ПОТАПОВА", 
+      nameKey: "science.potapova.name",
       icon: FaUserGraduate 
     },
     { 
       path: "/science/professors/osmonov", 
-      name: "ДАНИЯР ОСМОНОВ", 
+      nameKey: "science.osmonov.name",
       icon: FaUserGraduate 
     },
     { 
       path: "/science/professors/erkebaev", 
-      name: "ЭРКЕБАЕВ АБДЫГАНЫ ЭРКЕБАЕВИЧ", 
+      nameKey: "science.erkebaev.name",
       icon: FaUserGraduate 
     },
     { 
       path: "/science/professors/madaminov", 
-      name: "ГАПЫР МАДАМИНОВ", 
+      nameKey: "science.madaminov.name",
       icon: FaUserGraduate 
     },
     { 
       path: "/science/professors/bilgaziev", 
-      name: "ЭМИЛЬ БИЛГАЗИЕВ", 
+      nameKey: "science.bilgaziev.name",
       icon: FaUserGraduate,
       active: true 
     },
     { 
       path: "/science/professors/kubatov", 
-      name: "ЭДУАРД КУБАТОВ", 
+      nameKey: "science.kubatov.name",
       icon: FaUserGraduate 
     },
     { 
       path: "/science/professors/shaltakova", 
-      name: "ШАЛТАКОВА ГУЛБУ ЧАЛОВНА", 
+      nameKey: "science.shaltakova.name",
       icon: FaUserGraduate 
     },
     { 
       path: "/science/professors/kachibek", 
-      name: "ПРОФЕССОР КАЧИБЕК", 
+      nameKey: "science.kachibek.name",
       icon: FaUserGraduate 
     }
   ];
@@ -114,7 +122,7 @@ const Bilgaziev = () => {
             className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors group"
           >
             <FaArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" />
-            Назад к науке
+            {t('science.backButton')}
           </Link>
 
           <motion.div
@@ -124,14 +132,14 @@ const Bilgaziev = () => {
           >
             <div className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-4">
               <span className="text-white/90 text-sm font-medium">
-                Профессорско-преподавательский состав
+                {t('science.pageTitle')}
               </span>
             </div>
             <h1 className="text-5xl font-bold mb-4">
-              Эмиль Билгазиев
+              {t('science.bilgaziev.name')}
             </h1>
             <p className="text-xl text-white/90 max-w-3xl">
-              Основатель Американского института технологий, технический директор
+              {t('science.bilgaziev.position')}
             </p>
           </motion.div>
         </div>
@@ -151,7 +159,7 @@ const Bilgaziev = () => {
               <div className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-4">
                 <div className="flex items-center">
                   <FaUserGraduate className="mr-3 text-xl" />
-                  <h3 className="font-bold text-lg">ПРОФЕССОРА</h3>
+                  <h3 className="font-bold text-lg">{t('science.sidebarTitle')}</h3>
                 </div>
               </div>
               <nav className="p-2">
@@ -172,7 +180,7 @@ const Bilgaziev = () => {
                         }`}
                       >
                         <SectionIcon className="mr-3 text-lg" />
-                        <span className="font-medium text-sm">{section.name}</span>
+                        <span className="font-medium text-sm">{t(section.nameKey)}</span>
                       </Link>
                     </motion.div>
                   );
@@ -200,7 +208,7 @@ const Bilgaziev = () => {
                   <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden shadow-lg">
                     <img 
                       src={bilgazievPhoto} 
-                      alt="Эмиль Билгазиев"
+                      alt={t('science.bilgaziev.name')}
                       className="w-full h-auto object-cover"
                     />
                   </div>
@@ -213,9 +221,9 @@ const Bilgaziev = () => {
                     >
                       <div className="flex items-center">
                         <FaGraduationCap className="text-[#023E8A] mr-3" />
-                        <span className="font-semibold text-gray-900">Должность</span>
+                        <span className="font-semibold text-gray-900">{t('science.positionLabel')}</span>
                       </div>
-                      <p className="text-gray-700 text-sm mt-2">Основатель Американского института технологий, технический директор</p>
+                      <p className="text-gray-700 text-sm mt-2">{t('science.bilgaziev.position')}</p>
                     </motion.div>
 
                     <motion.div
@@ -224,9 +232,9 @@ const Bilgaziev = () => {
                     >
                       <div className="flex items-center">
                         <FaLaptopCode className="text-[#023E8A] mr-3" />
-                        <span className="font-semibold text-gray-900">Специализация</span>
+                        <span className="font-semibold text-gray-900">Specialization</span>
                       </div>
-                      <p className="text-gray-700 text-sm mt-2">Компьютерные науки, IT-технологии</p>
+                      <p className="text-gray-700 text-sm mt-2">Computer Science, IT Technologies</p>
                     </motion.div>
                   </div>
                 </motion.div>
@@ -238,12 +246,12 @@ const Bilgaziev = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                   >
-                    <h2 className="text-3xl font-bold text-gray-900 mb-6">Эмиль Билгазиев</h2>
+                    <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('science.bilgaziev.name')}</h2>
                     
                     {/* Description */}
                     <div className="prose prose-lg max-w-none text-gray-700 mb-8">
                       <p className="text-lg leading-relaxed mb-6">
-                        Эмиль Билгазиев, PhD – Основатель Американского института технологий, разработчик, технический директор одного из подразделений Facebook, выпускник КТУ "Манас" и получивший образование в США (PhD in Computer Science, 2013, Master in Computer Science, 2009, University of Houston). Эмиль Билгазиев также известных компаниях, как Shell, LinkedIn, Logichub, Uber, Snapchet
+                        {t('science.bilgaziev.description')}
                       </p>
                     </div>
 
@@ -257,14 +265,10 @@ const Bilgaziev = () => {
                     >
                       <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
                         <FaBook className="mr-3 text-[#023E8A]" />
-                        Образование
+                        {t('science.educationTitle')}
                       </h4>
                       <div className="space-y-3">
-                        {[
-                          "PhD in Computer Science, 2013, University of Houston",
-                          "Master in Computer Science, 2009, University of Houston", 
-                          "КТУ 'Манас'"
-                        ].map((item, index) => (
+                        {Array.isArray(educationItems) && educationItems.map((item, index) => (
                           <motion.div
                             key={index}
                             initial={{ opacity: 0, x: -20 }}
@@ -292,14 +296,10 @@ const Bilgaziev = () => {
                     >
                       <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
                         <FaGlobeAmericas className="mr-3 text-[#023E8A]" />
-                        Опыт работы
+                        {t('science.experienceTitle')}
                       </h4>
                       <div className="space-y-3">
-                        {[
-                          "Технический директор подразделения Facebook",
-                          "Основатель Американского института технологий",
-                          "Работа в компаниях: Shell, LinkedIn, Logichub, Uber, Snapchat"
-                        ].map((item, index) => (
+                        {Array.isArray(experienceItems) && experienceItems.map((item, index) => (
                           <motion.div
                             key={index}
                             initial={{ opacity: 0, x: -20 }}
@@ -327,15 +327,10 @@ const Bilgaziev = () => {
                     >
                       <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
                         <FaAward className="mr-3 text-[#023E8A]" />
-                        Достижения и награды
+                        {t('science.achievementsTitle')}
                       </h4>
                       <div className="space-y-3">
-                        {[
-                          "Разработчик передовых технологических решений",
-                          "Эксперт в области компьютерных наук", 
-                          "Международный опыт в IT-индустрии",
-                          "Вклад в развитие технологического образования"
-                        ].map((item, index) => (
+                        {Array.isArray(achievementItems) && achievementItems.map((item, index) => (
                           <motion.div
                             key={index}
                             initial={{ opacity: 0, x: -20 }}

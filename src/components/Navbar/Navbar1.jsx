@@ -80,40 +80,12 @@ const Navbar = () => {
           ]
         },
         {
-          key: 'foundingDocs',
-          link: '/university/founding-docs',
-          subItems: [
-            { key: 'charter', link: '/university/founding-docs/charter' },
-            { key: 'licenses', link: '/university/founding-docs/licenses' },
-            { key: 'acts', link: '/university/founding-docs/acts' }
-          ]
-        },
-        {
           key: 'management',
           link: '/university/management',
           subItems: [
             { key: 'founder', link: '/university/management/founder' },
             { key: 'president', link: '/university/management/president' },
             { key: 'rectorate', link: '/university/management/rectorate' }
-          ]
-        },
-        {
-          key: 'councils',
-          link: '/university/Councils',
-          subItems: [
-            { key: 'devCouncil', link: '/university/Councils/dev-council' },
-            { key: 'acadCouncil', link: '/university/Councils/acad-council' },
-            { key: 'eduCouncil', link: '/university/Councils/edu-councils' },
-            { key: 'techCouncil', link: '/university/Councils/technical-council' },
-            { key: 'scienCouncil', link: '/university/Councils/scien-council' },
-            { key: 'editBoard', link: '/university/Councils/edit-board' },
-            { key: 'admisCommittee', link: '/university/Councils/admis-committee' },
-            { key: 'supportCommission', link: '/university/Councils/commission-support' },
-            { key: 'bioethicsCommittee', link: '/university/Councils/bioethics-committee' },
-            { key: 'youngScientists', link: '/university/Councils/council-scients' },
-            { key: 'employersCouncil', link: '/university/Councils/employers-council' },
-            { key: 'parentsCouncil', link: '/university/Councils/parents-council' },
-            { key: 'studentCouncil', link: '/university/Councils/student-council' }
           ]
         },
         {
@@ -141,6 +113,15 @@ const Navbar = () => {
           ]
         },
         {
+          key: 'foundingDocs',
+          link: '/university/founding-docs',
+          subItems: [
+            { key: 'charter', link: '/university/founding-docs/charter' },
+            { key: 'licenses', link: '/university/founding-docs/licenses' },
+            { key: 'acts', link: '/university/founding-docs/acts' }
+          ]
+        },
+        {
           key: 'strategicDocs',
           link: '/university/StrategicDocs',
           subItems: [
@@ -149,6 +130,25 @@ const Navbar = () => {
             { key: 'comprehensivePlans', link: 'https://salymbekov.com/wp-content/uploads/2022/05/5.9.4.-kompleksnyj-plan-meroprijatij-za-2021-2022-gg.pdf' },
             { key: 'accountingPolicy', link: '/university/StrategicDocs/AccountingPolicy' },
             { key: 'hrPolicy', link: '/university/StrategicDocs/HR-Policy' }
+          ]
+        },
+        {
+          key: 'councils',
+          link: '/university/Councils',
+          subItems: [
+            { key: 'devCouncil', link: '/university/Councils/dev-council' },
+            { key: 'acadCouncil', link: '/university/Councils/acad-council' },
+            { key: 'eduCouncil', link: '/university/Councils/edu-councils' },
+            { key: 'techCouncil', link: '/university/Councils/technical-council' },
+            { key: 'scienCouncil', link: '/university/Councils/scien-council' },
+            { key: 'editBoard', link: '/university/Councils/edit-board' },
+            { key: 'admisCommittee', link: '/university/Councils/admis-committee' },
+            { key: 'supportCommission', link: '/university/Councils/commission-support' },
+            { key: 'bioethicsCommittee', link: '/university/Councils/bioethics-committee' },
+            { key: 'youngScientists', link: '/university/Councils/council-scients' },
+            { key: 'employersCouncil', link: '/university/Councils/employers-council' },
+            { key: 'parentsCouncil', link: '/university/Councils/parents-council' },
+            { key: 'studentCouncil', link: '/university/Councils/student-council' }
           ]
         },
         {
@@ -254,7 +254,6 @@ const Navbar = () => {
     },
     clinical: {
       items: [
-        { key: 'clinical', link: '/clinical' },
         { key: 'lazmed', link: '/clinical/lazmed' },
         { key: 'dordoiOphthalmic', link: '/clinical/dordoi-ophthalmic' },
         { key: 'docClinic', link: '/clinical/doc-clinic' },
@@ -359,6 +358,11 @@ const Navbar = () => {
         }
       ]
     },
+
+
+
+
+
     applicant: {
       items: [
         { key: 'directions', link: '/applicants/directions' },
@@ -367,9 +371,9 @@ const Navbar = () => {
           key: 'admissionProcedure',
           link: '/applicants/admission',
           subItems: [
-            { key: 'requiredDocuments', link: '/applicants/admission/documents' },
-            { key: 'admissionRules', link: '/applicants/admission/rules' },
-            { key: 'admissionSchedule', link: '/applicants/admission/schedule' }
+            { key: 'requiredDocuments', link: '/applicant/documents' },
+            { key: 'admissionRules', link: '/applicant/rules' },
+            { key: 'admissionSchedule', link: '/applicant/schedule' }
           ]
         },
         {
@@ -397,101 +401,115 @@ const Navbar = () => {
       ]
     }
   };
+  const renderFullscreenDropdown = (menuKey, items) => {
+    // Разделяем элементы на те, у которых есть подпункты (синие) и те, у которых нет (белые)
+    const itemsWithSubItems = items.filter(item => item.subItems && item.subItems.length > 0);
+    const itemsWithoutSubItems = items.filter(item => !item.subItems || item.subItems.length === 0);
 
-  const renderFullscreenDropdown = (menuKey, items) => (
-    <div
-      className={`fixed top-20 left-0 right-0 bg-white/98 backdrop-blur-2xl shadow-2xl border-t border-blue-100 transition-all duration-500 overflow-hidden ${activeDropdown === menuKey
-        ? 'h-[calc(100vh-80px)] opacity-100 visible'
-        : 'h-0 opacity-0 invisible'
-        }`}
-      onMouseEnter={() => handleDropdownEnter(menuKey)}
-      onMouseLeave={handleDropdownLeave}
-    >
-      <div className="container mx-auto px-6 py-8 h-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 h-full overflow-y-auto">
-          {items.map((item, index) => (
-            <div
-              key={item.key}
-              className="group relative"
-              style={{ animationDelay: `${index * 50}ms` }}
-            >
-              <div className={`p-6 rounded-2xl transition-all duration-500 ${item.subItems
-                ? 'bg-blue-50 border-2 border-blue-100 hover:border-blue-300'
-                : 'bg-white border border-gray-100 hover:border-blue-200 hover:shadow-lg'
-                } ${activeDropdown === menuKey ? 'animate-fadeInUp' : ''}`}>
+    return (
+      <div
+        className={`fixed top-20 left-1/2 -translate-x-1/2 bg-white/98 backdrop-blur-2xl shadow-2xl border border-blue-100 rounded-xl transition-all duration-500 overflow-visible max-w-7xl min-h-fit ${activeDropdown === menuKey
+          ? 'opacity-100 visible'
+          : 'opacity-0 invisible'
+          }`}
+        onMouseEnter={() => handleDropdownEnter(menuKey)}
+        onMouseLeave={handleDropdownLeave}
+      >
+        <div className="px-8 py-6 flex justify-center">
+          <div className={`flex gap-6 auto-rows-max ${menuKey === 'university' ? '' : ''
+            }`}>
+            {/* Левая часть - элементы с подпункты (синие карточки) */}
+            {itemsWithSubItems.length > 0 && (
+              <div className="flex-1">
+                <div className={`grid ${menuKey === 'university'
+                  ? 'grid-cols-4 gap-x-1 gap-y-0 auto-rows-max'
+                  : 'grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3'
+                  }`}>
+                  {itemsWithSubItems.map((item, index) => (
+                    <div
+                      key={item.key}
+                      className="group"
+                      style={{ animationDelay: `${index * 50}ms` }}
+                    >
+                      <div className={`p-3 rounded-lg transition-all duration-300 bg-blue-50 border border-blue-100 hover:border-blue-300 hover:shadow-md ${activeDropdown === menuKey ? 'animate-fadeInUp' : ''
+                        }`}>
 
-                {/* Main Item */}
-                <Link
-                  to={item.link}
-                  className={`block mb-3 transition-all duration-300 group-hover:translate-x-2 ${item.subItems ? 'text-blue-900' : 'text-gray-900'
-                    }`}
-                  onClick={() => setActiveDropdown(null)}
-                >
-                  <h3 className={`text-xl font-bold mb-2 ${item.subItems ? 'text-blue-800' : 'text-gray-800'
-                    }`}>
-                    {t(`${menuKey}SUB.${item.key}`)}
+                        {/* Main Item */}
+                        <Link
+                          to={item.link}
+                          className="block mb-2 transition-all duration-300 group-hover:translate-x-1 text-blue-900"
+                          onClick={() => setActiveDropdown(null)}
+                        >
+                          <h3 className="text-sm font-bold mb-2 text-blue-800 line-clamp-2">
+                            {t(`${menuKey}SUB.${item.key}`)}
+                          </h3>
+                        </Link>
+
+                        {/* Sub Items */}
+                        {item.subItems && (
+                          <div className="space-y-1">
+                            {item.subItems.map((subItem, subIndex) => (
+                              <Link
+                                key={subItem.key}
+                                to={subItem.link}
+                                className="flex items-center py-1 px-2 text-gray-700 hover:text-blue-700 hover:bg-white rounded transition-all duration-200 group/sub text-sm"
+                                onClick={() => setActiveDropdown(null)}
+                                style={{ animationDelay: `${(index * 50) + (subIndex * 20)}ms` }}
+                              >
+                                <div className={`w-1.5 h-1.5 bg-blue-400 rounded-full mr-2 transition-all duration-200 group-hover/sub:scale-150 ${activeDropdown === menuKey ? 'animate-pulse' : ''
+                                  }`} />
+                                <span className="text-sm">
+                                  {t(`${menuKey}SUB.${subItem.key}`)}
+                                </span>
+                              </Link>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Правая часть - элементы без подпунктов (белый список) */}
+            {itemsWithoutSubItems.length > 0 && (
+              <div className="w-80 flex-shrink-0">
+                <div className="bg-white border border-gray-100 rounded-lg p-4">
+                  <h3 className="text-base font-bold mb-3 text-gray-800">
+                    {t('navbar.quickLinks', 'Quick Links')}
                   </h3>
-
-                </Link>
-
-                {/* Sub Items */}
-                {item.subItems && (
-                  <div className="space-y-2">
-                    {item.subItems.map((subItem, subIndex) => (
+                  <div className="space-y-1">
+                    {itemsWithoutSubItems.map((item, index) => (
                       <Link
-                        key={subItem.key}
-                        to={subItem.link}
-                        className="flex items-center py-2 px-3 text-gray-700 hover:text-blue-700 hover:bg-white rounded-xl transition-all duration-300 group/sub"
+                        key={item.key}
+                        to={item.link}
+                        className="flex items-center py-2 px-2 text-gray-700 hover:text-blue-700 hover:bg-blue-50 rounded transition-all duration-200 group/link"
                         onClick={() => setActiveDropdown(null)}
-                        style={{ animationDelay: `${(index * 50) + (subIndex * 20)}ms` }}
+                        style={{ animationDelay: `${index * 30}ms` }}
                       >
-                        <div className={`w-2 h-2 bg-blue-400 rounded-full mr-3 transition-all duration-300 group-hover/sub:scale-150 ${activeDropdown === menuKey ? 'animate-pulse' : ''
-                          }`} />
-                        <span className="text-sm font-medium">
-                          {t(`${menuKey}SUB.${subItem.key}`)}
-                        </span>
                         <svg
-                          className="w-4 h-4 ml-auto opacity-0 group-hover/sub:opacity-100 transition-all duration-300 transform -translate-x-2 group-hover/sub:translate-x-0"
+                          className="w-3.5 h-3.5 mr-2.5 text-blue-500 transition-all duration-200 group-hover/link:scale-110"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
                         >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                         </svg>
+                        <span className="text-sm">
+                          {t(`${menuKey}SUB.${item.key}`)}
+                        </span>
                       </Link>
                     ))}
                   </div>
-                )}
+                </div>
               </div>
-
-              {/* Background Pattern */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-white/50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
-            </div>
-          ))}
-        </div>
-
-        {/* Quick Actions */}
-        <div className={`mt-8 pt-8 border-t border-gray-200 transition-all duration-700 ${activeDropdown === menuKey ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-          }`}>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link
-              to={`/${menuKey}`}
-              className="px-6 py-3 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition-all duration-300 hover:scale-105"
-              onClick={() => setActiveDropdown(null)}
-            >
-              {t('navbar.viewAll', 'View All')}
-            </Link>
-            <button
-              onClick={() => setActiveDropdown(null)}
-              className="px-6 py-3 border border-gray-300 text-gray-700 rounded-xl font-semibold hover:bg-gray-50 transition-all duration-300"
-            >
-              {t('navbar.close', 'Close')}
-            </button>
+            )}
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   const renderMobileMenu = () => (
     <div className={`lg:hidden absolute top-full left-0 right-0 bg-white shadow-2xl border-t border-blue-100 transition-all duration-500 ${isMobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
@@ -525,7 +543,7 @@ const Navbar = () => {
                       className="block py-2 text-gray-800 hover:text-blue-700 transition-colors duration-200 font-medium"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
-                      {t(`${menuKey}SUB.${item.key}`)}
+                      {t(`${menuKey}SU.${item.key}`)}
                     </Link>
                     {item.subItems && activeDropdown === menuKey && (
                       <div className="pl-3 space-y-2 mt-2 border-l-2 border-blue-200">
@@ -587,9 +605,8 @@ const Navbar = () => {
                   onMouseEnter={() => handleDropdownEnter(menuKey)}
                   onMouseLeave={handleDropdownLeave}
                 >
-                  <Link
-                    to={menuKey === 'applicant' ? '/applicants' : menuKey === 'clinical' ? '/clinical' : '#'}
-                    className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 relative overflow-hidden group inline-block ${isScrolled
+                  <button
+                    className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 relative overflow-hidden group ${isScrolled
                       ? 'text-blue-900 hover:text-blue-700'
                       : 'text-white hover:text-blue-100'
                       } ${activeDropdown === menuKey ? (isScrolled ? 'text-blue-700' : 'text-white') : ''}`}
@@ -599,7 +616,7 @@ const Navbar = () => {
                       ? 'opacity-20 scale-100'
                       : 'opacity-0 scale-95 group-hover:opacity-10 group-hover:scale-100'
                       }`} />
-                  </Link>
+                  </button>
                   {renderFullscreenDropdown(menuKey, items)}
                 </div>
               ))}

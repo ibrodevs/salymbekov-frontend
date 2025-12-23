@@ -12,32 +12,112 @@ import {
 import heroImage from '../../../assets/science/management/science-hero.jpg';
 
 const ScientificTechnicalCouncil = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
-  const tasks = [
-    "Развитие учеными Университета приоритетных направлений науки и техники, повышение роли вузовской науки в ускорении научно-технического прогресса, обеспечение эффективного использования интеллектуального и научного потенциала Университета, создание необходимых условий его стабильного развития.",
-    "Обеспечение приоритетного развития фундаментальных и поисковых исследований в приоритетных направлениях развития научных исследований и работе с интеллектуальной собственностью.",
-    "Совершенствование планирования и организационных форм научно-исследовательской работы и т.д.",
-    "Разработка предложений и мер по сохранению научного потенциала Университета, развитию научно-педагогических коллективов, по подготовке научно-педагогических кадров высшей квалификации (докторов и кандидатов наук).",
-    "Содействие интеграционным процессам между Университетом и научными организациями.",
-    "Содействие развитию научно-исследовательской работы обучающихся.",
-    "Разработка предложений и мер по информационному обеспечению научных исследований.",
-    "Подготовка предложений и рекомендаций по использованию результатов научных исследований в образовательном процессе.",
-    "Анализ и оценка основных результатов научных исследований и разработок, осуществляемых в Университете.",
-    "Подготовка предложений по созданию и реорганизации научно-инновационных структур, обновлению научного оборудования."
-  ];
+  // safe string translation getter with fallback to English
+  const isUrlLike = (s) => typeof s === 'string' && /^(https?:\/\/|www\.)/.test(s);
+  const getRaw = (key, lng = undefined) => {
+    const lang = typeof lng === 'string' ? lng : i18n.language;
+    return t(key, { returnObjects: true, lng: lang });
+  };
+  const rstr = (key, defaultValue = '') => {
+    let raw = getRaw(key, i18n.language);
+    const fallbackNeeded = raw === undefined || raw === null || raw === '' || raw === key || isUrlLike(raw);
+    if (fallbackNeeded) {
+      const fallback = getRaw(key, 'en');
+      raw = fallback ?? defaultValue;
+      if (process.env.NODE_ENV === 'development') {
+        console.warn(`[i18n] Fallback to EN for key "${key}" (${i18n.language})`, raw);
+      }
+    }
+    if (typeof raw === 'string') return raw;
+    if (Array.isArray(raw)) return raw.join(' ');
+    if (raw && typeof raw === 'object') return raw.title || raw.name || raw.description || Object.values(raw)[0] || defaultValue;
+    return defaultValue;
+  };
 
-  const members = [
-    { name: "Toktogazy Moldalievich Tulekeev, MD, prof.", role: "chairman" },
-    { name: "Uzakbaev Kamchibek Askarbekovich, MD, prof.", role: "deputy chairman" },
-    { name: "Imankulova Asel Sansyzbaevna, MD, prof.", role: "scientific secretary" },
-    { name: "Zhumadilov Esengeldi Zhumadilovich, PhD", role: "member" },
-    { name: "Abdyldaev Rysbek Aldagandaevich, MD, prof.", role: "member" },
-    { name: "Atikanov Arystanbek Orozalyevich, MD, prof.", role: "member" },
-    { name: "Monolov Nurbek Chynbekovich MD, prof.", role: "member" },
-    { name: "Umetalieva Maana Nurdinovna, PhD., Assoc.", role: "member" },
-    { name: "Tolubaeva Munara Zholchuevna, PhD.", role: "member" }
-  ];
+  // Debug: check available translations
+  React.useEffect(() => {
+    console.log('=== i18n DEBUG ===');
+    console.log('Current language:', i18n.language);
+    console.log('Available languages:', i18n.languages);
+    console.log('All science keys (current lang):', Object.keys(getRaw('science') || {}));
+    console.log('Science management keys (current lang):', Object.keys(getRaw('science.management') || {}));
+    
+    // Test specific keys
+    const testKeys = [
+      'science.management.scientificCouncil.title',
+      'science.management.scientificCouncil.tasks',
+      'science.management.scientificCouncil.members'
+    ];
+    
+    testKeys.forEach(key => {
+      const value = getRaw(key);
+      const enValue = getRaw(key, 'en');
+      if (process.env.NODE_ENV === 'development') {
+        console.log(`Key "${key}" (${i18n.language}):`, value);
+        console.log(`Key "${key}" (en):`, enValue);
+      }
+    });
+  }, [i18n.language, t]);
+
+  // Simple translation function with fallback
+  const getTranslation = (key, fallback = '') => {
+    const value = getRaw(key, i18n.language);
+    
+    // If value is missing or equals key, use fallback
+    if (!value || value === key || (typeof value === 'object' && Object.keys(value).length === 0)) {
+      return fallback;
+    }
+    
+    return value;
+  };
+
+  const getString = (key, fallback = '') => {
+    const value = getTranslation(key, fallback);
+    if (typeof value === 'string') return value;
+    if (Array.isArray(value)) return value[0] || fallback;
+    if (typeof value === 'object') return value.title || value.name || value.text || fallback;
+    return fallback;
+  };
+
+  const getArray = (key, fallback = []) => {
+    const value = getTranslation(key, fallback);
+    if (Array.isArray(value)) return value;
+    if (typeof value === 'string') return [value];
+    if (typeof value === 'object') {
+      // Handle different object structures
+      if (value.items) return value.items;
+      if (value.tasks) return value.tasks;
+      if (value.members) return value.members;
+      return Object.values(value);
+    }
+    return fallback;
+  };
+
+  // Get data with fallbacks
+  const title = getString('science.management.scientificCouncil.title', 'Scientific and Technical Council');
+  const subtitle = getString('science.management.scientificCouncil.subtitle', 'Permanent advisory body of the University');
+  const generalText = getString('science.management.scientificCouncil.generalText', 
+    'The Scientific and Technical Council is a permanent advisory body of the University. In its activities, the STC is guided by the regulatory legal acts of the Kyrgyz Republic, the Charter of the University, this Regulation and other local regulations.');
+  
+  const tasks = getArray('science.management.scientificCouncil.tasks', [
+    'Development of priority areas of science and technology by university scientists',
+    'Ensuring priority development of fundamental and exploratory research',
+    'Improving planning and organizational forms of research work',
+    'Development of proposals for preserving the scientific potential of the University',
+    'Promoting integration processes between the University and scientific organizations',
+    'Promoting the development of research work of students'
+  ]);
+
+  const members = getArray('science.management.scientificCouncil.members', [
+    { name: 'Toktogazy Moldalievich Tulekeev, MD, prof.', role: 'Chairman' },
+    { name: 'Uzakbaev Kamchibek Askarbekovich, MD, prof.', role: 'Deputy Chairman' },
+    { name: 'Imankulova Asel Sansyzbaevna, MD, prof.', role: 'Scientific Secretary' },
+    { name: 'Zhumadilov Esengeldi Zhumadilovich, PhD', role: 'Council Member' },
+    { name: 'Abdyldaev Rysbek Aldagandaevich, MD, prof.', role: 'Council Member' },
+    { name: 'Atikanov Arystanbek Orozalyevich, MD, prof.', role: 'Council Member' }
+  ]);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -102,7 +182,7 @@ const ScientificTechnicalCouncil = () => {
               className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors group"
             >
               <FaArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" />
-              Назад к органам управления
+              {getString('science.management.scientificCouncil.back', 'Back to Management')}
             </Link>
 
             <motion.div
@@ -112,14 +192,14 @@ const ScientificTechnicalCouncil = () => {
             >
               <div className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-4">
                 <span className="text-white/90 text-sm font-medium">
-                  {t('science.management.scientificCouncil.badge')}
+                  {getString('science.management.scientificCouncil.badge', 'Scientific Coordination')}
                 </span>
               </div>
               <h1 className="text-5xl font-bold text-white mb-4">
-                {t('science.management.scientificCouncil.title')}
+                {title}
               </h1>
               <p className="text-xl text-white/90 max-w-3xl">
-                {t('science.management.scientificCouncil.subtitle')}
+                {subtitle}
               </p>
             </motion.div>
           </div>
@@ -128,7 +208,7 @@ const ScientificTechnicalCouncil = () => {
 
       {/* Main Content */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* Общие положения */}
+        {/* General Provisions */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -141,15 +221,15 @@ const ScientificTechnicalCouncil = () => {
               <FaFileAlt className="text-white text-xl" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">
-              {t('science.management.scientificCouncil.generalTitle')}
+              {getString('science.management.scientificCouncil.generalTitle', 'General Provisions')}
             </h2>
           </div>
           <p className="text-gray-700 text-lg leading-relaxed">
-            {t('science.management.scientificCouncil.generalText')}
+            {generalText}
           </p>
         </motion.div>
 
-        {/* Цели и задачи */}
+        {/* Goals and Tasks */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -162,15 +242,16 @@ const ScientificTechnicalCouncil = () => {
               <FaClipboardCheck className="text-white text-xl" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">
-              {t('science.management.scientificCouncil.goalsTitle')}
+              {getString('science.management.scientificCouncil.goalsTitle', 'Goals and Objectives')}
             </h2>
           </div>
           <p className="text-gray-700 text-lg leading-relaxed mb-8">
-            {t('science.management.scientificCouncil.goalsText')}
+            {getString('science.management.scientificCouncil.goalsText', 
+              'The purpose of the STC is to organize and coordinate activities in considering issues related to the implementation of state policy in the field of science and technology, development and improvement of the level of research conducted at departments and other departments.')}
           </p>
 
           <h3 className="text-2xl font-bold text-gray-900 mb-6">
-            {t('science.management.scientificCouncil.tasksTitle')}
+            {getString('science.management.scientificCouncil.tasksTitle', 'Main Tasks')}
           </h3>
           <div className="space-y-4">
             {tasks.map((task, index) => (
@@ -186,14 +267,14 @@ const ScientificTechnicalCouncil = () => {
                   <span className="text-[#023E8A] font-bold text-sm">{index + 1}</span>
                 </div>
                 <p className="text-gray-700 text-lg leading-relaxed flex-1">
-                  {task}
+                  {typeof task === 'string' ? task : task.text || task.title || JSON.stringify(task)}
                 </p>
               </motion.div>
             ))}
           </div>
         </motion.div>
 
-        {/* Состав НТС */}
+        {/* Council Members */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -206,28 +287,38 @@ const ScientificTechnicalCouncil = () => {
               <FaUsers className="text-white text-xl" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">
-              {t('science.management.scientificCouncil.compositionTitle')}
+              {getString('science.management.scientificCouncil.compositionTitle', 'Council Composition')}
             </h2>
           </div>
           
           <div className="grid md:grid-cols-2 gap-6">
-            {members.map((member, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="bg-gradient-to-br from-gray-50 to-white p-6 rounded-xl border border-gray-200 hover:shadow-md transition-all hover:border-[#0077B6]/30"
-              >
-                <p className="text-gray-900 text-lg font-semibold mb-2">
-                  {member.name}
-                </p>
-                <span className="inline-block px-3 py-1 bg-gradient-to-r from-[#023E8A]/10 to-[#0077B6]/10 text-[#023E8A] rounded-full text-sm font-medium">
-                  {member.role}
-                </span>
-              </motion.div>
-            ))}
+            {members.map((member, index) => {
+              const memberName = typeof member === 'string' ? member : member.name || member.title;
+              const memberRole = typeof member === 'string' ? 'Council Member' : member.role || 'Council Member';
+              
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  className="bg-gradient-to-br from-gray-50 to-white p-6 rounded-xl border border-gray-200 hover:shadow-md transition-all hover:border-[#0077B6]/30"
+                >
+                  <p className="text-gray-900 text-lg font-semibold mb-2">
+                    {memberName}
+                  </p>
+                  <span className="inline-block px-3 py-1 bg-gradient-to-r from-[#023E8A]/10 to-[#0077B6]/10 text-[#023E8A] rounded-full text-sm font-medium">
+                    {memberRole}
+                  </span>
+                  <p className="text-gray-700">
+                    {typeof member === 'string'
+                      ? ''
+                      : (member && (member.description || member.desc || rstr(`science.management.scientificCouncil.member${index + 1}Desc`, '')))}
+                  </p>
+                </motion.div>
+              );
+            })}
           </div>
         </motion.div>
 
@@ -244,11 +335,11 @@ const ScientificTechnicalCouncil = () => {
               <div className="flex items-center mb-3">
                 <FaDownload className="text-2xl mr-3" />
                 <h3 className="text-2xl font-bold">
-                  {t('science.management.scientificCouncil.downloadTitle')}
+                  {getString('science.management.scientificCouncil.downloadTitle', 'Full Version of Regulations')}
                 </h3>
               </div>
               <p className="text-white/90 text-lg">
-                {t('science.management.scientificCouncil.downloadDesc')}
+                {getString('science.management.scientificCouncil.downloadDesc', 'Download the complete document about the Scientific and Technical Council')}
               </p>
             </div>
             <motion.a
@@ -260,7 +351,7 @@ const ScientificTechnicalCouncil = () => {
               className="bg-white text-[#023E8A] px-8 py-4 rounded-xl font-bold text-lg hover:shadow-xl transition-all flex items-center gap-2 whitespace-nowrap"
             >
               <FaDownload />
-              {t('science.management.scientificCouncil.downloadBtn')}
+              {getString('science.management.scientificCouncil.downloadBtn', 'Download PDF')}
             </motion.a>
           </div>
         </motion.div>

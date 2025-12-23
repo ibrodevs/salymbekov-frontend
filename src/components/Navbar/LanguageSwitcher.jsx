@@ -19,8 +19,10 @@ const LanguageSwitcher = ({
     { code: 'ru', name: 'Русский', icon: RuIcon },
     { code: 'kg', name: 'Кыргызча', icon: KgIcon }
   ];
-
-  const currentLanguage = languages.find(lang => lang.code === i18n.language) || languages[0];
+  // Normalize current language (map 'ky' -> 'kg', strip region like 'kg-KG')
+  const normalized = (i18n.resolvedLanguage || i18n.language || 'en').split('-')[0];
+  const effectiveLang = normalized === 'ky' ? 'kg' : normalized;
+  const currentLanguage = languages.find(lang => lang.code === effectiveLang) || languages[0];
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -36,10 +38,12 @@ const LanguageSwitcher = ({
   }, []);
 
   const handleLanguageChange = (languageCode) => {
-    i18n.changeLanguage(languageCode);
+    // Map any 'ky' selection to 'kg' to match our resources
+    const target = languageCode === 'ky' ? 'kg' : languageCode;
+    i18n.changeLanguage(target);
     setIsOpen(false);
     if (onChange) {
-      onChange(languageCode);
+      onChange(target);
     }
   };
 
@@ -108,7 +112,7 @@ const LanguageSwitcher = ({
                 className={`
                   flex items-center w-full px-4 py-3 text-sm 
                   transition-all duration-200 text-left
-                  ${i18n.language === language.code
+                  ${effectiveLang === language.code
                     ? 'bg-blue-50 text-blue-700 font-semibold border-r-2 border-blue-600'
                     : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600'
                   }

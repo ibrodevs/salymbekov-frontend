@@ -1,25 +1,27 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const Hero = () => {
+  const { t } = useTranslation();
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
     {
       id: 1,
-      title: 'Welcome to Salymbekov University',
-      description: 'Leading medical education in Kyrgyzstan',
-      image: '/images/slide1.jpg' // Замените на реальные пути к изображениям
+      title: t('hero.slide1.title'),
+      description: t('hero.slide1.description'),
+      image: '/images/slide1.jpg'
     },
     {
       id: 2,
-      title: 'Innovative Research',
-      description: 'Advancing medical science and technology',
+      title: t('hero.slide2.title'),
+      description: t('hero.slide2.description'),
       image: '/images/slide2.jpg'
     },
     {
       id: 3,
-      title: 'Quality Education',
-      description: 'Preparing future healthcare professionals',
+      title: t('hero.slide3.title'),
+      description: t('hero.slide3.description'),
       image: '/images/slide3.jpg'
     }
   ];
@@ -34,7 +36,6 @@ const Hero = () => {
 
   return (
     <div className="relative w-full h-screen overflow-hidden">
-      {}
       <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
         {slides.map((slide) => (
           <div key={slide.id} className="w-full h-screen shrink-0 relative">
@@ -49,7 +50,6 @@ const Hero = () => {
         ))}
       </div>
 
-      {}
       <button
         onClick={prevSlide}
         className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-2"
@@ -63,7 +63,6 @@ const Hero = () => {
         &#10095;
       </button>
 
-      {}
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
         {slides.map((_, index) => (
           <button
@@ -78,4 +77,3 @@ const Hero = () => {
 };
 
 export default Hero;
-

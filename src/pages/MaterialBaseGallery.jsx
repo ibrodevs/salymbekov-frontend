@@ -38,7 +38,7 @@ const MaterialBaseGallery = () => {
     {
       id: 1,
       url: "https://images.unsplash.com/photo-1600585154340-ffffd44ef2f3?w=800&h=600&fit=crop",
-      title: "Современное оборудование",
+      title: "Современ",
       category: "Технологии"
     },
     {
@@ -102,14 +102,14 @@ const MaterialBaseGallery = () => {
         {/* Заголовок и описание */}
         <div className="text-center mb-16 animate-fade-in">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            {t('materialBase.title')}
+            {t('materialBaseHero.title')}
           </h1>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
-            {t('materialBase.description')}
+            {t('materialBaseHero.description')}
           </p>
           <div className="bg-white rounded-2xl p-6 shadow-lg inline-block transform hover:scale-105 transition-transform duration-300">
             <p className="text-gray-700 text-base md:text-lg">
-              {t('materialBase.cost')}
+              {t('materialBaseHero.cost')}
             </p>
           </div>
         </div>

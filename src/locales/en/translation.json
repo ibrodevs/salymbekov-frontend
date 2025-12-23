@@ -17737,5 +17737,102 @@
       "waqar": "Muhammad Waqar"
     }
   }
+},
+  "founderMessage": {
+    "title": "Founder’s Address",
+    "paragraph1": "In the vision of every citizen of Kyrgyzstan who hopes for a better future, by 2030 Kyrgyzstan will become a competitive country with a diversified economy, high per capita income, and a full-fledged, active member of the global community. To achieve this, it is necessary to focus on the main wealth — human resources.",
+    "paragraph2": "The driving force of the economy and the enlightened elite are scientists, educators, investors, entrepreneurs, and workers who create knowledge, finance and develop businesses, provide the workforce, and lay the foundation for global competitiveness.",
+    "readMore": "READ MORE",
+    "founderName": "Askar Salymbekov",
+    "founderPosition": "Founder of Dordoi",
+    "imageAlt": "Photo of the Founder of Dordoi"
+  },
+  "materialBase": {
+    "title": "Material and Technical Base",
+    "description": "A positive impact even from minimal care, creating an overall sense of spiritual protection and inner peace.",
+    "cost": "The cost provides access to facilities established over 100 years ago. The pricing allows",
+    "viewAll": "View all",
+    "viewProject": "View project"
+  },
+  "news": {
+    "badge": "News and Events",
+    "title": "Latest News",
+    "subtitle": "Stay informed about all events, activities, and achievements of our university",
+    "buttons": {
+      "allNews": "All news"
+    },
+    "stats": {
+      "articles": "Articles",
+      "categories": "Categories",
+      "readers": "Readers",
+      "updates": "Updates"
+    },
+    "featured": "Featured News",
+    "latestUpdate": "Latest update",
+    "featuredDescription": "Follow our latest achievements and events in real time",
+    "latestNews": "Latest News",
+    "selectCategory": "Select a category to filter",
+    "viewAll": "View all",
+    "readMore": "Read more",
+    "noNews": "There are no news items in this category yet",
+    "showAll": "Show all news",
+    "categories": {
+      "all": "All news",
+      "achievement": "Achievements",
+      "seminar": "Seminars",
+      "forum": "Forums",
+      "lecture": "Lectures",
+      "visit": "Visits"
+    },
+    "items": {
+      "professor": {
+        "title": "ANMAKHA Professor Awarded 'Best Doctor of Eurasia'",
+        "description": "Our professor received the highest medical award at an international forum in Moscow"
+      },
+      "seminar": {
+        "title": "International Seminar on Modern Medicine",
+        "description": "A three-day seminar with leading specialists from 15 countries"
+      },
+      "forum": {
+        "title": "Forum 'Innovations in Education'",
+        "description": "Discussion of modern trends and technologies in medical education",
+        "speaker": "Dr. John Smith"
+      },
+      "cybersecurity": {
+        "title": "Lecture on Cybersecurity in Medicine",
+        "description": "Experts from the Ministry of Internal Affairs delivered a lecture on protecting medical data"
+      },
+      "koreaVisit": {
+        "title": "Delegation from the Republic of Korea",
+        "description": "Official visit of representatives from Korean medical universities"
+      },
+      "delegation": {
+        "title": "Visit of a Delegation from South Korea",
+        "description": "Representatives of a leading Korean university visited our campus"
+      }
+    },
+    "cta": {
+      "title": "Stay Connected",
+      "description": "Subscribe to our newsletter to be the first to receive the latest news and event announcements",
+      "button": "Subscribe to news",
+      "secondary": "Contact us"
+    }
+  },
+  "hero": {
+    "slide1": {
+      "title": "Welcome to Our College!",
+      "description": "Research and innovation for the future"
+    },
+    "slide2": {
+      "title": "Student Service Center",
+      "description": "Support and resources for your success"
+    },
+    "slide3": {
+      "title": "The Best College in the Region",
+      "description": "Quality education and modern laboratories"
+    }
+  }
+
 }
-}
+
+

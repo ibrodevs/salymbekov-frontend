@@ -14,8 +14,8 @@ const HomeNewsSection = () => {
   const latestNews = [
     {
       id: 1,
-      title: t('newsHero.items.professor.title'),
-      description: t('newsHero.items.professor.description'),
+      title: t('news.items.professor.title'),
+      description: t('news.items.professor.description'),
       date: "17-11-2025",
       category: "achievement",
       readTime: "3 мин",
@@ -24,8 +24,8 @@ const HomeNewsSection = () => {
     },
     {
       id: 2,
-      title: t('newsHero.items.seminar.title'),
-      description: t('newsHero.items.seminar.description'),
+      title: t('news.items.seminar.title'),
+      description: t('news.items.seminar.description'),
       date: "25-10-2025",
       category: "seminar",
       readTime: "4 мин",
@@ -34,8 +34,8 @@ const HomeNewsSection = () => {
     },
     {
       id: 3,
-      title: t('newsHero.items.forum.title'),
-      description: t('newsHero.items.forum.description'),
+      title: t('news.items.forum.title'),
+      description: t('news.items.forum.description'),
       date: "21-10-2025",
       category: "forum",
       readTime: "5 мин",
@@ -62,7 +62,7 @@ const HomeNewsSection = () => {
           
           <div className="absolute top-4 left-4">
             <div className="px-3 py-1 rounded-full text-white text-xs font-semibold bg-gradient-to-r from-[#023E8A] to-[#0077B6]">
-              {t(`newsHero.categories.${news.category}`)}
+              {t(`news.categories.${news.category}`)}
             </div>
           </div>
         </div>
@@ -94,12 +94,12 @@ const HomeNewsSection = () => {
               </div>
             </div>
 
-            <Link to={`/newsHero/${news.id}`}>
+            <Link to={`/news/${news.id}`}>
               <motion.button
                 whileHover={{ scale: 1.05, x: 5 }}
                 className="flex items-center gap-2 text-[#023E8A] font-semibold text-sm group/btn"
               >
-                {t('newsHero.readMore')}
+                {t('news.readMore')}
                 <FaArrowRight className="text-xs group-hover/btn:translate-x-1 transition-transform" />
               </motion.button>
             </Link>
@@ -119,10 +119,10 @@ const HomeNewsSection = () => {
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
-            {t('newsHero.title')}
+            {t('news.title')}
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            {t('newsHero.subtitle')}
+            {t('news.subtitle')}
           </p>
         </motion.div>
 

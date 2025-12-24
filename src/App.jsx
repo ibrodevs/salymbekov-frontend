@@ -189,6 +189,15 @@ const AdmissionProcedure = lazy(() => import('./pages/applicant/AdmissionProcedu
 const AdmissionCom = lazy(() => import('./pages/applicant/AdmissionCom'))
 const KnowledgeKarakol = lazy(() => import('./pages/applicant/KnowledgeKarakol'))
 const KnowledgeOsh = lazy(() => import('./pages/applicant/KnowledgeOsh'))
+const Cooperation1 = lazy(() => import('./pages/applicant/Cooperation'))
+const Meeting = lazy(() => import('./pages/applicant/Meeting'))
+const TeachersDay = lazy(() => import('./pages/applicant/events/TeachersDay'))
+const StateLanguageDay = lazy(() => import('./pages/applicant/events/StateLanguageDay'))
+const KoreanCenter = lazy(() => import('./pages/applicant/events/KoreanCenter'))
+const MedicalMission = lazy(() => import('./pages/applicant/events/MedicalMission'))
+const Graduation = lazy(() => import('./pages/applicant/events/Graduation2025'))
+const DiplomaAward = lazy(() => import('./pages/applicant/events/DiplomaAward'))
+const EurasianCongress = lazy(() => import('./pages/applicant/news/EurasianCongress'))
 
 // Infrastructure lazy imports
 const Locations = lazy(() => import('./pages/infrastructure/Locations'))
@@ -367,11 +376,21 @@ const App = () => {
             <Route path="/applicants/career-guidance" element={<CareerGuidance />} />
             <Route path="/applicants/career-guidance/knowledge-karakol" element={<KnowledgeKarakol />} />
             <Route path="/applicants/career-guidance/knowledge-osh" element={<KnowledgeOsh />} />
+            <Route path="/applicants/career-guidance/cooperation" element={<Cooperation1 />} />
+            <Route path="/applicants/career-guidance/meeting" element={<Meeting />} />
+            <Route path="/applicants/orientation/teachers-day" element={<TeachersDay />} />
+            <Route path="/applicants/orientation/state-language-day" element={<StateLanguageDay />} />
+            <Route path="/applicants/orientation/korean-center" element={<KoreanCenter />} />
+            <Route path="/applicants/orientation/medical-mission" element={<MedicalMission />} />
+            <Route path="/applicants/orientation/graduation-2025" element={<Graduation />} />
+            <Route path="/applicants/orientation/diploma-award" element={<DiplomaAward />} />
+            <Route path="/applicants/career-guidance/news/eurasian-congress" element={<EurasianCongress />} />
             <Route path="/applicants/admission-procedure" element={<AdmissionProcedure />} />
             <Route path="/applicants/admission-regulations" element={<AdmissionCom />} />
             <Route path="/applicants/admission-schedule" element={<ScheduleApp />} />
             <Route path="/applicants/career-guidance/events" element={<CareerGuidance />} />
             <Route path="/applicants/career-guidance/news" element={<CareerGuidance />} />
+
 
             { }
             <Route path="/infrastructure/locations" element={<Locations />} />

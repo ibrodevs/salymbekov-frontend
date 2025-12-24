@@ -535,26 +535,26 @@ const Navbar = () => {
                             isScrolled ? 'border-gray-100' : 'border-blue-700/30'
                           }`}>
                             {/* Scrollable container for sub-items */}
-                            <div className={`max-h-48 overflow-y-auto pr-2 space-y-1.5 custom-scrollbar ${
-                              isScrolled ? 'scrollbar-light' : 'scrollbar-dark'
+                            <div className={`max-h-48 overflow-y-auto pr-2 space-y-1.5 navbar-scrollbar ${
+                              isScrolled ? 'navbar-scrollbar-light' : 'navbar-scrollbar-dark'
                             }`}>
                               {item.subItems.map((subItem) => (
                                 <Link
                                   key={subItem.key}
                                   to={subItem.link}
-                                  className={`flex items-center py-2 px-3 rounded-lg transition-all duration-200 text-sm group/sub ${
+                                  className={`flex items-center py-2 px-3 rounded-lg transition-all duration-200 text-sm group/sub hover:no-underline ${
                                     isScrolled 
                                       ? 'text-gray-600 hover:text-blue-700 hover:bg-blue-100/80' 
                                       : 'text-blue-200 hover:text-white hover:bg-blue-700/30'
                                   }`}
                                   onClick={() => setActiveDropdown(null)}
                                 >
-                                  <div className={`w-1.5 h-1.5 rounded-full mr-2.5 transition-all duration-200 group-hover/sub:scale-125 ${
+                                  <div className={`w-1.5 h-1.5 rounded-full mr-2.5 transition-all duration-200 group-hover/sub:scale-125 flex-shrink-0 ${
                                     isScrolled 
                                       ? 'bg-blue-400 group-hover/sub:bg-blue-600' 
                                       : 'bg-blue-400 group-hover/sub:bg-blue-300'
                                   }`} />
-                                  <span className="text-sm font-medium truncate">
+                                  <span className="text-sm font-medium whitespace-normal break-words min-w-0">
                                     {t(`${menuKey}SUB.${subItem.key}`)}
                                   </span>
                                 </Link>
@@ -587,19 +587,19 @@ const Navbar = () => {
                       <Link
                         key={item.key}
                         to={item.link}
-                        className={`flex items-center py-2 px-3 rounded-lg transition-all duration-200 group/link ${
+                        className={`flex items-center py-2 px-3 rounded-lg transition-all duration-200 group/link hover:no-underline ${
                           isScrolled 
                             ? 'text-gray-700 hover:text-blue-700 hover:bg-white' 
                             : 'text-blue-200 hover:text-white hover:bg-blue-700/30'
                         }`}
                         onClick={() => setActiveDropdown(null)}
                       >
-                        <svg className={`w-4 h-4 mr-2 transition-all duration-200 group-hover/link:translate-x-1 ${
+                        <svg className={`w-4 h-4 mr-2 transition-all duration-200 group-hover/link:translate-x-1 flex-shrink-0 ${
                           isScrolled ? 'text-blue-500' : 'text-blue-300'
                         }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                         </svg>
-                        <span className="text-sm font-medium">
+                        <span className="text-sm font-medium whitespace-normal break-words min-w-0">
                           {t(`${menuKey}SUB.${item.key}`)}
                         </span>
                       </Link>
@@ -681,11 +681,11 @@ const Navbar = () => {
                                 : 'hover:bg-blue-700/30 text-blue-200'
                             }`}
                           >
-                            <span className="font-medium text-sm">
+                            <span className="font-medium text-sm whitespace-normal break-words">
                               {t(`${menuKey}SU.${item.key}`)}
                             </span>
                             <svg
-                              className={`w-4 h-4 transition-all duration-300 ease-out ${
+                              className={`w-4 h-4 transition-all duration-300 ease-out flex-shrink-0 ${
                                 isItemExpanded(menuKey, item.key) ? 'rotate-180' : ''
                               } ${isScrolled ? 'text-blue-500' : 'text-blue-300'}`}
                               fill="none"
@@ -710,42 +710,44 @@ const Navbar = () => {
                               {/* Main item link */}
                               <Link
                                 to={item.link}
-                                className={`flex items-center py-2 transition-all duration-200 text-sm font-medium ${
+                                className={`flex items-center py-2 transition-all duration-200 text-sm font-medium hover:no-underline ${
                                   isScrolled 
                                     ? 'text-blue-700 hover:text-blue-800' 
                                     : 'text-blue-300 hover:text-white'
                                 }`}
                                 onClick={() => setIsMobileMenuOpen(false)}
                               >
-                                <svg className={`w-4 h-4 mr-2 ${
+                                <svg className={`w-4 h-4 mr-2 flex-shrink-0 ${
                                   isScrolled ? 'text-blue-600' : 'text-blue-400'
                                 }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                 </svg>
-                                <span>{t('navbar.viewMainPage', 'View main page')}</span>
+                                <span className="whitespace-normal break-words">
+                                  {t('navbar.viewMainPage', 'View main page')}
+                                </span>
                               </Link>
                               
                               {/* Scrollable container for sub-items */}
-                              <div className={`max-h-40 overflow-y-auto pr-2 space-y-2 custom-scrollbar ${
-                                isScrolled ? 'scrollbar-light' : 'scrollbar-dark'
+                              <div className={`max-h-40 overflow-y-auto pr-2 space-y-2 navbar-scrollbar ${
+                                isScrolled ? 'navbar-scrollbar-light' : 'navbar-scrollbar-dark'
                               }`}>
                                 {item.subItems.map((subItem) => (
                                   <Link
                                     key={subItem.key}
                                     to={subItem.link}
-                                    className={`flex items-center py-2 text-sm transition-all duration-200 rounded px-3 group/sub ${
+                                    className={`flex items-start py-2 text-sm transition-all duration-200 rounded px-3 group/sub hover:no-underline ${
                                       isScrolled 
                                         ? 'text-gray-600 hover:text-blue-700 hover:bg-blue-50/80' 
                                         : 'text-blue-200 hover:text-white hover:bg-blue-700/30'
                                     }`}
                                     onClick={() => setIsMobileMenuOpen(false)}
                                   >
-                                    <div className={`w-1.5 h-1.5 rounded-full mr-2.5 transition-all duration-200 group-hover/sub:scale-125 ${
+                                    <div className={`w-1.5 h-1.5 rounded-full mr-2.5 transition-all duration-200 group-hover/sub:scale-125 flex-shrink-0 mt-1.5 ${
                                       isScrolled 
                                         ? 'bg-blue-400 group-hover/sub:bg-blue-600' 
                                         : 'bg-blue-400 group-hover/sub:bg-blue-300'
                                     }`}></div>
-                                    <span className="truncate">
+                                    <span className="whitespace-normal break-words min-w-0">
                                       {t(`${menuKey}SUB.${subItem.key}`)}
                                     </span>
                                   </Link>
@@ -757,15 +759,15 @@ const Navbar = () => {
                       ) : (
                         <Link
                           to={item.link}
-                          className={`flex items-center justify-between py-3 px-4 transition-all duration-200 font-medium text-sm ${
+                          className={`flex items-center justify-between py-3 px-4 transition-all duration-200 font-medium text-sm hover:no-underline ${
                             isScrolled 
                               ? 'text-gray-800 hover:text-blue-700 hover:bg-blue-50/80' 
                               : 'text-blue-200 hover:text-white hover:bg-blue-700/30'
                           }`}
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
-                          <span>{t(`${menuKey}SU.${item.key}`)}</span>
-                          <svg className={`w-4 h-4 transition-transform duration-200 ${
+                          <span className="whitespace-normal break-words min-w-0">{t(`${menuKey}SU.${item.key}`)}</span>
+                          <svg className={`w-4 h-4 transition-transform duration-200 flex-shrink-0 ${
                             isScrolled ? 'text-blue-400' : 'text-blue-300'
                           }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -831,7 +833,7 @@ const Navbar = () => {
                     } ${activeDropdown === menuKey ? (isScrolled ? 'text-blue-700' : 'text-white') : ''}`}
                   >
                     {/* Animated underline */}
-                    <span className="relative z-10">{t(`navbarSUB.${menuKey}`)}</span>
+                    <span className="relative z-10 whitespace-nowrap">{t(`navbarSUB.${menuKey}`)}</span>
                     <div className={`absolute bottom-0 left-0 right-0 h-0.5 transform transition-transform duration-300 ease-out ${
                       activeDropdown === menuKey ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
                     } ${isScrolled ? 'bg-blue-600' : 'bg-white'}`} />
@@ -888,46 +890,82 @@ const Navbar = () => {
       {/* Spacer for fixed navbar */}
       <div className={navbarHeight} />
 
-      {/* Custom scrollbar styles */}
-      <style jsx>{`
-        .custom-scrollbar {
+      {/* Custom navbar scrollbar styles */}
+      <style jsx global>{`
+        .navbar-scrollbar {
           scrollbar-width: thin;
         }
         
-        .scrollbar-light::-webkit-scrollbar {
-          width: 6px;
+        .navbar-scrollbar-light {
+          scrollbar-color: #cbd5e1 #f1f5f9;
         }
         
-        .scrollbar-light::-webkit-scrollbar-track {
-          background: #f1f5f9;
-          border-radius: 3px;
+        .navbar-scrollbar-light::-webkit-scrollbar {
+          width: 8px;
+          height: 8px;
         }
         
-        .scrollbar-light::-webkit-scrollbar-thumb {
+        .navbar-scrollbar-light::-webkit-scrollbar-track {
+          background: rgba(241, 245, 249, 0.5);
+          border-radius: 10px;
+          margin: 4px;
+        }
+        
+        .navbar-scrollbar-light::-webkit-scrollbar-thumb {
+          background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+          border-radius: 10px;
+          border: 2px solid rgba(241, 245, 249, 0.5);
+        }
+        
+        .navbar-scrollbar-light::-webkit-scrollbar-thumb:hover {
+          background: linear-gradient(135deg, #2563eb, #1e40af);
+        }
+        
+        .navbar-scrollbar-dark {
+          scrollbar-color: rgba(96, 165, 250, 0.7) rgba(30, 58, 138, 0.3);
+        }
+        
+        .navbar-scrollbar-dark::-webkit-scrollbar {
+          width: 8px;
+          height: 8px;
+        }
+        
+        .navbar-scrollbar-dark::-webkit-scrollbar-track {
+          background: rgba(30, 58, 138, 0.3);
+          border-radius: 10px;
+          margin: 4px;
+        }
+        
+        .navbar-scrollbar-dark::-webkit-scrollbar-thumb {
+          background: linear-gradient(135deg, rgba(96, 165, 250, 0.9), rgba(59, 130, 246, 0.8));
+          border-radius: 10px;
+          border: 2px solid rgba(30, 58, 138, 0.3);
+        }
+        
+        .navbar-scrollbar-dark::-webkit-scrollbar-thumb:hover {
+          background: linear-gradient(135deg, rgba(59, 130, 246, 1), rgba(37, 99, 235, 0.9));
+        }
+        
+        /* Smooth scrolling */
+        .navbar-scrollbar::-webkit-scrollbar {
+          transition: all 0.3s ease;
+        }
+        
+        .navbar-scrollbar::-webkit-scrollbar-thumb {
+          transition: all 0.3s ease;
+        }
+        
+        /* Hide scrollbar when not hovering */
+        .navbar-scrollbar:not(:hover)::-webkit-scrollbar-thumb {
+          background: rgba(59, 130, 246, 0.4);
+        }
+        
+        .navbar-scrollbar-light:not(:hover)::-webkit-scrollbar-thumb {
           background: #cbd5e1;
-          border-radius: 3px;
         }
         
-        .scrollbar-light::-webkit-scrollbar-thumb:hover {
-          background: #94a3b8;
-        }
-        
-        .scrollbar-dark::-webkit-scrollbar {
-          width: 6px;
-        }
-        
-        .scrollbar-dark::-webkit-scrollbar-track {
-          background: rgba(30, 58, 138, 0.2);
-          border-radius: 3px;
-        }
-        
-        .scrollbar-dark::-webkit-scrollbar-thumb {
+        .navbar-scrollbar-dark:not(:hover)::-webkit-scrollbar-thumb {
           background: rgba(96, 165, 250, 0.5);
-          border-radius: 3px;
-        }
-        
-        .scrollbar-dark::-webkit-scrollbar-thumb:hover {
-          background: rgba(96, 165, 250, 0.7);
         }
       `}</style>
     </>

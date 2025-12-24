@@ -20,7 +20,7 @@ const FounderMessage = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-            {t('founderMessageHero.title')}
+            {t('founderMessage.title')}
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-[#023E8A] to-[#0077B6] mx-auto rounded-full"></div>
         </motion.div>
@@ -64,10 +64,10 @@ const FounderMessage = () => {
               
               <div className="mt-4 text-center">
                 <h3 className="text-lg font-bold text-gray-800">
-                  {t('founderMessageHero.founderName')}
+                  {t('founderMessage.founderName')}
                 </h3>
                 <p className="text-gray-600 text-sm mt-1">
-                  {t('founderMessageHero.founderPosition')}
+                  {t('founderMessage.founderPosition')}
                 </p>
               </div>
             </div>
@@ -86,8 +86,8 @@ const FounderMessage = () => {
             className="space-y-6"
           >
             <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
-              <p>{t('founderMessageHero.paragraph1')}</p>
-              <p>{t('founderMessageHero.paragraph2')}</p>
+              <p>{t('founderMessage.paragraph1')}</p>
+              <p>{t('founderMessage.paragraph2')}</p>
             </div>
 
             <motion.button
@@ -96,7 +96,7 @@ const FounderMessage = () => {
             onClick={() => window.location.href = '/university/Appeal'} // или другой путь
              className="inline-flex items-center gap-3 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-8 py-4 rounded-2xl font-semibold hover:shadow-xl transition-all duration-300 group"
 >
-  <span>{t('founderMessageHero.readMore')}</span>
+  <span>{t('founderMessage.readMore')}</span>
   <FaArrowRight className="text-sm group-hover:translate-x-1 transition-transform" />
 </motion.button>
           </motion.div>

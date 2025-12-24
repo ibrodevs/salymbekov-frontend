@@ -9,11 +9,10 @@ const Navbar = () => {
   const { t } = useTranslation();
   const location = useLocation();
   const [activeDropdown, setActiveDropdown] = useState(null);
-  const [activeSubDropdown, setActiveSubDropdown] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [expandedItems, setExpandedItems] = useState({});
   const dropdownTimeoutRef = useRef(null);
-  const subDropdownTimeoutRef = useRef(null);
 
   // Track scroll for navbar background
   useEffect(() => {
@@ -28,7 +27,7 @@ const Navbar = () => {
   useEffect(() => {
     setIsMobileMenuOpen(false);
     setActiveDropdown(null);
-    setActiveSubDropdown(null);
+    setExpandedItems({});
   }, [location]);
 
   const handleDropdownEnter = (menu) => {
@@ -36,30 +35,40 @@ const Navbar = () => {
       clearTimeout(dropdownTimeoutRef.current);
     }
     setActiveDropdown(menu);
-    setActiveSubDropdown(null);
   };
 
   const handleDropdownLeave = () => {
     dropdownTimeoutRef.current = setTimeout(() => {
       setActiveDropdown(null);
-      setActiveSubDropdown(null);
     }, 300);
   };
 
-  const handleSubDropdownEnter = (sub) => {
-    if (subDropdownTimeoutRef.current) {
-      clearTimeout(subDropdownTimeoutRef.current);
-    }
-    setActiveSubDropdown(sub);
+  const toggleItemExpansion = (menuKey, itemKey) => {
+    setExpandedItems(prev => {
+      const key = `${menuKey}-${itemKey}`;
+      const newState = { ...prev };
+
+      if (newState[key]) {
+        delete newState[key];
+      } else {
+        // Close all items in this menu first
+        Object.keys(newState).forEach(k => {
+          if (k.startsWith(menuKey + '-')) {
+            delete newState[k];
+          }
+        });
+        newState[key] = true;
+      }
+
+      return newState;
+    });
   };
 
-  const handleSubDropdownLeave = () => {
-    subDropdownTimeoutRef.current = setTimeout(() => {
-      setActiveSubDropdown(null);
-    }, 200);
+  const isItemExpanded = (menuKey, itemKey) => {
+    return expandedItems[`${menuKey}-${itemKey}`];
   };
 
-  // Complete menu data structure with all paths from Navbar.jsx
+  // Menu data structure
   const menuData = {
     university: {
       items: [
@@ -358,11 +367,6 @@ const Navbar = () => {
         }
       ]
     },
-
-
-
-
-
     applicant: {
       items: [
         { key: 'directions', link: '/applicants/directions' },
@@ -401,70 +405,85 @@ const Navbar = () => {
       ]
     }
   };
+
+  // Utility buttons in navbar
+  const utilityButtons = [];
+
   const renderFullscreenDropdown = (menuKey, items) => {
-    // Разделяем элементы на те, у которых есть подпункты (синие) и те, у которых нет (белые)
     const itemsWithSubItems = items.filter(item => item.subItems && item.subItems.length > 0);
     const itemsWithoutSubItems = items.filter(item => !item.subItems || item.subItems.length === 0);
 
     return (
       <div
-        className={`fixed top-20 left-1/2 -translate-x-1/2 bg-white/98 backdrop-blur-2xl shadow-2xl border border-blue-100 rounded-xl transition-all duration-500 overflow-visible max-w-7xl min-h-fit ${activeDropdown === menuKey
-          ? 'opacity-100 visible'
-          : 'opacity-0 invisible'
+        className={`fixed top-20 left-0 right-0 bg-white transition-all duration-300 border-b border-blue-200 ${activeDropdown === menuKey
+          ? 'opacity-100 visible max-h-[70vh] overflow-y-auto'
+          : 'opacity-0 invisible max-h-0 overflow-hidden'
           }`}
         onMouseEnter={() => handleDropdownEnter(menuKey)}
         onMouseLeave={handleDropdownLeave}
       >
-        <div className="px-8 py-6 flex justify-center">
-          <div className={`flex gap-6 auto-rows-max ${menuKey === 'university' ? '' : ''
-            }`}>
-            {/* Левая часть - элементы с подпункты (синие карточки) */}
+        <div className="container mx-auto px-6 py-8">
+          <div className="flex gap-8">
+            {/* Main content with accordion items */}
             {itemsWithSubItems.length > 0 && (
               <div className="flex-1">
-                <div className={`grid ${menuKey === 'university'
-                  ? 'grid-cols-4 gap-x-1 gap-y-0 auto-rows-max'
-                  : 'grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3'
-                  }`}>
-                  {itemsWithSubItems.map((item, index) => (
-                    <div
-                      key={item.key}
-                      className="group"
-                      style={{ animationDelay: `${index * 50}ms` }}
-                    >
-                      <div className={`p-3 rounded-lg transition-all duration-300 bg-blue-50 border border-blue-100 hover:border-blue-300 hover:shadow-md ${activeDropdown === menuKey ? 'animate-fadeInUp' : ''
-                        }`}>
-
-                        {/* Main Item */}
-                        <Link
-                          to={item.link}
-                          className="block mb-2 transition-all duration-300 group-hover:translate-x-1 text-blue-900"
-                          onClick={() => setActiveDropdown(null)}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                  {itemsWithSubItems.map((item) => (
+                    <div key={item.key} className="group">
+                      <div className="border border-gray-200 rounded-lg hover:border-blue-300 transition-all duration-200 overflow-hidden">
+                        {/* Accordion Header */}
+                        <button
+                          onClick={() => toggleItemExpansion(menuKey, item.key)}
+                          className="w-full p-4 text-left flex items-center justify-between hover:bg-blue-50 transition-colors duration-200"
                         >
-                          <h3 className="text-sm font-bold mb-2 text-blue-800 line-clamp-2">
-                            {t(`${menuKey}SUB.${item.key}`)}
-                          </h3>
-                        </Link>
+                          <div className="flex items-center">
+                            <div className="w-8 h-8 bg-blue-100 rounded-md flex items-center justify-center mr-3">
+                              <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                              </svg>
+                            </div>
+                            <div>
+                              <h3 className="text-sm font-bold text-blue-800">
+                                {t(`${menuKey}SUB.${item.key}`)}
+                              </h3>
+                            </div>
+                          </div>
+                          <svg
+                            className={`w-5 h-5 text-blue-500 transition-transform duration-300 ${isItemExpanded(menuKey, item.key) ? 'rotate-180' : ''
+                              }`}
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </button>
 
-                        {/* Sub Items */}
-                        {item.subItems && (
-                          <div className="space-y-1">
-                            {item.subItems.map((subItem, subIndex) => (
+                        {/* Accordion Content */}
+                        <div
+                          className={`overflow-hidden transition-all duration-300 ${isItemExpanded(menuKey, item.key)
+                            ? 'max-h-96 opacity-100'
+                            : 'max-h-0 opacity-0'
+                            }`}
+                        >
+                          <div className="px-4 pb-4 pt-2 space-y-1.5 ml-11 border-t border-gray-100">
+                            {item.subItems.map((subItem) => (
                               <Link
                                 key={subItem.key}
                                 to={subItem.link}
-                                className="flex items-center py-1 px-2 text-gray-700 hover:text-blue-700 hover:bg-white rounded transition-all duration-200 group/sub text-sm"
+                                className="flex items-center py-2 px-3 text-gray-600 hover:text-blue-700 hover:bg-blue-100 rounded transition-all duration-150 text-sm group/sub"
                                 onClick={() => setActiveDropdown(null)}
-                                style={{ animationDelay: `${(index * 50) + (subIndex * 20)}ms` }}
                               >
                                 <div className={`w-1.5 h-1.5 bg-blue-400 rounded-full mr-2 transition-all duration-200 group-hover/sub:scale-150 ${activeDropdown === menuKey ? 'animate-pulse' : ''
                                   }`} />
+                                <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-2.5 transition-transform duration-200 group-hover/sub:scale-125" />
                                 <span className="text-sm">
                                   {t(`${menuKey}SUB.${subItem.key}`)}
                                 </span>
                               </Link>
                             ))}
                           </div>
-                        )}
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -472,31 +491,30 @@ const Navbar = () => {
               </div>
             )}
 
-            {/* Правая часть - элементы без подпунктов (белый список) */}
+            {/* Quick links sidebar */}
             {itemsWithoutSubItems.length > 0 && (
-              <div className="w-80 flex-shrink-0">
-                <div className="bg-white border border-gray-100 rounded-lg p-4">
-                  <h3 className="text-base font-bold mb-3 text-gray-800">
+              <div className="w-64 flex-shrink-0">
+                <div className="bg-blue-50 rounded-lg border border-blue-200 p-4">
+                  <h3 className="text-base font-bold text-blue-900 mb-3">
                     {t('navbar.quickLinks', 'Quick Links')}
                   </h3>
-                  <div className="space-y-1">
-                    {itemsWithoutSubItems.map((item, index) => (
+                  <div className="space-y-1.5">
+                    {itemsWithoutSubItems.map((item) => (
                       <Link
                         key={item.key}
                         to={item.link}
-                        className="flex items-center py-2 px-2 text-gray-700 hover:text-blue-700 hover:bg-blue-50 rounded transition-all duration-200 group/link"
+                        className="flex items-center py-2 px-3 text-gray-700 hover:text-blue-700 hover:bg-white rounded transition-all duration-150 group/link"
                         onClick={() => setActiveDropdown(null)}
-                        style={{ animationDelay: `${index * 30}ms` }}
                       >
                         <svg
-                          className="w-3.5 h-3.5 mr-2.5 text-blue-500 transition-all duration-200 group-hover/link:scale-110"
+                          className="w-4 h-4 text-blue-500 mr-2 transition-transform duration-200 group-hover/link:translate-x-1"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
                         >
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                         </svg>
-                        <span className="text-sm">
+                        <span className="text-sm font-medium">
                           {t(`${menuKey}SUB.${item.key}`)}
                         </span>
                       </Link>
@@ -512,18 +530,18 @@ const Navbar = () => {
   };
 
   const renderMobileMenu = () => (
-    <div className={`lg:hidden absolute top-full left-0 right-0 bg-white shadow-2xl border-t border-blue-100 transition-all duration-500 ${isMobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
+    <div className={`lg:hidden absolute top-full left-0 right-0 bg-white border-t border-blue-200 transition-all duration-300 overflow-hidden ${isMobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
       }`}>
-      <div className="container mx-auto px-6 py-6">
+      <div className="container mx-auto px-4 py-6">
         {Object.entries(menuData).map(([menuKey, { items }]) => (
-          <div key={menuKey} className="mb-4">
+          <div key={menuKey} className="mb-3">
             <button
               onClick={() => setActiveDropdown(activeDropdown === menuKey ? null : menuKey)}
-              className="flex items-center justify-between w-full py-4 text-lg font-semibold text-blue-900 hover:text-blue-700 transition-colors duration-200 bg-blue-50 rounded-xl px-4"
+              className="flex items-center justify-between w-full py-3 px-4 text-base font-semibold text-blue-900 hover:text-blue-700 transition-colors bg-blue-50 rounded-lg"
             >
               <span>{t(`navbar.${menuKey}`)}</span>
               <svg
-                className={`w-5 h-5 transition-transform duration-300 ${activeDropdown === menuKey ? 'rotate-180' : ''
+                className={`w-5 h-5 transition-transform duration-300 text-blue-600 ${activeDropdown === menuKey ? 'rotate-180' : ''
                   }`}
                 fill="none"
                 stroke="currentColor"
@@ -533,31 +551,74 @@ const Navbar = () => {
               </svg>
             </button>
 
-            <div className={`overflow-hidden transition-all duration-500 ${activeDropdown === menuKey ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
+            <div className={`overflow-hidden transition-all duration-300 ${activeDropdown === menuKey ? 'max-h-screen opacity-100 mt-2' : 'max-h-0 opacity-0'
               }`}>
-              <div className="pl-4 space-y-3 py-3">
+              <div className="space-y-2 py-2">
                 {items.map((item) => (
-                  <div key={item.key} className="bg-white rounded-lg p-3 border border-gray-100">
-                    <Link
-                      to={item.link}
-                      className="block py-2 text-gray-800 hover:text-blue-700 transition-colors duration-200 font-medium"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {t(`${menuKey}SU.${item.key}`)}
-                    </Link>
-                    {item.subItems && activeDropdown === menuKey && (
-                      <div className="pl-3 space-y-2 mt-2 border-l-2 border-blue-200">
-                        {item.subItems.map((subItem) => (
-                          <Link
-                            key={subItem.key}
-                            to={subItem.link}
-                            className="block py-1 text-sm text-gray-600 hover:text-blue-700 transition-colors duration-200"
-                            onClick={() => setIsMobileMenuOpen(false)}
+                  <div key={item.key} className="bg-white rounded-lg border border-gray-100 overflow-hidden">
+                    {item.subItems ? (
+                      <>
+                        <button
+                          onClick={() => toggleItemExpansion(menuKey, item.key)}
+                          className="w-full py-3 px-4 text-left flex items-center justify-between hover:bg-blue-50 transition-colors"
+                        >
+                          <span className="font-medium text-gray-800">
+                            {t(`${menuKey}SU.${item.key}`)}
+                          </span>
+                          <svg
+                            className={`w-5 h-5 text-blue-500 transition-transform duration-300 ${isItemExpanded(menuKey, item.key) ? 'rotate-180' : ''
+                              }`}
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
                           >
-                            • {t(`${menuKey}SUB.${subItem.key}`)}
-                          </Link>
-                        ))}
-                      </div>
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </button>
+
+                        <div
+                          className={`overflow-hidden transition-all duration-300 ${isItemExpanded(menuKey, item.key)
+                            ? 'max-h-96 opacity-100'
+                            : 'max-h-0 opacity-0'
+                            }`}
+                        >
+                          <div className="px-4 pb-3 space-y-2 border-t border-gray-100">
+                            <Link
+                              to={item.link}
+                              className="flex items-center py-2 text-blue-700 hover:text-blue-800 transition-colors"
+                              onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                              </svg>
+                              <span className="text-sm font-medium">View main page</span>
+                            </Link>
+
+                            {item.subItems.map((subItem) => (
+                              <Link
+                                key={subItem.key}
+                                to={subItem.link}
+                                className="flex items-center py-2 text-sm text-gray-600 hover:text-blue-700 transition-colors hover:bg-blue-50 rounded px-2 group/sub"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                              >
+                                <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-2.5 transition-transform duration-200 group-hover/sub:scale-125"></div>
+                                {t(`${menuKey}SUB.${subItem.key}`)}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      </>
+                    ) : (
+                      <Link
+                        to={item.link}
+                        className="flex items-center justify-between py-3 px-4 text-gray-800 hover:text-blue-700 transition-colors font-medium hover:bg-blue-50"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        <span>{t(`${menuKey}SU.${item.key}`)}</span>
+                        <svg className="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </Link>
                     )}
                   </div>
                 ))}
@@ -567,7 +628,25 @@ const Navbar = () => {
         ))}
 
         <div className="pt-6 border-t border-gray-200">
-          <LanguageSwitcher variant="solid" />
+          <div className="grid grid-cols-3 gap-2 mt-4 pt-4 border-t border-gray-200">
+            {utilityButtons.map((button) => (
+              <Link
+                key={button.key}
+                to={button.link}
+                className="flex flex-col items-center p-2 text-blue-700 hover:bg-blue-50 rounded-lg transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <svg className="w-5 h-5 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={button.icon} />
+                </svg>
+                <span className="text-xs">{button.label}</span>
+              </Link>
+            ))}
+          </div>
+
+          <div className="mt-4 pt-4 border-t border-gray-200">
+            <LanguageSwitcher variant="solid" />
+          </div>
         </div>
       </div>
     </div>
@@ -575,22 +654,20 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-        ? 'bg-white/95 backdrop-blur-xl shadow-2xl border-b border-blue-100'
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        ? 'bg-gradient-to-r from-blue-900/90 to-blue-800/90 backdrop-blur-xl shadow-2xl border-b border-blue-700/30'
         : 'bg-gradient-to-r from-blue-900 to-blue-800'
         }`}>
-        <div className="">
+        <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <div className="flex-shrink-0">
               <Link to="/" className="flex items-center group">
-                <div
-                  className="h-14 px-3 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-105"
-                >
+                <div className="h-14 px-3 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-105">
                   <img
                     src={isScrolled ? Logo1 : Logo2}
                     alt="Logo"
-                    className="h-10 w-auto object-contain transition-opacity duration-300"
+                    className="h-10 w-auto object-contain"
                   />
                 </div>
               </Link>
@@ -606,16 +683,12 @@ const Navbar = () => {
                   onMouseLeave={handleDropdownLeave}
                 >
                   <button
-                    className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 relative overflow-hidden group ${isScrolled
-                      ? 'text-blue-900 hover:text-blue-700'
-                      : 'text-white hover:text-blue-100'
-                      } ${activeDropdown === menuKey ? (isScrolled ? 'text-blue-700' : 'text-white') : ''}`}
+                    className={`px-5 py-3 rounded-lg font-semibold transition-all duration-200 ${isScrolled
+                      ? 'text-white hover:text-blue-100 hover:bg-white/10'
+                      : 'text-white hover:text-blue-100 hover:bg-white/10'
+                      } ${activeDropdown === menuKey ? 'text-white bg-white/20' : ''}`}
                   >
-                    <span className="relative z-10">{t(`navbarSUB.${menuKey}`)}</span>
-                    <div className={`absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl transition-all duration-300 ${activeDropdown === menuKey
-                      ? 'opacity-20 scale-100'
-                      : 'opacity-0 scale-95 group-hover:opacity-10 group-hover:scale-100'
-                      }`} />
+                    <span>{t(`navbarSUB.${menuKey}`)}</span>
                   </button>
                   {renderFullscreenDropdown(menuKey, items)}
                 </div>
@@ -623,26 +696,43 @@ const Navbar = () => {
             </div>
 
             {/* Right Section */}
-            <div className="flex items-center space-x-4">
-              <div className="hidden lg:block">
+            <div className="flex items-center space-x-2">
+              {/* Desktop Utility Buttons */}
+              <div className="hidden lg:flex items-center space-x-1">
+                {utilityButtons.map((button) => (
+                  <Link
+                    key={button.key}
+                    to={button.link}
+                    className={`flex items-center px-3 py-2 rounded-lg transition-all duration-200 ${isScrolled
+                      ? 'text-white hover:text-white hover:bg-white/10'
+                      : 'text-white hover:text-white hover:bg-white/10'
+                      }`}
+                  >
+                    <svg className="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={button.icon} />
+                    </svg>
+                    <span className="text-sm font-medium">{button.label}</span>
+                  </Link>
+                ))}
+              </div>
+
+              {/* Language Switcher */}
+              <div className="hidden lg:block ml-2">
                 <LanguageSwitcher variant={isScrolled ? "outline" : "default"} />
               </div>
 
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className={`lg:hidden p-3 rounded-xl transition-all duration-300 relative overflow-hidden ${isScrolled
-                  ? 'text-blue-900 hover:bg-blue-50'
+                className={`lg:hidden p-3 rounded-lg transition-all duration-200 ${isScrolled
+                  ? 'text-white hover:bg-white/10'
                   : 'text-white hover:bg-white/10'
                   }`}
               >
                 <div className="w-6 h-6 relative">
-                  <span className={`absolute block w-6 h-0.5 transition-all duration-300 ${isScrolled ? 'bg-blue-900' : 'bg-white'
-                    } ${isMobileMenuOpen ? 'rotate-45 top-3' : 'top-1'}`} />
-                  <span className={`absolute block w-6 h-0.5 transition-all duration-300 ${isScrolled ? 'bg-blue-900' : 'bg-white'
-                    } ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100 top-3'}`} />
-                  <span className={`absolute block w-6 h-0.5 transition-all duration-300 ${isScrolled ? 'bg-blue-900' : 'bg-white'
-                    } ${isMobileMenuOpen ? '-rotate-45 top-3' : 'top-5'}`} />
+                  <span className={`absolute block w-6 h-0.5 transition-all duration-300 bg-white ${isMobileMenuOpen ? 'rotate-45 top-3' : 'top-1'}`} />
+                  <span className={`absolute block w-6 h-0.5 transition-all duration-300 bg-white ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100 top-3'}`} />
+                  <span className={`absolute block w-6 h-0.5 transition-all duration-300 bg-white ${isMobileMenuOpen ? '-rotate-45 top-3' : 'top-5'}`} />
                 </div>
               </button>
             </div>
@@ -656,29 +746,13 @@ const Navbar = () => {
       {/* Spacer for fixed navbar */}
       <div className="h-20" />
 
-      {/* Overlay for fullscreen dropdown */}
+      {/* Backdrop overlay */}
       {activeDropdown && (
         <div
           className="fixed inset-0 bg-black/10 backdrop-blur-sm z-40 top-20"
           onClick={() => setActiveDropdown(null)}
         />
       )}
-
-      <style jsx>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fadeInUp {
-          animation: fadeInUp 0.5s ease-out forwards;
-        }
-      `}</style>
     </>
   );
 };

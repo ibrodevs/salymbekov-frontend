@@ -168,7 +168,6 @@ const StudentService = lazy(() => import('./pages/student/opportunities/StudentS
 const AdaptationPrograms = lazy(() => import('./pages/student/opportunities/AdaptationPrograms'))
 
 // Applicant lazy imports
-const ApplicantBase = lazy(() => import('./pages/applicant/ApplicantBase'))
 const Commission = lazy(() => import('./pages/applicant/Commission'))
 const Dealers = lazy(() => import('./pages/applicant/Dealers'))
 const Rules = lazy(() => import('./pages/applicant/Rules'))

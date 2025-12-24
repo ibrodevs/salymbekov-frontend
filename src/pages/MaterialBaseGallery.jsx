@@ -102,14 +102,14 @@ const MaterialBaseGallery = () => {
         {/* Заголовок и описание */}
         <div className="text-center mb-16 animate-fade-in">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            {t('materialBaseHero.title')}
+            {t('materialBase.title')}
           </h1>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
-            {t('materialBaseHero.description')}
+            {t('materialBase.description')}
           </p>
           <div className="bg-white rounded-2xl p-6 shadow-lg inline-block transform hover:scale-105 transition-transform duration-300">
             <p className="text-gray-700 text-base md:text-lg">
-              {t('materialBaseHero.cost')}
+              {t('materialBase.cost')}
             </p>
           </div>
         </div>

@@ -12,18 +12,29 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [expandedItems, setExpandedItems] = useState({});
+  const [navbarHeight, setNavbarHeight] = useState('h-20');
   const navbarRef = useRef(null);
   const dropdownTimeoutRef = useRef(null);
+  const lastScrollY = useRef(0);
 
   // Track scroll for navbar background with smooth transitions
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const shouldBeScrolled = scrollY > 10;
+      const shouldBeScrolled = scrollY > 20;
+      
+      // Adjust navbar height on scroll
+      if (scrollY > 50) {
+        setNavbarHeight('h-16');
+      } else {
+        setNavbarHeight('h-20');
+      }
       
       if (shouldBeScrolled !== isScrolled) {
         setIsScrolled(shouldBeScrolled);
       }
+      
+      lastScrollY.current = scrollY;
     };
     
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -49,6 +60,19 @@ const Navbar = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
+
   const handleDropdownEnter = useCallback((menu) => {
     if (dropdownTimeoutRef.current) {
       clearTimeout(dropdownTimeoutRef.current);
@@ -59,7 +83,7 @@ const Navbar = () => {
   const handleDropdownLeave = useCallback(() => {
     dropdownTimeoutRef.current = setTimeout(() => {
       setActiveDropdown(null);
-    }, 150);
+    }, 200);
   }, []);
 
   const toggleItemExpansion = (menuKey, itemKey) => {
@@ -87,7 +111,7 @@ const Navbar = () => {
     return expandedItems[`${menuKey}-${itemKey}`];
   };
 
-  // Enhanced menu data structure
+  // Enhanced menu data structure with scrollable sections
   const menuData = {
     university: {
       items: [
@@ -425,22 +449,19 @@ const Navbar = () => {
     }
   };
 
-  // Utility buttons in navbar (empty for now as per original)
-  const utilityButtons = [];
-
   const renderFullscreenDropdown = (menuKey, items) => {
     const itemsWithSubItems = items.filter(item => item.subItems && item.subItems.length > 0);
     const itemsWithoutSubItems = items.filter(item => !item.subItems || item.subItems.length === 0);
     
     return (
       <div
-        className={`fixed top-20 left-0 right-0 transition-all duration-300 border-b ${
+        className={`fixed top-16 md:top-20 left-0 right-0 transition-all duration-300 ease-out border-b ${
           isScrolled 
-            ? 'bg-white/95 backdrop-blur-md border-gray-100' 
-            : 'bg-blue-900/95 backdrop-blur-md border-blue-700/30'
+            ? 'bg-white/95 backdrop-blur-lg border-gray-100' 
+            : 'bg-blue-900/95 backdrop-blur-lg border-blue-700/30'
         } ${
           activeDropdown === menuKey 
-            ? 'opacity-100 visible max-h-[70vh] overflow-y-auto shadow-2xl' 
+            ? 'opacity-100 visible max-h-[70vh] overflow-y-auto shadow-xl' 
             : 'opacity-0 invisible max-h-0 overflow-hidden'
         }`}
         onMouseEnter={() => handleDropdownEnter(menuKey)}
@@ -462,14 +483,14 @@ const Navbar = () => {
                         {/* Accordion Header */}
                         <button
                           onClick={() => toggleItemExpansion(menuKey, item.key)}
-                          className={`w-full p-3 md:p-4 text-left flex items-center justify-between transition-colors duration-200 group-hover:shadow-inner ${
+                          className={`w-full p-3 md:p-4 text-left flex items-center justify-between transition-colors duration-200 group-hover:shadow-inner rounded-xl ${
                             isScrolled 
                               ? 'hover:bg-blue-50/80' 
                               : 'hover:bg-blue-800/30'
                           }`}
                         >
                           <div className="flex items-center">
-                            <div className={`w-7 h-7 md:w-8 md:h-8 rounded-md flex items-center justify-center mr-3 transition-colors ${
+                            <div className={`w-7 h-7 md:w-8 md:h-8 rounded-lg flex items-center justify-center mr-3 transition-colors ${
                               isScrolled 
                                 ? 'bg-blue-100 group-hover:bg-blue-200' 
                                 : 'bg-blue-700/30 group-hover:bg-blue-600/50'
@@ -491,7 +512,7 @@ const Navbar = () => {
                             </div>
                           </div>
                           <svg
-                            className={`w-4 h-4 md:w-5 md:h-5 transition-all duration-300 ${
+                            className={`w-4 h-4 md:w-5 md:h-5 transition-all duration-300 ease-out ${
                               isItemExpanded(menuKey, item.key) ? 'rotate-180' : ''
                             } ${isScrolled ? 'text-blue-500' : 'text-blue-300'}`}
                             fill="none"
@@ -502,38 +523,43 @@ const Navbar = () => {
                           </svg>
                         </button>
 
-                        {/* Accordion Content */}
+                        {/* Accordion Content with scrolling */}
                         <div
                           className={`overflow-hidden transition-all duration-300 ease-out ${
                             isItemExpanded(menuKey, item.key) 
-                              ? 'max-h-96 opacity-100' 
+                              ? 'max-h-64 opacity-100' 
                               : 'max-h-0 opacity-0'
                           }`}
                         >
-                          <div className={`px-3 md:px-4 pb-3 md:pb-4 pt-2 space-y-1.5 ml-10 md:ml-11 border-t ${
+                          <div className={`px-3 md:px-4 pb-3 md:pb-4 pt-2 ml-10 md:ml-11 border-t ${
                             isScrolled ? 'border-gray-100' : 'border-blue-700/30'
                           }`}>
-                            {item.subItems.map((subItem) => (
-                              <Link
-                                key={subItem.key}
-                                to={subItem.link}
-                                className={`flex items-center py-2 px-3 rounded-lg transition-all duration-150 text-sm group/sub ${
-                                  isScrolled 
-                                    ? 'text-gray-600 hover:text-blue-700 hover:bg-blue-100/80' 
-                                    : 'text-blue-200 hover:text-white hover:bg-blue-700/30'
-                                }`}
-                                onClick={() => setActiveDropdown(null)}
-                              >
-                                <div className={`w-1.5 h-1.5 rounded-full mr-2.5 transition-all duration-200 group-hover/sub:scale-125 ${
-                                  isScrolled 
-                                    ? 'bg-blue-400 group-hover/sub:bg-blue-600' 
-                                    : 'bg-blue-400 group-hover/sub:bg-blue-300'
-                                }`} />
-                                <span className="text-sm font-medium">
-                                  {t(`${menuKey}SUB.${subItem.key}`)}
-                                </span>
-                              </Link>
-                            ))}
+                            {/* Scrollable container for sub-items */}
+                            <div className={`max-h-48 overflow-y-auto pr-2 space-y-1.5 custom-scrollbar ${
+                              isScrolled ? 'scrollbar-light' : 'scrollbar-dark'
+                            }`}>
+                              {item.subItems.map((subItem) => (
+                                <Link
+                                  key={subItem.key}
+                                  to={subItem.link}
+                                  className={`flex items-center py-2 px-3 rounded-lg transition-all duration-200 text-sm group/sub ${
+                                    isScrolled 
+                                      ? 'text-gray-600 hover:text-blue-700 hover:bg-blue-100/80' 
+                                      : 'text-blue-200 hover:text-white hover:bg-blue-700/30'
+                                  }`}
+                                  onClick={() => setActiveDropdown(null)}
+                                >
+                                  <div className={`w-1.5 h-1.5 rounded-full mr-2.5 transition-all duration-200 group-hover/sub:scale-125 ${
+                                    isScrolled 
+                                      ? 'bg-blue-400 group-hover/sub:bg-blue-600' 
+                                      : 'bg-blue-400 group-hover/sub:bg-blue-300'
+                                  }`} />
+                                  <span className="text-sm font-medium truncate">
+                                    {t(`${menuKey}SUB.${subItem.key}`)}
+                                  </span>
+                                </Link>
+                              ))}
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -561,14 +587,14 @@ const Navbar = () => {
                       <Link
                         key={item.key}
                         to={item.link}
-                        className={`flex items-center py-2 px-3 rounded-lg transition-all duration-150 group/link ${
+                        className={`flex items-center py-2 px-3 rounded-lg transition-all duration-200 group/link ${
                           isScrolled 
                             ? 'text-gray-700 hover:text-blue-700 hover:bg-white' 
                             : 'text-blue-200 hover:text-white hover:bg-blue-700/30'
                         }`}
                         onClick={() => setActiveDropdown(null)}
                       >
-                        <svg className={`w-4 h-4 mr-2 transition-transform duration-200 group-hover/link:translate-x-1 ${
+                        <svg className={`w-4 h-4 mr-2 transition-all duration-200 group-hover/link:translate-x-1 ${
                           isScrolled ? 'text-blue-500' : 'text-blue-300'
                         }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -589,175 +615,174 @@ const Navbar = () => {
   };
 
   const renderMobileMenu = () => (
-    <div className={`lg:hidden absolute top-full left-0 right-0 transition-all duration-300 ease-out overflow-hidden ${
-      isScrolled 
-        ? 'bg-white/95 backdrop-blur-md border-t border-gray-100' 
-        : 'bg-blue-900/95 backdrop-blur-md border-t border-blue-700/30'
-    } ${
-      isMobileMenuOpen ? 'max-h-screen opacity-100 shadow-xl' : 'max-h-0 opacity-0'
+    <div className={`lg:hidden fixed inset-0 top-16 md:top-20 transition-all duration-300 ease-in-out overflow-hidden ${
+      isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
     }`}>
-      <div className="container mx-auto px-4 py-4">
-        {Object.entries(menuData).map(([menuKey, { items }]) => (
-          <div key={menuKey} className="mb-2">
-            <button
-              onClick={() => setActiveDropdown(activeDropdown === menuKey ? null : menuKey)}
-              className={`flex items-center justify-between w-full py-3 px-4 text-sm font-semibold transition-colors rounded-lg ${
-                isScrolled 
-                  ? 'text-blue-900 hover:text-blue-700 bg-blue-50/80 hover:bg-blue-100/80' 
-                  : 'text-white hover:text-blue-100 bg-blue-800/30 hover:bg-blue-700/50'
-              }`}
-            >
-              <span>{t(`navbar.${menuKey}`)}</span>
-              <svg
-                className={`w-4 h-4 transition-transform duration-300 ${
-                  isScrolled ? 'text-blue-600' : 'text-blue-300'
-                } ${activeDropdown === menuKey ? 'rotate-180' : ''}`}
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+      {/* Backdrop */}
+      <div 
+        className={`absolute inset-0 transition-all duration-300 ${
+          isMobileMenuOpen ? 'bg-black/40 backdrop-blur-sm' : 'bg-transparent'
+        }`}
+        onClick={() => setIsMobileMenuOpen(false)}
+      />
+      
+      {/* Menu Content */}
+      <div className={`absolute top-0 left-0 right-0 transition-all duration-300 ease-out overflow-y-auto ${
+        isScrolled 
+          ? 'bg-white/95 backdrop-blur-lg border-t border-gray-100' 
+          : 'bg-blue-900/95 backdrop-blur-lg border-t border-blue-700/30'
+      } ${
+        isMobileMenuOpen 
+          ? 'max-h-[calc(100vh-4rem)] opacity-100 shadow-xl' 
+          : 'max-h-0 opacity-0'
+      }`}>
+        <div className="container mx-auto px-4 py-4">
+          {Object.entries(menuData).map(([menuKey, { items }]) => (
+            <div key={menuKey} className="mb-2">
+              <button
+                onClick={() => setActiveDropdown(activeDropdown === menuKey ? null : menuKey)}
+                className={`flex items-center justify-between w-full py-3 px-4 text-sm font-semibold transition-all duration-200 rounded-lg ${
+                  isScrolled 
+                    ? 'text-blue-900 hover:text-blue-700 bg-blue-50/80 hover:bg-blue-100/80' 
+                    : 'text-white hover:text-blue-100 bg-blue-800/30 hover:bg-blue-700/50'
+                }`}
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            
-            <div className={`overflow-hidden transition-all duration-300 ease-out ${
-              activeDropdown === menuKey ? 'max-h-screen opacity-100 mt-2' : 'max-h-0 opacity-0'
-            }`}>
-              <div className="space-y-1.5 py-2">
-                {items.map((item) => (
-                  <div key={item.key} className={`rounded-lg overflow-hidden ${
-                    isScrolled 
-                      ? 'bg-white/50 border border-gray-100' 
-                      : 'bg-blue-800/20 border border-blue-700/20'
-                  }`}>
-                    {item.subItems ? (
-                      <>
-                        {/* Mobile Accordion Header */}
-                        <button
-                          onClick={() => toggleItemExpansion(menuKey, item.key)}
-                          className={`w-full py-3 px-4 text-left flex items-center justify-between transition-colors ${
-                            isScrolled 
-                              ? 'hover:bg-blue-50/80 text-gray-800' 
-                              : 'hover:bg-blue-700/30 text-blue-200'
-                          }`}
-                        >
-                          <span className="font-medium text-sm">
-                            {t(`${menuKey}SU.${item.key}`)}
-                          </span>
-                          <svg
-                            className={`w-4 h-4 transition-transform duration-300 ${
-                              isItemExpanded(menuKey, item.key) ? 'rotate-180' : ''
-                            } ${isScrolled ? 'text-blue-500' : 'text-blue-300'}`}
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
+                <span>{t(`navbar.${menuKey}`)}</span>
+                <svg
+                  className={`w-4 h-4 transition-all duration-300 ease-out ${
+                    isScrolled ? 'text-blue-600' : 'text-blue-300'
+                  } ${activeDropdown === menuKey ? 'rotate-180' : ''}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              
+              <div className={`overflow-hidden transition-all duration-300 ease-out ${
+                activeDropdown === menuKey ? 'max-h-screen opacity-100 mt-2' : 'max-h-0 opacity-0'
+              }`}>
+                <div className="space-y-1.5 py-2">
+                  {items.map((item) => (
+                    <div key={item.key} className={`rounded-lg overflow-hidden ${
+                      isScrolled 
+                        ? 'bg-white/50 border border-gray-100' 
+                        : 'bg-blue-800/20 border border-blue-700/20'
+                    }`}>
+                      {item.subItems ? (
+                        <>
+                          {/* Mobile Accordion Header */}
+                          <button
+                            onClick={() => toggleItemExpansion(menuKey, item.key)}
+                            className={`w-full py-3 px-4 text-left flex items-center justify-between transition-all duration-200 ${
+                              isScrolled 
+                                ? 'hover:bg-blue-50/80 text-gray-800' 
+                                : 'hover:bg-blue-700/30 text-blue-200'
+                            }`}
                           >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                          </svg>
-                        </button>
-
-                        {/* Mobile Accordion Content */}
-                        <div
-                          className={`overflow-hidden transition-all duration-300 ease-out ${
-                            isItemExpanded(menuKey, item.key) 
-                              ? 'max-h-96 opacity-100' 
-                              : 'max-h-0 opacity-0'
-                          }`}
-                        >
-                          <div className={`px-4 pb-3 space-y-2 border-t ${
-                            isScrolled ? 'border-gray-100' : 'border-blue-700/30'
-                          }`}>
-                            {/* Main item link */}
-                            <Link
-                              to={item.link}
-                              className={`flex items-center py-2 transition-colors text-sm font-medium ${
-                                isScrolled 
-                                  ? 'text-blue-700 hover:text-blue-800' 
-                                  : 'text-blue-300 hover:text-white'
-                              }`}
-                              onClick={() => setIsMobileMenuOpen(false)}
+                            <span className="font-medium text-sm">
+                              {t(`${menuKey}SU.${item.key}`)}
+                            </span>
+                            <svg
+                              className={`w-4 h-4 transition-all duration-300 ease-out ${
+                                isItemExpanded(menuKey, item.key) ? 'rotate-180' : ''
+                              } ${isScrolled ? 'text-blue-500' : 'text-blue-300'}`}
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
                             >
-                              <svg className={`w-4 h-4 mr-2 ${
-                                isScrolled ? 'text-blue-600' : 'text-blue-400'
-                              }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                              </svg>
-                              <span>View main page</span>
-                            </Link>
-                            
-                            {/* Sub items */}
-                            {item.subItems.map((subItem) => (
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                            </svg>
+                          </button>
+
+                          {/* Mobile Accordion Content with scrolling */}
+                          <div
+                            className={`overflow-hidden transition-all duration-300 ease-out ${
+                              isItemExpanded(menuKey, item.key) 
+                                ? 'max-h-64 opacity-100' 
+                                : 'max-h-0 opacity-0'
+                            }`}
+                          >
+                            <div className={`px-4 pb-3 space-y-2 border-t ${
+                              isScrolled ? 'border-gray-100' : 'border-blue-700/30'
+                            }`}>
+                              {/* Main item link */}
                               <Link
-                                key={subItem.key}
-                                to={subItem.link}
-                                className={`flex items-center py-2 text-sm transition-colors rounded px-3 group/sub ${
+                                to={item.link}
+                                className={`flex items-center py-2 transition-all duration-200 text-sm font-medium ${
                                   isScrolled 
-                                    ? 'text-gray-600 hover:text-blue-700 hover:bg-blue-50/80' 
-                                    : 'text-blue-200 hover:text-white hover:bg-blue-700/30'
+                                    ? 'text-blue-700 hover:text-blue-800' 
+                                    : 'text-blue-300 hover:text-white'
                                 }`}
                                 onClick={() => setIsMobileMenuOpen(false)}
                               >
-                                <div className={`w-1.5 h-1.5 rounded-full mr-2.5 transition-all duration-200 group-hover/sub:scale-125 ${
-                                  isScrolled 
-                                    ? 'bg-blue-400 group-hover/sub:bg-blue-600' 
-                                    : 'bg-blue-400 group-hover/sub:bg-blue-300'
-                                }`}></div>
-                                {t(`${menuKey}SUB.${subItem.key}`)}
+                                <svg className={`w-4 h-4 mr-2 ${
+                                  isScrolled ? 'text-blue-600' : 'text-blue-400'
+                                }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                </svg>
+                                <span>{t('navbar.viewMainPage', 'View main page')}</span>
                               </Link>
-                            ))}
+                              
+                              {/* Scrollable container for sub-items */}
+                              <div className={`max-h-40 overflow-y-auto pr-2 space-y-2 custom-scrollbar ${
+                                isScrolled ? 'scrollbar-light' : 'scrollbar-dark'
+                              }`}>
+                                {item.subItems.map((subItem) => (
+                                  <Link
+                                    key={subItem.key}
+                                    to={subItem.link}
+                                    className={`flex items-center py-2 text-sm transition-all duration-200 rounded px-3 group/sub ${
+                                      isScrolled 
+                                        ? 'text-gray-600 hover:text-blue-700 hover:bg-blue-50/80' 
+                                        : 'text-blue-200 hover:text-white hover:bg-blue-700/30'
+                                    }`}
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                  >
+                                    <div className={`w-1.5 h-1.5 rounded-full mr-2.5 transition-all duration-200 group-hover/sub:scale-125 ${
+                                      isScrolled 
+                                        ? 'bg-blue-400 group-hover/sub:bg-blue-600' 
+                                        : 'bg-blue-400 group-hover/sub:bg-blue-300'
+                                    }`}></div>
+                                    <span className="truncate">
+                                      {t(`${menuKey}SUB.${subItem.key}`)}
+                                    </span>
+                                  </Link>
+                                ))}
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                      </>
-                    ) : (
-                      <Link
-                        to={item.link}
-                        className={`flex items-center justify-between py-3 px-4 transition-colors font-medium text-sm ${
-                          isScrolled 
-                            ? 'text-gray-800 hover:text-blue-700 hover:bg-blue-50/80' 
-                            : 'text-blue-200 hover:text-white hover:bg-blue-700/30'
-                        }`}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        <span>{t(`${menuKey}SU.${item.key}`)}</span>
-                        <svg className={`w-4 h-4 ${
-                          isScrolled ? 'text-blue-400' : 'text-blue-300'
-                        }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </Link>
-                    )}
-                  </div>
-                ))}
+                        </>
+                      ) : (
+                        <Link
+                          to={item.link}
+                          className={`flex items-center justify-between py-3 px-4 transition-all duration-200 font-medium text-sm ${
+                            isScrolled 
+                              ? 'text-gray-800 hover:text-blue-700 hover:bg-blue-50/80' 
+                              : 'text-blue-200 hover:text-white hover:bg-blue-700/30'
+                          }`}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          <span>{t(`${menuKey}SU.${item.key}`)}</span>
+                          <svg className={`w-4 h-4 transition-transform duration-200 ${
+                            isScrolled ? 'text-blue-400' : 'text-blue-300'
+                          }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </Link>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
+          ))}
+          
+          {/* Mobile Language Switcher */}
+          <div className="mt-4 pt-4 border-t border-gray-200">
+            <LanguageSwitcher variant="solid" />
           </div>
-        ))}
-        
-        {/* Mobile utility buttons */}
-        {utilityButtons.length > 0 && (
-          <div className="grid grid-cols-3 gap-2 mt-4 pt-4 border-t border-gray-200">
-            {utilityButtons.map((button) => (
-              <Link
-                key={button.key}
-                to={button.link}
-                className={`flex flex-col items-center p-2 rounded-lg transition-colors ${
-                  isScrolled 
-                    ? 'text-blue-700 hover:bg-blue-50/80' 
-                    : 'text-blue-300 hover:bg-blue-700/30 hover:text-white'
-                }`}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <svg className="w-5 h-5 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={button.icon} />
-                </svg>
-                <span className="text-xs">{button.label}</span>
-              </Link>
-            ))}
-          </div>
-        )}
-        
-        <div className="mt-4 pt-4 border-t border-gray-200">
-          <LanguageSwitcher variant="solid" />
         </div>
       </div>
     </div>
@@ -769,16 +794,17 @@ const Navbar = () => {
         ref={navbarRef}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out ${
           isScrolled 
-            ? 'bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-md' 
-            : 'bg-gradient-to-r from-blue-900/95 to-blue-800/95 backdrop-blur-md border-b border-blue-700/30'
-        }`}
+            ? 'bg-white/95 backdrop-blur-lg border-b border-gray-100 shadow-md' 
+            : 'bg-gradient-to-r from-blue-900/95 to-blue-800/95 backdrop-blur-lg border-b border-blue-700/30'
+        } ${navbarHeight}`}
+        style={{ transition: 'height 300ms ease-out, background-color 300ms ease-out' }}
       >
-        <div className="container mx-auto px-3 sm:px-4">
-          <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="flex items-center justify-between h-full">
             {/* Logo */}
             <div className="flex-shrink-0">
               <Link to="/" className="flex items-center group">
-                <div className="h-12 md:h-14 px-2 md:px-3 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-105">
+                <div className="h-12 md:h-14 px-3 md:px-4 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:scale-105 group-active:scale-95">
                   <img
                     src={isScrolled ? Logo1 : Logo2}
                     alt="Logo"
@@ -789,7 +815,7 @@ const Navbar = () => {
             </div>
 
             {/* Desktop Menu */}
-            <div className="hidden lg:flex items-center space-x-0.5">
+            <div className="hidden lg:flex items-center space-x-1">
               {Object.entries(menuData).map(([menuKey, { items }]) => (
                 <div
                   key={menuKey}
@@ -798,7 +824,7 @@ const Navbar = () => {
                   onMouseLeave={handleDropdownLeave}
                 >
                   <button
-                    className={`px-4 md:px-5 py-2.5 md:py-3 rounded-lg font-semibold text-sm md:text-base transition-all duration-200 relative overflow-hidden group ${
+                    className={`px-4 md:px-5 py-2.5 md:py-3 rounded-xl font-semibold text-sm md:text-base transition-all duration-200 relative overflow-hidden group ${
                       isScrolled
                         ? 'text-gray-700 hover:text-blue-700'
                         : 'text-white hover:text-blue-100'
@@ -806,7 +832,7 @@ const Navbar = () => {
                   >
                     {/* Animated underline */}
                     <span className="relative z-10">{t(`navbarSUB.${menuKey}`)}</span>
-                    <div className={`absolute bottom-0 left-0 right-0 h-0.5 transform transition-transform duration-300 ${
+                    <div className={`absolute bottom-0 left-0 right-0 h-0.5 transform transition-transform duration-300 ease-out ${
                       activeDropdown === menuKey ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
                     } ${isScrolled ? 'bg-blue-600' : 'bg-white'}`} />
                   </button>
@@ -816,27 +842,7 @@ const Navbar = () => {
             </div>
 
             {/* Right Section */}
-            <div className="flex items-center space-x-2 md:space-x-3">
-              {/* Desktop Utility Buttons */}
-              <div className="hidden lg:flex items-center space-x-1">
-                {utilityButtons.map((button) => (
-                  <Link
-                    key={button.key}
-                    to={button.link}
-                    className={`flex items-center px-3 py-2 rounded-lg transition-all duration-200 group ${
-                      isScrolled
-                        ? 'text-gray-600 hover:text-blue-700 hover:bg-blue-50/80'
-                        : 'text-blue-200 hover:text-white hover:bg-blue-700/30'
-                    }`}
-                  >
-                    <svg className="w-5 h-5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={button.icon} />
-                    </svg>
-                    <span className="text-sm font-medium">{button.label}</span>
-                  </Link>
-                ))}
-              </div>
-              
+            <div className="flex items-center space-x-3 md:space-x-4">
               {/* Language Switcher */}
               <div className="hidden lg:block ml-1">
                 <LanguageSwitcher variant={isScrolled ? "outline" : "default"} />
@@ -845,7 +851,7 @@ const Navbar = () => {
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className={`lg:hidden p-2.5 rounded-lg transition-all duration-200 ${
+                className={`lg:hidden p-2.5 rounded-xl transition-all duration-200 active:scale-95 ${
                   isScrolled
                     ? 'text-gray-700 hover:bg-gray-100/80'
                     : 'text-white hover:bg-blue-700/30'
@@ -853,13 +859,13 @@ const Navbar = () => {
                 aria-label="Toggle menu"
               >
                 <div className="w-6 h-6 relative">
-                  <span className={`absolute block w-6 h-0.5 transition-all duration-300 transform ${
+                  <span className={`absolute block w-6 h-0.5 transition-all duration-300 ease-out transform ${
                     isScrolled ? 'bg-gray-700' : 'bg-white'
                   } ${isMobileMenuOpen ? 'rotate-45 top-3' : 'top-1.5'}`} />
-                  <span className={`absolute block w-6 h-0.5 transition-all duration-300 ${
+                  <span className={`absolute block w-6 h-0.5 transition-all duration-300 ease-out ${
                     isScrolled ? 'bg-gray-700' : 'bg-white'
                   } ${isMobileMenuOpen ? 'opacity-0 translate-x-4' : 'opacity-100 top-3'}`} />
-                  <span className={`absolute block w-6 h-0.5 transition-all duration-300 transform ${
+                  <span className={`absolute block w-6 h-0.5 transition-all duration-300 ease-out transform ${
                     isScrolled ? 'bg-gray-700' : 'bg-white'
                   } ${isMobileMenuOpen ? '-rotate-45 top-3' : 'top-4.5'}`} />
                 </div>
@@ -868,20 +874,62 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Menu */}
-        {renderMobileMenu()}
+        {/* Desktop Dropdowns */}
+        {Object.entries(menuData).map(([menuKey, { items }]) => (
+          <div key={menuKey}>
+            {renderFullscreenDropdown(menuKey, items)}
+          </div>
+        ))}
       </nav>
 
-      {/* Spacer for fixed navbar */}
-      <div className="h-16 md:h-20" />
+      {/* Mobile Menu */}
+      {renderMobileMenu()}
 
-      {/* Backdrop overlay */}
-      {activeDropdown && (
-        <div 
-          className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 top-16 md:top-20"
-          onClick={() => setActiveDropdown(null)}
-        />
-      )}
+      {/* Spacer for fixed navbar */}
+      <div className={navbarHeight} />
+
+      {/* Custom scrollbar styles */}
+      <style jsx>{`
+        .custom-scrollbar {
+          scrollbar-width: thin;
+        }
+        
+        .scrollbar-light::-webkit-scrollbar {
+          width: 6px;
+        }
+        
+        .scrollbar-light::-webkit-scrollbar-track {
+          background: #f1f5f9;
+          border-radius: 3px;
+        }
+        
+        .scrollbar-light::-webkit-scrollbar-thumb {
+          background: #cbd5e1;
+          border-radius: 3px;
+        }
+        
+        .scrollbar-light::-webkit-scrollbar-thumb:hover {
+          background: #94a3b8;
+        }
+        
+        .scrollbar-dark::-webkit-scrollbar {
+          width: 6px;
+        }
+        
+        .scrollbar-dark::-webkit-scrollbar-track {
+          background: rgba(30, 58, 138, 0.2);
+          border-radius: 3px;
+        }
+        
+        .scrollbar-dark::-webkit-scrollbar-thumb {
+          background: rgba(96, 165, 250, 0.5);
+          border-radius: 3px;
+        }
+        
+        .scrollbar-dark::-webkit-scrollbar-thumb:hover {
+          background: rgba(96, 165, 250, 0.7);
+        }
+      `}</style>
     </>
   );
 };

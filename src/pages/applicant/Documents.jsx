@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation, Trans } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { FiFileText, FiCheckCircle, FiList, FiExternalLink } from 'react-icons/fi';
 
@@ -17,13 +17,11 @@ const Documents = () => {
     }));
   }, []);
 
-  const requiredDocuments = [
-    'Академическая справка установленного образца',
-    'Транскрипт',
-    'Выписка из приказов',
-    'Данные о дополнительных видах подготовки, которые он освоил',
-    'Сведения об особых академических достижениях (дипломы, сертификаты, поощрения)'
-  ];
+  // Получаем массив документов из перевода
+  const requiredDocuments = t('documents.requiredDocuments', {
+    returnObjects: true,
+    defaultValue: []
+  });
 
   return (
     <div className="w-full relative min-h-screen bg-gray-50">
@@ -68,7 +66,7 @@ const Documents = () => {
               <FiFileText size={40} className="text-white" />
             </div>
             <h1 className="text-5xl font-bold text-gray-900 mb-4">
-              Необходимые документы для перевода
+              {t('documents.title', 'Required Documents for Transfer')}
             </h1>
           </motion.div>
 
@@ -86,23 +84,32 @@ const Documents = () => {
                   <FiCheckCircle size={24} className="text-white" />
                 </div>
                 <div className="flex-1">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-4">Процедура перевода</h2>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                    {t('documents.procedure.title', 'Transfer Procedure')}
+                  </h2>
                   <p className="text-gray-700 leading-relaxed mb-4">
-                    Перевод студента осуществляется путем рассмотрения транскрипта/оценочного листа членами аттестационной комиссии и по согласованию с деканом факультета. На основании поданных документов готовится список дисциплин по академической разнице часов.
+                    {t('documents.procedure.description1', 'Student transfer is carried out by considering the transcript/grade sheet by the certification committee members and in coordination with the faculty dean.')}
                   </p>
                   <p className="text-gray-700 leading-relaxed mb-4">
-                    В случае необходимости ликвидации академической разницы для студента разрабатывается <a 
-                      href="https://salymbekov.com/wp-content/uploads/2021/04/whatsapp-image-2021-04-20-at-14.30.09.pdf"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-blue-600 font-bold hover:text-blue-800 transition-all duration-300 underline decoration-2 underline-offset-2 hover:underline-offset-4"
+                    <Trans
+                      i18nKey="documents.procedure.description2"
+                      components={[
+                        <a
+                          href="https://salymbekov.com/wp-content/uploads/2021/04/whatsapp-image-2021-04-20-at-14.30.09.pdf"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-blue-600 font-bold hover:text-blue-800 transition-all duration-300 underline decoration-2 underline-offset-2 hover:underline-offset-4"
+                        >
+                          индивидуальный план
+                          <FiExternalLink size={16} className="inline-block" />
+                        </a>
+                      ]}
                     >
-                      индивидуальный план
-                      <FiExternalLink size={16} className="inline-block" />
-                    </a>, который предусматривает перечень дисциплин (или их разделов), подлежащих изучению, их объемы и установленные сроки сдачи экзаменов/зачетов.
+                      If it is necessary to eliminate the academic difference, an <a>individual plan</a> is developed for the student.
+                    </Trans>
                   </p>
                   <p className="text-gray-800 font-semibold bg-amber-50 px-4 py-3 rounded-lg border-l-4 border-amber-400">
-                    ⚠️ Академическая разница должна быть ликвидирована в пределах данного академического года.
+                    {t('documents.procedure.description3', '⚠️ The academic difference must be eliminated within the current academic year.')}
                   </p>
                 </div>
               </div>
@@ -116,14 +123,14 @@ const Documents = () => {
                 </div>
                 <div className="flex-1">
                   <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                    Документы для перевода в другой вуз
+                    {t('documents.documentsForTransfer.title', 'Documents for Transfer to Another University')}
                   </h2>
                   <p className="text-gray-700 leading-relaxed mb-6">
-                    В случае, если студент пожелает перевестись в другой вуз, он получает всю необходимую документацию, которая позволит ему получить признание периода обучения в университете, а именно:
+                    {t('documents.documentsForTransfer.description', 'If a student wishes to transfer to another university, they receive all necessary documentation.')}
                   </p>
 
                   <div className="space-y-4">
-                    {requiredDocuments.map((doc, index) => (
+                    {Array.isArray(requiredDocuments) && requiredDocuments.map((doc, index) => (
                       <motion.div
                         key={index}
                         initial={{ opacity: 0, x: -20 }}
@@ -155,12 +162,10 @@ const Documents = () => {
             >
               <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
                 <FiCheckCircle size={28} />
-                Важная информация
+                {t('documents.importantInfo.title', 'Important Information')}
               </h3>
               <p className="leading-relaxed opacity-95">
-                Все документы выдаются в соответствии с установленными образцами и стандартами. 
-                Для получения дополнительной информации обратитесь в деканат вашего факультета 
-                или в учебный отдел университета.
+                {t('documents.importantInfo.description', 'All documents are issued in accordance with established formats and standards.')}
               </p>
             </motion.div>
           </motion.div>
@@ -171,4 +176,3 @@ const Documents = () => {
 };
 
 export default Documents;
-

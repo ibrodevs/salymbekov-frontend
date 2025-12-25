@@ -10,7 +10,7 @@ import FounderMessage from './pages/FounderMessage'
 import MaterialBaseGallery from './pages/MaterialBaseGallery'
 import Footer from './pages/Footer'
 import ApplicantBase from './pages/applicant/ApplicantBase'
-import RequiredDoc from './pages/applicant/extrapages/RequiredDoc'
+
 
 // Lazy imports for university
 
@@ -180,7 +180,6 @@ const Orientation = lazy(() => import('./pages/applicant/Orientation'))
 const Documents = lazy(() => import('./pages/applicant/Documents'))
 const AdmissionReg = lazy(() => import('./pages/applicant/AdmissionReg'))
 const ScheduleApp = lazy(() => import('./pages/applicant/Schedule'))
-const Transfer = lazy(() => import('./pages/applicant/Transfer'))
 const TransferBase = lazy(() => import('./pages/applicant/TransferBase'))
 const TransferSchedule = lazy(() => import('./pages/applicant/TransferSchedule'))
 const Scholarships = lazy(() => import('./pages/applicant/Scholarships'))
@@ -198,6 +197,23 @@ const MedicalMission = lazy(() => import('./pages/applicant/events/MedicalMissio
 const Graduation = lazy(() => import('./pages/applicant/events/Graduation2025'))
 const DiplomaAward = lazy(() => import('./pages/applicant/events/DiplomaAward'))
 const EurasianCongress = lazy(() => import('./pages/applicant/news/EurasianCongress'))
+const ITSecurityMeeting = lazy(() => import('./pages/applicant/news/ITSecurityMeeting'))
+const PaiChaiVisit = lazy(() => import('./pages/applicant/news/PaiChaiVisit'))
+const Transfer = lazy(() => import('./pages/applicant/Transfer'))
+const India = lazy(() => import('./pages/applicant/countries/India'))
+const Pakistan = lazy(() => import('./pages/applicant/countries/Pakistan'))
+const Uzbekistan = lazy(() => import('./pages/applicant/countries/Uzbekistan'))
+const Infrastructure = lazy(() => import('./pages/applicant/Infrastructure'))
+const Software = lazy(() => import('./pages/applicant/extrapages/Software'))
+const MobileDev = lazy(() => import('./pages/applicant/extrapages/MobileDev'))
+const MultimediaDev = lazy(() => import('./pages/applicant/extrapages/MobileDev'))
+const Dicipline = lazy(() => import('./pages/applicant/extrapages/Dicipline'))
+const GenerealMedFive = lazy(() => import('./pages/applicant/extrapages/GeneralMedFive'))
+const GeneralMedSix = lazy(() => import('./pages/applicant/extrapages/GeneralMedSix'))
+const AdmissionSchedule = lazy(() => import('./pages/applicant/Schedule'))
+const RequiredDoc = lazy(() => import('./pages/applicant/extrapages/RequiredDoc'))
+const OnlineReg = lazy(() => import('./pages/applicant/extrapages/OnlineReg'))
+
 
 // Infrastructure lazy imports
 const Locations = lazy(() => import('./pages/infrastructure/Locations'))
@@ -361,7 +377,6 @@ const App = () => {
 
 
             <Route path="/applicant/entrance" element={<Entrance />} />
-            <Route path="/applicant/cost" element={<Cost />} />
             <Route path="/applicants/cost" element={<Cost />} />
             <Route path="/applicant/orientation" element={<Orientation />} />
             <Route path="/applicant/documents" element={<RequiredDoc />} />
@@ -385,15 +400,35 @@ const App = () => {
             <Route path="/applicants/orientation/graduation-2025" element={<Graduation />} />
             <Route path="/applicants/orientation/diploma-award" element={<DiplomaAward />} />
             <Route path="/applicants/career-guidance/news/eurasian-congress" element={<EurasianCongress />} />
+            <Route path="/applicants/career-guidance/news/it-security-meeting" element={<ITSecurityMeeting />} />
+            <Route path="/applicants/career-guidance/news/pai-chai-visit" element={<PaiChaiVisit />} />
             <Route path="/applicants/admission-procedure" element={<AdmissionProcedure />} />
             <Route path="/applicants/admission-regulations" element={<AdmissionCom />} />
             <Route path="/applicants/admission-schedule" element={<ScheduleApp />} />
             <Route path="/applicants/career-guidance/events" element={<CareerGuidance />} />
             <Route path="/applicants/career-guidance/news" element={<CareerGuidance />} />
+            <Route path="/applicants/transfer/documents" element={<Documents />} />
+            <Route path="/applicants/transfer/rules" element={<Transfer />} />
+            <Route path="/applicants/transfer/schedule" element={<TransferSchedule />} />
+            <Route path="/applicants/directions" element={<Directions />} />
+            <Route path="/applicants/dealers" element={<Dealers />} />
+            <Route path="/applicants/dealers/india" element={<India />} />
+            <Route path="/applicants/dealers/pakistan" element={<Pakistan />} />
+            <Route path="/applicants/dealers/uzbekistan" element={<Uzbekistan />} />
+            <Route path="/applicants/infrastructure" element={<Infrastructure />} />
+            <Route path="/applicants/software-development" element={<Software />} />
+            <Route path="/applicants/mobile-development" element={<MobileDev />} />
+            <Route path="/applicants/multimedia-development" element={<MultimediaDev />} />
+            <Route path="/applicants/discipline" element={<Dicipline />} />
+            <Route path="/applicants/general-medicine-5" element={<GenerealMedFive />} />
+            <Route path="/applicants/general-medicine-6" element={<GeneralMedSix />} />
+            <Route path="/applicants/admission/schedule" element={<AdmissionSchedule />} />
+            <Route path="/applicants/required-documents" element={<RequiredDoc />} />
+            <Route path="/applicants/online-registration" element={<OnlineReg />} />
 
 
             { }
-            <Route path="/infrastructure/locations" element={<Locations />} />
+            < Route path="/infrastructure/locations" element={<Locations />} />
             <Route path="/infrastructure/partners" element={<Partners />} />
             <Route path="/infrastructure/*" element={<Home />} />
           </Routes>

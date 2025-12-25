@@ -1,9 +1,12 @@
+import { div } from "framer-motion/client";
 import React from "react";
 
-const Pakistan = () => {
+const Uzbekistan = () => {
   return (
-    <div className="Pakistan">Pakistan</div>
+    <div>
+      Uzbekistan
+    </div>
   )
 }
 
-export default Pakistan;  
+export default Uzbekistan;

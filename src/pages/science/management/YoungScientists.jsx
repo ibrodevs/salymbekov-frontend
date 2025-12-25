@@ -16,7 +16,7 @@ const YoungScientists = () => {
   // Безопасное получение массива members
   const getMembers = () => {
     try {
-      const members = t('science.management.youngScientists.members', { returnObjects: true });
+      const members = t('science1.management.youngScientists.members', { returnObjects: true });
       
       // Проверяем, является ли members массивом
       if (Array.isArray(members)) {
@@ -96,7 +96,7 @@ const YoungScientists = () => {
             className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors group"
           >
             <FaArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" />
-            {t('science.management.youngScientists.back', 'Назад к управлению')}
+            {t('science1.management.youngScientists.back', 'Назад к управлению')}
           </Link>
 
           <motion.div
@@ -106,14 +106,14 @@ const YoungScientists = () => {
           >
             <div className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-4">
               <span className="text-white/90 text-sm font-medium">
-                {t('science.management.youngScientists.badge', 'Совет молодых ученых')}
+                {t('science1.management.youngScientists.badge', 'Совет молодых ученых')}
               </span>
             </div>
             <h1 className="text-5xl font-bold mb-4">
-              {t('science.management.youngScientists.title', 'Совет молодых ученых')}
+              {t('science1.management.youngScientists.title', 'Совет молодых ученых')}
             </h1>
             <p className="text-xl text-white/90 max-w-3xl">
-              {t('science.management.youngScientists.subtitle', 'Развитие научного потенциала молодых исследователей')}
+              {t('science1.management.youngScientists.subtitle', 'Развитие научного потенциала молодых исследователей')}
             </p>
           </motion.div>
         </div>
@@ -134,11 +134,11 @@ const YoungScientists = () => {
               <FaUserGraduate className="text-white text-xl" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">
-              {t('science.management.youngScientists.generalTitle', 'Общие положения')}
+              {t('science1.management.youngScientists.generalTitle', 'Общие положения')}
             </h2>
           </div>
           <p className="text-gray-700 text-lg leading-relaxed">
-            {t('science.management.youngScientists.generalText', 'Информация об общих положениях совета молодых ученых...')}
+            {t('science1.management.youngScientists.generalText', 'Информация об общих положениях совета молодых ученых...')}
           </p>
         </motion.div>
 
@@ -155,11 +155,11 @@ const YoungScientists = () => {
               <FaLightbulb className="text-white text-xl" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">
-              {t('science.management.youngScientists.goalsTitle', 'Цели и задачи')}
+              {t('science1.management.youngScientists.goalsTitle', 'Цели и задачи')}
             </h2>
           </div>
           <p className="text-gray-700 text-lg leading-relaxed">
-            {t('science.management.youngScientists.goalsText', 'Основные цели и задачи совета молодых ученых...')}
+            {t('science1.management.youngScientists.goalsText', 'Основные цели и задачи совета молодых ученых...')}
           </p>
         </motion.div>
 
@@ -176,7 +176,7 @@ const YoungScientists = () => {
               <FaUsers className="text-white text-xl" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">
-              {t('science.management.youngScientists.compositionTitle', 'Состав совета')}
+              {t('science1.management.youngScientists.compositionTitle', 'Состав совета')}
             </h2>
           </div>
           
@@ -197,7 +197,7 @@ const YoungScientists = () => {
                       <FaUserGraduate className="text-[#023E8A] text-lg" />
                     </div>
                     <p className={`text-gray-900 text-lg font-medium ${isPlaceholder ? 'text-gray-400 italic' : ''}`}>
-                      {isPlaceholder ? t('science.management.youngScientists.noMembers', 'Информация о составе совета временно недоступна') : member}
+                      {isPlaceholder ? t('science1.management.youngScientists.noMembers', 'Информация о составе совета временно недоступна') : member}
                     </p>
                   </div>
                 </motion.div>
@@ -219,11 +219,11 @@ const YoungScientists = () => {
               <div className="flex items-center mb-3">
                 <FaDownload className="text-2xl mr-3" />
                 <h3 className="text-2xl font-bold">
-                  {t('science.management.youngScientists.downloadTitle', 'Документы')}
+                  {t('science1.management.youngScientists.downloadTitle', 'Документы')}
                 </h3>
               </div>
               <p className="text-white/90 text-lg">
-                {t('science.management.youngScientists.downloadDesc', 'Скачайте документы совета молодых ученых')}
+                {t('science1.management.youngScientists.downloadDesc', 'Скачайте документы совета молодых ученых')}
               </p>
             </div>
             <motion.a
@@ -233,7 +233,7 @@ const YoungScientists = () => {
               className="bg-white text-[#023E8A] px-8 py-4 rounded-xl font-bold text-lg hover:shadow-xl transition-all flex items-center gap-2 whitespace-nowrap"
             >
               <FaDownload />
-              {t('science.management.youngScientists.downloadBtn', 'Скачать документы')}
+              {t('science1.management.youngScientists.downloadBtn', 'Скачать документы')}
             </motion.a>
           </div>
         </motion.div>

@@ -9,10 +9,10 @@ import seanParkPhoto from '../../assets/science/professors/99.png';
 import pendharkarPhoto from '../../assets/science/professors/dinesh-pendharkar-211x300.png';
 import potapovaPhoto from '../../assets/science/professors/qip-shot-screen-152-300x207.png';
 import osmonovPhoto from '../../assets/science/professors/qip-shot-screen-153-257x300.png';
-import bilgazievPhoto from '../../assets/science/professors/photo_2023-06-09_17-07-45-225x300.webp';
+// import bilgazievPhoto from '../../assets/science/professors/photo_2023-06-09_17-07-45-225x300.webp';
 import erkebaevPhoto from '../../assets/science/professors/qip-shot-screen-151-300x293.png';
 import madaminovPhoto from '../../assets/science/professors/gapyr-madaminov-300x257.png';
-import kubatovPhoto from '../../assets/science/professors/jeduard-kubatov-221x300.png';
+// import kubatovPhoto from '../../assets/science/professors/jeduard-kubatov-221x300.png';
 import shaltakovaPhoto from '../../assets/science/professors/shaltakova-gulbu-chalovna-300x300.png';
 
 const Professors = () => {
@@ -26,8 +26,8 @@ const Professors = () => {
     { id: 'osmonov', nameKey: 'science.osmonov.name', icon: FaUserGraduate, photo: potapovaPhoto },
     { id: 'erkebaev', nameKey: 'science.erkebaev.name', icon: FaUserGraduate, photo: erkebaevPhoto },
     { id: 'madaminov', nameKey: 'science.madaminov.name', icon: FaUserGraduate, photo: madaminovPhoto },
-    { id: 'bilgaziev', nameKey: 'science.bilgaziev.name', icon: FaUserGraduate, photo: bilgazievPhoto },
-    { id: 'kubatov', nameKey: 'science.kubatov.name', icon: FaUserGraduate, photo: kubatovPhoto },
+    // { id: 'bilgaziev', nameKey: 'science.bilgaziev.name', icon: FaUserGraduate, photo: bilgazievPhoto },
+    // { id: 'kubatov', nameKey: 'science.kubatov.name', icon: FaUserGraduate, photo: kubatovPhoto },
     { id: 'shaltakova', nameKey: 'science.shaltakova.name', icon: FaUserGraduate, photo: shaltakovaPhoto },
     { id: 'kachibek', nameKey: 'science.kachibek.name', icon: FaUserGraduate, photo: "https://salymbekov.com/wp-content/uploads/2025/10/560461145_18089210416843726_5595910347630151498_n-300x300.jpg" }
   ];
@@ -111,14 +111,6 @@ const Professors = () => {
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link 
-            to="/science"
-            className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors group"
-          >
-            <FaArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" />
-            {t('science.common.backToScience')}
-          </Link>
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -157,7 +149,8 @@ const Professors = () => {
               <nav className="p-2">
                 {professorSections.map((section) => {
                   const SectionIcon = section.icon;
-                  const hasOwnPage = section.id === 'bilgaziev' || section.id === 'kubatov';
+                  // const hasOwnPage = section.id === 'bilgaziev' || section.id === 'kubatov';
+                  const hasOwnPage = false;
                   
                   if (hasOwnPage) {
                     return (

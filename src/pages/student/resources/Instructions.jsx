@@ -175,14 +175,6 @@ const Instructions = () => {
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <button 
-            onClick={() => navigate('/student')}
-            className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors group duration-200"
-          >
-            <FaArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform duration-200" />
-            {t('studentResources.backToStudent')}
-          </button>
-
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}

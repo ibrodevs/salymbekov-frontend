@@ -41,14 +41,6 @@ const StudentCouncil = () => {
       {/* Hero Section */}
       <div className="relative bg-gradient-to-br from-[#023E8A] via-[#0077B6] to-[#023E8A] text-white py-24">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link 
-            to="/student"
-            className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors group"
-          >
-            <FaArrowLeft className="mr-2 transition-transform" />
-            {t('studentCouncil.backToStudent')}
-          </Link>
-
           <div>
             <div className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-4">
               <span className="text-white/90 text-sm font-medium">

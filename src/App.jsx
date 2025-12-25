@@ -92,7 +92,6 @@ const DocHospital = lazy(() => import('./pages/clinical/DocHospital'))
 const Agreements = lazy(() => import('./pages/clinical/Agreements'))
 
 // Science lazy imports
-const ScienceMain = lazy(() => import('./pages/science/ScienceMain'))
 const ScientificCouncil = lazy(() => import('./pages/science/management/ScientificCouncil'))
 const ScientificTechnicalCouncil = lazy(() => import('./pages/science/management/ScientificTechnicalCouncil'))
 const Bioethics = lazy(() => import('./pages/science/management/Bioethics'))
@@ -126,6 +125,10 @@ const StudentConferences = lazy(() => import('./pages/science/student/StudentCon
 const CurrentProjects = lazy(() => import('./pages/science/projects/CurrentProjects'))
 const Grants = lazy(() => import('./pages/science/projects/Grants'))
 const International = lazy(() => import('./pages/science/projects/International'))
+const Urology = lazy(() => import('./pages/science/projects/Urology'))
+const Gynecology = lazy(() => import('./pages/science/projects/Gynecology'))
+const Ophthalmology = lazy(() => import('./pages/science/projects/Ophthalmology'))
+const Oncology = lazy(() => import('./pages/science/projects/Oncology'))
 const SeanPark = lazy(() => import('./pages/science/professors/SeanPark'))
 const Pendharkar = lazy(() => import('./pages/science/professors/Pendharkar'))
 const Potapova = lazy(() => import('./pages/science/professors/Potapova'))
@@ -138,7 +141,6 @@ const Shaltakova = lazy(() => import('./pages/science/professors/Shaltakova'))
 const Kachibek = lazy(() => import('./pages/science/professors/Kachibek'))
 
 // Student lazy imports
-const StudentMain = lazy(() => import('./pages/student/StudentMain'));
 const StudentCouncil = lazy(() => import('./pages/student/community/council'))
 const StudentScienceCommunity = lazy(() => import('./pages/student/community/science'))
 const StudentCommunities = lazy(() => import('./pages/student/communities/StudentCommunities'))
@@ -265,7 +267,6 @@ const App = () => {
           <Route path="/clinical/doc-hospital" element={<DocHospital />} />
           <Route path="/clinical/agreements" element={<Agreements />} />
           {/* Lazy Science */}
-          <Route path="/science" element={<ScienceMain />} />
           <Route path="/science/management" element={<ManagementScience />} />
           <Route path="/science/management/scientific-council" element={<ScientificCouncil />} />
           <Route path="/science/management/scientific-technical-council" element={<ScientificTechnicalCouncil />} />
@@ -300,6 +301,10 @@ const App = () => {
           <Route path="/science/projects/current" element={<CurrentProjects />} />
           <Route path="/science/projects/grants" element={<Grants />} />
           <Route path="/science/projects/international" element={<International />} />
+          <Route path="/science/projects/urology" element={<Urology />} />
+          <Route path="/science/projects/gynecology" element={<Gynecology />} />
+          <Route path="/science/projects/ophthalmology" element={<Ophthalmology />} />
+          <Route path="/science/projects/oncology" element={<Oncology />} />
           <Route path="/science/labs" element={<Labs />} />
           <Route path="/science/labs/anatomy" element={<Anatomy />} />
           <Route path="/science/labs/biochemistry" element={<Biochemistry />} />
@@ -310,7 +315,6 @@ const App = () => {
           <Route path="/science/labs/study" element={<Study />} />
           <Route path="/science/projects" element={<Projects />} />
           {}
-          <Route path="/student" element={<StudentMain />} />
           <Route path="/student/community/council" element={<StudentCouncil />} />
           <Route path="/student/community/science" element={<StudentScienceCommunity />} />
           <Route path="/student/community/debate" element={<DebateClub />} />

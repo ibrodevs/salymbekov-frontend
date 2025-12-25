@@ -1,75 +1,43 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { FaArrowLeft, FaUsers, FaBook, FaGraduationCap, FaUserFriends, FaRegCalendarAlt, FaUserGraduate, FaDownload, FaFileAlt, FaCalendarCheck, FaClock, FaChartLine } from 'react-icons/fa';
 
 const StudySchedule = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const scheduleSections = [
     { 
       path: "/student/schedule/study", 
-      name: "ГРАФИК УЧЕБНОГО ПРОЦЕССА", 
+      name: t('studySchedule.sections.study'), 
       icon: FaChartLine,
       active: true 
     },
     { 
       path: "/student/schedule/modules", 
-      name: "ГРАФИКИ МОДУЛЕЙ И ЭКЗАМЕНОВ", 
+      name: t('studySchedule.sections.modules'), 
       icon: FaCalendarCheck,
     },
     { 
       path: "/student/schedule/practice", 
-      name: "ГРАФИКИ ПРОИЗВОДСТВЕННОЙ ПРАКТИКИ", 
+      name: t('studySchedule.sections.practice'), 
       icon: FaUserGraduate,
     },
     { 
       path: "/student/schedule/mfm", 
-      name: "РАСПИСАНИЕ МФМ", 
+      name: t('studySchedule.sections.mfm'), 
       icon: FaBook,
     },
     { 
       path: "/student/schedule/college", 
-      name: "РАСПИСАНИЕ КОЛЛЕДЖА", 
+      name: t('studySchedule.sections.college'), 
       icon: FaRegCalendarAlt,
     }
   ];
 
-  const scheduleData = [
-    {
-      year: '2023-2024',
-      files: [
-        { name: 'График-учебного-процесса-6-лет-2023-2024', url: 'https://salymbekov.com/ru/grafik-uchebnogo-processa-3/' },
-        { name: 'Рабочий-учебный-план–6-лет-2023-2024', url: 'https://salymbekov.com/ru/grafik-uchebnogo-processa-3/' },
-        { name: 'График-учебного-процесса–ИГ-2023-2024', url: 'https://salymbekov.com/ru/grafik-uchebnogo-processa-3/' },
-        { name: 'Рабочий-учебный-план–ИГ-2023-2024', url: 'https://salymbekov.com/ru/grafik-uchebnogo-processa-3/' }
-      ]
-    },
-    {
-      year: '2022-2023',
-      files: [
-        { name: 'График учебного процесса 2022-2023', url: '#' }
-      ]
-    },
-    {
-      year: '2021-2022',
-      files: [
-        { name: 'График учебного процесса 2021-2022', url: '#' }
-      ]
-    },
-    {
-      year: '2020-2021', 
-      files: [
-        { name: 'График учебного процесса 2020-2021', url: '#' }
-      ]
-    },
-    {
-      year: '2019-2020',
-      files: [
-        { name: 'График учебного процесса 2019-2020', url: '#' }
-      ]
-    }
-  ];
+  const scheduleData = t('studySchedule.scheduleData', { returnObjects: true });
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -121,14 +89,6 @@ const StudySchedule = () => {
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <button 
-            onClick={() => navigate('/student')}
-            className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors group"
-          >
-            <FaArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" />
-            Назад к студенту
-          </button>
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -136,14 +96,14 @@ const StudySchedule = () => {
           >
             <div className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-4">
               <span className="text-white/90 text-sm font-medium">
-                Расписания и графики
+                {t('studySchedule.category')}
               </span>
             </div>
             <h1 className="text-5xl font-bold mb-4">
-              График учебного процесса
+              {t('studySchedule.title')}
             </h1>
             <p className="text-xl text-white/90 max-w-3xl">
-              Основные документы организации учебного процесса по учебным годам
+              {t('studySchedule.subtitle')}
             </p>
           </motion.div>
         </div>
@@ -163,7 +123,7 @@ const StudySchedule = () => {
               <div className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-4">
                 <div className="flex items-center">
                   <FaUsers className="mr-3 text-xl" />
-                  <h3 className="font-bold text-lg">СТУДЕНТАМ</h3>
+                  <h3 className="font-bold text-lg">{t('studySchedule.sidebarTitle')}</h3>
                 </div>
               </div>
               <nav className="p-2">
@@ -215,7 +175,7 @@ const StudySchedule = () => {
                   <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-200 mb-6">
                     <h2 className="text-2xl font-bold text-gray-900 flex items-center">
                       <FaChartLine className="mr-3 text-[#023E8A]" />
-                      {yearData.year} учебный год
+                      {yearData.year} {t('studySchedule.academicYear')}
                     </h2>
                   </div>
 
@@ -275,17 +235,10 @@ const StudySchedule = () => {
               >
                 <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
                   <FaClock className="mr-3 text-[#023E8A]" />
-                  Об учебном процессе
+                  {t('studySchedule.processInfo.title')}
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {[
-                    "График учебного процесса определяет основные сроки обучения",
-                    "Рабочие учебные планы содержат перечень дисциплин и их распределение",
-                    "Документы обновляются ежегодно перед началом учебного года",
-                    "Все изменения согласовываются с учебно-методическим управлением",
-                    "Графики включают сроки сессий, каникул и практик",
-                    "Учебные планы разрабатываются согласно образовательным стандартам"
-                  ].map((item, index) => (
+                  {t('studySchedule.processInfo.items', { returnObjects: true }).map((item, index) => (
                     <motion.div
                       key={index}
                       initial={{ opacity: 0, x: -20 }}
@@ -315,10 +268,10 @@ const StudySchedule = () => {
                   <FaChartLine className="text-yellow-600 text-2xl mt-1 mr-4 flex-shrink-0" />
                   <div>
                     <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                      Актуальные графики учебного процесса
+                      {t('studySchedule.availability.title')}
                     </h4>
                     <p className="text-gray-700 mb-3">
-                      Все текущие графики учебного процесса доступны по ссылке:
+                      {t('studySchedule.availability.description')}
                     </p>
                     <motion.a
                       href="https://salymbekov.com/ru/grafik-uchebnogo-processa-3/"

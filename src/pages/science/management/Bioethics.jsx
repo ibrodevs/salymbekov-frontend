@@ -15,20 +15,20 @@ const Bioethics = () => {
   const { t } = useTranslation();
 
   // Добавляем безопасное получение данных с проверкой типа
-  const tasks = Array.isArray(t('science.management.bioethics.tasks', { returnObjects: true })) 
-    ? t('science.management.bioethics.tasks', { returnObjects: true }) 
+  const tasks = Array.isArray(t('science1.management.bioethics.tasks', { returnObjects: true })) 
+    ? t('science1.management.bioethics.tasks', { returnObjects: true }) 
     : [];
 
-  const functions = Array.isArray(t('science.management.bioethics.functions', { returnObjects: true })) 
-    ? t('science.management.bioethics.functions', { returnObjects: true }) 
+  const functions = Array.isArray(t('science1.management.bioethics.functions', { returnObjects: true })) 
+    ? t('science1.management.bioethics.functions', { returnObjects: true }) 
     : [];
 
-  const leadership = Array.isArray(t('science.management.bioethics.leadership', { returnObjects: true })) 
-    ? t('science.management.bioethics.leadership', { returnObjects: true }) 
+  const leadership = Array.isArray(t('science1.management.bioethics.leadership', { returnObjects: true })) 
+    ? t('science1.management.bioethics.leadership', { returnObjects: true }) 
     : [];
 
-  const members = Array.isArray(t('science.management.bioethics.members', { returnObjects: true })) 
-    ? t('science.management.bioethics.members', { returnObjects: true }) 
+  const members = Array.isArray(t('science1.management.bioethics.members', { returnObjects: true })) 
+    ? t('science1.management.bioethics.members', { returnObjects: true }) 
     : [];
 
   // Если leadership не массив, создаем fallback данные
@@ -89,7 +89,7 @@ const Bioethics = () => {
             className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors group"
           >
             <FaArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" />
-            {t('science.management.bioethics.back')}
+            {t('science1.management.bioethics.back')}
           </Link>
 
           <motion.div
@@ -99,14 +99,14 @@ const Bioethics = () => {
           >
             <div className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-4">
               <span className="text-white/90 text-sm font-medium">
-                {t('science.management.bioethics.badge')}
+                {t('science1.management.bioethics.badge')}
               </span>
             </div>
             <h1 className="text-5xl font-bold mb-4">
-              {t('science.management.bioethics.title')}
+              {t('science1.management.bioethics.title')}
             </h1>
             <p className="text-xl text-white/90 max-w-3xl">
-              {t('science.management.bioethics.subtitle')}
+              {t('science1.management.bioethics.subtitle')}
             </p>
           </motion.div>
         </div>
@@ -127,11 +127,11 @@ const Bioethics = () => {
               <FaShieldAlt className="text-white text-xl" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">
-              {t('science.management.bioethics.descTitle')}
+              {t('science1.management.bioethics.descTitle')}
             </h2>
           </div>
           <p className="text-gray-700 text-lg leading-relaxed">
-            {t('science.management.bioethics.descText')}
+            {t('science1.management.bioethics.descText')}
           </p>
         </motion.div>
 
@@ -148,7 +148,7 @@ const Bioethics = () => {
               <FaUserMd className="text-white text-xl" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">
-              {t('science.management.bioethics.chairmanTitle')}
+              {t('science1.management.bioethics.chairmanTitle')}
             </h2>
           </div>
           
@@ -167,10 +167,10 @@ const Bioethics = () => {
             
             <div className="flex-1">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                {t('science.management.bioethics.chairmanName')}
+                {t('science1.management.bioethics.chairmanName')}
               </h3>
               <p className="text-gray-700 text-lg leading-relaxed">
-                {t('science.management.bioethics.chairmanDesc')}
+                {t('science1.management.bioethics.chairmanDesc')}
               </p>
             </div>
           </div>
@@ -193,7 +193,7 @@ const Bioethics = () => {
             {members.length > 0 && (
               <div>
                 <p className="text-lg font-semibold text-gray-900 mb-3">
-                  {t('science.management.bioethics.membersTitle')}
+                  {t('science1.management.bioethics.membersTitle')}
                 </p>
                 <div className="space-y-2">
                   {members.map((member, index) => (
@@ -220,7 +220,7 @@ const Bioethics = () => {
               <FaBalanceScale className="text-white text-xl" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">
-              {t('science.management.bioethics.tasksTitle')}
+              {t('science1.management.bioethics.tasksTitle')}
             </h2>
           </div>
           <div className="space-y-4">
@@ -257,7 +257,7 @@ const Bioethics = () => {
               <FaClipboardList className="text-white text-xl" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">
-              {t('science.management.bioethics.functionsTitle')}
+              {t('science1.management.bioethics.functionsTitle')}
             </h2>
           </div>
           <div className="grid md:grid-cols-2 gap-4">

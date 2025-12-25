@@ -155,8 +155,6 @@ const ElectiveCourses = () => {
             onClick={() => navigate('/student')}
             className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors group"
           >
-            <FaArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" />
-            Назад к студенту
           </button>
 
           <motion.div

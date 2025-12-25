@@ -81,20 +81,7 @@ const ELibrary = () => {
           />
         </div>
         
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.button
-            onClick={() => navigate('/student')}
-            initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
-            whileHover={{ x: -3 }}
-            transition={{ duration: 0.3 }}
-            className="flex items-center gap-2 text-white mb-6 hover:text-blue-200 transition-colors duration-200"
-          >
-            <FaArrowLeft />
-            <span>{t('studentResources.backToStudent')}</span>
-          </motion.button>
-
-          <motion.h1 
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10\">\n          <motion.h1
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}

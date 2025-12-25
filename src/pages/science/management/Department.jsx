@@ -57,19 +57,7 @@ const ScienceDepartment = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Кнопка назад */}
-        <div className="mb-6">
-          <button 
-            onClick={() => navigate('/science')}
-            className="inline-flex items-center text-[#023E8A] hover:text-[#0077B6] transition-colors group"
-          >
-            <FaArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" />
-            {t('scienceDepartment.backToScience')}
-          </button>
-        </div>
-
-        {/* Hero Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8\">\n        {/* Hero Section */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-3 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-3 rounded-full mb-6">
             <FaUniversity className="text-xl" />

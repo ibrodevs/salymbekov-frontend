@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaArrowLeft, FaUsers, FaBook, FaGraduationCap, FaRegCalendarAlt, FaUserGraduate, FaSearch, FaClock, FaMapMarkerAlt } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
@@ -8,6 +8,11 @@ const CollegeSchedule = () => {
   const { t, i18n } = useTranslation();
   const [selectedGroup, setSelectedGroup] = useState('CS-11');
   const [selectedDay, setSelectedDay] = useState(t('collegeSchedule.days.monday'));
+
+  // Update selectedDay when language changes
+  useEffect(() => {
+    setSelectedDay(t('collegeSchedule.days.monday'));
+  }, [i18n.language, t]);
 
   const scheduleSections = [
     { 
@@ -54,14 +59,6 @@ const CollegeSchedule = () => {
       {/* Hero Section */}
       <div className="relative bg-gradient-to-br from-[#023E8A] via-[#0077B6] to-[#023E8A] text-white py-24">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <button 
-            onClick={() => navigate('/student')}
-            className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors group"
-          >
-            <FaArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" />
-            {t('collegeSchedule.backToStudent')}
-          </button>
-
           <div>
             <div className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-4">
               <span className="text-white/90 text-sm font-medium">

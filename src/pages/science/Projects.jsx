@@ -45,15 +45,14 @@ const Projects = () => {
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {sections.map((section, index) => (
-            <Link
+            <div
               key={index}
-              to={section.link}
-              className="bg-white rounded-lg shadow-md p-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+              className="bg-white rounded-lg shadow-md p-8 transition-all duration-300"
             >
               <div className="text-5xl mb-4">{section.icon}</div>
               <h3 className="text-2xl font-bold text-gray-900 mb-3">{section.title}</h3>
               <p className="text-gray-600">{section.description}</p>
-            </Link>
+            </div>
           ))}
         </div>
       </div>

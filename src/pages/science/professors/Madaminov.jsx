@@ -51,12 +51,6 @@ const Madaminov = () => {
           />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link
-            to="/science"
-            className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors group"
-          >
-            <FaArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" /> Назад к науке
-          </Link>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <div className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-4">
               <span className="text-white/90 text-sm font-medium">Профессорско-преподавательский состав</span>

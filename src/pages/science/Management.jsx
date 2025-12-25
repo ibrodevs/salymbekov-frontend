@@ -60,13 +60,6 @@ const ManagementScience = () => {
       {/* Hero Section */}
       <div className="bg-blue-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link 
-            to="/science"
-            className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors group"
-          >
-            <FaArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" />
-            {rstr('science.backButton', 'Назад к науке')}
-          </Link>
           <h1 className="text-4xl font-bold mb-4">
             {rstr('science.management.title')}
           </h1>

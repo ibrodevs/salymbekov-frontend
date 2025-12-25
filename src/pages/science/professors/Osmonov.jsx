@@ -125,8 +125,6 @@ const Osmonov = () => {
             to="/science"
             className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors group"
           >
-            <FaArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" />
-            Назад к науке
           </Link>
 
           <motion.div

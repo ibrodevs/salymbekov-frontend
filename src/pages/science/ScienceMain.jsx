@@ -111,10 +111,10 @@ const ScienceMain = () => {
 
   // Научные проекты (некликабельные)
   const scientificProjects = [
-    { title: t("science.main.projectShowcase.items.urology"), icon: <FaHospitalAlt className="text-[#023E8A]" /> },
-    { title: t("science.main.projectShowcase.items.gynecology"), icon: <FaBaby className="text-[#023E8A]" /> },
-    { title: t("science.main.projectShowcase.items.ophthalmology"), icon: <FaEye className="text-[#023E8A]" /> },
-    { title: t("science.main.projectShowcase.items.oncology"), icon: <FaRibbon className="text-[#023E8A]" /> }
+    { title: t("science.main.projectShowcase.items.urology"), icon: <FaHospitalAlt className="text-[#023E8A]" />, to: "/science/projects/urology" },
+    { title: t("science.main.projectShowcase.items.gynecology"), icon: <FaBaby className="text-[#023E8A]" />, to: "/science/projects/gynecology" },
+    { title: t("science.main.projectShowcase.items.ophthalmology"), icon: <FaEye className="text-[#023E8A]" />, to: "/science/projects/ophthalmology" },
+    { title: t("science.main.projectShowcase.items.oncology"), icon: <FaRibbon className="text-[#023E8A]" />, to: "/science/projects/oncology" }
   ];
 
   // Упрощенные анимации
@@ -276,20 +276,34 @@ const ScienceMain = () => {
                   whileHover="hover"
                   custom={index}
                 >
-                  <Link
-                    to={link.to}
-                    className="block bg-white rounded-xl p-4 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-200 group text-center h-full"
-                  >
-                    <div className="text-3xl mb-3 group-hover:scale-105 transition-transform duration-200">
-                      {link.icon}
+                  {link.category === "library" ? (
+                    <div className="block bg-white rounded-xl p-4 shadow-lg border border-gray-100 transition-all duration-200 text-center h-full cursor-default">
+                      <div className="text-3xl mb-3 transition-transform duration-200">
+                        {link.icon}
+                      </div>
+                      <h3 className="text-lg font-bold text-gray-800 mb-2">
+                        {link.title}
+                      </h3>
+                      <p className="text-gray-600 text-sm leading-relaxed">
+                        {link.desc}
+                      </p>
                     </div>
-                    <h3 className="text-lg font-bold text-gray-800 mb-2">
-                      {link.title}
-                    </h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">
-                      {link.desc}
-                    </p>
-                  </Link>
+                  ) : (
+                    <Link
+                      to={link.to}
+                      className="block bg-white rounded-xl p-4 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-200 group text-center h-full"
+                    >
+                      <div className="text-3xl mb-3 group-hover:scale-105 transition-transform duration-200">
+                        {link.icon}
+                      </div>
+                      <h3 className="text-lg font-bold text-gray-800 mb-2">
+                        {link.title}
+                      </h3>
+                      <p className="text-gray-600 text-sm leading-relaxed">
+                        {link.desc}
+                      </p>
+                    </Link>
+                  )}
                 </motion.div>
               ))}
             </div>
@@ -311,21 +325,18 @@ const ScienceMain = () => {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
               {scientificProjects.map((project, index) => (
-                <motion.div
+                <Link
                   key={index}
-                  variants={quickLinkVariants}
-                  initial="hidden"
-                  animate="visible"
-                  whileHover="hover"
-                  className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 shadow-lg border border-gray-200 text-center"
+                  to={project.to}
+                  className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 shadow-lg border border-gray-200 text-center hover:shadow-xl transition-all duration-200 group text-decoration-none"
                 >
-                  <div className="text-4xl mb-3">
+                  <div className="text-4xl mb-3 group-hover:scale-105 transition-transform duration-200">
                     {project.icon}
                   </div>
                   <h3 className="text-xl font-bold text-gray-800">
                     {project.title}
                   </h3>
-                </motion.div>
+                </Link>
               ))}
             </div>
           </motion.div>

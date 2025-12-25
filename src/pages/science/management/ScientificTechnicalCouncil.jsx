@@ -46,9 +46,9 @@ const ScientificTechnicalCouncil = () => {
     
     // Test specific keys
     const testKeys = [
-      'science.management.scientificCouncil.title',
-      'science.management.scientificCouncil.tasks',
-      'science.management.scientificCouncil.members'
+      'science1.management.scientificCouncil.title',
+      'science1.management.scientificCouncil.tasks',
+      'science1.management.scientificCouncil.members'
     ];
     
     testKeys.forEach(key => {
@@ -96,28 +96,32 @@ const ScientificTechnicalCouncil = () => {
   };
 
   // Get data with fallbacks
-  const title = getString('science.management.scientificCouncil.title', 'Scientific and Technical Council');
-  const subtitle = getString('science.management.scientificCouncil.subtitle', 'Permanent advisory body of the University');
-  const generalText = getString('science.management.scientificCouncil.generalText', 
+  const title = getString('science1.management.scientificCouncil.title', 'Scientific and Technical Council');
+  const subtitle = getString('science1.management.scientificCouncil.subtitle', 'Permanent advisory body of the University');
+  const generalText = getString('science1.management.scientificCouncil.generalText', 
     'The Scientific and Technical Council is a permanent advisory body of the University. In its activities, the STC is guided by the regulatory legal acts of the Kyrgyz Republic, the Charter of the University, this Regulation and other local regulations.');
   
-  const tasks = getArray('science.management.scientificCouncil.tasks', [
+  const tasksRaw = t('science1.management.scientificCouncil.tasks', { returnObjects: true });
+  console.log('tasksRaw:', tasksRaw, 'type:', typeof tasksRaw, 'isArray:', Array.isArray(tasksRaw));
+  const tasks = Array.isArray(tasksRaw) ? tasksRaw : [
     'Development of priority areas of science and technology by university scientists',
     'Ensuring priority development of fundamental and exploratory research',
     'Improving planning and organizational forms of research work',
     'Development of proposals for preserving the scientific potential of the University',
     'Promoting integration processes between the University and scientific organizations',
     'Promoting the development of research work of students'
-  ]);
+  ];
 
-  const members = getArray('science.management.scientificCouncil.members', [
+  const membersRaw = t('science1.management.scientificCouncil.members', { returnObjects: true });
+  console.log('membersRaw:', membersRaw, 'type:', typeof membersRaw, 'isArray:', Array.isArray(membersRaw));
+  const members = Array.isArray(membersRaw) ? membersRaw : [
     { name: 'Toktogazy Moldalievich Tulekeev, MD, prof.', role: 'Chairman' },
     { name: 'Uzakbaev Kamchibek Askarbekovich, MD, prof.', role: 'Deputy Chairman' },
     { name: 'Imankulova Asel Sansyzbaevna, MD, prof.', role: 'Scientific Secretary' },
     { name: 'Zhumadilov Esengeldi Zhumadilovich, PhD', role: 'Council Member' },
     { name: 'Abdyldaev Rysbek Aldagandaevich, MD, prof.', role: 'Council Member' },
     { name: 'Atikanov Arystanbek Orozalyevich, MD, prof.', role: 'Council Member' }
-  ]);
+  ];
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -182,7 +186,7 @@ const ScientificTechnicalCouncil = () => {
               className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors group"
             >
               <FaArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" />
-              {getString('science.management.scientificCouncil.back', 'Back to Management')}
+              {getString('science1.management.scientificCouncil.back', 'Back to Management')}
             </Link>
 
             <motion.div
@@ -192,7 +196,7 @@ const ScientificTechnicalCouncil = () => {
             >
               <div className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-4">
                 <span className="text-white/90 text-sm font-medium">
-                  {getString('science.management.scientificCouncil.badge', 'Scientific Coordination')}
+                  {getString('science1.management.scientificCouncil.badge', 'Scientific Coordination')}
                 </span>
               </div>
               <h1 className="text-5xl font-bold text-white mb-4">
@@ -221,7 +225,7 @@ const ScientificTechnicalCouncil = () => {
               <FaFileAlt className="text-white text-xl" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">
-              {getString('science.management.scientificCouncil.generalTitle', 'General Provisions')}
+              {getString('science1.management.scientificCouncil.generalTitle', 'General Provisions')}
             </h2>
           </div>
           <p className="text-gray-700 text-lg leading-relaxed">
@@ -242,16 +246,16 @@ const ScientificTechnicalCouncil = () => {
               <FaClipboardCheck className="text-white text-xl" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">
-              {getString('science.management.scientificCouncil.goalsTitle', 'Goals and Objectives')}
+              {getString('science1.management.scientificCouncil.goalsTitle', 'Goals and Objectives')}
             </h2>
           </div>
           <p className="text-gray-700 text-lg leading-relaxed mb-8">
-            {getString('science.management.scientificCouncil.goalsText', 
+            {getString('science1.management.scientificCouncil.goalsText', 
               'The purpose of the STC is to organize and coordinate activities in considering issues related to the implementation of state policy in the field of science and technology, development and improvement of the level of research conducted at departments and other departments.')}
           </p>
 
           <h3 className="text-2xl font-bold text-gray-900 mb-6">
-            {getString('science.management.scientificCouncil.tasksTitle', 'Main Tasks')}
+            {getString('science1.management.scientificCouncil.tasksTitle', 'Main Tasks')}
           </h3>
           <div className="space-y-4">
             {tasks.map((task, index) => (
@@ -287,14 +291,14 @@ const ScientificTechnicalCouncil = () => {
               <FaUsers className="text-white text-xl" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">
-              {getString('science.management.scientificCouncil.compositionTitle', 'Council Composition')}
+              {getString('science1.management.scientificCouncil.compositionTitle', 'Council Composition')}
             </h2>
           </div>
           
           <div className="grid md:grid-cols-2 gap-6">
             {members.map((member, index) => {
               const memberName = typeof member === 'string' ? member : member.name || member.title;
-              const memberRole = typeof member === 'string' ? 'Council Member' : member.role || 'Council Member';
+              const memberRole = typeof member === 'string' ? getString('science1.management.scientificCouncil.members.0.role', 'Council Member') : member.role || getString('science1.management.scientificCouncil.members.0.role', 'Council Member');
               
               return (
                 <motion.div
@@ -314,7 +318,7 @@ const ScientificTechnicalCouncil = () => {
                   <p className="text-gray-700">
                     {typeof member === 'string'
                       ? ''
-                      : (member && (member.description || member.desc || rstr(`science.management.scientificCouncil.member${index + 1}Desc`, '')))}
+                      : (member && (member.description || member.desc || rstr(`science1.management.scientificCouncil.member${index + 1}Desc`, '')))}
                   </p>
                 </motion.div>
               );
@@ -335,11 +339,11 @@ const ScientificTechnicalCouncil = () => {
               <div className="flex items-center mb-3">
                 <FaDownload className="text-2xl mr-3" />
                 <h3 className="text-2xl font-bold">
-                  {getString('science.management.scientificCouncil.downloadTitle', 'Full Version of Regulations')}
+                  {getString('science1.management.scientificCouncil.downloadTitle', 'Full Version of Regulations')}
                 </h3>
               </div>
               <p className="text-white/90 text-lg">
-                {getString('science.management.scientificCouncil.downloadDesc', 'Download the complete document about the Scientific and Technical Council')}
+                {getString('science1.management.scientificCouncil.downloadDesc', 'Download the complete document about the Scientific and Technical Council')}
               </p>
             </div>
             <motion.a
@@ -351,7 +355,7 @@ const ScientificTechnicalCouncil = () => {
               className="bg-white text-[#023E8A] px-8 py-4 rounded-xl font-bold text-lg hover:shadow-xl transition-all flex items-center gap-2 whitespace-nowrap"
             >
               <FaDownload />
-              {getString('science.management.scientificCouncil.downloadBtn', 'Download PDF')}
+              {getString('science1.management.scientificCouncil.downloadBtn', 'Download PDF')}
             </motion.a>
           </div>
         </motion.div>

@@ -2,12 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { FaArrowLeft, FaUserGraduate, FaBook, FaAward, FaGlobeAmericas, FaGraduationCap, FaMountain, FaFlag, FaHandshake, FaTrophy } from 'react-icons/fa';
+import { FaArrowLeft, FaUserGraduate, FaBook, FaAward, FaGraduationCap } from 'react-icons/fa';
 import kubatovPhoto from '../../../assets/science/professors/jeduard-kubatov-221x300.png';
 import "../../../i18n";
 
 const Kubatov = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
+
+  // Get arrays from translations
+  const educationItems = t('science.kubatov.education', { returnObjects: true });
+  const experienceItems = t('science.kubatov.experience', { returnObjects: true });
+  const achievementItems = t('science.kubatov.achievements', { returnObjects: true });
 
   const professorSections = [
     { 
@@ -62,16 +67,6 @@ const Kubatov = () => {
       icon: FaUserGraduate 
     }
   ];
-
-  // Helper function to get arrays from translations
-  const getArray = (key) => {
-    const value = t(key, { returnObjects: true });
-    return Array.isArray(value) ? value : [];
-  };
-
-  const sportsActivities = getArray("science.kubatov.sportsActivities");
-  const diplomaticActivities = getArray("science.kubatov.diplomaticActivities");
-  const achievements = getArray("science.kubatov.achievements");
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -128,7 +123,7 @@ const Kubatov = () => {
             className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors group"
           >
             <FaArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" />
-            {t('translation.backButton')}
+            {t('science.backButton')}
           </Link>
 
           <motion.div
@@ -145,7 +140,7 @@ const Kubatov = () => {
               {t('science.kubatov.name')}
             </h1>
             <p className="text-xl text-white/90 max-w-3xl">
-              {t('science.kubatov.title')}
+              {t('science.kubatov.position')}
             </p>
           </motion.div>
         </div>
@@ -154,55 +149,47 @@ const Kubatov = () => {
       {/* Main Content */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="flex flex-col lg:flex-row gap-8">
-          {/* Sidebar - Menu */}
-          <motion.aside
+          {/* Sidebar with Professor List */}
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             className="lg:w-64 flex-shrink-0"
           >
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden sticky top-4 border border-gray-100">
-              <div className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-4">
-                <div className="flex items-center">
-                  <FaUserGraduate className="mr-3 text-xl" />
-                  <h3 className="font-bold text-lg">{t('science.sidebarTitle')}</h3>
-                </div>
+            <div className="bg-white rounded-2xl shadow-lg p-6 sticky top-8">
+              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center">
+                <FaUserGraduate className="mr-2 text-[#023E8A]" />
+                {t('science.allProfessors')}
+              </h3>
+              <div className="space-y-2">
+                {professorSections.map((section, index) => (
+                  <Link
+                    key={index}
+                    to={section.path}
+                    className={`block px-4 py-3 rounded-lg transition-all transform hover:scale-105 ${
+                      section.active
+                        ? 'bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white shadow-lg'
+                        : 'text-gray-700 hover:bg-gray-100'
+                    }`}
+                  >
+                    <div className="flex items-center">
+                      <section.icon className="mr-2" />
+                      <span className="text-sm font-medium">{t(section.nameKey)}</span>
+                    </div>
+                  </Link>
+                ))}
               </div>
-              <nav className="p-2">
-                {professorSections.map((section) => {
-                  const SectionIcon = section.icon;
-                  return (
-                    <motion.div
-                      key={section.path}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      <Link
-                        to={section.path}
-                        className={`flex items-center w-full text-left px-4 py-3 rounded-lg mb-1 transition-all ${
-                          section.active
-                            ? 'bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white shadow-md'
-                            : 'text-gray-700 hover:bg-gray-50'
-                        }`}
-                      >
-                        <SectionIcon className="mr-3 text-lg" />
-                        <span className="font-medium text-sm">{t(section.nameKey)}</span>
-                      </Link>
-                    </motion.div>
-                  );
-                })}
-              </nav>
             </div>
-          </motion.aside>
+          </motion.div>
 
           {/* Main Content Area */}
-          <main className="flex-1">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="bg-white rounded-2xl shadow-lg p-8 mb-8 border border-gray-100 hover:shadow-xl transition-shadow"
-            >
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="flex-1"
+          >
+            <div className="bg-white rounded-2xl shadow-lg p-8 mb-8 border border-gray-100 hover:shadow-xl transition-shadow">
               <div className="flex flex-col lg:flex-row gap-8 items-start">
                 {/* Photo Section */}
                 <motion.div
@@ -214,45 +201,9 @@ const Kubatov = () => {
                   <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden shadow-lg">
                     <img 
                       src={kubatovPhoto} 
-                      alt={t('translation.kubatov.name')} 
+                      alt={t('science.kubatov.name')} 
                       className="w-full h-auto object-cover"
                     />
-                  </div>
-                  
-                  {/* Quick Info */}
-                  <div className="mt-6 space-y-4">
-                    <motion.div
-                      whileHover={{ scale: 1.02 }}
-                      className="bg-blue-50 p-4 rounded-xl border border-blue-200"
-                    >
-                      <div className="flex items-center">
-                        <FaMountain className="text-[#023E8A] mr-3" />
-                        <span className="font-semibold text-gray-900">{t('science.kubatov.mainActivity')}</span>
-                      </div>
-                      <p className="text-gray-700 text-sm mt-2">{t('science.kubatov.mainActivityValue')}</p>
-                    </motion.div>
-
-                    <motion.div
-                      whileHover={{ scale: 1.02 }}
-                      className="bg-green-50 p-4 rounded-xl border border-green-200"
-                    >
-                      <div className="flex items-center">
-                        <FaFlag className="text-[#023E8A] mr-3" />
-                        <span className="font-semibold text-gray-900">{t('science.kubatov.diplomaticPosition')}</span>
-                      </div>
-                      <p className="text-gray-700 text-sm mt-2">{t('science.kubatov.diplomaticPositionValue')}</p>
-                    </motion.div>
-
-                    <motion.div
-                      whileHover={{ scale: 1.02 }}
-                      className="bg-purple-50 p-4 rounded-xl border border-purple-200"
-                    >
-                      <div className="flex items-center">
-                        <FaHandshake className="text-[#023E8A] mr-3" />
-                        <span className="font-semibold text-gray-900">{t('science.kubatov.internationalActivity')}</span>
-                      </div>
-                      <p className="text-gray-700 text-sm mt-2">{t('science.kubatov.internationalActivityValue')}</p>
-                    </motion.div>
                   </div>
                 </motion.div>
 
@@ -263,19 +214,14 @@ const Kubatov = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                   >
-                    <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('science.kubatov.name')}</h2>
-                    
                     {/* Description */}
                     <div className="prose prose-lg max-w-none text-gray-700 mb-8">
-                      <p className="text-lg leading-relaxed mb-6">
-                        {t('science.kubatov.description1')}
-                      </p>
                       <p className="text-lg leading-relaxed">
-                        {t('science.kubatov.description2')}
+                        {t('science.kubatov.description')}
                       </p>
                     </div>
 
-                    {/* Sports Activities */}
+                    {/* Education Section */}
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
@@ -284,12 +230,12 @@ const Kubatov = () => {
                       className="mb-8 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-200"
                     >
                       <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                        <FaMountain className="mr-3 text-[#023E8A]" />
-                        {t('science.kubatov.sportsTitle')}
+                        <FaGraduationCap className="mr-3 text-[#023E8A]" />
+                        {t('science.educationTitle')}
                       </h4>
                       <div className="space-y-4">
-                        {sportsActivities.length > 0 ? (
-                          sportsActivities.map((item, index) => (
+                        {Array.isArray(educationItems) && educationItems.length > 0 ? (
+                          educationItems.map((item, index) => (
                             <motion.div
                               key={index}
                               initial={{ opacity: 0, x: -20 }}
@@ -302,20 +248,19 @@ const Kubatov = () => {
                                 <span className="text-white text-sm font-bold">{index + 1}</span>
                               </div>
                               <div>
-                                <h5 className="font-semibold text-gray-900 mb-1">{item.title}</h5>
-                                <p className="text-gray-700 text-sm">{item.description}</p>
+                                <p className="text-gray-700 text-sm">{item}</p>
                               </div>
                             </motion.div>
                           ))
                         ) : (
                           <div className="text-gray-500 text-center py-4">
-                            {t('science.kubatov.noSports')}
+                            {t('science.noEducation')}
                           </div>
                         )}
                       </div>
                     </motion.div>
 
-                    {/* Diplomatic Activities */}
+                    {/* Experience Section */}
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
@@ -324,12 +269,12 @@ const Kubatov = () => {
                       className="mb-8 bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-6 border border-green-200"
                     >
                       <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                        <FaFlag className="mr-3 text-[#023E8A]" />
-                        {t('science.kubatov.diplomaticTitle')}
+                        <FaBook className="mr-3 text-[#023E8A]" />
+                        {t('science.experienceTitle')}
                       </h4>
                       <div className="space-y-4">
-                        {diplomaticActivities.length > 0 ? (
-                          diplomaticActivities.map((item, index) => (
+                        {Array.isArray(experienceItems) && experienceItems.length > 0 ? (
+                          experienceItems.map((item, index) => (
                             <motion.div
                               key={index}
                               initial={{ opacity: 0, x: -20 }}
@@ -342,20 +287,19 @@ const Kubatov = () => {
                                 <span className="text-white text-sm font-bold">{index + 1}</span>
                               </div>
                               <div>
-                                <h5 className="font-semibold text-gray-900 mb-1">{item.title}</h5>
-                                <p className="text-gray-700 text-sm">{item.description}</p>
+                                <p className="text-gray-700 text-sm">{item}</p>
                               </div>
                             </motion.div>
                           ))
                         ) : (
                           <div className="text-gray-500 text-center py-4">
-                            {t('science.kubatov.noDiplomatic')}
+                            {t('science.noExperience')}
                           </div>
                         )}
                       </div>
                     </motion.div>
 
-                    {/* Achievements */}
+                    {/* Achievements Section */}
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
@@ -364,64 +308,42 @@ const Kubatov = () => {
                       className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-6 border border-purple-200"
                     >
                       <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                        <FaTrophy className="mr-3 text-[#023E8A]" />
-                        {t('science.kubatov.achievementsTitle')}
+                        <FaAward className="mr-3 text-[#023E8A]" />
+                        {t('science.achievementsTitle')}
                       </h4>
                       <div className="grid md:grid-cols-2 gap-4">
-                        {achievements.length > 0 ? (
-                          achievements.map((achievement, index) => (
+                        {Array.isArray(achievementItems) && achievementItems.length > 0 ? (
+                          achievementItems.map((achievement, index) => (
                             <motion.div
                               key={index}
                               initial={{ opacity: 0, scale: 0.9 }}
                               whileInView={{ opacity: 1, scale: 1 }}
                               viewport={{ once: true }}
                               transition={{ duration: 0.4, delay: index * 0.1 }}
-                              className="flex items-center p-3 bg-white/50 rounded-lg"
+                              className="flex items-start p-4 bg-white/50 rounded-lg border border-purple-100"
                             >
-                              <div className="w-6 h-6 bg-gradient-to-br from-[#023E8A] to-[#0077B6] rounded-full flex items-center justify-center mr-3">
-                                <FaAward className="text-white text-xs" />
+                              <div className="text-purple-600 mr-3 mt-1 flex-shrink-0">
+                                ✓
                               </div>
                               <span className="text-gray-700 text-sm">{achievement}</span>
                             </motion.div>
                           ))
                         ) : (
                           <div className="col-span-2 text-gray-500 text-center py-4">
-                            {t('science.kubatov.noAchievements')}
+                            {t('science.noAchievements')}
                           </div>
                         )}
-                      </div>
-                    </motion.div>
-
-                    {/* Additional Information */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: 0.3 }}
-                      className="mt-8 bg-gradient-to-r from-orange-50 to-amber-50 rounded-2xl p-6 border border-orange-200"
-                    >
-                      <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                        <FaGlobeAmericas className="mr-3 text-[#023E8A]" />
-                        {t('science.kubatov.recognitionTitle')}
-                      </h4>
-                      <div className="prose prose-lg max-w-none text-gray-700">
-                        <p className="leading-relaxed mb-4">
-                          {t('science.kubatov.recognition1')}
-                        </p>
-                        <p className="leading-relaxed">
-                          {t('science.kubatov.recognition2')}
-                        </p>
                       </div>
                     </motion.div>
                   </motion.div>
                 </div>
               </div>
-            </motion.div>
-          </main>
+            </div>
+          </motion.div>
         </div>
       </div>
     </div>
   );
 };
-
 export default Kubatov;
+

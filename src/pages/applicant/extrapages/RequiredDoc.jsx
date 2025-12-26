@@ -51,7 +51,7 @@ const RequiredDoc = () => {
    ];
 
    const documentsForeign = [
-      t('requiredDoc.documentsForeign.document1', 'Заявление на имя ректора Учреждения «Салымбеков Университет» (образец)'),
+      t('.requiredDoc.documentsForeign.document1', 'Заявление на имя ректора Учреждения «Салымбеков Университет» (образец)'),
       t('requiredDoc.documentsForeign.document2', 'Паспорт с въездной визой, соответствующей требованиям законодательства КР и его копию'),
       t('requiredDoc.documentsForeign.document3', 'Оригинал документа о полном среднем образовании с указанием изучаемых предметов и оценок (баллов) и нотариально заверенную копию'),
       t('requiredDoc.documentsForeign.document4', 'Нотариально заверенный перевод документа о полном среднем образовании на официальный язык КР'),

@@ -25,6 +25,8 @@ const DordoiOphthalmic = () => {
       }));
    }, []);
 
+
+
    return (
       <div className="w-full relative">
          {/* Animated gradient balls */}
@@ -120,22 +122,16 @@ const DordoiOphthalmic = () => {
                <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg border border-slate-200 p-8">
                   <div className="grid md:grid-cols-2 gap-8 items-start">
                      {/* Фото руководителя */}
-                     <div className="w-full h-96 rounded-2xl overflow-hidden shadow-md">
+                     <div className="w-full h-96 rounded-2xl overflow-hidden shadow-md bg-gradient-to-br from-indigo-100 to-blue-100 flex items-center justify-center">
                         <img
                            src={mainImage}
                            alt={t('dordoi.director.name', 'Эшмамбетов Асизбек Эшмамбетович')}
                            className="w-full h-full object-cover"
                            onError={(e) => {
                               e.target.style.display = 'none';
-                              e.target.nextSibling.style.display = 'block';
                            }}
                         />
-                        <div
-                           className="hidden w-full h-full bg-gradient-to-br from-indigo-100 to-blue-100 flex items-center justify-center"
-                           style={{ display: 'none' }}
-                        >
-                           <span className="text-slate-400 text-lg">Изображение не найдено</span>
-                        </div>
+                        <span className="text-slate-400 text-lg hidden" style={{ display: 'none' }}>Изображение не найдено</span>
                      </div>
 
                      {/* Текст */}

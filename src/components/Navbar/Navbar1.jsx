@@ -17,38 +17,34 @@ const Navbar = () => {
   const dropdownTimeoutRef = useRef(null);
   const lastScrollY = useRef(0);
 
-  // Track scroll for navbar background with smooth transitions
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const shouldBeScrolled = scrollY > 20;
-      
-      // Adjust navbar height on scroll
+
       if (scrollY > 50) {
         setNavbarHeight('h-16');
       } else {
         setNavbarHeight('h-20');
       }
-      
+
       if (shouldBeScrolled !== isScrolled) {
         setIsScrolled(shouldBeScrolled);
       }
-      
+
       lastScrollY.current = scrollY;
     };
-    
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isScrolled]);
 
-  // Close mobile menu and dropdowns on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
     setActiveDropdown(null);
     setExpandedItems({});
   }, [location]);
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (navbarRef.current && !navbarRef.current.contains(event.target)) {
@@ -60,14 +56,13 @@ const Navbar = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
     }
-    
+
     return () => {
       document.body.style.overflow = 'unset';
     };
@@ -90,11 +85,10 @@ const Navbar = () => {
     setExpandedItems(prev => {
       const key = `${menuKey}-${itemKey}`;
       const newState = { ...prev };
-      
+
       if (newState[key]) {
         delete newState[key];
       } else {
-        // Close all items in this menu first
         Object.keys(newState).forEach(k => {
           if (k.startsWith(menuKey + '-')) {
             delete newState[k];
@@ -102,7 +96,7 @@ const Navbar = () => {
         });
         newState[key] = true;
       }
-      
+
       return newState;
     });
   };
@@ -111,7 +105,6 @@ const Navbar = () => {
     return expandedItems[`${menuKey}-${itemKey}`];
   };
 
-  // Enhanced menu data structure with scrollable sections
   const menuData = {
     university: {
       items: [
@@ -452,69 +445,59 @@ const Navbar = () => {
   const renderFullscreenDropdown = (menuKey, items) => {
     const itemsWithSubItems = items.filter(item => item.subItems && item.subItems.length > 0);
     const itemsWithoutSubItems = items.filter(item => !item.subItems || item.subItems.length === 0);
-    
+
     return (
       <div
-        className={`fixed top-16 md:top-20 left-0 right-0 transition-all duration-300 ease-out border-b ${
-          isScrolled 
-            ? 'bg-white/95 backdrop-blur-lg border-gray-100' 
-            : 'bg-blue-900/95 backdrop-blur-lg border-blue-700/30'
-        } ${
-          activeDropdown === menuKey 
-            ? 'opacity-100 visible max-h-[70vh] overflow-y-auto shadow-xl' 
+        className={`fixed top-16 md:top-20 left-0 right-0 transition-all duration-300 ease-out border-b ${isScrolled
+          ? 'bg-white/95 backdrop-blur-lg border-gray-100'
+          : 'bg-blue-900/95 backdrop-blur-lg border-blue-700/30'
+          } ${activeDropdown === menuKey
+            ? 'opacity-100 visible max-h-[70vh] overflow-y-auto shadow-xl'
             : 'opacity-0 invisible max-h-0 overflow-hidden'
-        }`}
+          }`}
         onMouseEnter={() => handleDropdownEnter(menuKey)}
         onMouseLeave={handleDropdownLeave}
       >
         <div className="container mx-auto px-4 md:px-6 py-6 md:py-8">
           <div className="flex flex-col md:flex-row gap-6 md:gap-8">
-            {/* Main content with accordion items */}
             {itemsWithSubItems.length > 0 && (
               <div className="flex-1">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4">
                   {itemsWithSubItems.map((item) => (
                     <div key={item.key} className="group">
-                      <div className={`border rounded-xl transition-all duration-200 overflow-hidden hover:shadow-lg ${
-                        isScrolled 
-                          ? 'border-gray-100 hover:border-blue-300 bg-white/50' 
-                          : 'border-blue-800/30 hover:border-blue-400 bg-blue-800/20'
-                      }`}>
-                        {/* Accordion Header */}
+                      <div className={`border rounded-xl transition-all duration-200 overflow-hidden hover:shadow-lg ${isScrolled
+                        ? 'border-gray-100 hover:border-blue-300 bg-white/50'
+                        : 'border-blue-800/30 hover:border-blue-400 bg-blue-800/20'
+                        }`}>
                         <button
                           onClick={() => toggleItemExpansion(menuKey, item.key)}
-                          className={`w-full p-3 md:p-4 text-left flex items-center justify-between transition-colors duration-200 group-hover:shadow-inner rounded-xl ${
-                            isScrolled 
-                              ? 'hover:bg-blue-50/80' 
-                              : 'hover:bg-blue-800/30'
-                          }`}
+                          className={`w-full p-3 md:p-4 text-left flex items-center justify-between transition-colors duration-200 group-hover:shadow-inner rounded-xl ${isScrolled
+                            ? 'hover:bg-blue-50/80'
+                            : 'hover:bg-blue-800/30'
+                            }`}
                         >
                           <div className="flex items-center">
-                            <div className={`w-7 h-7 md:w-8 md:h-8 rounded-lg flex items-center justify-center mr-3 transition-colors ${
-                              isScrolled 
-                                ? 'bg-blue-100 group-hover:bg-blue-200' 
-                                : 'bg-blue-700/30 group-hover:bg-blue-600/50'
-                            }`}>
-                              <svg className={`w-3 h-3 md:w-4 md:h-4 transition-colors ${
-                                isScrolled ? 'text-blue-600' : 'text-blue-300'
-                              }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div className={`w-7 h-7 md:w-8 md:h-8 rounded-lg flex items-center justify-center mr-3 transition-colors ${isScrolled
+                              ? 'bg-blue-100 group-hover:bg-blue-200'
+                              : 'bg-blue-700/30 group-hover:bg-blue-600/50'
+                              }`}>
+                              <svg className={`w-3 h-3 md:w-4 md:h-4 transition-colors ${isScrolled ? 'text-blue-600' : 'text-blue-300'
+                                }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                               </svg>
                             </div>
                             <div>
-                              <h3 className={`text-sm font-semibold transition-colors ${
-                                isScrolled 
-                                  ? 'text-blue-800 group-hover:text-blue-700' 
-                                  : 'text-white group-hover:text-blue-100'
-                              }`}>
+                              <h3 className={`text-sm font-semibold transition-colors ${isScrolled
+                                ? 'text-blue-800 group-hover:text-blue-700'
+                                : 'text-white group-hover:text-blue-100'
+                                }`}>
                                 {t(`${menuKey}SUB.${item.key}`)}
                               </h3>
                             </div>
                           </div>
                           <svg
-                            className={`w-4 h-4 md:w-5 md:h-5 transition-all duration-300 ease-out ${
-                              isItemExpanded(menuKey, item.key) ? 'rotate-180' : ''
-                            } ${isScrolled ? 'text-blue-500' : 'text-blue-300'}`}
+                            className={`w-4 h-4 md:w-5 md:h-5 transition-all duration-300 ease-out ${isItemExpanded(menuKey, item.key) ? 'rotate-180' : ''
+                              } ${isScrolled ? 'text-blue-500' : 'text-blue-300'}`}
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -523,37 +506,30 @@ const Navbar = () => {
                           </svg>
                         </button>
 
-                        {/* Accordion Content with scrolling */}
                         <div
-                          className={`overflow-hidden transition-all duration-300 ease-out ${
-                            isItemExpanded(menuKey, item.key) 
-                              ? 'max-h-64 opacity-100' 
-                              : 'max-h-0 opacity-0'
-                          }`}
+                          className={`overflow-hidden transition-all duration-300 ease-out ${isItemExpanded(menuKey, item.key)
+                            ? 'max-h-64 opacity-100'
+                            : 'max-h-0 opacity-0'
+                            }`}
                         >
-                          <div className={`px-3 md:px-4 pb-3 md:pb-4 pt-2 ml-10 md:ml-11 border-t ${
-                            isScrolled ? 'border-gray-100' : 'border-blue-700/30'
-                          }`}>
-                            {/* Scrollable container for sub-items */}
-                            <div className={`max-h-48 overflow-y-auto pr-2 space-y-1.5 navbar-scrollbar ${
-                              isScrolled ? 'navbar-scrollbar-light' : 'navbar-scrollbar-dark'
+                          <div className={`px-3 md:px-4 pb-3 md:pb-4 pt-2 ml-10 md:ml-11 border-t ${isScrolled ? 'border-gray-100' : 'border-blue-700/30'
                             }`}>
+                            <div className={`max-h-48 overflow-y-auto pr-2 space-y-1.5 navbar-scrollbar ${isScrolled ? 'navbar-scrollbar-light' : 'navbar-scrollbar-dark'
+                              }`}>
                               {item.subItems.map((subItem) => (
                                 <Link
                                   key={subItem.key}
                                   to={subItem.link}
-                                  className={`flex items-center py-2 px-3 rounded-lg transition-all duration-200 text-sm group/sub hover:no-underline ${
-                                    isScrolled 
-                                      ? 'text-gray-600 hover:text-blue-700 hover:bg-blue-100/80' 
-                                      : 'text-blue-200 hover:text-white hover:bg-blue-700/30'
-                                  }`}
+                                  className={`flex items-center py-2 px-3 rounded-lg transition-all duration-200 text-sm group/sub hover:no-underline ${isScrolled
+                                    ? 'text-gray-600 hover:text-blue-700 hover:bg-blue-100/80'
+                                    : 'text-blue-200 hover:text-white hover:bg-blue-700/30'
+                                    }`}
                                   onClick={() => setActiveDropdown(null)}
                                 >
-                                  <div className={`w-1.5 h-1.5 rounded-full mr-2.5 transition-all duration-200 group-hover/sub:scale-125 flex-shrink-0 ${
-                                    isScrolled 
-                                      ? 'bg-blue-400 group-hover/sub:bg-blue-600' 
-                                      : 'bg-blue-400 group-hover/sub:bg-blue-300'
-                                  }`} />
+                                  <div className={`w-1.5 h-1.5 rounded-full mr-2.5 transition-all duration-200 group-hover/sub:scale-125 flex-shrink-0 ${isScrolled
+                                    ? 'bg-blue-400 group-hover/sub:bg-blue-600'
+                                    : 'bg-blue-400 group-hover/sub:bg-blue-300'
+                                    }`} />
                                   <span className="text-sm font-medium whitespace-normal break-words min-w-0">
                                     {t(`${menuKey}SUB.${subItem.key}`)}
                                   </span>
@@ -569,17 +545,14 @@ const Navbar = () => {
               </div>
             )}
 
-            {/* Quick links sidebar */}
             {itemsWithoutSubItems.length > 0 && (
               <div className="md:w-64 flex-shrink-0">
-                <div className={`rounded-xl border p-4 ${
-                  isScrolled 
-                    ? 'bg-blue-50/80 border-blue-200' 
-                    : 'bg-blue-800/30 border-blue-700/30'
-                }`}>
-                  <h3 className={`text-base font-semibold mb-3 ${
-                    isScrolled ? 'text-blue-900' : 'text-white'
+                <div className={`rounded-xl border p-4 ${isScrolled
+                  ? 'bg-blue-50/80 border-blue-200'
+                  : 'bg-blue-800/30 border-blue-700/30'
                   }`}>
+                  <h3 className={`text-base font-semibold mb-3 ${isScrolled ? 'text-blue-900' : 'text-white'
+                    }`}>
                     {t('navbar.quickLinks', 'Quick Links')}
                   </h3>
                   <div className="space-y-1.5">
@@ -587,16 +560,14 @@ const Navbar = () => {
                       <Link
                         key={item.key}
                         to={item.link}
-                        className={`flex items-center py-2 px-3 rounded-lg transition-all duration-200 group/link hover:no-underline ${
-                          isScrolled 
-                            ? 'text-gray-700 hover:text-blue-700 hover:bg-white' 
-                            : 'text-blue-200 hover:text-white hover:bg-blue-700/30'
-                        }`}
+                        className={`flex items-center py-2 px-3 rounded-lg transition-all duration-200 group/link hover:no-underline ${isScrolled
+                          ? 'text-gray-700 hover:text-blue-700 hover:bg-white'
+                          : 'text-blue-200 hover:text-white hover:bg-blue-700/30'
+                          }`}
                         onClick={() => setActiveDropdown(null)}
                       >
-                        <svg className={`w-4 h-4 mr-2 transition-all duration-200 group-hover/link:translate-x-1 flex-shrink-0 ${
-                          isScrolled ? 'text-blue-500' : 'text-blue-300'
-                        }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className={`w-4 h-4 mr-2 transition-all duration-200 group-hover/link:translate-x-1 flex-shrink-0 ${isScrolled ? 'text-blue-500' : 'text-blue-300'
+                          }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                         </svg>
                         <span className="text-sm font-medium whitespace-normal break-words min-w-0">
@@ -615,43 +586,35 @@ const Navbar = () => {
   };
 
   const renderMobileMenu = () => (
-    <div className={`lg:hidden fixed inset-0 top-16 md:top-20 transition-all duration-300 ease-in-out overflow-hidden ${
-      isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-    }`}>
-      {/* Backdrop */}
-      <div 
-        className={`absolute inset-0 transition-all duration-300 ${
-          isMobileMenuOpen ? 'bg-black/40 backdrop-blur-sm' : 'bg-transparent'
-        }`}
+    <div className={`lg:hidden fixed inset-0 top-16 md:top-20 transition-all duration-300 ease-in-out overflow-hidden ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+      }`}>
+      <div
+        className={`absolute inset-0 transition-all duration-300 ${isMobileMenuOpen ? 'bg-black/40 backdrop-blur-sm' : 'bg-transparent'
+          }`}
         onClick={() => setIsMobileMenuOpen(false)}
       />
-      
-      {/* Menu Content */}
-      <div className={`absolute top-0 left-0 right-0 transition-all duration-300 ease-out overflow-y-auto ${
-        isScrolled 
-          ? 'bg-white/95 backdrop-blur-lg border-t border-gray-100' 
-          : 'bg-blue-900/95 backdrop-blur-lg border-t border-blue-700/30'
-      } ${
-        isMobileMenuOpen 
-          ? 'max-h-[calc(100vh-4rem)] opacity-100 shadow-xl' 
+
+      <div className={`absolute top-0 left-0 right-0 transition-all duration-300 ease-out overflow-y-auto ${isScrolled
+        ? 'bg-white/95 backdrop-blur-lg border-t border-gray-100'
+        : 'bg-blue-900/95 backdrop-blur-lg border-t border-blue-700/30'
+        } ${isMobileMenuOpen
+          ? 'max-h-[calc(100vh-4rem)] opacity-100 shadow-xl'
           : 'max-h-0 opacity-0'
-      }`}>
+        }`}>
         <div className="container mx-auto px-4 py-4">
           {Object.entries(menuData).map(([menuKey, { items }]) => (
             <div key={menuKey} className="mb-2">
               <button
                 onClick={() => setActiveDropdown(activeDropdown === menuKey ? null : menuKey)}
-                className={`flex items-center justify-between w-full py-3 px-4 text-sm font-semibold transition-all duration-200 rounded-lg ${
-                  isScrolled 
-                    ? 'text-blue-900 hover:text-blue-700 bg-blue-50/80 hover:bg-blue-100/80' 
-                    : 'text-white hover:text-blue-100 bg-blue-800/30 hover:bg-blue-700/50'
-                }`}
+                className={`flex items-center justify-between w-full py-3 px-4 text-sm font-semibold transition-all duration-200 rounded-lg ${isScrolled
+                  ? 'text-blue-900 hover:text-blue-700 bg-blue-50/80 hover:bg-blue-100/80'
+                  : 'text-white hover:text-blue-100 bg-blue-800/30 hover:bg-blue-700/50'
+                  }`}
               >
                 <span>{t(`navbar.${menuKey}`)}</span>
                 <svg
-                  className={`w-4 h-4 transition-all duration-300 ease-out ${
-                    isScrolled ? 'text-blue-600' : 'text-blue-300'
-                  } ${activeDropdown === menuKey ? 'rotate-180' : ''}`}
+                  className={`w-4 h-4 transition-all duration-300 ease-out ${isScrolled ? 'text-blue-600' : 'text-blue-300'
+                    } ${activeDropdown === menuKey ? 'rotate-180' : ''}`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -659,35 +622,30 @@ const Navbar = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              
-              <div className={`overflow-hidden transition-all duration-300 ease-out ${
-                activeDropdown === menuKey ? 'max-h-screen opacity-100 mt-2' : 'max-h-0 opacity-0'
-              }`}>
+
+              <div className={`overflow-hidden transition-all duration-300 ease-out ${activeDropdown === menuKey ? 'max-h-screen opacity-100 mt-2' : 'max-h-0 opacity-0'
+                }`}>
                 <div className="space-y-1.5 py-2">
                   {items.map((item) => (
-                    <div key={item.key} className={`rounded-lg overflow-hidden ${
-                      isScrolled 
-                        ? 'bg-white/50 border border-gray-100' 
-                        : 'bg-blue-800/20 border border-blue-700/20'
-                    }`}>
+                    <div key={item.key} className={`rounded-lg overflow-hidden ${isScrolled
+                      ? 'bg-white/50 border border-gray-100'
+                      : 'bg-blue-800/20 border border-blue-700/20'
+                      }`}>
                       {item.subItems ? (
                         <>
-                          {/* Mobile Accordion Header */}
                           <button
                             onClick={() => toggleItemExpansion(menuKey, item.key)}
-                            className={`w-full py-3 px-4 text-left flex items-center justify-between transition-all duration-200 ${
-                              isScrolled 
-                                ? 'hover:bg-blue-50/80 text-gray-800' 
-                                : 'hover:bg-blue-700/30 text-blue-200'
-                            }`}
+                            className={`w-full py-3 px-4 text-left flex items-center justify-between transition-all duration-200 ${isScrolled
+                              ? 'hover:bg-blue-50/80 text-gray-800'
+                              : 'hover:bg-blue-700/30 text-blue-200'
+                              }`}
                           >
                             <span className="font-medium text-sm whitespace-normal break-words">
                               {t(`${menuKey}SU.${item.key}`)}
                             </span>
                             <svg
-                              className={`w-4 h-4 transition-all duration-300 ease-out flex-shrink-0 ${
-                                isItemExpanded(menuKey, item.key) ? 'rotate-180' : ''
-                              } ${isScrolled ? 'text-blue-500' : 'text-blue-300'}`}
+                              className={`w-4 h-4 transition-all duration-300 ease-out flex-shrink-0 ${isItemExpanded(menuKey, item.key) ? 'rotate-180' : ''
+                                } ${isScrolled ? 'text-blue-500' : 'text-blue-300'}`}
                               fill="none"
                               stroke="currentColor"
                               viewBox="0 0 24 24"
@@ -696,57 +654,47 @@ const Navbar = () => {
                             </svg>
                           </button>
 
-                          {/* Mobile Accordion Content with scrolling */}
                           <div
-                            className={`overflow-hidden transition-all duration-300 ease-out ${
-                              isItemExpanded(menuKey, item.key) 
-                                ? 'max-h-64 opacity-100' 
-                                : 'max-h-0 opacity-0'
-                            }`}
+                            className={`overflow-hidden transition-all duration-300 ease-out ${isItemExpanded(menuKey, item.key)
+                              ? 'max-h-64 opacity-100'
+                              : 'max-h-0 opacity-0'
+                              }`}
                           >
-                            <div className={`px-4 pb-3 space-y-2 border-t ${
-                              isScrolled ? 'border-gray-100' : 'border-blue-700/30'
-                            }`}>
-                              {/* Main item link */}
+                            <div className={`px-4 pb-3 space-y-2 border-t ${isScrolled ? 'border-gray-100' : 'border-blue-700/30'
+                              }`}>
                               <Link
                                 to={item.link}
-                                className={`flex items-center py-2 transition-all duration-200 text-sm font-medium hover:no-underline ${
-                                  isScrolled 
-                                    ? 'text-blue-700 hover:text-blue-800' 
-                                    : 'text-blue-300 hover:text-white'
-                                }`}
+                                className={`flex items-center py-2 transition-all duration-200 text-sm font-medium hover:no-underline ${isScrolled
+                                  ? 'text-blue-700 hover:text-blue-800'
+                                  : 'text-blue-300 hover:text-white'
+                                  }`}
                                 onClick={() => setIsMobileMenuOpen(false)}
                               >
-                                <svg className={`w-4 h-4 mr-2 flex-shrink-0 ${
-                                  isScrolled ? 'text-blue-600' : 'text-blue-400'
-                                }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg className={`w-4 h-4 mr-2 flex-shrink-0 ${isScrolled ? 'text-blue-600' : 'text-blue-400'
+                                  }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                 </svg>
                                 <span className="whitespace-normal break-words">
                                   {t('navbar.viewMainPage', 'View main page')}
                                 </span>
                               </Link>
-                              
-                              {/* Scrollable container for sub-items */}
-                              <div className={`max-h-40 overflow-y-auto pr-2 space-y-2 navbar-scrollbar ${
-                                isScrolled ? 'navbar-scrollbar-light' : 'navbar-scrollbar-dark'
-                              }`}>
+
+                              <div className={`max-h-40 overflow-y-auto pr-2 space-y-2 navbar-scrollbar ${isScrolled ? 'navbar-scrollbar-light' : 'navbar-scrollbar-dark'
+                                }`}>
                                 {item.subItems.map((subItem) => (
                                   <Link
                                     key={subItem.key}
                                     to={subItem.link}
-                                    className={`flex items-start py-2 text-sm transition-all duration-200 rounded px-3 group/sub hover:no-underline ${
-                                      isScrolled 
-                                        ? 'text-gray-600 hover:text-blue-700 hover:bg-blue-50/80' 
-                                        : 'text-blue-200 hover:text-white hover:bg-blue-700/30'
-                                    }`}
+                                    className={`flex items-start py-2 text-sm transition-all duration-200 rounded px-3 group/sub hover:no-underline ${isScrolled
+                                      ? 'text-gray-600 hover:text-blue-700 hover:bg-blue-50/80'
+                                      : 'text-blue-200 hover:text-white hover:bg-blue-700/30'
+                                      }`}
                                     onClick={() => setIsMobileMenuOpen(false)}
                                   >
-                                    <div className={`w-1.5 h-1.5 rounded-full mr-2.5 transition-all duration-200 group-hover/sub:scale-125 flex-shrink-0 mt-1.5 ${
-                                      isScrolled 
-                                        ? 'bg-blue-400 group-hover/sub:bg-blue-600' 
-                                        : 'bg-blue-400 group-hover/sub:bg-blue-300'
-                                    }`}></div>
+                                    <div className={`w-1.5 h-1.5 rounded-full mr-2.5 transition-all duration-200 group-hover/sub:scale-125 flex-shrink-0 mt-1.5 ${isScrolled
+                                      ? 'bg-blue-400 group-hover/sub:bg-blue-600'
+                                      : 'bg-blue-400 group-hover/sub:bg-blue-300'
+                                      }`}></div>
                                     <span className="whitespace-normal break-words min-w-0">
                                       {t(`${menuKey}SUB.${subItem.key}`)}
                                     </span>
@@ -759,17 +707,15 @@ const Navbar = () => {
                       ) : (
                         <Link
                           to={item.link}
-                          className={`flex items-center justify-between py-3 px-4 transition-all duration-200 font-medium text-sm hover:no-underline ${
-                            isScrolled 
-                              ? 'text-gray-800 hover:text-blue-700 hover:bg-blue-50/80' 
-                              : 'text-blue-200 hover:text-white hover:bg-blue-700/30'
-                          }`}
+                          className={`flex items-center justify-between py-3 px-4 transition-all duration-200 font-medium text-sm hover:no-underline ${isScrolled
+                            ? 'text-gray-800 hover:text-blue-700 hover:bg-blue-50/80'
+                            : 'text-blue-200 hover:text-white hover:bg-blue-700/30'
+                            }`}
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
                           <span className="whitespace-normal break-words min-w-0">{t(`${menuKey}SU.${item.key}`)}</span>
-                          <svg className={`w-4 h-4 transition-transform duration-200 flex-shrink-0 ${
-                            isScrolled ? 'text-blue-400' : 'text-blue-300'
-                          }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className={`w-4 h-4 transition-transform duration-200 flex-shrink-0 ${isScrolled ? 'text-blue-400' : 'text-blue-300'
+                            }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
                         </Link>
@@ -780,8 +726,7 @@ const Navbar = () => {
               </div>
             </div>
           ))}
-          
-          {/* Mobile Language Switcher */}
+
           <div className="mt-4 pt-4 border-t border-gray-200">
             <LanguageSwitcher variant="solid" />
           </div>
@@ -792,18 +737,16 @@ const Navbar = () => {
 
   return (
     <>
-      <nav 
+      <nav
         ref={navbarRef}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out ${
-          isScrolled 
-            ? 'bg-white/95 backdrop-blur-lg border-b border-gray-100 shadow-md' 
-            : 'bg-gradient-to-r from-blue-900/95 to-blue-800/95 backdrop-blur-lg border-b border-blue-700/30'
-        } ${navbarHeight}`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out ${isScrolled
+          ? 'bg-white/95 backdrop-blur-lg border-b border-gray-100 shadow-md'
+          : 'bg-gradient-to-r from-blue-900/95 to-blue-800/95 backdrop-blur-lg border-b border-blue-700/30'
+          } ${navbarHeight}`}
         style={{ transition: 'height 300ms ease-out, background-color 300ms ease-out' }}
       >
         <div className="container mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-full">
-            {/* Logo */}
             <div className="flex-shrink-0">
               <Link to="/" className="flex items-center group">
                 <div className="h-12 md:h-14 px-3 md:px-4 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:scale-105 group-active:scale-95">
@@ -816,7 +759,6 @@ const Navbar = () => {
               </Link>
             </div>
 
-            {/* Desktop Menu */}
             <div className="hidden lg:flex items-center space-x-1">
               {Object.entries(menuData).map(([menuKey, { items }]) => (
                 <div
@@ -826,57 +768,46 @@ const Navbar = () => {
                   onMouseLeave={handleDropdownLeave}
                 >
                   <button
-                    className={`px-4 md:px-5 py-2.5 md:py-3 rounded-xl font-semibold text-sm md:text-base transition-all duration-200 relative overflow-hidden group ${
-                      isScrolled
-                        ? 'text-gray-700 hover:text-blue-700'
-                        : 'text-white hover:text-blue-100'
-                    } ${activeDropdown === menuKey ? (isScrolled ? 'text-blue-700' : 'text-white') : ''}`}
+                    className={`px-4 md:px-5 py-2.5 md:py-3 rounded-xl font-semibold text-sm md:text-base transition-all duration-200 relative overflow-hidden group ${isScrolled
+                      ? 'text-gray-700 hover:text-blue-700'
+                      : 'text-white hover:text-blue-100'
+                      } ${activeDropdown === menuKey ? (isScrolled ? 'text-blue-700' : 'text-white') : ''}`}
                   >
-                    {/* Animated underline */}
                     <span className="relative z-10 whitespace-nowrap">{t(`navbarSUB.${menuKey}`)}</span>
-                    <div className={`absolute bottom-0 left-0 right-0 h-0.5 transform transition-transform duration-300 ease-out ${
-                      activeDropdown === menuKey ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
-                    } ${isScrolled ? 'bg-blue-600' : 'bg-white'}`} />
+                    <div className={`absolute bottom-0 left-0 right-0 h-0.5 transform transition-transform duration-300 ease-out ${activeDropdown === menuKey ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                      } ${isScrolled ? 'bg-blue-600' : 'bg-white'}`} />
                   </button>
                   {renderFullscreenDropdown(menuKey, items)}
                 </div>
               ))}
             </div>
 
-            {/* Right Section */}
             <div className="flex items-center space-x-3 md:space-x-4">
-              {/* Language Switcher */}
               <div className="hidden lg:block ml-1">
                 <LanguageSwitcher variant={isScrolled ? "outline" : "default"} />
               </div>
-              
-              {/* Mobile Menu Button */}
+
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className={`lg:hidden p-2.5 rounded-xl transition-all duration-200 active:scale-95 ${
-                  isScrolled
-                    ? 'text-gray-700 hover:bg-gray-100/80'
-                    : 'text-white hover:bg-blue-700/30'
-                }`}
+                className={`lg:hidden p-2.5 rounded-xl transition-all duration-200 active:scale-95 ${isScrolled
+                  ? 'text-gray-700 hover:bg-gray-100/80'
+                  : 'text-white hover:bg-blue-700/30'
+                  }`}
                 aria-label="Toggle menu"
               >
                 <div className="w-6 h-6 relative">
-                  <span className={`absolute block w-6 h-0.5 transition-all duration-300 ease-out transform ${
-                    isScrolled ? 'bg-gray-700' : 'bg-white'
-                  } ${isMobileMenuOpen ? 'rotate-45 top-3' : 'top-1.5'}`} />
-                  <span className={`absolute block w-6 h-0.5 transition-all duration-300 ease-out ${
-                    isScrolled ? 'bg-gray-700' : 'bg-white'
-                  } ${isMobileMenuOpen ? 'opacity-0 translate-x-4' : 'opacity-100 top-3'}`} />
-                  <span className={`absolute block w-6 h-0.5 transition-all duration-300 ease-out transform ${
-                    isScrolled ? 'bg-gray-700' : 'bg-white'
-                  } ${isMobileMenuOpen ? '-rotate-45 top-3' : 'top-4.5'}`} />
+                  <span className={`absolute block w-6 h-0.5 transition-all duration-300 ease-out transform ${isScrolled ? 'bg-gray-700' : 'bg-white'
+                    } ${isMobileMenuOpen ? 'rotate-45 top-3' : 'top-1.5'}`} />
+                  <span className={`absolute block w-6 h-0.5 transition-all duration-300 ease-out ${isScrolled ? 'bg-gray-700' : 'bg-white'
+                    } ${isMobileMenuOpen ? 'opacity-0 translate-x-4' : 'opacity-100 top-3'}`} />
+                  <span className={`absolute block w-6 h-0.5 transition-all duration-300 ease-out transform ${isScrolled ? 'bg-gray-700' : 'bg-white'
+                    } ${isMobileMenuOpen ? '-rotate-45 top-3' : 'top-4.5'}`} />
                 </div>
               </button>
             </div>
           </div>
         </div>
 
-        {/* Desktop Dropdowns */}
         {Object.entries(menuData).map(([menuKey, { items }]) => (
           <div key={menuKey}>
             {renderFullscreenDropdown(menuKey, items)}
@@ -884,13 +815,10 @@ const Navbar = () => {
         ))}
       </nav>
 
-      {/* Mobile Menu */}
       {renderMobileMenu()}
 
-      {/* Spacer for fixed navbar */}
       <div className={navbarHeight} />
 
-      {/* Custom navbar scrollbar styles */}
       <style jsx global>{`
         .navbar-scrollbar {
           scrollbar-width: thin;
@@ -946,7 +874,6 @@ const Navbar = () => {
           background: linear-gradient(135deg, rgba(59, 130, 246, 1), rgba(37, 99, 235, 0.9));
         }
         
-        /* Smooth scrolling */
         .navbar-scrollbar::-webkit-scrollbar {
           transition: all 0.3s ease;
         }
@@ -955,7 +882,6 @@ const Navbar = () => {
           transition: all 0.3s ease;
         }
         
-        /* Hide scrollbar when not hovering */
         .navbar-scrollbar:not(:hover)::-webkit-scrollbar-thumb {
           background: rgba(59, 130, 246, 0.4);
         }

@@ -20,28 +20,7 @@ const Scholarships = () => {
       }));
    }, []);
 
-   const floatingBubbles = useMemo(() => {
-      return [...Array(15)].map((_, i) => ({
-         id: i,
-         size: Math.random() * 80 + 40,
-         left: `${Math.random() * 100}%`,
-         top: `${Math.random() * 100}%`,
-         duration: 6 + Math.random() * 4,
-         delay: Math.random() * 3
-      }));
-   }, []);
-
-   const smallBubbles = useMemo(() => {
-      return [...Array(30)].map((_, i) => ({
-         id: i,
-         size: Math.random() * 25 + 15,
-         left: `${Math.random() * 100}%`,
-         top: `${Math.random() * 100}%`,
-         duration: 3 + Math.random() * 2,
-         delay: Math.random() * 1
-      }));
-   }, []);
-
+   // Navigation items с использованием переводов
    const navigationItems = [
       {
          path: '/applicants/software-development',
@@ -90,156 +69,62 @@ const Scholarships = () => {
       }
    ];
 
-   const categories = [
-      {
-         title: t('scholarships.categories.category1.title', 'I категория'),
-         description: t('scholarships.categories.category1.description', 'Студенты очной формы обучения, закончившие учебный год по всем дисциплинам только на «отлично».')
-      },
-      {
-         title: t('scholarships.categories.category2.title', 'II категория'),
-         description: t('scholarships.categories.category2.description', 'Студенты, потерявшие кормильца, круглые сироты, инвалиды I и II группы.')
-      },
-      {
-         title: t('scholarships.categories.category3.title', 'III категория'),
-         description: t('scholarships.categories.category3.description', 'Студенты, родители которых являются штатными сотрудниками Университета, внесших значительный вклад в повышение качества подготовки специалистов, научно-исследовательской работе, а также принимающих активное участие в общественной жизни университета.')
-      },
-      {
-         title: t('scholarships.categories.category4.title', 'IV категория'),
-         description: t('scholarships.categories.category4.description', 'Студенты, регулярно представляющие Университет на соревнованиях и конкурсах республиканского, межрегионального и международного уровня.')
-      },
-      {
-         title: t('scholarships.categories.category5.title', 'V категория'),
-         description: t('scholarships.categories.category5.description', 'Студенты, поступающие на первый курс и особо отличившиеся в процессе обучения в школах, средних профессиональных учебных заведениях и в различных образовательных, спортивных и культурных соревнованиях республиканского и международного уровня.')
-      }
-   ];
+   // Получаем категории из перевода
+   const categoriesData = t('scholarships.categories', { returnObjects: true });
 
-   // Имена и фамилии остаются без перевода
+   // Преобразуем объект категорий в массив для рендеринга
+   const categoriesArray = useMemo(() => {
+      if (!categoriesData || typeof categoriesData !== 'object') return [];
+
+      return Object.keys(categoriesData)
+         .filter(key => key.startsWith('category'))
+         .sort((a, b) => {
+            // Сортируем по номеру категории (I, II, III, IV, V)
+            const order = { 'category1': 1, 'category2': 2, 'category3': 3, 'category4': 4, 'category5': 5 };
+            return order[a] - order[b];
+         })
+         .map(key => ({
+            title: categoriesData[key]?.title || '',
+            description: categoriesData[key]?.description || ''
+         }));
+   }, [categoriesData]);
+
+   // Имена остаются без перевода, должности - с переводом
    const commissionMembers = [
-      { name: 'Уметалиева М.Н.', position: t('scholarships.commission.chairman', 'декан, председатель комиссии') },
-      { name: 'Арзиева Н.Н.', position: t('scholarships.commission.viceChairman', 'заместитель декана, член комиссии') },
-      { name: 'Акматова А.Т.', position: t('scholarships.commission.umo', 'заведующая УМО, член комиссии') },
-      { name: 'Шерали уулу Ж.', position: t('scholarships.commission.economist', 'экономист, член комиссии') },
-      { name: 'Бопушева А.Т.', position: t('scholarships.commission.soc', 'заведующая СОК, член комиссии') },
-      { name: 'Пиримбаева Ж.Ж.', position: t('scholarships.commission.hr', 'руководитель департамента HR и делопроизводства, член комиссии') },
-      { name: 'Алиярова М.Ю.', position: t('scholarships.commission.teacher', 'преподаватель кафедры ЕГД, старший куратор, член комиссии') }
+      {
+         name: 'Уметалиева М.Н.',
+         positionKey: 'chairman'
+      },
+      {
+         name: 'Арзиева Н.Н.',
+         positionKey: 'viceChairman'
+      },
+      {
+         name: 'Акматова А.Т.',
+         positionKey: 'umo'
+      },
+      {
+         name: 'Шерали уулу Ж.',
+         positionKey: 'economist'
+      },
+      {
+         name: 'Бопушева А.Т.',
+         positionKey: 'soc'
+      },
+      {
+         name: 'Пиримбаева Ж.Ж.',
+         positionKey: 'hr'
+      },
+      {
+         name: 'Алиярова М.Ю.',
+         positionKey: 'teacher'
+      }
    ];
 
    return (
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
-         {/* Animated gradient balls - основной слой */}
-         <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-            {animatedBalls.map((ball) => (
-               <motion.div
-                  key={ball.id}
-                  className="absolute rounded-full opacity-10"
-                  style={{
-                     width: ball.size,
-                     height: ball.size,
-                     left: ball.left,
-                     top: ball.top,
-                     background: 'linear-gradient(135deg, #023E8A, #0077B6)'
-                  }}
-                  animate={{
-                     y: [0, -30, 0],
-                     x: [0, 15, 0],
-                     scale: [1, 1.1, 1]
-                  }}
-                  transition={{
-                     duration: ball.duration,
-                     repeat: Infinity,
-                     ease: "easeInOut",
-                     delay: ball.delay
-                  }}
-               />
-            ))}
-         </div>
-
-         {/* Medium Floating Bubbles */}
-         <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-            {floatingBubbles.map((bubble) => (
-               <motion.div
-                  key={`floating-${bubble.id}`}
-                  className="absolute rounded-full opacity-8"
-                  style={{
-                     width: bubble.size,
-                     height: bubble.size,
-                     left: bubble.left,
-                     top: bubble.top,
-                     background: 'linear-gradient(135deg, #023E8A, #0077B6)'
-                  }}
-                  animate={{
-                     y: [0, -40, 0],
-                     x: [0, 20, 0],
-                     scale: [1, 1.2, 1]
-                  }}
-                  transition={{
-                     duration: bubble.duration,
-                     delay: bubble.delay,
-                     repeat: Infinity,
-                     ease: "easeInOut"
-                  }}
-               />
-            ))}
-         </div>
-
-         {/* Small Bubbles */}
-         <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-            {smallBubbles.map((bubble) => (
-               <motion.div
-                  key={`small-${bubble.id}`}
-                  className="absolute rounded-full opacity-12"
-                  style={{
-                     width: bubble.size,
-                     height: bubble.size,
-                     left: bubble.left,
-                     top: bubble.top,
-                     background: 'linear-gradient(135deg, #023E8A, #0077B6)'
-                  }}
-                  animate={{
-                     y: [0, -20, 0],
-                     x: [0, 10, 0],
-                     scale: [1, 1.05, 1]
-                  }}
-                  transition={{
-                     duration: bubble.duration,
-                     delay: bubble.delay,
-                     repeat: Infinity,
-                     ease: "easeInOut"
-                  }}
-               />
-            ))}
-         </div>
-
          {/* Hero Section */}
-         <div
-            className="relative h-[60vh] flex items-center justify-center overflow-hidden"
-         >
-            {/* Additional white bubbles in hero section for contrast */}
-            {[...Array(8)].map((_, i) => (
-               <motion.div
-                  key={`hero-bubble-${i}`}
-                  className="absolute rounded-full opacity-10"
-                  style={{
-                     width: Math.random() * 100 + 50,
-                     height: Math.random() * 100 + 50,
-                     left: `${Math.random() * 100}%`,
-                     top: `${Math.random() * 100}%`,
-                     background: 'linear-gradient(135deg, #ffffff, #e0f2fe)'
-                  }}
-                  animate={{
-                     y: [0, -25, 0],
-                     x: [0, 15, 0],
-                     scale: [1, 1.2, 1]
-                  }}
-                  transition={{
-                     duration: 6 + Math.random() * 3,
-                     delay: Math.random() * 2,
-                     repeat: Infinity,
-                     ease: "easeInOut"
-                  }}
-               />
-            ))}
-
+         <div className="relative h-[60vh] flex items-center justify-center overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-[#023E8A]/95 via-[#0077B6]/95 to-[#0096C7]/95 z-0">
                <div
                   className="absolute inset-0 opacity-30"
@@ -252,19 +137,13 @@ const Scholarships = () => {
             </div>
 
             <div className="relative z-10 container mx-auto px-4 text-center text-white">
-               <div
-                  className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm mb-6"
-               >
+               <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm mb-6">
                   <FiAward className="w-10 h-10" />
                </div>
-               <h1
-                  className="text-6xl md:text-7xl font-bold mb-6"
-               >
+               <h1 className="text-6xl md:text-7xl font-bold mb-6">
                   {t('scholarships.hero.title', 'Стипендии и льготы')}
                </h1>
-               <p
-                  className="text-2xl md:text-3xl font-semibold text-white/90"
-               >
+               <p className="text-2xl md:text-3xl font-semibold text-white/90">
                   {t('scholarships.hero.subtitle', 'Scholarships and Benefits')}
                </p>
             </div>
@@ -280,14 +159,12 @@ const Scholarships = () => {
                         {t('scholarships.navigation.title', 'Навигация для абитуриентов')}
                      </h3>
                      <nav className="space-y-2">
-                        {navigationItems.map((item, index) => {
+                        {navigationItems.map((item) => {
                            const isActive = location.pathname === item.path;
                            const Icon = item.icon;
 
                            return (
-                              <div
-                                 key={item.path}
-                              >
+                              <div key={item.path}>
                                  <Link
                                     to={item.path}
                                     className={`
@@ -314,9 +191,7 @@ const Scholarships = () => {
                         })}
 
                         {/* Как к нам поступить - Section with subitems */}
-                        <div
-                           className="pt-2"
-                        >
+                        <div className="pt-2">
                            <button
                               onClick={() => setIsHowToApplyOpen(!isHowToApplyOpen)}
                               className="w-full flex items-center justify-between gap-3 px-4 py-3 rounded-xl transition-all duration-300 hover:bg-gray-50 text-gray-700 hover:text-gray-900"
@@ -337,14 +212,12 @@ const Scholarships = () => {
                            {/* Subitems */}
                            {isHowToApplyOpen && (
                               <div className="ml-6 mt-2 space-y-2 border-l-2 border-gray-200 pl-4">
-                                 {howToApplySubItems.map((subItem, index) => {
+                                 {howToApplySubItems.map((subItem) => {
                                     const isActive = location.pathname === subItem.path;
                                     const SubIcon = subItem.icon;
 
                                     return (
-                                       <div
-                                          key={subItem.path}
-                                       >
+                                       <div key={subItem.path}>
                                           <Link
                                              to={subItem.path}
                                              className={`
@@ -379,9 +252,7 @@ const Scholarships = () => {
                {/* Right Content */}
                <div className="flex-1 space-y-8">
                   {/* Introduction */}
-                  <div
-                     className="bg-white rounded-3xl shadow-2xl p-8 md:p-12"
-                  >
+                  <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12">
                      <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
                         {t('scholarships.policy.title', 'Льготная политика')}
                      </h2>
@@ -404,14 +275,12 @@ const Scholarships = () => {
                   </div>
 
                   {/* Categories Section */}
-                  <div
-                     className="bg-white rounded-3xl shadow-2xl p-8 md:p-12"
-                  >
+                  <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12">
                      <h2 className="text-4xl font-bold mb-8 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
                         {t('scholarships.categories.title', 'Категории студентов для получения льгот')}
                      </h2>
                      <div className="space-y-6">
-                        {categories.map((category, idx) => (
+                        {categoriesArray.map((category, idx) => (
                            <div
                               key={idx}
                               className="flex gap-4 p-6 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl hover:shadow-lg transition-all duration-300"
@@ -429,9 +298,7 @@ const Scholarships = () => {
                   </div>
 
                   {/* Commission Section */}
-                  <div
-                     className="bg-white rounded-3xl shadow-2xl p-8 md:p-12"
-                  >
+                  <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12">
                      <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
                         {t('scholarships.commission.title', 'Состав комиссии по социальной поддержке студентов')}
                      </h2>
@@ -448,10 +315,10 @@ const Scholarships = () => {
                                  <FiUsers className="w-5 h-5 text-white" />
                               </div>
                               <div className="flex-1">
-                                 {/* Имена остаются без перевода */}
                                  <p className="font-bold text-[#023E8A] text-lg">{member.name}</p>
-                                 {/* Должности переводятся */}
-                                 <p className="text-gray-600">{member.position}</p>
+                                 <p className="text-gray-600">
+                                    {t(`scholarships.commission.${member.positionKey}`, '')}
+                                 </p>
                               </div>
                            </div>
                         ))}

@@ -433,20 +433,7 @@ const Schedule = () => {
                      </motion.div>
                   ))}
 
-                  {/* Footer Note */}
-                  <motion.div
-                     className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-3xl shadow-2xl p-8 md:p-12"
-                     variants={scrollItemVariants}
-                  >
-                     <div className="flex items-start gap-4 text-white">
-                        <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center shrink-0 mt-1">
-                           <span className="text-white font-bold">*</span>
-                        </div>
-                        <p className="text-lg leading-relaxed">
-                           {t('schedule.footerNote', 'На подтверждение в ЦООМО направляется общий список абитуриентов, подтвердивших свое желание обучаться в вузе по итогам всех туров зачисления (на грантовые и контрактные места).')}
-                        </p>
-                     </div>
-                  </motion.div>
+
                </motion.div>
             </div>
          </div>

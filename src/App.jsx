@@ -1,5 +1,5 @@
 
-import React, { lazy } from 'react'
+import React, { lazy, Suspense } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar1'
 import Home from './pages/Home'
@@ -9,6 +9,8 @@ import Contact from './pages/Contact'
 import FounderMessage from './pages/FounderMessage'
 import MaterialBaseGallery from './pages/MaterialBaseGallery'
 import Footer from './pages/Footer'
+import ApplicantBase from './pages/applicant/ApplicantBase'
+
 
 // Lazy imports for university
 
@@ -87,6 +89,7 @@ const Center = lazy(() => import('./pages/education/Center'))
 
 // Clinical lazy imports
 const Lazmed = lazy(() => import('./pages/clinical/Lazmed'))
+const Ophthalmic = lazy(() => import('./pages/clinical/DordoiOphthalmic'))
 const DocClinic = lazy(() => import('./pages/clinical/DocClinic'))
 const DocHospital = lazy(() => import('./pages/clinical/DocHospital'))
 const Agreements = lazy(() => import('./pages/clinical/Agreements'))
@@ -169,7 +172,6 @@ const StudentService = lazy(() => import('./pages/student/opportunities/StudentS
 const AdaptationPrograms = lazy(() => import('./pages/student/opportunities/AdaptationPrograms'))
 
 // Applicant lazy imports
-const ApplicantBase = lazy(() => import('./pages/applicant/ApplicantBase'))
 const Commission = lazy(() => import('./pages/applicant/Commission'))
 const Dealers = lazy(() => import('./pages/applicant/Dealers'))
 const Rules = lazy(() => import('./pages/applicant/Rules'))
@@ -180,13 +182,40 @@ const Orientation = lazy(() => import('./pages/applicant/Orientation'))
 const Documents = lazy(() => import('./pages/applicant/Documents'))
 const AdmissionReg = lazy(() => import('./pages/applicant/AdmissionReg'))
 const ScheduleApp = lazy(() => import('./pages/applicant/Schedule'))
-const Transfer = lazy(() => import('./pages/applicant/Transfer'))
 const TransferBase = lazy(() => import('./pages/applicant/TransferBase'))
 const TransferSchedule = lazy(() => import('./pages/applicant/TransferSchedule'))
 const Scholarships = lazy(() => import('./pages/applicant/Scholarships'))
 const CareerGuidance = lazy(() => import('./pages/applicant/CareerGuidance'))
 const AdmissionProcedure = lazy(() => import('./pages/applicant/AdmissionProcedure'))
 const AdmissionCom = lazy(() => import('./pages/applicant/AdmissionCom'))
+const KnowledgeKarakol = lazy(() => import('./pages/applicant/KnowledgeKarakol'))
+const KnowledgeOsh = lazy(() => import('./pages/applicant/KnowledgeOsh'))
+const Cooperation1 = lazy(() => import('./pages/applicant/Cooperation'))
+const Meeting = lazy(() => import('./pages/applicant/Meeting'))
+const TeachersDay = lazy(() => import('./pages/applicant/events/TeachersDay'))
+const StateLanguageDay = lazy(() => import('./pages/applicant/events/StateLanguageDay'))
+const KoreanCenter = lazy(() => import('./pages/applicant/events/KoreanCenter'))
+const MedicalMission = lazy(() => import('./pages/applicant/events/MedicalMission'))
+const Graduation = lazy(() => import('./pages/applicant/events/Graduation2025'))
+const DiplomaAward = lazy(() => import('./pages/applicant/events/DiplomaAward'))
+const EurasianCongress = lazy(() => import('./pages/applicant/news/EurasianCongress'))
+const ITSecurityMeeting = lazy(() => import('./pages/applicant/news/ITSecurityMeeting'))
+const PaiChaiVisit = lazy(() => import('./pages/applicant/news/PaiChaiVisit'))
+const Transfer = lazy(() => import('./pages/applicant/Transfer'))
+const India = lazy(() => import('./pages/applicant/countries/India'))
+const Pakistan = lazy(() => import('./pages/applicant/countries/Pakistan'))
+const Uzbekistan = lazy(() => import('./pages/applicant/countries/Uzbekistan'))
+const Infrastructure = lazy(() => import('./pages/applicant/Infrastructure'))
+const Software = lazy(() => import('./pages/applicant/extrapages/Software'))
+const MobileDev = lazy(() => import('./pages/applicant/extrapages/MobileDev'))
+const MultimediaDev = lazy(() => import('./pages/applicant/extrapages/MobileDev'))
+const Dicipline = lazy(() => import('./pages/applicant/extrapages/Dicipline'))
+const GenerealMedFive = lazy(() => import('./pages/applicant/extrapages/GeneralMedFive'))
+const GeneralMedSix = lazy(() => import('./pages/applicant/extrapages/GeneralMedSix'))
+const AdmissionSchedule = lazy(() => import('./pages/applicant/Schedule'))
+const RequiredDoc = lazy(() => import('./pages/applicant/extrapages/RequiredDoc'))
+const OnlineReg = lazy(() => import('./pages/applicant/extrapages/OnlineReg'))
+
 
 // Infrastructure lazy imports
 const Locations = lazy(() => import('./pages/infrastructure/Locations'))
@@ -197,6 +226,7 @@ const App = () => {
     <Router>
       <div className="min-h-screen bg-gray-100">
         <Navbar />
+<<<<<<< HEAD
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path='/news' element={<NewsPage />} />
@@ -372,6 +402,217 @@ const App = () => {
           <Route path="/infrastructure/partners" element={<Partners />} />
           <Route path="/infrastructure/*" element={<Home />} />
         </Routes>
+=======
+        <Suspense fallback={<div className="flex items-center justify-center min-h-screen"><div>Загрузка...</div></div>}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path='/news' element={<NewsPage />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path='/founderMessege' element={<FounderMessage />} />
+            <Route path='/MaterialBaseGallery' element={<MaterialBaseGallery />} />
+            { }
+            <Route path='/news/NewsHome' element={<NewsHome />} />
+            <Route path="/university/news/:id" element={<NewsDetail />} />
+            <Route path="/university/appeal" element={<Appeal />} />
+            <Route path="/university/history" element={<History />} />
+            <Route path="/university/mission" element={<Mission />} />
+            <Route path="/university/videos" element={<Videos />} />
+            <Route path="/university/vacancies" element={<Vacancies />} />
+            <Route path="/university/contacts" element={<UniversityContacts />} />
+            <Route path="/university/structure" element={<Structure />} />
+            <Route path="/university/structure/university-main" element={<UniversityMain />} />
+            <Route path="/university/structure/international-faculty" element={<InternationalFaculty />} />
+            <Route path="/university/structure/it-college" element={<ITCollege />} />
+            <Route path="/university/structure/business-school" element={<BusinessSchool />} />
+            <Route path="/university/management" element={<Management />} />
+            <Route path="/university/management/founder" element={<Founder />} />
+            <Route path="/university/management/president" element={<President />} />
+            <Route path="/university/management/rectorate" element={<Rectorate />} />
+            <Route path="/university/management/public-councils" element={<PublicCouncils />} />
+            <Route path="/university/departments" element={<Departments />} />
+            <Route path="/university/departments/financial" element={<FinancialDept />} />
+            <Route path="/university/departments/educational" element={<EducationalDept />} />
+            <Route path="/university/departments/management" element={<ManagementDept />} />
+            <Route path="/university/departments/hr" element={<HRDept />} />
+            <Route path="/university/departments/quality" element={<QualityDept />} />
+            <Route path="/university/departments/science" element={<ScienceDept />} />
+            <Route path="/university/departments/international" element={<InternationalDept />} />
+            <Route path="/university/departments/student" element={<StudentDept />} />
+            <Route path="/university/departments/career" element={<CareerCenter />} />
+            <Route path="/university/accreditation" element={<Accreditation />} />
+            <Route path="/university/accreditation/national" element={<NationalAcc />} />
+            <Route path="/university/accreditation/institutional" element={<InstitutionalAcc />} />
+            <Route path="/university/accreditation/program" element={<ProgramAcc />} />
+            <Route path="/university/founding-docs" element={<FoundingDocs />} />
+            <Route path="/university/founding-docs/charter" element={<Charter />} />
+            <Route path="/university/founding-docs/licenses" element={<Licenses />} />
+            <Route path="/university/founding-docs/acts" element={<Acts />} />
+            <Route path="/university/founding-docs/strategic" element={<StrategicDocs />} />
+            <Route path="/university/normative-docs" element={<NormativeDocs />} />
+            <Route path="/university/normative-docs/kr-acts" element={<KRActs />} />
+            <Route path="/university/normative-docs/internal-acts" element={<InternalActs />} />
+            <Route path="/university/cooperation" element={<Cooperation />} />
+            <Route path="/university/cooperation/universities" element={<UniversitiesCoop />} />
+            <Route path="/university/cooperation/clinics" element={<ClinicsCoop />} />
+            <Route path="/university/brandbook" element={<Brandbook />} />
+            { }
+            <Route path="/education/ait" element={<AIT />} />
+            <Route path="/education/ait/about" element={<AboutAIT />} />
+            <Route path="/education/ait/leadership" element={<LeadershipAIT />} />
+            <Route path="/education/ait/disciplines" element={<DisciplinesAIT />} />
+            <Route path="/education/ait/teachers" element={<TeachersAIT />} />
+            <Route path="/education/ait/contacts" element={<ContactsAIT />} />
+            <Route path="/education/mfm" element={<MFM />} />
+            <Route path="/education/it-college" element={<ITCollegeEdu />} />
+            <Route path="/education/business-school" element={<BusinessSchoolEdu />} />
+            <Route path="/education/postgrad" element={<Postgrad />} />
+            <Route path="/education/center" element={<Center />} />
+            { }
+            { }
+            <Route path="/clinical/lazmed" element={<Lazmed />} />
+            <Route path="/clinical/doc-clinic" element={<DocClinic />} />
+            <Route path="/clinical/dordoi-ophthalmic" element={<Ophthalmic />} />
+            <Route path="/clinical/doc-hospital" element={<DocHospital />} />
+            <Route path="/clinical/agreements" element={<Agreements />} />
+            {/* Lazy Science */}
+            <Route path="/science" element={<ScienceMain />} />
+            <Route path="/science/management" element={<ManagementScience />} />
+            <Route path="/science/management/scientific-council" element={<ScientificCouncil />} />
+            <Route path="/science/management/scientific-technical-council" element={<ScientificTechnicalCouncil />} />
+            <Route path="/science/management/bioethics" element={<Bioethics />} />
+            <Route path="/science/management/young-scientists" element={<YoungScientists />} />
+            <Route path="/science/management/department" element={<ScienceDepartmentMng />} />
+            <Route path="/science/department" element={<ScienceDepartment />} />
+            <Route path="/science/events/conferences" element={<Conferences />} />
+            <Route path="/science/events/conferences/:id" element={<ConferenceDetail />} />
+            <Route path="/science/professors" element={<Professors />} />
+            <Route path="/science/professors/sean-park" element={<SeanPark />} />
+            <Route path="/science/professors/pendharkar" element={<Pendharkar />} />
+            <Route path="/science/professors/potapova" element={<Potapova />} />
+            <Route path="/science/professors/osmonov" element={<Osmonov />} />
+            <Route path="/science/professors/erkebaev" element={<Erkebaev />} />
+            <Route path="/science/professors/madaminov" element={<Madaminov />} />
+            <Route path="/science/professors/bilgaziev" element={<Bilgaziev />} />
+            <Route path="/science/professors/kubatov" element={<Kubatov />} />
+            <Route path="/science/professors/shaltakova" element={<Shaltakova />} />
+            <Route path="/science/professors/kachibek" element={<Kachibek />} />
+            <Route path="/science/publications" element={<Publications />} />
+            <Route path="/science/publications/journal" element={<ScientificJournal />} />
+            <Route path="/science/publications/periodicals" element={<Periodicals />} />
+            <Route path="/science/events" element={<ScienceEvents />} />
+            <Route path="/science/library" element={<Library />} />
+            <Route path="/science/student-science" element={<StudentScience />} />
+            <Route path="/science/student-society" element={<StudentSociety />} />
+            <Route path="/science/student-science/clubs" element={<Clubs />} />
+            <Route path="/science/student-science/conferences" element={<StudentConferences />} />
+            <Route path="/science/events/master-classes" element={<MasterClasses />} />
+            <Route path="/science/events/round-tables" element={<RoundTables />} />
+            <Route path="/science/projects/current" element={<CurrentProjects />} />
+            <Route path="/science/projects/grants" element={<Grants />} />
+            <Route path="/science/projects/international" element={<International />} />
+            <Route path="/science/labs" element={<Labs />} />
+            <Route path="/science/labs/anatomy" element={<Anatomy />} />
+            <Route path="/science/labs/biochemistry" element={<Biochemistry />} />
+            <Route path="/science/labs/chemistry" element={<Chemistry />} />
+            <Route path="/science/labs/biology" element={<Biology />} />
+            <Route path="/science/labs/interactive" element={<Interactive />} />
+            <Route path="/science/labs/computer" element={<Computer />} />
+            <Route path="/science/labs/study" element={<Study />} />
+            <Route path="/science/projects" element={<Projects />} />
+            { }
+            <Route path="/student" element={<StudentMain />} />
+            <Route path="/student/community/council" element={<StudentCouncil />} />
+            <Route path="/student/community/science" element={<StudentScienceCommunity />} />
+            <Route path="/student/community/debate" element={<DebateClub />} />
+            <Route path="/student/community/tutor" element={<Tutoring />} />
+            <Route path="/student/community/clubs" element={<CreativeGroups />} />
+            <Route path="/student/communities" element={<StudentCommunities />} />
+            <Route path="/student/resources/instructions" element={<Instructions />} />
+            <Route path="/student/resources/infosystem" element={<InfoSystem />} />
+            <Route path="/student/resources/elib" element={<ELibrary />} />
+            <Route path="/student/resources/edu-resources" element={<EducationalResources />} />
+            <Route path="/student/schedules" element={<Schedules />} />
+            <Route path="/student/schedule/study" element={<StudySchedule />} />
+            <Route path="/student/schedule/modules" element={<ModuleSchedule />} />
+            <Route path="/student/schedule/practice" element={<PracticeSchedule />} />
+            <Route path="/student/schedule/mfm" element={<MFMSchedule />} />
+            <Route path="/student/schedule/college" element={<CollegeSchedule />} />
+            <Route path="/student/conditions" element={<Conditions />} />
+            <Route path="/student/opportunities/medical" element={<MedicalCenter />} />
+            <Route path="/student/opportunities/dorm" element={<Dormitory />} />
+            <Route path="/student/opportunities/social" element={<SocialSupport />} />
+            <Route path="/student/opportunities/courses" element={<ElectiveCourses />} />
+            <Route path="/student/opportunities/mobility" element={<Mobility />} />
+            <Route path="/student/opportunities/psychology" element={<PsychologicalSupport />} />
+            <Route path="/student/opportunities/service-center" element={<StudentService />} />
+            <Route path="/student/opportunities/adaptation" element={<AdaptationPrograms />} />
+            { }
+            <Route path="/applicants" element={<ApplicantBase />} />
+            <Route path="/applicants/commission" element={<Commission />} />
+            <Route path="/applicant/rules" element={<AdmissionCom />} />
+            <Route path="/applicant/directions" element={<Directions />} />
+
+
+            <Route path="/applicant/entrance" element={<Entrance />} />
+            <Route path="/applicants/cost" element={<Cost />} />
+            <Route path="/applicant/orientation" element={<Orientation />} />
+            <Route path="/applicant/documents" element={<RequiredDoc />} />
+            <Route path="/applicant/admission-reg" element={<AdmissionReg />} />
+            <Route path="/applicant/schedule" element={<ScheduleApp />} />
+            <Route path="/applicant/transfer" element={<Transfer />} />
+            <Route path="/applicant/scholarships" element={<Scholarships />} />
+            <Route path="/applicants/scholarships" element={<Scholarships />} />
+            <Route path="/applicants/adaptation" element={<Orientation />} />
+            <Route path="/applicants/admission-rules" element={<Rules />} />
+            <Route path="/applicants/ort" element={<Entrance />} />
+            <Route path="/applicants/career-guidance" element={<CareerGuidance />} />
+            <Route path="/applicants/career-guidance/knowledge-karakol" element={<KnowledgeKarakol />} />
+            <Route path="/applicants/career-guidance/knowledge-osh" element={<KnowledgeOsh />} />
+            <Route path="/applicants/career-guidance/cooperation" element={<Cooperation1 />} />
+            <Route path="/applicants/career-guidance/meeting" element={<Meeting />} />
+            <Route path="/applicants/orientation/teachers-day" element={<TeachersDay />} />
+            <Route path="/applicants/orientation/state-language-day" element={<StateLanguageDay />} />
+            <Route path="/applicants/orientation/korean-center" element={<KoreanCenter />} />
+            <Route path="/applicants/orientation/medical-mission" element={<MedicalMission />} />
+            <Route path="/applicants/orientation/graduation-2025" element={<Graduation />} />
+            <Route path="/applicants/orientation/diploma-award" element={<DiplomaAward />} />
+            <Route path="/applicants/career-guidance/news/eurasian-congress" element={<EurasianCongress />} />
+            <Route path="/applicants/career-guidance/news/it-security-meeting" element={<ITSecurityMeeting />} />
+            <Route path="/applicants/career-guidance/news/pai-chai-visit" element={<PaiChaiVisit />} />
+            <Route path="/applicants/admission-procedure" element={<AdmissionProcedure />} />
+            <Route path="/applicants/admission-regulations" element={<AdmissionCom />} />
+            <Route path="/applicants/admission-schedule" element={<ScheduleApp />} />
+            <Route path="/applicants/career-guidance/events" element={<CareerGuidance />} />
+            <Route path="/applicants/career-guidance/news" element={<CareerGuidance />} />
+            <Route path="/applicants/transfer/documents" element={<Documents />} />
+            <Route path="/applicants/transfer/rules" element={<Transfer />} />
+            <Route path="/applicants/transfer/schedule" element={<TransferSchedule />} />
+            <Route path="/applicants/directions" element={<Directions />} />
+            <Route path="/applicants/dealers" element={<Dealers />} />
+            <Route path="/applicants/dealers/india" element={<India />} />
+            <Route path="/applicants/dealers/pakistan" element={<Pakistan />} />
+            <Route path="/applicants/dealers/uzbekistan" element={<Uzbekistan />} />
+            <Route path="/applicants/infrastructure" element={<Infrastructure />} />
+            <Route path="/applicants/software-development" element={<Software />} />
+            <Route path="/applicants/mobile-development" element={<MobileDev />} />
+            <Route path="/applicants/multimedia-development" element={<MultimediaDev />} />
+            <Route path="/applicants/discipline" element={<Dicipline />} />
+            <Route path="/applicants/general-medicine-5" element={<GenerealMedFive />} />
+            <Route path="/applicants/general-medicine-6" element={<GeneralMedSix />} />
+            <Route path="/applicants/admission/schedule" element={<AdmissionSchedule />} />
+            <Route path="/applicants/required-documents" element={<RequiredDoc />} />
+            <Route path="/applicants/online-registration" element={<OnlineReg />} />
+
+
+            { }
+            < Route path="/infrastructure/locations" element={<Locations />} />
+            <Route path="/infrastructure/partners" element={<Partners />} />
+            <Route path="/infrastructure/*" element={<Home />} />
+          </Routes>
+        </Suspense>
+>>>>>>> restore-my-changes
         <Footer />
       </div>
     </Router>

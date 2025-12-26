@@ -330,9 +330,9 @@ const Navbar = () => {
         onMouseEnter={() => handleEnter('university')}
         onMouseLeave={handleLeave}
       >
-        <div style={{ 
-          width: '100%', 
-          display: 'flex', 
+        <div style={{
+          width: '100%',
+          display: 'flex',
           justifyContent: 'center'
         }}>
           <div
@@ -430,9 +430,9 @@ const Navbar = () => {
     );
   };
 
-  // ========== СТАРЫЕ МЕГАМЕНЮ (ОБРАЗОВАНИЕ, КЛИНИЧЕСКАЯ БАЗА и т.д.) ==========
+
   const megaMenus = {
-    // ================== ОБРАЗОВАНИЕ ==================
+
     education: {
       cols: [
         {
@@ -444,8 +444,8 @@ const Navbar = () => {
               items: [
                 { label: 'Об Институте', path: '/education/ait/about' },
                 { label: 'Руководство Института', path: '/education/ait/management' },
-                { 
-                  label: 'Дисциплины Института', 
+                {
+                  label: 'Дисциплины Института',
                   path: '/education/ait/disciplines',
                   children: [
                     { label: 'Общеобразовательные', path: '/education/ait/disciplines/general' },
@@ -463,8 +463,8 @@ const Navbar = () => {
               items: [
                 { label: 'О колледже', path: '/education/it-college/about' },
                 { label: 'Директор', path: '/education/it-college/director' },
-                { 
-                  label: 'Специальности', 
+                {
+                  label: 'Специальности',
                   path: '/education/it-college/specialties',
                   children: [
                     { label: 'Информационные технологии', path: '/education/it-college/specialties/it' },
@@ -481,8 +481,8 @@ const Navbar = () => {
                     { label: 'Другие партнеры', path: '/education/it-college/double/partners' }
                   ]
                 },
-                { 
-                  label: 'Отделения', 
+                {
+                  label: 'Отделения',
                   path: '/education/it-college/departments',
                   children: [
                     { label: 'IT отделение', path: '/education/it-college/departments/it' },
@@ -504,8 +504,8 @@ const Navbar = () => {
               items: [
                 { label: 'О факультете', path: '/education/med-faculty/about' },
                 { label: 'Деканат', path: '/education/med-faculty/deanery' },
-                { 
-                  label: 'Программы', 
+                {
+                  label: 'Программы',
                   path: '/education/med-faculty/programs',
                   children: [
                     { label: 'Лечебное дело', path: '/education/med-faculty/programs/general' },
@@ -523,8 +523,8 @@ const Navbar = () => {
                 { label: 'О бизнес школе', path: '/education/business-school/about' },
                 { label: 'Директор', path: '/education/business-school/director' },
                 { label: 'Менеджеры', path: '/education/business-school/managers' },
-                { 
-                  label: 'Программы и курсы', 
+                {
+                  label: 'Программы и курсы',
                   path: '/education/business-school/programs',
                   children: [
                     { label: 'MBA программы', path: '/education/business-school/programs/mba' },
@@ -562,8 +562,8 @@ const Navbar = () => {
                 { label: 'О центре', path: '/education/naryn/about' },
                 { label: 'Директор Центра', path: '/education/naryn/director' },
                 { label: 'Менеджеры', path: '/education/naryn/managers' },
-                { 
-                  label: 'Программы и курсы', 
+                {
+                  label: 'Программы и курсы',
                   path: '/education/naryn/programs',
                   children: [
                     { label: 'Образовательные программы', path: '/education/naryn/programs/educational' },
@@ -590,12 +590,10 @@ const Navbar = () => {
               title: 'Собственные клинические базы',
               items: [
                 { label: 'Лазмед', path: '/clinical/lazmed' },
-                {
-                  label: 'Дордой офтальмик сервис',
-                  path: '/clinical/dordoi-ophthalmic'
-                },
+                { label: 'Дордой офтальмик сервис', path: '/clinical/dordoi-ophthalmic' },
                 { label: 'DOC university clinic', path: '/clinical/doc-clinic' },
-                { label: 'DOC university hospital', path: '/clinical/doc-hospital' }
+                { label: 'DOC university hospital', path: '/clinical/doc-hospital' },
+
               ]
             },
             {
@@ -613,7 +611,6 @@ const Navbar = () => {
       ]
     },
 
-    // ================== НАУКА ==================
     science: {
       cols: [
         {
@@ -623,8 +620,8 @@ const Navbar = () => {
               icon: null,
               title: '',
               items: [
-                { 
-                  label: 'Органы управления', 
+                {
+                  label: 'Органы управления',
                   path: '/science/management',
                   children: [
                     { label: 'Научно-технический совет', path: '/science/management/scientific-technical-council' },
@@ -649,8 +646,8 @@ const Navbar = () => {
               title: '',
               items: [
                 { label: 'Почетные профессора и лекторы', path: '/science/professors' },
-                { 
-                  label: 'Мероприятия', 
+                {
+                  label: 'Мероприятия',
                   path: '/science/events',
                   children: [
                     { label: 'Конференции', path: '/science/events/conferences' },
@@ -658,8 +655,8 @@ const Navbar = () => {
                     { label: 'Круглые столы', path: '/science/events/round-tables' }
                   ]
                 },
-                { 
-                  label: 'Студенческая наука', 
+                {
+                  label: 'Студенческая наука',
                   path: '/science/student-science',
                   children: [
                     { label: 'Студенческое научное объединение', path: '/science/student-society' },
@@ -667,8 +664,8 @@ const Navbar = () => {
                     { label: 'Студенческие конференции', path: '/science/student-science/conferences' }
                   ]
                 },
-                { 
-                  label: 'Научные проекты', 
+                {
+                  label: 'Научные проекты',
                   children: [
                     { label: 'Урология' },
                     { label: 'Гинекология' },
@@ -949,7 +946,7 @@ const Navbar = () => {
     if (!data || !data.cols || data.cols.length === 0) return null;
 
     const visible = activeMenu === menuKey;
-    
+
     // Не рендерим вообще, если меню неактивно
     if (!visible) return null;
 
@@ -1256,8 +1253,8 @@ const Navbar = () => {
                   border: '1px solid #e0e0e0'
                 }}>
                   <svg width="16" height="16" fill="none" stroke="#666" strokeWidth="2" viewBox="0 0 24 24">
-                    <circle cx="11" cy="11" r="8"/>
-                    <path d="m21 21-4.35-4.35"/>
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="m21 21-4.35-4.35" />
                   </svg>
                   <input
                     ref={searchInputRef}
@@ -1292,7 +1289,7 @@ const Navbar = () => {
                     aria-label="Close search"
                   >
                     <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                      <path d="M18 6L6 18M6 6l12 12"/>
+                      <path d="M18 6L6 18M6 6l12 12" />
                     </svg>
                   </button>
                 </div>

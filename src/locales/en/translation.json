@@ -13824,6 +13824,11 @@
       "eduResources": "Educational Resources"
     }
   },
+  "studentSub": {
+    "communities": "Student Communities",
+    "conditions": "Terms and Opportunities",
+    "schedules": "Schedules"
+  },
   "infoSystem": {
     "category": "Information System",
     "title": "Information Systems",
@@ -14969,16 +14974,342 @@
       "hours": "🕒 Working hours: 8:30 - 17:30"
     }
   },
+  "backButton": "Back to Science",
   "pageTitle": "Teaching Staff",
   "sidebarTitle": "PROFESSORS",
   "positionLabel": "Position",
   "educationTitle": "Education",
   "experienceTitle": "Experience",
   "achievementsTitle": "Achievements and Awards",
+  "seanPark": {
+    "name": "DR. SEAN PARK",
+    "title": "DR. SEAN PARK",
+    "badge": "Teaching Staff",
+    "subtitle": "International expert, urologist, surgeon",
+    "backToScience": "Back to Professors",
+    "professors": "PROFESSORS",
+    "position": "International expert, urologist, surgeon",
+    "description": "Dr. Sean Sun Hun Park is a certified urologist in Korea, specializing in penile implant surgery. Went to the USA in 2012 for training in orthopaedic urology.",
+    "education": [
+      "Certified urologist in Korea",
+      "Training in orthopaedic urology in the USA",
+      "Specialization in penile implant surgery"
+    ],
+    "experience": [
+      "International medical practice",
+      "Specialized surgical techniques in urology",
+      "Training under Dr. Steven K. Wilson"
+    ],
+    "achievements": [
+      "International expert in prosthetic urology",
+      "Modern surgical techniques in implant placement",
+      "Contribution to urology development"
+    ]
+  },
+  "bilgaziev": {
+    "name": "Emil Bilgaziev",
+    "position": "Founder of American Technologies Institute, Technical Director",
+    "description": "Emil Bilgaziev, PhD – Founder of American Technologies Institute, developer, technical director of one of Facebook's departments, graduate of KTU 'Manas', and educated in the USA (PhD in Computer Science, 2013, Master in Computer Science, 2009, University of Houston).",
+    "education": [
+      "PhD in Computer Science, 2013, University of Houston",
+      "Master in Computer Science, 2009, University of Houston",
+      "KTU 'Manas' graduate"
+    ],
+    "experience": [
+      "Technical Director of Facebook department",
+      "Founder of American Technologies Institute",
+      "Worked at Shell, LinkedIn, Logichub, Uber, Snapchat"
+    ],
+    "achievements": [
+      "Developer of advanced technological solutions",
+      "Expert in computer sciences",
+      "International experience in IT industry"
+    ]
+  },
+  "kubatov": {
+    "name": "Eduard Kubatov",
+    "title": "President of the Federation of Mountaineering and Rock Climbing of the Kyrgyz Republic, Honorary Consul of the Republic of Indonesia in the Kyrgyz Republic",
+    "mainActivity": "Main Activity",
+    "mainActivityValue": "President of the Federation of Mountaineering and Rock Climbing of the Kyrgyz Republic",
+    "diplomaticPosition": "Diplomatic Position",
+    "diplomaticPositionValue": "Honorary Consul of the Republic of Indonesia in the Kyrgyz Republic",
+    "internationalActivity": "International Activity",
+    "internationalActivityValue": "Development of sports and diplomatic relations",
+    "description1": "Outstanding sports figure and diplomat, President of the Federation of Mountaineering and Rock Climbing of the Kyrgyz Republic, Honorary Consul of the Republic of Indonesia in Kyrgyzstan.",
+    "description2": "",
+    "sportsTitle": "Sports Activity",
+    "noSports": "No information",
+    "sportsActivities": [
+      {
+        "title": "Federation of Mountaineering and Rock Climbing of the Kyrgyz Republic",
+        "description": "Leading the development of mountaineering and rock climbing in Kyrgyzstan"
+      },
+      {
+        "title": "International Cooperation",
+        "description": "Partnership with mountaineering federations of other countries"
+      }
+    ],
+    "diplomaticTitle": "Diplomatic Activity",
+    "noDiplomatic": "No information",
+    "diplomaticActivities": [
+      {
+        "title": "Honorary Consul of Indonesia",
+        "description": "Representing interests of the Republic of Indonesia in Kyrgyzstan"
+      },
+      {
+        "title": "Cultural Exchange",
+        "description": "Developing relations between Kyrgyzstan and Indonesia"
+      }
+    ],
+    "achievementsTitle": "Achievements",
+    "noAchievements": "No information",
+    "recognitionTitle": "Recognition and Awards",
+    "recognition1": "Development of mountaineering as a sport in Kyrgyzstan",
+    "recognition2": "Strengthening international sports relations"
+  },
+  "common": {
+    "backToScience": "Back to Science",
+    "professorsTitle": "Professors and Teaching Staff",
+    "professors": "PROFESSORS"
+  },
   "journal_old": {
     "issues": {
       "1": "Issue 1"
     }
+  },
+  "pendharkar": {
+    "name": "Dr. Dinesh Pendharkar",
+    "position": "Leading Oncologist, Professor",
+    "description": "Experienced oncologist specializing in targeted therapy, leukemias, and innovative methods of cancer treatment. Emphasizes modern approaches to treating cancer diseases, including personalized medicine and immuno-oncology.",
+    "education": [
+      "Doctor of Medicine (MD) - Oncology and Hematology",
+      "Certificate in Targeted Therapy and Immuno-oncology",
+      "Postgraduate: treatment of leukemias and lymphomas",
+      "Continuing medical education: innovative methods of cancer treatment"
+    ],
+    "experience": [
+      "35+ years of clinical practice in oncology",
+      "Participation in global clinical research",
+      "Training young oncologists (master classes, lectures)",
+      "Publications in international medical journals"
+    ],
+    "achievements": [
+      "Development of targeted therapies",
+      "Immunotherapeutic approaches",
+      "Personalized treatment",
+      "Research in early cancer diagnosis and patients' quality of life"
+    ]
+  },
+  "potapova": {
+    "name": "Olga Potapova",
+    "title": "Specialist in Translational Oncology and Diagnostics",
+    "positionValue": "Researcher, Project Leader",
+    "specializationValue": "Oncology, Molecular Biology",
+    "description": "Extensive experience in developing targeted therapies and diagnostic tests, participation in international oncology programs.",
+    "educationItems": [
+      "Basic medical education",
+      "Oncology and molecular biology",
+      "International courses in diagnostics"
+    ],
+    "experienceItems": [
+      "Targeted therapy",
+      "Biomarker acquisition",
+      "Preclinical research"
+    ],
+    "achievementItems": [
+      "Work in international consortia",
+      "Principal investigator of programs",
+      "Contribution to diagnostics development"
+    ]
+  },
+  "osmonov": {
+    "name": "Dr. Daniyar Osmonov",
+    "title": "World-class expert and trainer in phalloprosthetics, Head of Andrology Department at Kiel Clinic, Germany",
+    "positionValue": "Head of Andrology Department",
+    "workplaceValue": "Kiel Clinic, Germany",
+    "specializationValue": "Andrology, Phalloprosthetics",
+    "description1": "Leading specialist in andrology, recognized expert and world-class trainer in phalloprosthetics. Dr. Osmonov heads the andrology department at the prestigious clinic in Kiel, Germany.",
+    "description2": "His professional activity combines clinical practice, scientific research, and training of young specialists in the field of men's health and reproductive medicine.",
+    "professionalActivities": [
+      {
+        "title": "Clinical Practice",
+        "description": "Performing complex operations in phalloprosthetics and treatment of male reproductive system diseases"
+      },
+      {
+        "title": "Scientific Research",
+        "description": "Research in andrology, developing new methods of diagnosis and treatment"
+      },
+      {
+        "title": "Specialist Training",
+        "description": "Conducting master classes and training for doctors worldwide"
+      },
+      {
+        "title": "International Cooperation",
+        "description": "Participation in international conferences and scientific projects"
+      }
+    ],
+    "specializationItems": [
+      {
+        "area": "Phalloprosthetics",
+        "details": "Surgical restoration of erectile function using modern prostheses"
+      },
+      {
+        "area": "Male Infertility",
+        "description": "Diagnosis and treatment of male reproductive function disorders"
+      },
+      {
+        "area": "Androgen Deficiency",
+        "details": "Correction of age-related and pathological testosterone deficiency"
+      },
+      {
+        "area": "Urological Surgery",
+        "details": "Surgical treatment of male urinary-genital system diseases"
+      }
+    ],
+    "recognitionItems": [
+      "World-class expert in phalloprosthetics",
+      "Trainer in modern andrology techniques for doctors from various countries",
+      "Participant in international congresses and symposia on urology and andrology",
+      "Author of scientific publications in international medical journals",
+      "Member of professional associations in urology and andrology"
+    ],
+    "educationItems": [
+      "Higher medical education",
+      "Specialization in urology and andrology",
+      "International internships"
+    ],
+    "researchItems": [
+      "Innovations in phalloprosthetics",
+      "Male reproductive health",
+      "Surgical technologies"
+    ]
+  },
+  "madaminov": {
+    "name": "Gapyr Madaminov",
+    "title": "Honored Teacher of the Kyrgyz Republic, Director of Experimental Gymnasium No. 3",
+    "positionValue": "Director of Experimental Gymnasium No. 3",
+    "honorsValue": "Honored Teacher of the Kyrgyz Republic",
+    "description": "Educator with extensive experience in organizing the teaching process and introducing innovative teaching methods.",
+    "educationItems": [
+      "Pedagogical education",
+      "School administrative management",
+      "Methodological courses"
+    ],
+    "experienceItems": [
+      "Leading the gymnasium",
+      "Developing educational programs",
+      "Organizing innovative projects"
+    ],
+    "achievementItems": [
+      "Improving quality of education",
+      "Introducing new methods",
+      "Public pedagogical initiatives"
+    ]
+  },
+  "shaltakova": {
+    "name": "Shaltakova Gulbu Chalovna",
+    "title": "Candidate of Medical Sciences, highly qualified surgeon physician in laser medicine and cosmetology",
+    "academicDegreeValue": "Candidate of Medical Sciences",
+    "specializationValue": "Surgery, Laser Medicine, Cosmetology",
+    "description1": "Shaltakova Gulbu Chalovna - Candidate of Medical Sciences, highly qualified surgeon physician specializing in laser medicine and cosmetology. Has many years of experience in medical practice and has achieved success in her professional field.",
+    "description2": "",
+    "educationItems": [
+      "Candidate of Medical Sciences",
+      "Higher medical education",
+      "Specialization in laser medicine",
+      "Qualification in cosmetology"
+    ],
+    "professionalItems": [
+      "Surgical practice in laser medicine",
+      "Cosmetic procedures and treatments",
+      "Scientific research activity",
+      "Consultative practice"
+    ],
+    "achievementItems": [
+      "Highly qualified specialist in laser surgery",
+      "Expert in modern cosmetology",
+      "Scientific publications and research",
+      "Practical experience in innovative medical technologies"
+    ]
+  },
+  "kachibek": {
+    "name": "Uzakbaev Kamchibek Askarbekovich",
+    "title": "Scientist, researcher, participant of international Eurasian forum",
+    "positionValue": "Doctor of Medical Sciences, Professor",
+    "specializationValue": "Medicine, Scientific Research",
+    "internationalActivityValue": "Participant of Eurasian forum in Xi'an",
+    "biography1": "Outstanding medical scientist, Doctor of Medical Sciences, Professor with many years of experience in scientific and teaching activities. Specializes in medical research with emphasis on international cooperation and innovative approaches in healthcare.",
+    "biography2": "Active participant in international scientific forums and conferences, author of numerous scientific works devoted to current issues of modern medicine and healthcare.",
+    "forum1": "Salymbekov University on the international scientific arena! Doctor of Medical Sciences, Professor Uzakbaev Kamchibek Askarbekovich participated in the International Eurasian Forum held in Xi'an city (PRC) within the 'One Belt, One Road' initiative.",
+    "forum2": "Within the forum, a conference on traditional Chinese medicine (TCM) was held, devoted to modern challenges and achievements in this field. At the medicine section, the professor presented a report on the development of TCM in Kyrgyzstan and its spread in Central Asian countries.",
+    "forum3": "During the visit, agreements were signed with the Xi'an City Healthcare Committee on exchange of scientific research and personnel training. The delegation also visited pharmaceutical enterprises and TCM hospitals, where high effectiveness of traditional Chinese medicine methods in treating brain diseases was demonstrated.",
+    "forum4": "This cooperation opens new horizons for medicine development and strengthening scientific ties between Kyrgyzstan and China.",
+    "keyTopics": [
+      {
+        "title": "Report on TCM Development",
+        "text": "Presented the state and prospects of traditional Chinese medicine in Kyrgyzstan and Central Asia.",
+        "icon": "FaBook"
+      },
+      {
+        "title": "International Cooperation",
+        "text": "Signed agreements on exchange of research and training of medical personnel with Xi'an city.",
+        "icon": "FaHandsHelping"
+      },
+      {
+        "title": "TCM Clinics and Enterprises",
+        "text": "Visited pharmaceutical productions and traditional medicine hospitals with technology demonstrations.",
+        "icon": "FaUserMd"
+      },
+      {
+        "title": "Method Effectiveness",
+        "text": "Noted effectiveness of TCM in treating brain diseases and neurological conditions.",
+        "icon": "FaFlask"
+      },
+      {
+        "title": "Expanding Horizons",
+        "text": "Strengthening scientific ties between Kyrgyzstan and China opens new educational and clinical opportunities.",
+        "icon": "FaGlobeAmericas"
+      },
+      {
+        "title": "Next Steps",
+        "text": "Planning development of joint programs, deepening academic mobility, and expertise exchange.",
+        "icon": "FaGraduationCap"
+      }
+    ],
+    "visitHighlights": [
+      "Report on development of traditional Chinese medicine in Kyrgyzstan and Central Asia",
+      "Signing agreements on exchange of research and personnel training",
+      "Visit to pharmaceutical enterprises and TCM clinics",
+      "Demonstration of TCM methods in treating brain diseases",
+      "Expansion of international scientific-educational cooperation",
+      "Strengthening partnership relations between Kyrgyzstan and China"
+    ]
+  },
+  "erkebaev": {
+    "name": "Abdygany Erkebaev",
+    "title": "State and public figure, writer, academician",
+    "positionValue": "State and public figure, writer",
+    "degreeValue": "Doctor of Philological Sciences, academician",
+    "specializationValue": "Philology, literature, public activity",
+    "description": "Abdygany Erkebaev (born 1953) – Kyrgyz state and public figure, critic, writer. Doctor of Philological Sciences (1992), academician of the National Academy of Sciences of the Kyrgyz Republic (1993). Served as President of the National Academy of Sciences of Kyrgyzstan (from April 11, 2012 to April 2017). Currently (since May 3, 2019) serves as Chairman of the Council of the People's Assembly of Kyrgyzstan.",
+    "educationItems": [
+      "Doctor of Philological Sciences (1992)",
+      "Academician of the National Academy of Sciences of the Kyrgyz Republic (1993)",
+      "Higher philological education"
+    ],
+    "experienceItems": [
+      "President of the National Academy of Sciences of Kyrgyzstan (2012-2017)",
+      "Chairman of the Council of the People's Assembly of Kyrgyzstan (since 2019)",
+      "State and public figure",
+      "Writer and literary critic"
+    ],
+    "achievementItems": [
+      "Renowned writer and literary critic",
+      "Contribution to development of science and culture of Kyrgyzstan",
+      "Public activity and leadership",
+      "Development of interethnic relations",
+      "Scientific works in philology"
+    ]
   },
   "labs": {
     "backToScience": "Back to Science",

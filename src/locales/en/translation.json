@@ -15892,5 +15892,74 @@
       "title": "The Best College in the Region",
       "description": "Quality education and modern laboratories"
     }
+  },
+  "newsDetail": {
+    "loading": "Loading...",
+    "error": {
+      "title": "Loading Error",
+      "notFound": "News not found",
+      "homeButton": "Back to Home",
+      "retryButton": "Try Again"
+    },
+    "errors": {
+      "loading": "Error loading news",
+      "noId": "News ID not specified"
+    },
+    "share": {
+      "copied": "Link copied to clipboard",
+      "error": "Error copying link"
+    },
+    "date": {
+      "unknown": "Date unknown"
+    },
+    "fallback": {
+      "title": "News",
+      "description": "News description",
+      "content": "News content will be added soon",
+      "category": "General",
+      "readTime": "Reading time unknown"
+    },
+    "header": {
+      "back": "Back",
+      "share": "Share"
+    },
+    "defaultCategory": "General",
+    "photoCounter": "{{count}} photos",
+    "gallery": {
+      "title": "Gallery"
+    },
+    "content": {
+      "soon": "Content will be added soon"
+    },
+    "related": "Related News",
+    "readMore": "Read More"
+  },
+  "press": {
+    "categories": {
+      "all": "All Categories"
+    },
+    "error": {
+      "loading": "Error loading data"
+    },
+    "demo": {
+      "title": "University presents new educational program",
+      "description": "New specialist training program in medicine with modern learning technologies.",
+      "fullText": "Full news text for demonstration. The university continues to develop educational programs and implement innovative teaching methods.",
+      "title2": "Opening of new academic building",
+      "description2": "University opens new academic building with modern laboratories and classrooms.",
+      "fullText2": "Full news text about the new academic building."
+    },
+    "loading": "Loading...",
+    "title": "University News",
+    "subtitle": "Current news, events and achievements of the university",
+    "recommended": "Recommended News",
+    "items": "news items",
+    "readMore": "Read More",
+    "allNews": "All News",
+    "noNews": {
+      "title": "No News Found",
+      "description": "There are no news in this category yet. Try selecting a different category.",
+      "reset": "Show All News"
+    }
   }
 }

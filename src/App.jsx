@@ -231,14 +231,14 @@ const App = () => {
         <Suspense fallback={<div className="flex items-center justify-center min-h-screen"><div>Загрузка...</div></div>}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path='/news' element={<NewsPage />} />
+            <Route path='/press/news' element={<NewsPage />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
             <Route path="/contact" element={<Contact />} />
             <Route path='/founderMessege' element={<FounderMessage />} />
             <Route path='/MaterialBaseGallery' element={<MaterialBaseGallery />} />
             <Route path='/news/NewsHome' element={<NewsHome />} />
-            <Route path="/university/news/:id" element={<NewsDetail />} />
+            <Route path="/press/news/:id" element={<NewsDetail />} />
             <Route path="/university/appeal" element={<Appeal />} />
             <Route path="/university/history" element={<History />} />
             <Route path="/university/mission" element={<Mission />} />

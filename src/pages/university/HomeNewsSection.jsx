@@ -94,7 +94,7 @@ const HomeNewsSection = () => {
               </div>
             </div>
 
-            <Link to={`/news/${news.id}`}>
+            <Link to={`/press/news/${news.id}`}>
               <motion.button
                 whileHover={{ scale: 1.05, x: 5 }}
                 className="flex items-center gap-2 text-[#023E8A] font-semibold text-sm group/btn"
@@ -133,7 +133,7 @@ const HomeNewsSection = () => {
         </div>
 
         <div className="text-center">
-          <Link to="/news">
+          <Link to="/press/news">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

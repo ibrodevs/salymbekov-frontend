@@ -17,7 +17,7 @@ const NewsAndEventsSection = () => {
       try {
         setLoading(true);
         const lang = i18n.language === 'kg' ? 'kg' : i18n.language === 'en' ? 'en' : 'ru';
-        const data = await apiRequest(`presscentre/news/?lang=${lang}&limit=3`);
+        const data = await apiRequest(`/presscentre/news/?lang=${lang}&limit=3`);
         
         const newsArray = data.results || data || [];
         

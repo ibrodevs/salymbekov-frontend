@@ -1,79 +1,164 @@
-import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import React, { useState, useEffect } from 'react';
 
-const Hero = () => {
-  const { t } = useTranslation();
+const SimplePhotoSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
 
-  const slides = [
-    {
-      id: 1,
-      title: t('hero.slide1.title'),
-      description: t('hero.slide1.description'),
-      image: '/images/slide1.jpg'
-    },
-    {
-      id: 2,
-      title: t('hero.slide2.title'),
-      description: t('hero.slide2.description'),
-      image: '/images/slide2.jpg'
-    },
-    {
-      id: 3,
-      title: t('hero.slide3.title'),
-      description: t('hero.slide3.description'),
-      image: '/images/slide3.jpg'
-    }
+  const photos = [
+    "https://images.wallpaperscraft.ru/image/single/naushniki_knigi_obrazovanie_121501_1920x1080.jpg",
+    "https://img1.akspic.ru/crops/2/1/8/7/6/167812/167812-spiral-yabloko-krasochnost-svet-purpur-1920x1080.jpg",
+    "https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+    "https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+    "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+    "https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+    "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
   ];
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setCurrentSlide((prev) => (prev === photos.length - 1 ? 0 : prev + 1));
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setCurrentSlide((prev) => (prev === 0 ? photos.length - 1 : prev - 1));
   };
 
+  const goToSlide = (index) => {
+    if (isTransitioning || index === currentSlide) return;
+    setIsTransitioning(true);
+    setCurrentSlide(index);
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsTransitioning(false);
+    }, 500);
+
+    const autoSlide = setInterval(() => {
+      if (!isPaused) {
+        nextSlide();
+      }
+    }, 4000);
+
+    return () => {
+      clearTimeout(timer);
+      clearInterval(autoSlide);
+    };
+  }, [currentSlide, isPaused]);
+
   return (
-    <div className="relative w-full h-screen overflow-hidden">
-      <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
-        {slides.map((slide) => (
-          <div key={slide.id} className="w-full h-screen shrink-0 relative">
-            <img src={slide.image} alt={slide.title} className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-              <div className="text-center text-white">
-                <h1 className="text-4xl font-bold mb-4">{slide.title}</h1>
-                <p className="text-xl">{slide.description}</p>
-              </div>
+    <div 
+      className="relative w-screen h-screen bg-black overflow-hidden"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      
+      {/* Основной контейнер для слайдов */}
+      <div className="relative w-full h-full">
+        
+        {/* Текущий слайд */}
+        <div 
+          className="absolute inset-0 w-full h-full transition-opacity duration-500"
+          style={{ opacity: isTransitioning ? 0.7 : 1 }}
+        >
+          <img 
+            src={photos[currentSlide]} 
+            alt={`Slide ${currentSlide + 1}`}
+            className="w-full h-full object-cover transition-transform duration-1000"
+            style={{ transform: isTransitioning ? 'scale(1.05)' : 'scale(1)' }}
+          />
+        </div>
+
+        {/* Предыдущий слайд (для плавного перехода) */}
+        {photos.map((photo, index) => (
+          index !== currentSlide && (
+            <div 
+              key={index}
+              className="absolute inset-0 w-full h-full opacity-0"
+              style={{ zIndex: -1 }}
+            >
+              <img 
+                src={photo} 
+                alt={`Slide ${index + 1}`}
+                className="w-full h-full object-cover"
+              />
             </div>
-          </div>
+          )
         ))}
       </div>
 
+      {/* Навигационные стрелки */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-2"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-black/30 hover:bg-black/50 backdrop-blur-sm rounded-full transition-all duration-300 hover:scale-110 group"
       >
-        &#10094;
-      </button>
-      <button
-        onClick={nextSlide}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-2"
-      >
-        &#10095;
+        <svg className="w-6 h-6 text-white group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+        </svg>
       </button>
 
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-        {slides.map((_, index) => (
+      <button
+        onClick={nextSlide}
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-black/30 hover:bg-black/50 backdrop-blur-sm rounded-full transition-all duration-300 hover:scale-110 group"
+      >
+        <svg className="w-6 h-6 text-white group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+
+      {/* Индикаторы слайдов внизу */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+        {photos.map((_, index) => (
           <button
             key={index}
-            onClick={() => setCurrentSlide(index)}
-            className={`w-3 h-3 rounded-full ${index === currentSlide ? 'bg-white' : 'bg-white bg-opacity-50'}`}
-          />
+            onClick={() => goToSlide(index)}
+            className={`relative w-10 h-1 rounded-full transition-all duration-300 ${
+              index === currentSlide 
+                ? 'bg-white w-16' 
+                : 'bg-white/50 hover:bg-white/70'
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          >
+            {index === currentSlide && (
+              <div className="absolute inset-0 rounded-full bg-white animate-pulse" />
+            )}
+          </button>
         ))}
       </div>
+
+      {/* Счетчик слайдов в правом нижнем углу */}
+      <div className="absolute bottom-6 right-6 z-20">
+        <div className="px-3 py-1 bg-black/50 backdrop-blur-sm rounded-full">
+          <span className="text-white text-sm font-medium">
+            {currentSlide + 1} / {photos.length}
+          </span>
+        </div>
+      </div>
+
+      {/* Кнопки навигации для мобильных (свайп) */}
+      <div className="absolute inset-0 z-10 md:hidden">
+        <div 
+          className="w-1/2 h-full" 
+          onClick={prevSlide}
+          onTouchStart={(e) => {
+            const touchX = e.touches[0].clientX;
+            const width = window.innerWidth;
+            
+            if (touchX < width / 2) {
+              prevSlide();
+            } else {
+              nextSlide();
+            }
+          }}
+        />
+      </div>
+
     </div>
   );
 };
 
-export default Hero;
+export default SimplePhotoSlider;

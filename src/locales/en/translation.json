@@ -15962,5 +15962,452 @@
       "description": "There are no news in this category yet. Try selecting a different category.",
       "reset": "Show All News"
     }
+  },
+  "studentDept": {
+    "badge": "Student Department",
+    "title": "Student Life",
+    "subtitle": "Creating a comfortable environment for learning and development at Salymbekov IT College",
+    "stats": {
+      "total": "Total Students",
+      "totalDesc": "Active learners",
+      "clubs": "Clubs",
+      "clubsDesc": "Active communities",
+      "events": "Events",
+      "eventsDesc": "Annually",
+      "achievements": "Achievements",
+      "achievementsDesc": "In the last year"
+    },
+    "services": {
+      "title": "Student Services",
+      "subtitle": "Everything you need for comfortable study and life",
+      "accommodation": {
+        "title": "Accommodation",
+        "description": "Comfortable dormitories at Salymbekov IT College",
+        "contact": "+996 778 99 88 11",
+        "hours": "Mon-Fri: 9:00-18:00"
+      },
+      "catering": {
+        "title": "Catering",
+        "description": "Student cafeteria and campus cafe",
+        "contact": "+996 778 99 88 22",
+        "hours": "Daily: 8:00-20:00"
+      },
+      "academic": {
+        "title": "Academic Support",
+        "description": "Consultations and tutoring from faculty",
+        "contact": "+996 778 99 88 33",
+        "hours": "Mon-Fri: 10:00-17:00"
+      },
+      "health": {
+        "title": "Medical Assistance",
+        "description": "Medical center and psychological support",
+        "contact": "+996 778 99 88 44",
+        "hours": "24/7"
+      }
+    },
+    "tabs": {
+      "services": "Services",
+      "clubs": "Clubs",
+      "events": "Events"
+    },
+    "studentLife": "Student Life",
+    "chooseActivity": "Choose an activity to view",
+    "support": {
+      "title": "Student Support",
+      "urgent": "Urgent",
+      "counseling": {
+        "title": "Psychological Counseling",
+        "description": "Professional support from college psychologists",
+        "availability": "Mon-Fri: 10:00-18:00",
+        "contact": "+996 778 99 88 55"
+      },
+      "legal": {
+        "title": "Legal Assistance",
+        "description": "Consultations on student legal matters",
+        "availability": "Tue, Thu: 14:00-17:00",
+        "contact": "+996 778 99 88 66"
+      },
+      "financial": {
+        "title": "Financial Support",
+        "description": "Information about scholarships and grants",
+        "availability": "Mon-Wed: 11:00-16:00",
+        "contact": "+996 778 99 88 77"
+      }
+    },
+    "clubs": {
+      "title": "Student Clubs",
+      "members": "Members",
+      "meetings": "Meetings",
+      "president": "President",
+      "join": "Join",
+      "tech": {
+        "title": "IT Club",
+        "description": "Project development and technology exploration",
+        "meetings": "Tuesday, Thursday 18:00",
+        "president": "Aigerim Sadykova",
+        "activities": {
+          "hackathons": "Hackathons",
+          "workshops": "Workshops",
+          "projects": "Projects"
+        }
+      },
+      "sports": {
+        "title": "Sports Club",
+        "description": "Sports events and tournaments",
+        "meetings": "Monday, Wednesday, Friday 17:00",
+        "president": "Nurlan Aliev",
+        "activities": {
+          "tournaments": "Tournaments",
+          "training": "Training",
+          "competitions": "Competitions"
+        }
+      },
+      "arts": {
+        "title": "Creative Club",
+        "description": "Arts, music and cultural events",
+        "meetings": "Monday, Thursday 19:00",
+        "president": "Aidana Kydyrova",
+        "activities": {
+          "performances": "Performances",
+          "exhibitions": "Exhibitions",
+          "masterclasses": "Masterclasses"
+        }
+      }
+    },
+    "events": {
+      "title": "Events",
+      "date": "Date",
+      "time": "Time",
+      "location": "Location",
+      "participants": "Participants",
+      "register": "Register",
+      "status": {
+        "upcoming": "Upcoming",
+        "ongoing": "Ongoing",
+        "completed": "Completed"
+      },
+      "orientation": {
+        "title": "Freshman Day",
+        "date": "September 15, 2024",
+        "time": "10:00 - 16:00",
+        "location": "Main Building"
+      },
+      "career": {
+        "title": "IT Career Day",
+        "date": "October 20, 2024",
+        "time": "9:00 - 18:00",
+        "location": "Conference Hall"
+      },
+      "cultural": {
+        "title": "Cultural Festival",
+        "date": "November 5, 2024",
+        "time": "14:00 - 22:00",
+        "location": "Student Park"
+      }
+    },
+    "achievements": {
+      "title": "Student Achievements",
+      "categories": {
+        "all": "All",
+        "academic": "Academic",
+        "sports": "Sports",
+        "arts": "Creative"
+      },
+      "items": {
+        "championship": {
+          "student": "Nurlan Aliev",
+          "achievement": "Basketball Champion",
+          "date": "May 2024",
+          "description": "Victory in national championship"
+        },
+        "research": {
+          "student": "Aigerim Sadykova",
+          "achievement": "Best IT Research",
+          "date": "April 2024",
+          "description": "Publication in international journal"
+        },
+        "art": {
+          "student": "Aidana Kydyrova",
+          "achievement": "Grand Prix Competition",
+          "date": "March 2024",
+          "description": "Victory in international competition"
+        }
+      }
+    },
+    "contact": {
+      "title": "Contacts",
+      "phone": "Phone",
+      "phoneNumber": "+996 778 99 88 44",
+      "email": "Email",
+      "emailAddress": "students@salymbekov.com",
+      "location": "Address",
+      "locationText": "Bishkek, Tynystanova St. 34",
+      "workingHours": "Working Hours",
+      "hours": "Mon-Fri: 9:00-18:00",
+      "emergencyTitle": "Emergency Contact",
+      "emergency": "+996 778 99 88 99 (24/7)",
+      "appointment": "Schedule Consultation"
+    }
+  },
+  "UniversityStudentCouncil": {
+    "badge": "Student Council",
+    "title": "Student Council",
+    "subtitle": "The voice of Salymbekov University students in important decision-making",
+    "stats": {
+      "members": "Council Members",
+      "events": "Events per Year",
+      "projects": "Social Projects",
+      "coverage": "Student Coverage"
+    },
+    "aboutTitle": "About Student Council",
+    "aboutText": "The Student Council of Salymbekov University is an elected body of student self-government that represents the interests of all university students. The council actively participates in decision-making regarding the educational process, leisure organization, and improvement of learning and living conditions for students.",
+    "goalsTitle": "Goals and Objectives",
+    "goalText": "The main goal of the Salymbekov University Student Council is to create favorable conditions for the comprehensive development of students, protect their rights and interests, and contribute to the formation of competent specialists.",
+    "tasksTitle": "Main Tasks",
+    "task1": "Protection of students' rights and legitimate interests",
+    "task2": "Assistance in organizing the educational process",
+    "task3": "Development of student self-government",
+    "task4": "Organization of cultural and mass events",
+    "task5": "Sports and health work",
+    "task6": "Social support for students",
+    "task7": "Interaction with the university administration",
+    "task8": "Career guidance work",
+    "task9": "Volunteer activities",
+    "regulations": "The activities of the student council are carried out in accordance with the Charter of Salymbekov University and the Regulations on the Student Council.",
+    "activitiesTitle": "Activity Areas",
+    "activitiesDescription": "Key areas of work of the student council",
+    "activities": {
+      "advocacy": {
+        "title": "Interest Protection",
+        "description": "Representation and protection of student rights before the university administration"
+      },
+      "events": {
+        "title": "Event Organization",
+        "description": "Conducting cultural, sports and scientific events"
+      },
+      "cooperation": {
+        "title": "Cooperation",
+        "description": "Collaboration with faculties and student organizations"
+      },
+      "development": {
+        "title": "Personal Growth",
+        "description": "Creating conditions for the development of students' leadership qualities"
+      }
+    },
+    "detailsTitle": "Detailed Information",
+    "section1": {
+      "title": "Council Structure",
+      "content": "The Student Council of Salymbekov University consists of:\n• Chairman of the Student Council\n• Deputy Chairman\n• Secretary\n• Committee Chairs:\n  - Academic Committee\n  - Cultural and Mass Events Committee\n  - Sports Committee\n  - Information Committee\n  - Social Committee\n\nElections are held annually at the beginning of the academic year."
+    },
+    "section2": {
+      "title": "Elections and Powers",
+      "content": "Members of the student council are elected by secret ballot at a general meeting of students.\n\nPowers of the Student Council:\n• Participation in the development of local regulations\n• Representation of student interests in the Academic Council\n• Organization and conduct of student events\n• Distribution of student fund resources\n• Consideration of scholarship issues"
+    },
+    "section3": {
+      "title": "Committees and Their Functions",
+      "content": "1. ACADEMIC COMMITTEE:\n   • Monitoring the quality of education\n   • Organization of scientific conferences\n   • Assistance in exam preparation\n\n2. CULTURAL AND MASS EVENTS COMMITTEE:\n   • Conducting creative evenings\n   • Organization of festivals and competitions\n   • Preparation of holiday events\n\n3. SPORTS COMMITTEE:\n   • Organization of sports competitions\n   • Promotion of healthy lifestyle\n   • Formation of sports teams\n\n4. INFORMATION COMMITTEE:\n   • Managing social media\n   • Informing students about events\n   • Creating media content\n\n5. SOCIAL COMMITTEE:\n   • Assistance to students in need\n   • Organization of volunteer campaigns\n   • Solving everyday issues"
+    },
+    "section4": {
+      "title": "Projects and Initiatives",
+      "content": "Current projects of Salymbekov University Student Council:\n\n✅ 'Dialogue with Management' — regular meetings of students with the rectorate\n✅ 'Student Media Center' — training of journalists and video bloggers\n✅ 'Environmental Patrol' — environmental protection activities\n✅ 'Career Navigator' — assistance in employment of graduates\n✅ 'Intercultural Dialogue' — events for international students\n✅ 'Digital University' — digitalization initiatives"
+    },
+    "section5": {
+      "title": "Achievements and Awards",
+      "content": "Achievements of Salymbekov University Student Council:\n\n🏆 Best Student Council 2023 among universities in Kyrgyzstan\n🏆 Winner of the republican competition 'Student Initiative'\n🏆 Organizer of the international forum 'Youth of Central Asia'\n🏆 Implementation of 15 social projects over the past 2 years\n🏆 Participation in the development of 8 university regulations\n🏆 Annual organization of over 40 events of various scales"
+    },
+    "section6": {
+      "title": "How to Join",
+      "content": "To become a member of Salymbekov University Student Council:\n\n1. Be a university student\n2. Have an active civic position\n3. Submit an application during elections\n4. Pass an interview with the current members\n5. Present your action program\n\nEven if you are not a council member, you can:\n• Participate in events\n• Suggest your ideas\n• Join working groups\n• Be a volunteer in projects\n\nContact information:\n📧 students.council@salymbekov.edu.kg\n📱 +996 778 88 99 00\n📍 Room 305, 3rd floor, main building"
+    }
+  },
+  "aitdisciplines": {
+    "badge": "Study Programs",
+    "title": "Disciplines and Programs",
+    "subtitle": "Modern educational programs at Salymbekov University for your success",
+    "stats": {
+      "disciplines": "Disciplines",
+      "students": "Students",
+      "employment": "Employment Rate",
+      "years": "Years of Experience"
+    },
+    "content": "<strong>Salymbekov University offers modern educational programs developed considering labor market requirements and international standards.</strong>\n\nOur curricula combine fundamental knowledge with practical skills needed for a successful career in modern conditions. We constantly update our programs, following the latest trends in education and technology.\n\nEach discipline is developed by experienced teachers and industry experts, ensuring high-quality education and its relevance to the real economic sector.",
+    "search": {
+      "placeholder": "Search disciplines..."
+    },
+    "filters": {
+      "all": "All",
+      "it": "IT Technologies",
+      "business": "Business",
+      "design": "Design",
+      "languages": "Languages"
+    },
+    "categories": {
+      "it": "IT Technologies",
+      "business": "Business",
+      "design": "Design",
+      "languages": "Languages"
+    },
+    "items": {
+      "webDev": {
+        "title": "Web Development",
+        "duration": "2 years",
+        "level": "Bachelor's Degree",
+        "description": "Comprehensive program in modern web development with frontend and backend technologies",
+        "topics": [
+          "HTML5, CSS3, JavaScript",
+          "React.js and Vue.js",
+          "Node.js and Express",
+          "Databases (SQL, MongoDB)",
+          "RESTful API",
+          "DevOps basics"
+        ],
+        "skills": [
+          "Frontend development",
+          "Backend development",
+          "Database work",
+          "API development",
+          "Layout"
+        ]
+      },
+      "cybersecurity": {
+        "title": "Cybersecurity",
+        "duration": "2 years",
+        "level": "Bachelor's Degree",
+        "description": "Training program for information security and cybersecurity specialists",
+        "topics": [
+          "Cryptography",
+          "Network Security",
+          "Ethical Hacking",
+          "Data Protection",
+          "Forensics",
+          "Security Policies"
+        ],
+        "skills": [
+          "Vulnerability analysis",
+          "Network protection",
+          "Cryptography",
+          "Security audit",
+          "Incident management"
+        ]
+      },
+      "dataScience": {
+        "title": "Data Science",
+        "duration": "2 years",
+        "level": "Bachelor's Degree",
+        "description": "Program in data analysis, machine learning and big data processing",
+        "topics": [
+          "Python for data analysis",
+          "Machine Learning",
+          "Statistical Analysis",
+          "Big Data technologies",
+          "Data visualization",
+          "Neural Networks"
+        ],
+        "skills": [
+          "Data analysis",
+          "Machine learning",
+          "Statistics",
+          "Python programming",
+          "Visualization"
+        ]
+      },
+      "mobileDev": {
+        "title": "Mobile Development",
+        "duration": "2 years",
+        "level": "Bachelor's Degree",
+        "description": "Mobile app development for iOS and Android using modern technologies",
+        "topics": [
+          "Swift for iOS",
+          "Kotlin for Android",
+          "React Native",
+          "Flutter",
+          "Mobile UI/UX",
+          "Store publishing"
+        ],
+        "skills": [
+          "iOS development",
+          "Android development",
+          "Cross-platform development",
+          "UI/UX design",
+          "Testing"
+        ]
+      },
+      "uiux": {
+        "title": "UI/UX Design",
+        "duration": "1.5 years",
+        "level": "Bachelor's Degree",
+        "description": "Program for creating user interfaces and improving user experience",
+        "topics": [
+          "Design basics",
+          "Prototyping",
+          "Design tools",
+          "Usability testing",
+          "Web design",
+          "Mobile design"
+        ],
+        "skills": [
+          "UI design",
+          "UX research",
+          "Prototyping",
+          "Testing",
+          "Figma work"
+        ]
+      },
+      "management": {
+        "title": "Business Management",
+        "duration": "2 years",
+        "level": "Bachelor's Degree",
+        "description": "Program for training modern managers with management and entrepreneurial skills",
+        "topics": [
+          "Management basics",
+          "Marketing",
+          "Financial Management",
+          "Project Management",
+          "Leadership",
+          "Strategic Planning"
+        ],
+        "skills": [
+          "Project management",
+          "Business planning",
+          "Marketing strategies",
+          "Financial analysis",
+          "Leadership qualities"
+        ]
+      }
+    },
+    "topics": "Study Topics",
+    "skills": "Acquired Skills",
+    "enroll": "Enroll",
+    "showMore": "Learn More",
+    "showLess": "Show Less",
+    "features": {
+      "title": "Learning Advantages",
+      "subtitle": "Why choose our programs",
+      "practical": {
+        "title": "Practical Approach",
+        "description": "80% of time - practical classes and real projects"
+      },
+      "mentors": {
+        "title": "Experienced Mentors",
+        "description": "Practicing teachers with experience in leading companies"
+      },
+      "career": {
+        "title": "Career Support",
+        "description": "Assistance with employment and internships at partner companies"
+      },
+      "support": {
+        "title": "Comprehensive Support",
+        "description": "Individual approach to each student throughout the training"
+      }
+    },
+    "cta": {
+      "title": "Start Your Path to Success",
+      "description": "Choose a program that matches your goals and become a sought-after specialist",
+      "enrollNow": "Enroll Now",
+      "learnMore": "Learn More"
+    }
   }
+
+
+
 }

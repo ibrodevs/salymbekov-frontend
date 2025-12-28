@@ -13,7 +13,11 @@ import {
   FaChevronDown,
   FaBullhorn,
   FaCalendarAlt,
-  FaAward
+  FaAward,
+  FaCogs,
+  FaMedal,
+  FaComments,
+  FaChartLine
 } from "react-icons/fa";
 
 const StudentCouncilPage = () => {
@@ -30,37 +34,37 @@ const StudentCouncilPage = () => {
   const sections = [
     {
       id: 1,
-      title: t('studentCouncil.section1.title'),
-      content: t('studentCouncil.section1.content')
+      title: t('UniversityStudentCouncil.section1.title'),
+      content: t('UniversityStudentCouncil.section1.content')
     },
     {
       id: 2,
-      title: t('studentCouncil.section2.title'),
-      content: t('studentCouncil.section2.content')
+      title: t('UniversityStudentCouncil.section2.title'),
+      content: t('UniversityStudentCouncil.section2.content')
     },
     {
       id: 3,
-      title: t('studentCouncil.section3.title'),
-      content: t('studentCouncil.section3.content')
+      title: t('UniversityStudentCouncil.section3.title'),
+      content: t('UniversityStudentCouncil.section3.content')
     },
     {
       id: 4,
-      title: t('studentCouncil.section4.title'),
-      content: t('studentCouncil.section4.content')
+      title: t('UniversityStudentCouncil.section4.title'),
+      content: t('UniversityStudentCouncil.section4.content')
     },
     {
       id: 5,
-      title: t('studentCouncil.section5.title'),
-      content: t('studentCouncil.section5.content')
+      title: t('UniversityStudentCouncil.section5.title'),
+      content: t('UniversityStudentCouncil.section5.content')
     },
     {
       id: 6,
-      title: t('studentCouncil.section6.title'),
-      content: t('studentCouncil.section6.content')
+      title: t('UniversityStudentCouncil.section6.title'),
+      content: t('UniversityStudentCouncil.section6.content')
     }
   ];
 
-  // Статистика студсовета
+  // Статистика студсовета Salymbekov University
   const stats = [
   ];
 
@@ -68,26 +72,26 @@ const StudentCouncilPage = () => {
   const activities = [
     {
       icon: <FaBullhorn className="text-white" size={20} />,
-      title: t('studentCouncil.activities.advocacy.title'),
-      description: t('studentCouncil.activities.advocacy.description'),
+      title: t('UniversityStudentCouncil.activities.advocacy.title'),
+      description: t('UniversityStudentCouncil.activities.advocacy.description'),
       color: "bg-[#023E8A]"
     },
     {
       icon: <FaCalendarAlt className="text-white" size={20} />,
-      title: t('studentCouncil.activities.events.title'),
-      description: t('studentCouncil.activities.events.description'),
+      title: t('UniversityStudentCouncil.activities.events.title'),
+      description: t('UniversityStudentCouncil.activities.events.description'),
       color: "bg-[#0077B6]"
     },
     {
       icon: <FaHandshake className="text-white" size={20} />,
-      title: t('studentCouncil.activities.cooperation.title'),
-      description: t('studentCouncil.activities.cooperation.description'),
+      title: t('UniversityStudentCouncil.activities.cooperation.title'),
+      description: t('UniversityStudentCouncil.activities.cooperation.description'),
       color: "bg-[#0096C7]"
     },
     {
       icon: <FaAward className="text-white" size={20} />,
-      title: t('studentCouncil.activities.development.title'),
-      description: t('studentCouncil.activities.development.description'),
+      title: t('UniversityStudentCouncil.activities.development.title'),
+      description: t('UniversityStudentCouncil.activities.development.description'),
       color: "bg-[#00B4D8]"
     }
   ];
@@ -140,14 +144,14 @@ const StudentCouncilPage = () => {
                 className="inline-flex items-center gap-3 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-3 rounded-full mb-6"
               >
                 <FaUsers className="text-xl" />
-                <span className="font-semibold">{t('studentCouncil.badge')}</span>
+                <span className="font-semibold">{t('UniversityStudentCouncil.badge')}</span>
               </motion.div>
 
               <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
-                {t('studentCouncil.title')}
+                {t('UniversityStudentCouncil.title')}
               </h1>
               <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                {t('studentCouncil.subtitle')}
+                {t('UniversityStudentCouncil.subtitle')}
               </p>
             </motion.div>
           </div>
@@ -194,7 +198,7 @@ const StudentCouncilPage = () => {
                 className="bg-white rounded-3xl shadow-2xl border border-gray-200 p-8 mb-12"
               >
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-8 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
-                  {t('studentCouncil.aboutTitle')}
+                  {t('UniversityStudentCouncil.aboutTitle')}
                 </h2>
                 
                 <div className="prose prose-lg max-w-none text-gray-800">
@@ -203,7 +207,7 @@ const StudentCouncilPage = () => {
                     whileHover={{ scale: 1.01 }}
                     transition={{ duration: 0.2 }}
                   >
-                    {t('studentCouncil.aboutText')}
+                    {t('UniversityStudentCouncil.aboutText')}
                   </motion.p>
                 </div>
               </motion.div>
@@ -217,7 +221,7 @@ const StudentCouncilPage = () => {
                 className="bg-white rounded-3xl shadow-2xl border border-gray-200 p-8 mb-12"
               >
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-8 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
-                  {t('studentCouncil.goalsTitle')}
+                  {t('UniversityStudentCouncil.goalsTitle')}
                 </h2>
 
                 <div className="prose prose-lg max-w-none text-gray-800 mb-8">
@@ -226,11 +230,11 @@ const StudentCouncilPage = () => {
                     whileHover={{ scale: 1.01 }}
                     transition={{ duration: 0.2 }}
                   >
-                    {t('studentCouncil.goalText')}
+                    {t('UniversityStudentCouncil.goalText')}
                   </motion.p>
 
                   <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6">
-                    {t('studentCouncil.tasksTitle')}
+                    {t('UniversityStudentCouncil.tasksTitle')}
                   </h3>
 
                   <div className="grid md:grid-cols-2 gap-4 mb-6">
@@ -247,7 +251,7 @@ const StudentCouncilPage = () => {
                           {taskNum}
                         </div>
                         <span className="text-gray-700 leading-relaxed">
-                          {t(`studentCouncil.task${taskNum}`)}
+                          {t(`UniversityStudentCouncil.task${taskNum}`)}
                         </span>
                       </motion.div>
                     ))}
@@ -258,7 +262,7 @@ const StudentCouncilPage = () => {
                     whileHover={{ scale: 1.01 }}
                     transition={{ duration: 0.2 }}
                   >
-                    {t('studentCouncil.regulations')}
+                    {t('UniversityStudentCouncil.regulations')}
                   </motion.p>
                 </div>
               </motion.div>
@@ -273,10 +277,10 @@ const StudentCouncilPage = () => {
               >
                 <div className="text-center mb-12">
                   <h2 className="text-4xl font-bold text-gray-800 mb-4">
-                    {t('studentCouncil.activitiesTitle')}
+                    {t('UniversityStudentCouncil.activitiesTitle')}
                   </h2>
                   <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                    {t('studentCouncil.activitiesDescription')}
+                    {t('UniversityStudentCouncil.activitiesDescription')}
                   </p>
                 </div>
 
@@ -313,7 +317,7 @@ const StudentCouncilPage = () => {
                 className="bg-white rounded-3xl shadow-2xl border border-gray-200 p-8"
               >
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-8 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
-                  {t('studentCouncil.detailsTitle')}
+                  {t('UniversityStudentCouncil.detailsTitle')}
                 </h2>
 
                 <div className="space-y-4">

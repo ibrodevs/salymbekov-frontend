@@ -32,6 +32,23 @@ const NormativeDocs = lazy(() => import('./pages/university/NormativeDocs'))
 const Cooperation = lazy(() => import('./pages/university/Cooperation'))
 const Brandbook = lazy(() => import('./pages/university/Brandbook'))
 
+
+
+// University Councils lazy imports
+const AcadCouncil = lazy(() => import('./pages/university/сouncils/AcadCouncil'))
+const AdmisCommittee = lazy(() => import('./pages/university/сouncils/AdmisCommittee'))
+const BioethicsCommittee = lazy(() => import('./pages/university/сouncils/BioethicsCommittee'))
+const CommissionSupport = lazy(() => import('./pages/university/сouncils/CommissionSupport'))
+const CouncilScients = lazy(() => import('./pages/university/сouncils/CouncilScients'))
+const DevCouncil = lazy(() => import('./pages/university/сouncils/DevCouncil'))
+const EditBoard = lazy(() => import('./pages/university/сouncils/EditBoard'))
+const EduCouncil = lazy(() => import('./pages/university/сouncils/EduCouncil'))
+const EmployersCouncil = lazy(() => import('./pages/university/сouncils/EmployersCouncil'))
+const ParentsCouncil = lazy(() => import('./pages/university/сouncils/ParentsCouncil'))
+const Sciencouncil = lazy(() => import('./pages/university/сouncils/ScienCouncil'))
+const UniversityStudentCouncil = lazy(() => import('./pages/university/сouncils/UniversityStudentCouncil'))
+const TechnicalCouncil = lazy(() => import('./pages/university/сouncils/TechnicalCouncil'))
+
 // Structure sub
 const UniversityMain = lazy(() => import('./pages/university/structure/UniversityMain'))
 const InternationalFaculty = lazy(() => import('./pages/university/structure/InternationalFaculty'))
@@ -65,6 +82,12 @@ const Charter = lazy(() => import('./pages/university/foundingDocs/Charter'))
 const Licenses = lazy(() => import('./pages/university/foundingDocs/Licenses'))
 const Acts = lazy(() => import('./pages/university/foundingDocs/Acts'))
 const StrategicDocs = lazy(() => import('./pages/university/foundingDocs/StrategicDocs'))
+
+// StrategicDocs sub
+const StrategicVision = lazy(() => import('./pages/university/StrategicDocs/StrategicVision'))
+const HRPolicy = lazy(() => import('./pages/university/StrategicDocs/HR-Policy'))
+const StrategicDevelopPlans = lazy(() => import('./pages/university/StrategicDocs/StrategicDevelopPlans'))
+const AccountingPolicy = lazy(() => import('./pages/university/StrategicDocs/AccountingPolicy'))
 
 // NormativeDocs sub
 const KRActs = lazy(() => import('./pages/university/normativeDocs/KRActs'))
@@ -218,10 +241,71 @@ const AdmissionSchedule = lazy(() => import('./pages/applicant/Schedule'))
 const RequiredDoc = lazy(() => import('./pages/applicant/extrapages/RequiredDoc'))
 const OnlineReg = lazy(() => import('./pages/applicant/extrapages/OnlineReg'))
 
+// QualityMaganagementSystem lazy imports
+const QualityMonitoring = lazy(() => import('./pages/university/qualitysystem/QualityMonitoring'))
+const QualityPolity = lazy(() => import('./pages/university/qualitysystem/QualityPolity'))
 
 // Infrastructure lazy imports
 const Locations = lazy(() => import('./pages/infrastructure/Locations'))
 const Partners = lazy(() => import('./pages/infrastructure/Partners'))
+
+// Education MFM lazy imports
+const Aboutmfm = lazy(() => import('./pages/education/mfm/About'))
+const Dean = lazy(() => import('./pages/education/mfm/Dekanat/Dean'))
+const Curriculum = lazy(() => import('./pages/education/mfm/Dekanat/Curriculum'))
+const DepartmentsMFM = lazy(() => import('./pages/education/mfm/Dekanat/Departments'))
+const FiveYears = lazy(() => import('./pages/education/mfm/Programs/FiveYears'))
+const SixYears = lazy(() => import('./pages/education/mfm/Programs/SixYears'))
+
+// Education Bisiness School lazy imports
+const AboutBusinessSchool = lazy(() => import('./pages/education/businessSchool/About'))
+const FutureLeaders = lazy(() => import('./pages/education/businessSchool/Programs/FutureLeaders'))
+const OlderLeaders = lazy(() => import('./pages/education/businessSchool/Programs/OlderLeaders'))
+const Smartik = lazy(() => import('./pages/education/businessSchool/Programs/SmartIK'))
+const YoungLeaders = lazy(() => import('./pages/education/businessSchool/Programs/YoungLeaders'))
+const Director = lazy(() => import('./pages/education/businessSchool/Director'))
+const Managers = lazy(() => import('./pages/education/businessSchool/Managers'))
+const Trainers = lazy(() => import('./pages/education/businessSchool/Trainers'))
+
+// Education IT College lazy imports
+const GeneralDepartaments = lazy(() => import('./pages/education/itCollege/Departments/General'))
+const DepartamentsInformation = lazy(() => import('./pages/education/itCollege/Departments/Information'))
+const DiplomComSients = lazy(() => import('./pages/education/itCollege/Specialties/DiplomComScience'))
+const DiplomMobComputing = lazy(() => import('./pages/education/itCollege/Specialties/DiplomMobComputing'))
+const DiplomMultiApplications = lazy(() => import('./pages/education/itCollege/Specialties/DiplomMultiApplications'))
+const DirectoritCollage = lazy(() => import('./pages/education/itCollege/Director'))
+const DoubleDiploma = lazy(() => import('./pages/education/itCollege/DoubleDiploma'))
+const PedagogicalCouncil = lazy(() => import('./pages/education/itCollege/PedagogicalCouncil'))
+
+
+
+// Education Postgrad lazy imports 
+const Internship = lazy(() => import('./pages/education/postgrad/Internship'))
+const Phd = lazy(() => import('./pages/education/postgrad/Phd'))
+const Postgraduate = lazy(() => import('./pages/education/postgrad/Postgraduate'))
+const Residency = lazy(() => import('./pages/education/postgrad/Residency'))
+
+// Education Center lazy imports
+const AboutCenterEducation = lazy(() => import('./pages/education/center/About'))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const App = () => {
   return (
@@ -281,6 +365,29 @@ const App = () => {
             <Route path="/university/cooperation/universities" element={<UniversitiesCoop />} />
             <Route path="/university/cooperation/clinics" element={<ClinicsCoop />} />
             <Route path="/university/brandbook" element={<Brandbook />} />
+            <Route path="/university/strategic-docs/strategic-vision" element={<StrategicVision />} />
+            <Route path="/university/strategic-docs/hr-policy" element={<HRPolicy />} />
+            <Route path="/university/strategic-docs/strategic-develop-plans" element={<StrategicDevelopPlans />} />
+            <Route path="/university/strategic-docs/accounting-policy" element={<AccountingPolicy />} />
+            <Route path="/university/councils/academic-council" element={<AcadCouncil />} />
+            <Route path="/university/councils/admissions-committee" element={<AdmisCommittee />} />
+            <Route path="/university/councils/bioethics-committee" element={<BioethicsCommittee />} />  
+            <Route path="/university/councils/commission-support" element={<CommissionSupport />} />
+            <Route path="/university/councils/council-scients" element={<CouncilScients />} />
+            <Route path="/university/councils/development-council" element={<DevCouncil />} />
+            <Route path="/university/councils/editorial-board" element={<EditBoard />} />
+            <Route path="/university/councils/educational-council" element={<EduCouncil />} />
+            <Route path="/university/councils/employers-council" element={<EmployersCouncil />} />
+            <Route path="/university/councils/scientific-council" element={<Sciencouncil />} />
+            <Route path="/university/councils/student-councils" element={<UniversityStudentCouncil />} />
+            <Route path="/university/councils/technical-council" element={<TechnicalCouncil />} />
+            <Route path="/university/councils/parents-council" element={<ParentsCouncil />} />
+            <Route path="/university/quality-management-system/quality-monitoring" element={<QualityMonitoring />} />
+            <Route path="/university/quality-management-system/quality-policy" element={<QualityPolity />} />
+
+
+
+            {/* Lazy Education */}
             <Route path="/education/ait" element={<AIT />} />
             <Route path="/education/ait/about" element={<AboutAIT />} />
             <Route path="/education/ait/leadership" element={<LeadershipAIT />} />
@@ -292,11 +399,77 @@ const App = () => {
             <Route path="/education/business-school" element={<BusinessSchoolEdu />} />
             <Route path="/education/postgrad" element={<Postgrad />} />
             <Route path="/education/center" element={<Center />} />
+            <Route path="/education/mfm/about" element={<Aboutmfm />} />
+            <Route path="/education/mfm/dekanat/dean" element={<Dean />} />
+            <Route path="/education/mfm/dekanat/curriculum" element={<Curriculum />} />
+            <Route path="/education/mfm/dekanat/departments" element={<DepartmentsMFM />} />
+            <Route path="/education/mfm/programs/five-years" element={<FiveYears />} />
+            <Route path="/education/mfm/programs/six-years" element={<SixYears />} />
+            <Route path="/education/business-school/about" element={<AboutBusinessSchool />} />
+            <Route path="/education/business-school/programs/future-leaders" element={<FutureLeaders />} />
+            <Route path="/education/business-school/programs/older-leaders" element={<OlderLeaders />} />
+            <Route path="/education/business-school/programs/smartik" element={<Smartik />} />
+            <Route path="/education/business-school/programs/young-leaders" element={<YoungLeaders />} />
+            <Route path="/education/business-school/director" element={<Director />} />
+            <Route path="/education/business-school/managers" element={<Managers />} />
+            <Route path="/education/business-school/trainers" element={<Trainers />} />
+            <Route path="/education/it-college/departments/general" element={<GeneralDepartaments />} />
+            <Route path="/education/it-college/departments/information" element={<DepartamentsInformation />} />
+            <Route path="/education/it-college/specialties/diplom-computational-sciences" element={<DiplomComSients />} />
+            <Route path="/education/it-college/specialties/diplom-mobile-computing" element={<DiplomMobComputing />} />
+            <Route path="/education/it-college/specialties/diplom-multimedia-applications" element={<DiplomMultiApplications />} />
+            <Route path="/education/it-college/director" element={<DirectoritCollage />} />
+            <Route path="/education/it-college/double-diploma" element={<DoubleDiploma />} />
+            <Route path="/education/it-college/pedagogical-council" element={<PedagogicalCouncil />} />
+
+            <Route path="/education/postgrad/internship" element={<Internship />} />
+            <Route path="/education/postgrad/phd" element={<Phd />} />
+            <Route path="/education/postgrad/postgraduate" element={<Postgraduate />} />
+            <Route path="/education/postgrad/residency" element={<Residency />} />
+            <Route path="/education/center/about" element={<AboutCenterEducation />} />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <Route path="/clinical/lazmed" element={<Lazmed />} />
             <Route path="/clinical/doc-clinic" element={<DocClinic />} />
             <Route path="/clinical/dordoi-ophthalmic" element={<Ophthalmic />} />
             <Route path="/clinical/doc-hospital" element={<DocHospital />} />
             <Route path="/clinical/agreements" element={<Agreements />} />
+
+
+
             {/* Lazy Science */}
             <Route path="/science" element={<ScienceMain />} />
             <Route path="/science/management" element={<ManagementScience />} />

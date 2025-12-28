@@ -18,7 +18,11 @@ import {
   FaBook,
   FaUsers,
   FaStar,
-  FaClock
+  FaClock,
+  FaGlobe,
+  FaBriefcase,
+  FaCertificate,
+  FaUniversity
 } from "react-icons/fa";
 
 const InstituteDisciplinesPage = () => {
@@ -28,103 +32,103 @@ const InstituteDisciplinesPage = () => {
   const [expandedDiscipline, setExpandedDiscipline] = useState(null);
 
   const filters = [
-    { id: "all", label: t('disciplines.filters.all'), count: 12 },
-    { id: "programming", label: t('disciplines.filters.programming'), count: 5 },
-    { id: "design", label: t('disciplines.filters.design'), count: 3 },
-    { id: "business", label: t('disciplines.filters.business'), count: 2 },
-    { id: "ai", label: t('disciplines.filters.ai'), count: 2 }
+    { id: "all", label: t('aitdisciplines.filters.all'), count: 8 },
+    { id: "it", label: t('aitdisciplines.filters.it'), count: 4 },
+    { id: "business", label: t('aitdisciplines.filters.business'), count: 2 },
+    { id: "design", label: t('aitdisciplines.filters.design'), count: 1 },
+    { id: "languages", label: t('aitdisciplines.filters.languages'), count: 1 }
   ];
 
   const disciplines = [
     {
       id: 1,
-      title: t('disciplines.items.frontend.title'),
-      category: "programming",
+      title: t('aitdisciplines.items.webDev.title'),
+      category: "it",
       icon: <FaCode className="text-3xl" />,
-      duration: t('disciplines.items.frontend.duration'),
-      level: t('disciplines.items.frontend.level'),
-      students: "250+",
-      rating: "4.9",
-      description: t('disciplines.items.frontend.description'),
-      topics: t('disciplines.items.frontend.topics', { returnObjects: true }),
-      skills: t('disciplines.items.frontend.skills', { returnObjects: true }),
+      duration: t('aitdisciplines.items.webDev.duration'),
+      level: t('aitdisciplines.items.webDev.level'),
+      students: "300+",
+      rating: "4.8",
+      description: t('aitdisciplines.items.webDev.description'),
+      topics: t('aitdisciplines.items.webDev.topics', { returnObjects: true }),
+      skills: t('aitdisciplines.items.webDev.skills', { returnObjects: true }),
       color: "from-blue-600 to-cyan-600",
       bgColor: "bg-blue-500"
     },
     {
       id: 2,
-      title: t('disciplines.items.uiux.title'),
-      category: "design",
-      icon: <FaPaintBrush className="text-3xl" />,
-      duration: t('disciplines.items.uiux.duration'),
-      level: t('disciplines.items.uiux.level'),
-      students: "180+",
-      rating: "4.8",
-      description: t('disciplines.items.uiux.description'),
-      topics: t('disciplines.items.uiux.topics', { returnObjects: true }),
-      skills: t('disciplines.items.uiux.skills', { returnObjects: true }),
-      color: "from-purple-600 to-pink-600",
-      bgColor: "bg-purple-500"
-    },
-    {
-      id: 3,
-      title: t('disciplines.items.dataScience.title'),
-      category: "ai",
-      icon: <FaChartLine className="text-3xl" />,
-      duration: t('disciplines.items.dataScience.duration'),
-      level: t('disciplines.items.dataScience.level'),
-      students: "120+",
+      title: t('aitdisciplines.items.cybersecurity.title'),
+      category: "it",
+      icon: <FaShieldAlt className="text-3xl" />,
+      duration: t('aitdisciplines.items.cybersecurity.duration'),
+      level: t('aitdisciplines.items.cybersecurity.level'),
+      students: "150+",
       rating: "4.9",
-      description: t('disciplines.items.dataScience.description'),
-      topics: t('disciplines.items.dataScience.topics', { returnObjects: true }),
-      skills: t('disciplines.items.dataScience.skills', { returnObjects: true }),
+      description: t('aitdisciplines.items.cybersecurity.description'),
+      topics: t('aitdisciplines.items.cybersecurity.topics', { returnObjects: true }),
+      skills: t('aitdisciplines.items.cybersecurity.skills', { returnObjects: true }),
       color: "from-green-600 to-emerald-600",
       bgColor: "bg-green-500"
     },
     {
-      id: 4,
-      title: t('disciplines.items.mobileDev.title'),
-      category: "programming",
-      icon: <FaMobile className="text-3xl" />,
-      duration: t('disciplines.items.mobileDev.duration'),
-      level: t('disciplines.items.mobileDev.level'),
+      id: 3,
+      title: t('aitdisciplines.items.dataScience.title'),
+      category: "it",
+      icon: <FaChartLine className="text-3xl" />,
+      duration: t('aitdisciplines.items.dataScience.duration'),
+      level: t('aitdisciplines.items.dataScience.level'),
       students: "200+",
       rating: "4.7",
-      description: t('disciplines.items.mobileDev.description'),
-      topics: t('disciplines.items.mobileDev.topics', { returnObjects: true }),
-      skills: t('disciplines.items.mobileDev.skills', { returnObjects: true }),
+      description: t('aitdisciplines.items.dataScience.description'),
+      topics: t('aitdisciplines.items.dataScience.topics', { returnObjects: true }),
+      skills: t('aitdisciplines.items.dataScience.skills', { returnObjects: true }),
+      color: "from-purple-600 to-pink-600",
+      bgColor: "bg-purple-500"
+    },
+    {
+      id: 4,
+      title: t('aitdisciplines.items.mobileDev.title'),
+      category: "it",
+      icon: <FaMobile className="text-3xl" />,
+      duration: t('aitdisciplines.items.mobileDev.duration'),
+      level: t('aitdisciplines.items.mobileDev.level'),
+      students: "180+",
+      rating: "4.6",
+      description: t('aitdisciplines.items.mobileDev.description'),
+      topics: t('aitdisciplines.items.mobileDev.topics', { returnObjects: true }),
+      skills: t('aitdisciplines.items.mobileDev.skills', { returnObjects: true }),
       color: "from-orange-600 to-red-600",
       bgColor: "bg-orange-500"
     },
     {
       id: 5,
-      title: t('disciplines.items.backend.title'),
-      category: "programming",
-      icon: <FaDatabase className="text-3xl" />,
-      duration: t('disciplines.items.backend.duration'),
-      level: t('disciplines.items.backend.level'),
-      students: "220+",
+      title: t('aitdisciplines.items.uiux.title'),
+      category: "design",
+      icon: <FaPaintBrush className="text-3xl" />,
+      duration: t('aitdisciplines.items.uiux.duration'),
+      level: t('aitdisciplines.items.uiux.level'),
+      students: "120+",
       rating: "4.8",
-      description: t('disciplines.items.backend.description'),
-      topics: t('disciplines.items.backend.topics', { returnObjects: true }),
-      skills: t('disciplines.items.backend.skills', { returnObjects: true }),
-      color: "from-indigo-600 to-blue-600",
-      bgColor: "bg-indigo-500"
+      description: t('aitdisciplines.items.uiux.description'),
+      topics: t('aitdisciplines.items.uiux.topics', { returnObjects: true }),
+      skills: t('aitdisciplines.items.uiux.skills', { returnObjects: true }),
+      color: "from-pink-600 to-rose-600",
+      bgColor: "bg-pink-500"
     },
     {
       id: 6,
-      title: t('disciplines.items.cloud.title'),
-      category: "programming",
-      icon: <FaCloud className="text-3xl" />,
-      duration: t('disciplines.items.cloud.duration'),
-      level: t('disciplines.items.cloud.level'),
-      students: "150+",
+      title: t('aitdisciplines.items.management.title'),
+      category: "business",
+      icon: <FaBriefcase className="text-3xl" />,
+      duration: t('disciplines.items.management.duration'),
+      level: t('disciplines.items.management.level'),
+      students: "250+",
       rating: "4.9",
-      description: t('disciplines.items.cloud.description'),
-      topics: t('disciplines.items.cloud.topics', { returnObjects: true }),
-      skills: t('disciplines.items.cloud.skills', { returnObjects: true }),
-      color: "from-cyan-600 to-blue-600",
-      bgColor: "bg-cyan-500"
+      description: t('aitdisciplines.items.management.description'),
+      topics: t('aitdisciplines.items.management.topics', { returnObjects: true }),
+      skills: t('aitdisciplines.items.management.skills', { returnObjects: true }),
+      color: "from-indigo-600 to-blue-600",
+      bgColor: "bg-indigo-500"
     }
   ];
 
@@ -134,26 +138,26 @@ const InstituteDisciplinesPage = () => {
   const features = [
     {
       icon: <FaLaptopCode className="text-white" size={24} />,
-      title: t('disciplines.features.practical.title'),
-      description: t('disciplines.features.practical.description'),
+      title: t('aitdisciplines.features.practical.title'),
+      description: t('aitdisciplines.features.practical.description'),
       color: "bg-[#023E8A]"
     },
     {
       icon: <FaUsers className="text-white" size={24} />,
-      title: t('disciplines.features.mentors.title'),
-      description: t('disciplines.features.mentors.description'),
+      title: t('aitdisciplines.features.mentors.title'),
+      description: t('aitdisciplines.features.mentors.description'),
       color: "bg-[#0077B6]"
     },
     {
-      icon: <FaChartLine className="text-white" size={24} />,
-      title: t('disciplines.features.career.title'),
-      description: t('disciplines.features.career.description'),
+      icon: <FaBriefcase className="text-white" size={24} />,
+      title: t('aitdisciplines.features.career.title'),
+      description: t('aitdisciplines.features.career.description'),
       color: "bg-[#0096C7]"
     },
     {
       icon: <FaShieldAlt className="text-white" size={24} />,
-      title: t('disciplines.features.support.title'),
-      description: t('disciplines.features.support.description'),
+      title: t('aitdisciplines.features.support.title'),
+      description: t('aitdisciplines.features.support.description'),
       color: "bg-[#00B4D8]"
     }
   ];
@@ -234,14 +238,14 @@ const InstituteDisciplinesPage = () => {
             className="inline-flex items-center gap-3 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-3 rounded-full mb-6"
           >
             <FaBook className="text-xl" />
-            <span className="font-semibold">{t('disciplines.badge')}</span>
+            <span className="font-semibold">{t('aitdisciplines.badge')}</span>
           </motion.div>
 
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
-            {t('disciplines.title')}
+            {t('aitdisciplines.title')}
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            {t('disciplines.subtitle')}
+            {t('aitdisciplines.subtitle')}
           </p>
         </motion.div>
 
@@ -282,7 +286,7 @@ const InstituteDisciplinesPage = () => {
           className="bg-white rounded-3xl shadow-2xl border border-gray-200 p-12 mb-16"
         >
           <div className="prose max-w-none text-gray-700 text-lg leading-relaxed">
-            {formatTextWithBold(t('disciplines.content'))}
+            {formatTextWithBold(t('aitdisciplines.content'))}
           </div>
         </motion.div>
 
@@ -301,7 +305,7 @@ const InstituteDisciplinesPage = () => {
                 <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
                 <input
                   type="text"
-                  placeholder={t('disciplines.search.placeholder')}
+                  placeholder={t('aitdisciplines.search.placeholder')}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#023E8A] focus:border-transparent transition-all duration-300"
@@ -325,7 +329,9 @@ const InstituteDisciplinesPage = () => {
                 >
                   <FaFilter className="text-sm" />
                   {filter.label}
-                  <span className="bg-white/20 px-2 py-1 rounded-full text-xs">
+                  <span className={`px-2 py-1 rounded-full text-xs ${
+                    activeFilter === filter.id ? 'bg-white/20' : 'bg-gray-200'
+                  }`}>
                     {filter.count}
                   </span>
                 </motion.button>
@@ -362,7 +368,7 @@ const InstituteDisciplinesPage = () => {
                         </div>
                         <div className="flex flex-wrap gap-2">
                           <span className={`inline-flex items-center gap-1 ${discipline.bgColor} text-white px-3 py-1 rounded-full text-sm font-semibold`}>
-                            {discipline.category}
+                            {t(`aitdisciplines.categories.${discipline.category}`)}
                           </span>
                           <span className="inline-flex items-center gap-1 bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-semibold">
                             <FaStar className="text-xs" />
@@ -409,7 +415,7 @@ const InstituteDisciplinesPage = () => {
                           {/* Темы */}
                           <div>
                             <h4 className="text-lg font-semibold text-gray-800 mb-3">
-                              {t('disciplines.topics')}
+                              {t('aitdisciplines.topics')}
                             </h4>
                             <ul className="grid md:grid-cols-2 gap-2">
                               {discipline.topics.map((topic, idx) => (
@@ -424,7 +430,7 @@ const InstituteDisciplinesPage = () => {
                           {/* Навыки */}
                           <div>
                             <h4 className="text-lg font-semibold text-gray-800 mb-3">
-                              {t('disciplines.skills')}
+                              {t('aitdisciplines.skills')}
                             </h4>
                             <div className="flex flex-wrap gap-2">
                               {discipline.skills.map((skill, idx) => (
@@ -445,14 +451,14 @@ const InstituteDisciplinesPage = () => {
                         whileTap={{ scale: 0.95 }}
                         className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white py-3 px-6 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
                       >
-                        {t('disciplines.enroll')}
+                        {t('aitdisciplines.enroll')}
                       </motion.button>
 
                       <motion.button
                         onClick={() => toggleDisciplineExpansion(discipline.id)}
                         className="flex items-center justify-center gap-2 text-[#023E8A] font-semibold py-2 hover:bg-blue-50 rounded-xl transition-colors duration-300"
                       >
-                        {expandedDiscipline === discipline.id ? t('disciplines.showLess') : t('disciplines.showMore')}
+                        {expandedDiscipline === discipline.id ? t('aitdisciplines.showLess') : t('aitdisciplines.showMore')}
                         <motion.div
                           animate={{ rotate: expandedDiscipline === discipline.id ? 180 : 0 }}
                           transition={{ duration: 0.3 }}
@@ -478,10 +484,10 @@ const InstituteDisciplinesPage = () => {
         >
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-800 mb-4">
-              {t('disciplines.features.title')}
+              {t('aitdisciplines.features.title')}
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              {t('disciplines.features.subtitle')}
+              {t('aitdisciplines.features.subtitle')}
             </p>
           </div>
 
@@ -518,10 +524,10 @@ const InstituteDisciplinesPage = () => {
           className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-3xl p-12 text-center text-white"
         >
           <h2 className="text-4xl font-bold mb-4">
-            {t('disciplines.cta.title')}
+            {t('aitdisciplines.cta.title')}
           </h2>
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            {t('disciplines.cta.description')}
+            {t('aitdisciplines.cta.description')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <motion.button
@@ -529,7 +535,7 @@ const InstituteDisciplinesPage = () => {
               whileTap={{ scale: 0.95 }}
               className="bg-white text-[#023E8A] px-8 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3"
             >
-              {t('disciplines.cta.enrollNow')}
+              {t('aitdisciplines.cta.enrollNow')}
               <FaArrowRight />
             </motion.button>
             <motion.button
@@ -537,7 +543,7 @@ const InstituteDisciplinesPage = () => {
               whileTap={{ scale: 0.95 }}
               className="border-2 border-white text-white px-8 py-4 rounded-2xl font-semibold hover:bg-white/10 transition-all duration-300"
             >
-              {t('disciplines.cta.learnMore')}
+              {t('aitdisciplines.cta.learnMore')}
             </motion.button>
           </div>
         </motion.div>

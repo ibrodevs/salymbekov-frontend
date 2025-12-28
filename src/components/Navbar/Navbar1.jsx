@@ -170,30 +170,30 @@ const Navbar = () => {
           key: 'strategicDocs',
           link: '/university/StrategicDocs',
           subItems: [
-            { key: 'vision', link: '/university/StrategicDocs/StrategicVision' },
-            { key: 'strategicPlan', link: '/university/StrategicDocs/StrategicDevelopPlans' },
+            { key: 'vision', link: '/university/strategic-docs/strategic-vision' },
+            { key: 'strategicPlan', link: '/university/strategic-docs/strategic-develop-plans' },
             { key: 'comprehensivePlans', link: 'https://salymbekov.com/wp-content/uploads/2022/05/5.9.4.-kompleksnyj-plan-meroprijatij-za-2021-2022-gg.pdf' },
-            { key: 'accountingPolicy', link: '/university/StrategicDocs/AccountingPolicy' },
-            { key: 'hrPolicy', link: '/university/StrategicDocs/HR-Policy' }
+            { key: 'accountingPolicy', link: '/university/strategic-docs/accounting-policy' },
+            { key: 'hrPolicy', link: '/university/strategic-docs/hr-policy' }
           ]
         },
         {
           key: 'councils',
           link: '/university/Councils',
           subItems: [
-            { key: 'devCouncil', link: '/university/Councils/dev-council' },
-            { key: 'acadCouncil', link: '/university/Councils/acad-council' },
-            { key: 'eduCouncil', link: '/university/Councils/edu-councils' },
-            { key: 'techCouncil', link: '/university/Councils/technical-council' },
-            { key: 'scienCouncil', link: '/university/Councils/scien-council' },
-            { key: 'editBoard', link: '/university/Councils/edit-board' },
-            { key: 'admisCommittee', link: '/university/Councils/admis-committee' },
-            { key: 'supportCommission', link: '/university/Councils/commission-support' },
-            { key: 'bioethicsCommittee', link: '/university/Councils/bioethics-committee' },
-            { key: 'youngScientists', link: '/university/Councils/council-scients' },
-            { key: 'employersCouncil', link: '/university/Councils/employers-council' },
-            { key: 'parentsCouncil', link: '/university/Councils/parents-council' },
-            { key: 'studentCouncil', link: '/university/Councils/student-council' }
+            { key: 'devCouncil', link: '/university/councils/development-council' },
+            { key: 'acadCouncil', link: '/university/councils/academic-council' },
+            { key: 'eduCouncil', link: '/university/councils/educational-council' },
+            { key: 'techCouncil', link: '/university/councils/technical-council' },
+            { key: 'scienCouncil', link: '/university/councils/scientific-council' },
+            { key: 'editBoard', link: '/university/councils/editorial-board' },
+            { key: 'admisCommittee', link: '/university/councils/admissions-committee' },
+            { key: 'supportCommission', link: '/university/councils/commission-support' },
+            { key: 'bioethicsCommittee', link: '/university/councils/bioethics-committee' },
+            { key: 'youngScientists', link: '/university/councils/council-scients' },
+            { key: 'employersCouncil', link: '/university/councils/employers-council' },
+            { key: 'parentsCouncil', link: '/university/councils/parents-council' },
+            { key: 'studentCouncil', link: '/university/councils/student-councils' }
           ]
         },
         {
@@ -206,10 +206,10 @@ const Navbar = () => {
         },
         {
           key: 'qualityManagement',
-          link: '/university/QualityManagSystem',
+          link: '/university/quality-management-system',
           subItems: [
-            { key: 'qualityPolicy', link: '/university/QualityManagSystem/QualityPolity' },
-            { key: 'qualityMonitoring', link: '/university/QualityManagSystem/QualityMonitoring' }
+            { key: 'qualityPolicy', link: '/university/quality-management-system/quality-policy' },
+            { key: 'qualityMonitoring', link: '/university/quality-management-system/quality-monitoring' }
           ]
         },
         {
@@ -253,14 +253,14 @@ const Navbar = () => {
           link: '/education/itCollege',
           subItems: [
             { key: 'aboutIt', link: '/university/structure/it-college' },
-            { key: 'director', link: '/education/itCollege/director' },
-            { key: 'computerScience', link: '/education/itCollege/specialties/diplom-computer-science' },
-            { key: 'multimediaApps', link: '/education/itCollege/specialties/diplom-multi-applications' },
-            { key: 'mobileComputing', link: '/education/itCollege/specialties/diplom-mobile-computing' },
+            { key: 'director', link: '/education/it-college/director' },
+            { key: 'computerScience', link: '/education/it-college/specialties/diplom-computational-sciences' },
+            { key: 'multimediaApps', link: '/education/it-college/specialties/diplom-multimedia-applications' },
+            { key: 'mobileComputing', link: '/education/it-college/specialties/diplom-mobile-computing' },
             { key: 'lincolnUniversity', link: 'https://www.lincoln.edu.my/' },
-            { key: 'generalDisciplines', link: '/education/itCollege/departments/general' },
-            { key: 'itDepartment', link: '/education/itCollege/departments/information' },
-            { key: 'pedagogicalCouncil', link: '/education/itCollege/pedagogical-council' },
+            { key: 'generalDisciplines', link: '/education/it-college/departments/general' },
+            { key: 'itDepartment', link: '/education/it-college/departments/information' },
+            { key: 'pedagogicalCouncil', link: '/education/it-college/pedagogical-council' },
             { key: 'contacts', link: '/university/contacts' }
           ]
         },

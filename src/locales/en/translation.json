@@ -2957,6 +2957,18 @@
         "goalsTitle": "Goals and Objectives",
         "goalsText": "The purpose of the STC is to organize and coordinate activities when considering issues related to the implementation of state policy in the field of science and technology; development and improvement of the level of scientific research and innovation activities carried out in departments and other divisions, increasing the efficiency of training highly qualified scientific and pedagogical personnel (doctors and candidates of sciences) and research work of students.",
         "tasksTitle": "The main tasks of the STC are:",
+        "tasks": [
+          "Development by University scientists of priority areas of science and technology, increasing the role of university science in accelerating scientific and technological progress, ensuring effective use of the intellectual and scientific potential of the University, creating necessary conditions for its stable development.",
+          "Ensuring priority development of fundamental and exploratory research in priority areas of research development and work with intellectual property.",
+          "Improving planning and organizational forms of research work, etc.",
+          "Development of proposals and measures to preserve the scientific potential of the University, develop scientific and pedagogical teams, train highly qualified scientific and pedagogical personnel (doctors and candidates of sciences).",
+          "Promoting integration processes between the University and scientific organizations.",
+          "Promoting the development of student research work.",
+          "Development of proposals and measures for information support of scientific research.",
+          "Preparation of proposals and recommendations for using research results in the educational process.",
+          "Analysis and evaluation of main results of scientific research and development carried out at the University.",
+          "Preparation of proposals for creation and reorganization of scientific and innovative structures, updating scientific equipment."
+        ],
         "compositionTitle": "Composition of the Scientific and Technical Council",
         "downloadTitle": "Full version of the regulation",
         "downloadDesc": "Download the full document about the Scientific and Technical Council",
@@ -12587,12 +12599,12 @@
       "scientificEvents": "Scientific Events"
     },
     "category": {
-      "conference_memorandum": "Конференция жана меморандум",
-      "conferences": "Конференциялар",
-      "conference_event_news": "Иш-чара жана жаңылыктар",
-      "conference_news": "Конференция жаңылыктары",
-      "conference_event": "Иш-чара",
-      "conference_masterclass_event": "Мастер-класс жана иш-чара"
+      "conference_memorandum": "Conference and Memorandum",
+      "conferences": "Conferences",
+      "conference_event_news": "Event and News",
+      "conference_news": "Conference News",
+      "conference_event": "Event",
+      "conference_masterclass_event": "Masterclass and Event"
     },
     "titles": {
       "eurasian_forum_sian_2025": "Eurasian Forum in Xian 2025",
@@ -16404,10 +16416,108 @@
       "title": "Start Your Path to Success",
       "description": "Choose a program that matches your goals and become a sought-after specialist",
       "enrollNow": "Enroll Now",
-      "learnMore": "Learn More"
+      "learnMore": "Learn More",
+  "knowledgeOsh": {
+    "hero": {
+      "title": "Knowledge Caravan in Osh City",
+      "date": "Event Date",
+      "location": "Osh City",
+      "participants": "School Students"
+    },
+    "backButton": "Back to Events",
+    "social": {
+      "share": "Share",
+      "shareOn": "Share on"
+    },
+    "content": {
+      "title": "Knowledge Caravan in Osh City",
+      "paragraph1": "Salymbekov University, in collaboration with the Osh City Mayor's Office, the City Education Department, and the Salymbekov Business School in Osh city, conducted a seminar for school students titled",
+      "seminarTitle": "«Modern Trends in Education, The Future Place of School Education»",
+      "paragraph1Cont": "",
+      "paragraph2": "During the event, the Deputy Mayor of Osh City, Nurbek Kadyrov, delivered a speech emphasizing the importance of obtaining education.",
+      "paragraph3": "Presentations were shown to students and teachers of Osh city about the impact of technological changes occurring worldwide on education and labor markets, as well as the place of developing fields such as IT technologies and biotechnology in the 21st century.",
+      "speakersTitle": "Seminar Speakers:",
+      "speaker1": "Professor, Oncologist, Doctor of Medical Sciences, Vice President of Salymbekov University",
+      "topic1": "«Artificial Intelligence in Medicine»",
+      "speaker2": "Founder of the American Technology Institute, holds a PhD in Artificial Intelligence from the University of Houston (USA), senior engineer at major companies such as Facebook, Instagram, UBER for over 15 years",
+      "topic2": "«In Western Countries, Knowledge is Money»",
+      "speaker3": "Vice-Rector of Salymbekov University",
+      "topic3": "«Modern Trends in Education, Changes in the Labor Market, Reforms in School Education»"
+    },
+    "gallery": {
+      "title": "Photo Gallery",
+      "photosCount": "photos",
+      "photoAlt": "Knowledge Caravan in Osh City"
+    }
+  },
+  "documents": {
+    "title": "Required Documents for Transfer",
+    "procedure": {
+      "title": "Transfer Procedure",
+      "description1": "Student transfer is carried out by considering the transcript/grade sheet by the certification committee members and in coordination with the faculty dean.",
+      "description2": "If it is necessary to eliminate the academic difference, an <1>individual plan</1> is developed for the student.",
+      "description3": "The academic difference must be eliminated within the current academic year."
+    },
+    "documentsForTransfer": {
+      "title": "Documents for Transfer to Another University",
+      "description": "If a student wishes to transfer to another university, they receive all necessary documentation."
+    },
+    "importantInfo": {
+      "title": "Important Information",
+      "description": "All documents are issued in accordance with established formats and standards."
+    },
+    "requiredDocuments": [
+      "Academic certificate of the established form",
+      "Transcript",
+      "Extract from orders",
+      "Data on additional types of training that the student has mastered",
+      "Information about special academic achievements (diplomas, certificates, awards)"
+    ]
+  },
+  "rules": {
+    "hero": {
+      "title": "Admission Rules and Plan",
+      "subtitle": "ADMISSION RULES FOR APPLICANTS TO SALYMBEKOV UNIVERSITY"
+    },
+    "introduction": {
+      "title": "Applicant Admission Rules",
+      "description": "These rules regulate the procedure for admitting applicants to Salymbekov University for all forms of education. The rules are developed in accordance with the legislation of the Kyrgyz Republic and establish uniform requirements for the admission, enrollment and appeal procedures."
+    },
+    "sections": {
+      "section2": {
+        "title": "2. Procedure for accepting documents for admission to paid form of education",
+        "subtitles": {
+          "subtitle1": "2.1. The following terms are used in the document acceptance rules:",
+          "subtitle1.point1": "Automated information system for participation in the competition for enrollment in universities of the Kyrgyz Republic (hereinafter referred to as AIS \"Online Enrollment in Universities of the Kyrgyz Republic\"). AIS \"Online Enrollment in Universities of the Kyrgyz Republic\" is a portal for registration and enrollment in universities of the Kyrgyz Republic based on the results of the current year's ORT in online mode.",
+          "subtitle1.point2": "Electronic ticket - is an application submitted electronically through the AIS \"Online Enrollment in Universities of the Kyrgyz Republic\".",
+          "subtitle2": "2.2. Acceptance and processing of documents based on ORT results",
+          "subtitle2.point1": "Acceptance and processing of documents based on ORT results for full-time and part-time forms of education with the use of DOT is carried out through the AIS \"Online Enrollment in Universities of the Kyrgyz Republic\".",
+          "subtitle3": "2.3. Acceptance and processing of documents for specialties and directions that do not require ORT results",
+          "subtitle3.point1": "Acceptance and processing of documents for specialties and directions that do not require ORT results, for full-time and part-time forms of education with the use of DOT, is carried out through online registration using a special electronic form of the university, developed by the university independently. List of documents: state-issued document on secondary general, secondary vocational, or higher education; 1 photo size 3x4. Scanned versions of the necessary documents are sent by the applicant to the information and communication messenger determined by the university independently (to the email address of the admissions committee enroll.smu@gmail.com, or to the WhatsApp numbers of the admissions committee members 0(312) 65-85-18, 0(505) 65-85-18, 0(558) 65-85-18, 0(776) 65-85-18 or to the special electronic form of the university for submitting documents, which are indicated on the university website).",
+          "subtitle4": "2.4. Benefits for applicants",
+          "subtitle4.point1": "If an applicant claims benefits established by the legislation of the Kyrgyz Republic, scanned versions of additional documents must be attached to the main package of documents (death certificates of parents; conclusion of the medical and social examination; documents confirming the availability of sports titles; military ID with a mark on completion of compulsory military service, etc.).",
+          "subtitle5": "2.5. Document acceptance deadlines",
+          "subtitle5.point1": "Acceptance of documents for admission to universities of the Kyrgyz Republic for places under a contract with payment of tuition fees is carried out until August 30 of each academic year."
+        }
+      },
+      "section3": {
+        "title": "3. Procedure for accepting documents from applicants recommended by the University Grant Commission for enrollment",
+        "subtitles": {
+          "subtitle1": "3.1. Selection and enrollment of applicants based on ORT results",
+          "subtitle1.point1": "Selection and enrollment of applicants based on the results of the current year's ORT is carried out by the grant commission of Salymbekov University within the time limits set by the Ministry of Education and Science of the Kyrgyz Republic, through the AIS \"Online Enrollment in Universities of the Kyrgyz Republic\". Applicants who have received scores on the main test equal to or higher than the threshold score determined by the Ministry of Education and Science of the Kyrgyz Republic are allowed to participate in the competition for the grant. ORT results taken by the applicant before completing compulsory military service are valid for 3 years.",
+          "subtitle2": "3.2. Documents for enrollment",
+          "subtitle2.point1": "An applicant recommended for enrollment at the University must confirm his/her desire to study at Salymbekov University within 3 days by submitting the following documents to the admissions committee: passport or birth certificate; original ORT certificate; original certificate of secondary general education, diploma of secondary vocational education or its duplicate; military ID or registration certificate; 6 photos 3x4.",
+          "subtitle3": "3.3. Enrollment based on ORT results",
+          "subtitle3.point1": "Enrollment of applicants as students of Salymbekov University based on ORT results is allowed after submitting documents electronically through the AIS \"Online Enrollment in Universities of the Kyrgyz Republic\".",
+          "subtitle4": "3.4. Deadlines for submitting original documents",
+          "subtitle4.point1": "The applicant is obliged to submit the original documents and the appropriate number of photographs to the admissions committee of the university until August 30, 2020. After submitting the original documents and presenting to the technical committee a receipt for payment for document processing, the applicant receives a receipt for acceptance of documents."
+        }
+      }
     }
   }
 
 
 
+}
+  }
 }

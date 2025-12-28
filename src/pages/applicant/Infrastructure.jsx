@@ -330,38 +330,7 @@ const Infrastructure = () => {
         />
       ))}
 
-      {/* Language Switcher */}
-      <div
-        className="fixed top-6 right-6 z-50 flex gap-2 bg-white/80 backdrop-blur-sm rounded-full p-2 shadow-lg"
-      >
-        <button
-          onClick={() => i18n.changeLanguage('ru')}
-          className={`px-4 py-2 rounded-full transition-all duration-300 ${i18n.language === 'ru'
-            ? 'bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white shadow-md'
-            : 'text-gray-600 hover:bg-gray-100'
-            }`}
-        >
-          RU
-        </button>
-        <button
-          onClick={() => i18n.changeLanguage('kg')}
-          className={`px-4 py-2 rounded-full transition-all duration-300 ${i18n.language === 'kg'
-            ? 'bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white shadow-md'
-            : 'text-gray-600 hover:bg-gray-100'
-            }`}
-        >
-          KG
-        </button>
-        <button
-          onClick={() => i18n.changeLanguage('en')}
-          className={`px-4 py-2 rounded-full transition-all duration-300 ${i18n.language === 'en'
-            ? 'bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white shadow-md'
-            : 'text-gray-600 hover:bg-gray-100'
-            }`}
-        >
-          EN
-        </button>
-      </div>
+
 
       <div className="container mx-auto px-4 py-12 relative z-10">
         {/* Header */}

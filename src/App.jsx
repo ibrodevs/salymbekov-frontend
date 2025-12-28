@@ -210,14 +210,13 @@ const Uzbekistan = lazy(() => import('./pages/applicant/countries/Uzbekistan'))
 const Infrastructure = lazy(() => import('./pages/applicant/Infrastructure'))
 const Software = lazy(() => import('./pages/applicant/extrapages/Software'))
 const MobileDev = lazy(() => import('./pages/applicant/extrapages/MobileDev'))
-const MultimediaDev = lazy(() => import('./pages/applicant/extrapages/MobileDev'))
+const MultimediaDev = lazy(() => import('./pages/applicant/extrapages/MultimediaDev'))
 const Dicipline = lazy(() => import('./pages/applicant/extrapages/Dicipline'))
 const GenerealMedFive = lazy(() => import('./pages/applicant/extrapages/GeneralMedFive'))
 const GeneralMedSix = lazy(() => import('./pages/applicant/extrapages/GeneralMedSix'))
 const AdmissionSchedule = lazy(() => import('./pages/applicant/Schedule'))
 const RequiredDoc = lazy(() => import('./pages/applicant/extrapages/RequiredDoc'))
 const OnlineReg = lazy(() => import('./pages/applicant/extrapages/OnlineReg'))
-
 
 // Infrastructure lazy imports
 const Locations = lazy(() => import('./pages/infrastructure/Locations'))
@@ -380,7 +379,7 @@ const App = () => {
             <Route path="/applicant/documents" element={<RequiredDoc />} />
             <Route path="/applicant/admission-reg" element={<AdmissionReg />} />
             <Route path="/applicant/schedule" element={<ScheduleApp />} />
-            <Route path="/applicant/transfer" element={<Transfer />} />
+
             <Route path="/applicant/scholarships" element={<Scholarships />} />
             <Route path="/applicants/scholarships" element={<Scholarships />} />
             <Route path="/applicants/adaptation" element={<Orientation />} />
@@ -406,7 +405,7 @@ const App = () => {
             <Route path="/applicants/career-guidance/events" element={<CareerGuidance />} />
             <Route path="/applicants/career-guidance/news" element={<CareerGuidance />} />
             <Route path="/applicants/transfer/documents" element={<Documents />} />
-            <Route path="/applicants/transfer/rules" element={<Transfer />} />
+            <Route path="/applicants/transfer/rules" element={<Rules />} />
             <Route path="/applicants/transfer/schedule" element={<TransferSchedule />} />
             <Route path="/applicants/directions" element={<Directions />} />
             <Route path="/applicants/dealers" element={<Dealers />} />
@@ -423,6 +422,7 @@ const App = () => {
             <Route path="/applicants/admission/schedule" element={<AdmissionSchedule />} />
             <Route path="/applicants/required-documents" element={<RequiredDoc />} />
             <Route path="/applicants/online-registration" element={<OnlineReg />} />
+            <Route path="/applicants/multimedia-development" element={<MultimediaDev />} />
 
 
             <Route path="/infrastructure/locations" element={<Locations />} />

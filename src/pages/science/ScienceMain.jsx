@@ -111,10 +111,10 @@ const ScienceMain = () => {
 
   // Научные проекты (некликабельные)
   const scientificProjects = [
-    { title: t("science.main.projectShowcase.items.urology"), icon: <FaHospitalAlt className="text-[#023E8A]" />, to: "/science/projects/urology" },
-    { title: t("science.main.projectShowcase.items.gynecology"), icon: <FaBaby className="text-[#023E8A]" />, to: "/science/projects/gynecology" },
-    { title: t("science.main.projectShowcase.items.ophthalmology"), icon: <FaEye className="text-[#023E8A]" />, to: "/science/projects/ophthalmology" },
-    { title: t("science.main.projectShowcase.items.oncology"), icon: <FaRibbon className="text-[#023E8A]" />, to: "/science/projects/oncology" }
+    { title: t("science.main.projectShowcase.items.urology"), icon: <FaHospitalAlt className="text-[#023E8A]" /> },
+    { title: t("science.main.projectShowcase.items.gynecology"), icon: <FaBaby className="text-[#023E8A]" /> },
+    { title: t("science.main.projectShowcase.items.ophthalmology"), icon: <FaEye className="text-[#023E8A]" /> },
+    { title: t("science.main.projectShowcase.items.oncology"), icon: <FaRibbon className="text-[#023E8A]" /> }
   ];
 
   // Упрощенные анимации
@@ -325,18 +325,17 @@ const ScienceMain = () => {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
               {scientificProjects.map((project, index) => (
-                <Link
+                <div
                   key={index}
-                  to={project.to}
-                  className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 shadow-lg border border-gray-200 text-center hover:shadow-xl transition-all duration-200 group text-decoration-none"
+                  className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 shadow-lg border border-gray-200 text-center transition-all duration-200"
                 >
-                  <div className="text-4xl mb-3 group-hover:scale-105 transition-transform duration-200">
+                  <div className="text-4xl mb-3 transition-transform duration-200">
                     {project.icon}
                   </div>
                   <h3 className="text-xl font-bold text-gray-800">
                     {project.title}
                   </h3>
-                </Link>
+                </div>
               ))}
             </div>
           </motion.div>

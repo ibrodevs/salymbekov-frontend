@@ -2957,6 +2957,18 @@
         "goalsTitle": "Goals and Objectives",
         "goalsText": "The purpose of the STC is to organize and coordinate activities when considering issues related to the implementation of state policy in the field of science and technology; development and improvement of the level of scientific research and innovation activities carried out in departments and other divisions, increasing the efficiency of training highly qualified scientific and pedagogical personnel (doctors and candidates of sciences) and research work of students.",
         "tasksTitle": "The main tasks of the STC are:",
+        "tasks": [
+          "Development by University scientists of priority areas of science and technology, increasing the role of university science in accelerating scientific and technological progress, ensuring effective use of the intellectual and scientific potential of the University, creating necessary conditions for its stable development.",
+          "Ensuring priority development of fundamental and exploratory research in priority areas of research development and work with intellectual property.",
+          "Improving planning and organizational forms of research work, etc.",
+          "Development of proposals and measures to preserve the scientific potential of the University, develop scientific and pedagogical teams, train highly qualified scientific and pedagogical personnel (doctors and candidates of sciences).",
+          "Promoting integration processes between the University and scientific organizations.",
+          "Promoting the development of student research work.",
+          "Development of proposals and measures for information support of scientific research.",
+          "Preparation of proposals and recommendations for using research results in the educational process.",
+          "Analysis and evaluation of main results of scientific research and development carried out at the University.",
+          "Preparation of proposals for creation and reorganization of scientific and innovative structures, updating scientific equipment."
+        ],
         "compositionTitle": "Composition of the Scientific and Technical Council",
         "downloadTitle": "Full version of the regulation",
         "downloadDesc": "Download the full document about the Scientific and Technical Council",
@@ -12587,12 +12599,12 @@
       "scientificEvents": "Scientific Events"
     },
     "category": {
-      "conference_memorandum": "Конференция жана меморандум",
-      "conferences": "Конференциялар",
-      "conference_event_news": "Иш-чара жана жаңылыктар",
-      "conference_news": "Конференция жаңылыктары",
-      "conference_event": "Иш-чара",
-      "conference_masterclass_event": "Мастер-класс жана иш-чара"
+      "conference_memorandum": "Conference and Memorandum",
+      "conferences": "Conferences",
+      "conference_event_news": "Event and News",
+      "conference_news": "Conference News",
+      "conference_event": "Event",
+      "conference_masterclass_event": "Masterclass and Event"
     },
     "titles": {
       "eurasian_forum_sian_2025": "Eurasian Forum in Xian 2025",

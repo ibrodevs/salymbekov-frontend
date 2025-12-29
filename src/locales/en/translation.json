@@ -7988,12 +7988,12 @@
   "requiredDoc": {
     "hero": {
       "title": "Required Documents",
-      "subtitle": "For university admission"
+      "subtitle": "For admission to the university"
     },
     "important": {
       "title": "Important Information",
-      "point1": "Applicants during online admission must attach only copies of relevant documents confirming that they will study at our university.",
-      "point2": "Original documents must be provided only at the beginning of the academic year."
+      "point1": "During online admission, applicants must attach only copies of relevant documents confirming that they will study at our university.",
+      "point2": "Original documents must be submitted only at the beginning of the academic year."
     },
     "citizensKR": {
       "title": "For Citizens of the Kyrgyz Republic"
@@ -8002,7 +8002,7 @@
       "title": "For Citizens of Near and Far Abroad Countries"
     },
     "documentsKR": {
-      "document1": "Application to the Rector of Salymbekov University (sample)",
+      "document1": "Application addressed to the Rector of 'Salymbekov University' Institution (sample)",
       "document2": "Original ORT certificate",
       "document3": "State-issued document of secondary general or secondary vocational education (certificate or diploma)",
       "document4": "Copy of passport",
@@ -8011,13 +8011,13 @@
       "document7": "Military ID or registration certificate"
     },
     "documentsForeign": {
-      "document1": "Application to the Rector of Salymbekov University (sample)",
-      "document2": "Passport with entry visa complying with the legislation of the Kyrgyz Republic and its copy",
+      "document1": "Application addressed to the Rector of 'Salymbekov University' Institution (sample)",
+      "document2": "Passport with entry visa meeting the requirements of Kyrgyz Republic legislation and its copy",
       "document3": "Original document of complete secondary education indicating studied subjects and grades (scores) and notarized copy",
       "document4": "Notarized translation of the complete secondary education document into the official language of the Kyrgyz Republic",
       "document5": "Certificate from the Ministry of Education and Science of the Kyrgyz Republic on the equivalence of complete secondary education",
       "document6": "2 photos (4×6 cm), 4 photos (3×4 cm)",
-      "document7": "Medical examination results"
+      "document7": "Results of medical examination"
     }
   },
   "software": {
@@ -16613,7 +16613,37 @@
       "title": "Become Part of Our Community",
       "description": "Join Salymbekov Business School and start your path to success",
       "apply": "Apply Now",
-      "learnMore": "Learn More"
+      "learnMore": "Learn More",
+  "documents": {
+    "title": "Required Documents for Transfer",
+    "procedure": {
+      "title": "Transfer Procedure",
+      "description1": "Student transfer is carried out by considering the transcript/grade sheet by the certification committee members and in coordination with the faculty dean.",
+      "description2": "If it is necessary to eliminate the academic difference, an <1>individual plan</1> is developed for the student.",
+      "description3": "⚠️ The academic difference must be eliminated within the current academic year."
+    },
+    "documentsForTransfer": {
+      "title": "Documents for Transfer to Another University",
+      "description": "If a student wishes to transfer to another university, they receive all necessary documentation."
+    },
+    "requiredDocuments": [
+      "Application addressed to the Rector of 'Salymbekov University' Institution",
+      "Copy of transcript/grade sheet",
+      "Copy of passport or identity card",
+      "Certificate of study at the current university",
+      "Photos of established format (3×4 cm)",
+      "Extract from grade book",
+      "Copy of the license of the university to which the transfer is being made",
+      "Certificate confirming no tuition fee debts",
+      "Medical certificate form 086-U",
+      "Certified copy of the curriculum"
+    ],
+    "importantInfo": {
+      "title": "Important Information",
+      "description": "All documents are issued in accordance with established formats and standards."
     }
   }
 }
+  }
+}
+  

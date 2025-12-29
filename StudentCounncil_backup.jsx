@@ -1,59 +1,93 @@
-import React from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { 
   FaUsers,
   FaRocket,
   FaGraduationCap,
   FaHeart,
-  FaFileDownload,
   FaUserTie,
   FaUserFriends,
   FaLightbulb,
   FaHandshake,
+  FaChevronDown,
+  FaBullhorn,
+  FaCalendarAlt,
   FaAward
 } from "react-icons/fa";
 
-const YoungScientistsCouncilPage = () => {
+const StudentCouncilPage = () => {
   const { t } = useTranslation();
+  const [openSections, setOpenSections] = useState({});
 
-  const councilMembers = [
-    "Уметалиева М.Н. – аспирант",
-    "Князев И.А. – аспирант",
-    "Сырдыбаев А.Ж. – соискатель",
-    "Сыдыкова С.Б. – соискатель",
-    "Жолболдиева М. – соискатель",
-    "Бопушева А. – соискатель"
+  const toggleSection = (sectionId) => {
+    setOpenSections(prev => ({
+      ...prev,
+      [sectionId]: !prev[sectionId]
+    }));
+  };
+
+  const sections = [
+    {
+      id: 1,
+      title: t('studentCouncil.section1.title'),
+      content: t('studentCouncil.section1.content')
+    },
+    {
+      id: 2,
+      title: t('studentCouncil.section2.title'),
+      content: t('studentCouncil.section2.content')
+    },
+    {
+      id: 3,
+      title: t('studentCouncil.section3.title'),
+      content: t('studentCouncil.section3.content')
+    },
+    {
+      id: 4,
+      title: t('studentCouncil.section4.title'),
+      content: t('studentCouncil.section4.content')
+    },
+    {
+      id: 5,
+      title: t('studentCouncil.section5.title'),
+      content: t('studentCouncil.section5.content')
+    },
+    {
+      id: 6,
+      title: t('studentCouncil.section6.title'),
+      content: t('studentCouncil.section6.content')
+    }
   ];
 
-  // Статистика совета
+  // Статистика студсовета
   const stats = [
   ];
 
   // Основные направления деятельности
   const activities = [
     {
-      icon: <FaLightbulb className="text-white" size={20} />,
-      title: t('youngScientistsCouncil.activities.research.title'),
-      description: t('youngScientistsCouncil.activities.research.description'),
+      icon: <FaBullhorn className="text-white" size={20} />,
+      title: t('studentCouncil.activities.advocacy.title'),
+      description: t('studentCouncil.activities.advocacy.description'),
       color: "bg-[#023E8A]"
     },
     {
-      icon: <FaHandshake className="text-white" size={20} />,
-      title: t('youngScientistsCouncil.activities.cooperation.title'),
-      description: t('youngScientistsCouncil.activities.cooperation.description'),
+      icon: <FaCalendarAlt className="text-white" size={20} />,
+      title: t('studentCouncil.activities.events.title'),
+      description: t('studentCouncil.activities.events.description'),
       color: "bg-[#0077B6]"
     },
     {
-      icon: <FaGraduationCap className="text-white" size={20} />,
-      title: t('youngScientistsCouncil.activities.education.title'),
-      description: t('youngScientistsCouncil.activities.education.description'),
+      icon: <FaHandshake className="text-white" size={20} />,
+      title: t('studentCouncil.activities.cooperation.title'),
+      description: t('studentCouncil.activities.cooperation.description'),
       color: "bg-[#0096C7]"
     },
     {
       icon: <FaAward className="text-white" size={20} />,
-      title: t('youngScientistsCouncil.activities.grants.title'),
-      description: t('youngScientistsCouncil.activities.grants.description'),
+      title: t('studentCouncil.activities.development.title'),
+      description: t('studentCouncil.activities.development.description'),
       color: "bg-[#00B4D8]"
     }
   ];
@@ -88,7 +122,7 @@ const YoungScientistsCouncilPage = () => {
       </div>
 
       <div className="relative z-10">
-        {/* Header */}
+        {/* Header с белым фоном и синим текстом */}
         <section className="relative py-20 ">
           <div className="container mx-auto px-4">
             <motion.div
@@ -105,15 +139,15 @@ const YoungScientistsCouncilPage = () => {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="inline-flex items-center gap-3 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-3 rounded-full mb-6"
               >
-                <FaGraduationCap className="text-xl" />
-                <span className="font-semibold">{t('youngScientistsCouncil.badge')}</span>
+                <FaUsers className="text-xl" />
+                <span className="font-semibold">{t('studentCouncil.badge')}</span>
               </motion.div>
 
               <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
-                {t('youngScientistsCouncil.title')}
+                {t('studentCouncil.title')}
               </h1>
               <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                {t('youngScientistsCouncil.subtitle')}
+                {t('studentCouncil.subtitle')}
               </p>
             </motion.div>
           </div>
@@ -151,7 +185,7 @@ const YoungScientistsCouncilPage = () => {
             </motion.div>
 
             <div className="max-w-6xl mx-auto">
-              {/* Общие положения */}
+              {/* О студсовете */}
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -160,23 +194,16 @@ const YoungScientistsCouncilPage = () => {
                 className="bg-white rounded-3xl shadow-2xl border border-gray-200 p-8 mb-12"
               >
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-8 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
-                  {t('youngScientistsCouncil.generalProvisions')}
+                  {t('studentCouncil.aboutTitle')}
                 </h2>
                 
-                <div className="prose prose-lg max-w-none text-gray-800 space-y-6">
+                <div className="prose prose-lg max-w-none text-gray-800">
                   <motion.p 
                     className="text-lg leading-relaxed bg-blue-50 rounded-2xl p-6 border-l-4 border-[#023E8A]"
                     whileHover={{ scale: 1.01 }}
                     transition={{ duration: 0.2 }}
                   >
-                    {t('youngScientistsCouncil.provisionxt1')}
-                  </motion.p>
-                  <motion.p 
-                    className="text-lg leading-relaxed bg-blue-50 rounded-2xl p-6 border-l-4 border-[#0077B6]"
-                    whileHover={{ scale: 1.01 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    {t('youngScientistsCouncil.provisionxt2')}
+                    {t('studentCouncil.aboutText')}
                   </motion.p>
                 </div>
               </motion.div>
@@ -190,37 +217,48 @@ const YoungScientistsCouncilPage = () => {
                 className="bg-white rounded-3xl shadow-2xl border border-gray-200 p-8 mb-12"
               >
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-8 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
-                  {t('youngScientistsCouncil.goalsAndTasks')}
+                  {t('studentCouncil.goalsTitle')}
                 </h2>
 
-                <div className="prose prose-lg max-w-none text-gray-800 space-y-6">
+                <div className="prose prose-lg max-w-none text-gray-800 mb-8">
                   <motion.p 
-                    className="text-lg leading-relaxed bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl p-6 border border-blue-100"
+                    className="text-lg leading-relaxed bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl p-6 border border-blue-100 mb-6"
                     whileHover={{ scale: 1.01 }}
                     transition={{ duration: 0.2 }}
                   >
-                    {t('youngScientistsCouncil.goalxt1')}
+                    {t('studentCouncil.goalText')}
                   </motion.p>
+
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6">
+                    {t('studentCouncil.tasksTitle')}
+                  </h3>
+
+                  <div className="grid md:grid-cols-2 gap-4 mb-6">
+                    {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((taskNum) => (
+                      <motion.div
+                        key={taskNum}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5, delay: taskNum * 0.1 }}
+                        whileHover={{ scale: 1.02 }}
+                        className="flex items-start gap-3 bg-gray-50 rounded-xl p-4 hover:bg-blue-50 transition-all duration-300 group"
+                      >
+                        <div className="w-6 h-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-full flex items-center justify-center text-white text-sm font-bold mt-1 flex-shrink-0">
+                          {taskNum}
+                        </div>
+                        <span className="text-gray-700 leading-relaxed">
+                          {t(`studentCouncil.task${taskNum}`)}
+                        </span>
+                      </motion.div>
+                    ))}
+                  </div>
+
                   <motion.p 
-                    className="text-lg leading-relaxed bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl p-6 border border-blue-100"
+                    className="text-lg font-medium bg-yellow-50 rounded-2xl p-4 border-l-4 border-yellow-400"
                     whileHover={{ scale: 1.01 }}
                     transition={{ duration: 0.2 }}
                   >
-                    {t('youngScientistsCouncil.goalxt2')}
-                  </motion.p>
-                  <motion.p 
-                    className="text-lg leading-relaxed bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl p-6 border border-blue-100"
-                    whileHover={{ scale: 1.01 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    {t('youngScientistsCouncil.goalxt3')}
-                  </motion.p>
-                  <motion.p 
-                    className="text-lg leading-relaxed bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl p-6 border border-blue-100"
-                    whileHover={{ scale: 1.01 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    {t('youngScientistsCouncil.goalxt4')}
+                    {t('studentCouncil.regulations')}
                   </motion.p>
                 </div>
               </motion.div>
@@ -235,10 +273,10 @@ const YoungScientistsCouncilPage = () => {
               >
                 <div className="text-center mb-12">
                   <h2 className="text-4xl font-bold text-gray-800 mb-4">
-                    {t('youngScientistsCouncil.activitiesTitle')}
+                    {t('studentCouncil.activitiesTitle')}
                   </h2>
                   <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                    {t('youngScientistsCouncil.activitiesDescription')}
+                    {t('studentCouncil.activitiesDescription')}
                   </p>
                 </div>
 
@@ -266,52 +304,64 @@ const YoungScientistsCouncilPage = () => {
                 </div>
               </motion.div>
 
-              {/* Состав совета */}
+              {/* Аккордеон секции */}
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.7 }}
-                className="bg-white rounded-3xl shadow-2xl border border-gray-200 p-8 mb-12"
+                className="bg-white rounded-3xl shadow-2xl border border-gray-200 p-8"
               >
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-8 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
-                  {t('youngScientistsCouncil.compositionTitle')}
+                  {t('studentCouncil.detailsTitle')}
                 </h2>
 
-                <div className="grid md:grid-cols-2 gap-6">
-                  {councilMembers.map((member, index) => (
+                <div className="space-y-4">
+                  {sections.map((section) => (
                     <motion.div
-                      key={index}
+                      key={section.id}
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      whileHover={{ scale: 1.02 }}
-                      className="flex items-center gap-4 bg-gray-50 rounded-xl p-4 hover:bg-blue-50 transition-all duration-300 group"
+                      transition={{ duration: 0.5, delay: section.id * 0.1 }}
+                      className="border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300"
                     >
-                      <div className="w-10 h-10 bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-full flex items-center justify-center text-white font-bold group-hover:scale-110 transition-transform duration-300">
-                        {index + 1}
-                      </div>
-                      <span className="text-gray-700 font-medium">{member}</span>
+                      <motion.button
+                        onClick={() => toggleSection(section.id)}
+                        className="w-full px-6 py-6 text-left bg-gradient-to-r from-gray-50 to-blue-50 hover:from-blue-50 hover:to-cyan-50 transition-all duration-300 flex justify-between items-center"
+                        whileHover={{ scale: 1.01 }}
+                        whileTap={{ scale: 0.99 }}
+                      >
+                        <h3 className="text-xl font-semibold text-gray-800">
+                          {section.title}
+                        </h3>
+                        <motion.div
+                          animate={{ rotate: openSections[section.id] ? 180 : 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="text-[#023E8A]"
+                        >
+                          <FaChevronDown />
+                        </motion.div>
+                      </motion.button>
+                      <AnimatePresence>
+                        {openSections[section.id] && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="overflow-hidden"
+                          >
+                            <div className="px-6 py-6 bg-white border-t border-gray-100">
+                              <div className="prose max-w-none text-gray-700 whitespace-pre-line leading-relaxed">
+                                {section.content}
+                              </div>
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </motion.div>
                   ))}
                 </div>
-
-                {/* Ссылка для скачивания */}
-                <motion.div 
-                  className="mt-8 text-center"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <a 
-                    href="https://salymbekov.com/wp-content/uploads/2021/04/polozhenie-soveta-molodyh-uchenyh.pdf"
-                    className="inline-flex items-center gap-3 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-8 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaFileDownload className="text-xl" />
-                    {t('youngScientistsCouncil.regulationsLink')}
-                  </a>
-                </motion.div>
               </motion.div>
             </div>
           </div>
@@ -321,4 +371,4 @@ const YoungScientistsCouncilPage = () => {
   );
 };
 
-export default YoungScientistsCouncilPage;
+export default StudentCouncilPage;

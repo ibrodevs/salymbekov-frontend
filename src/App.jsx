@@ -155,7 +155,6 @@ const Urology = lazy(() => import('./pages/science/projects/Urology'))
 const Gynecology = lazy(() => import('./pages/science/projects/Gynecology'))
 const Ophthalmology = lazy(() => import('./pages/science/projects/Ophthalmology'))
 const Oncology = lazy(() => import('./pages/science/projects/Oncology'))
-const SeanPark = lazy(() => import('./pages/science/professors/SeanPark'))
 const Pendharkar = lazy(() => import('./pages/science/professors/Pendharkar'))
 const Potapova = lazy(() => import('./pages/science/professors/Potapova'))
 const Osmonov = lazy(() => import('./pages/science/professors/Osmonov'))
@@ -448,7 +447,6 @@ const App = () => {
             <Route path="/science/events/conferences" element={<Conferences />} />
             <Route path="/science/events/conferences/:id" element={<ConferenceDetail />} />
             <Route path="/science/professors" element={<Professors />} />
-            <Route path="/science/professors/sean-park" element={<SeanPark />} />
             <Route path="/science/professors/pendharkar" element={<Pendharkar />} />
             <Route path="/science/professors/potapova" element={<Potapova />} />
             <Route path="/science/professors/osmonov" element={<Osmonov />} />

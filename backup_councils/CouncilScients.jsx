@@ -169,14 +169,14 @@ const YoungScientistsCouncilPage = () => {
                     whileHover={{ scale: 1.01 }}
                     transition={{ duration: 0.2 }}
                   >
-                    {t('youngScientistsCouncil.provisionsText1')}
+                    {t('youngScientistsCouncil.provisionxt1')}
                   </motion.p>
                   <motion.p 
                     className="text-lg leading-relaxed bg-blue-50 rounded-2xl p-6 border-l-4 border-[#0077B6]"
                     whileHover={{ scale: 1.01 }}
                     transition={{ duration: 0.2 }}
                   >
-                    {t('youngScientistsCouncil.provisionsText2')}
+                    {t('youngScientistsCouncil.provisionxt2')}
                   </motion.p>
                 </div>
               </motion.div>
@@ -199,28 +199,28 @@ const YoungScientistsCouncilPage = () => {
                     whileHover={{ scale: 1.01 }}
                     transition={{ duration: 0.2 }}
                   >
-                    {t('youngScientistsCouncil.goalsText1')}
+                    {t('youngScientistsCouncil.goalxt1')}
                   </motion.p>
                   <motion.p 
                     className="text-lg leading-relaxed bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl p-6 border border-blue-100"
                     whileHover={{ scale: 1.01 }}
                     transition={{ duration: 0.2 }}
                   >
-                    {t('youngScientistsCouncil.goalsText2')}
+                    {t('youngScientistsCouncil.goalxt2')}
                   </motion.p>
                   <motion.p 
                     className="text-lg leading-relaxed bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl p-6 border border-blue-100"
                     whileHover={{ scale: 1.01 }}
                     transition={{ duration: 0.2 }}
                   >
-                    {t('youngScientistsCouncil.goalsText3')}
+                    {t('youngScientistsCouncil.goalxt3')}
                   </motion.p>
                   <motion.p 
                     className="text-lg leading-relaxed bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl p-6 border border-blue-100"
                     whileHover={{ scale: 1.01 }}
                     transition={{ duration: 0.2 }}
                   >
-                    {t('youngScientistsCouncil.goalsText4')}
+                    {t('youngScientistsCouncil.goalxt4')}
                   </motion.p>
                 </div>
               </motion.div>

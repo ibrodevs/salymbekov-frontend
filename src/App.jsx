@@ -259,7 +259,7 @@ const SixYears = lazy(() => import('./pages/education/mfm/Programs/SixYears'))
 const AboutBusinessSchool = lazy(() => import('./pages/education/businessSchool/About'))
 const FutureLeaders = lazy(() => import('./pages/education/businessSchool/Programs/FutureLeaders'))
 const OlderLeaders = lazy(() => import('./pages/education/businessSchool/Programs/OlderLeaders'))
-const Smartik = lazy(() => import('./pages/education/businessSchool/Programs/SmartIK'))
+const Smartik = lazy(() => import('./pages/education/businessSchool/Programs/smartik'))
 const YoungLeaders = lazy(() => import('./pages/education/businessSchool/Programs/YoungLeaders'))
 const Director = lazy(() => import('./pages/education/businessSchool/Director'))
 const Managers = lazy(() => import('./pages/education/businessSchool/Managers'))
@@ -369,7 +369,7 @@ const App = () => {
             <Route path="/university/strategic-docs/accounting-policy" element={<AccountingPolicy />} />
             <Route path="/university/councils/academic-council" element={<AcadCouncil />} />
             <Route path="/university/councils/admissions-committee" element={<AdmisCommittee />} />
-            <Route path="/university/councils/bioethics-committee" element={<BioethicsCommittee />} />  
+            <Route path="/university/councils/bioethics-committee" element={<BioethicsCommittee />} />
             <Route path="/university/councils/commission-support" element={<CommissionSupport />} />
             <Route path="/university/councils/council-scients" element={<CouncilScients />} />
             <Route path="/university/councils/development-council" element={<DevCouncil />} />
@@ -425,37 +425,6 @@ const App = () => {
             <Route path="/education/postgrad/postgraduate" element={<Postgraduate />} />
             <Route path="/education/postgrad/residency" element={<Residency />} />
             <Route path="/education/center/about" element={<AboutCenterEducation />} />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

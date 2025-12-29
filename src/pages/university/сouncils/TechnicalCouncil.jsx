@@ -14,28 +14,31 @@ import {
 } from "react-icons/fa";
 
 const MethodologicalCouncilPage = () => {
-  const { t, i18n } = useTranslation();
-
-  // Debug: log current language and tasks
-  React.useEffect(() => {
-    const tasksArray = t('science.management.scientificCouncil.tasks');
-    console.log('[TechnicalCouncil] Current language:', i18n.language);
-    console.log('[TechnicalCouncil] Tasks type:', typeof tasksArray);
-    console.log('[TechnicalCouncil] Is array?', Array.isArray(tasksArray));
-    if (Array.isArray(tasksArray) && tasksArray.length > 0) {
-      console.log('[TechnicalCouncil] First task:', tasksArray[0].substring(0, 50));
-    }
-  }, [i18n.language, t]);
+  const { t } = useTranslation();
 
   // Статистика
   const stats = [
   ];
 
-  // Задачи совета - пересчитываются при смене языка
-  const tasks = React.useMemo(() => {
-    const tasksArray = t('science.management.scientificCouncil.tasks');
-    return Array.isArray(tasksArray) ? tasksArray : [];
-  }, [i18n.language, t]);
+  // Задачи совета
+  const tasks = [
+    t('methodologicalCouncil.task1'),
+    t('methodologicalCouncil.task2'),
+    t('methodologicalCouncil.task3'),
+    t('methodologicalCouncil.task4'),
+    t('methodologicalCouncil.task5'),
+    t('methodologicalCouncil.task6'),
+    t('methodologicalCouncil.task7'),
+    t('methodologicalCouncil.task8'),
+    t('methodologicalCouncil.task9'),
+    t('methodologicalCouncil.task10'),
+    t('methodologicalCouncil.task11'),
+    t('methodologicalCouncil.task12'),
+    t('methodologicalCouncil.task13'),
+    t('methodologicalCouncil.task14'),
+    t('methodologicalCouncil.task15'),
+    t('methodologicalCouncil.task16')
+  ];
 
   return (
     <div className="min-h-screen bg-gray-50 relative overflow-hidden">
@@ -84,11 +87,11 @@ const MethodologicalCouncilPage = () => {
               className="inline-flex items-center gap-3 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-3 rounded-full mb-6"
             >
               <FaCogs className="text-xl" />
-              <span className="font-semibold">{t('science.management.scientificCouncil.badge')}</span>
+              <span className="font-semibold">{t('methodologicalCouncil.badge')}</span>
             </motion.div>
 
             <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
-              {t('science.management.scientificCouncil.title')}
+              {t('methodologicalCouncil.title')}
             </h1>
             <div className="w-24 h-1 bg-gradient-to-r from-[#023E8A] to-[#0077B6] mx-auto rounded-full"></div>
           </motion.div>
@@ -138,7 +141,7 @@ const MethodologicalCouncilPage = () => {
                   <FaFileAlt className="text-white text-lg" />
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-                  {t('science.management.scientificCouncil.generalTitle')}
+                  {t('methodologicalCouncil.generalProvisions')}
                 </h2>
               </div>
 
@@ -150,7 +153,7 @@ const MethodologicalCouncilPage = () => {
                   className="p-4 bg-blue-50 rounded-xl border-l-4 border-[#023E8A]"
                 >
                   <p className="text-gray-700 text-lg leading-relaxed">
-                    {t('science.management.scientificCouncil.generalText')}
+                    {t('methodologicalCouncil.provisionsText1')}
                   </p>
                 </motion.div>
 
@@ -161,7 +164,7 @@ const MethodologicalCouncilPage = () => {
                   className="p-4 bg-blue-50 rounded-xl border-l-4 border-[#0077B6]"
                 >
                   <p className="text-gray-700 text-lg leading-relaxed">
-                    {t('science.management.scientificCouncil.goalsTitle')}
+                    {t('methodologicalCouncil.provisionsText2')}
                   </p>
                 </motion.div>
 
@@ -172,7 +175,7 @@ const MethodologicalCouncilPage = () => {
                   className="p-4 bg-blue-50 rounded-xl border-l-4 border-[#0096C7]"
                 >
                   <p className="text-gray-700 text-lg leading-relaxed">
-                    {t('science.management.scientificCouncil.goalsText')}
+                    {t('methodologicalCouncil.provisionsText3')}
                   </p>
                 </motion.div>
               </div>
@@ -193,7 +196,7 @@ const MethodologicalCouncilPage = () => {
                   <FaSitemap className="text-white text-lg" />
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-                  {t('science.management.scientificCouncil.compositionTitle')}
+                  {t('methodologicalCouncil.structureTitle')}
                 </h2>
               </div>
 
@@ -205,7 +208,29 @@ const MethodologicalCouncilPage = () => {
                   className="p-4 bg-blue-50 rounded-xl border-l-4 border-[#023E8A]"
                 >
                   <p className="text-gray-700 text-lg leading-relaxed">
-                    {t('science.management.scientificCouncil.compositionTitle')}
+                    {t('methodologicalCouncil.structureText1')}
+                  </p>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                  className="p-4 bg-blue-50 rounded-xl border-l-4 border-[#0077B6]"
+                >
+                  <p className="text-gray-700 text-lg leading-relaxed">
+                    {t('methodologicalCouncil.structureText2')}
+                  </p>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                  className="p-4 bg-blue-50 rounded-xl border-l-4 border-[#0096C7]"
+                >
+                  <p className="text-gray-700 text-lg leading-relaxed">
+                    {t('methodologicalCouncil.structureText3')}
                   </p>
                 </motion.div>
               </div>
@@ -226,7 +251,7 @@ const MethodologicalCouncilPage = () => {
                   <FaBullseye className="text-white text-lg" />
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-                  {t('science.management.scientificCouncil.downloadTitle')}
+                  {t('methodologicalCouncil.goalsTitle')}
                 </h2>
               </div>
 
@@ -239,10 +264,10 @@ const MethodologicalCouncilPage = () => {
               >
                 <div className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-xl p-6 text-white">
                   <h3 className="text-xl font-bold mb-3">
-                    {t('science.management.scientificCouncil.downloadTitle')}
+                    {t('methodologicalCouncil.mainGoal')}
                   </h3>
                   <p className="text-lg leading-relaxed">
-                    {t('science.management.scientificCouncil.downloadDesc')}
+                    {t('methodologicalCouncil.goalText')}
                   </p>
                 </div>
               </motion.div>
@@ -258,7 +283,7 @@ const MethodologicalCouncilPage = () => {
                     <FaLightbulb className="text-white text-sm" />
                   </div>
                   <h3 className="text-2xl md:text-3xl font-bold text-gray-800">
-                    {t('science.management.scientificCouncil.tasksTitle')}
+                    {t('methodologicalCouncil.mainTasks')}
                   </h3>
                 </div>
 
@@ -299,10 +324,10 @@ const MethodologicalCouncilPage = () => {
           >
             <div className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-3xl p-8 text-white">
               <h3 className="text-2xl md:text-3xl font-bold mb-4">
-                {t('science.management.scientificCouncil.downloadTitle')}
+                {t('methodologicalCouncil.regulationsTitle')}
               </h3>
               <p className="text-lg mb-6 opacity-90">
-                {t('science.management.scientificCouncil.downloadDesc')}
+                {t('methodologicalCouncil.regulationsDescription')}
               </p>
               <motion.a
                 href="https://salymbekov.com/wp-content/uploads/2022/05/polozhenie-ob-ums.pdf"
@@ -313,7 +338,7 @@ const MethodologicalCouncilPage = () => {
                 className="inline-flex items-center bg-white text-[#023E8A] px-8 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 <FaDownload className="mr-3" />
-                {t('science.management.scientificCouncil.downloadBtn')}
+                {t('methodologicalCouncil.regulationsLink')}
               </motion.a>
             </div>
           </motion.div>

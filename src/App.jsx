@@ -370,7 +370,7 @@ const App = () => {
             <Route path="/university/strategic-docs/accounting-policy" element={<AccountingPolicy />} />
             <Route path="/university/councils/academic-council" element={<AcadCouncil />} />
             <Route path="/university/councils/admissions-committee" element={<AdmisCommittee />} />
-            <Route path="/university/councils/bioethics-committee" element={<BioethicsCommittee />} />  
+            <Route path="/university/councils/bioethics-committee" element={<BioethicsCommittee />} />
             <Route path="/university/councils/commission-support" element={<CommissionSupport />} />
             <Route path="/university/councils/council-scients" element={<CouncilScients />} />
             <Route path="/university/councils/development-council" element={<DevCouncil />} />
@@ -426,37 +426,6 @@ const App = () => {
             <Route path="/education/postgrad/postgraduate" element={<Postgraduate />} />
             <Route path="/education/postgrad/residency" element={<Residency />} />
             <Route path="/education/center/about" element={<AboutCenterEducation />} />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

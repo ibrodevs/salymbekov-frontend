@@ -16119,37 +16119,37 @@
   },
   "requiredDoc": {
     "hero": {
-      "title": "Required Documents",
-      "subtitle": "For university admission"
+      "title": "Необходимые документы",
+      "subtitle": "Для поступления в университет"
     },
     "important": {
-      "title": "Important Information",
-      "point1": "Applicants during online admission must attach only copies of relevant documents confirming that they will study at our university.",
-      "point2": "Original documents must be provided only at the beginning of the academic year."
+      "title": "Важная информация",
+      "point1": "Абитуриенты в ходе онлайн-приема должны приложить только копии соответствующих документов, подтверждающих, что они будут обучаться в нашем университете.",
+      "point2": "Оригиналы документов должны быть предоставлены только в начале учебного года."
     },
     "citizensKR": {
-      "title": "For Citizens of the Kyrgyz Republic"
+      "title": "Для граждан Кыргызской Республики"
     },
     "foreignCitizens": {
-      "title": "For Citizens of Near and Far Abroad Countries"
+      "title": "Для граждан стран ближнего и дальнего зарубежья"
     },
     "documentsKR": {
-      "document1": "Application to the Rector of Salymbekov University (sample)",
-      "document2": "Original ORT certificate",
-      "document3": "State-issued document of secondary general or secondary vocational education (certificate or diploma)",
-      "document4": "Copy of passport",
-      "document5": "2 photos (4×6 cm), 4 photos (3×4 cm)",
-      "document6": "Medical certificate 086-U",
-      "document7": "Military ID or registration certificate"
+      "document1": "Заявление на имя ректора Учреждения «Салымбеков Университет» (образец)",
+      "document2": "Оригинал сертификата ОРТ",
+      "document3": "Документ государственного образца о среднем общем или среднем профессиональном образовании (аттестат или диплом)",
+      "document4": "Копия паспорта",
+      "document5": "2 фото (4×6 см), 4 фото (3×4 см)",
+      "document6": "Медицинская справка 086-У",
+      "document7": "Военный билет или приписное свидетельство"
     },
     "documentsForeign": {
-      "document1": "Application to the Rector of Salymbekov University (sample)",
-      "document2": "Passport with entry visa complying with the legislation of the Kyrgyz Republic and its copy",
-      "document3": "Original document of complete secondary education indicating studied subjects and grades (scores) and notarized copy",
-      "document4": "Notarized translation of the complete secondary education document into the official language of the Kyrgyz Republic",
-      "document5": "Certificate from the Ministry of Education and Science of the Kyrgyz Republic on the equivalence of complete secondary education",
-      "document6": "2 photos (4×6 cm), 4 photos (3×4 cm)",
-      "document7": "Medical examination results"
+      "document1": "Заявление на имя ректора Учреждения «Салымбеков Университет» (образец)",
+      "document2": "Паспорт с въездной визой, соответствующей требованиям законодательства КР и его копию",
+      "document3": "Оригинал документа о полном среднем образовании с указанием изучаемых предметов и оценок (баллов) и нотариально заверенную копию",
+      "document4": "Нотариально заверенный перевод документа о полном среднем образовании на официальный язык КР",
+      "document5": "Справку из Министерства Образования и Науки КР об эквивалентности полного среднего образования",
+      "document6": "2 фото (4×6 см), 4 фото (3×4 см)",
+      "document7": "Результаты мед обследования"
     }
   },
   "studentDept": {
@@ -16582,125 +16582,186 @@
       "description": "Выберите программу, которая соответствует вашим целям, и станьте востребованным специалистом",
       "enrollNow": "Записаться сейчас",
       "learnMore": "Узнать подробнее"
-    },
+    }
+  },
   "schedule": {
     "hero": {
-      "title": "Selection and Enrollment Schedule",
-      "subtitle": "Selection and Enrollment Schedule"
+      "title": "График отбора и зачисления",
+      "subtitle": "График отбора и зачисления"
     },
     "policy": {
-      "title": "Selection and Enrollment Policy",
-      "description": "Salymbekov University conducts the selection and enrollment of applicants in strict accordance with the norms and rules of the Ministry of Education and Science of the Kyrgyz Republic, which annually forms and publishes the schedule for conducting selection rounds and enrollment of applicants in higher educational institutions of the Kyrgyz Republic."
+      "title": "Политика отбора и зачисления",
+      "description": "Университет Салымбекова проводит отбор и зачисление абитуриентов в строгом соответствии с нормами и правилами Министерства образования и науки Кыргызской Республики, которое ежегодно формирует и публикует график проведения туров отбора и зачисления абитуриентов в высшие учебные заведения Кыргызской Республики."
     },
     "mainTitle": {
-      "title": "Schedule of selection rounds and enrollment of applicants",
-      "subtitle": "in higher educational institutions of the Kyrgyz Republic",
-      "year": "based on the results of the national test for the 2025-2026 academic year"
+      "title": "График туров отбора и зачисления абитуриентов",
+      "subtitle": "в высшие учебные заведения Кыргызской Республики",
+      "year": "по результатам национального тестирования на 2025-2026 учебный год"
     },
     "tours": {
       "tour1": {
-        "title": "First Round",
-        "period": "July 14 – 21",
+        "title": "Первый тур",
+        "period": "14 – 21 июля",
         "stage1": {
-          "dates": "July 14-16",
-          "description": "Registration of applicants for participation in the competition"
+          "dates": "14-16 июля",
+          "description": "Регистрация абитуриентов для участия в конкурсе"
         },
         "stage2": {
-          "dates": "July 16 at 2:00 PM",
-          "description": "Completion of registration for participation in the competition"
+          "dates": "16 июля в 14:00",
+          "description": "Завершение регистрации для участия в конкурсе"
         },
         "stage3": {
-          "dates": "July 17 until 9:00 AM",
-          "description": "Posting of lists of applicants recommended for enrollment"
+          "dates": "17 июля до 9:00",
+          "description": "Размещение списков абитуриентов, рекомендованных к зачислению"
         },
         "stage4": {
-          "dates": "July 17-21 until 4:00 PM",
-          "description": "Applicants confirm their desire to be enrolled in the university"
+          "dates": "17-21 июля до 16:00",
+          "description": "Абитуриенты подтверждают желание быть зачисленными в университет"
         }
       },
       "tour2": {
-        "title": "Second Round",
-        "period": "July 21 – 28",
+        "title": "Второй тур",
+        "period": "21 – 28 июля",
         "stage1": {
-          "dates": "July 21-23",
-          "description": "Registration of applicants for participation in the competition"
+          "dates": "21-23 июля",
+          "description": "Регистрация абитуриентов для участия в конкурсе"
         },
         "stage2": {
-          "dates": "July 23 at 2:00 PM",
-          "description": "Completion of registration for participation in the competition"
+          "dates": "23 июля в 14:00",
+          "description": "Завершение регистрации для участия в конкурсе"
         },
         "stage3": {
-          "dates": "July 24 until 9:00 AM",
-          "description": "Posting of lists of applicants recommended for enrollment"
+          "dates": "24 июля до 9:00",
+          "description": "Размещение списков абитуриентов, рекомендованных к зачислению"
         },
         "stage4": {
-          "dates": "July 24 – 28 until 4:00 PM",
-          "description": "Applicants confirm their desire to be enrolled in the university"
+          "dates": "24 – 28 июля до 16:00",
+          "description": "Абитуриенты подтверждают желание быть зачисленными в университет"
         }
       },
       "tour3": {
-        "title": "Third Round",
-        "period": "July 28 – August 4",
+        "title": "Третий тур",
+        "period": "28 июля – 4 августа",
         "stage1": {
-          "dates": "July 28-30",
-          "description": "Registration of applicants for participation in the competition"
+          "dates": "28-30 июля",
+          "description": "Регистрация абитуриентов для участия в конкурсе"
         },
         "stage2": {
-          "dates": "July 31 at 2:00 PM",
-          "description": "Completion of registration for participation in the competition"
+          "dates": "31 июля в 14:00",
+          "description": "Завершение регистрации для участия в конкурсе"
         },
         "stage3": {
-          "dates": "August 1 until 9:00 AM",
-          "description": "Posting of lists of applicants recommended for enrollment"
+          "dates": "1 августа до 9:00",
+          "description": "Размещение списков абитуриентов, рекомендованных к зачислению"
         },
         "stage4": {
-          "dates": "August 2-4 until 4:00 PM",
-          "description": "Applicants confirm their desire to be enrolled in the university"
+          "dates": "2-4 августа до 16:00",
+          "description": "Абитуриенты подтверждают желание быть зачисленными в университет"
         }
       },
       "tour4": {
-        "title": "Fourth Round",
-        "period": "August 4 – 11",
+        "title": "Четвертый тур",
+        "period": "4 – 11 августа",
         "stage1": {
-          "dates": "August 4-6",
-          "description": "Registration of applicants for participation in the competition"
+          "dates": "4-6 августа",
+          "description": "Регистрация абитуриентов для участия в конкурсе"
         },
         "stage2": {
-          "dates": "August 7 at 2:00 PM",
-          "description": "Completion of registration for participation in the competition"
+          "dates": "7 августа в 14:00",
+          "description": "Завершение регистрации для участия в конкурсе"
         },
         "stage3": {
-          "dates": "August 8 until 9:00 AM",
-          "description": "Posting of lists of applicants recommended for enrollment"
+          "dates": "8 августа до 9:00",
+          "description": "Размещение списков абитуриентов, рекомендованных к зачислению"
         },
         "stage4": {
-          "dates": "August 8-11 until 4:00 PM",
-          "description": "Applicants confirm their desire to be enrolled in the university"
+          "dates": "8-11 августа до 16:00",
+          "description": "Абитуриенты подтверждают желание быть зачисленными в университет"
         }
       },
       "tour5": {
-        "title": "Fifth Round",
-        "period": "August 11 – 17",
+        "title": "Пятый тур",
+        "period": "11 – 17 августа",
         "stage1": {
-          "dates": "August 11-13",
-          "description": "Registration of applicants for participation in the competition"
+          "dates": "11-13 августа",
+          "description": "Регистрация абитуриентов для участия в конкурсе"
         },
         "stage2": {
-          "dates": "August 14 at 2:00 PM",
-          "description": "Completion of registration for participation in the competition"
+          "dates": "14 августа в 14:00",
+          "description": "Завершение регистрации для участия в конкурсе"
         },
         "stage3": {
-          "dates": "August 15 until 9:00 AM",
-          "description": "Posting of lists of applicants recommended for enrollment"
+          "dates": "15 августа до 9:00",
+          "description": "Размещение списков абитуриентов, рекомендованных к зачислению"
         },
         "stage4": {
-          "dates": "August 15-17 until 4:00 PM",
-          "description": "Applicants confirm their desire to be enrolled in the university"
+          "dates": "15-17 августа до 16:00",
+          "description": "Абитуриенты подтверждают желание быть зачисленными в университет"
         }
       }
     },
-    "footerNote": "The general list of applicants who confirmed their desire to study at the university based on the results of all enrollment rounds (for grant and contract places) is sent to the CООМО for confirmation."
+    "footerNote": "Общий список абитуриентов, подтвердивших желание обучаться в университете по итогам всех туров зачисления (на грантовые и контрактные места), направляется в ЦООМО для подтверждения."
+  },
+  "documents": {
+    "title": "Необходимые документы для перевода",
+    "procedure": {
+      "title": "Процедура перевода",
+      "description1": "Перевод студента осуществляется путем рассмотрения транскрипта/ведомости оценок членами аттестационной комиссии и согласования с деканом факультета.",
+      "description2": "В случае необходимости ликвидации академической разницы для студента разрабатывается <1>индивидуальный план</1>.",
+      "description3": " Академическая разница должна быть ликвидирована в течение текущего учебного года."
+    },
+    "documentsForTransfer": {
+      "title": "Документы для перевода в другой университет",
+      "description": "Если студент желает перевестись в другой университет, он получает всю необходимую документацию."
+    },
+    "requiredDocuments": [
+      "Заявление на имя ректора Учреждения «Салымбеков Университет»",
+      "Копия транскрипта/ведомости оценок",
+      "Копия паспорта или удостоверения личности",
+      "Справка об обучении в текущем университете",
+      "Фотографии установленного образца (3×4 см)",
+      "Выписка из зачетной книжки",
+      "Копия лицензии университета, в который осуществляется перевод",
+      "Справка об отсутствии задолженности по оплате обучения",
+      "Медицинская справка по форме 086-У",
+      "Заверенная копия учебного плана"
+    ],
+    "importantInfo": {
+      "title": "Важная информация",
+      "description": "Все документы оформляются в соответствии с установленными форматами и стандартами."
+    }
+  },
+  "knowledgeOsh": {
+    "hero": {
+      "title": "Знаниевый караван в городе Ош",
+      "date": "Дата проведения",
+      "location": "Город Ош",
+      "participants": "Школьники"
+    },
+    "backButton": "Вернуться к мероприятиям",
+    "social": {
+      "share": "Поделиться",
+      "shareOn": "Поделиться в"
+    },
+    "content": {
+      "title": "Знаниевый караван в городе Ош",
+      "paragraph1": "Университет имени Салымбекова совместно с мэрией города Ош, городским управлением образования и бизнес-школой Салымбекова в городе Ош провел семинар для школьников под названием",
+      "seminarTitle": "«Современные тенденции в образовании, будущее место школьного образования»",
+      "paragraph1Cont": "",
+      "paragraph2": "В ходе мероприятия заместитель мэра города Ош Нурбек Кадыров выступил с речью, подчеркнув важность получения образования.",
+      "paragraph3": "Для учащихся и учителей города Ош были показаны презентации о влиянии технологических изменений, происходящих во всем мире, на образование и рынок труда, а также о месте развивающихся направлений, таких как IT-технологии и биотехнологии, в XXI веке.",
+      "speakersTitle": "Спикеры семинара:",
+      "speaker1": "Профессор, онколог, доктор медицинских наук, вице-президент Университета имени Салымбекова",
+      "topic1": "«Искусственный интеллект в медицине»",
+      "speaker2": "Основатель Американского технологического института, имеет степень PhD в области искусственного интеллекта от Хьюстонского университета (США), старший инженер в крупных компаниях, таких как Facebook, Instagram, UBER, более 15 лет",
+      "topic2": "«В западных странах знания - это деньги»",
+      "speaker3": "Проректор Университета имени Салымбекова",
+      "topic3": "«Современные тенденции в образовании, изменения на рынке труда, реформы в школьном образовании»"
+    },
+    "gallery": {
+      "title": "Фотогалерея",
+      "photosCount": "фото",
+      "photoAlt": "Знаниевый караван в городе Ош"
+    }
   }
-
-}
 }

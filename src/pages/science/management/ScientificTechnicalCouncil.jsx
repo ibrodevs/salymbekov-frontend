@@ -14,79 +14,42 @@ import heroImage from '../../../assets/science/management/science-hero.jpg';
 const ScientificTechnicalCouncil = () => {
   const { t, i18n } = useTranslation();
 
-  // safe string translation getter with fallback to English
-  const isUrlLike = (s) => typeof s === 'string' && /^(https?:\/\/|www\.)/.test(s);
-  const getRaw = (key, lng = undefined) => {
-    const lang = typeof lng === 'string' ? lng : i18n.language;
-    return t(key, { returnObjects: true, lng: lang });
-  };
-  const rstr = (key, defaultValue = '') => {
-    let raw = getRaw(key, i18n.language);
-    const fallbackNeeded = raw === undefined || raw === null || raw === '' || raw === key || isUrlLike(raw);
-    if (fallbackNeeded) {
-      const fallback = getRaw(key, 'en');
-      raw = fallback ?? defaultValue;
-      if (process.env.NODE_ENV === 'development') {
-        console.warn(`[i18n] Fallback to EN for key "${key}" (${i18n.language})`, raw);
-      }
-    }
-    if (typeof raw === 'string') return raw;
-    if (Array.isArray(raw)) return raw.join(' ');
-    if (raw && typeof raw === 'object') return raw.title || raw.name || raw.description || Object.values(raw)[0] || defaultValue;
-    return defaultValue;
-  };
-
-  // Debug: check available translations
-  React.useEffect(() => {
-    console.log('=== i18n DEBUG ===');
-    console.log('Current language:', i18n.language);
-    console.log('Available languages:', i18n.languages);
-    console.log('All science keys (current lang):', Object.keys(getRaw('science') || {}));
-    console.log('Science management keys (current lang):', Object.keys(getRaw('science.management') || {}));
-    
-    // Test specific keys
-    const testKeys = [
-      'science1.management.scientificCouncil.title',
-      'science1.management.scientificCouncil.tasks',
-      'science1.management.scientificCouncil.members'
-    ];
-    
-    testKeys.forEach(key => {
-      const value = getRaw(key);
-      const enValue = getRaw(key, 'en');
-      if (process.env.NODE_ENV === 'development') {
-        console.log(`Key "${key}" (${i18n.language}):`, value);
-        console.log(`Key "${key}" (en):`, enValue);
-      }
-    });
-  }, [i18n.language, t]);
-
-  // Simple translation function with fallback
+  // Простая функция для получения перевода с fallback
   const getTranslation = (key, fallback = '') => {
-    const value = getRaw(key, i18n.language);
-    
-    // If value is missing or equals key, use fallback
-    if (!value || value === key || (typeof value === 'object' && Object.keys(value).length === 0)) {
+    try {
+      const translation = t(key, { returnObjects: true });
+      
+      // Если перевод не найден или это ключ, возвращаем fallback
+      if (!translation || translation === key || (typeof translation === 'object' && Object.keys(translation).length === 0)) {
+        return fallback;
+      }
+      
+      return translation;
+    } catch (error) {
+      console.warn(`Translation error for key "${key}":`, error);
       return fallback;
     }
-    
-    return value;
   };
 
+  // Получение строки
   const getString = (key, fallback = '') => {
     const value = getTranslation(key, fallback);
+    
     if (typeof value === 'string') return value;
     if (Array.isArray(value)) return value[0] || fallback;
-    if (typeof value === 'object') return value.title || value.name || value.text || fallback;
+    if (typeof value === 'object') {
+      return value.title || value.name || value.text || fallback;
+    }
     return fallback;
   };
 
+  // Получение массива
   const getArray = (key, fallback = []) => {
     const value = getTranslation(key, fallback);
+    
     if (Array.isArray(value)) return value;
     if (typeof value === 'string') return [value];
     if (typeof value === 'object') {
-      // Handle different object structures
       if (value.items) return value.items;
       if (value.tasks) return value.tasks;
       if (value.members) return value.members;
@@ -95,33 +58,46 @@ const ScientificTechnicalCouncil = () => {
     return fallback;
   };
 
-  // Get data with fallbacks
-  const title = getString('science1.management.scientificCouncil.title', 'Scientific and Technical Council');
-  const subtitle = getString('science1.management.scientificCouncil.subtitle', 'Permanent advisory body of the University');
-  const generalText = getString('science1.management.scientificCouncil.generalText', 
-    'The Scientific and Technical Council is a permanent advisory body of the University. In its activities, the STC is guided by the regulatory legal acts of the Kyrgyz Republic, the Charter of the University, this Regulation and other local regulations.');
-  
-  const tasksRaw = t('science1.management.scientificCouncil.tasks', { returnObjects: true });
-  console.log('tasksRaw:', tasksRaw, 'type:', typeof tasksRaw, 'isArray:', Array.isArray(tasksRaw));
-  const tasks = Array.isArray(tasksRaw) ? tasksRaw : [
-    'Development of priority areas of science and technology by university scientists',
-    'Ensuring priority development of fundamental and exploratory research',
-    'Improving planning and organizational forms of research work',
-    'Development of proposals for preserving the scientific potential of the University',
-    'Promoting integration processes between the University and scientific organizations',
-    'Promoting the development of research work of students'
-  ];
+  // Fallback значения на кыргызском языке
+  const kyrgyzFallbacks = {
+    title: "Илимий-техникалык кеңеш",
+    subtitle: "Университеттин туруктуу кеңеш берүүчү органы",
+    badge: "Илимий координация",
+    back: "Басманага кайтуу",
+    generalTitle: "Жалпы жоболор",
+    generalText: "Илимий-техникалык кеңеш Университеттин туруктуу кеңеш берүүчү органы болуп саналат. Өз ишмердигинде ИТК Кыргыз Республикасынын ченемдик-укуктук актыларына, Университеттин Уставына, бул Жобого жана башка ички ченемдерге ылайык иш жүргүзөт.",
+    goalsTitle: "Мақсаттар жана милдеттер",
+    goalsText: "ИТКнын мақсаты - илим жана техника тармагындагы мамлекеттик саясатты ишке ашырууга байланыштуу маселелерди кароо, кафедраларда жана башка бөлүмдөрдө жүргүзүлүүчү илимий-изилдөө иштеринин деңгээлин жогорулатуу жана өнүктүрүү боюнча иштерди уюштуруу жана координациялоо.",
+    tasksTitle: "Негизги милдеттер",
+    tasks: [
+      "Университет илимпоздору тарабынан илим жана техника тармактарынын негизги багыттарын иштеп чыгуу",
+      "Негизги жана издөө изилдөөлөрүнүн артыкчылыктуу өнүгүшүн камсыздоо",
+      "Илимий-изилдөө иштеринин пландаштырылышынын жана уюштуруу формаларынын жакшырышы",
+      "Университеттин илимий потенциалын сактоо боюнча сунуштарды иштеп чыгуу",
+      "Университет менен илимий мекемелердин ортосундагы интеграциялык процесстерди колдоо",
+      "Студенттердин илимий-изилдөө иштеринин өнүгүшүн колдоо"
+    ],
+    compositionTitle: "Кеңештин курамы",
+    downloadTitle: "Жобонун толук нускасы",
+    downloadDesc: "Илимий-техникалык кеңеш жөнүндө толук документти жүктөп алуу",
+    downloadBtn: "PDF жүктөп алуу"
+  };
 
-  const membersRaw = t('science1.management.scientificCouncil.members', { returnObjects: true });
-  console.log('membersRaw:', membersRaw, 'type:', typeof membersRaw, 'isArray:', Array.isArray(membersRaw));
-  const members = Array.isArray(membersRaw) ? membersRaw : [
-    { name: 'Toktogazy Moldalievich Tulekeev, MD, prof.', role: 'Chairman' },
-    { name: 'Uzakbaev Kamchibek Askarbekovich, MD, prof.', role: 'Deputy Chairman' },
-    { name: 'Imankulova Asel Sansyzbaevna, MD, prof.', role: 'Scientific Secretary' },
-    { name: 'Zhumadilov Esengeldi Zhumadilovich, PhD', role: 'Council Member' },
-    { name: 'Abdyldaev Rysbek Aldagandaevich, MD, prof.', role: 'Council Member' },
-    { name: 'Atikanov Arystanbek Orozalyevich, MD, prof.', role: 'Council Member' }
-  ];
+  // Получение данных с fallback
+  const title = getString('science.management.scientificCouncil.title', kyrgyzFallbacks.title);
+  const subtitle = getString('science.management.scientificCouncil.subtitle', kyrgyzFallbacks.subtitle);
+  const generalText = getString('science.management.scientificCouncil.generalText', kyrgyzFallbacks.generalText);
+  
+  const tasks = getArray('science.management.scientificCouncil.tasks', kyrgyzFallbacks.tasks);
+  
+  const members = getArray('science.management.scientificCouncil.members', [
+    { name: "Токтогазы Молдалиевич Түлексеев, мед. илимд. докт., профессор", role: "Төрага" },
+    { name: "Узакбаев Камчыбек Аскарбекович, мед. илимд. докт., профессор", role: "Төраганын орун басары" },
+    { name: "Иманкулова Асел Сансызбаевна, мед. илимд. докт., профессор", role: "Илимий катчы" },
+    { name: "Жумадилов Эсенгелди Жумадилович, PhD", role: "Кеңештин мүчөсү" },
+    { name: "Абдылдаев Рысбек Алдагандаевич, мед. илимд. докт., профессор", role: "Кеңештин мүчөсү" },
+    { name: "Атиканов Арыстанбек Орозалиевич, мед. илимд. докт., профессор", role: "Кеңештин мүчөсү" }
+  ]);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -186,7 +162,7 @@ const ScientificTechnicalCouncil = () => {
               className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors group"
             >
               <FaArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" />
-              {getString('science1.management.scientificCouncil.back', 'Back to Management')}
+              {getString('science.management.scientificCouncil.back', kyrgyzFallbacks.back)}
             </Link>
 
             <motion.div
@@ -196,7 +172,7 @@ const ScientificTechnicalCouncil = () => {
             >
               <div className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-4">
                 <span className="text-white/90 text-sm font-medium">
-                  {getString('science1.management.scientificCouncil.badge', 'Scientific Coordination')}
+                  {getString('science.management.scientificCouncil.badge', kyrgyzFallbacks.badge)}
                 </span>
               </div>
               <h1 className="text-5xl font-bold text-white mb-4">
@@ -225,7 +201,7 @@ const ScientificTechnicalCouncil = () => {
               <FaFileAlt className="text-white text-xl" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">
-              {getString('science1.management.scientificCouncil.generalTitle', 'General Provisions')}
+              {getString('science.management.scientificCouncil.generalTitle', kyrgyzFallbacks.generalTitle)}
             </h2>
           </div>
           <p className="text-gray-700 text-lg leading-relaxed">
@@ -246,16 +222,15 @@ const ScientificTechnicalCouncil = () => {
               <FaClipboardCheck className="text-white text-xl" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">
-              {getString('science1.management.scientificCouncil.goalsTitle', 'Goals and Objectives')}
+              {getString('science.management.scientificCouncil.goalsTitle', kyrgyzFallbacks.goalsTitle)}
             </h2>
           </div>
           <p className="text-gray-700 text-lg leading-relaxed mb-8">
-            {getString('science1.management.scientificCouncil.goalsText', 
-              'The purpose of the STC is to organize and coordinate activities in considering issues related to the implementation of state policy in the field of science and technology, development and improvement of the level of research conducted at departments and other departments.')}
+            {getString('science.management.scientificCouncil.goalsText', kyrgyzFallbacks.goalsText)}
           </p>
 
           <h3 className="text-2xl font-bold text-gray-900 mb-6">
-            {getString('science1.management.scientificCouncil.tasksTitle', 'Main Tasks')}
+            {getString('science.management.scientificCouncil.tasksTitle', kyrgyzFallbacks.tasksTitle)}
           </h3>
           <div className="space-y-4">
             {tasks.map((task, index) => (
@@ -291,14 +266,14 @@ const ScientificTechnicalCouncil = () => {
               <FaUsers className="text-white text-xl" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">
-              {getString('science1.management.scientificCouncil.compositionTitle', 'Council Composition')}
+              {getString('science.management.scientificCouncil.compositionTitle', kyrgyzFallbacks.compositionTitle)}
             </h2>
           </div>
           
           <div className="grid md:grid-cols-2 gap-6">
             {members.map((member, index) => {
               const memberName = typeof member === 'string' ? member : member.name || member.title;
-              const memberRole = typeof member === 'string' ? getString('science1.management.scientificCouncil.members.0.role', 'Council Member') : member.role || getString('science1.management.scientificCouncil.members.0.role', 'Council Member');
+              const memberRole = typeof member === 'string' ? 'Кеңештин мүчөсү' : member.role || 'Кеңештин мүчөсү';
               
               return (
                 <motion.div
@@ -315,11 +290,6 @@ const ScientificTechnicalCouncil = () => {
                   <span className="inline-block px-3 py-1 bg-gradient-to-r from-[#023E8A]/10 to-[#0077B6]/10 text-[#023E8A] rounded-full text-sm font-medium">
                     {memberRole}
                   </span>
-                  <p className="text-gray-700">
-                    {typeof member === 'string'
-                      ? ''
-                      : (member && (member.description || member.desc || rstr(`science1.management.scientificCouncil.member${index + 1}Desc`, '')))}
-                  </p>
                 </motion.div>
               );
             })}
@@ -339,11 +309,11 @@ const ScientificTechnicalCouncil = () => {
               <div className="flex items-center mb-3">
                 <FaDownload className="text-2xl mr-3" />
                 <h3 className="text-2xl font-bold">
-                  {getString('science1.management.scientificCouncil.downloadTitle', 'Full Version of Regulations')}
+                  {getString('science.management.scientificCouncil.downloadTitle', kyrgyzFallbacks.downloadTitle)}
                 </h3>
               </div>
               <p className="text-white/90 text-lg">
-                {getString('science1.management.scientificCouncil.downloadDesc', 'Download the complete document about the Scientific and Technical Council')}
+                {getString('science.management.scientificCouncil.downloadDesc', kyrgyzFallbacks.downloadDesc)}
               </p>
             </div>
             <motion.a
@@ -355,7 +325,7 @@ const ScientificTechnicalCouncil = () => {
               className="bg-white text-[#023E8A] px-8 py-4 rounded-xl font-bold text-lg hover:shadow-xl transition-all flex items-center gap-2 whitespace-nowrap"
             >
               <FaDownload />
-              {getString('science1.management.scientificCouncil.downloadBtn', 'Download PDF')}
+              {getString('science.management.scientificCouncil.downloadBtn', kyrgyzFallbacks.downloadBtn)}
             </motion.a>
           </div>
         </motion.div>

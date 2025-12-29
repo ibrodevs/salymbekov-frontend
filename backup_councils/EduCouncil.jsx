@@ -74,10 +74,10 @@ const QualityCouncilPage = () => {
       content: (
         <div className="space-y-4">
           <p className="text-gray-700 leading-relaxed">
-            {t('qualityCouncil.provisionsText1')}
+            {t('qualityCouncil.provisionxt1')}
           </p>
           <p className="text-gray-700 leading-relaxed">
-            {t('qualityCouncil.provisionsText2')}
+            {t('qualityCouncil.provisionxt2')}
           </p>
         </div>
       )

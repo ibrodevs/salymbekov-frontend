@@ -503,13 +503,7 @@ const FinancialDept = () => {
                     <p className="text-gray-600 mb-6">
                       {t('financial.scholarships.description')}
                     </p>
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-8 py-3 rounded-2xl font-semibold"
-                    >
-                      {t('financial.scholarships.applyButton')}
-                    </motion.button>
+                   
                   </div>
                 </motion.div>
               )}
@@ -632,22 +626,7 @@ const FinancialDept = () => {
               </motion.div>
 
               <div className="flex gap-3 mt-6">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex-1 bg-white text-[#023E8A] py-3 rounded-xl font-semibold flex items-center justify-center gap-2"
-                >
-                  <FaDownload />
-                  {t('financial.contact.download')}
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex-1 border-2 border-white text-white py-3 rounded-xl font-semibold flex items-center justify-center gap-2"
-                >
-                  <FaPrint />
-                  {t('financial.contact.print')}
-                </motion.button>
+                
               </div>
             </div>
           </motion.div>

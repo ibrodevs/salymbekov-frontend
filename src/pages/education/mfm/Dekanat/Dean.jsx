@@ -65,7 +65,7 @@ const MedicalFacultyDeaneryPage = () => {
         hours: t('medicalFacultyDeanery.leadership.dean.contact.hours')
       },
       social: {
-        linkedin: '#'
+        
       }
     },
     {
@@ -328,15 +328,7 @@ const MedicalFacultyDeaneryPage = () => {
                             </div>
                           </div>
 
-                          {/* Социальные сети */}
-                          <motion.a
-                            href={leader.social.linkedin}
-                            whileHover={{ scale: 1.1 }}
-                            className="inline-flex items-center gap-2 bg-gray-100 text-[#023E8A] px-4 py-2 rounded-xl hover:bg-[#023E8A] hover:text-white transition-all duration-300"
-                          >
-                            <FaLinkedin />
-                            LinkedIn
-                          </motion.a>
+                          
                         </div>
                       </div>
 
@@ -426,52 +418,15 @@ const MedicalFacultyDeaneryPage = () => {
                   {t('medicalFacultyDeanery.contactForm.description')}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <motion.a
-                    href="tel:+996312345678"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="bg-white text-[#023E8A] px-6 py-3 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3"
-                  >
-                    <FaPhone />
-                    {t('medicalFacultyDeanery.contactForm.call')}
-                  </motion.a>
-                  <motion.a
-                    href="mailto:dean@salymbekov.com"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="border-2 border-white text-white px-6 py-3 rounded-2xl font-semibold hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-3"
-                  >
-                    <FaEnvelope />
-                    {t('medicalFacultyDeanery.contactForm.email')}
-                  </motion.a>
+                  
+                
                 </div>
               </motion.div>
             </motion.div>
           )}
         </div>
 
-        {/* Призыв к действию */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-          className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-3xl p-12 text-center text-white"
-        >
-          <h2 className="text-4xl font-bold mb-4">
-            {t('medicalFacultyDeanery.cta.title')}
-          </h2>
-          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            {t('medicalFacultyDeanery.cta.description')}
-          </p>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-white text-[#023E8A] px-8 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-          >
-            {t('medicalFacultyDeanery.cta.button')}
-          </motion.button>
-        </motion.div>
+       
       </div>
     </div>
   );

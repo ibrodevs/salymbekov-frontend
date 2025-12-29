@@ -356,63 +356,7 @@ const MobileDevelopmentPage = () => {
 
        
 
-        {/* Другие программы */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.9 }}
-          className="mb-16"
-        >
-          <div className="bg-white rounded-3xl shadow-lg border border-gray-200 p-8">
-            <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
-              {t('mobileDevelopment.otherPrograms.title')}
-            </h2>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.button 
-                onClick={() => navigate('/education/itCollege/specialties/diplom-computer-science')}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white rounded-2xl hover:shadow-xl transition-all duration-300 text-lg font-semibold shadow-lg flex items-center gap-3"
-              >
-                <FaCode />
-                {t('mobileDevelopment.otherPrograms.button1')}
-              </motion.button>
-              <motion.button 
-                onClick={() => navigate('/education/itCollege/specialties/diplom-mobile-computing')}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-[#0096C7] to-[#00B4D8] text-white rounded-2xl hover:shadow-xl transition-all duration-300 text-lg font-semibold shadow-lg flex items-center gap-3"
-              >
-                <FaMobile />
-                {t('mobileDevelopment.otherPrograms.button2')}
-              </motion.button>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Призыв к действию */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 1.0 }}
-          className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-3xl p-12 text-center text-white"
-        >
-          <h2 className="text-4xl font-bold mb-4">
-            {t('mobileDevelopment.cta.title')}
-          </h2>
-          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            {t('mobileDevelopment.cta.description')}
-          </p>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-white text-[#023E8A] px-8 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-          >
-            {t('mobileDevelopment.cta.button')}
-          </motion.button>
-        </motion.div>
+      
       </div>
     </div>
   );

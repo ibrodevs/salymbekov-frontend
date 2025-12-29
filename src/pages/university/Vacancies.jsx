@@ -393,29 +393,11 @@ const Vacancies = () => {
                         </div>
                       </div>
 
-                      <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white py-3 px-6 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-                      >
-                        {t('vacancies.apply')}
-                      </motion.button>
+                     
 
                       <div className="flex gap-2">
-                        <motion.button
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.9 }}
-                          className="flex-1 bg-gray-100 text-gray-600 py-2 rounded-xl hover:bg-gray-200 transition-colors duration-300 flex items-center justify-center"
-                        >
-                          <FaBookmark />
-                        </motion.button>
-                        <motion.button
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.9 }}
-                          className="flex-1 bg-gray-100 text-gray-600 py-2 rounded-xl hover:bg-gray-200 transition-colors duration-300 flex items-center justify-center"
-                        >
-                          <FaShare />
-                        </motion.button>
+                        
+                      
                       </div>
 
                       <motion.button
@@ -493,38 +475,7 @@ const Vacancies = () => {
           </div>
         </motion.div>
 
-        {/* Призыв к действию */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-          className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-3xl p-12 text-center text-white"
-        >
-          <h2 className="text-4xl font-bold mb-4">
-            {t('vacancies.cta.title')}
-          </h2>
-          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            {t('vacancies.cta.description')}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-white text-[#023E8A] px-8 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3"
-            >
-              {t('vacancies.cta.applyNow')}
-              <FaArrowRight />
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="border-2 border-white text-white px-8 py-4 rounded-2xl font-semibold hover:bg-white/10 transition-all duration-300"
-            >
-              {t('vacancies.cta.learnMore')}
-            </motion.button>
-          </div>
-        </motion.div>
+       
       </div>
     </div>
   );

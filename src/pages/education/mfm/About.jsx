@@ -356,13 +356,7 @@ const MedicalFaculty = () => {
               {t('medicalFaculty.cta.visitSite')}
               <FaArrowRight />
             </motion.a>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="border-2 border-white text-white px-8 py-4 rounded-2xl font-semibold hover:bg-white/10 transition-all duration-300"
-            >
-              {t('medicalFaculty.cta.contact')}
-            </motion.button>
+           
           </div>
         </motion.div>
       </div>

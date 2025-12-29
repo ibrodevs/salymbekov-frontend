@@ -286,13 +286,7 @@ const ManagementDept = () => {
                       <FaCalendarAlt />
                       {goal.timeline}
                     </span>
-                    <motion.button
-                      whileHover={{ x: 5 }}
-                      className="flex items-center gap-1 text-[#023E8A] font-semibold"
-                    >
-                      {t('management.learnMore')}
-                      <FaArrowRight className="text-xs" />
-                    </motion.button>
+                    
                   </div>
                 </motion.div>
               ))}
@@ -549,13 +543,7 @@ const ManagementDept = () => {
               <p className="text-gray-600 mb-6">
                 {t('management.joinTeam.description')}
               </p>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-8 py-3 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                {t('management.joinTeam.button')}
-              </motion.button>
+              
             </div>
           </motion.div>
         </motion.div>

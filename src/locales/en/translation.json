@@ -2693,7 +2693,7 @@
       "print": "Print"
     }
   },
-  "science": {
+  "scienceUniversity": {
     "main": {
       "badge": "Scientific Activity",
       "title": "Science",
@@ -16555,6 +16555,65 @@
       "title": "Photo Gallery",
       "photosCount": "photos",
       "photoAlt": "Knowledge Caravan in Osh City"
+    }
+  },
+  "aboutBusinessSchool": {
+    "badge": "Business School",
+    "title": "Salymbekov Business School",
+    "subtitle": "Unique educational center of modern additional education",
+    "stats": {
+      "graduates": "Graduates",
+      "programs": "Programs",
+      "languages": "Languages",
+      "years": "Years of experience"
+    },
+    "founder": {
+      "title": "Founder of Business School",
+      "description": "Askar Maatkabilovich Salymbekov with graduates of 'Young Leaders of Kyrgyzstan' - founder of a unique educational platform creating a new generation of the country's leaders."
+    },
+    "school": {
+      "title": "About Business School",
+      "description1": "Salymbekov Business School is a unique educational center that provides modern additional education to all segments of the population through its own public schools and special courses conducted according to a specially developed curriculum with a unique methodology of comprehensive trainings and motivational classes.",
+      "description2": "Our unique educational projects, unparalleled in the Kyrgyz Republic, were specifically designed to cultivate an educated new generation according to modern standards, where everyone could master three or more languages perfectly."
+    },
+    "mission": {
+      "title": "Mission",
+      "description": "The mission of the school is to provide quality services in five main areas that cover preschool education, elementary school students, middle and high school students, students and youth, as well as those who strive to learn foreign languages in a short period of time."
+    },
+    "programs": {
+      "title": "Training Directions",
+      "subtitle": "Comprehensive educational programs for all age groups",
+      "preschool": {
+        "title": "Preschool Education",
+        "description": "Early development and school preparation for the youngest"
+      },
+      "school": {
+        "title": "School Students",
+        "description": "Programs for elementary, middle and high school"
+      },
+      "youth": {
+        "title": "Students and Youth",
+        "description": "Leadership programs and career guidance"
+      },
+      "languages": {
+        "title": "Foreign Languages",
+        "description": "Intensive study of three or more languages"
+      }
+    },
+    "success": {
+      "title": "Success of Our Graduates",
+      "description": "We can proudly say that our educational projects have stood the test of time and helped thousands of our citizens obtain education that is in demand in the modern world.",
+      "entrepreneurship": "Entrepreneurship",
+      "production": "Production",
+      "creativity": "Creativity",
+      "science": "Science",
+      "showbusiness": "Show Business"
+    },
+    "cta": {
+      "title": "Become Part of Our Community",
+      "description": "Join Salymbekov Business School and start your path to success",
+      "apply": "Apply Now",
+      "learnMore": "Learn More"
     }
   }
 }

@@ -390,12 +390,7 @@ const ITDepartmentPage = () => {
                           alt={teacher.name}
                           className="w-full h-auto rounded-2xl shadow-md group-hover:shadow-lg transition-all duration-300"
                         />
-                        {teacher.featured && (
-                          <span className="absolute top-4 left-4 inline-flex items-center gap-1 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-3 py-1 rounded-full text-sm font-semibold">
-                            <FaAward className="text-xs" />
-                            {t('itDepartment.featured')}
-                          </span>
-                        )}
+                       
                       </motion.div>
 
                       <div className="text-center mt-6">
@@ -429,28 +424,6 @@ const ITDepartmentPage = () => {
           </div>
         </motion.div>
 
-        {/* Призыв к действию */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-3xl p-12 text-center text-white"
-        >
-          <h2 className="text-4xl font-bold mb-4">
-            {t('itDepartment.cta.title')}
-          </h2>
-          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            {t('itDepartment.cta.description')}
-          </p>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-white text-[#023E8A] px-8 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-          >
-            {t('itDepartment.cta.button')}
-          </motion.button>
-        </motion.div>
       </div>
     </div>
   );

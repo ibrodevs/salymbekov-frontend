@@ -379,38 +379,7 @@ const Smartik = () => {
           </div>
         </motion.div>
 
-        {/* Призыв к действию */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.9 }}
-          className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-3xl p-8 md:p-12 text-center text-white"
-        >
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
-            {t('smartik.cta.title')}
-          </h2>
-          <p className="text-lg md:text-xl mb-6 md:mb-8 opacity-90 max-w-2xl mx-auto">
-            {t('smartik.cta.description')}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-white text-[#023E8A] px-6 md:px-8 py-3 md:py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3"
-            >
-              {t('smartik.cta.enroll')}
-              <FaArrowRight />
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="border-2 border-white text-white px-6 md:px-8 py-3 md:py-4 rounded-2xl font-semibold hover:bg-white/10 transition-all duration-300"
-            >
-              {t('smartik.cta.learnMore')}
-            </motion.button>
-          </div>
-        </motion.div>
+       
       </div>
     </div>
   );

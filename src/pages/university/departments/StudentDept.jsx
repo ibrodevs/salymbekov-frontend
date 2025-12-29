@@ -553,14 +553,7 @@ const StudentDept = () => {
                           ))}
                         </ul>
 
-                        <motion.button
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                          className="w-full bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white py-2 rounded-xl font-semibold flex items-center justify-center gap-2"
-                        >
-                          {t('studentDept.clubs.join')}
-                          <FaArrowRight className="text-sm" />
-                        </motion.button>
+                      
                       </motion.div>
                     ))}
                   </div>
@@ -612,13 +605,7 @@ const StudentDept = () => {
                           </div>
                         </div>
                         <div className="text-right">
-                          <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-2 rounded-xl font-semibold flex items-center gap-2 lg:justify-end"
-                          >
-                            {t('studentDept.events.register')}
-                            <FaArrowRight className="text-xs" />
-                          </motion.button>
+                         
                         </div>
                       </motion.div>
                     ))}
@@ -779,14 +766,7 @@ const StudentDept = () => {
                 </p>
               </div>
 
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-full bg-white text-[#023E8A] py-3 rounded-xl font-semibold hover:bg-gray-100 transition-colors flex items-center justify-center gap-2 mt-6"
-              >
-                <FaComments />
-                {t('studentDept.contact.appointment')}
-              </motion.button>
+              
             </div>
           </motion.div>
         </motion.div>

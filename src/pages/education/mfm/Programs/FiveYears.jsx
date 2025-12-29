@@ -401,41 +401,7 @@ const GeneralMedicinePage = () => {
           </div>
         </motion.div>
 
-        {/* Призыв к действию */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.9 }}
-          className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-3xl p-12 text-center text-white"
-        >
-          <h2 className="text-4xl font-bold mb-4">
-            {t('generalMedicine.cta.title')}
-          </h2>
-          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            {t('generalMedicine.cta.description')}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <motion.a
-              href="https://salymbekov.com/wp-content/uploads/2024/01/curriculum-general-medicine.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-white text-[#023E8A] px-8 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3"
-            >
-              {t('generalMedicine.cta.downloadPlan')}
-              <FaDownload />
-            </motion.a>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="border-2 border-white text-white px-8 py-4 rounded-2xl font-semibold hover:bg-white/10 transition-all duration-300"
-            >
-              {t('generalMedicine.cta.contact')}
-            </motion.button>
-          </div>
-        </motion.div>
+       
       </div>
     </div>
   );

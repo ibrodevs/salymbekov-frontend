@@ -165,8 +165,8 @@ const InternationalDept = () => {
 
   const tabs = [
     { id: "global", label: t('international.tabs.global'), icon: <FaGlobeAmericas /> },
-    { id: "programs", label: t('international.tabs.programs'), icon: <FaRocket /> },
-    { id: "partners", label: t('international.tabs.partners'), icon: <FaHandshake /> }
+    { id: "programs", label: t('international.tabs.programs'), icon: <FaRocket /> }
+   
   ];
 
   const renderTabContent = () => {
@@ -284,13 +284,7 @@ const InternationalDept = () => {
                       </div>
                     </div>
 
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-3 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 whitespace-nowrap"
-                    >
-                      {t('international.applyNow')}
-                    </motion.button>
+                    
                   </div>
                 </motion.div>
               ))}
@@ -576,13 +570,7 @@ const InternationalDept = () => {
               <p className="text-gray-600 mb-6">
                 {t('international.joinTeam.description')}
               </p>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-8 py-3 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                {t('international.joinTeam.button')}
-              </motion.button>
+             
             </div>
           </motion.div>
         </motion.div>

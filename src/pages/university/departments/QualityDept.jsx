@@ -457,13 +457,7 @@ const QualityDept = () => {
                           ))}
                         </ul>
 
-                        <motion.button
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                          className="w-full border-2 border-[#023E8A] text-[#023E8A] py-2 rounded-xl font-semibold hover:bg-[#023E8A] hover:text-white transition-colors"
-                        >
-                          {getTranslation('quality.standards.details', 'Подробнее')}
-                        </motion.button>
+                        
                       </motion.div>
                     ))}
                   </div>
@@ -517,13 +511,7 @@ const QualityDept = () => {
                         </div>
                         <div className="text-right">
                           <div className="text-gray-800 font-bold text-lg">{audit.date}</div>
-                          <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            className="text-[#023E8A] text-sm font-semibold mt-2 flex items-center gap-1 lg:justify-end"
-                          >
-                            {getTranslation('quality.audit.report', 'Отчет')}
-                            <FaArrowRight className="text-xs" />
-                          </motion.button>
+                          
                         </div>
                       </motion.div>
                     ))}
@@ -650,14 +638,7 @@ const QualityDept = () => {
               ))}
             </div>
 
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="w-full mt-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white py-3 rounded-xl font-semibold flex items-center justify-center gap-2"
-            >
-              <FaDownload />
-              {getTranslation('quality.certifications.downloadAll', 'Скачать все сертификаты')}
-            </motion.button>
+            
           </motion.div>
 
           {/* Контактная информация */}
@@ -717,14 +698,7 @@ const QualityDept = () => {
                 </div>
               </motion.div>
 
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-full bg-white text-[#023E8A] py-3 rounded-xl font-semibold hover:bg-gray-100 transition-colors flex items-center justify-center gap-2 mt-6"
-              >
-                <FaSearch />
-                {getTranslation('quality.contact.consultation', 'Запрос на консультацию')}
-              </motion.button>
+              
             </div>
           </motion.div>
         </motion.div>

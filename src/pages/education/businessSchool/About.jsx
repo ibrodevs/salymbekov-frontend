@@ -41,37 +41,37 @@ const About = () => {
   const programs = [
     {
       icon: <FaChild className="text-white" size={24} />,
-      title: t('about.programs.preschool.title'),
-      description: t('about.programs.preschool.description'),
+      title: t('aboutBusinessSchool.programs.preschool.title'),
+      description: t('aboutBusinessSchool.programs.preschool.description'),
       color: "bg-[#023E8A]"
     },
     {
       icon: <FaGraduationCap className="text-white" size={24} />,
-      title: t('about.programs.school.title'),
-      description: t('about.programs.school.description'),
+      title: t('aboutBusinessSchool.programs.school.title'),
+      description: t('aboutBusinessSchool.programs.school.description'),
       color: "bg-[#0077B6]"
     },
     {
       icon: <FaUsers className="text-white" size={24} />,
-      title: t('about.programs.youth.title'),
-      description: t('about.programs.youth.description'),
+      title: t('aboutBusinessSchool.programs.youth.title'),
+      description: t('aboutBusinessSchool.programs.youth.description'),
       color: "bg-[#0096C7]"
     },
     {
       icon: <FaLanguage className="text-white" size={24} />,
-      title: t('about.programs.languages.title'),
-      description: t('about.programs.languages.description'),
+      title: t('aboutBusinessSchool.programs.languages.title'),
+      description: t('aboutBusinessSchool.programs.languages.description'),
       color: "bg-[#00B4D8]"
     }
   ];
 
   // Успехи выпускников
   const successAreas = [
-    { area: t('about.success.entrepreneurship'), icon: <FaChartLine /> },
-    { area: t('about.success.production'), icon: <FaRocket /> },
-    { area: t('about.success.creativity'), icon: <FaLightbulb /> },
-    { area: t('about.success.science'), icon: <FaGraduationCap /> },
-    { area: t('about.success.showbusiness'), icon: <FaStar /> }
+    { area: t('aboutBusinessSchool.success.entrepreneurship'), icon: <FaChartLine /> },
+    { area: t('aboutBusinessSchool.success.production'), icon: <FaRocket /> },
+    { area: t('aboutBusinessSchool.success.creativity'), icon: <FaLightbulb /> },
+    { area: t('aboutBusinessSchool.success.science'), icon: <FaGraduationCap /> },
+    { area: t('aboutBusinessSchool.success.showbusiness'), icon: <FaStar /> }
   ];
 
   return (
@@ -120,14 +120,14 @@ const About = () => {
             className="inline-flex items-center gap-3 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-3 rounded-full mb-6"
           >
             <FaUniversity className="text-xl" />
-            <span className="font-semibold">{t('about.badge')}</span>
+            <span className="font-semibold">{t('aboutBusinessSchool.badge')}</span>
           </motion.div>
 
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
-            {t('about.title')}
+            {t('aboutBusinessSchool.title')}
           </h1>
           <p className="text-lg md:text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            {t('about.subtitle')}
+            {t('aboutBusinessSchool.subtitle')}
           </p>
         </motion.div>
 
@@ -176,7 +176,7 @@ const About = () => {
               className="bg-white rounded-3xl p-6 md:p-8 shadow-lg border border-gray-200"
             >
               <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
-                {t('about.founder.title')}
+                {t('aboutBusinessSchool.founder.title')}
               </h2>
               <div className="aspect-w-16 aspect-h-12 mb-4">
                 <img 
@@ -186,7 +186,7 @@ const About = () => {
                 />
               </div>
               <p className="text-gray-600 leading-relaxed">
-                {t('about.founder.description')}
+                {t('aboutBusinessSchool.founder.description')}
               </p>
             </motion.div>
 
@@ -199,13 +199,13 @@ const About = () => {
             >
               <div className="bg-white rounded-3xl p-6 md:p-8 shadow-lg border border-gray-200">
                 <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-4">
-                  {t('about.school.title')}
+                  {t('aboutBusinessSchool.school.title')}
                 </h3>
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  {t('about.school.description1')}
+                  {t('aboutBusinessSchool.school.description1')}
                 </p>
                 <p className="text-gray-600 leading-relaxed">
-                  {t('about.school.description2')}
+                  {t('aboutBusinessSchool.school.description2')}
                 </p>
               </div>
 
@@ -218,10 +218,10 @@ const About = () => {
               >
                 <div className="flex items-center gap-3 mb-4">
                   <FaHeart className="text-xl" />
-                  <h3 className="text-xl md:text-2xl font-bold">{t('about.mission.title')}</h3>
+                  <h3 className="text-xl md:text-2xl font-bold">{t('aboutBusinessSchool.mission.title')}</h3>
                 </div>
                 <p className="leading-relaxed opacity-90">
-                  {t('about.mission.description')}
+                  {t('aboutBusinessSchool.mission.description')}
                 </p>
               </motion.div>
             </motion.div>
@@ -238,10 +238,10 @@ const About = () => {
         >
           <div className="text-center mb-8 md:mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-              {t('about.programs.title')}
+              {t('aboutBusinessSchool.programs.title')}
             </h2>
             <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
-              {t('about.programs.subtitle')}
+              {t('aboutBusinessSchool.programs.subtitle')}
             </p>
           </div>
 
@@ -280,10 +280,10 @@ const About = () => {
           <div className="bg-white rounded-3xl p-6 md:p-8 shadow-lg border border-gray-200">
             <div className="text-center mb-6 md:mb-8">
               <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-3">
-                {t('about.success.title')}
+                {t('aboutBusinessSchool.success.title')}
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                {t('about.success.description')}
+                {t('aboutBusinessSchool.success.description')}
               </p>
             </div>
 
@@ -308,38 +308,7 @@ const About = () => {
           </div>
         </motion.div>
 
-        {/* Призыв к действию */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.9 }}
-          className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-3xl p-8 md:p-12 text-center text-white"
-        >
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
-            {t('about.cta.title')}
-          </h2>
-          <p className="text-lg md:text-xl mb-6 md:mb-8 opacity-90 max-w-2xl mx-auto">
-            {t('about.cta.description')}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-white text-[#023E8A] px-6 md:px-8 py-3 md:py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3"
-            >
-              {t('about.cta.apply')}
-              <FaArrowRight />
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="border-2 border-white text-white px-6 md:px-8 py-3 md:py-4 rounded-2xl font-semibold hover:bg-white/10 transition-all duration-300"
-            >
-              {t('about.cta.learnMore')}
-            </motion.button>
-          </div>
-        </motion.div>
+       
       </div>
     </div>
   );

@@ -1362,7 +1362,7 @@
       "consultation": "Запросить консультацию"
     }
   },
-  "science": {
+  "scienceUniversity": {
     "main": {
       "badge": "Научная деятельность",
       "title": "Наука",
@@ -6301,7 +6301,7 @@
       }
     }
   },
-  "about": {
+  "aboutBusinessSchool": {
     "badge": "Бизнес Школа",
     "title": "Salymbekov Business School",
     "subtitle": "Уникальный образовательный центр современного дополнительного образования",

@@ -14859,125 +14859,6 @@
       "International experience in IT industry"
     ]
   },
-  "generalEducation": {
-    "badge": "General Education",
-    "title": "General Education Department",
-    "subtitle": "Fundamental preparation for successful future in any profession",
-    "stats": {
-      "teachers": "Teachers",
-      "students": "Students per year",
-      "subjects": "Disciplines",
-      "success": "Academic performance"
-    },
-    "department": {
-      "title": "General Education Department",
-      "content": "<strong>General Education Department</strong> is the fundamental foundation of the entire educational process in our college. We provide quality training for students in basic general education disciplines that form the basis for subsequent professional education.\n\nOur department brings together experienced teachers who not only transfer knowledge but also cultivate critical thinking, analytical skills, and love for learning in students.\n\n<strong>We strive</strong> to create an environment where every student can unlock their potential, develop intellectual abilities, and prepare for successful mastery of professional disciplines."
-    },
-    "features": {
-      "title": "Our Advantages",
-      "subtitle": "Comprehensive approach to general education",
-      "foundation": {
-        "title": "Fundamental Knowledge",
-        "description": "Deep study of core disciplines for solid educational foundation"
-      },
-      "individual": {
-        "title": "Individual Approach",
-        "description": "Considering each student's characteristics and personalized support"
-      },
-      "modern": {
-        "title": "Modern Methods",
-        "description": "Using innovative educational technologies and approaches"
-      },
-      "practical": {
-        "title": "Practical Orientation",
-        "description": "Connecting theoretical knowledge with real-life situations"
-      }
-    },
-    "headOfDepartment": {
-      "name": "Batrakeyeva Gulina",
-      "position": "Head of General Education Department",
-      "experience": "Work experience: 15+ years",
-      "education": "Higher pedagogical education",
-      "text": "<strong>Dear students and colleagues!</strong>\n\nI am pleased to welcome you to the General Education Department of our college. Our team of teachers consists of highly qualified specialists who genuinely love their work and strive to share their knowledge with students.\n\n<strong>Our mission</strong> is not just to give you knowledge in general education disciplines, but to teach you to think critically, analyze information, and independently acquire new knowledge. We believe that quality general education is the foundation for successful professional growth in any field.\n\nWe create a friendly and supportive atmosphere where every student can ask questions, express their opinions, and develop their abilities."
-    },
-    "teachers": {
-      "title": "Our Teachers",
-      "subtitle": "Professionals with extensive experience and love for teaching",
-      "achievements": "Achievements and Awards",
-      "teacher1": {
-        "name": "Alidzharova Mukaddas Zhuldashevna",
-        "subject": "Mathematics",
-        "experience": "Experience: 12 years",
-        "text": "<strong>Mathematics</strong> is not just numbers and formulas, it is the language spoken by the entire Universe. In my classes, I try to show students the beauty and logic of mathematical thinking.\n\nI am convinced that mathematics develops not only computational skills but also logical thinking, analytical abilities, and problem-solving skills. These skills will be useful in any profession and in everyday life.\n\n<strong>My approach</strong> to teaching is based on understanding, not memorization. I help students see connections between different mathematical concepts and apply them in practice.",
-        "achievements": [
-          "Winner of 'Teacher of the Year' competition",
-          "Author of mathematics methodological guides",
-          "Preparation of olympiad winners"
-        ]
-      },
-      "teacher2": {
-        "name": "Arykov Daniyar Kanybekovich",
-        "subject": "Physics",
-        "experience": "Experience: 10 years",
-        "text": "<strong>Physics</strong> helps understand the fundamental laws by which our world exists. My goal is to make this subject interesting and accessible to every student.\n\nIn classes, we not only study theory but also conduct experiments, solve practical problems, and discuss modern scientific discoveries. I consider it important to show students how physical laws work in everyday life and modern technologies.\n\n<strong>Modern physics</strong> is an amazing world full of discoveries and opportunities for creative thinking.",
-        "achievements": [
-          "Developer of interactive laboratory works",
-          "Expert in STEM education",
-          "Participant of international conferences"
-        ]
-      },
-      "teacher3": {
-        "name": "Kurbanbayeva Nurgul Toktoshevna",
-        "subject": "Chemistry",
-        "experience": "Experience: 14 years",
-        "text": "<strong>Chemistry</strong> is the science of substances and their transformations that surrounds us everywhere. From cooking to the latest medical drugs - chemistry is present everywhere.\n\nMy classes are built on a combination of theory and practice. We conduct interesting experiments, study properties of substances and their interactions. Special attention is paid to safety and environmental responsibility.\n\n<strong>I strive</strong> to develop scientific thinking in students and understanding of chemical processes that occur in the world around us.",
-        "achievements": [
-          "Author of chemistry curricula",
-          "Organizer of scientific projects",
-          "Professional development abroad"
-        ]
-      },
-      "teacher4": {
-        "name": "Mazekova Nazgul Zholochievna",
-        "subject": "Biology",
-        "experience": "Experience: 11 years",
-        "text": "<strong>Biology</strong> is the science of life in all its diversity. Studying biology, we explore the amazing world of living organisms and understand our place in nature.\n\nIn my classes, students get acquainted with cell structure, organism functioning, and ecological relationships. We use microscopes, study herbariums, and discuss modern biotechnologies.\n\n<strong>Special attention</strong> is paid to environmental protection and sustainable development, which is especially relevant in the modern world.",
-        "achievements": [
-          "Head of environmental club",
-          "Developer of field practices",
-          "Participant of environmental projects"
-        ]
-      },
-      "teacher5": {
-        "name": "Pirimbaeya Zharkyn Zhusupzhanovna",
-        "subject": "History",
-        "experience": "Experience: 13 years",
-        "text": "<strong>History</strong> is not just a list of dates and events, it is an exciting journey into the past that helps understand the present and foresee the future.\n\nIn my classes, I try to bring history to life through stories about people, document analysis, and discussion of alternative viewpoints. We study not only political events but also culture, economy, and everyday life of different eras.\n\n<strong>My goal</strong> is to develop historical thinking in students, critical attitude towards information, and understanding of the world's cultural diversity.",
-        "achievements": [
-          "Author of local history research",
-          "Organizer of historical quests",
-          "Expert in history teaching methodology"
-        ]
-      },
-      "teacher7": {
-        "name": "Toktoraliev Zherkinbek Torobekovich",
-        "subject": "Computer Science",
-        "experience": "Experience: 9 years",
-        "text": "<strong>Computer Science</strong> in the modern world has become as necessary as reading and writing. I teach students not just to use computers, but to understand their working principles and create their own digital solutions.\n\nIn classes, we study algorithms, programming, data work, and cybersecurity basics. Special attention is paid to developing computational thinking - a skill that will be useful in any profession.\n\n<strong>Modern technologies</strong> are developing rapidly, and my task is to prepare students for life in the digital world, teach them to adapt to new technologies and use them to solve practical problems.",
-        "achievements": [
-          "Developer of educational IT projects",
-          "Hackathon winner",
-          "Microsoft certified specialist"
-        ]
-      }
-    },
-    "cta": {
-      "title": "Want to learn more?",
-      "description": "Contact us for detailed information about general education programs",
-      "contact": "Contact the Department",
-      "learnMore": "Learn about programs"
-    }
-  },
   "studentDept": {
     "badge": "Студенттик бөлүм",
     "title": "Студенттик жашоо",
@@ -18825,6 +18706,729 @@
       "title": "Фотогалерея",
       "photosCount": "фото",
       "photoAlt": "Билим кербени Ош шаарында"
+    }
+  },
+  "scienceUniversity": {
+    "main": {
+      "badge": "Илимий ишмердик",
+      "title": "Илим",
+      "subtitle": "Инновациялар, изилдөөлөр, өнүктүрүү",
+      "stats": {
+        "publications": "Жарыяланган эмгектер",
+        "labs": "Лабораториялар",
+        "projects": "Долбоорлор",
+        "researchers": "Изилдөөчүлөр"
+      },
+      "greeting": {
+        "title": "Илимий бөлүмгө кош келиңиз",
+        "p1": "Университеттеги илимий иш – бул профессор-окутуучу курамынын, магистранттардын, аспиранттардын, талапкерлердин жана студенттердин кызматкерлер менен окуучуларда изилдөөчүлүк тибиндеги ой жүгүртүүнү калыптандырууга жана өнүктүрүүгө, өзгөчө медициналык, гуманитардык, социалдык-экономикалык, педагогикалык жана башка негизги жана колдонмо маселелерди чечүүгө багытталган ишмердиги.",
+        "p2": "Илимий иш жетекчилик курамынын жана профессор-окутуучу курамынын негизги ишмердиктеринин бири болуп саналат. Ал изилденүүчү дисциплиналардын теориялык негиздерин андан ары өнүктүрүү, окутуу, методдук жана илимий иштердин органдык биримдигин камсыз кылуу, бүтүндөй билим берүү процессин жакшыртуу кызыкчылыгында жүзөгө ашырылат.",
+        "p3": "Илимий иштин багыты коомдук өнүктүрүүнүн учурку баскычынын муктаждыктарына жооп берүүсү керек, Университеттин жана анын структуралык бөлүмдөрүнүн профилине ылайык келүүсү керек, профессор-окутуучу курамынын жана студенттердин чыгармачылык жөндөмүн толук жүзөгө ашырууга өбөлгө түзүүсү керек."
+      },
+      "priorities": {
+        "title": "Илимий изилдөөлөрдүн басымдуу багыттары",
+        "item1": "окуу-тарбия процессин, анын ичинде лицензияланган илимий адистиктер боюнча илимий-медициналык кадрларды даярдоону илимий, илимий-методдук жана маалыматтык камсыздоо;",
+        "item2": "учурдагы жалпы маданий, гуманитардык, социалдык-экономикалык, педагогикалык жана башка маселелердин теориялык-методологиялык жана колдонмо изилдөөлөрү."
+      },
+      "sections": "Илимдин бөлүмдөрү",
+      "links": {
+        "management": "Басма башкармалоо органдары",
+        "managementDesc": "Университеттин илимий башкармалоосунун структурасы",
+        "publications": "Жарыялоолор",
+        "publicationsDesc": "Илимий журналдар жана мезгилдүү басылмалар",
+        "library": "Илимий китепкана",
+        "libraryDesc": "Илимий ресурстарга жана маалымат базаларына кирүү",
+        "labs": "Лабораториялар жана борборлор",
+        "labsDesc": "Илимий-изилдөө лабораториялары",
+        "professors": "Ардактуу профессорлор",
+        "professorsDesc": "Жетекчи окумуштуулар жана лекторлор",
+        "events": "Иш-чаралар",
+        "eventsDesc": "Конференциялар, мастер-класстар, тегерек столдор",
+        "studentScience": "Студенттик илим",
+        "studentScienceDesc": "Студенттердин илимий ишмердиги",
+        "projects": "Илимий долбоорлор",
+        "projectsDesc": "Учурдагы изилдөө долбоорлору"
+      }
+    },
+    "badge": "Илимий бөлүм",
+    "title": "Илимий изилдөөлөр",
+    "subtitle": "Илим менен технологиялардын келечегин калыптандырган алдыңкы изилдөөлөр жана инновациялар",
+    "stats": {
+      "projects": "Изилдөө долбоорлору",
+      "projectsDesc": "Активдүү жана аяктаган",
+      "publications": "Илимий жарыялоолор",
+      "publicationsDesc": "Эл аралык журналдарда",
+      "labs": "Заманбап лабораториялар",
+      "labsDesc": "Изилдөөлөр жана эксперименттер үчүн",
+      "grants": "Каржылоо",
+      "grantsDesc": "Алынган гранттар"
+    },
+    "fields": {
+      "all": "Бардык багыттар",
+      "medical": "Медицина илимдери",
+      "technical": "Техникалык илимдер",
+      "biological": "Биологиялык илимдер",
+      "social": "Коомдук илимдер"
+    },
+    "areas": {
+      "title": "Изилдөөлөрдүн негизги багыттары",
+      "subtitle": "Заманбап илимий багыттардын чек арасындагы көп тармактуу изилдөөлөр",
+      "projects": "долбоорлор",
+      "publications": "жарыялоолор",
+      "biotech": {
+        "title": "Биотехнологиялар",
+        "description": "Гендик инженерия, биоматериалдар жана медициналык технологиялар тармагындагы изилдөөлөр"
+      },
+      "nanotech": {
+        "title": "Нанотехнологиялар",
+        "description": "Молекулалык деңгээлде жаңы материалдар менен түзүлүштөрдү иштеп чыгуу"
+      },
+      "ai": {
+        "title": "Жасандык интеллект",
+        "description": "Машиналык үйрөнүү, маалыматтарды талдоо жана интеллектуалдык системдер"
+      },
+      "environment": {
+        "title": "Экология",
+        "description": "Климаттын өзгөрүшү жана туруктуу өнүгүү боюнча изилдөөлөр"
+      }
+    },
+    "researchActivities": "Илимий ишмердик",
+    "selectField": "Изилдөө багыттарын тандаңыз",
+    "tabs": {
+      "research": "Долбоорлор",
+      "labs": "Лабораториялар",
+      "publications": "Жарыялоолор"
+    },
+    "projects": {
+      "title": "Изилдөө долбоорлору",
+      "duration": "Узактыгы",
+      "budget": "Бюджет",
+      "team": "Команда",
+      "members": "катышуучулар",
+      "details": "Долбоор жөнүндө кененирээк",
+      "status": {
+        "active": "Активдүү",
+        "completed": "Аяктаган"
+      },
+      "genome": {
+        "title": "Геномдук изилдөөлөр",
+        "description": "Оорулардын генетикалык негиздерин изилдөө жана персоналдаштырылган медицинаны иштеп чыгуу",
+        "duration": "2023-2026",
+        "budget": "2.5 млн $",
+        "outcomes": {
+          "publications": "15 илимий макала",
+          "patents": "3 патент",
+          "conferences": "8 конференцияга катышуу"
+        }
+      },
+      "nanomaterials": {
+        "title": "Наноматериалдар",
+        "description": "Медициналык колдонуу үчүн жаңы композиттүү материалдарды иштеп чыгуу",
+        "duration": "2024-2025",
+        "budget": "1.8 млн $",
+        "outcomes": {
+          "applications": "Практикалык колдонуулар",
+          "industry": "Компаниялар менен шериктештик",
+          "research": "Негизги изилдөөлөр"
+        }
+      },
+      "climate": {
+        "title": "Климаттын өзгөрүшү",
+        "description": "Климаттык өзгөрүүлөрдү моделдөө жана алардын экосистемаларга таасири",
+        "duration": "2022-2024",
+        "budget": "1.2 млн $",
+        "outcomes": {
+          "models": "Климаттык моделдер",
+          "policy": "Саясат үчүн сунуштар",
+          "publications": "10 жарыялоо"
+        }
+      }
+    },
+    "labs": {
+      "title": "Илимий лабораториялар",
+      "equipment": "Жабдуулар",
+      "capacity": "Сыйымдуулук",
+      "research": "Изилдөө багыттары",
+      "supervisor": "Жетекчиси",
+      "book": "Брондоо",
+      "status": {
+        "available": "Жеткиликтүү",
+        "renovation": "Реконструкциялоодо"
+      },
+      "biotech": {
+        "title": "Биотехнология лабораториясы",
+        "equipment": "ПЦР, электрофорез, микроскоптор",
+        "capacity": "15 изилдөөчү",
+        "research": "Генетика, микробиология",
+        "supervisor": "Др. Алина Ковалева"
+      },
+      "nano": {
+        "title": "Нанотехнология лабораториясы",
+        "equipment": "Сканерлөөчү микроскоптор, спектрометрлер",
+        "capacity": "10 изилдөөчү",
+        "research": "Наноматериалдар, катализ",
+        "supervisor": "Проф. Марк Петров"
+      },
+      "computational": {
+        "title": "Эсептөө лабораториясы",
+        "equipment": "Суперкомпьютер, иш станциялары",
+        "capacity": "20 изилдөөчү",
+        "research": "Моделдөө, маалыматтарды талдоо",
+        "supervisor": "Др. Сергей Иванов"
+      }
+    },
+    "publications": {
+      "title": "Акыркы жарыялоолор",
+      "authors": "Авторлор",
+      "journal": "Журнал",
+      "date": "Жарыяланган күнү",
+      "citations": "Цитаталар",
+      "read": "Окуу",
+      "journal1": {
+        "title": "Ген терапиясындагы жаңы ыкмалар",
+        "authors": "Ковалева А., Петров М., Иванов С.",
+        "journal": "Nature Biotechnology",
+        "date": "2025-жыл, январь",
+        "impact": "4.5",
+        "citations": "28"
+      },
+      "journal2": {
+        "title": "Медицина үчүн наноматериалдарды синтездөө",
+        "authors": "Петров М., Сидорова Е.",
+        "journal": "Advanced Materials",
+        "date": "2024-жыл, декабрь",
+        "impact": "3.8",
+        "citations": "15"
+      },
+      "conference": {
+        "title": "Климатологияда машиналык үйрөнүү",
+        "authors": "Иванов С., Козлова Т.",
+        "journal": "International AI Conference",
+        "date": "2024-жыл, ноябрь",
+        "impact": "-",
+        "citations": "12"
+      }
+    },
+    "events": {
+      "title": "Илимий иш-чаралар",
+      "viewAll": "Бардык иш-чаралар",
+      "date": "Күнү",
+      "type": "Түрү",
+      "location": "Жайгашкан жери",
+      "deadline": "Аяктоо мөөнөтү",
+      "status": {
+        "upcoming": "Келээрки",
+        "ongoing": "Учурда жүрүп жаткан",
+        "completed": "Аяктаган"
+      },
+      "conference": {
+        "title": "Биотехнология боюнча эл аралык конференция",
+        "date": "2025-жыл, 15-17 май",
+        "type": "Конференция",
+        "location": "Онлайн/Оффлайн",
+        "deadline": "2025-жыл, 1 апрель"
+      },
+      "seminar": {
+        "title": "Нанотехнологиялар боюнча семинар",
+        "date": "2025-жыл, 20 март",
+        "type": "Семинар",
+        "location": "Негизги кампус",
+        "deadline": "2025-жыл, 15 март"
+      },
+      "workshop": {
+        "title": "Илимий жазма боюнча воркшоп",
+        "date": "2025-жыл, 10 февраль",
+        "type": "Воркшоп",
+        "location": "Китепкана",
+        "deadline": "2025-жыл, 5 февраль"
+      }
+    },
+    "contact": {
+      "title": "Байланыш маалыматы",
+      "phone": "Телефон",
+      "email": "Email",
+      "location": "Дарек",
+      "hours": "Дүйшөмбү-Жума: 9:00-18:00, Ишемби: 10:00-14:00",
+      "collaboration": "Кызматташуу сунуштоо"
+    },
+    "management": {
+      "title": "Басма башкармалоо органдары",
+      "subtitle": "Университеттин илимий башкармалоосунун структурасы",
+      "scientificCouncil": {
+        "badge": "Илимий ишмердикти координациялоо",
+        "title": "Илимий-техникалык кеңеш",
+        "description": "Университеттин туруктуу ишке ашырылуучу кеңешме органы",
+        "subtitle": "Университеттин туруктуу ишке ашырылуучу кеңешме органы",
+        "generalTitle": "Жалпы жоболор",
+        "generalText": "Илимий-техникалык кеңеш «Салымбеков Университети»нин туруктуу ишке ашырылуучу кеңешме органы болуп саналат. Өз ишмердигинде ИТК Кыргыз Республикасынын нормативдик-укуктук актыларына; Университеттин Уставына, ушул Жобого жана башка жергиликтүү нормативдик актыларга ылайык иш жүргүзөт. ИТКнын Жобосу Илимий кеңештин чечими менен бекитилет. ИТКнын курамы илим иши боюнча проректордун сунушу боюнча кафедра башчыларынын сунуштарынын негизинде окуу жылына ректордун буйругу менен 30 сентябрдан кечиктирбей бекитилет. ИТКнын өз компетенциясындагы маселелер боюнча чечимдери сунуштуу мүнөзгө ээ.",
+        "goalsTitle": "Мақсаттар жана милдеттер",
+        "goalsText": "ИТКнын ишмердигинин мақсаты - илим жана техника тармагындагы мамлекеттик саясатты ишке ашырууга байланыштуу маселелерди кароодо ишмердикти уюштуруу жана координациялоо; кафедраларда жана башка бөлүмдөрдө жүргүзүлүүчү илимий изилдөөлөрдүн жана инновациялык ишмердиктин деңгээлин иштеп чыгуу жана жогорулатуу, жогорку квалификациялуу илимий-педагогикалык кадрларды (илимдин докторлору жана кандидаттары) даярдоонун жана студенттердин илимий-изилдөө ишинин натыйжалуулугун жогорулатуу.",
+        "tasksTitle": "ИТКнын негизги милдеттери:",
+        "tasks": [
+          "Университет окумуштуулары тарабынан илим менен техниканын басымдуу багыттарын иштеп чыгуу, илимий-техникалык прогресс тездетүүдө университет илиминин ролун жогорулатуу, Университеттин интеллектуалдык жана илимий потенциалын натыйжалуу пайдаланууну камсыз кылуу, анын туруктуу өнүгүүсү үчүн зарыл шарттарды түзүү.",
+          "Изилдөөлөрдү өнүктүрүүнүн басымдуу багыттарында негизги жана издөө изилдөөлөрдү артыкчылыктуу өнүктүрүүнү камсыз кылуу жана интеллектуалдык менчик менен иштөө.",
+          "Илимий-изилдөө ишинин пландаштырылышын жана уюштуруу формаларын жакшыртуу жана башкалар.",
+          "Университеттин илимий потенциалын сактоо, илимий-педагогикалык коллективдерди өнүктүрүү, жогорку квалификациялуу илимий-педагогикалык кадрларды (илимдин докторлору жана кандидаттары) даярдоо боюнча сунуштарды жана чараларды иштеп чыгуу.",
+          "Университет менен илимий мекемелердин ортосундагы интеграция процесстерин колдоо.",
+          "Студенттердин илимий-изилдөө ишин өнүктүрүүнү колдоо.",
+          "Илимий изилдөөлөрдү маалыматтык камсыз кылуу боюнча сунуштарды жана чараларды иштеп чыгуу.",
+          "Изилдөөлөрдүн натыйжаларын билим берүү процессинде пайдалануу боюнча сунуштарды жана рекомендацияларды даярдоо.",
+          "Университетте жүргүзүлгөн илимий изилдөөлөрдүн жана иштеп чыгуулардын негизги жыйынтыктарын талдоо жана баалоо.",
+          "Илимий жана инновациялык структураларды түзүү жана кайра уюштуруу, илимий жабдууларды жаңыртуу боюнча сунуштарды даярдоо."
+        ],
+        "compositionTitle": "Илимий-техникалык кеңештин курамы",
+        "downloadTitle": "Жобонун толук версиясы",
+        "downloadDesc": "Илимий-техникалык кеңеш жөнүндө толук документти жүктөп алыңыз",
+        "downloadBtn": "PDF жүктөп алуу"
+      },
+      "bioethics": {
+        "badge": "Этикалык экспертиза",
+        "title": "Биоэтика боюнча комитет",
+        "description": "Илимий изилдөөлөрдүн көз карандысыз этикалык экспертизасы",
+        "subtitle": "Илимий изилдөөлөрдүн көз карандысыз этикалык экспертизасы",
+        "descTitle": "Комитет жөнүндө",
+        "descText": "Университеттин биоэтика боюнча комитети - коомдук жана изилдөөчүдөн жана кардардан көз карандысыз экспертиза органы болуп, клиникалык жана биомедициналык изилдөөлөрдүн этикалык баалоосу маселелери боюнча көз карандысыз экспертиза жүргүзүү, кеңеш берүү, мониторинг жүргүзүү жана чечим кабыл алууну камсыз кылууга милдеттүү. Изилдөө, билим берүү жана дарылоо процессинин катышуучуларынын абийиринин, кызыкчылыктарынын жана саламаттыгынын укуктарын коргоо максатында адамдардын жана/же жаныбарлардын катышуусун камтыган.",
+        "chairmanTitle": "Комитеттин төрагасы",
+        "chairmanName": "Батыралиев Талантбек Абдуллаевич",
+        "chairmanDesc": "Кыргыз Республикасынын медицина кызматкерлери ассоциациясынын президенти, профессор, медицина илимдеринин доктору, Америкалык Кардиологлар Колледжинин ишмер мүчөсү. Ангиопластика боюнча адис - ишемиялык жүрөк оорусун дарылоонун эң коопсуз ыкмаларынын бири жана миокард инфаркттарын алдын алуу.",
+        "tasksTitle": "Этика боюнча комитеттин негизги милдеттери:",
+        "functionsTitle": "Комитеттин негизги функциялары жана ишмердик багыттары:"
+      },
+      "youngScientists": {
+        "badge": "Жаш изилдөөчүлөр",
+        "title": "Жаш окумуштуулар кеңеши",
+        "description": "Жаш окумуштуулардын чыгармачылык потенциалын жүзөгө ашырууга жардам",
+        "subtitle": "Жаш окумуштуулардын чыгармачылык потенциалын жүзөгө ашырууга жардам",
+        "generalTitle": "Жалпы жоболор",
+        "generalText": "Жаш окумуштуулар кеңеши (кийинки ЖОК) «Салымбеков Университети»нин коомдук уюму болуп саналат жана университеттин бардык структуралык бөлүмдөрүнүн 35 жашка чейинки окутуучуларынын, илимий кызматкерлеринин, аспиранттарынын жана магистранттарынын катарынан түзүлөт. ЖОКтун курамы «Салымбеков Университети»нин ректору тарабынан бекитилет.",
+        "goalsTitle": "Жаш окумуштуулар кеңешинин максаттары жана милдеттери",
+        "goalsText": "ЖОК университеттин жаш окумуштууларынын жана окутуучуларынын чыгармачылык потенциалын жүзөгө ашырууга жардам көрсөтүү максатында түзүлөт. ЖОК жаш окумуштуулардын илимий изилдөөлөрдүн басымдуу багыттарын жана темаларын иштеп чыгуу боюнча аракеттерин бириктирип, алардын жыйынтыктары кеңири илимий коомчулуктун менчиги болушуна өбөлгө түзөт.",
+        "compositionTitle": "Жаш окумуштуулар кеңешинин курамы:",
+        "downloadTitle": "Жаш окумуштуулар кеңешинин жобосу",
+        "downloadDesc": "Жаш окумуштуулар кеңеши жөнүндө толук документти жүктөп алыңыз",
+        "downloadBtn": "Жүктөп алуу"
+      },
+      "department": {
+        "badge": "Эл аралык кызматташуу",
+        "description": "Эл аралык илимий кызматташтыкты координациялоо",
+        "title": "Илим жана алдыңкы изилдөөлөр департаменти",
+        "subtitle": "Эл аралык илимий кызматташтыкты координациялоо",
+        "introText": "Илим жана алдыңкы изилдөөлөр департаменти Университеттин президентинин буйругу менен бекитилген Университеттин уюштуруу структурасына ылайык түзүлгөн жана Университеттин өз алдынча структуралык бирдиги болуп саналат. Ал бөлүм башчысы жетектеген жана ага төмөнкүдөй шартта кабыл алынат: эмгек келишими негизинде жана түздөн-түз Университеттин президентине баш ийет.",
+        "headTitle": "Илим жана алдыңкы изилдөөлөр департаментинин жетекчиси",
+        "headName": "Абдылдаев Рыспек Алдагандаевич",
+        "headDesc": "Врач-онколог, медицина илимдеринин доктору (1986), профессор (1990). КГМАны бүтүргөн (1973). СССРдин ИИМдин Онкологиялык илимий борборунун аспиранты (1978), ушул борбордун кичине жана улуу илимий кызматкери. Кыргыз онкология жана радиология ИИИнин мурдагы директору. 130дон ашык илимий эмгектин автору.",
+        "objectivesTitle": "Илим жана алдыңкы изилдөөлөр департаментинин максаттары жана негизги милдеттери",
+        "goalsTitle": "Максаттар:",
+        "tasksTitle": "Милдеттер:"
+      }
+    },
+    "journal": {
+      "badge": "Илимий жарыялоо",
+      "title": "«Медицина жана билим берүү бюллетени» илимий журналы",
+      "subtitle": "Салымбеков Университетинин мезгилдүү илимий басылмасы",
+      "description": "«Медицина жана билим берүү бюллетени» илимий журналы - Салымбеков Университетинин негиздөөчүсү болгон мезгилдүү илимий басылма",
+      "publishes": "Биздин журнал төмөнкү багыттар боюнча оригиналдуу материалдар менен макалаларды, ошондой эле илимий жашоону (конференциялар, семинарлар, жарыялоолор) жарыялайт:",
+      "directions": {
+        "medical": "Медицина илимдери – 14.00.00",
+        "biological": "Биологиялык илимдер – 03.00.00",
+        "education": "Медицина – 13.00.00"
+      },
+      "issuesTitle": "Журналдын чыгарылыштары",
+      "issue": "Чыгарылыш",
+      "downloadPdf": "PDF жүктөп алуу",
+      "articlesList": "Илимий макалалардын тизмеси"
+    },
+    "seanPark": {
+      "name": "ДР. ШОН ПАРК",
+      "position": "Эл аралык эксперт, уролог, хирург",
+      "description": "Доктор Шон Сун Хун Пак - Кореядагы сертификацияланган уролог, күйөө булчуң эн имплантатын орнотуу операциясы боюнча адистешкен. 2012-жылы ортопедиялык урология боюнча окуу үчүн АКШга барган.",
+      "education": [
+        "Кореядагы сертификацияланган уролог",
+        "АКШда ортопедиялык урология боюнча окутуу",
+        "Күйөө булчуң эн имплантатын орнотуу операциясы боюнча адистешүү"
+      ],
+      "experience": [
+        "Эл аралык медициналык практика",
+        "Урологиядагы адистештирилген хирургиялык техникалар",
+        "Др. Стивен К. Уилсон жетекчилиги астында окутуу"
+      ],
+      "achievements": [
+        "Протездик урология боюнча эл аралык эксперт",
+        "Имплантаттарды орнотуунун заманбап хирургиялык техникалары",
+        "Урологиянын өнүгүшүнө салым"
+      ]
+    },
+    "pendharkar": {
+      "name": "Др Динеш Пендхаркар",
+      "position": "Жетекчи онколог, профессор",
+      "description": "Таргеттик терапия, лейкемиялар жана ракты дарылоонун инновациялык ыкмалары боюнча адистешкен тажрыйбалуу онколог. Персоналдаштырылган медицина жана иммуноонкологияны камтыган онкологиялык ооруларды дарылоонун заманбап ыкмаларына басым жасайт.",
+      "education": [
+        "Медицина доктору (MD) - Онкология жана гематология",
+        "Таргеттик терапия жана иммуноонкология боюнча сертификат",
+        "Аспирантура: лейкемиялар жана лимфомаларды дарылоо",
+        "Туруктуу медициналык билим берүү: ракты дарылоонун инновациялык ыкмалары"
+      ],
+      "experience": [
+        "Онкологияда 35+ жылдык клиникалык практика",
+        "Дүйнөлүк клиникалык изилдөөлөргө катышуу",
+        "Жаш онкологдорду окутуу (мастер-класстар, лекциялар)",
+        "Эл аралык медициналык журналдарда жарыялоолор"
+      ],
+      "achievements": [
+        "Таргеттик терапияларды иштеп чыгуу",
+        "Иммунотерапиялык ыкмалар",
+        "Персоналдаштырылган дарылоо",
+        "Ракты эрте диагностикалоо жана пациенттердин жашоо сапаты боюнча изилдөөлөр"
+      ]
+    },
+    "potapova": {
+      "name": "Ольга Потапова",
+      "position": "Изилдөөчү, долбоорлордун жетекчиси",
+      "description": "Таргеттик терапияларды жана диагностикалык тесттерди иштеп чыгууда кенен тажрыйба, эл аралык онкологиялык программаларга катышуу.",
+      "education": [
+        "Негизги медициналык билим",
+        "Онкология жана молекулярдык биология",
+        "Эл аралык диагностика курстары"
+      ],
+      "experience": [
+        "Таргеттик терапия",
+        "Биологиялык үлгүлөрдү сатып алуу",
+        "Доклиникалык изилдөөлөр"
+      ],
+      "achievements": [
+        "Эл аралык консорциумдарда иштөө",
+        "Программалардын башкы изилдөөчүсү",
+        "Диагностиканы өнүктүрүүгө салым"
+      ]
+    },
+    "osmonov": {
+      "name": "Доктор Данияр Осмонов",
+      "position": "Андрология бөлүмүнүн башчысы, Киль клиникасы, Германия",
+      "description": "Андрология тармагындагы атактуу адис, фаллопротездөө боюнча дүйнөлүк деңгээлдеги таанылган эксперт жана тренер. Доктор Осмонов Германиянын Киль шаарындагы престиждүү клиниканын андрология бөлүмүн жетектейт.",
+      "education": [
+        "Жогорку медициналык билим",
+        "Урология жана андрология боюнча адистешүү",
+        "Фаллопротездөө тармагында эл аралык стажировкалар"
+      ],
+      "experience": [
+        "Киль клиникасынын андрология бөлүмүнүн башчысы, Германия",
+        "Фаллопротездөө боюнча татаал операцияларды жүргүзүү",
+        "Дүйнөнүн түкпөт-түкпөтүнөн келген адистерди окутуу",
+        "Эл аралык конференцияларга катышуу"
+      ],
+      "achievements": [
+        "Фаллопротездөө тармагында дүйнөлүк деңгээлдеги эксперт",
+        "Ар кандай өлкөлөрдөн келген дарыгерлер үчүн тренер",
+        "Илимий эмгектердин автору",
+        "Эл аралык кесиптик ассоциациялардын мүчөсү"
+      ]
+    },
+    "bilgaziev": {
+      "name": "Эмиль Билгазиев",
+      "position": "Американдык технологиялар институтунун негиздөөчүсү, техникалык директор",
+      "description": "Эмиль Билгазиев, PhD – Американдык технологиялар институтунун негиздөөчүсү, иштеп чыгуучу, Facebookтун бир бөлүмүнүн техникалык директору, КТУ «Манас»тын бүтүрүүчүсү, АКШда билим алган (Computer Science PhD, 2013, Computer Science Master, 2009, University of Houston).",
+      "education": [
+        "Computer Science PhD, 2013, University of Houston",
+        "Computer Science Master, 2009, University of Houston",
+        "КТУ «Манас»тын бүтүрүүчүсү"
+      ],
+      "experience": [
+        "Facebookтун бөлүмүнүн техникалык директору",
+        "Американдык технологиялар институтунун негиздөөчүсү",
+        "Shell, LinkedIn, Logichub, Uber, Snapchat компанияларында иштеген"
+      ],
+      "achievements": [
+        "Алдыңкы технологиялык чечимдерди иштеп чыгуу",
+        "Компьютердик илимдер тармагында эксперт",
+        "IT-индустриясында эл аралык тажрыйба"
+      ]
+    },
+    "erkebaev": {
+      "name": "Абдыганы Эркебаев",
+      "position": "Мамлекеттик жана коомдук ишмер, жазуучу, академик",
+      "description": "Абдыганы Эркебаев (1953-ж. т.) — кыргыз мамлекеттик жана коомдук ишмери, сынчы, жазуучу. Филология илимдеринин доктору (1992), Кыргыз Республикасынын Улуттук илимдер академиясынын академиги (1993). Кыргызстандын Улуттук илимдер академиясынын президентинин кызматын ээлеген (2012-жылдын 11-апрелинен 2017-жылдын апрелине чейин). Учурда (2019-жылдын 3-майынан бери) Кыргызстан элинин Ассамблеясынын Кеңешинин төрагасынын кызматын ээлейт.",
+      "education": [
+        "Филология илимдеринин доктору (1992-ж.)",
+        "Кыргыз Республикасынын Улуттук илимдер академиясынын академиги (1993-ж.)"
+      ],
+      "experience": [
+        "Кыргызстандын Улуттук ИА президенти (2012-2017)",
+        "Кыргызстан элинин Ассамблеясынын Кеңешинин төрагасы (2019-ж.дан бери)",
+        "Мамлекеттик жана коомдук ишмер"
+      ],
+      "achievements": [
+        "Белгилүү жазуучу жана сынчы",
+        "Кыргызстандын илими жана маданиятын өнүктүрүүгө салымы",
+        "Коомдук иш жана жетекчилик"
+      ]
+    },
+    "kachibek": {
+      "name": "Узакбаев Камчибек Аскарбекович",
+      "position": "Медицина илимдеринин доктору, профессор",
+      "description": "Окутуу жана илимий ишмердикте көп жылдык тажрыйбасы бар атактуу окумуштуу-врач. Кыргызстанда жана Борбордук Азияда салттуу кытай медицинасын өнүктүрүү жөнүндө баяндамалар менен чыгып жаткан эл аралык форумдардын активдүү катышуучусу, эл аралык кызматташтыкты кеңейтүүгө жана саламаттык сактоодо инновациялык ыкмаларды киргизүүгө өбөлгө түзөт.",
+      "education": [
+        "Медицина илимдеринин доктору",
+        "Профессор",
+        "Эл аралык илимий стажировкалар жана форумдарга катышуу"
+      ],
+      "experience": [
+        "Эл аралык Евразия форумуна катышуу (Сиань, КЭР)",
+        "Борбордук Азияда салттуу кытай медицинасын өнүктүрүү жөнүндө доклад",
+        "Сиань шаарынын саламаттык сактоо иштери боюнча комитети менен кызматташуу",
+        "Илимий-изилдөө жана окутуу иштери"
+      ],
+      "achievements": [
+        "Эл аралык медициналык кызматташтыкты кеңейтүү",
+        "Аймакта СКМ өнүктүрүүгө салым",
+        "Изилдөөлөр жана кадрларды даярдоо алмашуусун уюштуруу",
+        "Дарылоонун инновациялык ыкмаларын популярдаштыруу"
+      ]
+    },
+    "madaminov": {
+      "name": "Гапыр Мадаминов",
+      "position": "Спорт адиси, дипломат",
+      "description": "Спорт жана дипломатия тармагында көп жылдык тажрыйба. Эл аралык спорттук жана маданий иш-чараларды уюштурууга активдүү катышат.",
+      "education": [
+        "Жогорку билим",
+        "Спорттук жана дипломатиялык даярдык",
+        "Эл аралык курстар жана тренингдер"
+      ],
+      "experience": [
+        "Спорттук иш-чараларды уюштуруу жана координациялоо",
+        "Дипломатиялык иш",
+        "Эл аралык кызматташуу",
+        "Маданий алмашуу программалары"
+      ],
+      "achievements": [
+        "Кыргызстанда альпинизмди өнүктүрүү",
+        "Эл аралык спорттук байланыштарды бекемдөө",
+        "Эл аралык экспедицияларды уюштуруу",
+        "Жаш спортчуларды колдоо"
+      ]
+    },
+    "kubatov": {
+      "name": "Эдуард Кубатов",
+      "position": "Спорт адиси, дипломат",
+      "description": "Спорт жана дипломатия тармагында тажрыйбалуу адис. Эл аралык спорттук жана маданий иш-чараларды уюштурууга катышат.",
+      "education": [
+        "Жогорку билим",
+        "Спорттук жана дипломатиялык даярдык",
+        "Эл аралык курстар жана тренингдер"
+      ],
+      "experience": [
+        "Спорттук иш-чараларды уюштуруу жана координациялоо",
+        "Дипломатиялык иш",
+        "Эл аралык кызматташуу",
+        "Маданий алмашуу программалары"
+      ],
+      "achievements": [
+        "Кыргызстанда альпинизмди өнүктүрүү",
+        "Эл аралык спорттук байланыштарды бекемдөө",
+        "Эл аралык экспедицияларды уюштуруу",
+        "Жаш спортчуларды колдоо"
+      ]
+    },
+    "shaltakova": {
+      "name": "Шалтакова Гулбу Чаловна",
+      "position": "Медицина илимдеринин кандидаты; хирург (лазердик медицина, косметология)",
+      "description": "Жогорку квалификациялуу дарыгер-хирург, лазердик медицина жана косметология боюнча адистешкен. Илимий-изилдөө жана практикалык иш тажрыйбасы.",
+      "education": [
+        "Медицина илимдеринин кандидаты",
+        "Жогорку медициналык билим",
+        "Лазердик медицина боюнча адистешүү",
+        "Косметология боюнча квалификация"
+      ],
+      "experience": [
+        "Хирургиялык практика (лазердик медицина)",
+        "Косметологиялык процедуралар жана дарылоо",
+        "Илимий-изилдөө иши",
+        "Консультациялык практика"
+      ],
+      "achievements": [
+        "Лазердик хирургия боюнча адис",
+        "Заманбап косметологиянын эксперти",
+        "Илимий эмгектер жана изилдөөлөр",
+        "Инновациялык медициналык технологияларда тажрыйба"
+      ]
+    }
+  
+},
+"generalEducation": {
+    "badge": "Жалпы билим",
+    "title": "Жалпы билим берүү бөлүмү",
+    "subtitle": "Ар кандай кесипте ийгиликке жетүү үчүн негизги даярдоо",
+    "stats": {
+      "teachers": "Окутуучулар",
+      "students": "Жылдык студенттер",
+      "subjects": "Дисциплиналар",
+      "success": "Окуу ийгилиги"
+    },
+    "department": {
+      "title": "Жалпы билим берүү бөлүмү",
+      "content": "<strong>Жалпы билим берүү бөлүмү</strong> биздин колледждеги бүтүндөй окутуу процессинин негизги түпкүрү болуп саналат. Биз студенттерге кийинчерээк кесиптик окутуунун негизин түзүүчү негизги жалпы билим берүүчү дисциплиналар боюнча сапаттуу даярдоону камсыз кылабыз.\n\nБиздин бөлүм тажрыйбалуу окутуучуларды бириктирет, алар билим гана бербей, балким студенттерде сынчыл ой жүгүртүүнү, аналитикалык жөндөмдүүлүктү жана үйрөнүүгө болгон сүйүүнү тарбиялашат.\n\n<strong>Биз артыкчылык беребиз</strong> ар бир студент өз потенциалын ача ала турган, интеллектуалдык жөндөмдүүлүктөрүн өнүктүрө ала турган жана кесиптик дисциплиналарды ийгиликтүү өздөштүрүүгө даярдана ала турган чөйрө түзүүгө."
+    },
+    "features": {
+      "title": "Биздин артыкчылыктарыбыз",
+      "subtitle": "Жалпы билим берүүгө комплексдүү мамиле",
+      "foundation": {
+        "title": "Негизги билимдер",
+        "description": "Бекем билим берүү негизин түзүү үчүн негизги дисциплиналарды терең үйрөнүү"
+      },
+      "individual": {
+        "title": "Жеке мамиле",
+        "description": "Ар бир студенттин өзгөчөлүктөрүн эске алуу жана персоналдаштырылган колдоо"
+      },
+      "modern": {
+        "title": "Заманбап методдор",
+        "description": "Инновациялык билим берүү технологияларын жана ыкмаларын колдонуу"
+      },
+      "practical": {
+        "title": "Практикалык багыт",
+        "description": "Теориялык билимдерди чыныгы жашоо жагдайлары менен байланыштыруу"
+      }
+    },
+    "headOfDepartment": {
+      "name": "Батракеева Гулина",
+      "position": "Жалпы билим берүү бөлүмүнүн башчысы",
+      "experience": "Иш тажрыйбасы: 15+ жыл",
+      "education": "Жогорку педагогикалык билим",
+      "text": "<strong>Урматтуу студенттер жана кызматташтар!</strong>\n\nМен сизди биздин колледждүн жалпы билим берүү бөлүмүндө кубаныч менен кабыл алам. Биздин окутуучулар командасы - бул өз ишин чын жүрөктөн сүйгөн жана билимдерин студенттерге өткөрүүгө умтулган жогорку квалификациялуу адистер.\n\n<strong>Биздин милдет</strong> - сизге жалпы билим берүүчү дисциплиналар боюнча билим гана берүү эмес, балким сизди сынчыл ойлонууга, маалыматтарды талдоого жана өз алдынча жаңы билимдерди алууга үйрөтүү. Биз сапаттуу жалпы билим - бул ар кандай тармакта ийгиликтуү кесиптик өсүү үчүн негиз деп ишенебиз.\n\nБиз достук чөйрө жана колдоо атмосферасын түзөбүз, мында ар бир студент суроо бериши, өз пикирин билдириши жана жөндөмдүүлүктөрүн өнүктүрө алышы мүмкүн."
+    },
+    "teachers": {
+      "title": "Биздин окутуучуларыбыз",
+      "subtitle": "Окутууда чоң тажрыйбасы жана сүйүүсү бар профессионалдар",
+      "achievements": "Жетишкендиктер жана сыйлыктар",
+      "teacher1": {
+        "name": "Алиджарова Мукаддас Жулдашевна",
+        "subject": "Математика",
+        "experience": "Тажрыйбасы: 12 жыл",
+        "text": "<strong>Математика</strong> - бул сандар жана формулалар гана эмес, бул бүткүл Аалам сүйлөгөн тил. Менин сабактарымда мен студенттерге математикалык ой жүгүртүүнүн кооздугун жана логикасын көрсөтүүгө аракет кылам.\n\nМатематика эсептөө көндүмдөрүн гана эмес, балким логикалык ой жүгүртүүнү, аналитикалык жөндөмдүүлүктү жана татаал маселелерди чечүү өнөрүн өнүктүрөт деп ишенем. Бул көндүмдөр ар кандай кесипте жана күнүмдүк жашоодо пайдалуу болот.\n\n<strong>Менин окутуу ыкмам</strong> эстөө эмес, түшүнүүгө негизделген. Мен студенттерге ар кандай математикалык түшүнүктөрдүн ортосундагы байланыштарды көрүүгө жана аларды практикада колдонууга жардам берем.",
+        "achievements": [
+          "'Жылдын мыкты окутуучусу' сынагынын жеңүүчүсү",
+          "Математика боюнча методдук куралдардын автору",
+          "Олимпиадалардын жеңүүчүлөрүн даярдоо"
+        ]
+      },
+      "teacher2": {
+        "name": "Арыков Данияр Каныбекович",
+        "subject": "Физика",
+        "experience": "Тажрыйбасы: 10 жыл",
+        "text": "<strong>Физика</strong> дүйнөбүз жаралган негизги мыйзамдарды түшүнүүгө жардам берет. Менин максатым - бул предметти ар бир студент үчүн кызыктуу жана жеткиликтүү кылуу.\n\nСабактарда биз теорияны гана эмес, балким эксперименттер жүргүзөбүз, практикалык маселелерди чечебиз жана заманбап илимий ачылыштарды талкуулайбыз. Физикалык мыйзамдар күнүмдүк жашоодо жана заманбап технологияларда кандай иштешин студенттерге көрсөтүү маанилүү деп эсептейм.\n\n<strong>Заманбап физика</strong> - ачылыштар менен толгон жана чыгармачыл ой жүгүртүү үчүн мүмкүнчүлүктөрдүн дүйнөсү.",
+        "achievements": [
+          "Интерактивдүү лабораториялык иштердин иштеп чыгуучусу",
+          "STEM-билим берүү тармагында эксперт",
+          "Эл аралык конференциялардын катышуучусу"
+        ]
+      },
+      "teacher3": {
+        "name": "Курбанбаева Нургуль Токтошевна",
+        "subject": "Химия",
+        "experience": "Тажрыйбасы: 14 жыл",
+        "text": "<strong>Химия</strong> - бул заттар жана алардын өзгөрүүлөрү жөнүндөгү илим, ал бизди ар тараптан курчап турат. Тамак даярдоодон баштап эң жаңы медициналык препараттарга чейин - баарында химия бар.\n\nМенин сабактарым теория менен практиканы айкалыштырууга негизделген. Биз кызыктуу эксперименттер жүргүзөбүз, заттардын касиеттерин жана алардын өз ара аракеттерин изилдейбиз. Коопсуздукка жана экологиялык жоопкерчиликке өзгөчө көңүл бурабыз.\n\n<strong>Мен умтулам</strong> студенттерде илимий ой жүгүртүүнү жана тегеректеги дүйнөдө болуп жаткан химиялык процесстерди түшүнүүнү өнүктүрүүгө.",
+        "achievements": [
+          "Химия боюнча окуу программаларынын автору",
+          "Илимий долбоорлорду уюштуруучу",
+          "Чет өлкөдө квалификацияны жогорулатуу"
+        ]
+      },
+      "teacher4": {
+        "name": "Мазекова Назгуль Жолочиевна",
+        "subject": "Биология",
+        "experience": "Тажрыйбасы: 11 жыл",
+        "text": "<strong>Биология</strong> - бул ар тараптуу жашоо жөнүндөгү илим. Биологияны үйрөнүп, биз жаныбарлардын дүйнөсүн тааныйбыз жана табияттагы ордубузду түшүнөбүз.\n\nМенин сабактарымда студенттер клеткалардын түзүлүшү, организмдердин иштеши жана экологиялык байланыштар менен таанышат. Биз микроскопторду колдонобуз, гербарийлерди изилдейбиз жана заманбап биотехнологияларды талкуулайбыз.\n\n<strong>Өзгөчө көңүл</strong> айлана-чөйрөнү коргоо жана туруктуу өнүгүү маселелерине бурам, бул айрыкча заманбап дүйнөдө өзгөчө маанилүү.",
+        "achievements": [
+          "Экологиялык клубдун жетекчиси",
+          "Талаа практикаларын иштеп чыгуучу",
+          "Табиятты коргоо долбоорлорунун катышуучусу"
+        ]
+      },
+      "teacher5": {
+        "name": "Пиримбаева Жаркын Жусупжановна",
+        "subject": "Тарых",
+        "experience": "Тажрыйбасы: 13 жыл",
+        "text": "<strong>Тарых</strong> - бул даталар менен окуялардын тизмеси гана эмес, бул азыркы мезгилди түшүнүүгө жана келечекти болжолдоого жардам берген өткөн мезгилге кызыктуу саякат.\n\nСабактарымда мен тарыхты адамдар жөнүндө аңгемелер, документтерди талдоо жана алтернативдүү көз караштарды талкуулоо аркылуу тирүү кылууга аракет кылам. Биз саясий окуяларды гана эмес, балким ар кандай доорлордун маданиятын, экономикасын жана күнүмдүк жашоосун изилдейбиз.\n\n<strong>Менин максатым</strong> - студенттерде тарыхый ой жүгүртүүнү, маалыматка сынчыл мамилени жана дүйнөнүн маданий ар түрдүүлүгүн түшүнүүнү өнүктүрүү.",
+        "achievements": [
+          "Жер-суу изилдөөлөрүнүн автору",
+          "Тарыхый квесттерди уюштуруучу",
+          "Тарыхты окутуу методикасы боюнча эксперт"
+        ]
+      },
+      "teacher7": {
+        "name": "Токторалиев Жеркинбек Торобекович",
+        "subject": "Информатика",
+        "experience": "Тажрыйбасы: 9 жыл",
+        "text": "<strong>Информатика</strong> заманбап дүйнөдө окуу жана жазуу сыяктуу эле зарыл болуп калды. Мен студенттерди компьютерди колдонууну гана эмес, балким анын иштөө принциптерин түшүнүүнү жана өз цифралык чечимдерин түзүүнү үйрөтөм.\n\nСабактарда биз алгоритмдерди, программалоону, маалыматтар менен иштөөнү жана киберкоопсуздуктун негиздерин үйрөнөбүз. Өзгөчө көңүл эсептөөчүл ой жүгүртүүнү өнүктүрүүгө бурам - бул көндүм ар кандай кесипте пайдалуу болот.\n\n<strong>Заманбап технологиялар</strong> тез өнүгүп жатат, менин милдетим - студенттерди цифралык дүйнөдө жашоого даярдоо, аларды жаңы технологияларга ыңгайланууга жана практикалык маселелерди чечүү үчүн аларды колдонууга үйрөтүү.",
+        "achievements": [
+          "Билим берүүчү IT-долбоорлордун иштеп чыгуучусу",
+          "Хакатондун жеңүүчүсү",
+          "Microsoftтун сертификацияланган адиси"
+        ]
+      }
+    },
+    "cta": {
+      "title": "Көбүрөөк билгиңиз келеби?",
+      "description": "Жалпы билим берүү программалары жөнүндө кененирээк маалымат алуу үчүн биз менен байланышыңыз",
+      "contact": "Бөлүм менен байланышуу",
+      "learnMore": "Программалар жөнүндө билүү"
+    }
+  },
+  "aboutBusinessSchool": {
+    "badge": "Бизнес Мектеби",
+    "title": "Salymbekov Business School",
+    "subtitle": "Заманбап кошумча билим берүүнүн уникалдуу билим берүү борбору",
+    "stats": {
+      "graduates": "Бүтүрүүчүлөр",
+      "programs": "Багыттар",
+      "languages": "Тил",
+      "years": "Жыл тажрыйбасы"
+    },
+    "founder": {
+      "title": "Бизнес мектебинин негиздөөчүсү",
+      "description": "«Кыргызстандын жаш лидерлери» программасынын бүтүрүүчүлөрү менен Салымбеков Аскар Мааткабылович - өлкөнүн жаңы муун лидерлерин түзгөн уникалдуу билим берүү платформасынын негиздөөчүсү."
+    },
+    "school": {
+      "title": "Бизнес Мектеби жөнүндө",
+      "description1": "Salymbekov Business School - бул калктын бардык катмарларына өзүнүн коомдук мектептери жана уникалдуу методика менен комплекстүү тренингдердин жана мотивациялык сабактардын атайын иштелип чыккан окуу программасы боюнча өткөрүлгөн атайын курстар аркылуу заманбап кошумча билим берүүнү камсыз кылган уникалдуу билим берүү борбору.",
+      "description2": "Биздин уникалдуу, Кыргыз Республикасында аналогу жок билим берүү долбоорлору заманбап стандарттар боюнча билимдүү жаңы муунду өстүрүү үчүн атайын иштелип чыккан, мында ар бир адам үч же андан көп тилдерди эң жакшы билсе."
+    },
+    "mission": {
+      "title": "Миссия",
+      "description": "Мектептин милдети - беш негизги багыт боюнча сапаттуу кызмат көрсөтүү, алар мектепке чейинки билим берүүнү, башталгыч класстардын окуучуларын, орто жана жогорку класстардын окуучуларын, студенттер менен жаштарды, ошондой эле кыска мөөнөттө чет тилдерди үйрөнүүгө умтулгандарды камтыйт."
+    },
+    "programs": {
+      "title": "Окуу багыттары",
+      "subtitle": "Ар кандай жаш топтору үчүн комплекстүү билим берүү программалары",
+      "preschool": {
+        "title": "Мектепке чейинки билим берүү",
+        "description": "Эң кичүүлөр үчүн эрте өнүгүү жана мектепке даярдоо"
+      },
+      "school": {
+        "title": "Мектеп окуучулары",
+        "description": "Башталгыч, орто жана жогорку класстар үчүн программалар"
+      },
+      "youth": {
+        "title": "Студенттер жана жаштар",
+        "description": "Лидерлик программалары жана кесипкөй багыт"
+      },
+      "languages": {
+        "title": "Чет тилдери",
+        "description": "Үч же андан көп тилдерди интенсивдүү үйрөнүү"
+      }
+    },
+    "success": {
+      "title": "Биздин бүтүрүүчүлөрдүн ийгиликтери",
+      "description": "Биз мактаныш менен айта алабыз, биздин билим берүү долбоорлорубуз убакыттын сынагын тапшырды жана миңдеген жарандарыбызга заманбап дүйнөдө суроо-талапка ээ билим алууга жардам берди.",
+      "entrepreneurship": "Ишкердик",
+      "production": "Өндүрүш",
+      "creativity": "Чыгармачылык",
+      "science": "Илим",
+      "showbusiness": "Шоу-бизнес"
+    },
+    "cta": {
+      "title": "Биздин коомчулуктун бир бөлүгү болуңуз",
+      "description": "Salymbekov Business Schoolга кошулуп, ийгиликке жолуңузду баштаңыз",
+      "apply": "Арыз берүү",
+      "learnMore": "Көбүрөөк билүү"
     }
   }
 }

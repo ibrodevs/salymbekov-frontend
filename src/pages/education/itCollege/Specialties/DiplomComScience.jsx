@@ -437,77 +437,9 @@ const SoftwareDevelopmentPage = () => {
               </div>
             </motion.div>
 
-            {/* Другие программы */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="mb-16"
-            >
-              <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
-                {t('softwareDevelopment.otherPrograms.title')}
-              </h2>
-              <div className="grid md:grid-cols-2 gap-8">
-                {otherPrograms.map((program, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    whileHover={{ scale: 1.02, y: -5 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className={`bg-gradient-to-br ${program.color} rounded-3xl p-8 text-white hover:shadow-2xl transition-all duration-300 group cursor-pointer`}
-                    onClick={() => navigate(program.path)}
-                  >
-                    <div className="mb-4 group-hover:scale-110 transition-transform duration-300">
-                      {program.icon}
-                    </div>
-                    <h3 className="text-2xl font-bold mb-4">{program.title}</h3>
-                    <p className="text-white/90 mb-6 leading-relaxed">{program.description}</p>
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-6 py-3 rounded-2xl font-semibold hover:bg-white/30 transition-all duration-300"
-                    >
-                      {t('softwareDevelopment.otherPrograms.learnMore')}
-                      <FaArrowRight className="text-sm" />
-                    </motion.div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+            
 
-            {/* Призыв к действию */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-3xl p-12 text-center text-white"
-            >
-              <h2 className="text-4xl font-bold mb-4">
-                {t('softwareDevelopment.cta.title')}
-              </h2>
-              <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-                {t('softwareDevelopment.cta.description')}
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-white text-[#023E8A] px-8 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3"
-                >
-                  {t('softwareDevelopment.cta.applyNow')}
-                  <FaArrowRight />
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="border-2 border-white text-white px-8 py-4 rounded-2xl font-semibold hover:bg-white/10 transition-all duration-300"
-                >
-                  {t('softwareDevelopment.cta.contact')}
-                </motion.button>
-              </div>
-            </motion.div>
+           
           </div>
         </section>
       </div>

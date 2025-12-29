@@ -269,13 +269,7 @@ const HRDept = () => {
                       </div>
                     </div>
 
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-3 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 whitespace-nowrap"
-                    >
-                      {t('hr.learnMore')}
-                    </motion.button>
+                    
                   </div>
                 </motion.div>
               ))}
@@ -548,13 +542,7 @@ const HRDept = () => {
               <p className="text-gray-600 mb-6">
                 {t('hr.joinTeam.description')}
               </p>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-8 py-3 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                {t('hr.joinTeam.button')}
-              </motion.button>
+              
             </div>
           </motion.div>
         </motion.div>

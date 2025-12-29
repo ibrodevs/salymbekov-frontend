@@ -72,12 +72,6 @@ const CollegeDirectorPage = () => {
       label: t('directorItCollage.contact.address'),
       value: t('directorItCollage.contact.addressValue'),
       link: "#"
-    },
-    {
-      icon: <FaLinkedin className="text-[#023E8A]" />,
-      label: "LinkedIn",
-      value: t('directorItCollage.contact.linkedin'),
-      link: "#"
     }
   ];
 
@@ -365,37 +359,7 @@ const CollegeDirectorPage = () => {
               </div>
             </motion.div>
 
-            {/* Призыв к действию */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="text-center"
-            >
-              <h2 className="text-4xl font-bold text-gray-800 mb-6">
-                {t('directorItCollage.cta.title')}
-              </h2>
-              <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-                {t('directorItCollage.cta.description')}
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-8 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-                >
-                  {t('directorItCollage.cta.contact')}
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="border-2 border-[#023E8A] text-[#023E8A] px-8 py-4 rounded-2xl font-semibold hover:bg-[#023E8A] hover:text-white transition-all duration-300"
-                >
-                  {t('directorItCollage.cta.learnMore')}
-                </motion.button>
-              </div>
-            </motion.div>
+           
           </div>
         </section>
       </div>

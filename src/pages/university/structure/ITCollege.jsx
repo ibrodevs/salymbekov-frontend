@@ -378,15 +378,7 @@ const ITBusinessCollege = () => {
               {t('itBusinessCollege.cta.description')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.a
-                href="tel:+996312541941"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white text-[#023E8A] px-8 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3"
-              >
-                <FaPhone />
-                {t('itBusinessCollege.cta.callNow')}
-              </motion.a>
+              
             </div>
           </motion.div>
         </div>

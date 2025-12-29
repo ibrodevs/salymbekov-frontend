@@ -279,7 +279,7 @@ const PedagogicalCouncil = lazy(() => import('./pages/education/itCollege/Pedago
 
 // Education Postgrad lazy imports 
 const Internship = lazy(() => import('./pages/education/postgrad/Internship'))
-const Phd = lazy(() => import('./pages/education/postgrad/Phd'))
+const Phd = lazy(() => import('./pages/education/postgrad/PhD'))
 const Postgraduate = lazy(() => import('./pages/education/postgrad/Postgraduate'))
 const Residency = lazy(() => import('./pages/education/postgrad/Residency'))
 

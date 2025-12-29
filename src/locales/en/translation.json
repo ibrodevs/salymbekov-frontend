@@ -916,7 +916,7 @@
         {
           "text": "Askar Salymbekov created a unique educational model that has become a benchmark for private education in Kyrgyzstan",
           "author": "Minister of Education and Science of the Kyrgyz Republic",
-          "position": ""
+          "position": "Minister of Education and Science of the Kyrgyz Republic"
         },
         {
           "text": "Thanks to the founder's vision, our students receive education that meets international standards",
@@ -2952,6 +2952,7 @@
         "title": "Scientific and Technical Council",
         "description": "Permanent advisory body of the University",
         "subtitle": "Permanent advisory body of the University",
+        "back": "Back to Management",
         "generalTitle": "General Provisions",
         "generalText": "The Scientific and Technical Council is a permanent advisory body of Salymbekov University. In its activities, the STC is guided by the regulatory legal acts of the Kyrgyz Republic; the Charter of the University, this Regulation and other local regulatory acts. The Regulation on the STC is approved by the decision of the Academic Council. The composition of the STC is approved by the order of the rector for the academic year no later than September 30 on the proposal of the vice-rector for scientific work based on the proposals of the heads of departments. The decisions of the STC on issues within its competence are advisory in nature.",
         "goalsTitle": "Goals and Objectives",
@@ -2979,6 +2980,7 @@
         "title": "Bioethics Committee",
         "description": "Independent ethical examination of scientific research",
         "subtitle": "Independent ethical examination of scientific research",
+        "back": "Back to Management",
         "descTitle": "About the Committee",
         "descText": "The University Bioethics Committee is a public and independent expert body from the researcher and the customer, designed to provide independent expertise, consultation, monitoring and decision-making on issues of ethical assessment of clinical and biomedical research involving humans and/or animals in order to protect the dignity, interests, and health rights of participants in the research, educational and treatment process.",
         "chairmanTitle": "Committee Chairman",
@@ -2992,6 +2994,7 @@
         "title": "Council of Young Scientists",
         "description": "Promoting the realization of creative potential of young scientists",
         "subtitle": "Promoting the realization of creative potential of young scientists",
+        "back": "Back to Management",
         "generalTitle": "General Provisions",
         "generalText": "The Council of Young Scientists (hereinafter CYS) of Salymbekov University is a public organization and is formed from among teachers, researchers, graduate students and masters of all structural divisions of the university under the age of 35. The composition of the CYS is approved by the rector of Salymbekov University.",
         "goalsTitle": "Goals and objectives of the council of young scientists",
@@ -9146,9 +9149,13 @@
         "subtitle": "Main directions of our research",
         "items": {
           "urology": "Urology",
+          "urologyComingSoon": "Coming soon",
           "gynecology": "Gynecology",
+          "gynecologyComingSoon": "Coming soon",
           "ophthalmology": "Ophthalmology",
-          "oncology": "Oncology"
+          "ophthalmologyComingSoon": "Coming soon",
+          "oncology": "Oncology",
+          "oncologyComingSoon": "Coming soon"
         }
       }
     },
@@ -9158,7 +9165,7 @@
       "description": "Coordination of the university's scientific activities, supporting research, innovation and integration into the educational process.",
       "scientificCouncil": {
         "description": "Permanent advisory body coordinating research activities and training of scientific and pedagogical staff.",
-        "badge": "Scientific activity coordination",
+        "badge": "Scientific Activity Coordination",
         "title": "Scientific and Technical Council",
         "subtitle": "Permanent advisory body of the University",
         "back": "Back to Management",
@@ -9288,7 +9295,7 @@
         "badge": "Young Scientists Council",
         "title": "Young Scientists Council",
         "subtitle": "Development of scientific potential of young researchers",
-        "back": "Back to management",
+        "back": "Back to Management",
         "generalTitle": "General Provisions",
         "generalText": "The Young Scientists Council (hereinafter YSC) of «Salymbekov University» is a public organization formed from among teachers, researchers, graduate students and undergraduates of all structural divisions of the university under the age of 35. The YSC composition is approved by the rector of «Salymbekov University». The activities of the YSC are financed from the own funds of «Salymbekov University» as a separate line in the \"Scientific Activity\" section of the income and expenditure estimate of «Salymbekov University», from sponsorship receipts from enterprises, organizations, other legal entities and individuals.",
         "goalsTitle": "Goals and objectives of the Young Scientists Council",
@@ -15048,7 +15055,7 @@
     "internationalActivity": "International Activity",
     "internationalActivityValue": "Development of sports and diplomatic relations",
     "description1": "Outstanding sports figure and diplomat, President of the Federation of Mountaineering and Rock Climbing of the Kyrgyz Republic, Honorary Consul of the Republic of Indonesia in Kyrgyzstan.",
-    "description2": "",
+    "description2": "His multifaceted activities encompass the promotion of mountaineering and rock climbing as competitive sports in Kyrgyzstan, fostering international cooperation in sports, and representing Indonesia's interests through diplomatic channels. Eduard combines his passion for extreme sports with a commitment to building bridges between nations.",
     "sportsTitle": "Sports Activity",
     "noSports": "No information",
     "sportsActivities": [
@@ -15224,7 +15231,7 @@
     "academicDegreeValue": "Candidate of Medical Sciences",
     "specializationValue": "Surgery, Laser Medicine, Cosmetology",
     "description1": "Shaltakova Gulbu Chalovna - Candidate of Medical Sciences, highly qualified surgeon physician specializing in laser medicine and cosmetology. Has many years of experience in medical practice and has achieved success in her professional field.",
-    "description2": "",
+    "description2": "Her expertise spans advanced laser surgical techniques for therapeutic and cosmetic procedures, with a focus on patient safety and satisfaction. Dr. Shaltakova continuously stays current with the latest developments in minimally invasive laser technologies and maintains high standards of clinical excellence.",
     "educationItems": [
       "Candidate of Medical Sciences",
       "Higher medical education",
@@ -16433,7 +16440,7 @@
       "title": "Knowledge Caravan in Osh City",
       "paragraph1": "Salymbekov University, in collaboration with the Osh City Mayor's Office, the City Education Department, and the Salymbekov Business School in Osh city, conducted a seminar for school students titled",
       "seminarTitle": "«Modern Trends in Education, The Future Place of School Education»",
-      "paragraph1Cont": "",
+      "paragraph1Cont": "for students of 9th and 11th grades.",
       "paragraph2": "During the event, the Deputy Mayor of Osh City, Nurbek Kadyrov, delivered a speech emphasizing the importance of obtaining education.",
       "paragraph3": "Presentations were shown to students and teachers of Osh city about the impact of technological changes occurring worldwide on education and labor markets, as well as the place of developing fields such as IT technologies and biotechnology in the 21st century.",
       "speakersTitle": "Seminar Speakers:",

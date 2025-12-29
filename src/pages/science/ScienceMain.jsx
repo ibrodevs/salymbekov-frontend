@@ -111,10 +111,10 @@ const ScienceMain = () => {
 
   // Научные проекты (некликабельные)
   const scientificProjects = [
-    { title: t("science.main.projectShowcase.items.urology"), icon: <FaHospitalAlt className="text-[#023E8A]" /> },
-    { title: t("science.main.projectShowcase.items.gynecology"), icon: <FaBaby className="text-[#023E8A]" /> },
-    { title: t("science.main.projectShowcase.items.ophthalmology"), icon: <FaEye className="text-[#023E8A]" /> },
-    { title: t("science.main.projectShowcase.items.oncology"), icon: <FaRibbon className="text-[#023E8A]" /> }
+    { title: t("science.main.projectShowcase.items.urology"), comingSoon: t("science.main.projectShowcase.items.urologyComingSoon"), icon: <FaHospitalAlt className="text-[#023E8A]" /> },
+    { title: t("science.main.projectShowcase.items.gynecology"), comingSoon: t("science.main.projectShowcase.items.gynecologyComingSoon"), icon: <FaBaby className="text-[#023E8A]" /> },
+    { title: t("science.main.projectShowcase.items.ophthalmology"), comingSoon: t("science.main.projectShowcase.items.ophthalmologyComingSoon"), icon: <FaEye className="text-[#023E8A]" /> },
+    { title: t("science.main.projectShowcase.items.oncology"), comingSoon: t("science.main.projectShowcase.items.oncologyComingSoon"), icon: <FaRibbon className="text-[#023E8A]" /> }
   ];
 
   // Упрощенные анимации
@@ -335,6 +335,9 @@ const ScienceMain = () => {
                   <h3 className="text-xl font-bold text-gray-800">
                     {project.title}
                   </h3>
+                  <p className="text-sm text-gray-500 mt-2">
+                    {project.comingSoon}
+                  </p>
                 </div>
               ))}
             </div>

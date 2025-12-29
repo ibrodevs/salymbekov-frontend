@@ -9765,9 +9765,13 @@
         "subtitle": "Основные направления наших исследований",
         "items": {
           "urology": "Урология",
+          "urologyComingSoon": "Скоро будет",
           "gynecology": "Гинекология",
+          "gynecologyComingSoon": "Скоро будет",
           "ophthalmology": "Офтальмология",
-          "oncology": "Онкология"
+          "ophthalmologyComingSoon": "Скоро будет",
+          "oncology": "Онкология",
+          "oncologyComingSoon": "Скоро будет"
         }
       }
     },

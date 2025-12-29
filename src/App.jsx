@@ -141,7 +141,6 @@ const Interactive = lazy(() => import('./pages/science/labs/Interactive'))
 const Computer = lazy(() => import('./pages/science/labs/Computer'))
 const Study = lazy(() => import('./pages/science/labs/Study'))
 const Projects = lazy(() => import('./pages/science/Projects'))
-const ScienceMain = lazy(() => import('./pages/science/ScienceMain'))
 const ManagementScience = lazy(() => import('./pages/science/Management'))
 const Conferences = lazy(() => import('./pages/science/Conferences'))
 const ConferenceDetail = lazy(() => import('./pages/science/ConferenceDetail'))
@@ -469,9 +468,7 @@ const App = () => {
             <Route path="/clinical/agreements" element={<Agreements />} />
 
 
-
             {/* Lazy Science */}
-            <Route path="/science" element={<ScienceMain />} />
             <Route path="/science/management" element={<ManagementScience />} />
             <Route path="/science/management/scientific-council" element={<ScientificCouncil />} />
             <Route path="/science/management/scientific-technical-council" element={<ScientificTechnicalCouncil />} />
@@ -506,6 +503,10 @@ const App = () => {
             <Route path="/science/projects/current" element={<CurrentProjects />} />
             <Route path="/science/projects/grants" element={<Grants />} />
             <Route path="/science/projects/international" element={<International />} />
+            <Route path="/science/projects/urology" element={<Urology />} />
+            <Route path="/science/projects/gynecology" element={<Gynecology />} />
+            <Route path="/science/projects/ophthalmology" element={<Ophthalmology />} />
+            <Route path="/science/projects/oncology" element={<Oncology />} />
             <Route path="/science/labs" element={<Labs />} />
             <Route path="/science/labs/anatomy" element={<Anatomy />} />
             <Route path="/science/labs/biochemistry" element={<Biochemistry />} />

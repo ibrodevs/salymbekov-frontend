@@ -48,9 +48,11 @@ const LanguageSwitcher = ({
   };
 
   const positionClasses = {
-    'bottom-right': 'origin-top-right right-0 mt-2',
-    'bottom-left': 'origin-top-left left-0 mt-2',
-    'top-right': 'origin-bottom-right right-0 bottom-full mb-2',
+    // Mobile: open downward (mt-2). Desktop (lg:): open upward (bottom-full, mb-2)
+  'bottom-right': 'origin-top-right right-0 mt-2 translate-x-2 lg:origin-bottom-right lg:bottom-full lg:mb-2 lg:translate-x-20',
+  'bottom-left': 'origin-top-left left-0 mt-2 lg:origin-bottom-left lg:bottom-full lg:mb-2',
+    // If caller explicitly asks top positions, keep them opening upward on mobile and desktop
+  'top-right': 'origin-bottom-right right-0 bottom-full mb-2 translate-x-2 lg:translate-x-12',
     'top-left': 'origin-bottom-left left-0 bottom-full mb-2'
   };
 

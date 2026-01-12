@@ -760,7 +760,7 @@ const Navbar = () => {
               </Link>
             </div>
 
-            <div className="hidden lg:flex items-center space-x-1">
+            <div className="hidden lg:flex items-center space-x-1 lg:ml-12 lg:space-x-2">
               {Object.entries(menuData).map(([menuKey, { items }]) => (
                 <div
                   key={menuKey}

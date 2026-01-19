@@ -47,7 +47,8 @@ const LanguageSwitcher = ({
     'bottom-right': 'origin-top-right right-0 mt-2',
     'bottom-left': 'origin-top-left left-0 mt-2',
     'top-right': 'origin-bottom-right right-0 bottom-full mb-2',
-    'top-left': 'origin-bottom-left left-0 bottom-full mb-2'
+    'top-left': 'origin-bottom-left left-0 bottom-full mb-2',
+    'top-center': 'origin-bottom center-x left-1/2 -translate-x-1/2 bottom-full mb-2' // новая позиция
   };
 
   const variantStyles = {

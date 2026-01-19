@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import LanguageSwitcher from './LanguageSwitcher';
 import Logo1 from '../../assets/Logo.png';
 import Logo2 from '../../assets/Logo_white.png';
+import { m } from 'framer-motion';
 
 const Navbar = () => {
   const { t } = useTranslation();
@@ -166,7 +167,7 @@ const Navbar = () => {
             { key: 'acts', link: '/university/founding-docs/acts' }
           ]
         },
-       {
+        {
           key: 'strategicDocs',
           link: '/university/StrategicDocs',
           subItems: [
@@ -204,7 +205,7 @@ const Navbar = () => {
             { key: 'internalActs', link: '/university/normative-docs/internal-acts' }
           ]
         },
-         {
+        {
           key: 'qualityManagement',
           link: '/university/quality-management-system',
           subItems: [
@@ -724,7 +725,12 @@ const Navbar = () => {
           ))}
 
           <div className="mt-4 pt-4 border-t border-gray-200">
-            <LanguageSwitcher variant="solid" />
+            <LanguageSwitcher
+              position="top-right"
+              variant="solid"
+              showText={true}
+              compact={false}
+            />
           </div>
         </div>
       </div>
@@ -777,8 +783,18 @@ const Navbar = () => {
             ))}
           </div>
 
-          <div className="flex-shrink-0 mt-8">
-            <LanguageSwitcher variant={isScrolled ? "outline" : "default"} />
+          {/* LanguageSwitcher с увеличенным отступом сверху и добавлен z-index */}
+          {/* LanguageSwitcher с увеличенным отступом сверху и добавлен z-index */}
+          <div className="flex-shrink-0 mb-12 pb-4 border-b border-gray-200 flex items-center justify-center relative mt-8" style={{marginTop: '3.125rem'}}>
+            <LanguageSwitcher
+              position="top-center"
+              variant={isScrolled ? "outline" : "default"}
+              showText={true}
+              compact={false}
+              containerWidth="w-full"
+              responsive={true}
+              direction="up" // Новый проп для открытия вверх
+            />
           </div>
         </div>
 

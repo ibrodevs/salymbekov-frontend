@@ -1,4 +1,61 @@
 {
+  "home": {
+    "partners": {
+      "title": "Our Partners",
+      "subtitle": "We cooperate with leading universities around the world, creating global educational opportunities",
+      "stats": {
+        "partners": "Partners",
+        "worldwide": "worldwide",
+        "international": "International",
+        "universities": "universities",
+        "countries": "Countries",
+        "cooperation": "cooperation",
+        "opportunities": "Opportunities",
+        "students": "for students"
+      },
+      "categories": {
+        "international": "International",
+        "regional": "Regional",
+        "alliance": "Alliance"
+      },
+      "partnership": "Partnership",
+      "countries": {
+        "southKorea": "South Korea",
+        "malaysia": "Malaysia",
+        "russia": "Russia",
+        "uzbekistan": "Uzbekistan",
+        "india": "India",
+        "kyrgyzstan": "Kyrgyzstan",
+        "international": "International"
+      },
+      "cooperationTypes": {
+        "memorandum": "Memorandum of Cooperation",
+        "dualDiploma": "Dual Diploma Program",
+        "educationalCooperation": "Educational Cooperation",
+        "jointInitiatives": "Joint Educational Initiatives",
+        "cooperationAgreement": "Cooperation Agreement",
+        "cooperation": "Cooperation",
+        "partnership": "Partnership",
+        "regionalPartner": "Regional Partner",
+        "allianceMember": "Alliance Member",
+        "dualDiplomaPrograms": "Joint Dual Diploma Programs"
+      },
+      "cta": {
+        "title": "Want to become our partner?",
+        "description": "Join our global network of universities and create educational opportunities together with us",
+        "button": "Become a Partner"
+      },
+      "video": {
+        "title": "About Our University",
+        "subtitle": "Learn more about our university, mission and achievements",
+        "platform": "YouTube",
+        "description": {
+          "title": "Get to know us better",
+          "text": "In this video, you will learn about the university's history, our achievements, modern infrastructure and opportunities for students. We are proud to create conditions for quality education and development of future specialists."
+        }
+      }
+    }
+  },
   "universitySub": {
     "appeal": "Founder's Appeal",
     "appealDesc": "Read the inspiring message from our founder",

@@ -34,10 +34,10 @@ const FounderMessage = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative flex justify-center lg:justify-start"
           >
-            <div className="bg-white rounded-3xl p-4 shadow-2xl border border-gray-100 w-full max-w-xs">
+            <div className="bg-white rounded-3xl p-4 shadow-2xl border border-gray-100 w-full max-w-sm">
               <div className="relative overflow-hidden rounded-2xl">
                 {}
-                <div className="aspect-[9/16] w-full">
+                <div className="h-[28rem] w-full">
                   <img 
                     src="/askar.jpg" 
                     alt={t('founderMessageHero.imageAlt')}

@@ -37,32 +37,44 @@ const MaterialBaseGallery = () => {
   const images = [
     {
       id: 1,
-      url: "https://images.unsplash.com/photo-1600585154340-ffffd44ef2f3?w=800&h=600&fit=crop",
-      title: "Современ",
-      category: "Технологии"
-    },
-    {
-      id: 2,
-      url: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop",
-      title: "Производственные мощности",
+      url: "https://salymbekov.com/wp-content/uploads/2022/07/bc0b2745.jpg",
+      title: "Материально-техническая база",
       category: "Инфраструктура"
     },
     {
-      id: 3,
-      url: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&h=600&fit=crop",
-      title: "Лабораторные исследования",
+      id: 2,
+      url: "https://salymbekov.com/wp-content/uploads/2021/03/c0b9392.jpg",
+      title: "Современные лаборатории",
       category: "Наука"
     },
     {
+      id: 3,
+      url: "https://salymbekov.com/wp-content/uploads/2021/03/c0b9391.jpg",
+      title: "Образовательные помещения",
+      category: "Образование"
+    },
+    {
       id: 4,
-      url: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&h=600&fit=crop",
+      url: "https://salymbekov.com/wp-content/uploads/2021/03/c0b9389.jpg",
+      title: "Клиническая база",
+      category: "Медицина"
+    },
+    {
+      id: 5,
+      url: "https://salymbekov.com/wp-content/uploads/2021/03/c0b9390.jpg",
+      title: "Технологическое оборудование",
+      category: "Технологии"
+    },
+    {
+      id: 6,
+      url: "https://salymbekov.com/wp-content/uploads/2022/07/photo_2022-07-18_15-21-07.jpg",
       title: "Инновационные решения",
       category: "Разработка"
     },
     {
-      id: 5,
-      url: "https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=800&h=600&fit=crop",
-      title: "Качественные материалы",
+      id: 7,
+      url: "https://salymbekov.com/wp-content/uploads/2022/07/bc0b2562.jpg",
+      title: "Качественные ресурсы",
       category: "Ресурсы"
     }
   ];
@@ -107,11 +119,6 @@ const MaterialBaseGallery = () => {
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
             {t('materialBase.description')}
           </p>
-          <div className="bg-white rounded-2xl p-6 shadow-lg inline-block transform hover:scale-105 transition-transform duration-300">
-            <p className="text-gray-700 text-base md:text-lg">
-              {t('materialBase.cost')}
-            </p>
-          </div>
         </div>
 
         {/* Основная галерея */}
@@ -131,13 +138,8 @@ const MaterialBaseGallery = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   
-                  {/* Информация о изображении */}
-                  <div className="absolute bottom-8 left-8 text-white">
-                    <span className="inline-block px-3 py-1 bg-blue-500 rounded-full text-sm font-medium mb-2">
-                      {image.category}
-                    </span>
-                    <h3 className="text-2xl md:text-3xl font-bold">{image.title}</h3>
-                  </div>
+                  {/* Информация о изображении - убрана по запросу */}
+                  
                 </div>
               ))}
             </div>

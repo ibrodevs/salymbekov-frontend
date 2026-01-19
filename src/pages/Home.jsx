@@ -1,7 +1,9 @@
 import Hero from '../components/Home/Hero';
 import FounderMessage from './FounderMessage';
 import MaterialBaseGallery from './MaterialBaseGallery';
-import HomeNews from './university/HomeNewsSection'
+import HomeNews from './university/HomeNewsSection';
+import PartnersSection from '../components/Home/PartnersSection';
+import VideoSection from '../components/Home/VideoSection';
 
 const Home = () => {
   return (
@@ -9,6 +11,8 @@ const Home = () => {
       <Hero />
       <FounderMessage/>
       <HomeNews />
+      <PartnersSection />
+      <VideoSection />
       <MaterialBaseGallery />
     </div>
   );

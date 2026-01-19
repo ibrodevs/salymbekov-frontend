@@ -239,6 +239,7 @@ const Infrastructure = () => {
   ];
 
   const [loadedImages, setLoadedImages] = useState({});
+  const [imageErrors, setImageErrors] = useState({});
 
   // Animated background balls
   const animatedBalls = useMemo(() => {
@@ -258,8 +259,9 @@ const Infrastructure = () => {
 
       for (const section of sections) {
         if (section.images.length > 0) {
+          // ИСПРАВЛЕННЫЙ ПУТЬ - убрали /src/assets/applicant/
           imagesMap[section.folder] = section.images.map(
-            img => `/src/assets/applicant/infastructure/${section.folder}/${img}`
+            img => `/infrastructure/${section.folder}/${img}`
           );
         } else {
           imagesMap[section.folder] = [];
@@ -271,6 +273,17 @@ const Infrastructure = () => {
 
     loadImages();
   }, []);
+
+  const handleImageError = (sectionFolder, imgName) => {
+    setImageErrors(prev => ({
+      ...prev,
+      [`${sectionFolder}/${imgName}`]: true
+    }));
+  };
+
+  const getPlaceholderUrl = (title) => {
+    return `https://via.placeholder.com/600x400/0077B6/FFFFFF?text=${encodeURIComponent(title)}`;
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
@@ -330,11 +343,12 @@ const Infrastructure = () => {
         />
       ))}
 
-
-
       <div className="container mx-auto px-4 py-12 relative z-10">
         {/* Header */}
-        <div
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
           <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
@@ -343,28 +357,34 @@ const Infrastructure = () => {
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             {t('infrastructure.subtitle', 'Современный кампус с развитой инфраструктурой для комфортного обучения и студенческой жизни')}
           </p>
-        </div>
+        </motion.div>
 
         {/* Infrastructure Sections with Photo Galleries */}
         <div className="space-y-16">
           {sections.map((section, index) => (
-            <div
+            <motion.div
               key={section.id}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
               className="bg-white rounded-2xl shadow-xl overflow-hidden"
             >
               {/* Section Header */}
-              <div className="bg-gradient-to-r from-blue-600 to-cyan-600 p-8 text-white">
-                <h2 className="text-3xl font-bold mb-2">
+              <div className="bg-gradient-to-r from-blue-600 to-cyan-600 p-6 md:p-8 text-white">
+                <h2 className="text-2xl md:text-3xl font-bold mb-2">
                   {section.title[i18n.language] || section.title.ru}
                 </h2>
-                <p className="text-lg opacity-90">
+                <p className="text-base md:text-lg opacity-90">
                   {section.description[i18n.language] || section.description.ru}
                 </p>
               </div>
 
               {/* Photo Scroll Gallery */}
               {loadedImages[section.folder] && loadedImages[section.folder].length > 0 && (
-                <div className="relative overflow-hidden">
+                <div className="relative overflow-hidden bg-gray-50">
+                  <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none"></div>
+                  <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none"></div>
+
                   <motion.div
                     className="flex gap-4 p-6"
                     animate={{
@@ -374,27 +394,45 @@ const Infrastructure = () => {
                       x: {
                         repeat: Infinity,
                         repeatType: "loop",
-                        duration: loadedImages[section.folder].length * 5,
+                        duration: loadedImages[section.folder].length * 8,
                         ease: "linear",
                       },
                     }}
                   >
                     {/* Duplicate images for seamless loop */}
-                    {[...loadedImages[section.folder], ...loadedImages[section.folder]].map((img, idx) => (
-                      <div
-                        key={idx}
-                        className="flex-shrink-0 w-[600px] h-[400px] rounded-xl overflow-hidden shadow-lg"
-                      >
-                        <img
-                          src={img}
-                          alt={`${section.title[i18n.language] || section.title.ru} ${idx + 1}`}
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                          onError={(e) => {
-                            e.target.src = 'https://via.placeholder.com/600x400/0077B6/FFFFFF?text=' + encodeURIComponent(section.title[i18n.language] || section.title.ru);
-                          }}
-                        />
-                      </div>
-                    ))}
+                    {[...loadedImages[section.folder], ...loadedImages[section.folder]].map((img, idx) => {
+                      const imgName = section.images[idx % section.images.length];
+                      const isError = imageErrors[`${section.folder}/${imgName}`];
+
+                      return (
+                        <div
+                          key={`${section.folder}-${idx}`}
+                          className="flex-shrink-0 w-full sm:w-[400px] md:w-[500px] lg:w-[600px] h-[250px] sm:h-[300px] md:h-[350px] rounded-xl overflow-hidden shadow-lg group"
+                        >
+                          {!isError ? (
+                            <img
+                              src={img}
+                              alt={`${section.title[i18n.language] || section.title.ru} - Фото ${Math.floor(idx % section.images.length) + 1}`}
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                              onError={() => handleImageError(section.folder, imgName)}
+                              loading="lazy"
+                            />
+                          ) : (
+                            <div className="w-full h-full bg-gradient-to-br from-blue-100 to-cyan-100 flex items-center justify-center">
+                              <div className="text-center p-4">
+                                <FiActivity className="w-12 h-12 text-blue-400 mx-auto mb-3" />
+                                <p className="text-blue-600 font-medium">
+                                  {section.title[i18n.language] || section.title.ru}
+                                </p>
+                                <p className="text-blue-400 text-sm mt-1">
+                                  Фото {Math.floor(idx % section.images.length) + 1}
+                                </p>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
                   </motion.div>
                 </div>
               )}
@@ -415,10 +453,46 @@ const Infrastructure = () => {
                   <p>{t('infrastructure.noImages', 'Фотографии скоро будут добавлены')}</p>
                 </div>
               )}
-            </div>
+
+              {/* Section footer */}
+              <div className="p-4 bg-gray-50 border-t border-gray-100">
+                <div className="flex items-center justify-between text-sm text-gray-600">
+                  <div className="flex items-center gap-2">
+                    <FiMapPin className="text-blue-500" />
+                    <span>{section.images.length} фотографий</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           ))}
         </div>
+
+        {/* Information Box */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="mt-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl p-6 md:p-8 text-white"
+        >
+          <div className="flex items-center gap-4 mb-4">
+            <div className="p-3 bg-white/20 rounded-xl backdrop-blur-sm">
+              <FiHome className="w-6 h-6" />
+            </div>
+            <div>
+              <h3 className="text-xl md:text-2xl font-bold">
+                {t('infrastructure.infoTitle', 'Современная инфраструктура')}
+              </h3>
+              <p className="opacity-90 mt-2">
+                {t('infrastructure.infoDescription', 'Университет предоставляет все необходимые условия для качественного образования, практики и комфортного проживания студентов.')}
+              </p>
+            </div>
+          </div>
+
+        </motion.div>
       </div>
+
+      {/* Footer spacing */}
+      <div className="h-16"></div>
     </div>
   );
 };

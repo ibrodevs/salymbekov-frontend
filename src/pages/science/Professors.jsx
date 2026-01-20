@@ -16,7 +16,7 @@ import madaminovPhoto from '../../assets/science/professors/gapyr-madaminov-300x
 import shaltakovaPhoto from '../../assets/science/professors/shaltakova-gulbu-chalovna-300x300.png';
 
 const Professors = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [activeProfessor, setActiveProfessor] = useState('seanPark');
 
   const professorSections = [
@@ -33,6 +33,10 @@ const Professors = () => {
   ];
 
   const professorKey = activeProfessor;
+  
+  // Debug: log current language and professor translation key
+  console.log(`[Professors] Current language: ${i18n.language}, Professor: ${professorKey}`);
+  console.log(`[Professors] seanPark name translation:`, t('science.seanPark.name'));
   
   // Get translation data with error handling
   let educationData, experienceData, achievementsData;

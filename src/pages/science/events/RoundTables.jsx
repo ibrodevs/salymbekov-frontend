@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const RoundTables = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
@@ -10,11 +13,11 @@ const RoundTables = () => {
         <div className="relative container mx-auto px-4 h-full flex items-center">
           <div className="text-white">
             <Link to="/science/events" className="text-gray-200 hover:text-white mb-2 inline-block">
-              ← Назад к мероприятиям
+              {t('science.events.roundTables.backLink')}
             </Link>
-            <h1 className="text-5xl font-bold mb-4">Круглые столы</h1>
+            <h1 className="text-5xl font-bold mb-4">{t('science.events.roundTables.pageTitle')}</h1>
             <p className="text-xl text-gray-200">
-              Дискуссионные площадки и обсуждения
+              {t('science.events.roundTables.pageSubtitle')}
             </p>
           </div>
         </div>
@@ -24,9 +27,9 @@ const RoundTables = () => {
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-12 text-center">
           <div className="text-6xl mb-6">💬</div>
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">Круглые столы</h2>
+          <h2 className="text-3xl font-bold text-gray-800 mb-4">{t('science.events.roundTables.pageTitle')}</h2>
           <p className="text-gray-600 text-lg">
-            Раздел находится в разработке. Информация о круглых столах будет добавлена в ближайшее время.
+            {t('science.events.roundTables.underDevelopment')}
           </p>
         </div>
       </div>

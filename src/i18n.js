@@ -63,6 +63,13 @@ if (process.env.NODE_ENV !== 'production') {
     console.log(`${key} -> getResource(en):`, i18n.getResource('en', 'translation', key));
     console.log(`${key} -> i18n.exists(kg):`, i18n.exists(key, { lng: 'kg' }));
     console.log(`${key} -> i18n.exists(en):`, i18n.exists(key, { lng: 'en' }));
+    
+    // Debug professor data specifically
+    const professorKey = 'science.seanPark.name';
+    console.log(`${professorKey} -> getResource(kg):`, i18n.getResource('kg', 'translation', professorKey));
+    console.log(`${professorKey} -> i18n.exists(kg):`, i18n.exists(professorKey, { lng: 'kg' }));
+    console.log('Science object in kg:', i18n.getResource('kg', 'translation', 'science'));
+    
     console.groupEnd();
   } catch (err) {
     console.warn('[i18n-debug] error while checking resources', err);

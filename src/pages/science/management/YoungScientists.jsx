@@ -1,9 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { 
-  FaArrowLeft, 
   FaUserGraduate,
   FaLightbulb,
   FaUsers,
@@ -13,78 +11,19 @@ import {
 const YoungScientists = () => {
   const { t } = useTranslation();
 
-  // Простая функция для получения перевода с fallback
-  const getTranslation = (key, fallback = '') => {
-    try {
-      const translation = t(key, { returnObjects: true });
-      
-      // Если перевод не найден или это ключ, возвращаем fallback
-      if (!translation || translation === key || (typeof translation === 'object' && Object.keys(translation).length === 0)) {
-        return fallback;
-      }
-      
-      return translation;
-    } catch (error) {
-      console.warn(`Translation error for key "${key}":`, error);
-      return fallback;
-    }
-  };
-
-  // Получение строки
-  const getString = (key, fallback = '') => {
-    const value = getTranslation(key, fallback);
-    
-    if (typeof value === 'string') return value;
-    if (Array.isArray(value)) return value[0] || fallback;
-    if (typeof value === 'object') {
-      return value.title || value.name || value.text || fallback;
-    }
-    return fallback;
-  };
-
-  // Получение массива
-  const getArray = (key, fallback = []) => {
-    const value = getTranslation(key, fallback);
-    
-    if (Array.isArray(value)) return value;
-    if (typeof value === 'string') return [value];
-    if (typeof value === 'object') {
-      if (value.items) return value.items;
-      if (value.members) return value.members;
-      if (value.tasks) return value.tasks;
-      return Object.values(value);
-    }
-    return fallback;
-  };
-
-  // Fallback значения на кыргызском языке
-  const kyrgyzFallbacks = {
-    back: "Басманага кайтуу",
-    badge: "Жаш илимпоздор кеңеши",
-    title: "Жаш илимпоздор кеңеши",
-    subtitle: "Жаш илимпоздордун илимий потенциалын өнүктүрүү",
-    generalTitle: "Жалпы жоболор",
-    generalText: "Жаш илимпоздор кеңеши – жаш илимпоздордун илимий жана кадрдык өнүгүшүн колдоо, илимий изилдөө иштерин координациялоо жана жаш илимпоздор ортосундагы кызматташтыкты жандандыруу максатында түзүлгөн. Кеңеш университеттин жаш илимпоздорго болгон саясатын ишке ашырууга багытталган.",
-    goalsTitle: "Мақсаттар жана милдеттер",
-    goalsText: "Кеңештин негизги максаты – жаш илимпоздордун илимий активдүүлүгүн жогорулатуу, илимий изилдөөлөрдүн сапатын жакшыртуу, жаш илимпоздорго илимий мекемелерде иштөөгө шарт түзүү. Кеңеш жаш илимпоздордун илимий иштерин уюштурууга, илимий долбоорлорду ишке ашырууга, эл аралык алкактардагы катышуусун камсыз кылууга жардам берет.",
-    compositionTitle: "Кеңештин курамы",
-    noMembers: "Кеңештин курамы боюнча маалымат убактылуу жеткиликсиз",
-    downloadTitle: "Документтер",
-    downloadDesc: "Жаш илимпоздор кеңешинин документтерин жүктөп алуу",
-    downloadBtn: "Документтерди жүктөө"
-  };
-
-  // Получение данных с fallback
-  const members = getArray('science.management.youngScientists.members', [
-    "Асанова Айгул Калыковна, PhD, ага окутуучу",
-    "Бекбаев Нурдин Муратбекович, PhD, ассистент",
-    "Джолдошева Айпери Маматовна, PhD, окутуучу",
-    "Калыков Азамат Саматович, PhD, доцент",
-    "Мамбетова Гүлмира Уланбековна, PhD, ага окутуучу",
-    "Садыков Эркин Бекболотович, PhD, окутуучу",
-    "Токтосунова Жибек Абдыкадыровна, PhD, ассистент",
-    "Усенов Руслан Таштанбекович, PhD, окутуучу"
-  ]);
+  const badge = t('science.management.youngScientists.badge');
+  const title = t('science.management.youngScientists.title');
+  const subtitle = t('science.management.youngScientists.subtitle');
+  const generalTitle = t('science.management.youngScientists.generalTitle');
+  const generalText = t('science.management.youngScientists.generalText');
+  const goalsTitle = t('science.management.youngScientists.goalsTitle');
+  const goalsText = t('science.management.youngScientists.goalsText');
+  const compositionTitle = t('science.management.youngScientists.compositionTitle');
+  const noMembers = t('science.management.youngScientists.noMembers');
+  const downloadTitle = t('science.management.youngScientists.downloadTitle');
+  const downloadDesc = t('science.management.youngScientists.downloadDesc');
+  const downloadBtn = t('science.management.youngScientists.downloadBtn');
+  const members = t('science.management.youngScientists.members', { returnObjects: true });
 
   // если нет членов — создаём плейсхолдеры (4 шт.) чтобы "открыть всех"
   const displayMembers = members.length > 0 ? members : Array.from({ length: 4 }, () => '');
@@ -139,14 +78,6 @@ const YoungScientists = () => {
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link 
-            to="/science/management"
-            className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors group"
-          >
-            <FaArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" />
-            {getString('science.management.youngScientists.back', kyrgyzFallbacks.back)}
-          </Link>
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -154,14 +85,14 @@ const YoungScientists = () => {
           >
             <div className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-4">
               <span className="text-white/90 text-sm font-medium">
-                {getString('science.management.youngScientists.badge', kyrgyzFallbacks.badge)}
+                {badge}
               </span>
             </div>
             <h1 className="text-5xl font-bold mb-4">
-              {getString('science.management.youngScientists.title', kyrgyzFallbacks.title)}
+              {title}
             </h1>
             <p className="text-xl text-white/90 max-w-3xl">
-              {getString('science.management.youngScientists.subtitle', kyrgyzFallbacks.subtitle)}
+              {subtitle}
             </p>
           </motion.div>
         </div>
@@ -182,11 +113,11 @@ const YoungScientists = () => {
               <FaUserGraduate className="text-white text-xl" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">
-              {getString('science.management.youngScientists.generalTitle', kyrgyzFallbacks.generalTitle)}
+              {generalTitle}
             </h2>
           </div>
           <p className="text-gray-700 text-lg leading-relaxed">
-            {getString('science.management.youngScientists.generalText', kyrgyzFallbacks.generalText)}
+            {generalText}
           </p>
         </motion.div>
 
@@ -203,11 +134,11 @@ const YoungScientists = () => {
               <FaLightbulb className="text-white text-xl" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">
-              {getString('science.management.youngScientists.goalsTitle', kyrgyzFallbacks.goalsTitle)}
+              {goalsTitle}
             </h2>
           </div>
           <p className="text-gray-700 text-lg leading-relaxed">
-            {getString('science.management.youngScientists.goalsText', kyrgyzFallbacks.goalsText)}
+            {goalsText}
           </p>
         </motion.div>
 
@@ -224,12 +155,12 @@ const YoungScientists = () => {
               <FaUsers className="text-white text-xl" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">
-              {getString('science.management.youngScientists.compositionTitle', kyrgyzFallbacks.compositionTitle)}
+              {compositionTitle}
             </h2>
           </div>
           
           <div className="grid md:grid-cols-2 gap-6">
-            {displayMembers.map((member, index) => {
+            {Array.isArray(members) && members.map((member, index) => {
               const isPlaceholder = member === '' || member == null;
               return (
                 <motion.div
@@ -246,7 +177,7 @@ const YoungScientists = () => {
                     </div>
                     <p className={`text-gray-900 text-lg font-medium ${isPlaceholder ? 'text-gray-400 italic' : ''}`}>
                       {isPlaceholder ? 
-                        getString('science.management.youngScientists.noMembers', kyrgyzFallbacks.noMembers) : 
+                        noMembers : 
                         (typeof member === 'string' ? member : member.name || member.title || JSON.stringify(member))
                       }
                     </p>
@@ -270,11 +201,11 @@ const YoungScientists = () => {
               <div className="flex items-center mb-3">
                 <FaDownload className="text-2xl mr-3" />
                 <h3 className="text-2xl font-bold">
-                  {getString('science.management.youngScientists.downloadTitle', kyrgyzFallbacks.downloadTitle)}
+                  {downloadTitle}
                 </h3>
               </div>
               <p className="text-white/90 text-lg">
-                {getString('science.management.youngScientists.downloadDesc', kyrgyzFallbacks.downloadDesc)}
+                {downloadDesc}
               </p>
             </div>
             <motion.a
@@ -284,7 +215,7 @@ const YoungScientists = () => {
               className="bg-white text-[#023E8A] px-8 py-4 rounded-xl font-bold text-lg hover:shadow-xl transition-all flex items-center gap-2 whitespace-nowrap"
             >
               <FaDownload />
-              {getString('science.management.youngScientists.downloadBtn', kyrgyzFallbacks.downloadBtn)}
+              {downloadBtn}
             </motion.a>
           </div>
         </motion.div>

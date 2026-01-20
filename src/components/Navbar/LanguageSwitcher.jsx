@@ -40,7 +40,10 @@ const LanguageSwitcher = ({
   const handleLanguageChange = (languageCode) => {
     // Map any 'ky' selection to 'kg' to match our resources
     const target = languageCode === 'ky' ? 'kg' : languageCode;
+    console.log('Language change:', languageCode, '->', target);
+    console.log('Current i18n language before:', i18n.language);
     i18n.changeLanguage(target);
+    console.log('Current i18n language after:', i18n.language);
     setIsOpen(false);
     if (onChange) {
       onChange(target);

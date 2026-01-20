@@ -7,7 +7,7 @@ import VideoSection from '../components/Home/VideoSection';
 
 const Home = () => {
   return (
-    <div>
+    <div className='bg-white'> 
       <Hero />
       <FounderMessage/>
       <HomeNews />

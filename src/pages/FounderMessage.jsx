@@ -6,10 +6,8 @@ const FounderMessage = () => {
   const { t } = useTranslation();
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
+    <section className="py-20 relative overflow-hidden">
       {}
-      <div className="absolute top-0 right-0 w-72 h-72 bg-blue-100 rounded-full -translate-y-36 translate-x-36 opacity-50"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-200 rounded-full translate-y-48 -translate-x-48 opacity-30"></div>
       
       <div className="relative z-10 max-w-6xl mx-auto px-4">
         <motion.div
@@ -73,8 +71,6 @@ const FounderMessage = () => {
             </div>
             
             {}
-            <div className="absolute -top-3 -left-3 w-6 h-6 bg-yellow-400 rounded-full opacity-80"></div>
-            <div className="absolute -bottom-4 -right-4 w-8 h-8 bg-green-400 rounded-full opacity-60"></div>
           </motion.div>
 
           {}

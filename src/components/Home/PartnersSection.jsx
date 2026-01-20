@@ -285,11 +285,11 @@ const PartnersSection = () => {
                   onMouseEnter={() => setHoveredPartner(partner.id)}
                   onMouseLeave={() => setHoveredPartner(null)}
                 >
-                  <div className={`bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all duration-500 ${
+                  <div className={`bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all duration-500 h-64 ${
                     isHovered 
-                      ? 'scale-105 shadow-2xl ring-4 ring-opacity-30 translate-y-[-8px]' 
+                      ? 'scale-105 shadow-2xl -translate-y-2' 
                       : 'scale-100 shadow-lg'
-                  } ${isHovered ? `ring-${partner.logoColor.split('-')[1]}-400` : ''}`}>
+                  }`}>
                     {/* Градиентная полоса */}
                     <div className={`h-3 bg-gradient-to-r ${partner.logoColor}`}></div>
                     
@@ -304,14 +304,14 @@ const PartnersSection = () => {
                         
                         {/* Контент */}
                         <div className="flex-1">
-                          <h3 className="font-bold text-gray-800 text-lg mb-2 leading-tight">
+                          <h3 className="font-bold text-gray-800 text-lg mb-2 leading-tight line-clamp-2">
                             {partner.name}
                           </h3>
                           <div className="flex items-center text-sm text-gray-600 mb-3">
                             <Globe className="w-4 h-4 mr-2" />
                             {t(partner.countryKey)}
                           </div>
-                          <p className="text-gray-700 text-sm leading-relaxed">
+                          <p className="text-gray-700 text-sm leading-relaxed line-clamp-3">
                             {t(partner.typeKey)}
                           </p>
                         </div>

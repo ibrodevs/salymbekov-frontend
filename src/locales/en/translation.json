@@ -1,4 +1,61 @@
 {
+  "home": {
+    "partners": {
+      "title": "Our Partners",
+      "subtitle": "We cooperate with leading universities around the world, creating global educational opportunities",
+      "stats": {
+        "partners": "Partners",
+        "worldwide": "worldwide",
+        "international": "International",
+        "universities": "universities",
+        "countries": "Countries",
+        "cooperation": "cooperation",
+        "opportunities": "Opportunities",
+        "students": "for students"
+      },
+      "categories": {
+        "international": "International",
+        "regional": "Regional",
+        "alliance": "Alliance"
+      },
+      "partnership": "Partnership",
+      "countries": {
+        "southKorea": "South Korea",
+        "malaysia": "Malaysia",
+        "russia": "Russia",
+        "uzbekistan": "Uzbekistan",
+        "india": "India",
+        "kyrgyzstan": "Kyrgyzstan",
+        "international": "International"
+      },
+      "cooperationTypes": {
+        "memorandum": "Memorandum of Cooperation",
+        "dualDiploma": "Dual Diploma Program",
+        "educationalCooperation": "Educational Cooperation",
+        "jointInitiatives": "Joint Educational Initiatives",
+        "cooperationAgreement": "Cooperation Agreement",
+        "cooperation": "Cooperation",
+        "partnership": "Partnership",
+        "regionalPartner": "Regional Partner",
+        "allianceMember": "Alliance Member",
+        "dualDiplomaPrograms": "Joint Dual Diploma Programs"
+      },
+      "cta": {
+        "title": "Want to become our partner?",
+        "description": "Join our global network of universities and create educational opportunities together with us",
+        "button": "Become a Partner"
+      },
+      "video": {
+        "title": "About Our University",
+        "subtitle": "Learn more about our university, mission and achievements",
+        "platform": "YouTube",
+        "description": {
+          "title": "Get to know us better",
+          "text": "In this video, you will learn about the university's history, our achievements, modern infrastructure and opportunities for students. We are proud to create conditions for quality education and development of future specialists."
+        }
+      }
+    }
+  },
   "universitySub": {
     "appeal": "Founder's Appeal",
     "appealDesc": "Read the inspiring message from our founder",
@@ -17016,5 +17073,51 @@
       "title": "Important Information",
       "description": "All documents are issued in accordance with established formats and standards."
     }
+  },
+  "stableRules": {
+    "hero": {
+      "title": "Student Transfer Regulations",
+      "subtitle": "REGULATIONS ON THE PROCEDURE FOR TRANSFER, DISMISSAL AND REINSTATEMENT OF STUDENTS"
+    },
+    "introduction": {
+      "title": "Student Transfer Regulations",
+      "description": "These Regulations establish the procedure for transfer, dismissal and reinstatement of students in Salymbekov University. The Regulations are developed in accordance with the legislation of the Kyrgyz Republic and regulate all aspects of students' academic mobility."
+    },
+    "section1": {
+      "title": "1. General Provisions",
+      "subtitle1": "Basis for Development",
+      "point1": "These Regulations are developed in accordance with the Law of the Kyrgyz Republic \"On Education\"; Regulations on the procedure for transfer, expulsion and reinstatement of students of higher educational institutions, approved by the Decree of the Government of the Kyrgyz Republic No. 346 dated May 29, 2012, the Charter of the Institution and other normative legal acts regulating the activities of higher professional education organizations.",
+      "point2": "These Regulations establish general requirements for the procedure for transferring and reinstating students to the Salymbekov University Institution (hereinafter referred to as the University), as well as transferring from one main educational program (direction, specialty) to another, regardless of the course, form (full-time, evening, correspondence, distance learning, external studies), including within the university.",
+      "point3": "The determining condition for the transfer and reinstatement of students to KSU is their preparedness to master a specific (selected) main educational program of professional education, previous academic performance, as well as the availability of vacant places.",
+      "point4": "The total duration of a student's training should not exceed the period established by the University's curriculum for mastering the main educational program."
+    },
+    "section2": {
+      "title": "2. Procedure for Transfer of Students",
+      "subtitle1": "2.1. Transfer Conditions",
+      "point1": "Transfer of students from higher educational institutions with state accreditation (attestation) is carried out during summer or winter vacations, only with the consent of the heads of both universities, if there are vacant places in the corresponding course in the specialty/direction of interest to the student, on a contractual basis with full compensation of training costs.",
+      "point2": "Students who are transferred from other educational organizations (institutions) or from one specialty to another, as well as reinstated in the number of students after expulsion, pay an additional fee for eliminating the difference in curricula. The amount of this payment is determined by calculation depending on the difference in the teaching load and the size of the hourly wage rates of teachers.",
+      "subtitle2": "2.2. Transfer Restrictions",
+      "point3": "The University does not establish restrictions related to the course and form of study, the type of main educational program to which the student is transferred.",
+      "point4": "Students who have successfully completed the first year of study have the right to transfer to another educational program within the University, to a similar or other educational program from another university to the University, provided that they meet the admission requirements for this educational program, the availability of vacant places and the consent of the heads of both programs (universities)."
+    },
+    "section3": {
+      "title": "3. Dismissal of Students",
+      "subtitle1": "3.1. Dismissal at the Student's Initiative",
+      "point1": "A student may be expelled from the University on his/her own initiative by order of the rector, upon personal application of the student: at his/her own request (without specifying specific reasons); in connection with the transfer to another university; due to illness (based on a certificate from a medical institution); due to family circumstances.",
+      "subtitle2": "3.2. Dismissal at the Initiative of the Administration",
+      "point2": "Dismissal at the initiative of the administration is carried out by order of the rector, upon submission of a report by the head of the relevant educational unit: for academic debt; for violation of academic discipline (failure to comply with the schedule of the educational process, loss of contact with the university, failure to return from academic leave after its expiration); for violation of internal regulations, rules of residence in the dormitory; in connection with failure to pass the state final certification; for committing unlawful acts after the entry into force of a court verdict by which the student is sentenced to imprisonment, or to another punishment that excludes the possibility of continuing studies; in connection with non-reimbursement of training costs."
+    },
+    "section4": {
+      "title": "4. Reinstatement to the Number of Students",
+      "subtitle1": "4.1. Reinstatement Conditions",
+      "point1": "Reinstatement is carried out after the end of the semester if there are places in the corresponding course in the specialty/direction of interest to the student, upon personal application of the student and presentation of an academic certificate. The possibility of reinstating students previously expelled from the same University is considered on the basis of the student's academic record/transcript.",
+      "point2": "Reinstatement of a student is carried out on the basis of certification. Certification is carried out by the certification commission by considering the academic certificate. When determining the course, the difference in curricula should not exceed 7 disciplines.",
+      "subtitle2": "4.2. Reinstatement Restrictions",
+      "point3": "If before expulsion the student studied at the University for less than two semesters, then he/she does not have the right to be reinstated to continue his/her studies. Reinstatement to the first course/year of study is not carried out."
+    }
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 7abf30762dd303f6c4ac9d23a9ba36c66c6b5390

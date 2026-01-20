@@ -19,10 +19,8 @@ const LanguageSwitcher = ({
     { code: 'ru', name: 'Русский', icon: RuIcon },
     { code: 'kg', name: 'Кыргызча', icon: KgIcon }
   ];
-  // Normalize current language (map 'ky' -> 'kg', strip region like 'kg-KG')
-  const normalized = (i18n.resolvedLanguage || i18n.language || 'en').split('-')[0];
-  const effectiveLang = normalized === 'ky' ? 'kg' : normalized;
-  const currentLanguage = languages.find(lang => lang.code === effectiveLang) || languages[0];
+
+  const currentLanguage = languages.find(lang => lang.code === i18n.language) || languages[0];
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -38,25 +36,19 @@ const LanguageSwitcher = ({
   }, []);
 
   const handleLanguageChange = (languageCode) => {
-    // Map any 'ky' selection to 'kg' to match our resources
-    const target = languageCode === 'ky' ? 'kg' : languageCode;
-    console.log('Language change:', languageCode, '->', target);
-    console.log('Current i18n language before:', i18n.language);
-    i18n.changeLanguage(target);
-    console.log('Current i18n language after:', i18n.language);
+    i18n.changeLanguage(languageCode);
     setIsOpen(false);
     if (onChange) {
-      onChange(target);
+      onChange(languageCode);
     }
   };
 
   const positionClasses = {
-    // Mobile: open downward (mt-2). Desktop (lg:): open upward (bottom-full, mb-2)
-  'bottom-right': 'origin-top-right right-0 mt-2 translate-x-2 lg:origin-bottom-right lg:bottom-full lg:mb-2 lg:translate-x-20',
-  'bottom-left': 'origin-top-left left-0 mt-2 lg:origin-bottom-left lg:bottom-full lg:mb-2',
-    // If caller explicitly asks top positions, keep them opening upward on mobile and desktop
-  'top-right': 'origin-bottom-right right-0 bottom-full mb-2 translate-x-2 lg:translate-x-12',
-    'top-left': 'origin-bottom-left left-0 bottom-full mb-2'
+    'bottom-right': 'origin-top-right right-0 mt-2',
+    'bottom-left': 'origin-top-left left-0 mt-2',
+    'top-right': 'origin-bottom-right right-0 bottom-full mb-2',
+    'top-left': 'origin-bottom-left left-0 bottom-full mb-2',
+    'top-center': 'origin-bottom center-x left-1/2 -translate-x-1/2 bottom-full mb-2' // новая позиция
   };
 
   const variantStyles = {
@@ -117,7 +109,7 @@ const LanguageSwitcher = ({
                 className={`
                   flex items-center w-full px-4 py-3 text-sm 
                   transition-all duration-200 text-left
-                  ${effectiveLang === language.code
+                  ${i18n.language === language.code
                     ? 'bg-blue-50 text-blue-700 font-semibold border-r-2 border-blue-600'
                     : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600'
                   }

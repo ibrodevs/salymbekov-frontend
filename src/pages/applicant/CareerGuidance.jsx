@@ -16,7 +16,7 @@ const CareerGuidance = () => {
       titleKey: 'careerGuidance.orientationEvents.knowledgeCaravanKarakol.title',
       date: '30.05.2025',
       category: 'Профориентация',
-      image: '/src/assets/applicant/orientatioin/1.jpg',
+      image: '/career/orientatioin/1.jpg',
       link: '/applicants/career-guidance/knowledge-karakol'
     },
     {
@@ -24,7 +24,7 @@ const CareerGuidance = () => {
       titleKey: 'careerGuidance.orientationEvents.knowledgeCaravanOsh.title',
       date: '23.05.2024',
       category: 'Мероприятие',
-      image: '/src/assets/applicant/orientatioin/2.webp',
+      image: '/career/orientatioin/2.webp',
       link: '/applicants/career-guidance/knowledge-osh'
     },
     {
@@ -32,7 +32,7 @@ const CareerGuidance = () => {
       titleKey: 'careerGuidance.orientationEvents.cooperationMemorandum.title',
       date: '14.03.2023',
       category: 'Новости',
-      image: '/src/assets/applicant/orientatioin/3.jpg',
+      image: '/career/orientatioin/3.jpg',
       link: '/applicants/career-guidance/cooperation'
     },
     {
@@ -40,7 +40,7 @@ const CareerGuidance = () => {
       titleKey: 'careerGuidance.orientationEvents.meetingPakistaniStudents.title',
       date: '14.03.2023',
       category: 'Новости',
-      image: '/src/assets/applicant/orientatioin/4.jpg',
+      image: '/career/orientatioin/4.jpg',
       link: '/applicants/career-guidance/meeting'
     }
   ];
@@ -51,7 +51,7 @@ const CareerGuidance = () => {
       titleKey: 'careerGuidance.newsList.eurasianCongress.title',
       descriptionKey: 'careerGuidance.newsList.eurasianCongress.description',
       date: '15.11.2023',
-      image: '/src/assets/applicant/orientatioin/news/1.jpg',
+      image: '/career/orientatioin/news/1.jpg',
       link: '/applicants/career-guidance/news/eurasian-congress'
     },
     {
@@ -59,7 +59,7 @@ const CareerGuidance = () => {
       titleKey: 'careerGuidance.newsList.itSecurityMeeting.title',
       descriptionKey: 'careerGuidance.newsList.itSecurityMeeting.description',
       date: '10.11.2023',
-      image: '/src/assets/applicant/orientatioin/news/2.jpg',
+      image: '/career/orientatioin/news/2.jpg',
       link: '/applicants/career-guidance/news/it-security-meeting'
     },
     {
@@ -67,7 +67,7 @@ const CareerGuidance = () => {
       titleKey: 'careerGuidance.newsList.paiChaiVisit.title',
       descriptionKey: 'careerGuidance.newsList.paiChaiVisit.description',
       date: '05.11.2023',
-      image: '/src/assets/applicant/orientatioin/news/3.jpg',
+      image: '/career/orientatioin/news/3.jpg',
       link: '/applicants/career-guidance/news/pai-chai-visit'
     },
     {
@@ -75,7 +75,7 @@ const CareerGuidance = () => {
       titleKey: 'careerGuidance.newsList.youthForum.title',
       descriptionKey: 'careerGuidance.newsList.youthForum.description',
       date: '28.10.2023',
-      image: '/src/assets/applicant/orientatioin/events/4.jpg',
+      image: '/career/orientatioin/events/4.jpg',
       link: '/applicants/career-guidance/news/youth-forum'
     },
     {
@@ -83,7 +83,7 @@ const CareerGuidance = () => {
       titleKey: 'careerGuidance.newsList.chungAngVisit.title',
       descriptionKey: 'careerGuidance.newsList.chungAngVisit.description',
       date: '20.10.2023',
-      image: '/src/assets/applicant/orientatioin/events/5.jpg',
+      image: '/career/orientatioin/events/5.jpg',
       link: '/applicants/career-guidance/news/chung-ang-visit'
     },
     {
@@ -91,7 +91,7 @@ const CareerGuidance = () => {
       titleKey: 'careerGuidance.newsList.asiaCharityCenter.title',
       descriptionKey: 'careerGuidance.newsList.asiaCharityCenter.description',
       date: '15.10.2023',
-      image: '/src/assets/applicant/orientatioin/events/6.jpg',
+      image: '/career/orientatioin/events/6.jpg',
       link: '/applicants/career-guidance/news/asia-charity-center'
     }
   ];
@@ -199,9 +199,12 @@ const CareerGuidance = () => {
                       <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                         <div className="relative h-48 overflow-hidden">
                           <img
-                            src="/src/assets/applicant/orientatioin/events/1.jpg"
+                            src="/career/orientatioin/events/1.jpg"
                             alt={t('careerGuidance.eventsList.teachersDay.title')}
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            onError={(e) => {
+                              e.target.src = 'https://via.placeholder.com/800x600/0077B6/FFFFFF?text=' + encodeURIComponent(t('careerGuidance.eventsList.teachersDay.title'));
+                            }}
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                           <div className="absolute bottom-3 left-3 flex items-center gap-2 text-white text-sm">
@@ -236,9 +239,12 @@ const CareerGuidance = () => {
                       <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                         <div className="relative h-48 overflow-hidden">
                           <img
-                            src="/src/assets/applicant/orientatioin/events/2.jpg"
+                            src="/career/orientatioin/events/2.jpg"
                             alt={t('careerGuidance.eventsList.stateLanguageDay.title')}
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            onError={(e) => {
+                              e.target.src = 'https://via.placeholder.com/800x600/0077B6/FFFFFF?text=' + encodeURIComponent(t('careerGuidance.eventsList.stateLanguageDay.title'));
+                            }}
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                           <div className="absolute bottom-3 left-3 flex items-center gap-2 text-white text-sm">
@@ -273,9 +279,12 @@ const CareerGuidance = () => {
                       <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                         <div className="relative h-48 overflow-hidden">
                           <img
-                            src="/src/assets/applicant/orientatioin/events/3.jpg"
+                            src="/career/orientatioin/events/3.jpg"
                             alt={t('careerGuidance.eventsList.koreanCenter.title')}
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            onError={(e) => {
+                              e.target.src = 'https://via.placeholder.com/800x600/0077B6/FFFFFF?text=' + encodeURIComponent(t('careerGuidance.eventsList.koreanCenter.title'));
+                            }}
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                           <div className="absolute bottom-3 left-3 flex items-center gap-2 text-white text-sm">
@@ -310,9 +319,12 @@ const CareerGuidance = () => {
                       <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                         <div className="relative h-48 overflow-hidden">
                           <img
-                            src="/src/assets/applicant/orientatioin/events/4.jpg"
+                            src="/career/orientatioin/events/4.jpg"
                             alt={t('careerGuidance.eventsList.medicalMission.title')}
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            onError={(e) => {
+                              e.target.src = 'https://via.placeholder.com/800x600/0077B6/FFFFFF?text=' + encodeURIComponent(t('careerGuidance.eventsList.medicalMission.title'));
+                            }}
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                           <div className="absolute bottom-3 left-3 flex items-center gap-2 text-white text-sm">
@@ -347,9 +359,12 @@ const CareerGuidance = () => {
                       <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                         <div className="relative h-48 overflow-hidden">
                           <img
-                            src="/src/assets/applicant/orientatioin/events/5.jpg"
+                            src="/career/orientatioin/events/5.jpg"
                             alt={t('careerGuidance.eventsList.graduation2025.title')}
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            onError={(e) => {
+                              e.target.src = 'https://via.placeholder.com/800x600/0077B6/FFFFFF?text=' + encodeURIComponent(t('careerGuidance.eventsList.graduation2025.title'));
+                            }}
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                           <div className="absolute bottom-3 left-3 flex items-center gap-2 text-white text-sm">
@@ -384,9 +399,12 @@ const CareerGuidance = () => {
                       <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                         <div className="relative h-48 overflow-hidden">
                           <img
-                            src="/src/assets/applicant/orientatioin/events/6.jpg"
+                            src="/career/orientatioin/events/6.jpg"
                             alt={t('careerGuidance.eventsList.diplomaAward.title')}
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            onError={(e) => {
+                              e.target.src = 'https://via.placeholder.com/800x600/0077B6/FFFFFF?text=' + encodeURIComponent(t('careerGuidance.eventsList.diplomaAward.title'));
+                            }}
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                           <div className="absolute bottom-3 left-3 flex items-center gap-2 text-white text-sm">
@@ -515,9 +533,7 @@ const CareerGuidance = () => {
                                 {t(event.titleKey)}
                               </h3>
                               <div className="flex items-center text-gray-300">
-                                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                </svg>
+                                <FiCalendar className="w-5 h-5 mr-2" />
                                 <span className="text-lg">{event.date}</span>
                               </div>
                             </div>
@@ -528,9 +544,7 @@ const CareerGuidance = () => {
                             whileHover={{ opacity: 1, x: 0 }}
                             className="absolute bottom-8 right-8 text-white"
                           >
-                            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </svg>
+                            <FiArrowRight className="w-8 h-8" />
                           </motion.div>
                         </motion.div>
                       </Link>

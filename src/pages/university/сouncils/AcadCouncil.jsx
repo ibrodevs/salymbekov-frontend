@@ -16,26 +16,106 @@ const AcademicCouncilPage = () => {
   const { t } = useTranslation();
 
   const councilMembers = [
-    "Zhumadilov Amangeldi Zhumadiliovich – Chairman, PhD",
-    "Zhumadilov Esengeldi Zhumadilov – Deputy Chairman, PhD",
-    "Kazakov Avaz Asanovich – Secretary",
-    "Esenamanov Ulukbek Emilbekovich",
-    "Abdyldaev Rysbek Aldagandayeovich, MD, Professor",
-    "Tulekeev Toktogazy Moldalievich, MD, Professor",
-    "Uzakbaev Kamchibeck Askarbekovich, MD, Professor",
-    "Atykanov Arystanbek Orozalievich, MD, Professor",
-    "Monolov Nurbek Kytaybekovich, PhD, Associate Professor",
-    "Imankulova Asel Sanzsyzbaevna, MD, Associate Professor",
-    "Mazekova Nazgul Jolochievna, PhD, Associate Professor",
-    "Umetalieva Maana Nurdinovna, PhD",
-    "Junushalieva Nurzat Manasovna",
-    "Tolubaeva Munara Jolchuyevna, PhD",
-    "Bilgazyev Emil Bilgazyevich, PhD",
-    "Akmatova Aizhan Toktomushevna",
-    "Kulmatov Almaz Shayloobekovich",
-    "Baktybekov Bekzhan Baktybekovich",
-    "Jantaeva Tonya",
-    "Representatives of the Student Council"
+    {
+      name: "Zhumadilov Amangeldi Zhumadiliovich",
+      title: "Chairman, PhD",
+      photo: "https://via.placeholder.com/150x150/023E8A/FFFFFF?text=AZ"
+    },
+    {
+      name: "Zhumadilov Esengeldi Zhumadilov",
+      title: "Deputy Chairman, PhD",
+      photo: "https://via.placeholder.com/150x150/0077B6/FFFFFF?text=EZ"
+    },
+    {
+      name: "Kazakov Avaz Asanovich",
+      title: "Secretary",
+      photo: "https://via.placeholder.com/150x150/023E8A/FFFFFF?text=AA"
+    },
+    {
+      name: "Esenamanov Ulukbek Emilbekovich",
+      title: "",
+      photo: "https://via.placeholder.com/150x150/0077B6/FFFFFF?text=UE"
+    },
+    {
+      name: "Abdyldaev Rysbek Aldagandayeovich",
+      title: "MD, Professor",
+      photo: "https://via.placeholder.com/150x150/023E8A/FFFFFF?text=RA"
+    },
+    {
+      name: "Tulekeev Toktogazy Moldalievich",
+      title: "MD, Professor",
+      photo: "https://via.placeholder.com/150x150/0077B6/FFFFFF?text=TM"
+    },
+    {
+      name: "Uzakbaev Kamchibeck Askarbekovich",
+      title: "MD, Professor",
+      photo: "https://via.placeholder.com/150x150/023E8A/FFFFFF?text=KA"
+    },
+    {
+      name: "Atykanov Arystanbek Orozalievich",
+      title: "MD, Professor",
+      photo: "https://via.placeholder.com/150x150/0077B6/FFFFFF?text=AO"
+    },
+    {
+      name: "Monolov Nurbek Kytaybekovich",
+      title: "PhD, Associate Professor",
+      photo: "https://via.placeholder.com/150x150/023E8A/FFFFFF?text=NK"
+    },
+    {
+      name: "Imankulova Asel Sanzsyzbaevna",
+      title: "MD, Associate Professor",
+      photo: "https://via.placeholder.com/150x150/0077B6/FFFFFF?text=AS"
+    },
+    {
+      name: "Mazekova Nazgul Jolochievna",
+      title: "PhD, Associate Professor",
+      photo: "https://via.placeholder.com/150x150/023E8A/FFFFFF?text=NJ"
+    },
+    {
+      name: "Umetalieva Maana Nurdinovna",
+      title: "PhD",
+      photo: "https://via.placeholder.com/150x150/0077B6/FFFFFF?text=MN"
+    },
+    {
+      name: "Junushalieva Nurzat Manasovna",
+      title: "",
+      photo: "https://via.placeholder.com/150x150/023E8A/FFFFFF?text=NM"
+    },
+    {
+      name: "Tolubaeva Munara Jolchuyevna",
+      title: "PhD",
+      photo: "https://via.placeholder.com/150x150/0077B6/FFFFFF?text=MJ"
+    },
+    {
+      name: "Bilgazyev Emil Bilgazyevich",
+      title: "PhD",
+      photo: "https://via.placeholder.com/150x150/023E8A/FFFFFF?text=EB"
+    },
+    {
+      name: "Akmatova Aizhan Toktomushevna",
+      title: "",
+      photo: "https://via.placeholder.com/150x150/0077B6/FFFFFF?text=AT"
+    },
+    {
+      name: "Kulmatov Almaz Shayloobekovich",
+      title: "",
+      photo: "https://via.placeholder.com/150x150/023E8A/FFFFFF?text=AS"
+    },
+    {
+      name: "Baktybekov Bekzhan Baktybekovich",
+      title: "",
+      photo: "https://via.placeholder.com/150x150/0077B6/FFFFFF?text=BB"
+    },
+    {
+      name: "Jantaeva Tonya",
+      title: "",
+      photo: "https://via.placeholder.com/150x150/023E8A/FFFFFF?text=TJ"
+    },
+    {
+      name: "Representatives of the Student Council",
+      title: "",
+      photo: "https://via.placeholder.com/150x150/0077B6/FFFFFF?text=SC"
+    }
   ];
 
   // Статистика совета
@@ -74,78 +154,41 @@ const AcademicCouncilPage = () => {
       <div className="relative z-10">
         {/* Герой секция  */}
         <section className="relative py-20 ">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="container mx-auto px-6 text-center"
-          >
-            <motion.div
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="inline-flex items-center gap-3 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-3 rounded-full mb-6"
-            >
+          <div className="container mx-auto px-6 text-center">
+            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-[#023E8A] to-[#0077B6] text-white px-6 py-3 rounded-full mb-6">
               <FaUsers className="text-xl" />
               <span className="font-semibold">{t('academicCouncil.badge')}</span>
-            </motion.div>
+            </div>
 
             <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[#023E8A] to-[#0077B6] bg-clip-text text-transparent">
               {t('academicCouncil.title')}
             </h1>
             <div className="w-24 h-1 bg-gradient-to-r from-[#023E8A] to-[#0077B6] mx-auto rounded-full"></div>
-          </motion.div>
+          </div>
         </section>
 
         {/* Отдельный блок с изображением */}
-        <motion.section
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="relative py-16 "
-        >
+        <section className="relative py-16 ">
           <div className="container mx-auto px-6">
             <div className="max-w-6xl mx-auto">
-              <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="relative"
-              >
+              <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-3xl opacity-10 blur-lg"></div>
                 <img 
                   src="https://salymbekov.com/wp-content/uploads/2021/03/sotrudniki.jpg"
                   alt={t('academicCouncil.councilImageAlt')}
                   className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-2xl relative z-10"
                 />
-              </motion.div>
+              </div>
             </div>
           </div>
-        </motion.section>
+        </section>
 
         {/* Основной контент */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-20">
           {/* Статистика */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
-          >
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                whileHover={{ scale: 1.05, y: -5 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group"
-              >
+              <div className="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group">
                 <div className="flex justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
                   {stat.icon}
                 </div>
@@ -153,26 +196,15 @@ const AcademicCouncilPage = () => {
                   {stat.number}
                 </div>
                 <div className="text-gray-600 font-medium">{stat.label}</div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
 
           {/* Описание академического совета */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="mb-16"
-          >
+          <div className="mb-16">
             <div className="bg-white rounded-3xl shadow-2xl border border-gray-200 p-8">
               <div className="grid md:grid-cols-3 gap-8 mb-8">
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6 }}
-                  className="text-center"
-                >
+                <div className="text-center">
                   <div className="w-16 h-16 bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-2xl flex items-center justify-center mx-auto mb-4">
                     <FaGraduationCap className="text-white text-2xl" />
                   </div>
@@ -182,14 +214,9 @@ const AcademicCouncilPage = () => {
                   <p className="text-gray-600 text-sm">
                     {t('academicCouncil.description1')}
                   </p>
-                </motion.div>
+                </div>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  className="text-center"
-                >
+                <div className="text-center">
                   <div className="w-16 h-16 bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-2xl flex items-center justify-center mx-auto mb-4">
                     <FaBook className="text-white text-2xl" />
                   </div>
@@ -199,14 +226,9 @@ const AcademicCouncilPage = () => {
                   <p className="text-gray-600 text-sm">
                     {t('academicCouncil.description2')}
                   </p>
-                </motion.div>
+                </div>
 
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                  className="text-center"
-                >
+                <div className="text-center">
                   <div className="w-16 h-16 bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-2xl flex items-center justify-center mx-auto mb-4">
                     <FaGlobe className="text-white text-2xl" />
                   </div>
@@ -216,19 +238,13 @@ const AcademicCouncilPage = () => {
                   <p className="text-gray-600 text-sm">
                     {t('academicCouncil.description3')}
                   </p>
-                </motion.div>
+                </div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Состав совета */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="mb-16"
-          >
+          <div className="mb-16">
             <div className="bg-white rounded-3xl shadow-2xl border border-gray-200 p-8">
               <div className="text-center mb-8">
                 <h2 className="text-4xl font-bold text-gray-800 mb-4">
@@ -238,12 +254,7 @@ const AcademicCouncilPage = () => {
               </div>
 
               {/* Международный медицинский факультет */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.6 }}
-                className="mb-8"
-              >
+              <div className="mb-8">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-12 h-12 bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-xl flex items-center justify-center">
                     <FaUniversity className="text-white text-lg" />
@@ -252,14 +263,10 @@ const AcademicCouncilPage = () => {
                     {t('academicCouncil.facultyTitle')}
                   </h3>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Члены совета */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.7 }}
-              >
+              <div>
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-12 h-12 bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-xl flex items-center justify-center">
                     <FaChalkboardTeacher className="text-white text-lg" />
@@ -269,51 +276,99 @@ const AcademicCouncilPage = () => {
                   </h3>
                 </div>
 
-                <div className="grid gap-3">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                   {councilMembers.map((member, index) => (
                     <motion.div
                       key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.05 }}
-                      whileHover={{ scale: 1.02, x: 5 }}
-                      className="bg-gray-50 rounded-xl p-4 hover:shadow-lg transition-all duration-300 border border-gray-200"
+                      initial={{ 
+                        opacity: 0, 
+                        y: 50,
+                        rotateY: -15,
+                        scale: 0.8
+                      }}
+                      whileInView={{ 
+                        opacity: 1, 
+                        y: 0,
+                        rotateY: 0,
+                        scale: 1
+                      }}
+                      transition={{ 
+                        duration: 0.8, 
+                        delay: index * 0.15,
+                        type: "spring",
+                        stiffness: 100
+                      }}
+                      whileHover={{ 
+                        scale: 1.08, 
+                        y: -15,
+                        rotateY: 5,
+                        transition: { duration: 0.3 }
+                      }}
+                      className="relative bg-white rounded-3xl p-8 shadow-2xl border border-gray-100 hover:shadow-3xl transition-all duration-500 text-center group overflow-hidden"
                     >
-                      <div className="flex items-start">
-                        <span className="text-[#023E8A] font-bold mr-4 min-w-8 text-lg">
-                          {index + 1}.
-                        </span>
-                        <span className="text-gray-700 text-lg">{member}</span>
+                      {/* Фоновый градиент при hover */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#023E8A]/5 to-[#0077B6]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
+                      
+                      {/* Декоративный элемент */}
+                      <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#023E8A] to-[#0077B6] rounded-bl-full opacity-10 group-hover:opacity-20 transition-opacity duration-500"></div>
+                      
+                      <div className="relative z-10">
+                        {/* Фото с эффектами */}
+                        <div className="relative mb-6">
+                          <motion.div
+                            whileHover={{ 
+                              scale: 1.1,
+                              rotate: 5,
+                              transition: { duration: 0.3 }
+                            }}
+                            className="relative inline-block"
+                          >
+                            <div className="w-28 h-28 mx-auto rounded-full overflow-hidden border-4 border-gradient-to-r from-[#023E8A] to-[#0077B6] shadow-xl group-hover:shadow-2xl transition-shadow duration-500">
+                              <img
+                                src={member.photo}
+                                alt={member.name}
+                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                              />
+                            </div>
+                            
+                            {/* Пульсирующий эффект */}
+                            <div className="absolute inset-0 rounded-full border-2 border-[#023E8A] opacity-0 group-hover:opacity-30 group-hover:animate-ping"></div>
+                          </motion.div>
+                        </div>
+                        
+                        {/* Имя */}
+                        <h4 className="text-xl font-bold text-gray-800 mb-2 leading-tight group-hover:text-[#023E8A] transition-colors duration-300">
+                          {member.name}
+                        </h4>
+                        
+                        {/* Должность */}
+                        {member.title && (
+                          <p className="text-sm text-[#0077B6] font-semibold bg-gradient-to-r from-[#023E8A]/10 to-[#0077B6]/10 px-3 py-1 rounded-full inline-block">
+                            {member.title}
+                          </p>
+                        )}
+                        
+                        {/* Декоративная линия */}
+                        <div className="mt-4 w-12 h-0.5 bg-gradient-to-r from-[#023E8A] to-[#0077B6] mx-auto rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                       </div>
                     </motion.div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
 
               {/* Основание */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.9 }}
-                className="mt-8 pt-6 border-t border-gray-200"
-              >
+              <div className="mt-8 pt-6 border-t border-gray-200">
                 <div className="bg-blue-50 rounded-xl p-6 border-l-4 border-[#023E8A]">
                   <p className="text-lg text-gray-700 font-semibold">
                     {t('academicCouncil.basis')}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Информационный блок */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-3xl p-8 text-center text-white"
-          >
+          <div className="bg-gradient-to-r from-[#023E8A] to-[#0077B6] rounded-3xl p-8 text-center text-white">
             <div className="max-w-4xl mx-auto">
               <h3 className="text-2xl md:text-3xl font-bold mb-4">
                 {t('academicCouncil.infoTitle')}
@@ -322,7 +377,7 @@ const AcademicCouncilPage = () => {
                 {t('academicCouncil.infoDescription')}
               </p>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>

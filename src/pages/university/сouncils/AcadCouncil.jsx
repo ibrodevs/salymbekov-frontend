@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { getAcademicCouncil } from '../../../api';
 import { 
   FaUsers,
   FaGraduationCap,
@@ -13,110 +14,21 @@ import {
 } from "react-icons/fa";
 
 const AcademicCouncilPage = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const [members, setMembers] = useState([]);
 
-  const councilMembers = [
-    {
-      name: "Zhumadilov Amangeldi Zhumadiliovich",
-      title: "Chairman, PhD",
-      photo: "https://via.placeholder.com/150x150/023E8A/FFFFFF?text=AZ"
-    },
-    {
-      name: "Zhumadilov Esengeldi Zhumadilov",
-      title: "Deputy Chairman, PhD",
-      photo: "https://via.placeholder.com/150x150/0077B6/FFFFFF?text=EZ"
-    },
-    {
-      name: "Kazakov Avaz Asanovich",
-      title: "Secretary",
-      photo: "https://via.placeholder.com/150x150/023E8A/FFFFFF?text=AA"
-    },
-    {
-      name: "Esenamanov Ulukbek Emilbekovich",
-      title: "",
-      photo: "https://via.placeholder.com/150x150/0077B6/FFFFFF?text=UE"
-    },
-    {
-      name: "Abdyldaev Rysbek Aldagandayeovich",
-      title: "MD, Professor",
-      photo: "https://via.placeholder.com/150x150/023E8A/FFFFFF?text=RA"
-    },
-    {
-      name: "Tulekeev Toktogazy Moldalievich",
-      title: "MD, Professor",
-      photo: "https://via.placeholder.com/150x150/0077B6/FFFFFF?text=TM"
-    },
-    {
-      name: "Uzakbaev Kamchibeck Askarbekovich",
-      title: "MD, Professor",
-      photo: "https://via.placeholder.com/150x150/023E8A/FFFFFF?text=KA"
-    },
-    {
-      name: "Atykanov Arystanbek Orozalievich",
-      title: "MD, Professor",
-      photo: "https://via.placeholder.com/150x150/0077B6/FFFFFF?text=AO"
-    },
-    {
-      name: "Monolov Nurbek Kytaybekovich",
-      title: "PhD, Associate Professor",
-      photo: "https://via.placeholder.com/150x150/023E8A/FFFFFF?text=NK"
-    },
-    {
-      name: "Imankulova Asel Sanzsyzbaevna",
-      title: "MD, Associate Professor",
-      photo: "https://via.placeholder.com/150x150/0077B6/FFFFFF?text=AS"
-    },
-    {
-      name: "Mazekova Nazgul Jolochievna",
-      title: "PhD, Associate Professor",
-      photo: "https://via.placeholder.com/150x150/023E8A/FFFFFF?text=NJ"
-    },
-    {
-      name: "Umetalieva Maana Nurdinovna",
-      title: "PhD",
-      photo: "https://via.placeholder.com/150x150/0077B6/FFFFFF?text=MN"
-    },
-    {
-      name: "Junushalieva Nurzat Manasovna",
-      title: "",
-      photo: "https://via.placeholder.com/150x150/023E8A/FFFFFF?text=NM"
-    },
-    {
-      name: "Tolubaeva Munara Jolchuyevna",
-      title: "PhD",
-      photo: "https://via.placeholder.com/150x150/0077B6/FFFFFF?text=MJ"
-    },
-    {
-      name: "Bilgazyev Emil Bilgazyevich",
-      title: "PhD",
-      photo: "https://via.placeholder.com/150x150/023E8A/FFFFFF?text=EB"
-    },
-    {
-      name: "Akmatova Aizhan Toktomushevna",
-      title: "",
-      photo: "https://via.placeholder.com/150x150/0077B6/FFFFFF?text=AT"
-    },
-    {
-      name: "Kulmatov Almaz Shayloobekovich",
-      title: "",
-      photo: "https://via.placeholder.com/150x150/023E8A/FFFFFF?text=AS"
-    },
-    {
-      name: "Baktybekov Bekzhan Baktybekovich",
-      title: "",
-      photo: "https://via.placeholder.com/150x150/0077B6/FFFFFF?text=BB"
-    },
-    {
-      name: "Jantaeva Tonya",
-      title: "",
-      photo: "https://via.placeholder.com/150x150/023E8A/FFFFFF?text=TJ"
-    },
-    {
-      name: "Representatives of the Student Council",
-      title: "",
-      photo: "https://via.placeholder.com/150x150/0077B6/FFFFFF?text=SC"
-    }
-  ];
+  useEffect(() => {
+    const fetchMembers = async () => {
+      try {
+        const data = await getAcademicCouncil(i18n.language);
+        setMembers(data.results);
+      } catch (error) {
+        console.error('Failed to fetch academic council:', error);
+      }
+    };
+
+    fetchMembers();
+  }, [i18n.language]);
 
   // Статистика совета
   const stats = [
@@ -277,7 +189,7 @@ const AcademicCouncilPage = () => {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                  {councilMembers.map((member, index) => (
+                  {members.map((member, index) => (
                     <motion.div
                       key={index}
                       initial={{ 
@@ -342,9 +254,9 @@ const AcademicCouncilPage = () => {
                         </h4>
                         
                         {/* Должность */}
-                        {member.title && (
+                        {member.role && (
                           <p className="text-sm text-[#0077B6] font-semibold bg-gradient-to-r from-[#023E8A]/10 to-[#0077B6]/10 px-3 py-1 rounded-full inline-block">
-                            {member.title}
+                            {member.role}
                           </p>
                         )}
                         

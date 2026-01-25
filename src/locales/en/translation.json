@@ -16254,7 +16254,16 @@
     "readMore": "READ MORE",
     "founderName": "Askar Salymbekov",
     "founderPosition": "Founder of Dordoi",
-    "imageAlt": "Photo of the Founder of Dordoi"
+    "imageAlt": "Photo of the Founder of Dordoi",
+    "badge": "Founder's Message",
+    "paragraph3": "Through our commitment to excellence in education and innovation, we continue to build a brighter future for Kyrgyzstan and beyond.",
+    "founderQuote": "\"Education is the foundation of progress and prosperity for our nation.\"",
+    "stats": {
+      "years": "25",
+      "yearsLabel": "Years of Leadership",
+      "students": "10000",
+      "studentsLabel": "Students Educated"
+    }
   },
   "materialBase": {
     "title": "Material and Technical Base",

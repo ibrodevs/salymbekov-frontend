@@ -46,3 +46,11 @@ export const getNews = async (lang = 'ru') => {
 export const getNewsById = async (id, lang = 'ru') => {
   return apiRequest(`/presscentre/news/${id}/?lang=${lang}`);
 };
+
+export const getBanners = async () => {
+  return apiRequest('/banners/');
+};
+
+export const getAcademicCouncil = async (lang = 'ru') => {
+  return apiRequest(`/academic-council/?lang=${lang}`);
+};

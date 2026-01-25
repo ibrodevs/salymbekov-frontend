@@ -17,7 +17,7 @@ const VideoSection = () => {
   const embedUrl = `https://www.youtube.com/embed/${videoId}`;
 
   return (
-    <section className="py-16 bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <section className="py-16 ">
       <div className="container mx-auto px-4">
         {/* Заголовок секции */}
         <div className="text-center mb-12">

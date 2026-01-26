@@ -1,9 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { 
-  FaArrowLeft, 
   FaBalanceScale,
   FaShieldAlt,
   FaUserMd,
@@ -14,101 +12,21 @@ import batyralievPhoto from '../../../assets/science/management/batyraliev-235x3
 const Bioethics = () => {
   const { t } = useTranslation();
 
-  // Простая функция для получения перевода с fallback
-  const getTranslation = (key, fallback = '') => {
-    try {
-      const translation = t(key, { returnObjects: true });
-      
-      // Если перевод не найден или это ключ, возвращаем fallback
-      if (!translation || translation === key || (typeof translation === 'object' && Object.keys(translation).length === 0)) {
-        return fallback;
-      }
-      
-      return translation;
-    } catch (error) {
-      console.warn(`Translation error for key "${key}":`, error);
-      return fallback;
-    }
-  };
-
-  // Получение строки
-  const getString = (key, fallback = '') => {
-    const value = getTranslation(key, fallback);
-    
-    if (typeof value === 'string') return value;
-    if (Array.isArray(value)) return value[0] || fallback;
-    if (typeof value === 'object') {
-      return value.title || value.name || value.text || fallback;
-    }
-    return fallback;
-  };
-
-  // Получение массива
-  const getArray = (key, fallback = []) => {
-    const value = getTranslation(key, fallback);
-    
-    if (Array.isArray(value)) return value;
-    if (typeof value === 'string') return [value];
-    if (typeof value === 'object') {
-      if (value.items) return value.items;
-      if (value.tasks) return value.tasks;
-      if (value.functions) return value.functions;
-      if (value.leadership) return value.leadership;
-      if (value.members) return value.members;
-      return Object.values(value);
-    }
-    return fallback;
-  };
-
-  // Fallback значения на кыргызском языке
-  const kyrgyzFallbacks = {
-    back: "Басманага кайтуу",
-    badge: "Биоэтика",
-    title: "Биоэтика боюнча комитет",
-    subtitle: "Илимий иштердин этикалык стандарттарын көзөмөлдөөчү уюм",
-    descTitle: "Жалпы маалымат",
-    descText: "Биоэтика боюнча комитет университетте жүргүзүлгөн илимий-изилдөө иштеринин этикалык жоболоруна ылайыктуулугун текшерүүчү орган болуп саналат. Комитет илимий изилдөөлөрдүн этикалык стандарттарын сактоону камсыз кылат жана илимпоздорго кеңеш берүү менен аларды колдоо үчүн түзүлгөн.",
-    chairmanTitle: "Комитеттин төрагасы",
-    chairmanName: "Батыралиев Талантбек Абдуллаевич",
-    chairmanDesc: "Медицина илимдеринин доктору, профессор, Кыргыз Республикасынын медицина илимдеринин академиги. Кесипкөй саламаттыкты сактоо иштеринде 30 жылдан ашык тажрыйбасы бар илимпоз.",
-    membersTitle: "Комитеттин мүчөлөрү",
-    tasksTitle: "Негизги милдеттер",
-    functionsTitle: "Башкы функциялар"
-  };
-
-  // Получение данных с fallback
-  const tasks = getArray('science.management.bioethics.tasks', [
-    "Университетте жүргүзүлгөн илимий-изилдөө иштеринин этикалык жоболоруна ылайыктуулугун текшерүү",
-    "Илимий изилдөөлөрдүн планын этикалык талдоодон өткөрүү",
-    "Изилдөөлөрдүн катышуучуларынын укуктарын жана коопсуздугун камсыз кылуу",
-    "Илимий долбоорлорго биоэтикалык экспертиза жүргүзүү",
-    "Илимпоздорго этикалык кеңештерди берүү",
-    "Биоэтикалык тартиптер боюнча окутуу жана тарбиялоо иштерин уюштуруу"
-  ]);
-
-  const functions = getArray('science.management.bioethics.functions', [
-    "Изилдөө долбоорлорун этикалык баалоо",
-    "Илимий макалаларды этикалык текшерүү",
-    "Катышуучулардын макулдашуу формаларын кароо",
-    "Этикалык стандарттардын бузулушуна карата иштерди жүргүзүү",
-    "Биоэтика боюнча ички нормативдик-укуктук актыларды иштеп чыгуу",
-    "Эл аралык этикалык стандарттарды колдонууну көзөмөлдөө"
-  ]);
-
-  const leadership = getArray('science.management.bioethics.leadership', [
-    { label: "Туулган күнү", value: "1965-жыл" },
-    { label: "Билими", value: "Медицина илимдеринин доктору" },
-    { label: "Илимий даражасы", value: "Профессор" },
-    { label: "Иштеген жылы", value: "30+ жыл" }
-  ]);
-
-  const members = getArray('science.management.bioethics.members', [
-    "Абдылдаев Рысбек Алдагандаевич, мед. илимд. докт., профессор",
-    "Иманкулова Асел Сансызбаевна, мед. илимд. докт., профессор",
-    "Жумадилов Эсенгелди Жумадилович, PhD",
-    "Токтогазы Молдалиевич Түлексеев, мед. илимд. докт., профессор",
-    "Узакбаев Камчыбек Аскарбекович, мед. илимд. докт., профессор"
-  ]);
+  const badge = t('science.management.bioethics.badge');
+  const title = t('science.management.bioethics.title');
+  const subtitle = t('science.management.bioethics.subtitle');
+  const descTitle = t('science.management.bioethics.descTitle');
+  const descText = t('science.management.bioethics.descText');
+  const chairmanTitle = t('science.management.bioethics.chairmanTitle');
+  const chairmanName = t('science.management.bioethics.chairmanName');
+  const chairmanDesc = t('science.management.bioethics.chairmanDesc');
+  const membersTitle = t('science.management.bioethics.membersTitle');
+  const tasksTitle = t('science.management.bioethics.tasksTitle');
+  const functionsTitle = t('science.management.bioethics.functionsTitle');
+  const tasks = t('science.management.bioethics.tasks', { returnObjects: true });
+  const functions = t('science.management.bioethics.functions', { returnObjects: true });
+  const leadership = t('science.management.bioethics.leadership', { returnObjects: true });
+  const members = t('science.management.bioethics.members', { returnObjects: true });
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -160,14 +78,6 @@ const Bioethics = () => {
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link 
-            to="/science/management"
-            className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors group"
-          >
-            <FaArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" />
-            {getString('science.management.bioethics.back', kyrgyzFallbacks.back)}
-          </Link>
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -175,14 +85,14 @@ const Bioethics = () => {
           >
             <div className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-4">
               <span className="text-white/90 text-sm font-medium">
-                {getString('science.management.bioethics.badge', kyrgyzFallbacks.badge)}
+                {badge}
               </span>
             </div>
             <h1 className="text-5xl font-bold mb-4">
-              {getString('science.management.bioethics.title', kyrgyzFallbacks.title)}
+              {title}
             </h1>
             <p className="text-xl text-white/90 max-w-3xl">
-              {getString('science.management.bioethics.subtitle', kyrgyzFallbacks.subtitle)}
+              {subtitle}
             </p>
           </motion.div>
         </div>
@@ -203,11 +113,11 @@ const Bioethics = () => {
               <FaShieldAlt className="text-white text-xl" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">
-              {getString('science.management.bioethics.descTitle', kyrgyzFallbacks.descTitle)}
+              {descTitle}
             </h2>
           </div>
           <p className="text-gray-700 text-lg leading-relaxed">
-            {getString('science.management.bioethics.descText', kyrgyzFallbacks.descText)}
+            {descText}
           </p>
         </motion.div>
 
@@ -224,7 +134,7 @@ const Bioethics = () => {
               <FaUserMd className="text-white text-xl" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">
-              {getString('science.management.bioethics.chairmanTitle', kyrgyzFallbacks.chairmanTitle)}
+              {chairmanTitle}
             </h2>
           </div>
           
@@ -243,17 +153,17 @@ const Bioethics = () => {
             
             <div className="flex-1">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                {getString('science.management.bioethics.chairmanName', kyrgyzFallbacks.chairmanName)}
+                {chairmanName}
               </h3>
               <p className="text-gray-700 text-lg leading-relaxed">
-                {getString('science.management.bioethics.chairmanDesc', kyrgyzFallbacks.chairmanDesc)}
+                {chairmanDesc}
               </p>
             </div>
           </div>
 
           <div className="bg-gradient-to-r from-gray-50 to-white p-6 rounded-xl border border-gray-200">
             {/* Безопасный рендеринг leadership */}
-            {leadership.length > 0 && (
+            {Array.isArray(leadership) && leadership.length > 0 && (
               <div className="grid md:grid-cols-2 gap-4 mb-6">
                 {leadership.map((item, index) => {
                   const label = typeof item === 'object' ? item.label : '';
@@ -271,10 +181,10 @@ const Bioethics = () => {
             )}
 
             {/* Безопасный рендеринг members */}
-            {members.length > 0 && (
+            {Array.isArray(members) && members.length > 0 && (
               <div>
                 <p className="text-lg font-semibold text-gray-900 mb-3">
-                  {getString('science.management.bioethics.membersTitle', kyrgyzFallbacks.membersTitle)}
+                  {membersTitle}
                 </p>
                 <div className="space-y-2">
                   {members.map((member, index) => (
@@ -301,11 +211,11 @@ const Bioethics = () => {
               <FaBalanceScale className="text-white text-xl" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">
-              {getString('science.management.bioethics.tasksTitle', kyrgyzFallbacks.tasksTitle)}
+              {tasksTitle}
             </h2>
           </div>
           <div className="space-y-4">
-            {tasks.map((task, index) => (
+            {Array.isArray(tasks) && tasks.map((task, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, x: -20 }}
@@ -338,11 +248,11 @@ const Bioethics = () => {
               <FaClipboardList className="text-white text-xl" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">
-              {getString('science.management.bioethics.functionsTitle', kyrgyzFallbacks.functionsTitle)}
+              {functionsTitle}
             </h2>
           </div>
           <div className="grid md:grid-cols-2 gap-4">
-            {functions.map((func, index) => (
+            {Array.isArray(functions) && functions.map((func, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.95 }}

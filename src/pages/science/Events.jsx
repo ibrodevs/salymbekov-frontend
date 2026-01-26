@@ -7,20 +7,20 @@ const Events = () => {
 
   const sections = [
     {
-      title: 'Конференции',
-      description: 'Научные конференции и симпозиумы',
+      title: t('science.events.conferences.title'),
+      description: t('science.events.conferences.description'),
       icon: '📚',
       link: '/science/events/conferences'
     },
     {
-      title: 'Мастер классы',
-      description: 'Мастер-классы от ведущих специалистов',
+      title: t('science.events.masterClasses.title'),
+      description: t('science.events.masterClasses.description'),
       icon: '🎓',
       link: '/science/events/master-classes'
     },
     {
-      title: 'Круглые столы',
-      description: 'Дискуссионные площадки и обсуждения',
+      title: t('science.events.roundTables.title'),
+      description: t('science.events.roundTables.description'),
       icon: '💬',
       link: '/science/events/round-tables'
     }
@@ -33,9 +33,9 @@ const Events = () => {
         <div className="absolute inset-0 bg-black/30"></div>
         <div className="relative container mx-auto px-4 h-full flex items-center">
           <div className="text-white">
-            <h1 className="text-5xl font-bold mb-4">Мероприятия</h1>
+            <h1 className="text-5xl font-bold mb-4">{t('science.events.title')}</h1>
             <p className="text-xl text-gray-200">
-              Конференции, мастер-классы, круглые столы
+              {t('science.events.subtitle')}
             </p>
           </div>
         </div>

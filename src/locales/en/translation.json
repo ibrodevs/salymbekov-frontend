@@ -257,6 +257,348 @@
     "projects": "Scientific Projects",
     "projectsDesc": "Ongoing research projects and initiatives"
   },
+  "science": {
+    "common": {
+      "professors": "Professors",
+      "professorsTitle": "Position",
+      "educationTitle": "Education",
+      "experienceTitle": "Experience",
+      "achievementsTitle": "Achievements"
+    },
+    "management": {
+      "title": "Management Bodies",
+      "subtitle": "Scientific management structure of the university",
+      "scientificCouncil": {
+        "badge": "Scientific Activity Coordination",
+        "title": "Scientific and Technical Council",
+        "description": "Permanent advisory body of the University",
+        "subtitle": "Permanent advisory body of the University",
+        "generalTitle": "General Provisions",
+        "generalText": "The Scientific and Technical Council is a permanent advisory body of Salymbekov University. In its activities, the STC is guided by the regulatory legal acts of the Kyrgyz Republic; the Charter of the University, this Regulation and other local regulatory acts. The Regulation on the STC is approved by the decision of the Academic Council. The composition of the STC is approved by the order of the rector for the academic year no later than September 30 on the proposal of the vice-rector for scientific work based on the proposals of the heads of departments. The decisions of the STC on issues within its competence are advisory in nature.",
+        "goalsTitle": "Goals and Objectives",
+        "goalsText": "The purpose of the STC is to organize and coordinate activities when considering issues related to the implementation of state policy in the field of science and technology; development and improvement of the level of scientific research and innovation activities carried out in departments and other divisions, increasing the efficiency of training highly qualified scientific and pedagogical personnel (doctors and candidates of sciences) and research work of students.",
+        "tasksTitle": "The main tasks of the STC are:",
+        "tasks": [
+          "Development by University scientists of priority areas of science and technology, increasing the role of university science in accelerating scientific and technological progress, ensuring effective use of the intellectual and scientific potential of the University, creating necessary conditions for its stable development.",
+          "Ensuring priority development of fundamental and exploratory research in priority areas of research development and work with intellectual property.",
+          "Improving planning and organizational forms of research work, etc.",
+          "Development of proposals and measures to preserve the scientific potential of the University, develop scientific and pedagogical teams, train highly qualified scientific and pedagogical personnel (doctors and candidates of sciences).",
+          "Promoting integration processes between the University and scientific organizations.",
+          "Promoting the development of student research work.",
+          "Development of proposals and measures for information support of scientific research.",
+          "Preparation of proposals and recommendations for using research results in the educational process.",
+          "Analysis and evaluation of main results of scientific research and development carried out at the University.",
+          "Preparation of proposals for creation and reorganization of scientific and innovative structures, updating scientific equipment."
+        ],
+        "compositionTitle": "Composition of the Scientific and Technical Council",
+        "members": [
+          {
+            "name": "Toktogazy Moldalievich Tuleksev, Ph.D., Prof.",
+            "role": "Chairman"
+          },
+          {
+            "name": "Uzakbayev Kamchybek Askarbek, Ph.D., Prof.",
+            "role": "Vice Chairman"
+          },
+          {
+            "name": "Imankulova Asel Sansyzbayevna, Ph.D., Prof.",
+            "role": "Scientific Secretary"
+          },
+          {
+            "name": "Jumadiloff Esengeldy Jumadilovich, PhD",
+            "role": "Council Member"
+          },
+          {
+            "name": "Abdyldaev Rysbek Aldagandayevich, Ph.D., Prof.",
+            "role": "Council Member"
+          },
+          {
+            "name": "Atikanov Arystanbek Orozaliyevich, Ph.D., Prof.",
+            "role": "Council Member"
+          }
+        ],
+        "downloadTitle": "Full version of the regulation",
+        "downloadDesc": "Download the full document about the Scientific and Technical Council",
+        "downloadBtn": "Download PDF"
+      },
+      "bioethics": {
+        "badge": "Ethical expertise",
+        "title": "Bioethics Committee",
+        "subtitle": "Independent ethical review of scientific research",
+        "descTitle": "About Committee",
+        "descText": "The University Bioethics Committee is a public and independent expert body separate from the researcher and sponsor, designed to provide independent expertise, consultation, monitoring and decision-making on ethical assessment of clinical and biomedical research involving humans and/or animals to protect dignity, interests, and health rights of research participants and patients. In its activities, the Ethics Committee is guided by the current regulatory legal acts of the Kyrgyz Republic and the university, as well as basic international norms regulating clinical and biomedical research involving humans and animals.",
+        "chairmanTitle": "Committee Chairman",
+        "chairmanName": "Batyraliev Talantbek Abdullaevich",
+        "chairmanDesc": "Batyraliev Talantbek Abdullaevich - President of the Association of Medical Workers of the Kyrgyz Republic, professor, Doctor of Medical Sciences, active member of the American College of Cardiology. Specialist in angioplasty, one of the safest methods of treating coronary heart disease and preventing myocardial infarctions. Graduated with honors from KSMA named after Akhunbaev. Then there was postgraduate study in Moscow at the All-Union Cardiology Scientific Center and defense of candidate and doctoral dissertations. Today Talantbek Batyraliev is among the top five best cardiologists in the world.",
+        "leadership": [
+          {
+            "label": "Vice Chairman",
+            "value": "Tulekeev T.M., Dr. Med. Sci., prof."
+          },
+          {
+            "label": "Executive Secretary",
+            "value": "Knyazev I.A."
+          }
+        ],
+        "membersTitle": "Committee Members",
+        "members": [
+          "Kuldanbaev N.K. - Dr. Med. Sci.",
+          "Monolov N.K. - Cand. Med. Sci."
+        ],
+        "tasksTitle": "Main Tasks of the Ethics Committee",
+        "tasks": [
+          "Protection of rights, dignity, interests, safety and health of clinical research participants, as well as monitoring compliance with patient rights when receiving medical care in university clinics",
+          "Solving moral and ethical problems related to publication of research results, including problems of plagiarism, unreliability of research results, compliance with copyright",
+          "Regulation of ethical issues of research work, clinical trials of medicines based on adopted regulatory documents",
+          "Compliance with international and national standards for approbation and implementation of new diagnostic, treatment and prevention technologies, new medicines in clinical departments of the university",
+          "Achieving independent and objective assessment of safety and inviolability of human rights in relation to subjects, both at the planning stage and during the research, as well as compliance of the research with humanistic and ethical norms",
+          "Ensuring quick and clear information to relevant organizations about any adverse reactions during the research, if necessary delaying or completely stopping clinical research",
+          "Identification of cases of violation of principles of medical ethics and deontology by medical, scientific and other university employees when providing medical services in healthcare"
+        ],
+        "functionsTitle": "Main Functions and Areas of Committee Activity",
+        "functions": [
+          "Conducting ethical review of research projects planned to be conducted on university premises by internal or external scientific teams",
+          "Conducting qualitative ethical review of materials of planned clinical research of medicines or medical devices, new diagnostic and treatment methods to protect subjects from possible negative consequences",
+          "Expertise of research projects",
+          "Analysis of ethical justification of clinical and biomedical research and expected effectiveness and safety of studied medicines, medical devices, medical technologies",
+          "Preparation of conclusions on feasibility of conducting clinical and biomedical research, as well as monitoring compliance with dignity, rights and safety of research subjects",
+          "Monitoring compliance with ethical and legal norms during clinical research and constant dynamic monitoring of the course of clinical research",
+          "Monitoring compliance with principles of medical ethics and deontology by medical, scientific and other university employees when providing medical services in healthcare",
+          "Studying and applying international experience of legal and ethical regulation when conducting clinical and biomedical research",
+          "Organization and conduct of scientific-theoretical and practical events on bioethical issues",
+          "Participation in ethical and legal education of medical workers and citizens in the field of human rights protection during clinical and biomedical research",
+          "Participation in expert assessment of advertising of medical and pharmaceutical activities, as well as goods and services violating citizens' rights to health protection",
+          "Development and implementation of various methods of ethical education of university employees and monitoring staff compliance with ethical norms"
+        ]
+      },
+      "youngScientists": {
+        "badge": "Young Scientists Council",
+        "title": "Young Scientists Council",
+        "subtitle": "Development of scientific potential of young researchers",
+        "generalTitle": "General Provisions",
+        "generalText": "The Young Scientists Council (hereinafter YSC) of «Salymbekov University» is a public organization formed from among teachers, researchers, graduate students and undergraduates of all structural divisions of the university under the age of 35. The YSC composition is approved by the rector of «Salymbekov University». The activities of the YSC are financed from the own funds of «Salymbekov University» as a separate line in the \"Scientific Activity\" section of the income and expenditure estimate of «Salymbekov University», from sponsorship receipts from enterprises, organizations, other legal entities and individuals.",
+        "goalsTitle": "Goals and objectives of the Young Scientists Council",
+        "goalsText": "The YSC is created with the aim of promoting the realization of the creative potential of young scientists and teachers of the university. The YSC combines the efforts of young scientists in developing priority areas and topics of scientific research, and promotes that their results become the property of the wider scientific community. The YSC summarizes the positive experience of scientific, methodological and pedagogical work of young scientists and teachers, and comes up with initiatives for its implementation in production and the educational process. The YSC promotes the activation of interdisciplinary research, for this purpose it maintains contacts and interaction with the scientific youth of higher educational institutions and scientific institutions of the republic.",
+        "compositionTitle": "Composition of the Young Scientists Council",
+        "members": [
+          "Umetaliva M.N. - graduate student",
+          "Knyazev I.A. - graduate student",
+          "Syrdybaev A.Zh. - PhD candidate",
+          "Sydykova S.B. - PhD candidate",
+          "Zholboldieva M. - PhD candidate",
+          "Bopusheva A. - PhD candidate"
+        ],
+        "downloadTitle": "Documents",
+        "downloadDesc": "Download the official regulations of the Young Scientists Council",
+        "downloadBtn": "Download regulations",
+        "noMembers": "Information about council members is temporarily unavailable"
+      }
+    },
+    "seanPark": {
+      "name": "DR. SHON PARK",
+      "title": "DR. SHON PARK",
+      "badge": "Faculty and Teaching Staff",
+      "subtitle": "International expert, urologist, surgeon",
+      "backToScience": "Back to Professors",
+      "position": "International expert, urologist, surgeon",
+      "description": "Dr. Shon Sung Hun Park is a certified urologist in Korea specializing in penile implant surgery. In 2012 he went to the United States for training in orthopedic urology.",
+      "education": [
+        "Certified urologist in Korea",
+        "Training in orthopedic urology in the USA",
+        "Specialization in penile implant surgery"
+      ],
+      "experience": [
+        "International medical practice",
+        "Specialized surgical techniques in urology",
+        "Training under Dr. Steven K. Wilson"
+      ],
+      "achievements": [
+        "International expert in prosthetic urology",
+        "Modern surgical techniques for implant placement",
+        "Contribution to the development of urology"
+      ]
+    },
+    "pendharkar": {
+      "name": "Dr. Dinesh Pendharkar",
+      "position": "Leading oncologist, professor",
+      "description": "Experienced oncologist specializing in targeted therapy, leukemias and innovative cancer treatment methods. Focuses on modern approaches to treating cancer, including personalized medicine and immuno-oncology.",
+      "education": [
+        "Doctor of Medicine (MD) - Oncology and hematology",
+        "Certificate in targeted therapy and immuno-oncology",
+        "Postgraduate education: leukemia and lymphoma treatment",
+        "Continuing medical education: innovative cancer treatment methods"
+      ],
+      "experience": [
+        "35+ years of clinical practice in oncology",
+        "Participation in global clinical research",
+        "Training of young oncologists (master classes, lectures)",
+        "Publications in international medical journals"
+      ],
+      "achievements": [
+        "Development of targeted therapies",
+        "Immunotherapeutic approaches",
+        "Personalized treatment",
+        "Research in early cancer diagnosis and patient quality of life"
+      ]
+    },
+    "potapova": {
+      "name": "Olga Potapova",
+      "title": "Specialist in translational oncology and diagnostics",
+      "position": "Researcher, project leader",
+      "description": "Extensive experience in developing targeted therapies and diagnostic tests, participation in international oncology programs.",
+      "education": [
+        "Basic medical education",
+        "Oncology and molecular biology",
+        "International diagnostic courses"
+      ],
+      "experience": [
+        "Targeted therapy",
+        "Biomarker acquisition",
+        "Preclinical research"
+      ],
+      "achievements": [
+        "Work in international consortia",
+        "Principal investigator of programs",
+        "Contribution to diagnostic development"
+      ]
+    },
+    "osmonov": {
+      "name": "Dr. Daniyar Osmonov",
+      "title": "World-class expert and trainer in penile prosthetics",
+      "position": "Head of andrology department",
+      "description": "Leading specialist in andrology, recognized world-class expert and trainer in penile prosthetics. Dr. Osmonov heads the andrology department at the prestigious clinic in Kiel, Germany.",
+      "education": [
+        "Higher medical education",
+        "Specialization in urology and andrology",
+        "International internships"
+      ],
+      "experience": [
+        "Clinical practice in leading world clinics",
+        "Development of innovative treatment methods",
+        "Training doctors to world standards"
+      ],
+      "achievements": [
+        "World-class expert in penile prosthetics",
+        "Trainer in modern andrology methods",
+        "Participant in international congresses",
+        "Author of scientific publications"
+      ]
+    },
+    "erkebaev": {
+      "name": "Abdygany Erkebaevich Erkebaev",
+      "title": "Abdygany Erkebaev",
+      "badge": "Faculty and Teaching Staff",
+      "subtitle": "Professor of medicine and scientific research",
+      "backToScience": "Back to Professors",
+      "position": "Professor, Doctor of Medical Sciences",
+      "description": "Experienced medical specialist with extensive international experience in clinical practice and scientific research. Professor Erkebaev has made significant contributions to medical education and research at the university.",
+      "education": ["Higher medical education", "Doctor of Medical Sciences degree", "International postgraduate specialization"],
+      "experience": ["Clinical practice in leading hospitals", "Scientific research and publications", "Medical education and mentoring"],
+      "achievements": ["Publications in medical journals", "Scientific developments in medical field", "Contribution to medical education"]
+    },
+    "madaminov": {
+      "name": "Gapyr Madaminov",
+      "title": "Gapyr Madaminov",
+      "badge": "Faculty and Teaching Staff",
+      "subtitle": "Outstanding scientist and medical researcher",
+      "backToScience": "Back to Professors",
+      "position": "Professor, Doctor of Medical Sciences",
+      "description": "Outstanding scientist with extensive experience in medical research and clinical practice. Dr. Madaminov has led numerous research projects and contributed significantly to the advancement of medical science through his innovative approach and dedication to education.",
+      "education": ["Higher medical education", "Doctorate in Medical Sciences", "Advanced training in medical research"],
+      "experience": ["Leadership of scientific research groups", "Clinical research and patient care", "International medical collaboration"],
+      "achievements": ["Scientific discoveries in medical field", "International recognition and awards", "Published research and innovations"]
+    },
+    "shaltakova": {
+      "name": "Shaltakova Gulbu",
+      "title": "Shaltakova Gulbu",
+      "badge": "Faculty and Teaching Staff",
+      "subtitle": "Specialist in modern medicine and medical education",
+      "backToScience": "Back to Professors",
+      "position": "Professor, Specialist in Modern Medicine",
+      "description": "Specialist in modern medicine with extensive experience in clinical practice and medical education. Professor Shaltakova is dedicated to advancing medical knowledge and training the next generation of healthcare professionals with contemporary methods and evidence-based practices.",
+      "education": ["Medical education and training", "Advanced medical specialization", "Postgraduate medical studies"],
+      "experience": ["Clinical medical practice", "Medical education and teaching", "Patient care and diagnosis"],
+      "achievements": ["Contribution to medical science", "Excellence in teaching activities", "Development of medical curricula"]
+    },
+    "kachibek": {
+      "name": "Professor Kachibek",
+      "title": "Professor Kachibek",
+      "badge": "Faculty and Teaching Staff",
+      "subtitle": "Qualified medical specialist and researcher",
+      "backToScience": "Back to Professors",
+      "position": "Professor, Medical Specialist",
+      "description": "Highly qualified medical specialist with expertise in medical research and clinical practice. Professor Kachibek brings valuable experience and dedication to medical education, contributing to the university's mission of training competent healthcare professionals.",
+      "education": ["Higher medical education", "Medical specialization", "Advanced professional development"],
+      "experience": ["Professional medical practice", "Medical research and development", "Clinical supervision and mentoring"],
+      "achievements": ["Professional medical achievements", "Significant scientific work", "Contribution to healthcare advancement"]
+    },
+    "studentScience": {
+      "title": "Student Science",
+      "subtitle": "Scientific activities of students",
+      "society": {
+        "title": "Student Scientific Society",
+        "description": "Regulations and composition of the scientific society"
+      },
+      "clubs": {
+        "title": "Scientific Clubs",
+        "description": "Student scientific clubs and sections",
+        "backToStudentScience": "Back to Student Science",
+        "subtitle": "Student scientific clubs and sections",
+        "pageTitle": "Scientific Clubs",
+        "underDevelopment": "This section is under development. Information about scientific clubs will be added soon."
+      },
+      "conferences": {
+        "title": "Student Conferences",
+        "description": "Conferences and events for students",
+        "backToStudentScience": "Back to Student Science",
+        "subtitle": "Conferences and events for students",
+        "pageTitle": "Student Conferences",
+        "underDevelopment": "This section is under development. Information about student conferences will be added soon."
+      }
+    },
+    "events": {
+      "title": "Scientific Events",
+      "subtitle": "Platform for knowledge exchange and scientific collaboration",
+      "conferences": {
+        "title": "Conferences",
+        "description": "International and national scientific conferences for sharing research experience",
+        "backLink": "← Back to Events",
+        "pageTitle": "Conferences",
+        "pageSubtitle": "Scientific conferences and symposiums"
+      },
+      "masterClasses": {
+        "title": "Master Classes",
+        "description": "Practical sessions led by leading specialists and scientists",
+        "backLink": "← Back to Events",
+        "pageTitle": "Master Classes",
+        "pageSubtitle": "Master classes from leading specialists",
+        "underDevelopment": "This section is under development. Information about master classes will be added soon."
+      },
+      "roundTables": {
+        "title": "Round Tables",
+        "description": "Discussion platforms for addressing current scientific issues",
+        "backLink": "← Back to Events",
+        "pageTitle": "Round Tables",
+        "pageSubtitle": "Discussion platforms and forums",
+        "underDevelopment": "This section is under development. Information about round tables will be added soon."
+      },
+      "library": {
+        "title": "Scientific Library",
+        "description": "Access to electronic resources and academic materials",
+        "backLink": "← Back to Events",
+        "pageTitle": "Scientific Library",
+        "pageSubtitle": "Access to electronic resources",
+        "underDevelopment": "Soon we will open access to a full library with electronic resources and educational materials.",
+        "card1Title": "Electronic Resources",
+        "card1Desc": "Access to thousands of electronic textbooks and scientific journals",
+        "card2Title": "Search and Catalog",
+        "card2Desc": "Convenient search system by title, author and topic",
+        "card3Title": "International Databases",
+        "card3Desc": "Access to world scientific databases and publications"
+      }
+    }
+  }
+,
   "studentSub": {
     "communities": "Student Communities",
     "conditions": "Terms and Opportunities",
@@ -3028,6 +3370,32 @@
           "Preparation of proposals for creation and reorganization of scientific and innovative structures, updating scientific equipment."
         ],
         "compositionTitle": "Composition of the Scientific and Technical Council",
+        "members": [
+          {
+            "name": "Toktogazy Moldalievich Tuleksev, Ph.D., Prof.",
+            "role": "Chairman"
+          },
+          {
+            "name": "Uzakbayev Kamchybek Askarbek, Ph.D., Prof.",
+            "role": "Vice Chairman"
+          },
+          {
+            "name": "Imankulova Asel Sansyzbayevna, Ph.D., Prof.",
+            "role": "Scientific Secretary"
+          },
+          {
+            "name": "Jumadiloff Esengeldy Jumadilovich, PhD",
+            "role": "Council Member"
+          },
+          {
+            "name": "Abdyldaev Rysbek Aldagandayevich, Ph.D., Prof.",
+            "role": "Council Member"
+          },
+          {
+            "name": "Atikanov Arystanbek Orozaliyevich, Ph.D., Prof.",
+            "role": "Council Member"
+          }
+        ],
         "downloadTitle": "Full version of the regulation",
         "downloadDesc": "Download the full document about the Scientific and Technical Council",
         "downloadBtn": "Download PDF"
@@ -10010,7 +10378,11 @@
         "description": [
           "The Scientific Library of Salymbekov University includes full paper and electronic resources, catalogs, electronic journals and databases to promote the development and provision of educational and research resources for university students and teachers.",
           "The Scientific Library is one of the significant structural divisions of the university responsible for the educational and research processes."
-        ]
+        ],
+        "pageTitle": "Scientific Library",
+        "pageSubtitle": "Access to electronic resources and academic materials",
+        "backLink": "← Back to science events",
+        "underDevelopment": "This section is under development. Full library access will be available soon."
       },
       "resources": {
         "research4life": {
@@ -15882,7 +16254,16 @@
     "readMore": "READ MORE",
     "founderName": "Askar Salymbekov",
     "founderPosition": "Founder of Dordoi",
-    "imageAlt": "Photo of the Founder of Dordoi"
+    "imageAlt": "Photo of the Founder of Dordoi",
+    "badge": "Founder's Message",
+    "paragraph3": "Through our commitment to excellence in education and innovation, we continue to build a brighter future for Kyrgyzstan and beyond.",
+    "founderQuote": "\"Education is the foundation of progress and prosperity for our nation.\"",
+    "stats": {
+      "years": "25",
+      "yearsLabel": "Years of Leadership",
+      "students": "10000",
+      "studentsLabel": "Students Educated"
+    }
   },
   "materialBase": {
     "title": "Material and Technical Base",

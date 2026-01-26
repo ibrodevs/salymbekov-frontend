@@ -1,7 +1,7 @@
 
 import React, { lazy, Suspense } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Navbar from './components/Navbar/Navbar2'
+import Navbar from './components/Navbar/Navbar1'
 import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
 import About from './pages/About'
@@ -19,11 +19,7 @@ const NewsHome = lazy(() => import('./pages/university/HomeNewsSection'))
 const NewsPage = lazy(() => import('./pages/university/NewsPage'))
 const NewsDetail = lazy(() => import('./pages/university/NewsDetail'))
 const Appeal = lazy(() => import('./pages/university/Appeal'))
-const History = lazy(() => import('./pages/university/History'))
-const Mission = lazy(() => import('./pages/university/Mission'))
 const Videos = lazy(() => import('./pages/university/Videos'))
-const Vacancies = lazy(() => import('./pages/university/Vacancies'))
-const UniversityContacts = lazy(() => import('./pages/university/Contacts'))
 const Structure = lazy(() => import('./pages/university/Structure'))
 const Management = lazy(() => import('./pages/university/Management'))
 const Departments = lazy(() => import('./pages/university/Departments'))
@@ -51,13 +47,11 @@ const UniversityStudentCouncil = lazy(() => import('./pages/university/сouncils
 const TechnicalCouncil = lazy(() => import('./pages/university/сouncils/TechnicalCouncil'))
 
 // Structure sub
-const UniversityMain = lazy(() => import('./pages/university/structure/UniversityMain'))
 const InternationalFaculty = lazy(() => import('./pages/university/structure/InternationalFaculty'))
 const ITCollege = lazy(() => import('./pages/university/structure/ITCollege'))
 const BusinessSchool = lazy(() => import('./pages/university/structure/BusinessSchool'))
 
 // Management sub
-const Founder = lazy(() => import('./pages/university/management/Founder'))
 const President = lazy(() => import('./pages/university/management/President'))
 const Rectorate = lazy(() => import('./pages/university/management/Rectorate'))
 const PublicCouncils = lazy(() => import('./pages/university/management/PublicCouncils'))
@@ -90,13 +84,7 @@ const HRPolicy = lazy(() => import('./pages/university/StrategicDocs/HR-Policy')
 const StrategicDevelopPlans = lazy(() => import('./pages/university/StrategicDocs/StrategicDevelopPlans'))
 const AccountingPolicy = lazy(() => import('./pages/university/StrategicDocs/AccountingPolicy'))
 
-// NormativeDocs sub
-const KRActs = lazy(() => import('./pages/university/normativeDocs/KRActs'))
-const InternalActs = lazy(() => import('./pages/university/normativeDocs/InternalActs'))
-
 // Cooperation sub
-const UniversitiesCoop = lazy(() => import('./pages/university/cooperation/Universities'))
-const ClinicsCoop = lazy(() => import('./pages/university/cooperation/Clinics'))
 
 // Education lazy imports
 const AboutAIT = lazy(() => import('./pages/education/ait/About'))
@@ -114,8 +102,6 @@ const Center = lazy(() => import('./pages/education/Center'))
 // Clinical lazy imports
 const Lazmed = lazy(() => import('./pages/clinical/Lazmed'))
 const Ophthalmic = lazy(() => import('./pages/clinical/DordoiOphthalmic'))
-const DocClinic = lazy(() => import('./pages/clinical/DocClinic'))
-const DocHospital = lazy(() => import('./pages/clinical/DocHospital'))
 const Agreements = lazy(() => import('./pages/clinical/Agreements'))
 
 // Science lazy imports
@@ -127,24 +113,12 @@ const ScienceDepartmentMng = lazy(() => import('./pages/science/management/Depar
 const ScienceDepartment = lazy(() => import('./pages/science/Department'))
 const Professors = lazy(() => import('./pages/science/Professors'))
 const Publications = lazy(() => import('./pages/science/Publications'))
-const ScientificJournal = lazy(() => import('./pages/science/ScientificJournal'))
-const Periodicals = lazy(() => import('./pages/science/Periodicals'))
 const ScienceEvents = lazy(() => import('./pages/science/Events'))
 const Library = lazy(() => import('./pages/science/Library'))
 const StudentScience = lazy(() => import('./pages/science/StudentScience'))
 const StudentSociety = lazy(() => import('./pages/science/StudentSociety'))
-const Labs = lazy(() => import('./pages/science/Labs'))
-const Anatomy = lazy(() => import('./pages/science/labs/Anatomy'))
-const Biochemistry = lazy(() => import('./pages/science/labs/Biochemistry'))
-const Chemistry = lazy(() => import('./pages/science/labs/Chemistry'))
-const Biology = lazy(() => import('./pages/science/labs/Biology'))
-const Interactive = lazy(() => import('./pages/science/labs/Interactive'))
-const Computer = lazy(() => import('./pages/science/labs/Computer'))
-const Study = lazy(() => import('./pages/science/labs/Study'))
 const Projects = lazy(() => import('./pages/science/Projects'))
 const ManagementScience = lazy(() => import('./pages/science/Management'))
-const Conferences = lazy(() => import('./pages/science/Conferences'))
-const ConferenceDetail = lazy(() => import('./pages/science/ConferenceDetail'))
 const MasterClasses = lazy(() => import('./pages/science/events/MasterClasses'))
 const RoundTables = lazy(() => import('./pages/science/events/RoundTables'))
 const Clubs = lazy(() => import('./pages/science/student/Clubs'))
@@ -241,8 +215,6 @@ const RequiredDoc = lazy(() => import('./pages/applicant/extrapages/RequiredDoc'
 const OnlineReg = lazy(() => import('./pages/applicant/extrapages/OnlineReg'))
 
 // QualityMaganagementSystem lazy imports
-const QualityMonitoring = lazy(() => import('./pages/university/qualitysystem/QualityMonitoring'))
-const QualityPolity = lazy(() => import('./pages/university/qualitysystem/QualityPolity'))
 
 // Infrastructure lazy imports
 const Locations = lazy(() => import('./pages/infrastructure/Locations'))
@@ -324,18 +296,12 @@ const App = () => {
             <Route path='/news/NewsHome' element={<NewsHome />} />
             <Route path="/press/news/:id" element={<NewsDetail />} />
             <Route path="/university/appeal" element={<Appeal />} />
-            <Route path="/university/history" element={<History />} />
-            <Route path="/university/mission" element={<Mission />} />
             <Route path="/university/videos" element={<Videos />} />
-            <Route path="/university/vacancies" element={<Vacancies />} />
-            <Route path="/university/contacts" element={<UniversityContacts />} />
             <Route path="/university/structure" element={<Structure />} />
-            <Route path="/university/structure/university-main" element={<UniversityMain />} />
             <Route path="/university/structure/international-faculty" element={<InternationalFaculty />} />
             <Route path="/university/structure/it-college" element={<ITCollege />} />
             <Route path="/university/structure/business-school" element={<BusinessSchool />} />
             <Route path="/university/management" element={<Management />} />
-            <Route path="/university/management/founder" element={<Founder />} />
             <Route path="/university/management/president" element={<President />} />
             <Route path="/university/management/rectorate" element={<Rectorate />} />
             <Route path="/university/management/public-councils" element={<PublicCouncils />} />
@@ -358,12 +324,6 @@ const App = () => {
             <Route path="/university/founding-docs/licenses" element={<Licenses />} />
             <Route path="/university/founding-docs/acts" element={<Acts />} />
             <Route path="/university/founding-docs/strategic" element={<StrategicDocs />} />
-            <Route path="/university/normative-docs" element={<NormativeDocs />} />
-            <Route path="/university/normative-docs/kr-acts" element={<KRActs />} />
-            <Route path="/university/normative-docs/internal-acts" element={<InternalActs />} />
-            <Route path="/university/cooperation" element={<Cooperation />} />
-            <Route path="/university/cooperation/universities" element={<UniversitiesCoop />} />
-            <Route path="/university/cooperation/clinics" element={<ClinicsCoop />} />
             <Route path="/university/brandbook" element={<Brandbook />} />
             <Route path="/university/strategic-docs/strategic-vision" element={<StrategicVision />} />
             <Route path="/university/strategic-docs/hr-policy" element={<HRPolicy />} />
@@ -382,8 +342,6 @@ const App = () => {
             <Route path="/university/councils/student-councils" element={<UniversityStudentCouncil />} />
             <Route path="/university/councils/technical-council" element={<TechnicalCouncil />} />
             <Route path="/university/councils/parents-council" element={<ParentsCouncil />} />
-            <Route path="/university/quality-management-system/quality-monitoring" element={<QualityMonitoring />} />
-            <Route path="/university/quality-management-system/quality-policy" element={<QualityPolity />} />
 
 
 
@@ -432,9 +390,7 @@ const App = () => {
 
 
             <Route path="/clinical/lazmed" element={<Lazmed />} />
-            <Route path="/clinical/doc-clinic" element={<DocClinic />} />
             <Route path="/clinical/dordoi-ophthalmic" element={<Ophthalmic />} />
-            <Route path="/clinical/doc-hospital" element={<DocHospital />} />
             <Route path="/clinical/agreements" element={<Agreements />} />
 
 
@@ -446,8 +402,6 @@ const App = () => {
             <Route path="/science/management/young-scientists" element={<YoungScientists />} />
             <Route path="/science/management/department" element={<ScienceDepartmentMng />} />
             <Route path="/science/department" element={<ScienceDepartment />} />
-            <Route path="/science/events/conferences" element={<Conferences />} />
-            <Route path="/science/events/conferences/:id" element={<ConferenceDetail />} />
             <Route path="/science/professors" element={<Professors />} />
             <Route path="/science/professors/pendharkar" element={<Pendharkar />} />
             <Route path="/science/professors/potapova" element={<Potapova />} />
@@ -459,8 +413,6 @@ const App = () => {
             <Route path="/science/professors/shaltakova" element={<Shaltakova />} />
             <Route path="/science/professors/kachibek" element={<Kachibek />} />
             <Route path="/science/publications" element={<Publications />} />
-            <Route path="/science/publications/journal" element={<ScientificJournal />} />
-            <Route path="/science/publications/periodicals" element={<Periodicals />} />
             <Route path="/science/events" element={<ScienceEvents />} />
             <Route path="/science/library" element={<Library />} />
             <Route path="/science/student-science" element={<StudentScience />} />
@@ -476,14 +428,6 @@ const App = () => {
             <Route path="/science/projects/gynecology" element={<Gynecology />} />
             <Route path="/science/projects/ophthalmology" element={<Ophthalmology />} />
             <Route path="/science/projects/oncology" element={<Oncology />} />
-            <Route path="/science/labs" element={<Labs />} />
-            <Route path="/science/labs/anatomy" element={<Anatomy />} />
-            <Route path="/science/labs/biochemistry" element={<Biochemistry />} />
-            <Route path="/science/labs/chemistry" element={<Chemistry />} />
-            <Route path="/science/labs/biology" element={<Biology />} />
-            <Route path="/science/labs/interactive" element={<Interactive />} />
-            <Route path="/science/labs/computer" element={<Computer />} />
-            <Route path="/science/labs/study" element={<Study />} />
             <Route path="/science/projects" element={<Projects />} />
             <Route path="/student" element={<StudentMain />} />
             <Route path="/student/community/council" element={<StudentCouncil />} />

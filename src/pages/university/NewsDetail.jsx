@@ -464,12 +464,32 @@ const NewsDetailPage = () => {
             </div>
           </motion.div>
 
+          {/* Content */}
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="prose prose-lg max-w-none bg-white rounded-3xl p-8 shadow-xl mb-12"
+          >
+            <p className="text-xl text-gray-700 leading-relaxed mb-8 font-medium border-l-4 border-blue-500 pl-4 bg-blue-50 py-4 rounded-r-lg">
+              {data.short_description || data.description || getContent()}
+            </p>
+
+            <div className="space-y-6 text-gray-600 leading-8">
+              {getContent() && (
+                <div className="text-gray-700 whitespace-pre-line">
+                  {getContent()}
+                </div>
+              )}
+            </div>
+          </motion.div>
+
           {/* Gallery */}
           {images.length > 1 && (
             <motion.div
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.4 }}
+              transition={{ delay: 0.5 }}
               className="mb-8"
             >
               <h3 className="text-xl font-semibold text-gray-800 mb-4">
@@ -526,26 +546,6 @@ const NewsDetailPage = () => {
               ))}
             </motion.div>
           )}
-
-          {/* Content */}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.7 }}
-            className="prose prose-lg max-w-none bg-white rounded-3xl p-8 shadow-xl mb-12"
-          >
-            <p className="text-xl text-gray-700 leading-relaxed mb-8 font-medium border-l-4 border-blue-500 pl-4 bg-blue-50 py-4 rounded-r-lg">
-              {data.short_description || data.description || getContent()}
-            </p>
-
-            <div className="space-y-6 text-gray-600 leading-8">
-              {getContent() && (
-                <div className="text-gray-700 whitespace-pre-line">
-                  {getContent()}
-                </div>
-              )}
-            </div>
-          </motion.div>
 
           {/* Related News */}
           {relatedNews.length > 0 && (

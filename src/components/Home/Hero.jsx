@@ -1,19 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { getBanners } from '../../api';
 
 const SimplePhotoSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const [banners, setBanners] = useState([]);
 
-  const photos = [
-    "https://images.wallpaperscraft.ru/image/single/naushniki_knigi_obrazovanie_121501_1920x1080.jpg",
-    "https://img1.akspic.ru/crops/2/1/8/7/6/167812/167812-spiral-yabloko-krasochnost-svet-purpur-1920x1080.jpg",
-    "https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-    "https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-    "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-    "https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-    "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
-  ];
+  const photos = banners.map(banner => banner.image);
 
   const nextSlide = () => {
     if (isTransitioning) return;
@@ -34,6 +28,19 @@ const SimplePhotoSlider = () => {
   };
 
   useEffect(() => {
+    const fetchBanners = async () => {
+      try {
+        const data = await getBanners();
+        setBanners(data.results);
+      } catch (error) {
+        console.error('Failed to fetch banners:', error);
+      }
+    };
+
+    fetchBanners();
+  }, []);
+
+  useEffect(() => {
     const timer = setTimeout(() => {
       setIsTransitioning(false);
     }, 500);
@@ -52,7 +59,7 @@ const SimplePhotoSlider = () => {
 
   return (
     <div 
-      className="relative w-screen h-screen bg-black overflow-hidden"
+      className="relative w-screen h-[90vh] bg-black overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >

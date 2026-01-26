@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test KG JSON</title>
+</head>
+<body>
+    <h1>Testing KG JSON Loading</h1>
+    <div id="result"></div>
+    
+    <script type="module">
+        try {
+            // Test loading the JSON file
+            const response = await fetch('/src/locales/kg/translation.json');
+            console.log('Response status:', response.status);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const data = await response.json();
+            console.log('JSON loaded successfully');
+            console.log('Has science:', !!data.science);
+            console.log('Has seanPark:', !!data.science?.seanPark);
+            console.log('seanPark name:', data.science?.seanPark?.name);
+            
+            document.getElementById('result').innerHTML = `
+                <p>JSON loaded: ✅</p>
+                <p>Has science: ${data.science ? '✅' : '❌'}</p>
+                <p>Has seanPark: ${data.science?.seanPark ? '✅' : '❌'}</p>
+                <p>seanPark name: ${data.science?.seanPark?.name || 'Not found'}</p>
+            `;
+        } catch (error) {
+            console.error('Error loading JSON:', error);
+            document.getElementById('result').innerHTML = `
+                <p>Error: ${error.message}</p>
+            `;
+        }
+    </script>
+</body>
+</html>

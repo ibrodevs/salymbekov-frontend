@@ -1601,6 +1601,10 @@
     "science": "SCIENCE",
     "student": "FOR STUDENTS",
     "applicant": "FOR APPLICANTS",
+    "cooperation": "COOPERATION",
+    "news": "NEWS",
+    "contacts": "CONTACTS",
+    "vacancies": "VACANCIES",
     "search": "Search...",
     "menu": "Menu"
   },
@@ -1745,6 +1749,10 @@
     "science": "SCIENCE",
     "student": "FOR STUDENTS",
     "applicant": "FOR APPLICANTS",
+    "cooperation": "COOPERATION",
+    "news": "NEWS",
+    "contacts": "CONTACTS",
+    "vacancies": "VACANCIES",
     "search": "Search...",
     "menu": "Menu"
   },
@@ -2129,6 +2137,19 @@
     "officialDealers": "Official Dealers",
     "adaptationProgram": "Adaptation Program",
     "infrastructure": "University Infrastructure"
+  },
+  "cooperationSUB": {
+    "internationalPartners": "International Partners",
+    "localPartners": "Local Partners"
+  },
+  "newsSUB": {
+    "allNews": "All News"
+  },
+  "contactsSUB": {
+    "contactInfo": "Contact Information"
+  },
+  "vacanciesSUB": {
+    "allVacancies": "All Vacancies"
   },
   "appeal": {
     "badge": "Founder's Address",

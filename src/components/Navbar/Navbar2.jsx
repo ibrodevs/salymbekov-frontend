@@ -785,7 +785,7 @@ const Navbar = () => {
 
           {/* LanguageSwitcher с увеличенным отступом сверху и добавлен z-index */}
           {/* LanguageSwitcher с увеличенным отступом сверху и добавлен z-index */}
-          <div className="flex-shrink-0 mb-12 pb-4 border-b border-gray-200 flex items-center justify-center relative mt-8" style={{marginTop: '3.125rem'}}>
+          <div className="flex-shrink-0 mb-12 pb-4 border-b border-gray-200 flex items-center justify-center relative mt-8" style={{ marginTop: '3.125rem' }}>
             <LanguageSwitcher
               position="top-center"
               variant={isScrolled ? "outline" : "default"}

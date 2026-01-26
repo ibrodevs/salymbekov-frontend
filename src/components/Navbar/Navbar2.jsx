@@ -266,6 +266,42 @@ const Navbar = () => {
           ]
         }
       ]
+    },
+    cooperation: {
+      items: [
+        {
+          key: 'internationalPartners',
+          link: '/cooperation/international-partners'
+        },
+        {
+          key: 'localPartners',
+          link: '/cooperation/local-partners'
+        }
+      ]
+    },
+    news: {
+      items: [
+        {
+          key: 'allNews',
+          link: '/news'
+        }
+      ]
+    },
+    contacts: {
+      items: [
+        {
+          key: 'contactInfo',
+          link: '/contacts'
+        }
+      ]
+    },
+    vacancies: {
+      items: [
+        {
+          key: 'allVacancies',
+          link: '/vacancies'
+        }
+      ]
     }
   };
 

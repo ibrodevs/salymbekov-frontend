@@ -64,6 +64,10 @@
     "science": "Илим",
     "student": "Студент",
     "applicant": "Абитуриент",
+    "cooperation": "Өнөктөштүк",
+    "news": "Жаңылыктар",
+    "contacts": "Байланыштар",
+    "vacancies": "Вакансиялар",
     "infrastructure": "Университеттин инфраструктурасы",
     "language": "Тил",
     "viewAll": "Баарын көрүү",
@@ -810,6 +814,10 @@
     "science": "ИЛИМ",
     "student": "СТУДЕНТҮҮН",
     "applicant": "АБИТУРИЕНТҮҮН",
+    "cooperation": "ӨНӨКТӨШТҮК",
+    "news": "ЖАҢЫЛЫКТАР",
+    "contacts": "БАЙЛАНЫШТАР",
+    "vacancies": "ВАКАНСИЯЛАР",
     "search": "Издөө...",
     "menu": "Меню"
   },
@@ -1194,6 +1202,19 @@
     "officialDealers": "Расмий дилерлер",
     "adaptationProgram": "Адаптация программасы",
     "infrastructure": "Университеттин инфраструктурасы"
+  },
+  "cooperationSUB": {
+    "internationalPartners": "Эл аралык өнөктөштүк",
+    "localPartners": "Ийгиликтүү өнөктөштүк"
+  },
+  "newsSUB": {
+    "allNews": "Бардык жаңылыктар"
+  },
+  "contactsSUB": {
+    "contactInfo": "Байланыш маалымат"
+  },
+  "vacanciesSUB": {
+    "allVacancies": "Бардык вакансиялар"
   },
   "history": {
     "title": "Колледж Тарыхы",

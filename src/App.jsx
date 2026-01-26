@@ -105,6 +105,15 @@ const Kubatov = lazy(() => import('./pages/science/professors/Kubatov'))
 const Shaltakova = lazy(() => import('./pages/science/professors/Shaltakova'))
 const Kachibek = lazy(() => import('./pages/science/professors/Kachibek'))
 
+// Cooperation lazy imports
+const InternationalPartners = lazy(() => import('./pages/cooperation/InternationalPartners'))
+const LocalPartners = lazy(() => import('./pages/cooperation/LocalPartners'))
+
+// News, Contacts, Vacancies lazy imports
+const News = lazy(() => import('./pages/News'))
+const Contacts = lazy(() => import('./pages/Contacts'))
+const Vacancies = lazy(() => import('./pages/Vacancies'))
+
 // Student lazy imports
 const StudentMain = lazy(() => import('./pages/student/StudentMain'))
 const StudentCouncil = lazy(() => import('./pages/student/community/council'))
@@ -362,6 +371,11 @@ const App = () => {
             <Route path="/science/labs/computer" element={<Computer />} />
             <Route path="/science/labs/study" element={<Study />} />
             <Route path="/science/projects" element={<Projects />} />
+            <Route path="/cooperation/international-partners" element={<InternationalPartners />} />
+            <Route path="/cooperation/local-partners" element={<LocalPartners />} />
+            <Route path="/news" element={<News />} />
+            <Route path="/contacts" element={<Contacts />} />
+            <Route path="/vacancies" element={<Vacancies />} />
             <Route path="/infrastructure/locations" element={<Locations />} />
             <Route path="/infrastructure/partners" element={<Partners />} />
             <Route path="/infrastructure/*" element={<Home />} />

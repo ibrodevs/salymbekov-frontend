@@ -66,6 +66,10 @@
     "student": "Для студентов",
     "applicant": "Для абитуриентов",
     "infrastructure": "Инфраструктура университета",
+    "cooperation": "Сотрудничество",
+    "news": "Новости",
+    "contacts": "Контакты",
+    "vacancies": "Вакансии",
     "language": "Язык",
     "viewAll": "Показать все",
     "close": "Закрыть",
@@ -7740,6 +7744,10 @@
     "science": "НАУКА",
     "student": "СТУДЕНТУ",
     "applicant": "АБИТУРИЕНТУ",
+    "cooperation": "СОТРУДНИЧЕСТВО",
+    "news": "НОВОСТИ",
+    "contacts": "КОНТАКТЫ",
+    "vacancies": "ВАКАНСИИ",
     "search": "Поиск...",
     "menu": "Меню"
   },
@@ -7948,6 +7956,19 @@
     "officialDealers": "Официальные дилеры",
     "adaptationProgram": "Адаптационная программа",
     "infrastructure": "Инфраструктура университета"
+  },
+  "cooperationSUB": {
+    "internationalPartners": "Международные партнеры",
+    "localPartners": "Местные партнеры"
+  },
+  "newsSUB": {
+    "allNews": "Все новости"
+  },
+  "contactsSUB": {
+    "contactInfo": "Контактная информация"
+  },
+  "vacanciesSUB": {
+    "allVacancies": "Все вакансии"
   },
   "contacts": {
     "badge": "Свяжитесь с нами",

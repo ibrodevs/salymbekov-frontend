@@ -109,13 +109,12 @@ const Navbar = () => {
   const menuData = {
     university: {
       items: [
-        { key: 'founderAppeal', link: '/university/Appeal' },
-        { key: 'videos', link: '/university/videos' },
-        { key: 'brandbook', link: 'https://salymbekov.com/wp-content/uploads/2023/10/brjendbuk_organized_new.pdf' },
+        { key: 'mission', link: '/university/mission' },
         {
           key: 'structure',
           link: '/university/structure',
           subItems: [
+            { key: 'universityMain', link: '/university/structure/University-main' },
             { key: 'internationalFaculty', link: '/university/structure/International-Faculty' },
             { key: 'itCollege', link: '/university/structure/it-college' }
           ]
@@ -124,52 +123,7 @@ const Navbar = () => {
           key: 'management',
           link: '/university/management',
           subItems: [
-            { key: 'president', link: '/university/management/president' },
             { key: 'rectorate', link: '/university/management/rectorate' }
-          ]
-        },
-        {
-          key: 'departments',
-          link: '/university/departments',
-          subItems: [
-            { key: 'financialDept', link: '/university/departments/financial' },
-            { key: 'scienceDept', link: '/university/departments/science' },
-            { key: 'managementDept', link: '/university/departments/management' },
-            { key: 'hrDept', link: '/university/departments/hr' },
-            { key: 'qualityDept', link: '/university/departments/quality' },
-            { key: 'researchDept', link: '/university/departments' },
-            { key: 'internationalDept', link: '/university/departments/international' },
-            { key: 'studentDept', link: '/university/departments/student' },
-            { key: 'careerCenter', link: '/university/departments/career' }
-          ]
-        },
-        {
-          key: 'accreditation',
-          link: '/university/accreditation',
-          subItems: [
-            { key: 'national', link: '/university/accreditation/national' },
-            { key: 'institutional', link: '/university/accreditation/institutional' },
-            { key: 'programAccreditation', link: '/university/accreditation/program' }
-          ]
-        },
-        {
-          key: 'foundingDocs',
-          link: '/university/founding-docs',
-          subItems: [
-            { key: 'charter', link: '/university/founding-docs/charter' },
-            { key: 'licenses', link: '/university/founding-docs/licenses' },
-            { key: 'acts', link: '/university/founding-docs/acts' }
-          ]
-        },
-        {
-          key: 'strategicDocs',
-          link: '/university/StrategicDocs',
-          subItems: [
-            { key: 'vision', link: '/university/strategic-docs/strategic-vision' },
-            { key: 'strategicPlan', link: '/university/strategic-docs/strategic-develop-plans' },
-            { key: 'comprehensivePlans', link: 'https://salymbekov.com/wp-content/uploads/2022/05/5.9.4.-kompleksnyj-plan-meroprijatij-za-2021-2022-gg.pdf' },
-            { key: 'accountingPolicy', link: '/university/strategic-docs/accounting-policy' },
-            { key: 'hrPolicy', link: '/university/strategic-docs/hr-policy' }
           ]
         },
         {
@@ -189,6 +143,22 @@ const Navbar = () => {
             { key: 'employersCouncil', link: '/university/councils/employers-council' },
             { key: 'parentsCouncil', link: '/university/councils/parents-council' },
             { key: 'studentCouncil', link: '/university/councils/student-councils' }
+          ]
+        },
+        {
+          key: 'normativeDocs',
+          link: '/university/normative-docs',
+          subItems: [
+            { key: 'krActs', link: '/university/normative-docs/kr-acts' },
+            { key: 'internalActs', link: '/university/normative-docs/internal-acts' }
+          ]
+        },
+        {
+          key: 'qualityManagement',
+          link: '/university/quality-management-system',
+          subItems: [
+            { key: 'qualityPolicy', link: '/university/quality-management-system/quality-policy' },
+            { key: 'qualityMonitoring', link: '/university/quality-management-system/quality-monitoring' }
           ]
         }
       ]
@@ -215,7 +185,8 @@ const Navbar = () => {
             { key: 'mfmCurriculum', link: '/education/mfm/dekanat/curriculum' },
             { key: 'departments', link: '/education/mfm/dekanat/departments' },
             { key: 'medicine5Years', link: '/education/mfm/programs/five-years' },
-            { key: 'medicine6Years', link: '/education/mfm/programs/six-years' }
+            { key: 'medicine6Years', link: '/education/mfm/programs/six-years' },
+            { key: 'contacts', link: '/university/contacts' }
           ]
         },
         {
@@ -230,7 +201,8 @@ const Navbar = () => {
             { key: 'lincolnUniversity', link: 'https://www.lincoln.edu.my/' },
             { key: 'generalDisciplines', link: '/education/it-college/departments/general' },
             { key: 'itDepartment', link: '/education/it-college/departments/information' },
-            { key: 'pedagogicalCouncil', link: '/education/it-college/pedagogical-council' }
+            { key: 'pedagogicalCouncil', link: '/education/it-college/pedagogical-council' },
+            { key: 'contacts', link: '/university/contacts' }
           ]
         },
         {
@@ -242,7 +214,8 @@ const Navbar = () => {
             { key: 'smartik', link: '/education/business-school/programs/smartik' },
             { key: 'futureLeaders', link: '/education/business-school/programs/future-leaders' },
             { key: 'youngLeaders', link: '/education/business-school/programs/young-leaders' },
-            { key: 'olderLeaders', link: '/education/business-school/programs/older-leaders' }
+            { key: 'olderLeaders', link: '/education/business-school/programs/older-leaders' },
+            { key: 'contacts', link: '/university/contacts' }
           ]
         },
         {
@@ -259,16 +232,16 @@ const Navbar = () => {
           key: 'narynCenter',
           link: '/education/center',
           subItems: [
-            { key: 'aboutCenter', link: '/education/center/about' }
+            { key: 'aboutCenter', link: '/education/center/about' },
+            { key: 'contacts', link: '/university/contacts' }
           ]
         }
       ]
     },
     clinical: {
       items: [
-        { key: 'lazmed', link: '/clinical/lazmed' },
-        { key: 'dordoiOphthalmic', link: '/clinical/dordoi-ophthalmic' },
-        { key: 'agreements', link: '/clinical/agreements' }
+        { key: 'docClinic', link: '/clinical/doc-clinic' },
+        { key: 'docHospital', link: '/clinical/doc-hospital' }
       ]
     },
     science: {
@@ -283,122 +256,15 @@ const Navbar = () => {
             { key: 'researchDepartment', link: '/science/management/department' }
           ]
         },
-        { key: 'library', link: '/science/library' },
-        { key: 'honoredProfessors', link: '/science/professors' },
+        { key: 'journal', link: '/science/publications/journal' },
+        { key: 'labs', link: '/science/labs' },
         {
           key: 'events',
           link: '/science/events',
           subItems: [
-            { key: 'masterClasses', link: '/science/events/master-classes' },
-            { key: 'roundTables', link: '/science/events/round-tables' }
-          ]
-        },
-        {
-          key: 'studentScience',
-          link: '/science/student-science',
-          subItems: [
-            { key: 'studentSociety', link: '/science/student-society' },
-            { key: 'scienceClubs', link: '/science/student-science/clubs' },
-            { key: 'studentConferences', link: '/science/student-science/conferences' }
-          ]
-        },
-        {
-          key: 'researchProjects',
-          link: '/science/projects',
-          subItems: [
-            { key: 'urology', link: '/science/projects/urology' },
-            { key: 'gynecology', link: '/science/projects/gynecology' },
-            { key: 'ophthalmology', link: '/science/projects/ophthalmology' },
-            { key: 'oncology', link: '/science/projects/oncology' }
+            { key: 'conferences', link: '/science/events/conferences' }
           ]
         }
-      ]
-    },
-    student: {
-      items: [
-        {
-          key: 'communities',
-          link: '/student/community',
-          subItems: [
-            { key: 'council', link: '/student/community/council' },
-            { key: 'scienceSociety', link: '/student/community/science' },
-            { key: 'debateClub', link: '/student/community/debate' },
-            { key: 'tutorMovement', link: '/student/community/tutor' },
-            { key: 'creativeClubs', link: '/student/community/clubs' }
-          ]
-        },
-        {
-          key: 'schedules',
-          link: '/student/schedule',
-          subItems: [
-            { key: 'studySchedule', link: '/student/schedule/study' },
-            { key: 'modulesSchedule', link: '/student/schedule/modules' },
-            { key: 'practiceSchedule', link: '/student/schedule/practice' },
-            { key: 'mfmSchedule', link: '/student/schedule/mfm' },
-            { key: 'collegeSchedule', link: '/student/schedule/college' }
-          ]
-        },
-        {
-          key: 'resources',
-          link: '/student/resources',
-          subItems: [
-            { key: 'instructions', link: '/student/resources/instructions' },
-            { key: 'infoSystem', link: '/student/resources/infosystem' },
-            { key: 'eLibrary', link: '/student/resources/elib' },
-            { key: 'eduResources', link: '/student/resources/edu-resources' }
-          ]
-        },
-        {
-          key: 'opportunities',
-          link: '/student/opportunities',
-          subItems: [
-            { key: 'medicalCenter', link: '/student/opportunities/medical' },
-            { key: 'dormitory', link: '/student/opportunities/dorm' },
-            { key: 'socialSupport', link: '/student/opportunities/social' },
-            { key: 'electiveCourses', link: '/student/opportunities/courses' },
-            { key: 'academicMobility', link: '/student/opportunities/mobility' },
-            { key: 'psychologicalSupport', link: '/student/opportunities/psychology' },
-            { key: 'serviceCenter', link: '/student/opportunities/service-center' },
-            { key: 'adaptationPrograms', link: '/student/opportunities/adaptation' }
-          ]
-        }
-      ]
-    },
-    applicant: {
-      items: [
-        { key: 'directions', link: '/applicants/directions' },
-        { key: 'tuitionCost', link: '/applicants/cost' },
-        {
-          key: 'admissionProcedure',
-          link: '/applicants/admission',
-          subItems: [
-            { key: 'requiredDocuments', link: '/applicant/documents' },
-            { key: 'admissionRules', link: '/applicant/rules' },
-            { key: 'admissionSchedule', link: '/applicant/schedule' }
-          ]
-        },
-        {
-          key: 'rulesAndPlan',
-          link: '/applicants',
-          subItems: [
-            { key: 'ortAdmission', link: '/applicants/ort' },
-            { key: 'careerGuidance', link: '/applicants/career-guidance' }
-          ]
-        },
-        {
-          key: 'transferProcedure',
-          link: '/applicants/transfer',
-          subItems: [
-            { key: 'transferDocuments', link: '/applicants/transfer/documents' },
-            { key: 'transferRules', link: '/applicants/transfer/rules' },
-            { key: 'transferSchedule', link: '/applicants/transfer/schedule' }
-          ]
-        },
-        { key: 'commission', link: '/applicants/commission' },
-        { key: 'scholarships', link: '/applicants/scholarships' },
-        { key: 'officialDealers', link: '/applicants/dealers' },
-        { key: 'adaptationProgram', link: '/applicants/adaptation' },
-        { key: 'infrastructure', link: '/applicants/infrastructure' }
       ]
     }
   };

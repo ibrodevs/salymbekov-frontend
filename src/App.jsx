@@ -231,6 +231,8 @@ const Internship = lazy(() => import('./pages/education/postgrad/Internship'))
 const Phd = lazy(() => import('./pages/education/postgrad/PhD'))
 const Postgraduate = lazy(() => import('./pages/education/postgrad/Postgraduate'))
 const Residency = lazy(() => import('./pages/education/postgrad/Residency'))
+const Universities = lazy(() => import('./pages/university/cooperation/Universities'))
+const Clinics = lazy(() => import('./pages/university/cooperation/Clinics'))
 
 // Education Center lazy imports
 const AboutCenterEducation = lazy(() => import('./pages/education/center/About'))
@@ -371,9 +373,9 @@ const App = () => {
             <Route path="/science/labs/computer" element={<Computer />} />
             <Route path="/science/labs/study" element={<Study />} />
             <Route path="/science/projects" element={<Projects />} />
-            <Route path="/cooperation/international-partners" element={<InternationalPartners />} />
-            <Route path="/cooperation/local-partners" element={<LocalPartners />} />
-            <Route path="/news" element={<News />} />
+            <Route path="/cooperation/international-partners" element={<Universities />} />
+            <Route path="/cooperation/local-partners" element={<Clinics />} />
+            <Route path="/news" element={<NewsPage />} />
             <Route path="/contacts" element={<Contacts />} />
             <Route path="/vacancies" element={<Vacancies />} />
             <Route path="/infrastructure/locations" element={<Locations />} />

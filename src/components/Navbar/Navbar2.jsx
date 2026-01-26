@@ -110,17 +110,12 @@ const Navbar = () => {
     university: {
       items: [
         { key: 'founderAppeal', link: '/university/Appeal' },
-        { key: 'history', link: '/university/history' },
-        { key: 'mission', link: '/university/mission' },
         { key: 'videos', link: '/university/videos' },
-        { key: 'vacancies', link: '/university/vacancies' },
-        { key: 'contacts', link: '/university/contacts' },
         { key: 'brandbook', link: 'https://salymbekov.com/wp-content/uploads/2023/10/brjendbuk_organized_new.pdf' },
         {
           key: 'structure',
           link: '/university/structure',
           subItems: [
-            { key: 'universityMain', link: '/university/structure/University-main' },
             { key: 'internationalFaculty', link: '/university/structure/International-Faculty' },
             { key: 'itCollege', link: '/university/structure/it-college' }
           ]
@@ -129,7 +124,6 @@ const Navbar = () => {
           key: 'management',
           link: '/university/management',
           subItems: [
-            { key: 'founder', link: '/university/management/founder' },
             { key: 'president', link: '/university/management/president' },
             { key: 'rectorate', link: '/university/management/rectorate' }
           ]
@@ -196,30 +190,6 @@ const Navbar = () => {
             { key: 'parentsCouncil', link: '/university/councils/parents-council' },
             { key: 'studentCouncil', link: '/university/councils/student-councils' }
           ]
-        },
-        {
-          key: 'normativeDocs',
-          link: '/university/normative-docs',
-          subItems: [
-            { key: 'krActs', link: '/university/normative-docs/kr-acts' },
-            { key: 'internalActs', link: '/university/normative-docs/internal-acts' }
-          ]
-        },
-        {
-          key: 'qualityManagement',
-          link: '/university/quality-management-system',
-          subItems: [
-            { key: 'qualityPolicy', link: '/university/quality-management-system/quality-policy' },
-            { key: 'qualityMonitoring', link: '/university/quality-management-system/quality-monitoring' }
-          ]
-        },
-        {
-          key: 'cooperation',
-          link: '/university/cooperation',
-          subItems: [
-            { key: 'universitiesCoop', link: '/university/cooperation/universities' },
-            { key: 'clinicsCoop', link: '/university/cooperation/clinics' }
-          ]
         }
       ]
     },
@@ -245,8 +215,7 @@ const Navbar = () => {
             { key: 'mfmCurriculum', link: '/education/mfm/dekanat/curriculum' },
             { key: 'departments', link: '/education/mfm/dekanat/departments' },
             { key: 'medicine5Years', link: '/education/mfm/programs/five-years' },
-            { key: 'medicine6Years', link: '/education/mfm/programs/six-years' },
-            { key: 'contacts', link: '/university/contacts' }
+            { key: 'medicine6Years', link: '/education/mfm/programs/six-years' }
           ]
         },
         {
@@ -261,8 +230,7 @@ const Navbar = () => {
             { key: 'lincolnUniversity', link: 'https://www.lincoln.edu.my/' },
             { key: 'generalDisciplines', link: '/education/it-college/departments/general' },
             { key: 'itDepartment', link: '/education/it-college/departments/information' },
-            { key: 'pedagogicalCouncil', link: '/education/it-college/pedagogical-council' },
-            { key: 'contacts', link: '/university/contacts' }
+            { key: 'pedagogicalCouncil', link: '/education/it-college/pedagogical-council' }
           ]
         },
         {
@@ -274,8 +242,7 @@ const Navbar = () => {
             { key: 'smartik', link: '/education/business-school/programs/smartik' },
             { key: 'futureLeaders', link: '/education/business-school/programs/future-leaders' },
             { key: 'youngLeaders', link: '/education/business-school/programs/young-leaders' },
-            { key: 'olderLeaders', link: '/education/business-school/programs/older-leaders' },
-            { key: 'contacts', link: '/university/contacts' }
+            { key: 'olderLeaders', link: '/education/business-school/programs/older-leaders' }
           ]
         },
         {
@@ -292,8 +259,7 @@ const Navbar = () => {
           key: 'narynCenter',
           link: '/education/center',
           subItems: [
-            { key: 'aboutCenter', link: '/education/center/about' },
-            { key: 'contacts', link: '/university/contacts' }
+            { key: 'aboutCenter', link: '/education/center/about' }
           ]
         }
       ]
@@ -302,8 +268,6 @@ const Navbar = () => {
       items: [
         { key: 'lazmed', link: '/clinical/lazmed' },
         { key: 'dordoiOphthalmic', link: '/clinical/dordoi-ophthalmic' },
-        { key: 'docClinic', link: '/clinical/doc-clinic' },
-        { key: 'docHospital', link: '/clinical/doc-hospital' },
         { key: 'agreements', link: '/clinical/agreements' }
       ]
     },
@@ -319,16 +283,12 @@ const Navbar = () => {
             { key: 'researchDepartment', link: '/science/management/department' }
           ]
         },
-        { key: 'journal', link: '/science/publications/journal' },
-        { key: 'periodicals', link: '/science/publications/periodicals' },
         { key: 'library', link: '/science/library' },
-        { key: 'labs', link: '/science/labs' },
         { key: 'honoredProfessors', link: '/science/professors' },
         {
           key: 'events',
           link: '/science/events',
           subItems: [
-            { key: 'conferences', link: '/science/events/conferences' },
             { key: 'masterClasses', link: '/science/events/master-classes' },
             { key: 'roundTables', link: '/science/events/round-tables' }
           ]

@@ -315,7 +315,7 @@ const Navbar = () => {
           }`} />
 
         {/* Content */}
-        <div className="relative container mx-auto px-6 py-8">
+        <div className="relative w-full py-4">
           <div className="flex gap-8">
             {/* Main items with sub-items */}
             {itemsWithSubItems.length > 0 && (
@@ -623,10 +623,10 @@ const Navbar = () => {
             : 'h-20 bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 backdrop-blur-lg'
           }`}
       >
-        <div className="container mx-auto px-4 sm:px-6 h-full">
-          <div className="flex items-center justify-between h-full">
+        <div className="w-full h-full">
+          <div className="flex items-center h-full">
             {/* Logo */}
-            <Link to="/" className="flex items-center group shrink-0 ml-2 sm:ml-4 lg:ml-6 xl:ml-8">
+            <Link to="/" className="flex items-center group shrink-0 ml-2">
               <div className="relative">
                 <img
                   src={isScrolled ? Logo1 : Logo2}
@@ -640,7 +640,7 @@ const Navbar = () => {
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-1">
+            <div className="hidden lg:flex items-center gap-0 flex-1 justify-center">
               {Object.entries(menuData).map(([menuKey, { items }]) => (
                 <div
                   key={menuKey}
@@ -649,7 +649,7 @@ const Navbar = () => {
                   onMouseLeave={handleDropdownLeave}
                 >
                   <button
-                    className={`relative px-4 py-2.5 rounded-xl font-medium text-sm transition-all duration-300 group ${isScrolled
+                    className={`relative px-6 py-3 rounded-xl font-bold text-base transition-all duration-300 group ${isScrolled
                         ? 'text-gray-600 hover:text-blue-600'
                         : 'text-white/90 hover:text-white'
                       } ${activeDropdown === menuKey ? (isScrolled ? 'text-blue-600 bg-blue-50' : 'text-white bg-white/10') : ''}`}

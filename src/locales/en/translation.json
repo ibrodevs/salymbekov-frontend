@@ -1810,6 +1810,7 @@
       "founderAppeal": "Founder's Address",
       "history": "History",
       "mission": "Mission and Goals",
+      "viewMission": "About Mission",
       "videos": "Videos",
       "vacancies": "Vacancies",
       "contacts": "Contacts",
@@ -1926,6 +1927,7 @@
       "phd": "PhD"
     },
     "clinicalSUB": {
+      "hospitals": "Medical Institutions",
       "ownBases": "Own Clinical Bases",
       "lazmed": "Lazmed Clinic",
       "dordoiOphthalmic": "Dordoi Ophthalmic Service",
@@ -2117,9 +2119,12 @@
       "youngScientists": "Young Scientists Council",
       "researchDepartment": "Science and Advanced Research Department",
       "journal": "Scientific Journal",
+      "journalInfo": "About Journal",
       "periodicals": "Periodicals",
       "library": "Scientific Library",
-      "labs": "Laboratories and Centers",
+      "labsAndCenters": "Laboratories and Centers",
+      "labs": "Laboratories",
+      "centers": "Research Centers",
       "honoredProfessors": "Honored Professors and Lecturers",
       "events": "Events",
       "conferences": "Conferences",
@@ -2186,6 +2191,7 @@
       "infrastructure": "University Infrastructure"
     },
     "cooperationSUB": {
+      "partnership": "Global Partnership",
       "internationalPartners": "International Partners",
       "localPartners": "Local Partners"
     },

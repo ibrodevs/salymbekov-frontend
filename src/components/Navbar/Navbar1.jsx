@@ -97,7 +97,6 @@ const Navbar = () => {
   const menuData = {
     university: {
       items: [
-        { key: 'mission', link: '/university/mission' },
         {
           key: 'structure',
           link: '/university/structure',
@@ -147,6 +146,13 @@ const Navbar = () => {
           subItems: [
             { key: 'qualityPolicy', link: '/university/quality-management-system/quality-policy' },
             { key: 'qualityMonitoring', link: '/university/quality-management-system/quality-monitoring' }
+          ]
+        },
+        {
+          key: 'mission',
+          link: '/university/mission',
+          subItems: [
+            { key: 'viewMission', link: '/university/mission' }
           ]
         }
       ]
@@ -228,8 +234,14 @@ const Navbar = () => {
     },
     clinical: {
       items: [
-        { key: 'docClinic', link: '/clinical/doc-clinic' },
-        { key: 'docHospital', link: '/clinical/doc-hospital' }
+        { 
+          key: 'hospitals', 
+          link: '/clinical/doc-clinic',
+          subItems: [
+            { key: 'docClinic', link: '/clinical/doc-clinic' },
+            { key: 'docHospital', link: '/clinical/doc-hospital' }
+          ]
+        }
       ]
     },
     science: {
@@ -244,8 +256,21 @@ const Navbar = () => {
             { key: 'researchDepartment', link: '/science/management/department' }
           ]
         },
-        { key: 'journal', link: '/science/publications/journal' },
-        { key: 'labs', link: '/science/labs' },
+        { 
+          key: 'journal', 
+          link: '/science/publications/journal',
+          subItems: [
+            { key: 'journalInfo', link: '/science/publications/journal' }
+          ]
+        },
+        {
+          key: 'labsAndCenters',
+          link: '/science/labs',
+          subItems: [
+            { key: 'labs', link: '/science/labs' },
+            { key: 'centers', link: '/science/centers' }
+          ]
+        },
         {
           key: 'events',
           link: '/science/events',
@@ -258,12 +283,12 @@ const Navbar = () => {
     cooperation: {
       items: [
         {
-          key: 'internationalPartners',
-          link: '/cooperation/international-partners'
-        },
-        {
-          key: 'localPartners',
-          link: '/cooperation/local-partners'
+          key: 'partnership',
+          link: '/cooperation/international-partners',
+          subItems: [
+            { key: 'internationalPartners', link: '/cooperation/international-partners' },
+            { key: 'localPartners', link: '/cooperation/local-partners' }
+          ]
         }
       ]
     },
@@ -311,7 +336,7 @@ const Navbar = () => {
         {/* Backdrop blur */}
         <div className={`absolute inset-0 ${isScrolled
             ? 'bg-white/95 backdrop-blur-xl shadow-2xl shadow-blue-900/10'
-            : 'bg-gradient-to-b from-blue-900/98 to-blue-950/98 backdrop-blur-xl'
+            : 'bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 backdrop-blur-lg'
           }`} />
 
         {/* Content */}

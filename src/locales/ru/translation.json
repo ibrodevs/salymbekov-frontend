@@ -83,6 +83,7 @@
     "historyDesc": "Узнайте о пути университета и его вехах",
     "mission": "Миссия и цели",
     "missionDesc": "Узнайте о нашем видении и целях",
+    "viewMission": "О миссии",
     "videos": "Видеоролики",
     "videosDesc": "Смотрите рекламные и образовательные видео",
     "vacancies": "Вакансии",
@@ -7806,6 +7807,7 @@
     "founderAppeal": "Обращение учредителя",
     "history": "История",
     "mission": "Миссия и цели",
+    "viewMission": "О миссии",
     "videos": "Видеоролики",
     "vacancies": "Вакансии",
     "contacts": "Контакты",
@@ -7923,11 +7925,12 @@
     "phd": "PhD"
   },
   "clinicalSUB": {
+    "hospitals": "Медицинские учреждения",
     "ownBases": "Собственные клинические базы",
     "lazmed": "Лазмед",
     "dordoiOphthalmic": "Дордой офтальмик сервис",
-    "docClinic": "DOC university clinic",
-    "docHospital": "DOC university hospital",
+    "docClinic": "DOC университетская клиника",
+    "docHospital": "DOC университетская больница",
     "agreements": "Соглашения с клиниками"
   },
   "scienceSUB": {
@@ -7937,10 +7940,10 @@
     "youngScientists": "Совет молодых ученых",
     "researchDepartment": "Департамент науки и перспективных исследований",
     "journal": "Научный журнал",
-    "periodicals": "Периодические издания",
-    "library": "Научная библиотека",
-    "labs": "Лаборатории и центры",
-    "honoredProfessors": "Почетные профессора и лекторы",
+    "journalInfo": "О журнале",
+    "labsAndCenters": "Лаборатории и центры",
+    "labs": "Лаборатории",
+    "centers": "Научные центры",
     "events": "Мероприятия",
     "conferences": "Конференции",
     "masterClasses": "Мастер классы",
@@ -8006,6 +8009,7 @@
     "infrastructure": "Инфраструктура университета"
   },
   "cooperationSUB": {
+    "partnership": "Глобальное партнерство",
     "internationalPartners": "Международные партнеры",
     "localPartners": "Местные партнеры"
   },

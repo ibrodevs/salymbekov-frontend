@@ -256,19 +256,19 @@ const Navbar = () => {
             { key: 'researchDepartment', link: '/science/management/department' }
           ]
         },
-        { 
-          key: 'journal', 
-          link: '/science/publications/journal',
-          subItems: [
-            { key: 'journalInfo', link: '/science/publications/journal' }
-          ]
-        },
         {
           key: 'labsAndCenters',
           link: '/science/labs',
           subItems: [
             { key: 'labs', link: '/science/labs' },
             { key: 'centers', link: '/science/centers' }
+          ]
+        },
+        { 
+          key: 'journal', 
+          link: '/science/publications/journal',
+          subItems: [
+            { key: 'journalInfo', link: '/science/publications/journal' }
           ]
         },
         {

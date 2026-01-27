@@ -390,16 +390,12 @@ const Navbar = () => {
             {/* Quick links sidebar */}
             {itemsWithoutSubItems.length > 0 && (
               <div className="w-72 shrink-0">
-                <div className={`rounded-2xl p-5 ${
+                <div className={`rounded-2xl p-2 ${
                   isScrolled 
                     ? 'bg-gradient-to-br from-blue-500 to-blue-600' 
                     : 'bg-white/10 backdrop-blur-sm border border-white/10'
                 }`}>
-                  <h3 className="text-white font-bold mb-4 flex items-center gap-2">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                    {t('navbar.quickLinks', 'Быстрые ссылки')}
+                  <h3 className="text-white font-bold mb-0 flex items-center gap-2">
                   </h3>
                   <div className="space-y-1">
                     {itemsWithoutSubItems.map((item) => (
@@ -653,61 +649,88 @@ const Navbar = () => {
             : 'h-20 bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 backdrop-blur-lg'
         }`}
       >
-        <div className="container mx-auto px-4 sm:px-6 h-full">
-          <div className="flex items-center justify-between h-full">
-            {/* Logo */}
-            <Link to="/" className="flex items-center group shrink-0">
-              <div className="relative">
-                <img
-                  src={isScrolled ? Logo1 : Logo2}
-                  alt="Salymbekov University"
-                  className={`transition-all duration-500 ${isScrolled ? 'h-10' : 'h-12'} w-auto object-contain`}
-                />
-                {/* Glow effect on hover */}
-                <div className={`absolute inset-0 rounded-lg transition-opacity duration-300 opacity-0 group-hover:opacity-100 ${
-                  isScrolled ? 'bg-blue-500/10' : 'bg-white/10'
-                } blur-xl`} />
-              </div>
-            </Link>
-
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-1">
-              {Object.entries(menuData).map(([menuKey, { items }]) => (
-                <div
-                  key={menuKey}
-                  className="relative"
-                  onMouseEnter={() => handleDropdownEnter(menuKey)}
-                  onMouseLeave={handleDropdownLeave}
-                >
-                  <button
-                    className={`relative px-4 py-2.5 rounded-xl font-medium text-sm transition-all duration-300 group ${
-                      isScrolled
-                        ? 'text-gray-600 hover:text-blue-600'
-                        : 'text-white/90 hover:text-white'
-                    } ${activeDropdown === menuKey ? (isScrolled ? 'text-blue-600 bg-blue-50' : 'text-white bg-white/10') : ''}`}
-                  >
-                    <span className="relative z-10">{t(`navbar.${menuKey}`)}</span>
-                    
-                    {/* Hover background */}
-                    <span className={`absolute inset-0 rounded-xl transition-all duration-300 ${
-                      activeDropdown === menuKey 
-                        ? 'opacity-100' 
-                        : 'opacity-0 group-hover:opacity-100'
-                    } ${isScrolled ? 'bg-blue-50' : 'bg-white/10'}`} />
-                    
-                    {/* Bottom indicator */}
-                    <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 rounded-full transition-all duration-300 ${
-                      activeDropdown === menuKey ? 'w-6' : 'w-0'
-                    } ${isScrolled ? 'bg-blue-500' : 'bg-white'}`} />
-                  </button>
-                  
-                  {renderDesktopDropdown(menuKey, items)}
+        <div className="w-full h-full px-4 sm:px-6">
+          <div className="flex items-center justify-between h-full gap-4">
+            {/* Left - Logo */}
+            <div className="flex-shrink-0">
+              <Link to="/" className="flex items-center group">
+                <div className="relative">
+                  <img
+                    src={isScrolled ? Logo1 : Logo2}
+                    alt="Salymbekov University"
+                    className={`transition-all duration-500 ${isScrolled ? 'h-10' : 'h-12'} w-auto object-contain`}
+                  />
+                  {/* Glow effect on hover */}
+                  <div className={`absolute inset-0 rounded-lg transition-opacity duration-300 opacity-0 group-hover:opacity-100 ${
+                    isScrolled ? 'bg-blue-500/10' : 'bg-white/10'
+                  } blur-xl`} />
                 </div>
-              ))}
+              </Link>
             </div>
 
-            {/* Right side */}
-            <div className="flex items-center gap-3">
+            {/* Center - Desktop Navigation */}
+            <div className="hidden lg:flex flex-1 justify-center items-center gap-1">
+              {Object.entries(menuData).map(([menuKey, { items }]) => {
+                // Для news, contacts, vacancies - прямая ссылка
+                if (['news', 'contacts', 'vacancies'].includes(menuKey)) {
+                  return (
+                    <Link
+                      key={menuKey}
+                      to={items[0].link}
+                      className={`relative px-4 py-2.5 rounded-xl font-medium text-sm transition-all duration-300 group hover:no-underline ${
+                        isScrolled
+                          ? 'text-gray-600 hover:text-blue-600'
+                          : 'text-white/90 hover:text-white'
+                      }`}
+                    >
+                      <span className="relative z-10">{t(`navbar.${menuKey}`)}</span>
+                      
+                      {/* Hover background */}
+                      <span className={`absolute inset-0 rounded-xl transition-all duration-300 opacity-0 group-hover:opacity-100 ${
+                        isScrolled ? 'bg-blue-50' : 'bg-white/10'
+                      }`} />
+                    </Link>
+                  );
+                }
+                
+                // Для остальных - дропдаун
+                return (
+                  <div
+                    key={menuKey}
+                    className="relative"
+                    onMouseEnter={() => handleDropdownEnter(menuKey)}
+                    onMouseLeave={handleDropdownLeave}
+                  >
+                    <button
+                      className={`relative px-4 py-2.5 rounded-xl font-medium text-sm transition-all duration-300 group ${
+                        isScrolled
+                          ? 'text-gray-600 hover:text-blue-600'
+                          : 'text-white/90 hover:text-white'
+                      } ${activeDropdown === menuKey ? (isScrolled ? 'text-blue-600 bg-blue-50' : 'text-white bg-white/10') : ''}`}
+                    >
+                      <span className="relative z-10">{t(`navbar.${menuKey}`)}</span>
+                      
+                      {/* Hover background */}
+                      <span className={`absolute inset-0 rounded-xl transition-all duration-300 ${
+                        activeDropdown === menuKey 
+                          ? 'opacity-100' 
+                          : 'opacity-0 group-hover:opacity-100'
+                      } ${isScrolled ? 'bg-blue-50' : 'bg-white/10'}`} />
+                      
+                      {/* Bottom indicator */}
+                      <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 rounded-full transition-all duration-300 ${
+                        activeDropdown === menuKey ? 'w-6' : 'w-0'
+                      } ${isScrolled ? 'bg-blue-500' : 'bg-white'}`} />
+                    </button>
+                    
+                    {renderDesktopDropdown(menuKey, items)}
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Right - Language Switcher & Mobile Menu */}
+            <div className="flex items-center gap-3 flex-shrink-0">
               {/* Language Switcher - Desktop */}
               <div className="hidden lg:block">
                 <LanguageSwitcher variant={isScrolled ? "outline" : "default"} />

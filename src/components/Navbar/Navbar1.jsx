@@ -110,6 +110,7 @@ const Navbar = () => {
           key: 'management',
           link: '/university/management',
           subItems: [
+            { key: 'founder', link: '/university/management/founder' },
             { key: 'rectorate', link: '/university/management/rectorate' }
           ]
         },
@@ -200,19 +201,6 @@ const Navbar = () => {
           ]
         },
         {
-          key: 'businessSchool',
-          link: '/education/business-school',
-          subItems: [
-            { key: 'aboutBusinessSchool', link: '/education/business-school/about' },
-            { key: 'director', link: '/education/business-school/director' },
-            { key: 'smartik', link: '/education/business-school/programs/smartik' },
-            { key: 'futureLeaders', link: '/education/business-school/programs/future-leaders' },
-            { key: 'youngLeaders', link: '/education/business-school/programs/young-leaders' },
-            { key: 'olderLeaders', link: '/education/business-school/programs/older-leaders' },
-            { key: 'contacts', link: '/university/contacts' }
-          ]
-        },
-        {
           key: 'postgraduatetitle',
           link: '/education/postgrad',
           subItems: [
@@ -239,7 +227,8 @@ const Navbar = () => {
           link: '/clinical/doc-clinic',
           subItems: [
             { key: 'docClinic', link: '/clinical/doc-clinic' },
-            { key: 'docHospital', link: '/clinical/doc-hospital' }
+            { key: 'docHospital', link: '/clinical/doc-hospital' },
+            { key: 'simulationCenter', link: '/clinical/simulation-center' }
           ]
         }
       ]
@@ -276,6 +265,13 @@ const Navbar = () => {
           link: '/science/events',
           subItems: [
             { key: 'conferences', link: '/science/events/conferences' }
+          ]
+        },
+        {
+          key: 'scholarships',
+          link: '/science/scholarships',
+          subItems: [
+            { key: 'grants', link: '/science/scholarships' }
           ]
         }
       ]

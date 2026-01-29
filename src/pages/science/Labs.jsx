@@ -15,15 +15,10 @@ import photo5 from '../../assets/science/management/bc0b3948-300x200.jpg';
 import photo6 from '../../assets/science/management/bc0b2371-300x200.jpg';
 
 const Labs = () => {
-  const [activeLab, setActiveLab] = useState('simulation');
+  const [activeLab, setActiveLab] = useState('anatomy');
   const { t } = useTranslation();
 
   const labSections = [
-    { 
-      id: 'simulation',
-      name: t('labs.sections.simulation'), 
-      icon: FaUserMd,
-    },
     { 
       id: 'anatomy',
       name: t('labs.sections.anatomy'), 
@@ -64,43 +59,6 @@ const Labs = () => {
   const photos = [photo1, photo2, photo3, photo4, photo5, photo6];
 
   const labData = {
-    simulation: {
-      title: t('labs.simulation.title'),
-      description: t('labs.simulation.description'),
-      icon: FaUserMd,
-      content: {
-        description: [
-          t('labs.simulation.content.description.0'),
-          t('labs.simulation.content.description.1')
-        ],
-        features: [
-          {
-            title: t('labs.simulation.features.0.title'),
-            description: t('labs.simulation.features.0.description'),
-            icon: FaUserMd
-          },
-          {
-            title: t('labs.simulation.features.1.title'),
-            description: t('labs.simulation.features.1.description'),
-            icon: FaMicroscope
-          },
-          {
-            title: t('labs.simulation.features.2.title'),
-            description: t('labs.simulation.features.2.description'),
-            icon: FaBrain
-          }
-        ],
-        equipment: [
-          t('labs.simulation.equipment.0'),
-          t('labs.simulation.equipment.1'),
-          t('labs.simulation.equipment.2'),
-          t('labs.simulation.equipment.3'),
-          t('labs.simulation.equipment.4'),
-          t('labs.simulation.equipment.5')
-        ],
-        hasGallery: true
-      }
-    },
     anatomy: {
       title: t('labs.anatomy.title'),
       description: t('labs.anatomy.description'),

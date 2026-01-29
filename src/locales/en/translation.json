@@ -125,7 +125,7 @@
       "itCollegeDesc": "IT and business education programs",
       "businessSchool": "Salymbekov Business School",
       "businessSchoolDesc": "Advanced business education and training",
-      "postgrad": "Faculty of Postgraduate Education",
+      "postgrad": "Institute of Global Skills",
       "postgradDesc": "Advanced studies and research opportunities",
       "center": "Education and Innovation Center (Naryn)",
       "centerDesc": "Regional education center in Naryn"
@@ -228,6 +228,8 @@
       "lazmedDesc": "Advanced laser medicine clinic",
       "dordoi": "Dordoi Ophthalmic Service",
       "dordoiDesc": "Specialized eye care services",
+      "simulationCenter": "Simulation Training Center",
+      "simulationCenterDesc": "Modern training center with simulation equipment",
       "docClinic": "DOC University Clinic",
       "docClinicDesc": "University-affiliated medical clinic",
       "docHospital": "DOC University Hospital",
@@ -1406,6 +1408,127 @@
       "cta": {
         "title": "Become part of our educational community",
         "description": "Join Salymbekov University colleges and start your path to a successful career under the guidance of experienced mentors"
+      },
+      "stats": {
+        "yearsInEducation": "Years in Education",
+        "projectsInitiated": "Projects Initiated",
+        "studentsTrained": "Students Trained",
+        "partnerships": "International Partnerships"
+      },
+      "founderImageAlt": "Askar Maatkabylovich Salymbekov - University Founder",
+      "founderTitle": "Askar Maatkabylovich Salymbekov - Vision and Mission",
+      "description1": "Askar Maatkabylovich Salymbekov is a public figure, philanthropist, and the founder of Salymbekov University. He is the Honorary President of the 'Dordoi' Association and the founder of the Public Foundation 'Askar Salymbekov Foundation' for the implementation of educational, scientific, charitable, patriotic and environmental projects.",
+      "description2": "The vision of Askar Salymbekov has led to the creation of a modern educational system that combines international quality standards with national educational traditions. His educational philosophy is based on practical orientation, accessibility, and the development of students' potential.",
+      "description3": "The foundation initiated by Askar Salymbekov implements large-scale projects that have a significant positive impact on the younger generation and youth, contributing to their personal and professional development.",
+      "achievementsTitle": "Key Achievements",
+      "achievementsDescription": "Outstanding contributions to education and society development",
+      "achievements": {
+        "education": {
+          "title": "Educational Leadership",
+          "description": "Founder and visionary leader of Salymbekov University system"
+        },
+        "career": {
+          "title": "Career Development",
+          "description": "Creation of innovative educational programs and career pathways"
+        },
+        "recognition": {
+          "title": "International Recognition",
+          "description": "Accreditation and recognition by international educational organizations"
+        },
+        "community": {
+          "title": "Community Impact",
+          "description": "Positive influence on thousands of students and young professionals"
+        }
+      },
+      "biography": {
+        "title": "Biography and Information",
+        "birthDate": "Birth Date",
+        "birthDateValue": "1960",
+        "birthPlace": "Place of Birth",
+        "birthPlaceValue": "Bishkek, Kyrgyzstan",
+        "education": "Education",
+        "educationValue": "Higher Education in Economics and Business",
+        "educationDetails1": "Studied at leading universities in Kyrgyzstan and abroad, gaining expertise in business, education, and management.",
+        "educationDetails2": "Developed unique vision for accessible quality education combining international standards with national values.",
+        "specialty": "Specialty: Business Management, Educational Leadership, and Philanthropic Activities",
+        "awards": {
+          "title": "State Awards and Honors",
+          "item1": "Honorary Citizen of Bishkek",
+          "item2": "Medal of Honor from the Government of Kyrgyzstan",
+          "item3": "Distinguished Philanthropist Award",
+          "item4": "Award for Contribution to Education",
+          "item5": "International Recognition in Education Sector",
+          "item6": "Honorary Doctorate from International Universities",
+          "item7": "Business Excellence Award",
+          "item8": "Social Responsibility Recognition",
+          "item9": "Leadership in Educational Innovation Award"
+        },
+        "workExperience": {
+          "title": "Work Experience and Activities",
+          "item1": "Founder and Chairman of Salymbekov University",
+          "item2": "Founder of International Faculty of Medicine",
+          "item3": "Founder of International IT and Business College",
+          "item4": "Honorary President of Dordoi Association",
+          "item5": "Founder of Askar Salymbekov Public Foundation",
+          "item6": "Board Member of International Education Networks",
+          "item7": "Advisor on Educational Policy Development",
+          "item8": "Mentor for Young Entrepreneurs",
+          "item9": "Director of Strategic Educational Initiatives",
+          "item10": "Organizer of International Educational Forums",
+          "item11": "Patron of Scientific Research and Innovation"
+        },
+        "publicActivity": {
+          "title": "Public and Charitable Activities",
+          "item1": "Founder of educational support programs for gifted youth",
+          "item2": "Sponsor of scholarships for economically disadvantaged students",
+          "item3": "Organizer of international educational exchange programs",
+          "item4": "Supporter of environmental and social sustainability projects"
+        }
+      },
+      "biography": {
+        "title": "Biography and Information",
+        "birthDate": "Birth Date",
+        "birthDateValue": "1960",
+        "birthPlace": "Place of Birth",
+        "birthPlaceValue": "Bishkek, Kyrgyzstan",
+        "education": "Education",
+        "educationValue": "Higher Education in Economics and Business",
+        "educationDetails1": "Studied at leading universities in Kyrgyzstan and abroad, gaining expertise in business, education, and management.",
+        "educationDetails2": "Developed unique vision for accessible quality education combining international standards with national values.",
+        "specialty": "Specialty: Business Management, Educational Leadership, and Philanthropic Activities",
+        "awards": {
+          "title": "State Awards and Honors",
+          "item1": "Honorary Citizen of Bishkek",
+          "item2": "Medal of Honor from the Government of Kyrgyzstan",
+          "item3": "Distinguished Philanthropist Award",
+          "item4": "Award for Contribution to Education",
+          "item5": "International Recognition in Education Sector",
+          "item6": "Honorary Doctorate from International Universities",
+          "item7": "Business Excellence Award",
+          "item8": "Social Responsibility Recognition",
+          "item9": "Leadership in Educational Innovation Award"
+        },
+        "workExperience": {
+          "title": "Work Experience and Activities",
+          "item1": "Founder and Chairman of Salymbekov University",
+          "item2": "Founder of International Faculty of Medicine",
+          "item3": "Founder of International IT and Business College",
+          "item4": "Honorary President of Dordoi Association",
+          "item5": "Founder of Askar Salymbekov Public Foundation",
+          "item6": "Board Member of International Education Networks",
+          "item7": "Advisor on Educational Policy Development",
+          "item8": "Mentor for Young Entrepreneurs",
+          "item9": "Director of Strategic Educational Initiatives",
+          "item10": "Organizer of International Educational Forums",
+          "item11": "Patron of Scientific Research and Innovation"
+        },
+        "publicActivity": {
+          "title": "Public and Charitable Activities",
+          "item1": "Founder of educational support programs for gifted youth",
+          "item2": "Sponsor of scholarships for economically disadvantaged students",
+          "item3": "Organizer of international educational exchange programs",
+          "item4": "Supporter of environmental and social sustainability projects"
+        }
       }
     },
     "president": {
@@ -1642,9 +1765,9 @@
       }
     },
     "navbar": {
-      "university": "UNIVERSITY",
-      "education": "EDUCATION",
-      "clinical": "CLINICAL BASE",
+      "university": "ABOUT US",
+      "education": "PROGRAMS",
+      "clinical": "HOSPITALS & LABORATORIES",
       "science": "SCIENCE",
       "student": "FOR STUDENTS",
       "applicant": "FOR APPLICANTS",
@@ -1878,7 +2001,7 @@
       "itCollege": "International College of IT and Business",
       "mfm": "International Faculty of Medicine",
       "businessSchool": "Salymbekov Business School",
-      "postgraduatetitle": "Postgraduate Education Faculty",
+      "postgraduatetitle": "Institute of Global Skills",
       "narynCenter": "Education and Innovation Center in Naryn",
       "deanOffice": "Dean's Office",
       "mfmCurriculum": "MFM Curriculum",
@@ -1904,10 +2027,10 @@
       "director": "Director",
       "aboutIt": "About college",
       "aboutBusinessSchool": "About Business School",
-      "internship": "Internship",
-      "residency": "Residency",
-      "postgraduate": "Postgraduate",
-      "phd": "PhD",
+      "internship": "Clinical Internship",
+      "residency": "Medical Residency",
+      "postgraduate": "Postgraduate Studies",
+      "phd": "PhD Program",
       "aboutCenter": "About Center"
     },
     "commonSUB": {
@@ -1921,10 +2044,10 @@
       "dean": "Dean",
       "programs": "Programs",
       "courses": "Courses",
-      "internship": "Internship",
-      "residency": "Residency",
-      "postgraduate": "Postgraduate",
-      "phd": "PhD"
+      "internship": "Clinical Internship",
+      "residency": "Medical Residency",
+      "postgraduate": "Postgraduate Studies",
+      "phd": "PhD Program"
     },
     "clinicalSUB": {
       "hospitals": "Medical Institutions",
@@ -1933,6 +2056,7 @@
       "dordoiOphthalmic": "Dordoi Ophthalmic Service",
       "docClinic": "DOC University Clinic",
       "docHospital": "DOC University Hospital",
+      "simulationCenter": "Simulation Center",
       "agreements": "Agreements with Clinics",
       "lazmedDescription": "Modern multidisciplinary medical center providing high-quality medical services",
       "lazmedAbout": "About Clinic",
@@ -2130,6 +2254,8 @@
       "conferences": "Conferences",
       "masterClasses": "Master Classes",
       "roundTables": "Round Tables",
+      "scholarships": "Scholarships and Grants",
+      "grants": "Grants and Scholarships",
       "studentScience": "Student Science",
       "studentSociety": "Student Scientific Society",
       "scienceClubs": "Scientific Clubs",

@@ -31,7 +31,6 @@ export const getDateLocale = (lang = 'ru') => {
 
 // Helper function for making API requests
 export const apiRequest = async (endpoint, options = {}) => {
-  // Убеждаемся, что endpoint начинается с /
   const normalizedEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
   const url = `${API_BASE_URL}${normalizedEndpoint}`;
 
@@ -59,8 +58,7 @@ export const apiRequest = async (endpoint, options = {}) => {
       throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
     }
 
-    const data = await response.json();
-    return data;
+    return await response.json();
   } catch (error) {
     console.error('API request failed:', error.message);
     throw error;
@@ -69,15 +67,15 @@ export const apiRequest = async (endpoint, options = {}) => {
 
 // Specific API functions
 export const getCategories = async (lang = 'ru') => {
-  return apiRequest(`/presscentre/categories/?lang=${lang}`);
+  return apiRequest(`/presscentre/categories/?lang=${normalizeLanguage(lang)}`);
 };
 
 export const getNews = async (lang = 'ru') => {
-  return apiRequest(`/presscentre/news/?lang=${lang}`);
+  return apiRequest(`/presscentre/news/?lang=${normalizeLanguage(lang)}`);
 };
 
 export const getNewsById = async (id, lang = 'ru') => {
-  return apiRequest(`/presscentre/news/${id}/?lang=${lang}`);
+  return apiRequest(`/presscentre/news/${id}/?lang=${normalizeLanguage(lang)}`);
 };
 
 export const getBanners = async () => {
@@ -89,7 +87,7 @@ export const getPartners = async () => {
 };
 
 export const getAcademicCouncil = async (lang = 'ru') => {
-  return apiRequest(`/academic-council/?lang=${lang}`);
+  return apiRequest(`/academic-council/?lang=${normalizeLanguage(lang)}`);
 };
 
 export const getDevelopmentCouncil = async (lang = 'ru') => {
@@ -104,4 +102,8 @@ export const getPageContentByPath = async (path, lang = 'ru') => {
   const normalizedPath = path?.startsWith('/') ? path : `/${path || ''}`;
   const encodedPath = encodeURIComponent(normalizedPath);
   return apiRequest(`/pages/by-path/?path=${encodedPath}&lang=${normalizeLanguage(lang)}`);
+};
+
+export const getFooter = async (lang = 'ru') => {
+  return apiRequest(`/site/footer/?lang=${normalizeLanguage(lang)}`);
 };

@@ -77,9 +77,9 @@ const SimplePhotoSlider = ({ isSplashVisible = false }) => {
   }
 
   return (
-    <section className="w-full overflow-hidden px-0 py-0 sm:px-4 sm:py-4 lg:px-6">
+    <section className="w-full overflow-hidden">
       <div
-        className={`relative mx-auto h-[clamp(300px,48vw,680px)] w-full max-w-[1600px] overflow-hidden bg-slate-950 shadow-2xl transition-all duration-1000 ease-out sm:rounded-[2rem] ${
+        className={`relative h-[clamp(360px,56vw,760px)] w-full overflow-hidden bg-slate-950 transition-all duration-1000 ease-out ${
           isSplashVisible ? 'translate-y-full opacity-0' : 'translate-y-0 opacity-100'
         }`}
         onMouseEnter={() => setIsPaused(true)}

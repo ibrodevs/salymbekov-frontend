@@ -1,140 +1,21 @@
+import React, { lazy, Suspense, useState } from 'react';
+import { BrowserRouter as Router, Navigate, Route, Routes, useParams } from 'react-router-dom';
+import Navbar from './components/Navbar/Navbar1';
+import ScrollToTop from './components/ScrollToTop';
+import SplashScreen from './components/SplashScreen';
+import HomeCmsPage from './components/Home/HomeCmsPage';
+import ManagedPageRoute from './components/cms/ManagedPageRoute';
+import Footer from './pages/Footer';
+import NotFound from './pages/NotFound';
 
-import React, { lazy, Suspense, useState } from 'react'
-import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom'
-import Navbar from './components/Navbar/Navbar1'
-import ScrollToTop from './components/ScrollToTop'
-import SplashScreen from './components/SplashScreen'
-import HomeCmsPage from './components/Home/HomeCmsPage'
-import Home from './pages/Home'
-import Services from './pages/Services'
-import FounderMessage from './pages/FounderMessage'
-import MaterialBaseGallery from './pages/MaterialBaseGallery'
-import Footer from './pages/Footer'
-import ApplicantBase from './pages/applicant/ApplicantBase'
-import ManagedPageRoute from './components/cms/ManagedPageRoute'
-
-
-// Lazy imports for university
-
-const NewsHome = lazy(() => import('./pages/university/HomeNewsSection'))
-const NewsPage = lazy(() => import('./pages/university/NewsPage'))
-const NewsDetail = lazy(() => import('./pages/university/NewsDetail'))
-
-// Science lazy imports
-const StudentScience = lazy(() => import('./pages/science/StudentScience'))
-const StudentSociety = lazy(() => import('./pages/science/StudentSociety'))
-const Pendharkar = lazy(() => import('./pages/science/professors/Pendharkar'))
-const Potapova = lazy(() => import('./pages/science/professors/Potapova'))
-const Osmonov = lazy(() => import('./pages/science/professors/Osmonov'))
-const Erkebaev = lazy(() => import('./pages/science/professors/Erkebaev'))
-const Madaminov = lazy(() => import('./pages/science/professors/Madaminov'))
-const Bilgaziev = lazy(() => import('./pages/science/professors/Bilgaziev'))
-const Kubatov = lazy(() => import('./pages/science/professors/Kubatov'))
-const Shaltakova = lazy(() => import('./pages/science/professors/Shaltakova'))
-const Kachibek = lazy(() => import('./pages/science/professors/Kachibek'))
-
-// News, Contacts, Vacancies lazy imports
-const News = lazy(() => import('./pages/News'))
-const Vacancies = lazy(() => import('./pages/Vacancies'))
-
-// Student lazy imports
-const StudentMain = lazy(() => import('./pages/student/StudentMain'))
-const StudentCouncil = lazy(() => import('./pages/student/community/council'))
-const StudentScienceCommunity = lazy(() => import('./pages/student/community/science'))
-const StudentCommunities = lazy(() => import('./pages/student/communities/StudentCommunities'))
-const DebateClub = lazy(() => import('./pages/student/communities/DebateClub'))
-const Tutoring = lazy(() => import('./pages/student/communities/Tutoring'))
-const CreativeGroups = lazy(() => import('./pages/student/communities/CreativeGroups'))
-
-const Instructions = lazy(() => import('./pages/student/resources/Instructions'))
-const InfoSystem = lazy(() => import('./pages/student/resources/InfoSystem'))
-const ELibrary = lazy(() => import('./pages/student/resources/ELibrary'))
-const EducationalResources = lazy(() => import('./pages/student/resources/EducationalResources'))
-const Schedules = lazy(() => import('./pages/student/schedules/Schedules'))
-const StudySchedule = lazy(() => import('./pages/student/schedules/StudySchedule'))
-const ModuleSchedule = lazy(() => import('./pages/student/schedules/ModuleSchedule'))
-const PracticeSchedule = lazy(() => import('./pages/student/schedules/PracticeSchedule'))
-const MFMSchedule = lazy(() => import('./pages/student/schedules/MFMSchedule'))
-const CollegeSchedule = lazy(() => import('./pages/student/schedules/CollegeSchedule'))
-const Conditions = lazy(() => import('./pages/student/conditions/Conditions'))
-const MedicalCenter = lazy(() => import('./pages/student/opportunities/MedicalCenter'))
-const Dormitory = lazy(() => import('./pages/student/opportunities/Dormitory'))
-const SocialSupport = lazy(() => import('./pages/student/opportunities/SocialSupport'))
-const ElectiveCourses = lazy(() => import('./pages/student/opportunities/ElectiveCourses'))
-const Mobility = lazy(() => import('./pages/student/opportunities/Mobility'))
-const PsychologicalSupport = lazy(() => import('./pages/student/opportunities/PsychologicalSupport'))
-const StudentService = lazy(() => import('./pages/student/opportunities/StudentService'))
-const AdaptationPrograms = lazy(() => import('./pages/student/opportunities/AdaptationPrograms'))
-
-// Applicant lazy imports
-const Commission = lazy(() => import('./pages/applicant/Commission'))
-const Dealers = lazy(() => import('./pages/applicant/Dealers'))
-const Rules = lazy(() => import('./pages/applicant/Rules'))
-const Directions = lazy(() => import('./pages/applicant/Directions'))
-const Entrance = lazy(() => import('./pages/applicant/Entrance'))
-const Cost = lazy(() => import('./pages/applicant/Cost'))
-const Orientation = lazy(() => import('./pages/applicant/Orientation'))
-const Documents = lazy(() => import('./pages/applicant/Documents'))
-const AdmissionReg = lazy(() => import('./pages/applicant/AdmissionReg'))
-const ScheduleApp = lazy(() => import('./pages/applicant/Schedule'))
-const TransferBase = lazy(() => import('./pages/applicant/TransferBase'))
-const TransferSchedule = lazy(() => import('./pages/applicant/TransferSchedule'))
-const Scholarships = lazy(() => import('./pages/applicant/Scholarships'))
-const CareerGuidance = lazy(() => import('./pages/applicant/CareerGuidance'))
-const AdmissionProcedure = lazy(() => import('./pages/applicant/AdmissionProcedure'))
-const AdmissionCom = lazy(() => import('./pages/applicant/AdmissionCom'))
-const KnowledgeKarakol = lazy(() => import('./pages/applicant/KnowledgeKarakol'))
-const KnowledgeOsh = lazy(() => import('./pages/applicant/KnowledgeOsh'))
-const Cooperation1 = lazy(() => import('./pages/applicant/Cooperation'))
-const Meeting = lazy(() => import('./pages/applicant/Meeting'))
-const TeachersDay = lazy(() => import('./pages/applicant/events/TeachersDay'))
-const StateLanguageDay = lazy(() => import('./pages/applicant/events/StateLanguageDay'))
-const KoreanCenter = lazy(() => import('./pages/applicant/events/KoreanCenter'))
-const MedicalMission = lazy(() => import('./pages/applicant/events/MedicalMission'))
-const Graduation = lazy(() => import('./pages/applicant/events/Graduation2025'))
-const DiplomaAward = lazy(() => import('./pages/applicant/events/DiplomaAward'))
-const EurasianCongress = lazy(() => import('./pages/applicant/news/EurasianCongress'))
-const ITSecurityMeeting = lazy(() => import('./pages/applicant/news/ITSecurityMeeting'))
-const PaiChaiVisit = lazy(() => import('./pages/applicant/news/PaiChaiVisit'))
-const Transfer = lazy(() => import('./pages/applicant/Transfer'))
-const India = lazy(() => import('./pages/applicant/countries/India'))
-const Pakistan = lazy(() => import('./pages/applicant/countries/Pakistan'))
-const Uzbekistan = lazy(() => import('./pages/applicant/countries/Uzbekistan'))
-const Infrastructure = lazy(() => import('./pages/applicant/Infrastructure'))
-const Software = lazy(() => import('./pages/applicant/extrapages/Software'))
-const MobileDev = lazy(() => import('./pages/applicant/extrapages/MobileDev'))
-const MultimediaDev = lazy(() => import('./pages/applicant/extrapages/MultimediaDev'))
-const Dicipline = lazy(() => import('./pages/applicant/extrapages/Dicipline'))
-const GenerealMedFive = lazy(() => import('./pages/applicant/extrapages/GeneralMedFive'))
-const GeneralMedSix = lazy(() => import('./pages/applicant/extrapages/GeneralMedSix'))
-const AdmissionSchedule = lazy(() => import('./pages/applicant/Schedule'))
-const RequiredDoc = lazy(() => import('./pages/applicant/extrapages/RequiredDoc'))
-const OnlineReg = lazy(() => import('./pages/applicant/extrapages/OnlineReg'))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+const NewsHome = lazy(() => import('./pages/university/HomeNewsSection'));
+const NewsPage = lazy(() => import('./pages/university/NewsPage'));
+const NewsDetail = lazy(() => import('./pages/university/NewsDetail'));
 
 const DynamicCmsPageRoute = ({ basePath }) => {
-  const { id } = useParams()
-  return <ManagedPageRoute path={`${basePath}/${id}`} fallback={null} />
-}
+  const { id } = useParams();
+  return <ManagedPageRoute path={`${basePath}/${id}`} />;
+};
 
 const App = () => {
   const [showSplash, setShowSplash] = useState(() => {
@@ -144,8 +25,6 @@ const App = () => {
     return true;
   });
 
-  // Новый стейт для управления анимацией входа контента
-  // Инициализируем обратным значением от showSplash (если сплэш есть, контент скрыт)
   const [isContentHidden, setIsContentHidden] = useState(() => {
     if (typeof window !== 'undefined') {
       return !sessionStorage.getItem('splashAnimationShown');
@@ -158,30 +37,11 @@ const App = () => {
   };
 
   const handleSplashFinish = () => {
-    console.log('Splash screen finished');
     setShowSplash(false);
-    setIsContentHidden(false); // На всякий случай дублируем
+    setIsContentHidden(false);
   };
 
-  const managedPage = (path, fallback) => (
-    <ManagedPageRoute path={path} fallback={shouldUseCmsOnlyRoute(path) ? null : fallback} />
-  );
-
-  const cmsOnlyPage = (path) => (
-    <ManagedPageRoute path={path} fallback={null} />
-  );
-
-  const shouldUseCmsOnlyRoute = (path) => (
-    path === '/about' ||
-    path === '/contact' ||
-    path === '/contacts' ||
-    path.startsWith('/science/') ||
-    path.startsWith('/university/') ||
-    path.startsWith('/clinical/') ||
-    path.startsWith('/infrastructure/') ||
-    path.startsWith('/cooperation/') ||
-    path.startsWith('/education/')
-  );
+  const cmsOnlyPage = (path) => <ManagedPageRoute path={path} />;
 
   return (
     <Router>
@@ -194,17 +54,24 @@ const App = () => {
       <ScrollToTop />
       <div className="min-h-screen bg-gray-100">
         <Navbar isSplashVisible={isContentHidden} />
-        <Suspense fallback={<div className="flex items-center justify-center min-h-screen"><div>Загрузка...</div></div>}>
+        <Suspense fallback={<div className="flex min-h-screen items-center justify-center">Загрузка...</div>}>
           <Routes>
-            <Route path="/" element={<HomeCmsPage isSplashVisible={isContentHidden} fallback={<Home isSplashVisible={isContentHidden} />} />} />
-            <Route path='/press/news' element={<NewsPage />} />
-            <Route path="/about" element={cmsOnlyPage('/about')} />
-            <Route path="/services" element={managedPage('/services', <Services />)} />
-            <Route path="/contact" element={cmsOnlyPage('/contact')} />
-            <Route path='/founderMessege' element={managedPage('/founderMessege', <FounderMessage />)} />
-            <Route path='/MaterialBaseGallery' element={managedPage('/MaterialBaseGallery', <MaterialBaseGallery />)} />
-            <Route path='/news/NewsHome' element={<NewsHome />} />
+            <Route path="/" element={<HomeCmsPage isSplashVisible={isContentHidden} />} />
+            <Route path="/404" element={<NotFound />} />
+
+            <Route path="/press/news" element={<NewsPage />} />
+            <Route path="/news" element={<NewsPage />} />
+            <Route path="/news/NewsHome" element={<NewsHome />} />
             <Route path="/press/news/:id" element={<NewsDetail />} />
+
+            <Route path="/about" element={cmsOnlyPage('/about')} />
+            <Route path="/services" element={cmsOnlyPage('/services')} />
+            <Route path="/contact" element={cmsOnlyPage('/contact')} />
+            <Route path="/contacts" element={cmsOnlyPage('/contacts')} />
+            <Route path="/vacancies" element={cmsOnlyPage('/vacancies')} />
+            <Route path="/founderMessege" element={cmsOnlyPage('/founderMessege')} />
+            <Route path="/MaterialBaseGallery" element={cmsOnlyPage('/MaterialBaseGallery')} />
+
             <Route path="/university/mission" element={cmsOnlyPage('/university/mission')} />
             <Route path="/university/structure" element={cmsOnlyPage('/university/structure')} />
             <Route path="/university/structure/university-main" element={cmsOnlyPage('/university/structure/university-main')} />
@@ -219,6 +86,7 @@ const App = () => {
             <Route path="/university/normative-docs/internal-acts" element={cmsOnlyPage('/university/normative-docs/internal-acts')} />
             <Route path="/university/normative-docs/licenses" element={cmsOnlyPage('/university/normative-docs/licenses')} />
             <Route path="/university/normative-docs/logo" element={cmsOnlyPage('/university/normative-docs/logo')} />
+
             <Route path="/university/councils/academic-council" element={cmsOnlyPage('/university/councils/academic-council')} />
             <Route path="/university/councils/admissions-committee" element={cmsOnlyPage('/university/councils/admissions-committee')} />
             <Route path="/university/councils/bioethics-committee" element={cmsOnlyPage('/university/councils/bioethics-committee')} />
@@ -235,9 +103,6 @@ const App = () => {
             <Route path="/university/quality-management-system/quality-monitoring" element={cmsOnlyPage('/university/quality-management-system/quality-monitoring')} />
             <Route path="/university/quality-management-system/quality-policy" element={cmsOnlyPage('/university/quality-management-system/quality-policy')} />
 
-
-
-            {/* Lazy Education */}
             <Route path="/education/ait" element={cmsOnlyPage('/education/ait')} />
             <Route path="/education/ait/about" element={cmsOnlyPage('/education/ait/about')} />
             <Route path="/education/ait/leadership" element={cmsOnlyPage('/education/ait/leadership')} />
@@ -245,15 +110,13 @@ const App = () => {
             <Route path="/education/ait/teachers" element={cmsOnlyPage('/education/ait/teachers')} />
             <Route path="/education/ait/contacts" element={cmsOnlyPage('/education/ait/contacts')} />
             <Route path="/education/mfm" element={cmsOnlyPage('/education/mfm')} />
-            <Route path="/education/it-college" element={cmsOnlyPage('/education/it-college')} />
-            <Route path="/education/postgrad" element={cmsOnlyPage('/education/postgrad')} />
-            <Route path="/education/center" element={cmsOnlyPage('/education/center')} />
             <Route path="/education/mfm/about" element={cmsOnlyPage('/education/mfm/about')} />
             <Route path="/education/mfm/dekanat/dean" element={cmsOnlyPage('/education/mfm/dekanat/dean')} />
             <Route path="/education/mfm/dekanat/curriculum" element={cmsOnlyPage('/education/mfm/dekanat/curriculum')} />
             <Route path="/education/mfm/dekanat/departments" element={cmsOnlyPage('/education/mfm/dekanat/departments')} />
             <Route path="/education/mfm/programs/five-years" element={cmsOnlyPage('/education/mfm/programs/five-years')} />
             <Route path="/education/mfm/programs/six-years" element={cmsOnlyPage('/education/mfm/programs/six-years')} />
+            <Route path="/education/it-college" element={cmsOnlyPage('/education/it-college')} />
             <Route path="/education/it-college/departments/general" element={cmsOnlyPage('/education/it-college/departments/general')} />
             <Route path="/education/it-college/departments/information" element={cmsOnlyPage('/education/it-college/departments/information')} />
             <Route path="/education/it-college/specialties/diplom-computational-sciences" element={cmsOnlyPage('/education/it-college/specialties/diplom-computational-sciences')} />
@@ -262,22 +125,19 @@ const App = () => {
             <Route path="/education/it-college/director" element={cmsOnlyPage('/education/it-college/director')} />
             <Route path="/education/it-college/double-diploma" element={cmsOnlyPage('/education/it-college/double-diploma')} />
             <Route path="/education/it-college/pedagogical-council" element={cmsOnlyPage('/education/it-college/pedagogical-council')} />
-
+            <Route path="/education/postgrad" element={cmsOnlyPage('/education/postgrad')} />
             <Route path="/education/postgrad/internship" element={cmsOnlyPage('/education/postgrad/internship')} />
             <Route path="/education/postgrad/phd" element={cmsOnlyPage('/education/postgrad/phd')} />
             <Route path="/education/postgrad/postgraduate" element={cmsOnlyPage('/education/postgrad/postgraduate')} />
             <Route path="/education/postgrad/residency" element={cmsOnlyPage('/education/postgrad/residency')} />
+            <Route path="/education/center" element={cmsOnlyPage('/education/center')} />
             <Route path="/education/center/about" element={cmsOnlyPage('/education/center/about')} />
-
-
-
 
             <Route path="/clinical/doc-clinic" element={cmsOnlyPage('/clinical/doc-clinic')} />
             <Route path="/clinical/doc-hospital" element={cmsOnlyPage('/clinical/doc-hospital')} />
             <Route path="/clinical/simulation-center" element={cmsOnlyPage('/clinical/simulation-center')} />
             <Route path="/clinical/startups" element={cmsOnlyPage('/clinical/startups')} />
 
-            {/* Lazy Science */}
             <Route path="/science/management" element={cmsOnlyPage('/science/management')} />
             <Route path="/science/management/scientific-council" element={cmsOnlyPage('/science/management/scientific-council')} />
             <Route path="/science/management/scientific-technical-council" element={cmsOnlyPage('/science/management/scientific-technical-council')} />
@@ -285,11 +145,11 @@ const App = () => {
             <Route path="/science/management/young-scientists" element={cmsOnlyPage('/science/management/young-scientists')} />
             <Route path="/science/management/department" element={cmsOnlyPage('/science/management/department')} />
             <Route path="/science/department" element={cmsOnlyPage('/science/department')} />
+            <Route path="/science/events" element={cmsOnlyPage('/science/events')} />
             <Route path="/science/events/conferences" element={cmsOnlyPage('/science/events/conferences')} />
             <Route path="/science/events/conferences/:id" element={<DynamicCmsPageRoute basePath="/science/events/conferences" />} />
             <Route path="/science/publications" element={cmsOnlyPage('/science/publications')} />
             <Route path="/science/publications/journal" element={cmsOnlyPage('/science/publications/journal')} />
-            <Route path="/science/events" element={cmsOnlyPage('/science/events')} />
             <Route path="/science/scholarships" element={cmsOnlyPage('/science/scholarships')} />
             <Route path="/science/labs" element={cmsOnlyPage('/science/labs')} />
             <Route path="/science/labs/anatomy" element={cmsOnlyPage('/science/labs/anatomy')} />
@@ -299,21 +159,20 @@ const App = () => {
             <Route path="/science/labs/computer" element={cmsOnlyPage('/science/labs/computer')} />
             <Route path="/science/labs/study" element={cmsOnlyPage('/science/labs/study')} />
             <Route path="/science/projects" element={cmsOnlyPage('/science/projects')} />
+
             <Route path="/cooperation/international-partners" element={cmsOnlyPage('/cooperation/international-partners')} />
             <Route path="/cooperation/local-partners" element={cmsOnlyPage('/cooperation/local-partners')} />
-            <Route path="/news" element={<NewsPage />} />
-            <Route path="/contacts" element={cmsOnlyPage('/contacts')} />
-            <Route path="/vacancies" element={cmsOnlyPage('/vacancies')} />
             <Route path="/infrastructure/locations" element={cmsOnlyPage('/infrastructure/locations')} />
             <Route path="/infrastructure/partners" element={cmsOnlyPage('/infrastructure/partners')} />
-            <Route path="/infrastructure/*" element={<Home />} />
-            <Route path="*" element={<Home />} />
+
+            <Route path="/infrastructure/*" element={<Navigate to="/404" replace />} />
+            <Route path="*" element={<Navigate to="/404" replace />} />
           </Routes>
         </Suspense>
         <Footer />
       </div>
     </Router>
   );
-}
+};
 
-export default App
+export default App;

@@ -18,12 +18,6 @@ const pickLocalized = (value, language) => {
   return value[normalized] || value.ru || value.en || value.kg || '';
 };
 
-const neutralizeBakedAnimations = (html) =>
-  (html || '')
-    .replace(/opacity:\s*0(?![.\d])/g, 'opacity:1')
-    .replace(/scale\(\s*0(?:\.\d+)?\s*\)/g, 'scale(1)')
-    .replace(/translate([XYZ]?)\(\s*-?\d+(?:\.\d+)?px\s*\)/g, 'translate$1(0px)');
-
 const HomeCmsPage = ({ isSplashVisible = false }) => {
   const { i18n } = useTranslation();
   const { data, isLoading, isError } = usePageContent('/', i18n.language, {
@@ -55,7 +49,6 @@ const HomeCmsPage = ({ isSplashVisible = false }) => {
   const video = homeData.video || {};
   const founderPagePath = homeData.founder_page_path;
   const galleryPagePath = homeData.gallery_page_path;
-  const hasIntro = Boolean(data.title || data.subtitle || data.body);
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50">
@@ -76,22 +69,6 @@ const HomeCmsPage = ({ isSplashVisible = false }) => {
 
       <div className="relative z-10">
         {homeData.show_hero !== false ? <Hero isSplashVisible={isSplashVisible} /> : null}
-
-        {hasIntro ? (
-          <section className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
-            <div className="rounded-[2rem] bg-white/90 p-8 shadow-xl ring-1 ring-slate-200/70 sm:p-10">
-              {data.title ? <h1 className="text-4xl font-bold text-slate-900">{data.title}</h1> : null}
-              {data.subtitle ? <p className="mt-4 text-lg text-slate-600">{data.subtitle}</p> : null}
-              {data.body ? (
-                <div
-                  className="prose prose-lg mt-6 max-w-none prose-headings:text-slate-900 prose-p:text-slate-700 prose-li:text-slate-700"
-                  dangerouslySetInnerHTML={{ __html: neutralizeBakedAnimations(data.body) }}
-                />
-              ) : null}
-            </div>
-          </section>
-        ) : null}
-
         {founderPagePath ? <HomeFounderSection path={founderPagePath} /> : null}
         {homeData.show_news !== false ? <HomeNews /> : null}
         {homeData.show_partners !== false ? (

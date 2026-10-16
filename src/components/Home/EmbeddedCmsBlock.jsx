@@ -3,6 +3,12 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { usePageContent } from '../../hooks/usePageContent';
 
+const MATERIAL_BASE_TITLES = {
+  ru: 'Материально-техническая база',
+  en: 'Material and Technical Base',
+  kg: 'Материалдык-техникалык база',
+};
+
 const EmbeddedCmsBlock = ({ path }) => {
   const { i18n } = useTranslation();
   const { data, isLoading, isError } = usePageContent(path, i18n.language, {
@@ -34,12 +40,23 @@ const EmbeddedCmsBlock = ({ path }) => {
     return null;
   }
 
+  const baseLanguage = `${i18n.language || 'ru'}`.toLowerCase().split('-')[0];
+  const normalizedLanguage = baseLanguage === 'ky' ? 'kg' : baseLanguage;
+  const sectionTitle = MATERIAL_BASE_TITLES[normalizedLanguage] || MATERIAL_BASE_TITLES.ru;
+
   const currentImage = images[currentIndex];
   const showPrevious = () => setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   const showNext = () => setCurrentIndex((prev) => (prev + 1) % images.length);
 
   return (
-    <section className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    <section className="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+      <div className="mb-8 text-center sm:mb-10">
+        <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+          {sectionTitle}
+        </h2>
+        <div className="mx-auto mt-4 h-1 w-20 rounded-full bg-gradient-to-r from-blue-700 to-cyan-500" />
+      </div>
+
       <div
         className="relative overflow-hidden rounded-[2rem] bg-slate-950 shadow-2xl ring-1 ring-slate-200/70"
         onMouseEnter={() => setIsPaused(true)}

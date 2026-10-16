@@ -284,7 +284,9 @@ async function main() {
       if (route.mode === 'cms-only') {
         results.push({
           ...route,
-          status: 'cms-only',
+          status: 'ok',
+          snapshot_status: 'cms-only',
+          languages: {},
           note: 'CMS is the source of truth; no frontend fallback snapshot is exported.',
         });
         continue;
@@ -334,7 +336,7 @@ async function main() {
           };
         }
 
-        results.push({ ...route, status: 'ok', languages: localized });
+        results.push({ ...route, status: 'ok', snapshot_status: 'snapshot', languages: localized });
       } catch (error) {
         results.push({
           ...route,
@@ -350,11 +352,11 @@ async function main() {
       JSON.stringify({ generated_at: new Date().toISOString(), routes: results }, null, 2)
     );
 
-    const okCount = results.filter((item) => item.status === 'ok').length;
-    const cmsOnlyCount = results.filter((item) => item.status === 'cms-only').length;
+    const snapshotCount = results.filter((item) => item.status === 'ok' && item.snapshot_status === 'snapshot').length;
+    const cmsOnlyCount = results.filter((item) => item.status === 'ok' && item.snapshot_status === 'cms-only').length;
     const failedCount = results.filter((item) => item.status === 'failed').length;
     console.log(
-      `Route inventory written to ${outputPath}. snapshots=${okCount}, cms-only=${cmsOnlyCount}, failed=${failedCount}.`
+      `Route inventory written to ${outputPath}. snapshots=${snapshotCount}, cms-only=${cmsOnlyCount}, failed=${failedCount}.`
     );
   } finally {
     await vite.close();

@@ -2,11 +2,6 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { usePageContent } from '../../hooks/usePageContent';
 
-// CMS "raw_html" bodies are static snapshots of the React pages captured while
-// framer-motion's enter animations were at their `initial` state. That bakes
-// hiding styles (opacity:0, scale(0), translateY offsets) into the HTML with no
-// JS to animate them back, so the content stays permanently invisible. Reset
-// those baked animation styles to their visible/final values before rendering.
 const neutralizeBakedAnimations = (html) =>
   (html || '')
     .replace(/opacity:\s*0(?![.\d])/g, 'opacity:1')
@@ -14,13 +9,8 @@ const neutralizeBakedAnimations = (html) =>
     .replace(/translate([XYZ]?)\(\s*-?\d+(?:\.\d+)?px\s*\)/g, 'translate$1(0px)');
 
 const hasMeaningfulCmsContent = (pageContent) => {
-  if (!pageContent) {
-    return false;
-  }
-
-  if (pageContent.data?.force_backend_render) {
-    return true;
-  }
+  if (!pageContent) return false;
+  if (pageContent.data?.force_backend_render) return true;
 
   return Boolean(
     pageContent.title ||
@@ -36,9 +26,7 @@ const hasMeaningfulCmsContent = (pageContent) => {
 };
 
 const renderRichText = (html, className = '') => {
-  if (!html) {
-    return null;
-  }
+  if (!html) return null;
 
   return (
     <div
@@ -63,7 +51,7 @@ const CmsPageRenderer = ({ pageContent }) => {
     return (
       <div className="min-h-screen bg-slate-50">
         <div
-          className="[&_img]:h-auto [&_img]:max-w-full [&_a]:break-words"
+          className="[&_a]:break-words [&_img]:h-auto [&_img]:max-w-full"
           dangerouslySetInnerHTML={{ __html: neutralizeBakedAnimations(pageContent?.body) }}
         />
       </div>
@@ -97,7 +85,7 @@ const CmsPageRenderer = ({ pageContent }) => {
           </div>
           {heroImage ? (
             <div className="overflow-hidden rounded-[2rem] border border-white/15 bg-white/10 shadow-2xl">
-              <img src={heroImage} alt={pageContent?.title || 'Page hero'} className="h-full w-full object-cover" />
+              <img src={heroImage} alt={pageContent?.title || ''} className="h-full w-full object-cover" />
             </div>
           ) : null}
         </div>
@@ -192,7 +180,7 @@ const CmsPageRenderer = ({ pageContent }) => {
             <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
               {gallery.map((item) => (
                 <figure key={item.id} className="overflow-hidden rounded-[2rem] bg-white shadow-lg ring-1 ring-slate-200/70">
-                  <img src={item.url} alt={item.title || pageContent?.title || 'Page media'} className="h-72 w-full object-cover" />
+                  <img src={item.url} alt={item.alt_text || item.title || pageContent?.title || ''} className="h-72 w-full object-cover" />
                   {item.title ? <figcaption className="px-5 py-4 text-sm text-slate-600">{item.title}</figcaption> : null}
                 </figure>
               ))}
@@ -204,7 +192,7 @@ const CmsPageRenderer = ({ pageContent }) => {
   );
 };
 
-const ManagedPageRoute = ({ path, fallback }) => {
+const ManagedPageRoute = ({ path }) => {
   const { i18n } = useTranslation();
   const { data, isLoading, isError } = usePageContent(path, i18n.language);
 
@@ -222,17 +210,13 @@ const ManagedPageRoute = ({ path, fallback }) => {
     return <CmsPageRenderer pageContent={data} />;
   }
 
-  if (!fallback) {
-    return (
-      <div className="flex min-h-[60vh] items-center justify-center px-4">
-        <div className="max-w-xl rounded-3xl bg-white px-8 py-6 text-center text-slate-600 shadow-lg ring-1 ring-slate-200/70">
-          Content is temporarily unavailable.
-        </div>
+  return (
+    <div className="flex min-h-[60vh] items-center justify-center px-4">
+      <div className="max-w-xl rounded-3xl bg-white px-8 py-6 text-center text-slate-600 shadow-lg ring-1 ring-slate-200/70">
+        Content is temporarily unavailable.
       </div>
-    );
-  }
-
-  return fallback;
+    </div>
+  );
 };
 
 export default ManagedPageRoute;

@@ -1,37 +1,50 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { getPartners } from '../../api';
 
 const PartnersSection = ({ badge, title, subtitle }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, threshold: 0.2 });
+  const { i18n } = useTranslation();
   const [partners, setPartners] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    let cancelled = false;
+
     const fetchPartners = async () => {
+      setLoading(true);
       try {
-        const response = await getPartners();
+        const response = await getPartners(i18n.language);
         const list = Array.isArray(response?.results)
           ? response.results
           : Array.isArray(response)
             ? response
             : [];
-        setPartners(list.filter((partner) => partner?.logo));
+
+        if (!cancelled) {
+          setPartners(list.filter((partner) => partner?.id));
+        }
       } catch (error) {
         console.error('Error fetching partners:', error);
-        setPartners([]);
+        if (!cancelled) setPartners([]);
       } finally {
-        setLoading(false);
+        if (!cancelled) setLoading(false);
       }
     };
 
     fetchPartners();
-  }, []);
+    return () => {
+      cancelled = true;
+    };
+  }, [i18n.language]);
 
   if (loading || partners.length === 0) {
     return null;
   }
+
+  const loopPartners = partners.length > 1 ? [...partners, ...partners] : partners;
 
   return (
     <section ref={ref} className="relative overflow-hidden py-20">
@@ -64,21 +77,27 @@ const PartnersSection = ({ badge, title, subtitle }) => {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex gap-8"
-            style={{
+            style={partners.length > 1 ? {
               animation: 'scrollHorizontal 30s linear infinite',
-              width: `calc(280px * ${partners.length * 2})`,
-            }}
+              width: `calc(280px * ${loopPartners.length})`,
+            } : undefined}
           >
-            {[...partners, ...partners].map((company, index) => (
+            {loopPartners.map((company, index) => (
               <div
-                key={`${company.id || company.name}-${index}`}
-                className="group flex h-40 min-w-[240px] items-center justify-center rounded-2xl border border-slate-100 bg-white p-8 shadow-lg transition-all duration-300 hover:border-slate-200 hover:bg-slate-50 hover:shadow-xl"
+                key={`${company.id}-${index}`}
+                className="group flex h-40 min-w-[240px] items-center justify-center rounded-2xl border border-slate-100 bg-white p-8 text-center shadow-lg transition-all duration-300 hover:border-slate-200 hover:bg-slate-50 hover:shadow-xl"
               >
-                <img
-                  src={company.logo}
-                  alt={company.name || ''}
-                  className="max-h-[120px] max-w-[180px] object-contain transition-transform duration-300 group-hover:scale-110"
-                />
+                {company.logo ? (
+                  <img
+                    src={company.logo}
+                    alt={company.name || ''}
+                    className="max-h-[120px] max-w-[180px] object-contain transition-transform duration-300 group-hover:scale-110"
+                  />
+                ) : (
+                  <span className="max-w-[180px] text-lg font-semibold leading-snug text-slate-700">
+                    {company.name || `Partner #${company.id}`}
+                  </span>
+                )}
               </div>
             ))}
           </motion.div>

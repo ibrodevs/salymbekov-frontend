@@ -29,7 +29,6 @@ export const getDateLocale = (lang = 'ru') => {
   return 'ru-RU';
 };
 
-// Helper function for making API requests
 export const apiRequest = async (endpoint, options = {}) => {
   const normalizedEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
   const url = `${API_BASE_URL}${normalizedEndpoint}`;
@@ -65,7 +64,6 @@ export const apiRequest = async (endpoint, options = {}) => {
   }
 };
 
-// Specific API functions
 export const getCategories = async (lang = 'ru') => {
   return apiRequest(`/presscentre/categories/?lang=${normalizeLanguage(lang)}`);
 };
@@ -82,8 +80,8 @@ export const getBanners = async () => {
   return apiRequest('/banners/');
 };
 
-export const getPartners = async () => {
-  return apiRequest('/partners/');
+export const getPartners = async (lang = 'ru') => {
+  return apiRequest(`/partners/?lang=${normalizeLanguage(lang)}`);
 };
 
 export const getAcademicCouncil = async (lang = 'ru') => {

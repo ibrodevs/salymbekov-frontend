@@ -1,19 +1,37 @@
 {
-  "rewrites": [
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "routes": [
     {
-      "source": "/((?!assets|api|_next|favicon.ico).*)",
-      "destination": "/index.html"
-    }
-  ],
-  "headers": [
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
     {
-      "source": "/assets/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    }
+      "src": "/(.*\\.(?:css|js|png|jpe?g|webp|gif|svg|ico|json|xml|txt|pdf|woff2?|ttf))",
+      "dest": "/$1"
+    },
+    { "src": "/", "dest": "/index.html" },
+    { "src": "/404", "dest": "/index.html" },
+    { "src": "/(?:about|services|contact|contacts|vacancies|founderMessege|MaterialBaseGallery)", "dest": "/index.html" },
+    { "src": "/news(?:/NewsHome)?", "dest": "/index.html" },
+    { "src": "/press/news(?:/[^/]+)?", "dest": "/index.html" },
+    {
+      "src": "/university/(?:mission|structure(?:/(?:university-main|international-faculty|it-college))?|management(?:/(?:founder|rectorate|public-councils))?|normative-docs(?:/(?:kr-acts|internal-acts|licenses|logo))?|councils/(?:academic-council|admissions-committee|bioethics-committee|commission-support|council-scients|development-council|editorial-board|educational-council|employers-council|scientific-council|student-councils|technical-council|parents-council)|quality-management-system/(?:quality-monitoring|quality-policy))",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/education/(?:ait(?:/(?:about|leadership|disciplines|teachers|contacts))?|mfm(?:/about|/dekanat/(?:dean|curriculum|departments)|/programs/(?:five-years|six-years))?|it-college(?:/(?:director|double-diploma|pedagogical-council)|/departments/(?:general|information)|/specialties/(?:diplom-computational-sciences|diplom-mobile-computing|diplom-multimedia-applications))?|postgrad(?:/(?:internship|residency|postgraduate|phd))?|center(?:/about)?)",
+      "dest": "/index.html"
+    },
+    { "src": "/clinical/(?:doc-clinic|doc-hospital|simulation-center|startups)", "dest": "/index.html" },
+    {
+      "src": "/science/(?:management(?:/(?:scientific-council|scientific-technical-council|bioethics|young-scientists|department))?|department|events(?:/conferences(?:/[^/]+)?)?|publications(?:/journal)?|scholarships|labs(?:/(?:anatomy|biochemistry|biology|interactive|computer|study))?|projects)",
+      "dest": "/index.html"
+    },
+    { "src": "/cooperation/(?:international-partners|local-partners)", "dest": "/index.html" },
+    { "src": "/infrastructure/(?:locations|partners)", "dest": "/index.html" },
+    { "src": "/.*", "dest": "/404.html", "status": 404 }
   ]
 }

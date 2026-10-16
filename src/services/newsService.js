@@ -9,9 +9,7 @@ const fetchAllNewsPages = async (language = 'ru', limit = 100) => {
     const pageItems = response.results || response || [];
     items.push(...pageItems);
 
-    if (!response.next) {
-      break;
-    }
+    if (!response.next) break;
 
     if (response.next.startsWith('http')) {
       const url = new URL(response.next);
@@ -26,7 +24,6 @@ const fetchAllNewsPages = async (language = 'ru', limit = 100) => {
 
 const formatDate = (dateString, language) => {
   if (!dateString) return '';
-
   return new Date(dateString).toLocaleDateString(getDateLocale(language), {
     year: 'numeric',
     month: 'long',
@@ -51,6 +48,7 @@ const transformNewsItem = (item, language) => {
     image: getNewsImage(item),
     gallery,
     sourceUrl: item.source_url || '',
+    isRecommended: Boolean(item.is_recommended),
   };
 };
 
@@ -65,12 +63,10 @@ export const fetchNews = async ({ limit, language = 'ru' } = {}) => {
 
 export const getNewsCategories = (items = []) => {
   const uniqueCategories = new Set();
-
   items.forEach((item) => {
     (item.categories || []).forEach((category) => {
       if (category) uniqueCategories.add(category);
     });
   });
-
   return Array.from(uniqueCategories).sort((a, b) => a.localeCompare(b));
 };

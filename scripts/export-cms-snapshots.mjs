@@ -21,22 +21,17 @@ const defaultOutput = path.resolve(
   'frontend-cms-snapshots.json'
 );
 
-const routePattern = /managedPage\('([^']+)',\s*<([A-Za-z0-9_]+)\s*\/?>\)/g;
+const managedRoutePattern = /managedPage\(\s*(['"])(.*?)\1\s*,\s*<([A-Za-z0-9_]+)\s*\/?>\s*\)/g;
+const cmsOnlyRoutePattern = /cmsOnlyPage\(\s*(['"])(.*?)\1\s*\)/g;
+const homeCmsRoutePattern = /<Route\s+path=(['"])(\/)\1\s+element=\{<HomeCmsPage\b/g;
 const directImportPattern = /^import\s+([A-Za-z0-9_]+)\s+from\s+['"]([^'"]+)['"]/gm;
 const lazyImportPattern = /^const\s+([A-Za-z0-9_]+)\s*=\s*lazy\(\(\)\s*=>\s*import\(['"]([^'"]+)['"]\)\)/gm;
 const supportedExtensions = ['.jsx', '.js', '.tsx', '.ts'];
 const languages = ['ru', 'en', 'kg'];
 
 function ensureAbsoluteRoute(routePath) {
-  if (!routePath) {
-    return '/';
-  }
-
-  if (routePath.startsWith('/')) {
-    return routePath;
-  }
-
-  return `/${routePath}`;
+  if (!routePath) return '/';
+  return routePath.startsWith('/') ? routePath : `/${routePath}`;
 }
 
 function stripTags(value = '') {
@@ -57,36 +52,12 @@ function stripTags(value = '') {
 function collectMatches(pattern, source) {
   const results = [];
   let match = pattern.exec(source);
-
   while (match) {
     results.push(match);
     match = pattern.exec(source);
   }
-
   pattern.lastIndex = 0;
   return results;
-}
-
-function resolveModuleId(importPath) {
-  const resolvedBase = path.resolve(path.dirname(appFile), importPath);
-  const candidates = [resolvedBase, ...supportedExtensions.map((extension) => `${resolvedBase}${extension}`)];
-
-  const found = candidates.find((candidate) => supportedExtensions.includes(path.extname(candidate)) || true);
-  const existing = candidates.find((candidate) => {
-    try {
-      return path.extname(candidate) ? true : false;
-    } catch {
-      return false;
-    }
-  });
-
-  const finalPath = supportedExtensions.includes(path.extname(resolvedBase))
-    ? resolvedBase
-    : candidates.find((candidate) => supportedExtensions.includes(path.extname(candidate)));
-
-  const normalized = finalPath || found || existing || resolvedBase;
-  const relativePath = path.relative(projectRoot, normalized).split(path.sep).join('/');
-  return relativePath.startsWith('.') ? relativePath : `/${relativePath}`;
 }
 
 async function fileExists(targetPath) {
@@ -96,14 +67,6 @@ async function fileExists(targetPath) {
   } catch {
     return false;
   }
-}
-
-function defineGlobal(name, value) {
-  Object.defineProperty(globalThis, name, {
-    configurable: true,
-    writable: true,
-    value,
-  });
 }
 
 async function resolveExistingModuleId(importPath) {
@@ -161,6 +124,14 @@ function createStorage() {
   };
 }
 
+function defineGlobal(name, value) {
+  Object.defineProperty(globalThis, name, {
+    configurable: true,
+    writable: true,
+    value,
+  });
+}
+
 function installDomStubs(language, routePath) {
   const localStorage = createStorage();
   const sessionStorage = createStorage();
@@ -177,11 +148,7 @@ function installDomStubs(language, routePath) {
 
   const windowObject = {
     location,
-    navigator: {
-      language,
-      languages: [language],
-      userAgent: 'node',
-    },
+    navigator: { language, languages: [language], userAgent: 'node' },
     localStorage,
     sessionStorage,
     addEventListener() {},
@@ -197,17 +164,11 @@ function installDomStubs(language, routePath) {
         removeListener() {},
         addEventListener() {},
         removeEventListener() {},
-        dispatchEvent() {
-          return false;
-        },
+        dispatchEvent() { return false; },
       };
     },
-    requestAnimationFrame(callback) {
-      return setTimeout(callback, 0);
-    },
-    cancelAnimationFrame(id) {
-      clearTimeout(id);
-    },
+    requestAnimationFrame(callback) { return setTimeout(callback, 0); },
+    cancelAnimationFrame(id) { clearTimeout(id); },
   };
 
   const documentObject = {
@@ -221,12 +182,8 @@ function installDomStubs(language, routePath) {
         appendChild() {},
       };
     },
-    querySelector() {
-      return null;
-    },
-    querySelectorAll() {
-      return [];
-    },
+    querySelector() { return null; },
+    querySelectorAll() { return []; },
     addEventListener() {},
     removeEventListener() {},
   };
@@ -244,9 +201,7 @@ function installDomStubs(language, routePath) {
   defineGlobal('MutationObserver', class MutationObserver {
     disconnect() {}
     observe() {}
-    takeRecords() {
-      return [];
-    }
+    takeRecords() { return []; }
   });
   defineGlobal('IntersectionObserver', class IntersectionObserver {
     disconnect() {}
@@ -262,10 +217,46 @@ function installDomStubs(language, routePath) {
   defineGlobal('cancelAnimationFrame', windowObject.cancelAnimationFrame);
 }
 
+function collectRoutes(appSource, imports) {
+  const routes = new Map();
+
+  for (const match of collectMatches(managedRoutePattern, appSource)) {
+    const routePath = ensureAbsoluteRoute(match[2]);
+    const componentName = match[3];
+    routes.set(routePath, {
+      path: routePath,
+      mode: 'managed',
+      componentName,
+      moduleId: imports.get(componentName),
+    });
+  }
+
+  for (const match of collectMatches(cmsOnlyRoutePattern, appSource)) {
+    const routePath = ensureAbsoluteRoute(match[2]);
+    routes.set(routePath, {
+      path: routePath,
+      mode: 'cms-only',
+      componentName: null,
+      moduleId: null,
+    });
+  }
+
+  for (const match of collectMatches(homeCmsRoutePattern, appSource)) {
+    const routePath = ensureAbsoluteRoute(match[2]);
+    routes.set(routePath, {
+      path: routePath,
+      mode: 'cms-only',
+      componentName: 'HomeCmsPage',
+      moduleId: null,
+    });
+  }
+
+  return [...routes.values()].sort((a, b) => a.path.localeCompare(b.path));
+}
+
 async function main() {
   const outputPath = process.argv[2] ? path.resolve(process.cwd(), process.argv[2]) : defaultOutput;
   const appSource = await fs.readFile(appFile, 'utf8');
-
   const imports = new Map();
 
   for (const match of collectMatches(directImportPattern, appSource)) {
@@ -276,19 +267,11 @@ async function main() {
     imports.set(match[1], await resolveExistingModuleId(match[2]));
   }
 
-  const routes = collectMatches(routePattern, appSource).map((match) => ({
-    path: ensureAbsoluteRoute(match[1]),
-    componentName: match[2],
-    moduleId: imports.get(match[2]),
-  }));
-
+  const routes = collectRoutes(appSource, imports);
   const vite = await createServer({
     root: projectRoot,
     logLevel: 'error',
-    server: {
-      middlewareMode: true,
-      hmr: false,
-    },
+    server: { middlewareMode: true, hmr: false },
     appType: 'custom',
   });
 
@@ -298,6 +281,15 @@ async function main() {
     const results = [];
 
     for (const route of routes) {
+      if (route.mode === 'cms-only') {
+        results.push({
+          ...route,
+          status: 'cms-only',
+          note: 'CMS is the source of truth; no frontend fallback snapshot is exported.',
+        });
+        continue;
+      }
+
       if (!route.moduleId) {
         results.push({
           ...route,
@@ -310,28 +302,26 @@ async function main() {
       try {
         const pageModule = await vite.ssrLoadModule(route.moduleId);
         const Component = pageModule.default;
-
         if (typeof Component !== 'function') {
           throw new Error(`Component ${route.componentName} has no default export`);
         }
 
         const localized = {};
-
         for (const language of languages) {
           installDomStubs(language, route.path);
           await i18n.changeLanguage(language);
 
           const markup = sanitizeMarkup(
             renderToStaticMarkup(
-            React.createElement(
-              I18nextProvider,
-              { i18n },
               React.createElement(
-                MemoryRouter,
-                { initialEntries: [route.path] },
-                React.createElement(Component)
+                I18nextProvider,
+                { i18n },
+                React.createElement(
+                  MemoryRouter,
+                  { initialEntries: [route.path] },
+                  React.createElement(Component)
+                )
               )
-            )
             )
           );
 
@@ -344,11 +334,7 @@ async function main() {
           };
         }
 
-        results.push({
-          ...route,
-          status: 'ok',
-          languages: localized,
-        });
+        results.push({ ...route, status: 'ok', languages: localized });
       } catch (error) {
         results.push({
           ...route,
@@ -359,11 +345,17 @@ async function main() {
     }
 
     await fs.mkdir(path.dirname(outputPath), { recursive: true });
-    await fs.writeFile(outputPath, JSON.stringify({ generated_at: new Date().toISOString(), routes: results }, null, 2));
+    await fs.writeFile(
+      outputPath,
+      JSON.stringify({ generated_at: new Date().toISOString(), routes: results }, null, 2)
+    );
 
     const okCount = results.filter((item) => item.status === 'ok').length;
-    const failedCount = results.length - okCount;
-    console.log(`Exported ${okCount} routes to ${outputPath}. Failed: ${failedCount}.`);
+    const cmsOnlyCount = results.filter((item) => item.status === 'cms-only').length;
+    const failedCount = results.filter((item) => item.status === 'failed').length;
+    console.log(
+      `Route inventory written to ${outputPath}. snapshots=${okCount}, cms-only=${cmsOnlyCount}, failed=${failedCount}.`
+    );
   } finally {
     await vite.close();
   }

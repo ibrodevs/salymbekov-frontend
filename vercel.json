@@ -9,7 +9,7 @@
       }
     },
     {
-      "src": "/(.*\\.(?:css|js|png|jpe?g|webp|gif|svg|ico|json|xml|txt|pdf|woff2?|ttf))",
+      "src": "/(.*\\.(?:html|css|js|png|jpe?g|webp|gif|svg|ico|json|xml|txt|pdf|woff2?|ttf))",
       "dest": "/$1"
     },
     { "src": "/", "dest": "/index.html" },

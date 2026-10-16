@@ -1,12 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
 import { getPartners } from '../../api';
 
 const PartnersSection = ({ badge, title, subtitle }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, threshold: 0.2 });
-  const { t } = useTranslation();
   const [partners, setPartners] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -38,23 +36,27 @@ const PartnersSection = ({ badge, title, subtitle }) => {
   return (
     <section ref={ref} className="relative overflow-hidden py-20">
       <div>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
-        >
-          <div className="mb-6 inline-flex items-center rounded-full border border-green-200 bg-green-50 px-4 py-2">
-            <span className="text-sm font-semibold text-green-600">{badge || t('partners.badge', 'Партнеры')}</span>
-          </div>
-          <h2 className="mb-6 text-4xl font-bold text-slate-900 md:text-5xl lg:text-6xl">
-            {title || t('home.partners.title')}
-          </h2>
-          <div className="mx-auto mb-8 h-1 w-24 rounded-full bg-gradient-to-r from-green-500 to-blue-400" />
-          {subtitle ? (
-            <p className="mx-auto max-w-3xl text-xl leading-relaxed text-slate-600">{subtitle}</p>
-          ) : null}
-        </motion.div>
+        {(badge || title || subtitle) ? (
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.6 }}
+            className="mb-16 text-center"
+          >
+            {badge ? (
+              <div className="mb-6 inline-flex items-center rounded-full border border-green-200 bg-green-50 px-4 py-2">
+                <span className="text-sm font-semibold text-green-600">{badge}</span>
+              </div>
+            ) : null}
+            {title ? (
+              <h2 className="mb-6 text-4xl font-bold text-slate-900 md:text-5xl lg:text-6xl">{title}</h2>
+            ) : null}
+            {title ? <div className="mx-auto mb-8 h-1 w-24 rounded-full bg-gradient-to-r from-green-500 to-blue-400" /> : null}
+            {subtitle ? (
+              <p className="mx-auto max-w-3xl text-xl leading-relaxed text-slate-600">{subtitle}</p>
+            ) : null}
+          </motion.div>
+        ) : null}
 
         <div className="relative w-full overflow-hidden">
           <motion.div
@@ -74,7 +76,7 @@ const PartnersSection = ({ badge, title, subtitle }) => {
               >
                 <img
                   src={company.logo}
-                  alt={company.name || 'Partner'}
+                  alt={company.name || ''}
                   className="max-h-[120px] max-w-[180px] object-contain transition-transform duration-300 group-hover:scale-110"
                 />
               </div>

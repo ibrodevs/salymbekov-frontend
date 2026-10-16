@@ -2,21 +2,20 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { usePageContent } from '../../hooks/usePageContent';
 import Hero from './Hero';
-import PartnersSection from '../Home/PartnersSection';
-import VideoSection from '../Home/VideoSection';
+import PartnersSection from './PartnersSection';
+import VideoSection from './VideoSection';
 import EmbeddedCmsBlock from './EmbeddedCmsBlock';
 import HomeFounderSection from './HomeFounderSection';
 import HomeNews from '../../pages/university/HomeNewsSection';
-import MaterialBaseGallery from '../../pages/MaterialBaseGallery';
 
-const pickLocalized = (value, language, fallback = '') => {
+const pickLocalized = (value, language) => {
   if (!value || typeof value !== 'object' || Array.isArray(value)) {
-    return value || fallback;
+    return value || '';
   }
 
   const baseLang = `${language || 'ru'}`.toLowerCase().split('-')[0];
   const normalized = baseLang === 'ky' ? 'kg' : baseLang;
-  return value[normalized] || value.ru || value.en || value.kg || fallback;
+  return value[normalized] || value.ru || value.en || value.kg || '';
 };
 
 const neutralizeBakedAnimations = (html) =>
@@ -25,42 +24,54 @@ const neutralizeBakedAnimations = (html) =>
     .replace(/scale\(\s*0(?:\.\d+)?\s*\)/g, 'scale(1)')
     .replace(/translate([XYZ]?)\(\s*-?\d+(?:\.\d+)?px\s*\)/g, 'translate$1(0px)');
 
-const HomeCmsPage = ({ fallback, isSplashVisible = false }) => {
+const HomeCmsPage = ({ isSplashVisible = false }) => {
   const { i18n } = useTranslation();
   const { data, isLoading, isError } = usePageContent('/', i18n.language, {
     retry: false,
   });
 
-  if (isLoading || isError || !data || data.data?.render_mode !== 'homepage') {
-    return fallback;
+  if (isLoading) {
+    return (
+      <div className="flex min-h-[70vh] items-center justify-center">
+        <div className="rounded-2xl bg-white px-6 py-4 text-slate-600 shadow-lg ring-1 ring-slate-200/70">
+          Loading content...
+        </div>
+      </div>
+    );
+  }
+
+  if (isError || !data || data.data?.render_mode !== 'homepage') {
+    return (
+      <div className="flex min-h-[70vh] items-center justify-center px-4">
+        <div className="rounded-3xl bg-white px-8 py-6 text-center text-slate-600 shadow-lg ring-1 ring-slate-200/70">
+          Content is temporarily unavailable.
+        </div>
+      </div>
+    );
   }
 
   const homeData = data.data || {};
   const partners = homeData.partners || {};
   const video = homeData.video || {};
-  const founderPagePath = homeData.founder_page_path || '/founderMessege';
-  const galleryPagePath = homeData.gallery_page_path || '/MaterialBaseGallery';
+  const founderPagePath = homeData.founder_page_path;
+  const galleryPagePath = homeData.gallery_page_path;
   const hasIntro = Boolean(data.title || data.subtitle || data.body);
 
   return (
-    <div className='relative min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 overflow-hidden'>
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-full">
-          <svg className="w-full h-full opacity-[0.02]" viewBox="0 0 100 100" preserveAspectRatio="none">
+    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute left-0 top-0 h-full w-full">
+          <svg className="h-full w-full opacity-[0.02]" viewBox="0 0 100 100" preserveAspectRatio="none">
             <defs>
               <pattern id="home-grid" width="10" height="10" patternUnits="userSpaceOnUse">
-                <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#023E8A" strokeWidth="0.5"/>
+                <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#023E8A" strokeWidth="0.5" />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#home-grid)" />
           </svg>
         </div>
-        <div className="absolute top-20 left-10 w-32 h-32 border-2 border-[#023E8A] opacity-[0.05] rotate-45 animate-spin" style={{animationDuration: '20s'}} />
-        <div className="absolute bottom-20 right-10 w-24 h-24 border-2 border-[#0077B6] opacity-[0.05] rotate-12 animate-pulse" />
-        <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-[#00A8E8] opacity-[0.03] rounded-full animate-bounce" style={{animationDelay: '2s'}} />
-        <div className="absolute bottom-1/3 right-1/3 w-20 h-20 border border-[#023E8A] opacity-[0.04] rotate-45 animate-pulse" style={{animationDelay: '4s'}} />
-        <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-white/50 to-transparent" />
-        <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-blue-50/50 to-transparent" />
+        <div className="absolute left-10 top-20 h-32 w-32 rotate-45 animate-spin border-2 border-[#023E8A] opacity-[0.05]" style={{ animationDuration: '20s' }} />
+        <div className="absolute bottom-20 right-10 h-24 w-24 rotate-12 animate-pulse border-2 border-[#0077B6] opacity-[0.05]" />
       </div>
 
       <div className="relative z-10">
@@ -81,7 +92,7 @@ const HomeCmsPage = ({ fallback, isSplashVisible = false }) => {
           </section>
         ) : null}
 
-        <HomeFounderSection path={founderPagePath} />
+        {founderPagePath ? <HomeFounderSection path={founderPagePath} /> : null}
         {homeData.show_news !== false ? <HomeNews /> : null}
         {homeData.show_partners !== false ? (
           <PartnersSection
@@ -96,10 +107,10 @@ const HomeCmsPage = ({ fallback, isSplashVisible = false }) => {
             platformLabel={pickLocalized(video.platform_label, i18n.language)}
           />
         ) : null}
-        <EmbeddedCmsBlock path={galleryPagePath} fallback={<MaterialBaseGallery />} />
+        {galleryPagePath ? <EmbeddedCmsBlock path={galleryPagePath} /> : null}
       </div>
 
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+      <div className="pointer-events-none absolute bottom-0 left-0 h-32 w-full bg-gradient-to-t from-white to-transparent" />
     </div>
   );
 };

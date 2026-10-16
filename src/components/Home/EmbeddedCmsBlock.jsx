@@ -22,14 +22,14 @@ const normalizeCmsHtml = (html, media = []) => {
   return normalized;
 };
 
-const EmbeddedCmsBlock = ({ path, fallback = null }) => {
+const EmbeddedCmsBlock = ({ path }) => {
   const { i18n } = useTranslation();
   const { data, isLoading, isError } = usePageContent(path, i18n.language, {
     retry: false,
   });
 
   if (isLoading || isError || !data) {
-    return fallback;
+    return null;
   }
 
   if (data.body) {
@@ -52,7 +52,7 @@ const EmbeddedCmsBlock = ({ path, fallback = null }) => {
     );
   }
 
-  return fallback;
+  return null;
 };
 
 export default EmbeddedCmsBlock;

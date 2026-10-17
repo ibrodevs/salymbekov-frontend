@@ -2,6 +2,32 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { usePageContent } from '../../hooks/usePageContent';
 
+const UI_COPY = {
+  ru: {
+    documents: 'Документы',
+    links: 'Полезные ссылки',
+    loading: 'Загрузка контента...',
+    unavailable: 'Контент временно недоступен.',
+  },
+  en: {
+    documents: 'Documents',
+    links: 'Useful links',
+    loading: 'Loading content...',
+    unavailable: 'Content is temporarily unavailable.',
+  },
+  kg: {
+    documents: 'Документтер',
+    links: 'Пайдалуу шилтемелер',
+    loading: 'Маалымат жүктөлүүдө...',
+    unavailable: 'Маалымат убактылуу жеткиликсиз.',
+  },
+};
+
+const resolveUiCopy = (language = 'ru') => {
+  const normalized = String(language).toLowerCase().split('-')[0];
+  return UI_COPY[normalized] || UI_COPY.ru;
+};
+
 const neutralizeBakedAnimations = (html) =>
   (html || '')
     .replace(/opacity:\s*0(?![.\d])/g, 'opacity:1')
@@ -36,16 +62,26 @@ const renderRichText = (html, className = '') => {
   );
 };
 
-const CmsPageRenderer = ({ pageContent }) => {
+const CmsPageRenderer = ({ pageContent, copy }) => {
   const data = pageContent?.data || {};
   const renderMode = data.render_mode || 'default';
-  const heroImage = data.hero_image || pageContent?.media?.[0]?.url || null;
+  const media = Array.isArray(pageContent?.media) ? pageContent.media : [];
+  const heroMedia = media.find(
+    (item) => item?.media_type === 'image' && item?.is_hero && item?.url
+  );
+  const heroImage = data.hero_image || heroMedia?.url || null;
   const sections = Array.isArray(data.sections) ? data.sections : [];
   const cards = Array.isArray(data.cards) ? data.cards : [];
   const stats = Array.isArray(data.stats) ? data.stats : [];
   const links = Array.isArray(data.links) ? data.links : [];
   const documents = Array.isArray(data.documents) ? data.documents : [];
-  const gallery = pageContent?.media?.filter((item) => item.media_type === 'image') || [];
+  const gallery = media.filter(
+    (item) =>
+      item?.media_type === 'image' &&
+      item?.url &&
+      !item?.is_hero &&
+      item.url !== heroImage
+  );
 
   if (renderMode === 'raw_html') {
     return (
@@ -137,7 +173,7 @@ const CmsPageRenderer = ({ pageContent }) => {
           <section className="mt-10 grid gap-6 lg:grid-cols-2">
             {documents.length > 0 ? (
               <div className="rounded-[2rem] bg-white p-8 shadow-xl ring-1 ring-slate-200/80">
-                <h2 className="text-2xl font-bold text-slate-900">Documents</h2>
+                <h2 className="text-2xl font-bold text-slate-900">{copy.documents}</h2>
                 <div className="mt-6 space-y-4">
                   {documents.map((item, index) => (
                     <a
@@ -156,7 +192,7 @@ const CmsPageRenderer = ({ pageContent }) => {
 
             {links.length > 0 ? (
               <div className="rounded-[2rem] bg-white p-8 shadow-xl ring-1 ring-slate-200/80">
-                <h2 className="text-2xl font-bold text-slate-900">Useful links</h2>
+                <h2 className="text-2xl font-bold text-slate-900">{copy.links}</h2>
                 <div className="mt-6 space-y-4">
                   {links.map((item, index) => (
                     <a
@@ -175,7 +211,7 @@ const CmsPageRenderer = ({ pageContent }) => {
           </section>
         ) : null}
 
-        {gallery.length > 1 ? (
+        {gallery.length > 0 ? (
           <section className="mt-10">
             <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
               {gallery.map((item) => (
@@ -194,26 +230,27 @@ const CmsPageRenderer = ({ pageContent }) => {
 
 const ManagedPageRoute = ({ path }) => {
   const { i18n } = useTranslation();
+  const copy = resolveUiCopy(i18n.language);
   const { data, isLoading, isError } = usePageContent(path, i18n.language);
 
   if (isLoading) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center px-4">
         <div className="rounded-2xl bg-white px-6 py-4 text-slate-600 shadow-lg ring-1 ring-slate-200/70">
-          Loading content...
+          {copy.loading}
         </div>
       </div>
     );
   }
 
   if (!isError && hasMeaningfulCmsContent(data)) {
-    return <CmsPageRenderer pageContent={data} />;
+    return <CmsPageRenderer pageContent={data} copy={copy} />;
   }
 
   return (
     <div className="flex min-h-[60vh] items-center justify-center px-4">
       <div className="max-w-xl rounded-3xl bg-white px-8 py-6 text-center text-slate-600 shadow-lg ring-1 ring-slate-200/70">
-        Content is temporarily unavailable.
+        {copy.unavailable}
       </div>
     </div>
   );

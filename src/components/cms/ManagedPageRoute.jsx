@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { usePageContent } from '../../hooks/usePageContent';
 
@@ -232,6 +232,43 @@ const ManagedPageRoute = ({ path }) => {
   const { i18n } = useTranslation();
   const copy = resolveUiCopy(i18n.language);
   const { data, isLoading, isError } = usePageContent(path, i18n.language);
+
+  useEffect(() => {
+    if (isLoading || isError || !data) return undefined;
+
+    const previousTitle = document.title;
+    const title = data.seo_title || data.title;
+    if (title) {
+      document.title = title;
+    }
+
+    let descriptionMeta = document.querySelector('meta[name="description"]');
+    const createdDescriptionMeta = !descriptionMeta;
+    if (!descriptionMeta) {
+      descriptionMeta = document.createElement('meta');
+      descriptionMeta.setAttribute('name', 'description');
+      document.head.appendChild(descriptionMeta);
+    }
+
+    const previousDescription = descriptionMeta.getAttribute('content');
+    const description = data.seo_description || data.subtitle;
+    if (description) {
+      descriptionMeta.setAttribute('content', description);
+    } else {
+      descriptionMeta.removeAttribute('content');
+    }
+
+    return () => {
+      document.title = previousTitle;
+      if (createdDescriptionMeta) {
+        descriptionMeta.remove();
+      } else if (previousDescription === null) {
+        descriptionMeta.removeAttribute('content');
+      } else {
+        descriptionMeta.setAttribute('content', previousDescription);
+      }
+    };
+  }, [data, isError, isLoading]);
 
   if (isLoading) {
     return (

@@ -1,9 +1,10 @@
 import React, { lazy, Suspense, useState } from 'react';
-import { BrowserRouter as Router, Navigate, Route, Routes, useParams } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useParams } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar1';
 import ScrollToTop from './components/ScrollToTop';
 import SplashScreen from './components/SplashScreen';
 import HomeCmsPage from './components/Home/HomeCmsPage';
+import CmsCatchAllRoute from './components/cms/CmsCatchAllRoute';
 import ManagedPageRoute from './components/cms/ManagedPageRoute';
 import Footer from './pages/Footer';
 import NotFound from './pages/NotFound';
@@ -165,8 +166,7 @@ const App = () => {
             <Route path="/infrastructure/locations" element={cmsOnlyPage('/infrastructure/locations')} />
             <Route path="/infrastructure/partners" element={cmsOnlyPage('/infrastructure/partners')} />
 
-            <Route path="/infrastructure/*" element={<Navigate to="/404" replace />} />
-            <Route path="*" element={<Navigate to="/404" replace />} />
+            <Route path="*" element={<CmsCatchAllRoute />} />
           </Routes>
         </Suspense>
         <Footer />

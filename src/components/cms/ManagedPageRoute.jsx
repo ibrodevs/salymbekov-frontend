@@ -34,6 +34,72 @@ const neutralizeBakedAnimations = (html) =>
     .replace(/scale\(\s*0(?:\.\d+)?\s*\)/g, 'scale(1)')
     .replace(/translate([XYZ]?)\(\s*-?\d+(?:\.\d+)?px\s*\)/g, 'translate$1(0px)');
 
+const DANGEROUS_PROTOCOL = /^(?:javascript|vbscript|data:text\/html)/i;
+const DANGEROUS_STYLE = /(?:expression\s*\(|javascript\s*:|vbscript\s*:|url\s*\(\s*['"]?data:text\/html)/i;
+const URL_ATTRIBUTES = new Set(['href', 'src', 'xlink:href', 'poster', 'background', 'action', 'formaction']);
+
+const sanitizeCmsHtml = (html) => {
+  const normalized = neutralizeBakedAnimations(html);
+  if (!normalized) return '';
+
+  if (typeof DOMParser === 'undefined') {
+    return '';
+  }
+
+  const documentFragment = new DOMParser().parseFromString(normalized, 'text/html');
+
+  documentFragment
+    .querySelectorAll('script, iframe, object, embed, base, form, input, textarea, select, button, meta, link, style')
+    .forEach((element) => element.remove());
+
+  documentFragment.querySelectorAll('*').forEach((element) => {
+    [...element.attributes].forEach((attribute) => {
+      const name = attribute.name.toLowerCase();
+      const value = attribute.value.trim();
+
+      if (name.startsWith('on') || name === 'srcdoc') {
+        element.removeAttribute(attribute.name);
+        return;
+      }
+
+      if (URL_ATTRIBUTES.has(name) && DANGEROUS_PROTOCOL.test(value)) {
+        element.removeAttribute(attribute.name);
+        return;
+      }
+
+      if (name === 'style' && DANGEROUS_STYLE.test(value)) {
+        element.removeAttribute(attribute.name);
+      }
+    });
+
+    if (element.tagName === 'A' && element.getAttribute('target') === '_blank') {
+      const rel = new Set((element.getAttribute('rel') || '').split(/\s+/).filter(Boolean));
+      rel.add('noopener');
+      rel.add('noreferrer');
+      element.setAttribute('rel', [...rel].join(' '));
+    }
+  });
+
+  return documentFragment.body.innerHTML;
+};
+
+const safeLinkUrl = (value) => {
+  const url = String(value || '').trim();
+  if (!url) return '#';
+
+  if (
+    url.startsWith('/') ||
+    url.startsWith('#') ||
+    url.startsWith('mailto:') ||
+    url.startsWith('tel:') ||
+    /^https?:\/\//i.test(url)
+  ) {
+    return url;
+  }
+
+  return '#';
+};
+
 const hasMeaningfulCmsContent = (pageContent) => {
   if (!pageContent) return false;
   if (pageContent.data?.force_backend_render) return true;
@@ -57,7 +123,7 @@ const renderRichText = (html, className = '') => {
   return (
     <div
       className={`prose prose-lg max-w-none prose-headings:text-slate-900 prose-p:text-slate-700 prose-li:text-slate-700 ${className}`}
-      dangerouslySetInnerHTML={{ __html: neutralizeBakedAnimations(html) }}
+      dangerouslySetInnerHTML={{ __html: sanitizeCmsHtml(html) }}
     />
   );
 };
@@ -88,7 +154,7 @@ const CmsPageRenderer = ({ pageContent, copy }) => {
       <div className="min-h-screen bg-slate-50">
         <div
           className="[&_a]:break-words [&_img]:h-auto [&_img]:max-w-full"
-          dangerouslySetInnerHTML={{ __html: neutralizeBakedAnimations(pageContent?.body) }}
+          dangerouslySetInnerHTML={{ __html: sanitizeCmsHtml(pageContent?.body) }}
         />
       </div>
     );
@@ -178,9 +244,9 @@ const CmsPageRenderer = ({ pageContent, copy }) => {
                   {documents.map((item, index) => (
                     <a
                       key={`${item.title || 'doc'}-${index}`}
-                      href={item.url}
+                      href={safeLinkUrl(item.url)}
                       target="_blank"
-                      rel="noreferrer"
+                      rel="noopener noreferrer"
                       className="block rounded-2xl border border-slate-200 px-5 py-4 text-slate-700 transition hover:border-[#0077B6] hover:bg-slate-50"
                     >
                       {item.title || item.url}
@@ -197,9 +263,9 @@ const CmsPageRenderer = ({ pageContent, copy }) => {
                   {links.map((item, index) => (
                     <a
                       key={`${item.title || 'link'}-${index}`}
-                      href={item.url}
+                      href={safeLinkUrl(item.url)}
                       target={item.external === false ? '_self' : '_blank'}
-                      rel="noreferrer"
+                      rel={item.external === false ? undefined : 'noopener noreferrer'}
                       className="block rounded-2xl border border-slate-200 px-5 py-4 text-slate-700 transition hover:border-[#0077B6] hover:bg-slate-50"
                     >
                       {item.title || item.url}

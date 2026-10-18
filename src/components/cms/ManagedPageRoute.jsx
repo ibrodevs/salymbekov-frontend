@@ -140,13 +140,19 @@ const CmsPageRenderer = ({ pageContent, copy }) => {
   const cards = Array.isArray(data.cards) ? data.cards : [];
   const stats = Array.isArray(data.stats) ? data.stats : [];
   const links = Array.isArray(data.links) ? data.links : [];
-  const documents = Array.isArray(data.documents) ? data.documents : [];
+  const body = pageContent?.body || '';
+  // Files already shown inside the page text are not repeated in the blocks below.
+  const isEmbedded = (url) => Boolean(url) && body.includes(url);
+  const documents = (Array.isArray(data.documents) ? data.documents : []).filter(
+    (item) => !isEmbedded(item?.url)
+  );
   const gallery = media.filter(
     (item) =>
       item?.media_type === 'image' &&
       item?.url &&
       !item?.is_hero &&
-      item.url !== heroImage
+      item.url !== heroImage &&
+      !isEmbedded(item.url)
   );
 
   if (renderMode === 'raw_html') {

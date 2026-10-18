@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { usePageContent } from '../../hooks/usePageContent';
+import LegacyStyledPage from './LegacyStyledPage';
 
 const UI_COPY = {
   ru: {
@@ -128,7 +129,7 @@ const renderRichText = (html, className = '') => {
   );
 };
 
-const CmsPageRenderer = ({ pageContent, copy }) => {
+const CmsPageRenderer = ({ pageContent, copy, language }) => {
   const data = pageContent?.data || {};
   const renderMode = data.render_mode || 'default';
   const media = Array.isArray(pageContent?.media) ? pageContent.media : [];
@@ -164,6 +165,10 @@ const CmsPageRenderer = ({ pageContent, copy }) => {
         />
       </div>
     );
+  }
+
+  if (renderMode === 'default') {
+    return <LegacyStyledPage pageContent={pageContent} language={language} sanitize={sanitizeCmsHtml} />;
   }
 
   return (
@@ -353,7 +358,7 @@ const ManagedPageRoute = ({ path }) => {
   }
 
   if (!isError && hasMeaningfulCmsContent(data)) {
-    return <CmsPageRenderer pageContent={data} copy={copy} />;
+    return <CmsPageRenderer pageContent={data} copy={copy} language={String(i18n.language || 'ru').toLowerCase().split('-')[0]} />;
   }
 
   return (

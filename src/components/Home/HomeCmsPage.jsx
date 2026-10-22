@@ -47,8 +47,8 @@ const HomeCmsPage = ({ isSplashVisible = false }) => {
   const homeData = data.data || {};
   const partners = homeData.partners || {};
   const video = homeData.video || {};
-  const founderPagePath = homeData.founder_page_path;
-  const galleryPagePath = homeData.gallery_page_path;
+  const founderPagePath = homeData.founder_page_path || '/founderMessege';
+  const galleryPagePath = homeData.gallery_page_path || '/MaterialBaseGallery';
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50">
@@ -69,7 +69,7 @@ const HomeCmsPage = ({ isSplashVisible = false }) => {
 
       <div className="relative z-10">
         {homeData.show_hero !== false ? <Hero isSplashVisible={isSplashVisible} /> : null}
-        {founderPagePath ? <HomeFounderSection path={founderPagePath} /> : null}
+        {homeData.show_founder !== false ? <HomeFounderSection path={founderPagePath} /> : null}
         {homeData.show_news !== false ? <HomeNews /> : null}
         {homeData.show_partners !== false ? (
           <PartnersSection

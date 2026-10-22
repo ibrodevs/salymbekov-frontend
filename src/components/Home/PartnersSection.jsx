@@ -3,12 +3,30 @@ import { motion, useInView } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { getPartners } from '../../api';
 
+const resolveLocalPartnerLogo = (name = '') => {
+  const value = String(name).toLowerCase();
+
+  if (value.includes('lincoln')) return '/partners/lincoln.webp';
+  if (value.includes('inti')) return '/partners/inti.png';
+  if (value.includes('peter the great') || value.includes('петра велик') || value.includes('spbpu')) return '/partners/spbpu.jpg';
+  if (value.includes('pai chai') || value.includes('paichai')) return '/partners/paichai.png';
+  if (value.includes('chung-ang') || value.includes('chungang')) return '/partners/chungang.png';
+  if (value.includes('vision college') || value.includes('jeonju')) return '/partners/vision-jeonju.png';
+  if (value.includes('kyungdong')) return '/partners/kyungdong.png';
+  if (value.includes('kicb')) return '/partners/kicb.png';
+  if (value.includes('бай-тушум') || value.includes('bai-tushum') || value.includes('bai tushum')) return '/partners/bai-tushum.jpeg';
+  if (value.includes('российско-кыргыз') || value.includes('rkdf')) return '/partners/rkdf.png';
+
+  return '';
+};
+
 const PartnersSection = ({ badge, title, subtitle }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, threshold: 0.2 });
   const { i18n } = useTranslation();
   const [partners, setPartners] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [failedLogos, setFailedLogos] = useState({});
 
   useEffect(() => {
     let cancelled = false;
@@ -25,6 +43,7 @@ const PartnersSection = ({ badge, title, subtitle }) => {
 
         if (!cancelled) {
           setPartners(list.filter((partner) => partner?.id));
+          setFailedLogos({});
         }
       } catch (error) {
         console.error('Error fetching partners:', error);
@@ -71,7 +90,7 @@ const PartnersSection = ({ badge, title, subtitle }) => {
           </motion.div>
         ) : null}
 
-        <div className="relative w-full overflow-hidden">
+        <div className="relative w-full overflow-hidden px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -82,24 +101,36 @@ const PartnersSection = ({ badge, title, subtitle }) => {
               width: `calc(280px * ${loopPartners.length})`,
             } : undefined}
           >
-            {loopPartners.map((company, index) => (
-              <div
-                key={`${company.id}-${index}`}
-                className="group flex h-40 min-w-[240px] items-center justify-center rounded-2xl border border-slate-100 bg-white p-8 text-center shadow-lg transition-all duration-300 hover:border-slate-200 hover:bg-slate-50 hover:shadow-xl"
-              >
-                {company.logo ? (
-                  <img
-                    src={company.logo}
-                    alt={company.name || ''}
-                    className="max-h-[120px] max-w-[180px] object-contain transition-transform duration-300 group-hover:scale-110"
-                  />
-                ) : (
-                  <span className="max-w-[180px] text-lg font-semibold leading-snug text-slate-700">
-                    {company.name || `Partner #${company.id}`}
-                  </span>
-                )}
-              </div>
-            ))}
+            {loopPartners.map((company, index) => {
+              const localLogo = resolveLocalPartnerLogo(company.name);
+              const failed = Boolean(failedLogos[company.id]);
+              const logoSrc = failed ? localLogo : (company.logo || localLogo);
+
+              return (
+                <div
+                  key={`${company.id}-${index}`}
+                  className="group flex h-44 min-w-[250px] items-center justify-center rounded-2xl border border-slate-200 bg-white p-7 text-center shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl"
+                >
+                  {logoSrc ? (
+                    <img
+                      src={logoSrc}
+                      alt={company.name || ''}
+                      loading="lazy"
+                      onError={() => {
+                        if (!failed) {
+                          setFailedLogos((prev) => ({ ...prev, [company.id]: true }));
+                        }
+                      }}
+                      className="max-h-[125px] max-w-[195px] object-contain object-center transition-transform duration-300 group-hover:scale-105"
+                    />
+                  ) : (
+                    <span className="max-w-[190px] text-base font-semibold leading-snug text-slate-700">
+                      {company.name || `Partner #${company.id}`}
+                    </span>
+                  )}
+                </div>
+              );
+            })}
           </motion.div>
         </div>
       </div>

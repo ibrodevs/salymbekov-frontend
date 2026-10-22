@@ -12,7 +12,6 @@ const NewsAndEventsSection = () => {
   const [loading, setLoading] = useState(true);
   const [failedImages, setFailedImages] = useState({});
 
-  // Загрузка новостей из API
   useEffect(() => {
     const fetchNews = async () => {
       try {
@@ -29,7 +28,7 @@ const NewsAndEventsSection = () => {
           image: item.image || null,
           path: `/press/news/${item.id}`,
         }));
-        
+
         setNews(transformedNews);
       } catch (error) {
         console.error('Error fetching news:', error);
@@ -76,7 +75,7 @@ const NewsAndEventsSection = () => {
       opacity: 1,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
+        ease: 'easeOut'
       }
     }
   };
@@ -89,7 +88,7 @@ const NewsAndEventsSection = () => {
       scale: 1,
       transition: {
         duration: 0.5,
-        ease: "easeOut"
+        ease: 'easeOut'
       }
     },
     exit: {
@@ -98,217 +97,170 @@ const NewsAndEventsSection = () => {
       scale: 0.9,
       transition: {
         duration: 0.4,
-        ease: "easeIn"
+        ease: 'easeIn'
       }
     }
   };
 
   return (
-    <section ref={ref} className="relative py-20 overflow-hidden">
-      {/* Фоновые элементы */}
+    <section ref={ref} className="relative overflow-hidden py-20">
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-10 right-10 w-64 h-64 bg-blue-200 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-10 left-10 w-48 h-48 bg-yellow-200 rounded-full blur-3xl"></div>
+        <div className="absolute right-10 top-10 h-64 w-64 rounded-full bg-blue-200 blur-3xl" />
+        <div className="absolute bottom-10 left-10 h-48 w-48 rounded-full bg-yellow-200 blur-3xl" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Заголовок секции */}
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          className="text-center mb-12"
+          animate={isInView ? 'visible' : 'hidden'}
+          className="mb-12 text-center"
         >
           <motion.div
             variants={itemVariants}
-            className="inline-flex items-center px-4 py-2 rounded-full bg-white border border-blue-200 shadow-sm mb-6"
+            className="mb-6 inline-flex items-center rounded-full border border-blue-200 bg-white px-4 py-2 shadow-sm"
           >
-            <span className="text-blue-600 text-sm font-semibold">{t('news.badge')}</span>
+            <span className="text-sm font-semibold text-blue-600">{t('news.badge')}</span>
           </motion.div>
 
           <motion.h2
             variants={itemVariants}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6"
+            className="mb-6 text-4xl font-bold text-slate-900 md:text-5xl lg:text-6xl"
           >
             {t('news.title')}
           </motion.h2>
 
           <motion.div
             variants={itemVariants}
-            className="w-24 h-1 bg-gradient-to-r from-blue-500 to-yellow-400 rounded-full mx-auto mb-8"
+            className="mx-auto mb-8 h-1 w-24 rounded-full bg-gradient-to-r from-blue-500 to-yellow-400"
           />
 
           <motion.p
             variants={itemVariants}
-            className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed"
+            className="mx-auto max-w-3xl text-xl leading-relaxed text-slate-600"
           >
             {t('news.subtitle')}
           </motion.p>
         </motion.div>
 
-        {/* Сетка новостей */}
         <AnimatePresence mode="wait">
           <motion.div
-            key={loading ? "loading" : "news"}
+            key={loading ? 'loading' : 'news'}
             variants={containerVariants}
             initial="hidden"
             animate="visible"
             exit="hidden"
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
+            className="mb-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3"
           >
             {loading ? (
-              // Loading skeleton
               Array.from({ length: 3 }).map((_, index) => (
                 <motion.div
                   key={`skeleton-${index}`}
                   variants={cardVariants}
                   exit="exit"
-                  className="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-200 animate-pulse"
+                  className="animate-pulse overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg"
                 >
-                  <div className="h-48 bg-slate-200"></div>
+                  <div className="aspect-[4/3] bg-slate-200" />
                   <div className="p-6">
-                    <div className="h-4 bg-slate-200 rounded mb-3"></div>
-                    <div className="h-6 bg-slate-200 rounded mb-3"></div>
-                    <div className="h-4 bg-slate-200 rounded mb-4"></div>
-                    <div className="h-4 bg-slate-200 rounded w-1/2"></div>
+                    <div className="mb-3 h-4 rounded bg-slate-200" />
+                    <div className="mb-3 h-6 rounded bg-slate-200" />
+                    <div className="mb-4 h-4 rounded bg-slate-200" />
+                    <div className="h-4 w-1/2 rounded bg-slate-200" />
                   </div>
                 </motion.div>
               ))
             ) : (
               news.slice(0, 3).map((newsItem) => {
                 const colors = categoryColors[newsItem.category] || categoryColors.news;
-                
+
                 return (
                   <motion.article
                     key={newsItem.id}
                     variants={cardVariants}
                     exit="exit"
-                    className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-slate-200"
+                    className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg transition-all duration-500 hover:shadow-2xl"
                     whileHover={{ y: -8 }}
                   >
-                  {/* Изображение */}
-                  <motion.div 
-                    className="relative h-48 overflow-hidden bg-gradient-to-br from-blue-50 to-cyan-50"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.4 }}
-                  >
-                    {newsItem.image && !failedImages[newsItem.id] ? (
-                      <img
-                        src={newsItem.image}
-                        alt={newsItem.title}
-                        onError={() => setFailedImages(prev => ({ ...prev, [newsItem.id]: true }))}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                    ) : (
-                      <div className="w-full h-full bg-gradient-to-r from-blue-50 to-cyan-50 flex items-center justify-center">
-                        <svg className="w-16 h-16 text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-                        </svg>
+                    <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden bg-slate-100 p-3">
+                      {newsItem.image && !failedImages[newsItem.id] ? (
+                        <img
+                          src={newsItem.image}
+                          alt={newsItem.title}
+                          loading="lazy"
+                          onError={() => setFailedImages(prev => ({ ...prev, [newsItem.id]: true }))}
+                          className="h-full w-full object-contain object-center"
+                        />
+                      ) : (
+                        <div className="flex h-full w-full items-center justify-center bg-gradient-to-r from-blue-50 to-cyan-50">
+                          <svg className="h-16 w-16 text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                          </svg>
+                        </div>
+                      )}
+
+                      <div className={`absolute left-4 top-4 rounded-full border px-3 py-1 text-xs font-semibold shadow-lg backdrop-blur-sm ${colors.bg} ${colors.text} ${colors.border}`}>
+                        {newsItem.categoryName}
                       </div>
-                    )}
-                    
-                    {/* Градиентный оверлей */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    
-                    {/* Категория */}
-                    <div className={`absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold ${colors.bg} ${colors.text} ${colors.border} backdrop-blur-sm shadow-lg`}>
-                      {newsItem.categoryName}
                     </div>
-                    
-                    {/* Эффект свечения при наведении */}
-                    <div className="absolute inset-0 ring-1 ring-white/20 group-hover:ring-blue-300/50 transition-all duration-300 rounded-t-2xl" />
-                  </motion.div>
 
-                  {/* Контент */}
-                  <div className="p-6">
-                    {/* Дата */}
-                    <motion.p 
-                      className="text-slate-500 text-sm mb-3 flex items-center"
-                      initial={{ opacity: 0.7 }}
-                      whileHover={{ opacity: 1 }}
-                    >
-                      <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
-                      {newsItem.date}
-                    </motion.p>
-
-                    {/* Заголовок */}
-                    <h3 className="text-xl font-bold text-slate-900 mb-3 leading-tight group-hover:text-blue-600 transition-colors duration-300">
-                      {newsItem.title}
-                    </h3>
-
-                    {/* Описание */}
-                    <p className="text-slate-600 leading-relaxed mb-4 line-clamp-3">
-                      {newsItem.description}
-                    </p>
-
-                    {/* Кнопка подробнее */}
-                    <motion.div
-                      className="flex items-center justify-between pt-4 border-t border-slate-100"
-                      whileHover={{ x: 5 }}
-                      transition={{ type: "spring", stiffness: 400 }}
-                    >
-                      <Link
-                        to={newsItem.path}
-                        className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-700 font-semibold transition-colors duration-300 group/btn"
+                    <div className="p-6">
+                      <motion.p
+                        className="mb-3 flex items-center text-sm text-slate-500"
+                        initial={{ opacity: 0.7 }}
+                        whileHover={{ opacity: 1 }}
                       >
-                        <span>{t('news.learnMore')}</span>
-                        <motion.svg
-                          className="w-4 h-4"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          animate={{ x: [0, 4, 0] }}
-                          transition={{
-                            duration: 1.5,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                          }}
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </motion.svg>
-                      </Link>
+                        <svg className="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        {newsItem.date}
+                      </motion.p>
 
-                      {/* Индикатор нового */}
+                      <h3 className="mb-3 text-xl font-bold leading-tight text-slate-900 transition-colors duration-300 group-hover:text-blue-600">
+                        {newsItem.title}
+                      </h3>
+
+                      <p className="mb-4 line-clamp-3 leading-relaxed text-slate-600">
+                        {newsItem.description}
+                      </p>
+
                       <motion.div
-                        className="w-2 h-2 bg-blue-500 rounded-full"
-                        animate={{ scale: [1, 1.5, 1] }}
-                        transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                          ease: "easeInOut"
-                        }}
-                      />
-                    </motion.div>
-                  </div>
+                        className="flex items-center justify-between border-t border-slate-100 pt-4"
+                        whileHover={{ x: 5 }}
+                        transition={{ type: 'spring', stiffness: 400 }}
+                      >
+                        <Link
+                          to={newsItem.path}
+                          className="inline-flex items-center space-x-2 font-semibold text-blue-600 transition-colors duration-300 hover:text-blue-700"
+                        >
+                          <span>{t('news.learnMore')}</span>
+                          <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </Link>
+                        <div className="h-2 w-2 rounded-full bg-blue-500" />
+                      </motion.div>
+                    </div>
 
-                  {/* Акцентный элемент при наведении */}
-                  <motion.div
-                    className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-yellow-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"
-                    initial={{ scaleX: 0 }}
-                    whileHover={{ scaleX: 1 }}
-                  />
-                </motion.article>
-              );
-            })
-          )}
+                    <div className="absolute bottom-0 left-0 right-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-blue-500 to-yellow-400 transition-transform duration-500 group-hover:scale-x-100" />
+                  </motion.article>
+                );
+              })
+            )}
           </motion.div>
         </AnimatePresence>
 
-        {/* Кнопка "Все новости" */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          animate={isInView ? 'visible' : 'hidden'}
           className="text-center"
         >
           <Link
             to="/press/news"
-            className="inline-flex items-center space-x-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-xl hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl"
+            className="inline-flex items-center space-x-3 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 px-8 py-4 font-semibold text-white shadow-lg transition-all duration-300 hover:from-blue-700 hover:to-cyan-700 hover:shadow-xl"
           >
             <span>{t('news.viewAll', 'Все новости')}</span>
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </Link>

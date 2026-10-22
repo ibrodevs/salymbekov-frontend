@@ -6,6 +6,7 @@ import SplashScreen from './components/SplashScreen';
 import HomeCmsPage from './components/Home/HomeCmsPage';
 import CmsCatchAllRoute from './components/cms/CmsCatchAllRoute';
 import ManagedPageRoute from './components/cms/ManagedPageRoute';
+import PageSectionLayout from './components/cms/PageSectionLayout';
 import Footer from './pages/Footer';
 import NotFound from './pages/NotFound';
 
@@ -15,7 +16,11 @@ const NewsDetail = lazy(() => import('./pages/university/NewsDetail'));
 
 const DynamicCmsPageRoute = ({ basePath }) => {
   const { id } = useParams();
-  return <ManagedPageRoute path={`${basePath}/${id}`} />;
+  return (
+    <PageSectionLayout>
+      <ManagedPageRoute path={`${basePath}/${id}`} />
+    </PageSectionLayout>
+  );
 };
 
 const App = () => {
@@ -42,7 +47,11 @@ const App = () => {
     setIsContentHidden(false);
   };
 
-  const cmsOnlyPage = (path) => <ManagedPageRoute path={path} />;
+  const cmsOnlyPage = (path) => (
+    <PageSectionLayout>
+      <ManagedPageRoute path={path} />
+    </PageSectionLayout>
+  );
 
   return (
     <Router>
@@ -166,7 +175,14 @@ const App = () => {
             <Route path="/infrastructure/locations" element={cmsOnlyPage('/infrastructure/locations')} />
             <Route path="/infrastructure/partners" element={cmsOnlyPage('/infrastructure/partners')} />
 
-            <Route path="*" element={<CmsCatchAllRoute />} />
+            <Route
+              path="*"
+              element={(
+                <PageSectionLayout>
+                  <CmsCatchAllRoute />
+                </PageSectionLayout>
+              )}
+            />
           </Routes>
         </Suspense>
         <Footer />

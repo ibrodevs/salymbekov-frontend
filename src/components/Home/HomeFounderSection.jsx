@@ -5,32 +5,59 @@ import { FaArrowRight, FaQuoteLeft, FaQuoteRight } from 'react-icons/fa';
 import { usePageContent } from '../../hooks/usePageContent';
 
 const parseFounderBlock = (page) => {
-  if (!page?.body || typeof window === 'undefined') {
-    return null;
+  if (!page) return null;
+
+  const body = page.body || '';
+  let doc = null;
+
+  if (body && typeof window !== 'undefined') {
+    const parser = new window.DOMParser();
+    doc = parser.parseFromString(body, 'text/html');
   }
 
-  const parser = new window.DOMParser();
-  const doc = parser.parseFromString(page.body, 'text/html');
-  const paragraphs = Array.from(doc.querySelectorAll('.space-y-6 p, article p, main p'))
-    .map((node) => node.textContent?.trim())
-    .filter(Boolean);
+  const data = page.data || {};
+  const allParagraphs = doc
+    ? Array.from(doc.querySelectorAll('p'))
+        .map((node) => node.textContent?.replace(/\s+/g, ' ').trim())
+        .filter(Boolean)
+    : [];
+
+  const plainBody = doc?.body?.textContent?.replace(/\s+/g, ' ').trim() || '';
+  const founderName =
+    data.founder_name ||
+    data.name ||
+    doc?.querySelector('h3')?.textContent?.trim() ||
+    '';
+  const founderPosition =
+    data.founder_position ||
+    data.position ||
+    doc?.querySelector('h3 + p')?.textContent?.trim() ||
+    doc?.querySelector('[class*="text-[#0077B6]"]')?.textContent?.trim() ||
+    '';
+  const quote =
+    data.quote ||
+    doc?.querySelector('.italic')?.textContent?.trim() ||
+    '';
+
+  const paragraphs = allParagraphs.filter((paragraph) => (
+    paragraph !== founderPosition && paragraph !== quote
+  ));
+
+  if (paragraphs.length === 0 && plainBody) {
+    paragraphs.push(plainBody);
+  }
 
   return {
-    badge: doc.querySelector('span.font-semibold')?.textContent?.trim() || '',
-    title: doc.querySelector('h2')?.textContent?.trim() || page.title || '',
-    founderName: doc.querySelector('h3')?.textContent?.trim() || '',
-    founderPosition:
-      doc.querySelector('h3 + p')?.textContent?.trim() ||
-      doc.querySelector('.text-\\[\\#0077B6\\]')?.textContent?.trim() ||
-      '',
-    quote:
-      doc.querySelector('.absolute.bottom-4 p')?.textContent?.trim() ||
-      doc.querySelector('.italic')?.textContent?.trim() ||
-      '',
+    badge: data.badge || doc?.querySelector('span.font-semibold')?.textContent?.trim() || '',
+    title: data.section_title || doc?.querySelector('h2')?.textContent?.trim() || page.title || '',
+    founderName,
+    founderPosition,
+    quote,
     paragraphs,
     buttonLabel:
-      doc.querySelector('button span')?.textContent?.trim() ||
-      doc.querySelector('button')?.textContent?.trim() ||
+      data.cta_label ||
+      doc?.querySelector('button span')?.textContent?.trim() ||
+      doc?.querySelector('button')?.textContent?.trim() ||
       '',
   };
 };
@@ -52,8 +79,9 @@ const HomeFounderSection = ({ path = '/founderMessege' }) => {
 
   const image =
     data.media?.find((item) => item?.is_hero && item?.url) ||
-    data.media?.find((item) => item?.media_type === 'image' && item?.url);
-  const ctaUrl = data.data?.cta_url || data.links?.[0]?.url || '';
+    data.media?.find((item) => item?.media_type === 'image' && item?.url) ||
+    (data.data?.image ? { url: data.data.image } : null);
+  const ctaUrl = data.data?.cta_url || data.links?.[0]?.url || path;
   const ctaLabel = data.data?.cta_label || parsed.buttonLabel || '';
 
   return (
@@ -81,7 +109,7 @@ const HomeFounderSection = ({ path = '/founderMessege' }) => {
           <div className="mx-auto h-1 w-24 rounded-full bg-gradient-to-r from-[#023E8A] to-[#0077B6]" />
         </motion.div>
 
-        <div className="grid items-start gap-16 lg:grid-cols-2">
+        <div className="grid items-start gap-12 lg:grid-cols-[minmax(300px,420px)_1fr] lg:gap-16">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -89,17 +117,17 @@ const HomeFounderSection = ({ path = '/founderMessege' }) => {
             transition={{ duration: 0.8 }}
             className="flex justify-center lg:justify-start"
           >
-            <div className="group w-full max-w-sm rounded-3xl border border-gray-100 bg-white p-6 shadow-2xl">
+            <div className="group w-full max-w-md rounded-3xl border border-gray-100 bg-white p-6 shadow-2xl">
               {image?.url ? (
-                <div className="relative h-[28rem] overflow-hidden rounded-2xl shadow-lg">
+                <div className="relative flex min-h-[28rem] items-center justify-center overflow-hidden rounded-2xl bg-slate-50 p-3 shadow-lg">
                   <img
                     src={image.url}
                     alt={image.alt_text || parsed.founderName || parsed.title}
-                    className="h-full w-full object-cover transition-all duration-500 group-hover:brightness-110"
+                    className="max-h-[34rem] w-full object-contain object-center transition-all duration-500 group-hover:brightness-105"
                   />
                   {parsed.quote ? (
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                      <p className="absolute bottom-4 left-4 right-4 text-sm font-medium text-white">{parsed.quote}</p>
+                    <div className="absolute inset-x-3 bottom-3 rounded-xl bg-black/65 p-4 text-white opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
+                      <p className="text-sm font-medium">{parsed.quote}</p>
                     </div>
                   ) : null}
                 </div>

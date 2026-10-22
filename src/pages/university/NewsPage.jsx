@@ -50,7 +50,13 @@ const NewsPage = () => {
       key={item.id}
       className={`overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-lg transition hover:-translate-y-1 hover:shadow-xl ${featured ? 'md:grid md:grid-cols-2' : ''}`}
     >
-      <div className={`${featured ? 'min-h-72' : 'aspect-[16/9]'} flex items-center justify-center bg-slate-100`}>
+      <div
+        className={`${
+          featured
+            ? 'aspect-[4/3] min-h-72 md:aspect-auto md:min-h-[340px]'
+            : 'aspect-[4/3]'
+        } flex items-center justify-center bg-slate-100 p-3`}
+      >
         {item.image && !failedImages[item.id] ? (
           <img
             src={item.image}
@@ -60,7 +66,7 @@ const NewsPage = () => {
             className="h-full w-full object-contain object-center"
           />
         ) : (
-          <div className="flex h-full min-h-48 w-full items-center justify-center bg-gradient-to-br from-blue-50 to-cyan-50 text-sm font-medium text-slate-400">
+          <div className="flex h-full min-h-48 w-full items-center justify-center rounded-2xl bg-gradient-to-br from-blue-50 to-cyan-50 text-sm font-medium text-slate-400">
             {t('press.noImage', 'Изображение отсутствует')}
           </div>
         )}

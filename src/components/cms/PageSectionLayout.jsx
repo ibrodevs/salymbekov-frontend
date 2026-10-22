@@ -54,24 +54,28 @@ const PageSectionLayout = ({ children }) => {
     };
 
     const scanHeadings = () => {
-      currentHeadings = [...root.querySelectorAll('h2, h3')].filter((heading) => {
+      currentHeadings = [...root.querySelectorAll('h2, h3, h4')].filter((heading) => {
         const label = heading.textContent?.replace(/\s+/g, ' ').trim();
         return Boolean(label) && !heading.closest('[data-skip-page-nav="true"]');
       });
 
+      const usedIds = new Set();
       const navigationItems = currentHeadings.map((heading, index) => {
-        if (!heading.id) {
-          const generatedId = `page-section-${index + 1}`;
-          heading.id = generatedId;
-          generatedIdsRef.current.add(generatedId);
+        let headingId = heading.id;
+
+        if (!headingId || usedIds.has(headingId)) {
+          headingId = `page-section-${index + 1}`;
+          heading.id = headingId;
+          generatedIdsRef.current.add(headingId);
         }
 
+        usedIds.add(headingId);
         heading.style.scrollMarginTop = '7rem';
 
         return {
-          id: heading.id,
+          id: headingId,
           label: heading.textContent.replace(/\s+/g, ' ').trim(),
-          level: heading.tagName === 'H3' ? 3 : 2,
+          level: Number(heading.tagName.slice(1)) || 2,
         };
       });
 
@@ -129,13 +133,13 @@ const PageSectionLayout = ({ children }) => {
     <div
       className={
         hasNavigation
-          ? 'xl:grid xl:grid-cols-[250px_minmax(0,1fr)] xl:items-start'
+          ? 'lg:grid lg:grid-cols-[230px_minmax(0,1fr)] lg:items-start xl:grid-cols-[260px_minmax(0,1fr)]'
           : ''
       }
     >
       {hasNavigation ? (
         <aside
-          className="sticky top-24 z-30 hidden max-h-[calc(100vh-7rem)] self-start overflow-y-auto border-r border-slate-200/80 bg-white/95 px-5 py-7 shadow-sm backdrop-blur xl:block"
+          className="sticky top-24 z-30 hidden max-h-[calc(100vh-7rem)] self-start overflow-y-auto border-r border-slate-200/80 bg-white/95 px-4 py-6 shadow-sm backdrop-blur lg:block xl:px-5 xl:py-7"
           aria-label={COPY[language]}
         >
           <div className="mb-4 text-xs font-bold uppercase tracking-[0.16em] text-slate-500">
@@ -145,12 +149,15 @@ const PageSectionLayout = ({ children }) => {
             <ol className="space-y-1.5">
               {items.map((item) => {
                 const isActive = item.id === activeId;
+                const indentClass = item.level >= 4 ? 'pl-6' : item.level === 3 ? 'pl-3' : '';
+
                 return (
-                  <li key={item.id} className={item.level === 3 ? 'pl-3' : ''}>
+                  <li key={item.id} className={indentClass}>
                     <a
                       href={`#${item.id}`}
                       onClick={(event) => handleNavigation(event, item.id)}
                       aria-current={isActive ? 'location' : undefined}
+                      title={item.label}
                       className={`block rounded-xl border-l-2 px-3 py-2 text-sm leading-5 transition-colors ${
                         isActive
                           ? 'border-[#0077B6] bg-blue-50 font-semibold text-[#023E8A]'

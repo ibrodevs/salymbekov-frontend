@@ -53,7 +53,6 @@ const HomeCmsPage = ({ isSplashVisible = false }) => {
     );
   }
 
-  const partners = homeData.partners || {};
   const video = homeData.video || {};
   const galleryPagePath = homeData.gallery_page_path || '/MaterialBaseGallery';
 
@@ -77,13 +76,7 @@ const HomeCmsPage = ({ isSplashVisible = false }) => {
       <div className="relative z-10">
         {homeData.show_hero !== false ? <Hero isSplashVisible={isSplashVisible} /> : null}
         {homeData.show_news !== false ? <HomeNews /> : null}
-        {homeData.show_partners !== false ? (
-          <PartnersSection
-            badge={partners.badge || ''}
-            title={partners.title || ''}
-            subtitle={partners.subtitle || ''}
-          />
-        ) : null}
+        {homeData.show_partners !== false ? <PartnersSection /> : null}
         {homeData.show_video !== false ? (
           <VideoSection
             videoUrl={homeData.video_url}

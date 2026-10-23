@@ -1,25 +1,33 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { usePageContent } from '../../hooks/usePageContent';
+import { localizeCmsValue, normalizeCmsLanguage } from '../../lib/localizeCmsValue';
 import Hero from './Hero';
 import PartnersSection from './PartnersSection';
 import VideoSection from './VideoSection';
 import EmbeddedCmsBlock from './EmbeddedCmsBlock';
 import HomeNews from '../../pages/university/HomeNewsSection';
 
-const pickLocalized = (value, language) => {
-  if (!value || typeof value !== 'object' || Array.isArray(value)) {
-    return value || '';
-  }
-
-  const baseLang = `${language || 'ru'}`.toLowerCase().split('-')[0];
-  const normalized = baseLang === 'ky' ? 'kg' : baseLang;
-  return value[normalized] || value.ru || value.en || value.kg || '';
+const UI_COPY = {
+  ru: {
+    loading: 'Загрузка контента...',
+    unavailable: 'Контент временно недоступен.',
+  },
+  en: {
+    loading: 'Loading content...',
+    unavailable: 'Content is temporarily unavailable.',
+  },
+  kg: {
+    loading: 'Маалымат жүктөлүүдө...',
+    unavailable: 'Маалымат убактылуу жеткиликсиз.',
+  },
 };
 
 const HomeCmsPage = ({ isSplashVisible = false }) => {
   const { i18n } = useTranslation();
-  const { data, isLoading, isError } = usePageContent('/', i18n.language, {
+  const language = normalizeCmsLanguage(i18n.language);
+  const copy = UI_COPY[language] || UI_COPY.ru;
+  const { data, isLoading, isError } = usePageContent('/', language, {
     retry: false,
   });
 
@@ -27,23 +35,24 @@ const HomeCmsPage = ({ isSplashVisible = false }) => {
     return (
       <div className="flex min-h-[70vh] items-center justify-center">
         <div className="rounded-2xl bg-white px-6 py-4 text-slate-600 shadow-lg ring-1 ring-slate-200/70">
-          Loading content...
+          {copy.loading}
         </div>
       </div>
     );
   }
 
-  if (isError || !data || data.data?.render_mode !== 'homepage') {
+  const homeData = localizeCmsValue(data?.data || {}, language);
+
+  if (isError || !data || homeData.render_mode !== 'homepage') {
     return (
       <div className="flex min-h-[70vh] items-center justify-center px-4">
         <div className="rounded-3xl bg-white px-8 py-6 text-center text-slate-600 shadow-lg ring-1 ring-slate-200/70">
-          Content is temporarily unavailable.
+          {copy.unavailable}
         </div>
       </div>
     );
   }
 
-  const homeData = data.data || {};
   const partners = homeData.partners || {};
   const video = homeData.video || {};
   const galleryPagePath = homeData.gallery_page_path || '/MaterialBaseGallery';
@@ -70,15 +79,15 @@ const HomeCmsPage = ({ isSplashVisible = false }) => {
         {homeData.show_news !== false ? <HomeNews /> : null}
         {homeData.show_partners !== false ? (
           <PartnersSection
-            badge={pickLocalized(partners.badge, i18n.language)}
-            title={pickLocalized(partners.title, i18n.language)}
-            subtitle={pickLocalized(partners.subtitle, i18n.language)}
+            badge={partners.badge || ''}
+            title={partners.title || ''}
+            subtitle={partners.subtitle || ''}
           />
         ) : null}
         {homeData.show_video !== false ? (
           <VideoSection
             videoUrl={homeData.video_url}
-            platformLabel={pickLocalized(video.platform_label, i18n.language)}
+            platformLabel={video.platform_label || ''}
           />
         ) : null}
         {galleryPagePath ? <EmbeddedCmsBlock path={galleryPagePath} /> : null}

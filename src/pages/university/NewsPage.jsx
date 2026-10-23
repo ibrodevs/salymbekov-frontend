@@ -140,6 +140,7 @@ const NewsPage = () => {
   });
 
   const prefetchNews = (item) => {
+    void import('./NewsDetail');
     queryClient.prefetchQuery({
       queryKey: newsKeys.detail(item.id, i18n.language),
       queryFn: fetchNewsById,
@@ -148,8 +149,17 @@ const NewsPage = () => {
   };
 
   const openNews = (item) => {
+    const detailKey = newsKeys.detail(item.id, i18n.language);
+    const preview = makePreview(item);
+    const cachedDetail = queryClient.getQueryData(detailKey);
+
+    if (!cachedDetail?.fullText && !cachedDetail?.full_description) {
+      queryClient.setQueryData(detailKey, preview, { updatedAt: 0 });
+      queryClient.invalidateQueries({ queryKey: detailKey, exact: true, refetchType: 'none' });
+    }
+
     navigate(`/press/news/${item.id}`, {
-      state: { newsPreview: makePreview(item) },
+      state: { newsPreview: preview },
     });
   };
 
@@ -166,6 +176,7 @@ const NewsPage = () => {
       role="link"
       tabIndex={0}
       onClick={() => openNews(item)}
+      onPointerDown={() => prefetchNews(item)}
       onMouseEnter={() => prefetchNews(item)}
       onFocus={() => prefetchNews(item)}
       onKeyDown={(event) => handleCardKeyDown(event, item)}

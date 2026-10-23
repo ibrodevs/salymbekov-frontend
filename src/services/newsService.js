@@ -51,6 +51,19 @@ const buildNewsUrl = ({ language = 'ru', page = 1, category = 'all', ordering = 
   return `/presscentre/news/?${params.toString()}`;
 };
 
+export const newsPageKey = ({
+  language = 'ru',
+  page = 1,
+  category = 'all',
+  ordering = '-created_at',
+} = {}) => [
+  'salymbekov-news-page',
+  normalizeLanguage(language),
+  String(category || 'all'),
+  ordering,
+  Number(page),
+];
+
 export const fetchNewsPage = async ({
   language = 'ru',
   page = 1,

@@ -5,7 +5,6 @@ import Hero from './Hero';
 import PartnersSection from './PartnersSection';
 import VideoSection from './VideoSection';
 import EmbeddedCmsBlock from './EmbeddedCmsBlock';
-import HomeFounderSection from './HomeFounderSection';
 import HomeNews from '../../pages/university/HomeNewsSection';
 
 const pickLocalized = (value, language) => {
@@ -47,7 +46,6 @@ const HomeCmsPage = ({ isSplashVisible = false }) => {
   const homeData = data.data || {};
   const partners = homeData.partners || {};
   const video = homeData.video || {};
-  const founderPagePath = homeData.founder_page_path || '/founderMessege';
   const galleryPagePath = homeData.gallery_page_path || '/MaterialBaseGallery';
 
   return (
@@ -69,7 +67,6 @@ const HomeCmsPage = ({ isSplashVisible = false }) => {
 
       <div className="relative z-10">
         {homeData.show_hero !== false ? <Hero isSplashVisible={isSplashVisible} /> : null}
-        {homeData.show_founder !== false ? <HomeFounderSection path={founderPagePath} /> : null}
         {homeData.show_news !== false ? <HomeNews /> : null}
         {homeData.show_partners !== false ? (
           <PartnersSection

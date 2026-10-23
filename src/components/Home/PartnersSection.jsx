@@ -120,7 +120,9 @@ const PartnersSection = ({ badge, title, subtitle }) => {
       });
     });
 
-    return Array.from(merged.values()).filter((partner) => partner.logo || partner.name);
+    return Array.from(merged.values()).filter((partner) => (
+      partner.logo || resolveLocalPartnerLogo(partner.name)
+    ));
   }, [apiPartners]);
 
   const copy = COPY[languageKey(i18n.language)];
@@ -162,34 +164,25 @@ const PartnersSection = ({ badge, title, subtitle }) => {
               const failed = Boolean(failedLogos[company.id]);
               const logoSrc = failed ? localLogo : (company.logo || localLogo);
 
+              if (!logoSrc) return null;
+
               return (
                 <div
                   key={`${company.id}-${index}`}
-                  className="group flex h-48 min-w-[250px] flex-col items-center justify-center rounded-3xl border border-slate-200 bg-white px-7 py-6 text-center shadow-md transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl"
+                  className="group flex h-40 min-w-[250px] items-center justify-center rounded-3xl border border-slate-200 bg-white px-7 py-5 shadow-md transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl"
                 >
-                  {logoSrc ? (
-                    <img
-                      src={logoSrc}
-                      alt={company.name || ''}
-                      loading="eager"
-                      onError={() => {
-                        if (!failed && localLogo && logoSrc !== localLogo) {
-                          setFailedLogos((prev) => ({ ...prev, [company.id]: true }));
-                        }
-                      }}
-                      className="max-h-[112px] max-w-[195px] object-contain object-center transition-transform duration-300 group-hover:scale-[1.03]"
-                    />
-                  ) : (
-                    <div className="flex h-24 w-full items-center justify-center rounded-2xl bg-slate-50 px-4">
-                      <span className="text-base font-semibold leading-snug text-slate-700">{company.name}</span>
-                    </div>
-                  )}
-
-                  {company.name ? (
-                    <span className="mt-4 line-clamp-2 max-w-[210px] text-sm font-semibold leading-5 text-slate-700">
-                      {company.name}
-                    </span>
-                  ) : null}
+                  <img
+                    src={logoSrc}
+                    alt={company.name || 'Partner logo'}
+                    loading="eager"
+                    decoding="async"
+                    onError={() => {
+                      if (!failed && localLogo && logoSrc !== localLogo) {
+                        setFailedLogos((prev) => ({ ...prev, [company.id]: true }));
+                      }
+                    }}
+                    className="max-h-[118px] max-w-[205px] object-contain object-center transition-transform duration-300 group-hover:scale-[1.03]"
+                  />
                 </div>
               );
             })}

@@ -2,96 +2,173 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
-import { fetchNews as fetchSalymbekovNews, getNewsCategories } from '../../services/newsService';
+import { useInfiniteQuery, useQuery, useQueryClient } from '@tanstack/react-query';
+import {
+  fetchNewsCategories,
+  fetchNewsPage,
+  newsPageKey,
+} from '../../services/newsService';
+import { fetchNewsById, newsKeys } from '../../queries/newsQueries';
 
-const PAGE_SIZE = 6;
+const DISPLAY_BATCH = 6;
+
+const SORT_TO_ORDERING = {
+  date_desc: '-created_at',
+  date_asc: 'created_at',
+  title_asc: 'title_ru',
+  title_desc: '-title_ru',
+};
 
 const NewsPage = () => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const loadMoreRef = useRef(null);
   const [activeCategory, setActiveCategory] = useState('all');
   const [sortType, setSortType] = useState('date_desc');
   const [failedImages, setFailedImages] = useState({});
-  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const [visibleCount, setVisibleCount] = useState(DISPLAY_BATCH);
+
+  const ordering = SORT_TO_ORDERING[sortType] || '-created_at';
+  const firstPageArgs = useMemo(() => ({
+    language: i18n.language,
+    page: 1,
+    category: activeCategory,
+    ordering,
+  }), [activeCategory, i18n.language, ordering]);
+
+  const cachedHomepagePage = activeCategory === 'all' && ordering === '-created_at'
+    ? queryClient.getQueryData(newsPageKey(firstPageArgs))
+    : undefined;
 
   const {
-    data: newsData = [],
+    data,
     isLoading,
     error,
-  } = useQuery({
-    queryKey: ['salymbekov-news', 'all', i18n.language],
-    queryFn: () => fetchSalymbekovNews({ language: i18n.language }),
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useInfiniteQuery({
+    queryKey: ['salymbekov-news-feed', i18n.language, activeCategory, ordering],
+    queryFn: ({ pageParam }) => fetchNewsPage({
+      language: i18n.language,
+      page: pageParam,
+      category: activeCategory,
+      ordering,
+    }),
+    initialPageParam: 1,
+    getNextPageParam: (lastPage, pages) => (lastPage?.next ? pages.length + 1 : undefined),
+    initialData: cachedHomepagePage
+      ? { pages: [cachedHomepagePage], pageParams: [1] }
+      : undefined,
     staleTime: 5 * 60 * 1000,
+    gcTime: 30 * 60 * 1000,
+    refetchOnWindowFocus: false,
+  });
+
+  const { data: categoryItems = [] } = useQuery({
+    queryKey: ['salymbekov-news-categories', i18n.language],
+    queryFn: () => fetchNewsCategories(i18n.language),
+    staleTime: 30 * 60 * 1000,
+    gcTime: 60 * 60 * 1000,
+    refetchOnWindowFocus: false,
   });
 
   const categories = useMemo(() => [
     { id: 'all', name: t('news.categories.all', 'Все категории') },
-    ...getNewsCategories(newsData).map((category) => ({ id: category, name: category })),
-  ], [newsData, t]);
+    ...categoryItems,
+  ], [categoryItems, t]);
 
-  const filteredNews = useMemo(() => {
-    const filtered = activeCategory === 'all'
-      ? newsData
-      : newsData.filter((item) => item.categories?.includes(activeCategory));
-
-    return [...filtered].sort((a, b) => {
-      if (sortType === 'date_asc') return new Date(a.dateIso || 0) - new Date(b.dateIso || 0);
-      if (sortType === 'title_asc') return (a.title || '').localeCompare(b.title || '');
-      if (sortType === 'title_desc') return (b.title || '').localeCompare(a.title || '');
-      return new Date(b.dateIso || 0) - new Date(a.dateIso || 0);
-    });
-  }, [activeCategory, newsData, sortType]);
-
-  const visibleNews = useMemo(
-    () => filteredNews.slice(0, visibleCount),
-    [filteredNews, visibleCount],
+  const loadedNews = useMemo(
+    () => data?.pages?.flatMap((page) => page.items || []) || [],
+    [data],
   );
 
-  const hasMore = visibleCount < filteredNews.length;
+  const visibleNews = useMemo(
+    () => loadedNews.slice(0, visibleCount),
+    [loadedNews, visibleCount],
+  );
+
+  const totalCount = data?.pages?.[0]?.count ?? loadedNews.length;
+  const canShowMore = visibleCount < loadedNews.length || Boolean(hasNextPage);
 
   useEffect(() => {
-    setVisibleCount(PAGE_SIZE);
+    setVisibleCount(DISPLAY_BATCH);
+    setFailedImages({});
   }, [activeCategory, sortType, i18n.language]);
 
   useEffect(() => {
     const target = loadMoreRef.current;
-    if (!target || !hasMore) return undefined;
+    if (!target || !canShowMore || isFetchingNextPage) return undefined;
 
     const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0]?.isIntersecting) {
-          setVisibleCount((current) => Math.min(current + PAGE_SIZE, filteredNews.length));
+      async (entries) => {
+        if (!entries[0]?.isIntersecting) return;
+
+        const desiredCount = visibleCount + DISPLAY_BATCH;
+
+        if (desiredCount > loadedNews.length && hasNextPage) {
+          await fetchNextPage();
         }
+
+        setVisibleCount(desiredCount);
       },
       {
         root: null,
-        rootMargin: '500px 0px',
+        rootMargin: '600px 0px',
         threshold: 0.01,
       },
     );
 
     observer.observe(target);
     return () => observer.disconnect();
-  }, [filteredNews.length, hasMore]);
+  }, [canShowMore, fetchNextPage, hasNextPage, isFetchingNextPage, loadedNews.length, visibleCount]);
 
-  const openNews = (id) => navigate(`/press/news/${id}`);
+  const makePreview = (item) => ({
+    id: item.id,
+    title: item.title,
+    image: item.image,
+    previewImage: item.image,
+    gallery: item.gallery || [],
+    description: item.excerpt || '',
+    summary: item.excerpt || '',
+    full_description: '',
+    fullText: '',
+    created_at: item.dateIso,
+    category: item.categoryId,
+    category_name: item.categories?.[0] || t('newsDetail.defaultCategory', 'Новости'),
+  });
 
-  const handleCardKeyDown = (event, id) => {
+  const prefetchNews = (item) => {
+    queryClient.prefetchQuery({
+      queryKey: newsKeys.detail(item.id, i18n.language),
+      queryFn: fetchNewsById,
+      staleTime: 5 * 60 * 1000,
+    });
+  };
+
+  const openNews = (item) => {
+    navigate(`/press/news/${item.id}`, {
+      state: { newsPreview: makePreview(item) },
+    });
+  };
+
+  const handleCardKeyDown = (event, item) => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
-      openNews(id);
+      openNews(item);
     }
   };
 
-  const renderCard = (item) => (
+  const renderCard = (item, index) => (
     <article
       key={item.id}
       role="link"
       tabIndex={0}
-      onClick={() => openNews(item.id)}
-      onKeyDown={(event) => handleCardKeyDown(event, item.id)}
+      onClick={() => openNews(item)}
+      onMouseEnter={() => prefetchNews(item)}
+      onFocus={() => prefetchNews(item)}
+      onKeyDown={(event) => handleCardKeyDown(event, item)}
       className="group cursor-pointer overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-md transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
     >
       <div className="relative flex aspect-[4/3] items-center justify-center bg-slate-100 p-3">
@@ -99,7 +176,9 @@ const NewsPage = () => {
           <img
             src={item.image}
             alt={item.title || ''}
-            loading="lazy"
+            loading={index < DISPLAY_BATCH ? 'eager' : 'lazy'}
+            fetchPriority={index < 3 ? 'high' : 'auto'}
+            decoding="async"
             onError={() => setFailedImages((prev) => ({ ...prev, [item.id]: true }))}
             className="h-full w-full object-contain object-center transition-transform duration-300 group-hover:scale-[1.015]"
           />
@@ -144,18 +223,32 @@ const NewsPage = () => {
     </article>
   );
 
-  if (isLoading) {
+  if (isLoading && loadedNews.length === 0) {
     return (
-      <div className="flex min-h-[600px] items-center justify-center">
-        <div className="text-center">
-          <div className="mx-auto mb-4 h-14 w-14 animate-spin rounded-full border-4 border-blue-600 border-t-transparent" />
-          <p className="text-lg font-medium text-blue-700">{t('press.loading', 'Загрузка новостей...')}</p>
+      <main className="min-h-screen bg-slate-50">
+        <section className="bg-gradient-to-br from-[#023E8A] via-[#0353A4] to-[#0077B6] px-4 py-16 text-center text-white md:py-20">
+          <h1 className="text-4xl font-bold md:text-6xl">{t('press.title', 'Новости университета')}</h1>
+          <p className="mx-auto mt-5 max-w-3xl text-lg text-blue-100 md:text-xl">
+            {t('press.subtitle', 'Актуальные новости, события и достижения университета')}
+          </p>
+        </section>
+        <div className="mx-auto grid max-w-7xl gap-6 px-4 py-12 sm:px-6 md:grid-cols-2 lg:px-8 xl:grid-cols-3">
+          {Array.from({ length: DISPLAY_BATCH }).map((_, index) => (
+            <div key={index} className="animate-pulse overflow-hidden rounded-3xl border border-slate-200 bg-white">
+              <div className="aspect-[4/3] bg-slate-200" />
+              <div className="space-y-4 p-6">
+                <div className="h-4 w-1/3 rounded bg-slate-200" />
+                <div className="h-7 rounded bg-slate-200" />
+                <div className="h-4 rounded bg-slate-200" />
+              </div>
+            </div>
+          ))}
         </div>
-      </div>
+      </main>
     );
   }
 
-  if (error) {
+  if (error && loadedNews.length === 0) {
     return (
       <div className="flex min-h-[600px] items-center justify-center px-4">
         <div className="max-w-md text-center">
@@ -172,7 +265,7 @@ const NewsPage = () => {
   return (
     <main className="min-h-screen bg-slate-50">
       <section className="bg-gradient-to-br from-[#023E8A] via-[#0353A4] to-[#0077B6] px-4 py-16 text-center text-white md:py-20">
-        <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-4xl font-bold md:text-6xl">
+        <motion.h1 initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25 }} className="text-4xl font-bold md:text-6xl">
           {t('press.title', 'Новости университета')}
         </motion.h1>
         <p className="mx-auto mt-5 max-w-3xl text-lg text-blue-100 md:text-xl">
@@ -217,13 +310,13 @@ const NewsPage = () => {
             </h2>
           </div>
           <span className="text-sm text-slate-500">
-            {visibleNews.length} / {filteredNews.length}
+            {Math.min(visibleNews.length, totalCount)} / {totalCount}
           </span>
         </div>
 
         {visibleNews.length > 0 ? (
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {visibleNews.map((item) => renderCard(item))}
+            {visibleNews.map((item, index) => renderCard(item, index))}
           </div>
         ) : (
           <div className="rounded-3xl bg-white p-10 text-center text-slate-500 shadow-sm ring-1 ring-slate-200">
@@ -231,14 +324,16 @@ const NewsPage = () => {
           </div>
         )}
 
-        {hasMore ? (
+        {canShowMore ? (
           <div ref={loadMoreRef} className="flex min-h-28 items-center justify-center py-8" aria-live="polite">
-            <div className="flex items-center gap-3 text-sm font-medium text-slate-500">
-              <span className="h-5 w-5 animate-spin rounded-full border-2 border-blue-600 border-t-transparent" />
-              {t('press.loadingMore', 'Загружаем следующие новости...')}
-            </div>
+            {isFetchingNextPage ? (
+              <div className="flex items-center gap-3 text-sm font-medium text-slate-500">
+                <span className="h-5 w-5 animate-spin rounded-full border-2 border-blue-600 border-t-transparent" />
+                {t('press.loadingMore', 'Загружаем следующие новости...')}
+              </div>
+            ) : null}
           </div>
-        ) : visibleNews.length > PAGE_SIZE ? (
+        ) : visibleNews.length > DISPLAY_BATCH ? (
           <p className="py-10 text-center text-sm font-medium text-slate-400">
             {t('press.allLoaded', 'Все новости загружены')}
           </p>

@@ -2,13 +2,15 @@ import React, { useMemo, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { fetchNewsPage, newsPageKey } from '../../services/newsService';
+import { fetchNewsById, newsKeys } from '../../queries/newsQueries';
 
 const NewsAndEventsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, threshold: 0.1 });
   const { t, i18n } = useTranslation();
+  const queryClient = useQueryClient();
   const [failedImages, setFailedImages] = useState({});
 
   const queryArgs = useMemo(() => ({
@@ -35,12 +37,53 @@ const NewsAndEventsSection = () => {
       title: item.title,
       description: item.excerpt || '',
       date: item.date,
+      dateIso: item.dateIso,
       category: item.categories?.[0] || 'news',
+      categoryId: item.categoryId,
       categoryName: item.categories?.[0] || t('news.categories.general', 'Новости'),
       image: item.image || null,
+      gallery: item.gallery || [],
       path: `/press/news/${item.id}`,
     }))
   ), [firstPage, t]);
+
+  const prefetchDetail = (newsItem) => {
+    void import('./NewsDetail');
+    queryClient.prefetchQuery({
+      queryKey: newsKeys.detail(newsItem.id, i18n.language),
+      queryFn: fetchNewsById,
+      staleTime: 5 * 60 * 1000,
+    });
+  };
+
+  const cachePreview = (newsItem) => {
+    const detailKey = newsKeys.detail(newsItem.id, i18n.language);
+    const cachedDetail = queryClient.getQueryData(detailKey);
+
+    if (cachedDetail?.fullText || cachedDetail?.full_description) return;
+
+    const preview = {
+      id: newsItem.id,
+      title: newsItem.title,
+      image: newsItem.image,
+      previewImage: newsItem.image,
+      gallery: newsItem.gallery,
+      description: newsItem.description,
+      summary: newsItem.description,
+      full_description: '',
+      fullText: '',
+      created_at: newsItem.dateIso,
+      category: newsItem.categoryId,
+      category_name: newsItem.categoryName,
+    };
+
+    queryClient.setQueryData(detailKey, preview, { updatedAt: 0 });
+    queryClient.invalidateQueries({ queryKey: detailKey, exact: true, refetchType: 'none' });
+  };
+
+  const prefetchNewsPage = () => {
+    void import('./NewsPage');
+  };
 
   return (
     <section ref={ref} className="relative overflow-hidden py-20">
@@ -93,7 +136,14 @@ const NewsAndEventsSection = () => {
                 key={newsItem.id}
                 className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
               >
-                <Link to={newsItem.path} className="block h-full hover:no-underline">
+                <Link
+                  to={newsItem.path}
+                  onMouseEnter={() => prefetchDetail(newsItem)}
+                  onFocus={() => prefetchDetail(newsItem)}
+                  onPointerDown={() => prefetchDetail(newsItem)}
+                  onClick={() => cachePreview(newsItem)}
+                  className="block h-full hover:no-underline"
+                >
                   <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden bg-slate-100 p-3">
                     {newsItem.image && !failedImages[newsItem.id] ? (
                       <img
@@ -153,6 +203,9 @@ const NewsAndEventsSection = () => {
         <div className="text-center">
           <Link
             to="/press/news"
+            onMouseEnter={prefetchNewsPage}
+            onFocus={prefetchNewsPage}
+            onPointerDown={prefetchNewsPage}
             className="inline-flex items-center space-x-3 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 px-8 py-4 font-semibold text-white shadow-lg transition-all duration-300 hover:from-blue-700 hover:to-cyan-700 hover:shadow-xl"
           >
             <span>{t('news.viewAll', 'Все новости')}</span>

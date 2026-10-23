@@ -1,27 +1,5 @@
 import { apiRequest, getDateLocale, normalizeLanguage } from '../api';
 
-const fetchAllNewsPages = async (language = 'ru', limit = 100) => {
-  const items = [];
-  let nextUrl = `/presscentre/news/?lang=${normalizeLanguage(language)}&limit=${limit}`;
-
-  while (nextUrl) {
-    const response = await apiRequest(nextUrl);
-    const pageItems = response.results || response || [];
-    items.push(...pageItems);
-
-    if (!response.next) break;
-
-    if (response.next.startsWith('http')) {
-      const url = new URL(response.next);
-      nextUrl = `${url.pathname}${url.search}`.replace(/^\/api/, '');
-    } else {
-      nextUrl = response.next.replace(/^\/api/, '');
-    }
-  }
-
-  return items;
-};
-
 const formatDate = (dateString, language) => {
   if (!dateString) return '';
   return new Date(dateString).toLocaleDateString(getDateLocale(language), {
@@ -35,8 +13,14 @@ const getNewsImage = (item) => (
   item.image || item.gallery?.find((photo) => photo?.image)?.image || null
 );
 
-const transformNewsItem = (item, language) => {
+export const transformNewsItem = (item, language) => {
   const gallery = item.gallery || [];
+  const categoryId = typeof item.category === 'object'
+    ? item.category?.id
+    : (item.category || item.category_id || null);
+  const categoryName = typeof item.category === 'object'
+    ? (item.category?.title || item.category?.name || '')
+    : '';
 
   return {
     id: item.id,
@@ -44,7 +28,8 @@ const transformNewsItem = (item, language) => {
     excerpt: item.short_description || '',
     date: formatDate(item.published_at || item.created_at, language),
     dateIso: item.published_at || item.created_at,
-    categories: item.category?.title ? [item.category.title] : [],
+    categories: categoryName ? [categoryName] : [],
+    categoryId: categoryId ? String(categoryId) : null,
     image: getNewsImage(item),
     gallery,
     sourceUrl: item.source_url || '',
@@ -52,13 +37,70 @@ const transformNewsItem = (item, language) => {
   };
 };
 
-export const fetchNews = async ({ limit, language = 'ru' } = {}) => {
-  const items = await fetchAllNewsPages(language);
-  const sortedItems = items
-    .map((item) => transformNewsItem(item, language))
-    .sort((a, b) => new Date(b.dateIso || 0) - new Date(a.dateIso || 0));
+const buildNewsUrl = ({ language = 'ru', page = 1, category = 'all', ordering = '-created_at' } = {}) => {
+  const params = new URLSearchParams({
+    lang: normalizeLanguage(language),
+    page: String(page),
+    ordering,
+  });
 
-  return limit ? sortedItems.slice(0, limit) : sortedItems;
+  if (category && category !== 'all') {
+    params.set('category', String(category));
+  }
+
+  return `/presscentre/news/?${params.toString()}`;
+};
+
+export const fetchNewsPage = async ({
+  language = 'ru',
+  page = 1,
+  category = 'all',
+  ordering = '-created_at',
+} = {}) => {
+  const response = await apiRequest(buildNewsUrl({ language, page, category, ordering }));
+  const rawItems = Array.isArray(response?.results)
+    ? response.results
+    : Array.isArray(response)
+      ? response
+      : [];
+
+  const items = rawItems
+    .map((item) => transformNewsItem(item, language))
+    .filter((item) => item?.id);
+
+  return {
+    items,
+    count: Number(response?.count ?? items.length),
+    next: response?.next || null,
+    previous: response?.previous || null,
+    page,
+  };
+};
+
+// Fast helper for homepage: fetches only the first API page instead of walking
+// through every page and slicing afterwards.
+export const fetchNews = async ({ limit = 10, language = 'ru' } = {}) => {
+  const firstPage = await fetchNewsPage({
+    language,
+    page: 1,
+    ordering: '-created_at',
+  });
+
+  return firstPage.items.slice(0, limit);
+};
+
+export const fetchNewsCategories = async (language = 'ru') => {
+  const response = await apiRequest(`/presscentre/categories/?lang=${normalizeLanguage(language)}&ordering=id`);
+  const rawItems = Array.isArray(response?.results)
+    ? response.results
+    : Array.isArray(response)
+      ? response
+      : [];
+
+  return rawItems.map((category) => ({
+    id: String(category.id),
+    name: category.title || category.name || '',
+  })).filter((category) => category.id && category.name);
 };
 
 export const getNewsCategories = (items = []) => {

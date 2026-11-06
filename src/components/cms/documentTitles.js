@@ -1,9 +1,9 @@
 // Document labels are presentation data. Storage filenames and URLs are NOT titles.
-// Keep editorial CMS titles when they match the selected language; otherwise use a
-// known localized filename, a safely translated phrase, or a neutral localized label.
+// Keep editorial CMS titles and original filenames whenever possible; otherwise
+// derive a distinct, readable label from the stored file path.
 const FILE_EXT = /\.(?:pdf|docx?|xlsx?|pptx?|odt|ods|odp|txt|rtf|zip|rar)(?:$|[?#])/i;
 const STORAGE_LABEL = /^(?:https?:\/\/|\/\/|www\.|\/|\.{1,2}\/)/i;
-const GENERIC_LABEL = /^(?:pdf|file|document|documents|документ|документы|скачать|просмотреть|открыть документ|download(?:\s+(?:file|document|pdf))?|view(?:\s+(?:file|document|pdf))?|файл|открыть|смотреть|подробнее|жүктөп алуу|көрүү)$/i;
+const GENERIC_LABEL = /^(?:pdf|files?|documents?|документы?|файл(?:ы)?|(?:скачать|просмотреть|посмотреть|открыть|смотреть|подробнее)(?:\s+(?:документ|файл|pdf))?|(?:download|view|open)(?:\s+(?:document|file|pdf))?|жүктөп алуу|көрүү)$/i;
 
 const UI_LABELS = { ru: 'Документ', en: 'Document', kg: 'Документ' };
 const KNOWN_TITLES = {
@@ -243,8 +243,8 @@ export const getCmsDocumentTitle = (item, language = 'ru', fallbackTitle = '') =
   const file = item || {};
   const url = file.url || file.file_url || file.file?.url || '';
   const candidates = [
-    file['title_' + lang],
-    file['name_' + lang],
+    file['title_' + lang], file['name_' + lang],
+    ...(lang === 'kg' ? [file.title_ky, file.name_ky] : []),
     file.title, file.document_title, file.display_title,
     file.label, file.name, file.display_name,
     file.original_filename, file.original_name,

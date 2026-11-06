@@ -3,7 +3,7 @@
 // known localized filename, a safely translated phrase, or a neutral localized label.
 const FILE_EXT = /\.(?:pdf|docx?|xlsx?|pptx?|odt|ods|odp|txt|rtf|zip|rar)(?:$|[?#])/i;
 const STORAGE_LABEL = /^(?:https?:\/\/|\/\/|www\.|\/|\.{1,2}\/)/i;
-const GENERIC_LABEL = /^(?:pdf|file|document|documents|документ|документы|скачать|просмотреть|открыть документ|download(?:\s+(?:file|document|pdf))?|view(?:\s+(?:file|document|pdf))?|файл|жүктөп алуу|көрүү)$/i;
+const GENERIC_LABEL = /^(?:pdf|file|document|documents|документ|документы|скачать|просмотреть|открыть документ|download(?:\s+(?:file|document|pdf))?|view(?:\s+(?:file|document|pdf))?|файл|открыть|смотреть|подробнее|жүктөп алуу|көрүү)$/i;
 
 const UI_LABELS = { ru: 'Документ', en: 'Document', kg: 'Документ' };
 const KNOWN_TITLES = {
@@ -155,9 +155,6 @@ const isTechnicalLabel = (label, url) => {
   return !value || value === String(url || '').trim()
     || STORAGE_LABEL.test(value) || FILE_EXT.test(value) || GENERIC_LABEL.test(value);
 };
-
-const isCyrillic = (value) => /[\u0400-\u052f]/u.test(value);
-const isLatin = (value) => /[a-z]/i.test(value);
 
 const humanizeName = (name, language) => {
   const stem = getFilenameStem(name);

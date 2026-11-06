@@ -34,6 +34,25 @@ export const getSupplementaryCmsImages = ({
   const heroKey = imageIdentity(heroImage);
   if (heroKey) seen.add(heroKey);
 
+  // An explicitly requested gallery still must not repeat inline images.
+  // Browser HTML parsing handles both absolute and relative CMS image URLs.
+  if (typeof DOMParser !== 'undefined' && html) {
+    const parsed = new DOMParser().parseFromString(html, 'text/html');
+    parsed.querySelectorAll('img, source').forEach((element) => {
+      ['src', 'data-src', 'srcset'].forEach((attribute) => {
+        const value = element.getAttribute(attribute);
+        if (!value) return;
+        const urls = attribute === 'srcset'
+          ? value.split(',').map((entry) => entry.trim().split(/\s+/)[0])
+          : [value];
+        urls.forEach((url) => {
+          const key = imageIdentity(url);
+          if (key) seen.add(key);
+        });
+      });
+    });
+  }
+
   // We also avoid duplicates when page.media contains the same upload twice.
   return (Array.isArray(media) ? media : []).filter((item) => {
     if (item?.media_type !== 'image' || !item?.url || item?.is_hero) return false;

@@ -170,13 +170,17 @@ export const getDocumentTitle = (title, url, language = 'ru', fallbackTitle = ''
     return provided;
   }
 
-  // For English, keep editorial English titles, but not transliterated slugs.
+  // For English, keep editorial English titles, but translate common
+  // Russian transliterations before accepting them as readable English.
   if (lang === 'en' && provided && !isTechnicalLabel(provided, url)
     && !/[-_]/.test(provided) && !isCyrillic(provided)) {
-    return provided;
+    return readableLocalizedTitle(provided, lang) || provided;
   }
 
-  const translated = readableLocalizedTitle(provided, lang)
+  // "Download", "PDF" and "Document" describe an action or file type,
+  // not the actual document. Look at its filename instead.
+  const translated = (!isTechnicalLabel(provided, url)
+    ? readableLocalizedTitle(provided, lang) : '')
     || readableLocalizedTitle(getFilenameStem(url), lang);
   if (translated) return translated;
 

@@ -39,7 +39,7 @@ const onlyFileLinks = (node) => {
   return textOf(clone).replace(/[–—\-:|,.]/g, '').trim() === '';
 };
 
-const toDocs = (node, fallbackTitle, language) =>
+const toDocs = (node, language) =>
   [...node.querySelectorAll('a')].map((a) => {
     const label = textOf(a);
     return {
@@ -93,7 +93,7 @@ const parseBody = (html, language) => {
     if (['a', 'strong', 'b', 'em', 'i', 'span', 'br', 'sup', 'sub', 'u'].includes(tag)) {
       if (tag === 'a' && isFileLink(node)) {
         flushText();
-        push({ type: 'docs', items: toDocs(wrap(doc, node), lastHeading, language) });
+        push({ type: 'docs', items: toDocs(wrap(doc, node), language) });
       } else {
         pendingText.push(node.outerHTML);
       }
@@ -150,7 +150,7 @@ const parseBody = (html, language) => {
     }
 
     if (onlyFileLinks(node)) {
-      push({ type: 'docs', items: toDocs(node, lastHeading, language) });
+      push({ type: 'docs', items: toDocs(node, language) });
       return;
     }
 

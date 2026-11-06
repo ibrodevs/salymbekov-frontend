@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { getDocumentTitle } from '../src/components/cms/documentTitles.js';
+import { getDocumentTitle, getCmsDocumentTitle } from '../src/components/cms/documentTitles.js';
 import { getSupplementaryCmsImages } from '../src/components/cms/cmsMedia.js';
 
 const structureUrl = 'https://bucketeer-4222f239-dae2-4018-b0a7-a18d93b7864a.s3.amazonaws.com/public/cms/pages/documents/struktura-universiteta.pdf';
@@ -29,11 +29,43 @@ test('respect a proper CMS title instead of the filename', () => {
   assert.equal(getDocumentTitle('Официальный устав', structureUrl, 'ru'), 'Официальный устав');
 });
 
-test('unknown romanized filenames use neutral labels instead of gibberish', () => {
+test('unknown filenames stay recognizable and unique instead of all displaying Документ', () => {
   assert.equal(
     getDocumentTitle('', 'https://example.com/something-untranslated-9382.pdf', 'ru'),
-    'Документ',
+    'Something untranslated 9382',
   );
+  assert.equal(getDocumentTitle('Документ', 'https://example.com/upravlenie-2026.pdf', 'ru'), 'Управление 2026');
+  assert.notEqual(
+    getDocumentTitle('Документ', 'https://example.com/document-123.pdf', 'ru'),
+    getDocumentTitle('Документ', 'https://example.com/document-456.pdf', 'ru'),
+  );
+});
+
+test('CMS original filename and localized title override generic document labels', () => {
+  const url = 'https://example.com/storage/file_928419.pdf';
+  assert.equal(getCmsDocumentTitle({
+    title: 'Документ', original_filename: 'Правила_внутреннего_распорядка.pdf', url,
+  }, 'ru'), 'Правила внутреннего распорядка');
+  assert.equal(getCmsDocumentTitle({
+    title: 'Document', title_ru: 'Положение об учёном совете', url,
+  }, 'ru'), 'Положение об учёном совете');
+  assert.equal(getCmsDocumentTitle({
+    title: 'Document', name: 'Устав образовательной организации', url,
+  }, 'ru'), 'Устав образовательной организации');
+});
+
+test('original uploaded filenames and explicit titles are used in preference to S3 keys', () => {
+  const url = 'https://example.com/1234-5678-blob.pdf';
+  assert.equal(getDocumentTitle('Годовой отчёт 2025', url, 'ru'), 'Годовой отчёт 2025');
+  assert.equal(getDocumentTitle('PDF', url, 'ru', 'Лицензия_на_деятельность.pdf'), 'Лицензия на деятельность');
+});
+
+test('different filenames yield different visible names even when CMS stores only a URL', () => {
+  const title1 = getDocumentTitle('', 'https://example.com/docs/license-2025.pdf', 'ru');
+  const title2 = getDocumentTitle('', 'https://example.com/docs/license-2026.pdf', 'ru');
+  assert.notEqual(title1, title2);
+  assert.notEqual(title1, 'Документ');
+  assert.notEqual(title2, 'Документ');
 });
 
 const photo = (url, extra = {}) => ({ media_type: 'image', url, ...extra });

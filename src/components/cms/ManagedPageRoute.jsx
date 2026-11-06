@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { usePageContent } from '../../hooks/usePageContent';
 import LegacyStyledPage from './LegacyStyledPage';
 import { getDocumentTitle, isDocumentUrl, normalizeDocumentAnchorTitles } from './documentTitles';
+import { getSupplementaryCmsImages } from './cmsMedia';
 
 const UI_COPY = {
   ru: {
@@ -149,14 +150,13 @@ const CmsPageRenderer = ({ pageContent, copy, language }) => {
   const documents = (Array.isArray(data.documents) ? data.documents : []).filter(
     (item) => !isEmbedded(item?.url)
   );
-  const gallery = media.filter(
-    (item) =>
-      item?.media_type === 'image' &&
-      item?.url &&
-      !item?.is_hero &&
-      item.url !== heroImage &&
-      !isEmbedded(item.url)
-  );
+  const gallery = getSupplementaryCmsImages({
+    media,
+    body,
+    sections,
+    heroImage,
+    showMediaGallery: data.show_media_gallery === true,
+  });
 
   if (renderMode === 'raw_html') {
     return (

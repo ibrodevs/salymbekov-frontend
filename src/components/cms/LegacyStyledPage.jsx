@@ -5,6 +5,7 @@ import { FaArrowRight, FaDownload, FaEye, FaFilePdf, FaUniversity } from 'react-
 import LEGACY_HEROES from './legacyHeroes';
 import { cmsLanguage, localizeCmsHtml, localizeCmsText } from './cmsLocaleBridge';
 import { getDocumentTitle, isDocumentUrl } from './documentTitles';
+import { getSupplementaryCmsImages } from './cmsMedia';
 
 // Renders CMS text pages using the original visual language while keeping all
 // content sourced from the backend CMS. Localized display text is resolved only
@@ -407,8 +408,12 @@ const LegacyStyledPage = ({ pageContent, language, sanitize }) => {
         ? getDocumentTitle(localizeCmsText(item.title || item.name || '', lang), item.url, lang)
         : localizeCmsText(item.title || '', lang),
     }));
-  const extraImages = (Array.isArray(pageContent?.media) ? pageContent.media : [])
-    .filter((item) => item?.media_type === 'image' && item?.url && !body.includes(item.url))
+  const extraImages = getSupplementaryCmsImages({
+    media: pageContent?.media,
+    body,
+    heroImage: data.hero_image || '',
+    showMediaGallery: data.show_media_gallery === true,
+  })
     .map((item) => ({
       ...item,
       title: localizeCmsText(item.title || '', lang),

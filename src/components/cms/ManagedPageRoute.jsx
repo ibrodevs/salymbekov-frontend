@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { usePageContent } from '../../hooks/usePageContent';
 import LegacyStyledPage from './LegacyStyledPage';
-import { getDocumentTitle, isDocumentUrl, normalizeDocumentAnchorTitles } from './documentTitles';
+import { getCmsDocumentTitle, isDocumentUrl, normalizeDocumentAnchorTitles } from './documentTitles';
 import { getSupplementaryCmsImages } from './cmsMedia';
 
 const UI_COPY = {
@@ -262,7 +262,7 @@ const CmsPageRenderer = ({ pageContent, copy, language }) => {
                       rel="noopener noreferrer"
                       className="block rounded-2xl border border-slate-200 px-5 py-4 text-slate-700 transition hover:border-[#0077B6] hover:bg-slate-50"
                     >
-                      {getDocumentTitle(item.title || item.name, item.url, language)}
+                      {getCmsDocumentTitle(item, language)}
                     </a>
                   ))}
                 </div>
@@ -281,7 +281,7 @@ const CmsPageRenderer = ({ pageContent, copy, language }) => {
                       rel={item.external === false ? undefined : 'noopener noreferrer'}
                       className="block rounded-2xl border border-slate-200 px-5 py-4 text-slate-700 transition hover:border-[#0077B6] hover:bg-slate-50"
                     >
-                      {isDocumentUrl(item.url) ? getDocumentTitle(item.title || item.name, item.url, language) : (item.title || item.url)}
+                      {isDocumentUrl(item.url) ? getCmsDocumentTitle(item, language) : (item.title || item.url)}
                     </a>
                   ))}
                 </div>

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { FaArrowRight, FaDownload, FaEye, FaFilePdf, FaUniversity } from 'react-icons/fa';
 import LEGACY_HEROES from './legacyHeroes';
 import { cmsLanguage, localizeCmsHtml, localizeCmsText } from './cmsLocaleBridge';
-import { getDocumentTitle, isDocumentUrl } from './documentTitles';
+import { getDocumentTitle, getCmsDocumentTitle, isDocumentUrl } from './documentTitles';
 import { getSupplementaryCmsImages } from './cmsMedia';
 
 // Renders CMS text pages using the original visual language while keeping all
@@ -14,7 +14,7 @@ import { getSupplementaryCmsImages } from './cmsMedia';
 const FILE_EXT = /\.(pdf|docx?|xlsx?|pptx?|zip|rar)(?:$|[?#])/i;
 const SCAN = /(licenz|license|sertifik|svidetel|prikaz|-pdf\.)/i;
 const BORDER_COLORS = ['border-[#023E8A]', 'border-[#0077B6]', 'border-[#0096C7]'];
-const GENERIC_LINK_TEXT = /^(pdf|открыть документ|скачать|просмотреть)$/i;
+const GENERIC_LINK_TEXT = /^(pdf|открыть(?: документ)?|скачать|просмотреть|смотреть|подробнее|download|view(?: file)?|document|документ)$/i;
 
 const UI = {
   ru: { view: 'Просмотреть', download: 'Скачать', documents: 'Документы', links: 'Разделы' },
@@ -44,7 +44,12 @@ const toDocs = (node, fallbackTitle, language) =>
     const label = textOf(a);
     return {
       url: a.getAttribute('href'),
-      title: getDocumentTitle(label && !GENERIC_LINK_TEXT.test(label) ? label : '', a.getAttribute('href'), language, fallbackTitle),
+      title: getDocumentTitle(
+        label && !GENERIC_LINK_TEXT.test(label) ? label : '',
+        a.getAttribute('href'),
+        language,
+        a.getAttribute('title') || a.getAttribute('download') || '',
+      ),
     };
   });
 
@@ -400,12 +405,15 @@ const LegacyStyledPage = ({ pageContent, language, sanitize }) => {
   const data = pageContent?.data || {};
   const extraDocs = (Array.isArray(data.documents) ? data.documents : [])
     .filter((item) => item?.url && !body.includes(item.url))
-    .map((item) => ({ ...item, title: getDocumentTitle(localizeCmsText(item.title || item.name || '', lang), item.url, lang) }));
+    .map((item) => ({ ...item, title: getCmsDocumentTitle({
+      ...item,
+      title: localizeCmsText(item.title || '', lang),
+    }, lang) }));
   const extraLinks = (Array.isArray(data.links) ? data.links : [])
     .map((item) => ({
       ...item,
       title: isDocumentUrl(item.url)
-        ? getDocumentTitle(localizeCmsText(item.title || item.name || '', lang), item.url, lang)
+        ? getCmsDocumentTitle({ ...item, title: localizeCmsText(item.title || '', lang) }, lang)
         : localizeCmsText(item.title || '', lang),
     }));
   const extraImages = getSupplementaryCmsImages({

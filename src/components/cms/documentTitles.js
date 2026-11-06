@@ -159,48 +159,119 @@ const isTechnicalLabel = (label, url) => {
 const isCyrillic = (value) => /[\u0400-\u052f]/u.test(value);
 const isLatin = (value) => /[a-z]/i.test(value);
 
-export const isDocumentUrl = (url) => FILE_EXT.test(String(url || '').trim());
+const humanizeName = (name, language) => {
+  const stem = getFilenameStem(name);
+  const clean = stem.replace(/[_-]+/g, ' ').replace(/\s+/g, ' ').trim();
+  if (!clean) return '';
 
+  const localized = readableLocalizedTitle(stem, language);
+  if (localized) return localized;
+
+  // Common filenames are transliterated from Russian. Reconstruct readable
+  // Cyrillic when the name strongly resembles Russian transliteration.
+  // Unknown English names are kept, not misrepresented as translations.
+  const russianSlug = /^[a-z0-9\s_-]+$/i.test(stem)
+    && /(?:iya|iyu|enie|ost|ogo|uyu|aya|ov|ev|zh|shch|kh|ts)/i.test(stem);
+  if (language === 'ru' && russianSlug) {
+    const digraphs = [
+      ['shch', 'щ'], ['sch', 'щ'], ['yo', 'ё'], ['yu', 'ю'],
+      ['ya', 'я'], ['zh', 'ж'], ['kh', 'х'], ['ts', 'ц'],
+      ['ch', 'ч'], ['sh', 'ш'], ['ye', 'е'], ['eh', 'э'],
+    ];
+    const letterMap = {
+      a: 'а', b: 'б', c: 'к', d: 'д', e: 'е', f: 'ф',
+      g: 'г', h: 'х', i: 'и', j: 'й', k: 'к', l: 'л',
+      m: 'м', n: 'н', o: 'о', p: 'п', q: 'к', r: 'р',
+      s: 'с', t: 'т', u: 'у', v: 'в', w: 'в', x: 'кс',
+      y: 'ы', z: 'з',
+    };
+    const transliterate = (word) => {
+      let result = '';
+      let remaining = word.toLowerCase();
+      while (remaining.length) {
+        const pair = digraphs.find(([latin]) => remaining.startsWith(latin));
+        if (pair) {
+          result += pair[1];
+          remaining = remaining.slice(pair[0].length);
+        } else {
+          result += letterMap[remaining[0]] || remaining[0];
+          remaining = remaining.slice(1);
+        }
+      }
+      return result;
+    };
+    const text = clean.split(' ').map((token) => transliterate(token)).join(' ');
+    return text.charAt(0).toLocaleUpperCase('ru') + text.slice(1);
+  }
+
+  return clean.charAt(0).toLocaleUpperCase() + clean.slice(1);
+};
+
+// Prefer actual editorial titles over generated text. Never replace an
+// unidentified PDF with the same generic "Документ" label for every link.
 export const getDocumentTitle = (title, url, language = 'ru', fallbackTitle = '') => {
   const lang = languageKey(language);
   const provided = String(title || '').trim();
+  const fallback = String(fallbackTitle || '').trim();
 
-  // A CMS title in Cyrillic is more reliable than a generated filename.
-  if (provided && !isTechnicalLabel(provided, url) && isCyrillic(provided)) {
-    return provided;
-  }
-
-  // For English, keep editorial English titles, but translate common
-  // Russian transliterations before accepting them as readable English.
-  if (lang === 'en' && provided && !isTechnicalLabel(provided, url)
-    && !/[-_]/.test(provided) && !isCyrillic(provided)) {
+  if (provided && !isTechnicalLabel(provided, url)) {
     return readableLocalizedTitle(provided, lang) || provided;
   }
 
-  // "Download", "PDF" and "Document" describe an action or file type,
-  // not the actual document. Look at its filename instead.
-  const translated = (!isTechnicalLabel(provided, url)
-    ? readableLocalizedTitle(provided, lang) : '')
-    || readableLocalizedTitle(getFilenameStem(url), lang);
-  if (translated) return translated;
+  // HTML link metadata may contain the original filename even when link text
+  // is only "PDF" / "Скачать".
+  if (fallback && !isTechnicalLabel(fallback, url)) {
+    return readableLocalizedTitle(fallback, lang) || fallback;
+  }
 
-  // Do not show "Svidetelstvo ..." or "University ..." on the Russian page.
-  const context = String(fallbackTitle || '').trim();
-  if (context && !isTechnicalLabel(context, url)
-    && (lang === 'en' || isCyrillic(context))) return context;
+  // If the anchor itself is an original filename, keep it rather than the
+  // storage filename (which could be renamed on upload).
+  const providedFilename = provided && FILE_EXT.test(provided)
+    && !STORAGE_LABEL.test(provided) ? provided : '';
+  const fallbackFilename = fallback && FILE_EXT.test(fallback)
+    && !STORAGE_LABEL.test(fallback) ? fallback : '';
 
-  // Preserve genuine native-language CMS titles, otherwise stay neutral.
-  if (provided && !isTechnicalLabel(provided, url) && !isLatin(provided)) return provided;
+  const source = providedFilename || fallbackFilename || url;
+  const readable = humanizeName(source, lang);
+  if (readable) return readable;
+
+  // Only genuinely nameless data can reach this fallback.
   return UI_LABELS[lang];
 };
 
-// Handles plain document URLs and untranslated English labels embedded in CMS HTML.
+// Supported CMS document metadata fields. Some pages use document objects
+// while others use an HTML anchor and a bare URL.
+export const getCmsDocumentTitle = (item, language = 'ru', fallbackTitle = '') => {
+  const lang = languageKey(language);
+  const file = item || {};
+  const url = file.url || file.file_url || file.file?.url || '';
+  const candidates = [
+    file['title_' + lang],
+    file['name_' + lang],
+    file.title, file.document_title, file.display_title,
+    file.label, file.name, file.display_name,
+    file.original_filename, file.original_name,
+    file.file_name, file.filename, file.file?.name,
+  ];
+
+  // Skip generic labels so the next actual title/filename is not hidden.
+  const meaningful = candidates.find((candidate) => {
+    if (typeof candidate !== 'string') return false;
+    const label = candidate.trim();
+    return label && !STORAGE_LABEL.test(label) && !GENERIC_LABEL.test(label);
+  });
+
+  return getDocumentTitle(meaningful || '', url, lang, fallbackTitle);
+};
+
+// Handles document URLs and filename metadata embedded in CMS HTML.
 export const normalizeDocumentAnchorTitles = (root, language = 'ru') => {
   root.querySelectorAll('a[href]').forEach((anchor) => {
     const url = anchor.getAttribute('href') || '';
     if (!isDocumentUrl(url) || anchor.querySelector('img, svg, video')) return;
     const original = (anchor.textContent || '').trim();
-    const resolved = getDocumentTitle(original, url, language);
+    const explicitName = anchor.getAttribute('title') || anchor.getAttribute('download') || '';
+    const resolved = getDocumentTitle(original, url, language, explicitName);
     if (resolved !== original) anchor.textContent = resolved;
   });
 };

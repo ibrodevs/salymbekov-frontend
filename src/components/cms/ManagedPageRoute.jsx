@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { usePageContent } from '../../hooks/usePageContent';
 import LegacyStyledPage from './LegacyStyledPage';
+import { getDocumentTitle, isDocumentUrl, normalizeDocumentAnchorTitles } from './documentTitles';
 
 const UI_COPY = {
   ru: {
@@ -39,7 +40,7 @@ const DANGEROUS_PROTOCOL = /^(?:javascript|vbscript|data:text\/html)/i;
 const DANGEROUS_STYLE = /(?:expression\s*\(|javascript\s*:|vbscript\s*:|url\s*\(\s*['"]?data:text\/html)/i;
 const URL_ATTRIBUTES = new Set(['href', 'src', 'xlink:href', 'poster', 'background', 'action', 'formaction']);
 
-const sanitizeCmsHtml = (html) => {
+const sanitizeCmsHtml = (html, language = 'ru') => {
   const normalized = neutralizeBakedAnimations(html);
   if (!normalized) return '';
 
@@ -81,6 +82,7 @@ const sanitizeCmsHtml = (html) => {
     }
   });
 
+  normalizeDocumentAnchorTitles(documentFragment.body, language);
   return documentFragment.body.innerHTML;
 };
 
@@ -118,13 +120,13 @@ const hasMeaningfulCmsContent = (pageContent) => {
   );
 };
 
-const renderRichText = (html, className = '') => {
+const renderRichText = (html, className = '', language = 'ru') => {
   if (!html) return null;
 
   return (
     <div
       className={`prose prose-lg max-w-none prose-headings:text-slate-900 prose-p:text-slate-700 prose-li:text-slate-700 ${className}`}
-      dangerouslySetInnerHTML={{ __html: sanitizeCmsHtml(html) }}
+      dangerouslySetInnerHTML={{ __html: sanitizeCmsHtml(html, language) }}
     />
   );
 };
@@ -161,7 +163,7 @@ const CmsPageRenderer = ({ pageContent, copy, language }) => {
       <div className="min-h-screen bg-slate-50">
         <div
           className="[&_a]:break-words [&_img]:h-auto [&_img]:max-w-full"
-          dangerouslySetInnerHTML={{ __html: sanitizeCmsHtml(pageContent?.body) }}
+          dangerouslySetInnerHTML={{ __html: sanitizeCmsHtml(pageContent?.body, language) }}
         />
       </div>
     );
@@ -207,7 +209,7 @@ const CmsPageRenderer = ({ pageContent, copy, language }) => {
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         {pageContent?.body ? (
           <section className="rounded-[2rem] bg-white p-8 shadow-xl ring-1 ring-slate-200/80 sm:p-10">
-            {renderRichText(pageContent.body)}
+            {renderRichText(pageContent.body, '', language)}
           </section>
         ) : null}
 
@@ -229,7 +231,7 @@ const CmsPageRenderer = ({ pageContent, copy, language }) => {
               <article key={`${section.title || 'section'}-${index}`} className="rounded-[2rem] bg-white p-8 shadow-xl ring-1 ring-slate-200/80 sm:p-10">
                 {section.title ? <h2 className="text-3xl font-bold text-slate-900">{section.title}</h2> : null}
                 {section.subtitle ? <p className="mt-3 text-lg text-slate-600">{section.subtitle}</p> : null}
-                {section.body ? renderRichText(section.body, 'mt-6') : null}
+                {section.body ? renderRichText(section.body, 'mt-6', language) : null}
               </article>
             ))}
           </section>
@@ -260,7 +262,7 @@ const CmsPageRenderer = ({ pageContent, copy, language }) => {
                       rel="noopener noreferrer"
                       className="block rounded-2xl border border-slate-200 px-5 py-4 text-slate-700 transition hover:border-[#0077B6] hover:bg-slate-50"
                     >
-                      {item.title || item.url}
+                      {getDocumentTitle(item.title || item.name, item.url, language)}
                     </a>
                   ))}
                 </div>
@@ -279,7 +281,7 @@ const CmsPageRenderer = ({ pageContent, copy, language }) => {
                       rel={item.external === false ? undefined : 'noopener noreferrer'}
                       className="block rounded-2xl border border-slate-200 px-5 py-4 text-slate-700 transition hover:border-[#0077B6] hover:bg-slate-50"
                     >
-                      {item.title || item.url}
+                      {isDocumentUrl(item.url) ? getDocumentTitle(item.title || item.name, item.url, language) : (item.title || item.url)}
                     </a>
                   ))}
                 </div>

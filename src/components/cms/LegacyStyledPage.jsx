@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { FaArrowRight, FaDownload, FaEye, FaFilePdf, FaUniversity } from 'react-icons/fa';
 import LEGACY_HEROES from './legacyHeroes';
 import { cmsLanguage, localizeCmsHtml, localizeCmsText } from './cmsLocaleBridge';
+import { getDocumentTitle, isDocumentUrl } from './documentTitles';
 
 // Renders CMS text pages using the original visual language while keeping all
 // content sourced from the backend CMS. Localized display text is resolved only
@@ -37,16 +38,16 @@ const onlyFileLinks = (node) => {
   return textOf(clone).replace(/[–—\-:|,.]/g, '').trim() === '';
 };
 
-const toDocs = (node, fallbackTitle) =>
+const toDocs = (node, fallbackTitle, language) =>
   [...node.querySelectorAll('a')].map((a) => {
     const label = textOf(a);
     return {
       url: a.getAttribute('href'),
-      title: label && !GENERIC_LINK_TEXT.test(label) ? label : fallbackTitle || label || 'Документ',
+      title: getDocumentTitle(label && !GENERIC_LINK_TEXT.test(label) ? label : '', a.getAttribute('href'), language, fallbackTitle),
     };
   });
 
-const parseBody = (html) => {
+const parseBody = (html, language) => {
   if (!html || typeof DOMParser === 'undefined') return [];
   const doc = new DOMParser().parseFromString(`<div>${html}</div>`, 'text/html');
   const root = doc.body.firstElementChild;
@@ -86,7 +87,7 @@ const parseBody = (html) => {
     if (['a', 'strong', 'b', 'em', 'i', 'span', 'br', 'sup', 'sub', 'u'].includes(tag)) {
       if (tag === 'a' && isFileLink(node)) {
         flushText();
-        push({ type: 'docs', items: toDocs(wrap(doc, node), lastHeading) });
+        push({ type: 'docs', items: toDocs(wrap(doc, node), lastHeading, language) });
       } else {
         pendingText.push(node.outerHTML);
       }
@@ -143,7 +144,7 @@ const parseBody = (html) => {
     }
 
     if (onlyFileLinks(node)) {
-      push({ type: 'docs', items: toDocs(node, lastHeading) });
+      push({ type: 'docs', items: toDocs(node, lastHeading, language) });
       return;
     }
 
@@ -383,7 +384,7 @@ const LegacyStyledPage = ({ pageContent, language, sanitize }) => {
   const hero = LEGACY_HEROES[pageContent?.path] || {};
   const body = pageContent?.body || '';
   const localizedBody = useMemo(
-    () => localizeCmsHtml(sanitize(body), lang),
+    () => localizeCmsHtml(sanitize(body, lang), lang),
     [body, lang, sanitize]
   );
   const title = localizeCmsText(pageContent?.title || '', lang);
@@ -393,14 +394,19 @@ const LegacyStyledPage = ({ pageContent, language, sanitize }) => {
     || localizeCmsText(pageContent?.subtitle || '', lang)
     || hero.subtitle?.ru
     || '';
-  const sections = useMemo(() => parseBody(localizedBody), [localizedBody]);
+  const sections = useMemo(() => parseBody(localizedBody, lang), [localizedBody, lang]);
 
   const data = pageContent?.data || {};
   const extraDocs = (Array.isArray(data.documents) ? data.documents : [])
     .filter((item) => item?.url && !body.includes(item.url))
-    .map((item) => ({ ...item, title: localizeCmsText(item.title || '', lang) }));
+    .map((item) => ({ ...item, title: getDocumentTitle(localizeCmsText(item.title || item.name || '', lang), item.url, lang) }));
   const extraLinks = (Array.isArray(data.links) ? data.links : [])
-    .map((item) => ({ ...item, title: localizeCmsText(item.title || '', lang) }));
+    .map((item) => ({
+      ...item,
+      title: isDocumentUrl(item.url)
+        ? getDocumentTitle(localizeCmsText(item.title || item.name || '', lang), item.url, lang)
+        : localizeCmsText(item.title || '', lang),
+    }));
   const extraImages = (Array.isArray(pageContent?.media) ? pageContent.media : [])
     .filter((item) => item?.media_type === 'image' && item?.url && !body.includes(item.url))
     .map((item) => ({

@@ -156,6 +156,8 @@ const isTechnicalLabel = (label, url) => {
     || STORAGE_LABEL.test(value) || FILE_EXT.test(value) || GENERIC_LABEL.test(value);
 };
 
+export const isDocumentUrl = (url) => FILE_EXT.test(String(url || '').trim());
+
 const humanizeName = (name, language) => {
   const stem = getFilenameStem(name);
   const clean = stem.replace(/[_-]+/g, ' ').replace(/\s+/g, ' ').trim();

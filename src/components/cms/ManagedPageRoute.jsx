@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { usePageContent } from '../../hooks/usePageContent';
 import LegacyStyledPage from './LegacyStyledPage';
@@ -126,7 +127,7 @@ const renderRichText = (html, className = '', language = 'ru') => {
 
   return (
     <div
-      className={`prose prose-lg max-w-none prose-headings:text-slate-900 prose-p:text-slate-700 prose-li:text-slate-700 ${className}`}
+      className={`prose prose-lg max-w-none prose-headings:text-slate-900 prose-p:text-slate-700 prose-li:text-slate-700 [&_a]:font-medium [&_a]:text-[#0353A4] [&_a]:underline [&_a]:underline-offset-4 ${className}`}
       dangerouslySetInnerHTML={{ __html: sanitizeCmsHtml(html, language) }}
     />
   );
@@ -153,7 +154,7 @@ const CmsPageRenderer = ({ pageContent, copy, language }) => {
   const gallery = getSupplementaryCmsImages({
     media,
     body,
-    sections,
+    sections: [...sections, { body: JSON.stringify(cards) }],
     heroImage,
     showMediaGallery: data.show_media_gallery === true,
   });
@@ -226,7 +227,7 @@ const CmsPageRenderer = ({ pageContent, copy, language }) => {
         ) : null}
 
         {sections.length > 0 ? (
-          <section className="mt-10 space-y-8">
+          <section className={data.sections_layout === 'grid' ? "mt-10 grid gap-6 md:grid-cols-2" : "mt-10 space-y-8"}>
             {sections.map((section, index) => (
               <article key={`${section.title || 'section'}-${index}`} className="rounded-[2rem] bg-white p-8 shadow-xl ring-1 ring-slate-200/80 sm:p-10">
                 {section.title ? <h2 className="text-3xl font-bold text-slate-900">{section.title}</h2> : null}
@@ -360,7 +361,19 @@ const ManagedPageRoute = ({ path }) => {
   }
 
   if (!isError && hasMeaningfulCmsContent(data)) {
-    return <CmsPageRenderer pageContent={data} copy={copy} language={String(i18n.language || 'ru').toLowerCase().split('-')[0]} />;
+    const lang = String(i18n.language || 'ru').toLowerCase().split('-')[0];
+    const labels = { ru: ['Главная', 'Программы'], en: ['Home', 'Programs'], kg: ['Башкы бет', 'Программалар'] }[lang] || ['Главная', 'Программы'];
+    return <>
+      {['/education', '/education/student', '/education/applicant'].includes(path) && (
+        <nav aria-label="Breadcrumb" className="mx-auto flex max-w-7xl flex-wrap gap-2 px-4 pt-24 pb-4 text-sm text-[#023E8A]">
+          <Link to="/">{labels[0]}</Link><span aria-hidden="true">/</span>
+          {path !== '/education' && <><Link to="/education">{labels[1]}</Link><span aria-hidden="true">/</span></>}
+          <span aria-current="page">{data.title}</span>
+        </nav>
+      )}
+      <CmsPageRenderer pageContent={data} copy={copy} language={lang} />
+    </>;
+
   }
 
   return (

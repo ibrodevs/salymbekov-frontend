@@ -11,6 +11,15 @@ if (process.env.NODE_ENV !== 'production') {
   console.log('[i18n-import] kgTranslation imported value for', testKey, '=', kgValue);
 }
 
+const getSavedLanguage = () => {
+  try {
+    const saved = localStorage.getItem('siteLanguage');
+    return ['ru', 'en', 'kg', 'ky'].includes(saved) ? saved : 'ru';
+  } catch {
+    return 'ru';
+  }
+};
+
 const resources = {
   en: { translation: enTranslation },
   ru: { translation: ruTranslation },
@@ -24,7 +33,7 @@ const resources = {
 // This ensures both codes map to the same translations.
 i18n.use(initReactI18next).init({
   resources,
-  lng: "ru",
+  lng: getSavedLanguage(),
   fallbackLng: "en",
   interpolation: { escapeValue: false },
   returnObjects: true,
@@ -38,6 +47,7 @@ i18n.use(initReactI18next).init({
 i18n.on('languageChanged', (lng) => {
   if (!lng) return;
   const normalized = lng.split('-')[0];
+  try { localStorage.setItem('siteLanguage', normalized === 'ky' ? 'kg' : normalized); } catch { /* Storage may be disabled. */ }
   // If the app or browser tries to set 'ky', redirect to 'kg'
   if (normalized === 'ky') {
     if (i18n.language !== 'kg') {

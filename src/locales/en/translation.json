@@ -127,7 +127,7 @@
       "businessSchoolDesc": "Advanced business education and training",
       "postgrad": "Institute of Global Skills",
       "postgradDesc": "Advanced studies and research opportunities",
-      "center": "Education and Innovation Center (Naryn)",
+      "center": "Naryn Campus",
       "centerDesc": "Regional education center in Naryn"
     },
     "clinical": {
@@ -1142,10 +1142,10 @@
     "medicalFaculty": {
       "badge": "Medical Faculty",
       "hero": {
-        "title": "Higher School of Medicine",
+        "title": "ИГН",
         "subtitle": "Modern medical education that meets international standards"
       },
-      "higherSchoolButton": "Visit Higher School of Medicine Website",
+      "higherSchoolButton": "Visit ИГН Website",
       "stats": {
         "students": "Students",
         "professors": "Professors",
@@ -1211,7 +1211,7 @@
       "showLess": "Show Less",
       "cta": {
         "title": "Ready to become part of our community?",
-        "description": "Join the Higher School of Medicine and start your journey in modern medicine",
+        "description": "Join the ИГН and start your journey in modern medicine",
         "visitSite": "Visit Website",
         "contact": "Contact Us"
       }
@@ -1995,6 +1995,8 @@
       "clinicsCoop": "Cooperation with Clinics"
     },
     "educationSUB": {
+    "student": "For students",
+    "applicant": "For applicants",
       "ait": "American Institute of Technology",
       "aitLeadership": "Institute Leadership",
       "aitDisciplines": "Institute Disciplines",
@@ -2002,7 +2004,7 @@
       "mfm": "International Faculty of Medicine",
       "businessSchool": "Salymbekov Business School",
       "postgraduatetitle": "Institute of Global Skills",
-      "narynCenter": "Education and Innovation Center in Naryn",
+      "narynCenter": "Naryn Campus",
       "deanOffice": "Dean's Office",
       "mfmCurriculum": "MFM Curriculum",
       "departments": "Departments",
@@ -2031,7 +2033,7 @@
       "residency": "Medical Residency",
       "postgraduate": "Postgraduate Studies",
       "phd": "PhD Program",
-      "aboutCenter": "About Center"
+      "aboutCenter": "About the campus"
     },
     "commonSUB": {
       "about": "About",
@@ -2440,10 +2442,10 @@
     "internationalFaculty": {
       "badge": "International Faculty",
       "hero": {
-        "title": "Higher School of Medicine",
+        "title": "ИГН",
         "subtitle": "World-class international medical education"
       },
-      "higherSchoolButton": "Higher School of Medicine",
+      "higherSchoolButton": "ИГН",
       "stats": {
         "professors": "Professors",
         "students": "Students",
@@ -2472,7 +2474,7 @@
       },
       "about": {
         "title": "About the Faculty",
-        "description1": "Salymbekov University Higher School of Medicine is a modern educational institution offering international level medical education. Our faculty combines the best world practices and innovative approaches to learning.",
+        "description1": "Salymbekov University ИГН is a modern educational institution offering international level medical education. Our faculty combines the best world practices and innovative approaches to learning.",
         "description2": "We train highly qualified medical professionals capable of working anywhere in the world. Our educational program is developed taking into account international standards and the requirements of modern healthcare.",
         "description3": "The faculty actively implements innovative technologies in the educational process, including virtual simulators, telemedicine and digital platforms for distance learning."
       },
@@ -2512,7 +2514,7 @@
       },
       "cta": {
         "title": "Ready to Become Part of Our Community?",
-        "description": "Join the Higher School of Medicine and start your journey to a successful medical career",
+        "description": "Join the ИГН and start your journey to a successful medical career",
         "applyNow": "Apply Now"
       }
     },
@@ -5595,7 +5597,7 @@
       },
       "description": {
         "title": "About the Center",
-        "content1": "The Education and Innovation Center in Naryn specializes in quality education and student development in the fields of science, technology, engineering and mathematics. The center has modern equipment and a stimulating learning atmosphere that supports students' interest in scientific disciplines and technical skills.",
+        "content1": "The Naryn Campus specializes in quality education and student development in the fields of science, technology, engineering and mathematics. The center has modern equipment and a stimulating learning atmosphere that supports students' interest in scientific disciplines and technical skills.",
         "content2": "The center provides diverse educational programs and opportunities for students of different age groups - from children to teenagers and adults. The center has modern classrooms and laboratories, electronic resources connected to EBSCO, SAGE systems and includes various educational elements."
       },
       "stem": {
@@ -6821,7 +6823,7 @@
       },
       "cta": {
         "title": "Ready to become a doctor?",
-        "description": "Start your journey in medicine with the 'General Medicine' program at the Higher School of Medicine",
+        "description": "Start your journey in medicine with the 'General Medicine' program at the ИГН",
         "downloadPlan": "Download Curriculum",
         "contact": "Apply Now"
       }
@@ -7808,11 +7810,11 @@
     },
     "aboutCenter": {
       "badge": "About Center",
-      "title": "Education and Innovation Center in Naryn",
+      "title": "Naryn Campus",
       "subtitle": "Modern space for quality education and student development in science, technology, engineering and mathematics",
       "description": {
         "title": "About the Center",
-        "content1": "The Education and Innovation Center in Naryn specializes in quality education and development of students in the field of science, technology, engineering and mathematics. The center has modern equipment and a stimulating learning atmosphere that supports students' interest in scientific disciplines and technical skills.",
+        "content1": "The Naryn Campus specializes in quality education and development of students in the field of science, technology, engineering and mathematics. The center has modern equipment and a stimulating learning atmosphere that supports students' interest in scientific disciplines and technical skills.",
         "content2": "The center provides various educational programs and opportunities for students of different age groups - from children to teenagers and adults. The center has modern classrooms and laboratories, electronic resources connected to the EBSCO and SAGE systems, and includes the following elements:"
       },
       "stem": {
@@ -7876,7 +7878,7 @@
       },
       "mission": {
         "title": "Our Mission",
-        "description": "The Education and Innovation Center in Naryn plays an important role in preparing students in the field of science, technology, engineering and mathematics, as well as in encouraging innovation and creative thinking for all categories of the population",
+        "description": "The Naryn Campus plays an important role in preparing students in the field of science, technology, engineering and mathematics, as well as in encouraging innovation and creative thinking for all categories of the population",
         "forAll": "For all age groups",
         "innovation": "Innovation development",
         "preparation": "Quality preparation"
@@ -7963,13 +7965,13 @@
         "street1": "Maldybaeva str., 24b",
         "street2": "Ahunbaeva str., 125 (International College of IT and Business)",
         "ait": "American Institute of Technology \"AIT\"",
-        "medical": "Fuchika str., 3 (Higher School of Medicine)"
+        "medical": "Fuchika str., 3 (ИГН)"
       },
       "phones": {
         "it1": "+996 778 99 88 89 (International College of IT and Business)",
         "it2": "+996 706 99 88 89 (International College of IT and Business)",
         "ait": "+996 774 83 88 83 (American Institute of Technology AIT)",
-        "medical": "+996 501 83 88 83 (Higher School of Medicine)"
+        "medical": "+996 501 83 88 83 (ИГН)"
       },
       "email": "info@salymbekov.com",
       "dearApplicants": "Dear Applicants!",
@@ -7994,11 +7996,11 @@
         "email": "Email",
         "addresses": {
           "college": "Maldybaeva St., 24b / Akhunbaeva, 125 (International College of IT and Business)",
-          "medical": "Fuchika St., 3 (Higher School of Medicine)"
+          "medical": "Fuchika St., 3 (ИГН)"
         },
         "phones": {
           "college": "International College of IT and Business",
-          "medical": "Higher School of Medicine"
+          "medical": "ИГН"
         }
       },
       "introduction": "Currently, Salymbekov University trains qualified specialists in the field of IT and medicine in the following areas:",
@@ -9215,12 +9217,12 @@
         "addresses": {
           "title": "Address",
           "college": "Maldybaeva St., 24b / Akhunbaeva, 125 (International College of IT and Business/American Institute of Technology)",
-          "medical": "Fuchik St., 3 (Higher School of Medicine)"
+          "medical": "Fuchik St., 3 (ИГН)"
         },
         "phones": {
           "title": "Mobile",
           "college": "International College of IT and Business",
-          "medical": "Higher School of Medicine",
+          "medical": "ИГН",
           "ait": "American Institute of Technology"
         }
       },
@@ -17436,5 +17438,19 @@
       "addressZip": "720054",
       "addressStreet": "Fuchika 3,",
       "addressCity": "Bishkek, Kyrgyzstan"
-    }
-  }
+    },
+  "anonymousMessage": {
+    "title": "Anonymous message",
+    "subject": "Subject",
+    "message": "Message",
+    "name": "Name (optional)",
+    "email": "Reply email (optional)",
+    "send": "Send message",
+    "sending": "Sending…",
+    "success": "Your message has been sent to the university administration.",
+    "error": "Unable to send your message. Please try again.",
+    "limited": "Too many messages. Please try again later.",
+    "explanation": "You can send a message without your name or email. If you would like a reply, provide a contact email. Your message will be sent to the university administration.",
+    "privacy": "Messages are not published or stored in the website database. The server and email provider may process technical data including IP addresses; complete technical anonymity is not guaranteed. Contact details are used to reply."
+}
+}

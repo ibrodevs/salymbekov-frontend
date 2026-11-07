@@ -499,24 +499,6 @@ const Navbar = () => {
           type: 'multiGroup',
           groups: [
             {
-              icon: '➕',
-              title: 'Международный факультет Медицины',
-              items: [
-                { label: 'О факультете', path: '/education/med-faculty/about' },
-                { label: 'Деканат', path: '/education/med-faculty/deanery' },
-                {
-                  label: 'Программы',
-                  path: '/education/med-faculty/programs',
-                  children: [
-                    { label: 'Лечебное дело', path: '/education/med-faculty/programs/general' },
-                    { label: 'Стоматология', path: '/education/med-faculty/programs/dentistry' },
-                    { label: 'Фармация', path: '/education/med-faculty/programs/pharmacy' }
-                  ]
-                },
-                { label: 'Контакты', path: '/education/med-faculty/contacts' }
-              ]
-            },
-            {
               icon: '📊',
               title: 'Бизнес школа Салымбекова',
               items: [
@@ -542,24 +524,10 @@ const Navbar = () => {
           type: 'multiGroup',
           groups: [
             {
-              icon: '➕',
-              title: 'Факультет последипломного образования',
-              items: [
-                { label: 'Интернатура', path: '/education/postgrad/internatura' },
-                { label: 'Ординатура', path: '/education/postgrad/ordinatura' },
-                { label: 'Аспирантура', path: '/education/postgrad/aspirantura' },
-                { label: 'PhD', path: '/education/postgrad/phd' },
-                {
-                  label: 'Курсы повышения квалификации',
-                  path: '/education/postgrad/courses'
-                }
-              ]
-            },
-            {
               icon: '🏫',
-              title: 'Центр образования и инновации в г. Нарын',
+              title: 'Нарын кампус',
               items: [
-                { label: 'О центре', path: '/education/naryn/about' },
+                { label: 'О кампусе', path: '/education/center/about' },
                 { label: 'Директор Центра', path: '/education/naryn/director' },
                 { label: 'Менеджеры', path: '/education/naryn/managers' },
                 {
@@ -571,7 +539,7 @@ const Navbar = () => {
                     { label: 'Семинары', path: '/education/naryn/programs/seminars' }
                   ]
                 },
-                { label: 'Контакты Центра', path: '/education/naryn/contacts' }
+                { label: 'Контакты кампуса', path: '/education/naryn/contacts' }
               ]
             }
           ]

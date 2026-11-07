@@ -77,9 +77,10 @@ test('do not automatically repeat inline photos at bottom of CMS pages', () => {
   }), []);
 });
 
-test('preserve standalone media images when page has no inline images', () => {
+test('preserve explicitly enabled standalone media galleries', () => {
   const url = 'https://cdn.example.com/files/one.jpg';
   assert.deepEqual(getSupplementaryCmsImages({
+    showMediaGallery: true,
     body: '<p>Описание без фотографий</p>',
     media: [photo(url), photo(url + '?v=3'), photo('/files/hero.jpg', { is_hero: true })],
   }), [photo(url)]);
@@ -89,6 +90,7 @@ test('do not repeat the hero in an appended gallery', () => {
   const hero = 'https://cdn.example.com/files/hero.jpg';
   assert.deepEqual(getSupplementaryCmsImages({
     media: [photo(hero), photo('https://cdn.example.com/files/other.jpg')],
+    showMediaGallery: true,
     heroImage: hero + '?size=800',
   }), [photo('https://cdn.example.com/files/other.jpg')]);
 });

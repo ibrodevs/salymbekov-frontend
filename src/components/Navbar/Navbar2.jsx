@@ -165,6 +165,8 @@ const Navbar = () => {
     },
     education: {
       items: [
+        { key: 'student', link: '/education/student' },
+        { key: 'applicant', link: '/education/applicant' },
         {
           key: 'ait',
           link: '/education/ait',
@@ -216,16 +218,6 @@ const Navbar = () => {
             { key: 'youngLeaders', link: '/education/business-school/programs/young-leaders' },
             { key: 'olderLeaders', link: '/education/business-school/programs/older-leaders' },
             { key: 'contacts', link: '/university/contacts' }
-          ]
-        },
-        {
-          key: 'postgraduatetitle',
-          link: '/education/postgrad',
-          subItems: [
-            { key: 'internship', link: '/education/postgrad/internship' },
-            { key: 'residency', link: '/education/postgrad/residency' },
-            { key: 'postgraduate', link: '/education/postgrad/postgraduate' },
-            { key: 'phd', link: '/education/postgrad/phd' }
           ]
         },
         {
@@ -491,7 +483,7 @@ const Navbar = () => {
                       ? 'bg-white/50 border border-gray-100'
                       : 'bg-blue-800/20 border border-blue-700/20'
                       }`}>
-                      {item.subItems ? (
+                      {item.subItems?.length > 0 ? (
                         <>
                           <button
                             onClick={() => toggleItemExpansion(menuKey, item.key)}

@@ -1,5 +1,5 @@
 import React, { lazy, Suspense, useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, useParams } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate, useParams } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar1';
 import ScrollToTop from './components/ScrollToTop';
 import SplashScreen from './components/SplashScreen';
@@ -7,6 +7,7 @@ import HomeCmsPage from './components/Home/HomeCmsPage';
 import CmsCatchAllRoute from './components/cms/CmsCatchAllRoute';
 import ManagedPageRoute from './components/cms/ManagedPageRoute';
 import PageSectionLayout from './components/cms/PageSectionLayout';
+import AnonymousMessageForm from './components/AnonymousMessageForm';
 import Footer from './pages/Footer';
 import NotFound from './pages/NotFound';
 
@@ -50,6 +51,7 @@ const App = () => {
   const cmsOnlyPage = (path) => (
     <PageSectionLayout>
       <ManagedPageRoute path={path} />
+      {path === '/contact' && <AnonymousMessageForm />}
     </PageSectionLayout>
   );
 
@@ -77,7 +79,7 @@ const App = () => {
             <Route path="/about" element={cmsOnlyPage('/about')} />
             <Route path="/services" element={cmsOnlyPage('/services')} />
             <Route path="/contact" element={cmsOnlyPage('/contact')} />
-            <Route path="/contacts" element={cmsOnlyPage('/contacts')} />
+            <Route path="/contacts" element={<Navigate to="/contact" replace />} />
             <Route path="/vacancies" element={cmsOnlyPage('/vacancies')} />
             <Route path="/founderMessege" element={cmsOnlyPage('/founderMessege')} />
             <Route path="/MaterialBaseGallery" element={cmsOnlyPage('/MaterialBaseGallery')} />
@@ -135,11 +137,10 @@ const App = () => {
             <Route path="/education/it-college/director" element={cmsOnlyPage('/education/it-college/director')} />
             <Route path="/education/it-college/double-diploma" element={cmsOnlyPage('/education/it-college/double-diploma')} />
             <Route path="/education/it-college/pedagogical-council" element={cmsOnlyPage('/education/it-college/pedagogical-council')} />
-            <Route path="/education/postgrad" element={cmsOnlyPage('/education/postgrad')} />
-            <Route path="/education/postgrad/internship" element={cmsOnlyPage('/education/postgrad/internship')} />
-            <Route path="/education/postgrad/phd" element={cmsOnlyPage('/education/postgrad/phd')} />
-            <Route path="/education/postgrad/postgraduate" element={cmsOnlyPage('/education/postgrad/postgraduate')} />
-            <Route path="/education/postgrad/residency" element={cmsOnlyPage('/education/postgrad/residency')} />
+            <Route path="/education/postgrad/*" element={<Navigate to="/education" replace />} />
+            <Route path="/education" element={cmsOnlyPage('/education')} />
+            <Route path="/education/student" element={cmsOnlyPage('/education/student')} />
+            <Route path="/education/applicant" element={cmsOnlyPage('/education/applicant')} />
             <Route path="/education/center" element={cmsOnlyPage('/education/center')} />
             <Route path="/education/center/about" element={cmsOnlyPage('/education/center/about')} />
 

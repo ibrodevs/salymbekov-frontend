@@ -48,23 +48,15 @@ export const apiRequest = async (endpoint, options = {}) => {
     },
   };
 
-  try {
-    const response = await fetch(url, config);
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error('API Error Response:', errorText);
-      const error = new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
-      error.status = response.status;
-      error.responseText = errorText;
-      throw error;
-    }
-
-    return await response.json();
-  } catch (error) {
-    console.error('API request failed:', error.message);
+  const response = await fetch(url, config);
+  if (!response.ok) {
+    const errorText = await response.text();
+    const error = new Error(`HTTP error! status: ${response.status}`);
+    error.status = response.status;
+    error.responseText = errorText;
     throw error;
   }
+  return await response.json();
 };
 
 export const getCategories = async (lang = 'ru') => {

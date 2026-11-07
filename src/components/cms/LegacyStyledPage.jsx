@@ -419,6 +419,7 @@ const LegacyStyledPage = ({ pageContent, language, sanitize }) => {
   const extraImages = getSupplementaryCmsImages({
     media: pageContent?.media,
     body,
+    sections: [...(data.sections || []), { body: JSON.stringify(data.cards || []) }],
     heroImage: data.hero_image || '',
     showMediaGallery: data.show_media_gallery === true,
   })

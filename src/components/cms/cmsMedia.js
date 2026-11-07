@@ -1,9 +1,9 @@
 // The backend may list media both in the rich-text body and in page.media.
 // The media array is upload metadata, not a request to repeat every image
 // in a gallery at the end of a page.
-const IMAGE_IN_HTML = /<\s*(?:img|picture|source)\b/i;
 
-const imageIdentity = (url) => {
+
+export const imageIdentity = (url) => {
   if (!url) return '';
   let pathname;
   try {
@@ -16,7 +16,8 @@ const imageIdentity = (url) => {
   } catch {
     // Malformed URL: compare the unescaped path.
   }
-  return pathname.replace(/\/+/g, '/').replace(/\/$/, '').toLowerCase();
+  pathname = pathname.replace(/^\/(?:public|media)\//, '/');
+  return pathname.replace(/\/+/g, '/').replace(/\/$/, '');
 };
 
 export const getSupplementaryCmsImages = ({
@@ -24,13 +25,18 @@ export const getSupplementaryCmsImages = ({
 } = {}) => {
   const html = [body, ...sections.map((section) => section?.body || '')].join('\n');
 
-  // Inline images already form the editorial page layout. The backend often
-  // exposes those exact uploads again in page.media with slightly different
-  // URLs. Do not create a second automatic photo section on such pages.
-  // Editors can opt into a separate gallery with data.show_media_gallery=true.
-  if (IMAGE_IN_HTML.test(html) && !showMediaGallery) return [];
+  // Upload metadata never creates a gallery without an explicit editor opt-in.
+  if (!showMediaGallery) return [];
 
   const seen = new Set();
+  const seenIds = new Set();
+  for (const item of (Array.isArray(media) ? media : [])) {
+    if (item?.is_hero) {
+      if (item.id != null) seenIds.add(String(item.id));
+      const key = imageIdentity(item.url);
+      if (key) seen.add(key);
+    }
+  }
   const heroKey = imageIdentity(heroImage);
   if (heroKey) seen.add(heroKey);
 
@@ -39,6 +45,8 @@ export const getSupplementaryCmsImages = ({
   if (typeof DOMParser !== 'undefined' && html) {
     const parsed = new DOMParser().parseFromString(html, 'text/html');
     parsed.querySelectorAll('img, source').forEach((element) => {
+      const mediaId = element.getAttribute('data-media-id');
+      if (mediaId) seenIds.add(String(mediaId));
       ['src', 'data-src', 'srcset'].forEach((attribute) => {
         const value = element.getAttribute(attribute);
         if (!value) return;
@@ -57,7 +65,8 @@ export const getSupplementaryCmsImages = ({
   return (Array.isArray(media) ? media : []).filter((item) => {
     if (item?.media_type !== 'image' || !item?.url || item?.is_hero) return false;
     const key = imageIdentity(item.url);
-    if (!key || seen.has(key)) return false;
+    if (!key || seen.has(key) || (item.id != null && seenIds.has(String(item.id)))) return false;
+    if (item.id != null) seenIds.add(String(item.id));
     seen.add(key);
     return true;
   });

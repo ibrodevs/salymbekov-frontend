@@ -160,6 +160,8 @@ const Navbar = ({ isSplashVisible = false }) => {
     },
     education: {
       items: [
+        { key: 'student', link: '/education/student' },
+        { key: 'applicant', link: '/education/applicant' },
         {
           key: 'ait',
           link: '/education/ait',
@@ -198,16 +200,6 @@ const Navbar = ({ isSplashVisible = false }) => {
             { key: 'itDepartment', link: '/education/it-college/departments/information' },
             { key: 'pedagogicalCouncil', link: '/education/it-college/pedagogical-council' },
             { key: 'contacts', link: '/contacts' }
-          ]
-        },
-        {
-          key: 'postgraduatetitle',
-          link: '/education/postgrad',
-          subItems: [
-            { key: 'internship', link: '/education/postgrad/internship' },
-            { key: 'residency', link: '/education/postgrad/residency' },
-            { key: 'postgraduate', link: '/education/postgrad/postgraduate' },
-            { key: 'phd', link: '/education/postgrad/phd' }
           ]
         },
         {
@@ -538,7 +530,7 @@ const Navbar = ({ isSplashVisible = false }) => {
                       }`}>
                       {items.map((item) => (
                         <div key={item.key} className="pt-2">
-                          {item.subItems ? (
+                          {item.subItems?.length > 0 ? (
                             <div className={`rounded-xl overflow-hidden ${isScrolled ? 'bg-white shadow-sm' : 'bg-white/5'
                               }`}>
                               <button
